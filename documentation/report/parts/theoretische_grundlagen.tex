@@ -10,15 +10,15 @@
 Bei diskreten LOD werden für ein detailliertes Modell mehrere weniger detaillierte Modelle verwendet.
 Abhängig von der Distanz zum Betrachter wird das optimale Modell gewählt.
 \begin{itemize}
-  \pro Simplizität (Keine Anpassungen am Scene Graphh notwendig)
-  \con Harte Grenzen, Veränderung des Objektes kann merkbar sein.
-  \con Kein Clustering möglich (Probleme bei sehr grossen oder vielen kleinen Modellen)
+  \pro Simplizität: Keine Anpassungen am Scene Graphh notwendig
+  \con Harte Grenzen: Veränderung des Objektes kann merkbar sein
+  \con Kein Clustering möglich: Probleme bei sehr grossen oder vielen kleinen Modellen
 \end{itemize}
 
 \section{Kontinuierliche LOD (CLOD)}
 Im Gegensatz zu DLOD wird bei CLOD vereinfachende Veränderungen an einem Modell gespeichert.
 \begin{itemize}
-  \pro Weiche Grenzen, Interpolation zwischen Auflösungen ist möglich
+  \pro Weiche Grenzen: Interpolation zwischen Auflösungen ist möglich
   \con Runtime Performance
   \con Kein Clustering möglich
 \end{itemize}
