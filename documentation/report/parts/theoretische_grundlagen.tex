@@ -6,4 +6,25 @@
 % !TEX TS-program = pdflatexmk
 % !TEX encoding = UTF-8 Unicode
 % !TEX root = ../doc.tex
-\lipsum[1]
+\section{Diskrete LOD (DLOD)}
+Bei diskreten LOD werden für ein detailliertes Modell mehrere weniger detaillierte Modelle verwendet.
+Abhängig von der Distanz zum Betrachter wird das optimale Modell gewählt.
+\begin{itemize}
+  \pro Simplizität: Keine Anpassungen am Scene Graphh notwendig
+  \con Harte Grenzen: Veränderung des Objektes kann merkbar sein
+  \con Kein Clustering möglich: Probleme bei sehr grossen oder vielen kleinen Modellen
+\end{itemize}
+
+\section{Kontinuierliche LOD (CLOD)}
+Im Gegensatz zu DLOD wird bei CLOD vereinfachende Veränderungen an einem Modell gespeichert.
+\begin{itemize}
+  \pro Weiche Grenzen: Interpolation zwischen Auflösungen ist möglich
+  \con Runtime Performance
+  \con Kein Clustering möglich
+\end{itemize}
+
+\section{Hierarchische LOD (HLOD)}
+Bei HLOD werden mehrere Objekte in einen Cluster gruppiert.
+\begin{itemize}
+  \pro Clustering möglich
+\end{itemize}
