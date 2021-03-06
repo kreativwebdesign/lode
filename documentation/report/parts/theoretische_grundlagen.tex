@@ -6,6 +6,37 @@
 % !TEX TS-program = pdflatexmk
 % !TEX encoding = UTF-8 Unicode
 % !TEX root = ../doc.tex
+\section{Einführung}
+Als Level Of Detail (LOD) werden die verschiedenen Detailstufen bei der virtuellen Darstellung bezeichnet.
+Dies wird verwendet um die Geschwindigkeit von Anwendungen zu steigern, indem Objekte im Nahbereich detailiert angezeigt werden; wohingegen Elemente im Fernbereich deutlich vereinfacht dargestellt werden.
+
+\subsection{Das Problem}
+Geometrische Objekte können zu Komplex werden, um jederzeit performant und interaktiv gerendert zu werden.
+Gerade wenn viele Objekte zur selben Zeit sichtbar sind, lohnt es sich, zu priorisieren und gewisse Objekte in reduzierter Qualität anzuzeigen.
+Im idealfall geschieht dies jedoch, ohne dass der Anwender dies bemerkt.
+
+\subsection{Lösungsansätze}
+In diesem Abschnitt werden mögliche Ansätze erklärt, welche helfen sollen, die Render-Perfomanz zu erhöhen. Diese Arbeit konzertriert sich jedoch auf den Ansatz von Level of Detail; die anderen Ansätze werden nur kurz erläutert.
+
+\paragraph{Level of Detail}
+Level of Detail auch bekannt als polygonale Simplifizierung, geometrische Simplifizierung oder Mesh Reduzierung basiert darauf, die Komplexität von Objekten zu reduzieren, welche weiter von der Kamera entfernt werden. Es gibt verschiedene Ansätze zur generierung von LODs, welche später in dieser Arbeit im Detail erläutert werden.
+
+
+(Bild der drei Hasen)
+
+// Erklärung zum Bild
+Wie in der obigen Visualisierung zu erkennen ist, wird von Links nach Rechts der Detailgrad und somit die Komplexität des Objektes reduziert wird. Sind es im Bild ganz Links noch 69'451 Polygone wird es bereits im ersten Schritt auf 2'502 Polygone reduziert. Dies ist eine enorme reduktion von ca 96.5\%. Im dritten Schritt wird die Anzahl Polygone wiederum um ca 90\% auf 251 redudziert. Schlussendlich hat das letzte Objekt noch 76 Polygone was knapp 0.1\% der ursprünglichen Anzahl entspricht.
+
+\paragraph{Prallel rendering}
+Lorem ipsum
+
+\paragraph{Occlusion culling}
+Lorem ipsum
+
+\paragraph{Image-based rendering}
+Lorem ipsum
+
+
 \section{Diskrete LOD (DLOD)}
 Bei diskreten LOD werden für ein detailliertes Modell mehrere weniger detaillierte Modelle verwendet.
 Abhängig von der Distanz zum Betrachter wird das optimale Modell gewählt.
