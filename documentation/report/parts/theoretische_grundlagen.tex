@@ -19,13 +19,16 @@ Im idealfall geschieht dies jedoch, ohne dass der Anwender dies bemerkt.
 In diesem Abschnitt werden mögliche Ansätze erklärt, welche helfen sollen, die Render-Perfomanz zu erhöhen. Diese Arbeit konzertriert sich jedoch auf den Ansatz von Level of Detail; die anderen Ansätze werden nur kurz erläutert.
 
 \paragraph{Level of Detail}
-Level of Detail auch bekannt als polygonale Simplifizierung, geometrische Simplifizierung oder Mesh Reduzierung basiert darauf, die Komplexität von Objekten zu reduzieren, welche weiter von der Kamera entfernt werden. Es gibt verschiedene Ansätze zur generierung von LODs, welche später in dieser Arbeit im Detail erläutert werden.
+Level of Detail auch bekannt als polygonale Simplifizierung, geometrische Simplifizierung oder Mesh Reduzierung basiert darauf, die Komplexität von Objekten zu reduzieren, welche weiter von der Kamera entfernt werden. Es gibt verschiedene Ansätze zur generierung von LODs, welche in Abschnitt XY im Detail erläutert werden. Zudem braucht es einen berechnbare Methode, die Genauigkeit von Modellen zu definieren, um diese entsprechend anzuwenden. Schlussendlich ist dann noch zu definieren, ab wann welche Artefakte verwendet werden soll, basierend auf der Genauigkeit und der Komplexität.
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\columnwidth]{LODs-of-a-bunny-model-Courtesy-Stanford-3D-Scanning-Repository-From-left-to-right}
+\caption{Level Of Detail Visualisierung vier Hasen}
+\label{fig:LevelOfDetailVisualisierungvierHasen}
+\end{figure}
 
-(Bild der drei Hasen)
-
-// Erklärung zum Bild
-Wie in der obigen Visualisierung zu erkennen ist, wird von Links nach Rechts der Detailgrad und somit die Komplexität des Objektes reduziert wird. Sind es im Bild ganz Links noch 69'451 Polygone wird es bereits im ersten Schritt auf 2'502 Polygone reduziert. Dies ist eine enorme reduktion von ca 96.5\%. Im dritten Schritt wird die Anzahl Polygone wiederum um ca 90\% auf 251 redudziert. Schlussendlich hat das letzte Objekt noch 76 Polygone was knapp 0.1\% der ursprünglichen Anzahl entspricht.
+Wie in der Abbildung \ref{fig:LevelOfDetailVisualisierungvierHasen} zu erkennen ist, wird von Links nach Rechts der Detailgrad und somit die Komplexität des Objektes reduziert. Sind es im Bild ganz Links noch 69'451 Polygone wird es bereits im ersten Schritt auf 2'502 Polygone reduziert. Dies ist eine enorme reduktion von ca 96.5\%. Im dritten Schritt wird die Anzahl Polygone wiederum um ca 90\% auf 251 redudziert. Schlussendlich hat das letzte Objekt noch 76 Polygone was knapp 0.1\% der ursprünglichen Anzahl entspricht.
 
 \paragraph{Prallel rendering}
 Lorem ipsum
@@ -37,7 +40,10 @@ Lorem ipsum
 Lorem ipsum
 
 
-\section{Diskrete LOD (DLOD)}
+\subsection{Verschiedene Ansätze zur Generierung von LOD Modellen}
+Es gibt verschiedene Ansätze, 3D Modelle mittels LOD zu vereinfachen. In diesem Abschnitt werden einige davon detailierter erläutert so wie ihre Vor- und Nachteile aufgezeigt.
+
+\paragraph{Diskrete LOD (DLOD)}
 Bei diskreten LOD werden für ein detailliertes Modell mehrere weniger detaillierte Modelle verwendet.
 Abhängig von der Distanz zum Betrachter wird das optimale Modell gewählt.
 \begin{itemize}
@@ -46,7 +52,7 @@ Abhängig von der Distanz zum Betrachter wird das optimale Modell gewählt.
   \con Kein Clustering möglich: Probleme bei sehr grossen oder vielen kleinen Modellen
 \end{itemize}
 
-\section{Kontinuierliche LOD (CLOD)}
+\paragraph{Kontinuierliche LOD (CLOD)}
 Im Gegensatz zu DLOD wird bei CLOD vereinfachende Veränderungen an einem Modell gespeichert.
 \begin{itemize}
   \pro Weiche Grenzen: Interpolation zwischen Auflösungen ist möglich
@@ -54,7 +60,7 @@ Im Gegensatz zu DLOD wird bei CLOD vereinfachende Veränderungen an einem Modell
   \con Kein Clustering möglich
 \end{itemize}
 
-\section{Hierarchische LOD (HLOD)}
+\paragraph{Hierarchische LOD (HLOD)}
 Bei HLOD werden mehrere Objekte in einen Cluster gruppiert.
 \begin{itemize}
   \pro Clustering möglich
