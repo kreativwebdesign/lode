@@ -1,0 +1,13 @@
+{
+  "name": "lode-benchmarker",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js --inspect"
+  },
+  "dependencies": {
+    "puppeteer": "^8.0.0",
+    "yargs": "^16.2.0"
+  }
+}
