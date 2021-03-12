@@ -33,8 +33,17 @@ Wie in der Abbildung \ref{fig:LevelOfDetailVisualisierungvierHasen} zu erkennen 
 \paragraph{Parallel rendering}
 Lorem ipsum
 
+\paragraph{Frustum culling}
+Polygone, welche nicht im Kamera Frustum enthalten sind, werden bei dieser Methode nicht weiter prozessiert.
+Dies reduziert die Anzahl Polygone drastisch.
+
 \paragraph{Occlusion culling}
-Lorem ipsum
+Polygone bzw. Objekte, welche komplett von anderen Objekten überdeckt werden, werden bei dieser Variante nicht prozessiert.
+
+\paragraph{Backface culling}
+Bei dieser Methode wird berechnet welche Polygone zur Kamera orientiert sind.
+Alle Polygone, welche in die andere Richtung zeigen werden nicht gezeichnet.
+Dies ist nicht immer gewünscht, für die meisten Anwendungen ist diese Optimierung jedoch aktiviert.
 
 \paragraph{Image-based rendering}
 Lorem ipsum
