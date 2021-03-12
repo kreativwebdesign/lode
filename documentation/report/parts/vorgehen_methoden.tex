@@ -10,6 +10,25 @@
 Um den Nutzen von LOD quantifizieren zu können, wird in einer ersten Phase ein Benchmark aufgestellt.
 Ziel ist es, das Laufzeitverhalten unter Einsatz eines optimierten Modelles zu analysieren und somit den maximal möglichen Einfluss von LOD auf die Leistung klassifizieren zu können.
 
+\subsection{Definition Benchmark}
+Benchmarking im Web Frontend wird in der Praxis eher selten eingesetzt. Im Gegensatz zum Backend wo zum Beispiel Lasttests zur Norm gehören.
+Es gibt jedoch einige Tools, die das Durchführen eines Benchmarks vereinfachen. In diesem Abschnitt werden die verschiedenen erwägten Optionen erläutert und die Abgrenzungen aufgezeigt.
+
+Um den Umfang des Benchmarks überschaubar zu halten, wurde ausschliesslich ein Benchmark für Google Chrome entwickelt.
+Google Chrome basiert auf Chromium, dieselbe Engine, welche auch Microsoft Edge oder Opera verwenden.
+Einen Benchmark basierend auf Google Chrome liefert somit auch Indizien für diese beiden Browser, auch wenn gewisse Abweichungen möglich sind.
+Neben dem Marktführer Chrome sind Mozilla Firefox oder Safari von Apple ebenfalls Optionen. Jedoch wurde primär aufgrund des Marktanteils zugunsten von Google Chrome entschieden.
+Um die Tests durchzuführen, wird ein Testautomationstool benötigt; unter anderem der Einsatz von Selenium wurde in Erwägung gezogen.
+Der Vorteil von Selenium ist insbesondere, dass der Benchmark für weitere Browser ausgeweitet werden könnte.
+Da jedoch das Analysieren der GPU sowie CPU Daten stark vom System abhängig ist, wird in diesem Benchmark die im Google Chrome integrierten Chrome DevTools eingesetzt.
+Puppeteer ist eine Bibliothek, die eine vereinfachte Schnittstelle zu einer Headless Chrome Instanz bietet.
+Sie wird zudem direkt von Google entwickelt und bietet eine stabile Grundlage zur Kommunikation mit den DevTools.
+
+\subsection{Profiling}
+Die Chrome DevTools erlauben es, ein detailliertes Profil einer Applikation anzulegen.
+Im Profil befinden sich Informationen zu CPU/GPU Auslastung aber auch generelle Informationen bzgl. der Rendering Engine werden gesammelt.
+Die Analyse dieser Daten ermöglicht es, eine Aussage zum Laufzeitverhalten einer Applikation zu tätigen.
+
 \section{Vergleich LOD Systeme}
 Die unterschiedlichen LOD Systeme bieten allesamt ihre Vor- und Nachteile. In diesem Schritt wird erläutert, welche Art LOD System in dieser Arbeit eingesetzt werden soll.
 
@@ -19,10 +38,10 @@ Abhängig vom LOD System wird ein passender Algorithmus ausgesucht.
 \section{Pipeline Integration}
 Die Lösung soll in eine wiederverwendbare und konfigurierbare Pipeline integriert werden.
 
-\section{Automatische Generierurng von Detail Levels}
-Damit für den Endbenutzer die Konfiguration übersichtlich bleibt, soll der Einsatz von z.B. heuristischen Methoden hilfreiche Basiskonfigurationen liefern.
-Zum einen geht es hier um das festlegen der Thresholds, aber auch das definieren des Dezimierungs / Vereinfachungsfaktor spielt eine wichtige Rolle.
+\section{Automatische Generierung von Detail Levels}
+Damit für den Endbenutzer die Konfiguration übersichtlich bleibt, soll der Einsatz von zum Beispiel heuristischen Methoden hilfreiche Basiskonfigurationen liefern.
+Zum einen geht es hier um das Festlegen der Thresholds, aber auch das Definieren des Dezimierungs- / Vereinfachungsfaktors spielt eine wichtige Rolle.
 
 \section{Levelwahl während Laufzeit}
-Die optimale Levelwahl kann stark von der Laufzeitumgebung abhängig sein. So sollte z.B. auf mobilen Geräten früher ein einfacheres Modell gezeigt werden als auf leistungsstarken Geräten.
+Die optimale Levelwahl kann stark von der Laufzeitumgebung abhängig sein. So sollte zum Beispiel auf mobilen Geräten früher ein einfacheres Modell gezeigt werden als auf leistungsstarken Geräten.
 Deshalb eignet sich eine Wahl der Levels zur Laufzeit, um ein optimales Erlebnis auf allen Geräten zu ermöglichen.
