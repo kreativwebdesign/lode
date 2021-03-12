@@ -6,16 +6,97 @@
 % !TEX TS-program = pdflatexmk
 % !TEX encoding = UTF-8 Unicode
 % !TEX root = ../doc.tex
-\section{Diskrete LOD (DLOD)}
+\section{3D-Rendering}
+3D-Visualisierungen werden in vielen Branchen verwendet.
+So sind zum Beispiel im medizinschen Bereich 3D Scans hilfreich bei der Analyse von Verletzungen.
+Für Normalbenutzer ist wohl die Spieleindustrie ein bekanntes Beispiel.
+Diese Beispiele verwenden jedoch meist spezifische Hardware wie zum Beispiel die Spielkonsolen Playstation oder XBox.
+
+Für hardwareunabhängige Anwendungen eignet sich das Web hervorragend. Viele Benutzer haben Zugang zu einem Desktop, Tablet oder Mobiltelefon.
+Heutzutage ist es auch möglich, komplexe 3D Visualisierungen im Web zu realisieren.
+Als Basis dafür dient meist das von der Khronos Group entwickelte WebGL, das von allen modernen Browsern unterstützt wird.
+Somit ermöglichen Web Anwendungen, 3D Visualisierungen freier zugänglich zu machen.
+
+Diese Unabhängigkeit der Hardware bedeutet jedoch auch, dass Optimierung der Performanz in Web Anwendungen unabdinglich ist, um allen Benutzern ein optimales Erlebnis zu ermöglichen.
+
+\section{3D-Modelle}
+Ein Modell stellt ein Objekt aus der realen Welt vereinfacht dar.
+3D-Modelle können vereinfacht als Gruppe von Punkten definiert werden.
+Um im dreidimensionalen Raum Objekte visualisieren zu können sind mindestens drei Punkte notwendig.
+Punkte von 3D Modellen werden im folgenden als Vertex (Eckpunkte) bezeichnet.
+Eine Sammlung von drei Vertices bildet ein Dreieck. Es sind jedoch auch komplexere Formen wie Vierecke (Quads) möglich.
+Deshalb wird für eine Sammlung von Punkten der Term Polygon verwendet.
+Ein Modell besteht aus einer beliebigen Anzahl Polygone.
+Polygone bestehen aus einer theoretisch beliebigen Anzahl Vertices.
+
+Die Verbindung zwischen zwei Vertices ist eine sogenannte Edge (Seite).
+Verbindet man die Punkte eines Polygons und füllt die Fläche, ergibt sich schlussendlich ein Face (Fläche).
+
+\section{Transformation von Modellen}
+
+Mit diesen Primitiven lassen sich verschiedene Transformationen unter anderem zur Vereinfachung des Modelles durchführen.
+Im Folgenden werden einfache Transformationen erläutert.
+
+\paragraph{Edge Collapse}
+Hierbei werden zwei nebeneinanderliegende Vertices kombiniert.
+Die Umkehrfunktion nennt man Vertex Split.
+
+\section{Einführung LOD}
+Als Level Of Detail (LOD) werden die verschiedenen Detailstufen bei der virtuellen Darstellung bezeichnet.
+Dies wird verwendet, um die Geschwindigkeit von Anwendungen zu steigern, indem Objekte im Nahbereich detailiert angezeigt werden; wohingegen Elemente im Fernbereich deutlich vereinfacht dargestellt werden.
+
+\subsection{Das Problem}
+Geometrische Objekte können zu Komplex werden, um jederzeit performant und interaktiv gerendert zu werden.
+Gerade wenn viele Objekte zur selben Zeit sichtbar sind, lohnt es sich, zu priorisieren und gewisse Objekte in reduzierter Qualität anzuzeigen.
+Im Idealfall geschieht dies jedoch, ohne dass der Anwender dies bemerkt.
+
+\subsection{Lösungsansätze}
+In diesem Abschnitt werden mögliche Ansätze erklärt, welche helfen sollen, die Render-Perfomanz zu erhöhen. Diese Arbeit konzentriert sich jedoch auf den Ansatz von Level of Detail; die anderen Ansätze werden nur kurz erläutert.
+
+\paragraph{Level of Detail}
+Level of Detail auch bekannt als polygonale Simplifizierung, geometrische Simplifizierung oder Mesh Reduzierung basiert darauf, die Komplexität von Objekten zu reduzieren, welche weiter von der Kamera entfernt werden. Es gibt verschiedene Ansätze zur Generierung von LODs, welche in Abschnitt XY im Detail erläutert werden. Zudem braucht es einen berechenbare Methode, die Genauigkeit von Modellen zu definieren, um diese entsprechend anzuwenden. Schlussendlich ist dann noch zu definieren, ab wann welche Artefakte verwendet werden soll, basierend auf der Genauigkeit und der Komplexität.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\columnwidth]{LODs-of-a-bunny-model-Courtesy-Stanford-3D-Scanning-Repository-From-left-to-right}
+\caption{Level Of Detail Visualisierung vier Hasen}
+\label{fig:LevelOfDetailVisualisierungvierHasen}
+\end{figure}
+
+Wie in der Abbildung \ref{fig:LevelOfDetailVisualisierungvierHasen} zu erkennen ist, wird von links nach rechts der Detailgrad und somit die Komplexität des Objektes reduziert. Sind es im Bild ganz links noch 69'451 Polygone, wird es bereits im ersten Schritt auf 2'502 Polygone reduziert. Dies ist eine enorme Reduktion von ca 96.5\%. Im dritten Schritt wird die Anzahl Polygone wiederum um ca. 90\% auf 251 reduziert. Schlussendlich hat das letzte Objekt noch 76 Polygone was knapp 0.1\% der ursprünglichen Anzahl entspricht.
+
+\paragraph{Parallel rendering}
+Lorem ipsum
+
+\paragraph{Frustum culling}
+Polygone, welche nicht im Kamera Frustum enthalten sind, werden bei dieser Methode nicht weiter prozessiert.
+Dies reduziert die Anzahl Polygone drastisch.
+
+\paragraph{Occlusion culling}
+Polygone bzw. Objekte, welche komplett von anderen Objekten überdeckt werden, werden bei dieser Variante nicht prozessiert.
+
+\paragraph{Backface culling}
+Bei dieser Methode wird berechnet welche Polygone zur Kamera orientiert sind.
+Alle Polygone, welche in die andere Richtung zeigen werden nicht gezeichnet.
+Dies ist nicht immer gewünscht, für die meisten Anwendungen ist diese Optimierung jedoch aktiviert.
+
+\paragraph{Image-based rendering}
+Lorem ipsum
+
+
+\subsection{Verschiedene Ansätze zur Generierung von LOD Modellen}
+Es gibt verschiedene Ansätze, 3D-Modelle mittels LOD zu vereinfachen. In diesem Abschnitt werden einige davon detaillierter erläutert so wie ihre Vor- und Nachteile aufgezeigt.
+
+\paragraph{Diskrete LOD (DLOD)}
 Bei diskreten LOD werden für ein detailliertes Modell mehrere weniger detaillierte Modelle verwendet.
 Abhängig von der Distanz zum Betrachter wird das optimale Modell gewählt.
 \begin{itemize}
-  \pro Simplizität: Keine Anpassungen am Scene Graphh notwendig
+  \pro Simplizität: Keine Anpassungen am Scene Graph notwendig
   \con Harte Grenzen: Veränderung des Objektes kann merkbar sein
   \con Kein Clustering möglich: Probleme bei sehr grossen oder vielen kleinen Modellen
 \end{itemize}
 
-\section{Kontinuierliche LOD (CLOD)}
+\paragraph{Kontinuierliche LOD (CLOD)}
 Im Gegensatz zu DLOD wird bei CLOD vereinfachende Veränderungen an einem Modell gespeichert.
 \begin{itemize}
   \pro Weiche Grenzen: Interpolation zwischen Auflösungen ist möglich
@@ -23,7 +104,7 @@ Im Gegensatz zu DLOD wird bei CLOD vereinfachende Veränderungen an einem Modell
   \con Kein Clustering möglich
 \end{itemize}
 
-\section{Hierarchische LOD (HLOD)}
+\paragraph{Hierarchische LOD (HLOD)}
 Bei HLOD werden mehrere Objekte in einen Cluster gruppiert.
 \begin{itemize}
   \pro Clustering möglich
