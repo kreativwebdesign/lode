@@ -10,6 +10,24 @@
 Um den Nutzen von LOD quantifizieren zu können, wird in einer ersten Phase ein Benchmark aufgestellt.
 Ziel ist es, das Laufzeitverhalten unter Einsatz eines optimierten Modelles zu analysieren und somit den maximal möglichen Einfluss von LOD auf die Leistung klassifizieren zu können.
 
+\subsection{Definition Benchmark}
+Benchmarking im Web Frontend wird in der Praxis eher selten eingesetzt. Im Gegensatz zum Backend wo z.B. Lasttests zur Norm gehören.
+Es gibt jedoch einige Tools die das durchführen eines Benchmarks vereinfachen, in diese Abschnitt werden die verschiedenen erwägten Optionen erläutert und die Abgrenzungen aufgezeigt.
+Um den Umfang des Benchmarks überschaubar zu halten wurde entschieden ausschliesslich einen Benchmark für Google Chrome zu entwerfen.
+Google Chrome basiert auf Chromium, dieselbe Engine welche auch Microsoft Edge oder Opera verwenden.
+Ein Benchmark basierend auf Google Chrome liefert somit auch Indizien für diese beiden anderen Browser, auch wenn gewisse Abweichungen möglich sind.
+Neben dem Marktführer Chrome wären Mozilla Firefox oder Safari von Apple ebenfalls Optionen gewesen, hier wurde primär aufgrund des Marktanteils von Google Chrome entschieden.
+Um die Tests durchzuführen wird ein Testautomationstool benötigt, hier wurde unter anderem der Einsatz von Selenium in Erwägung gezogen.
+Der Vorteil von Selenium wäre insbesondere dass der Benchmark für weitere Browser ausgeweitet werden könnte.
+Da jedoch das analysieren der GPU sowie CPU Daten stark vom System abhängig ist wird in diesem Benchmark die im Google Chrome integrierten Chrome DevTools eingesetzt.
+Puppeteer ist eine Bibliothek die eine vereinfachte Schnittstelle zu einer Headless Chrome Instanz bietet.
+Sie wird zudem direkt von Google entwickelt und bietet eine stabile Grundlage zur Kommunikation mit den DevTools.
+
+\subsection{Profiling}
+Die Chrome DevTools erlauben es ein detailliertes Profile einer Applikation anzulegen.
+Im Profile befinden sich Informationen zu CPU/GPU Auslastung aber auch generelle Informationen bzgl. der Rendering Engine werden gesammelt.
+Die Analyse dieser Daten erlaubt es eine Aussage zum Laufzeitverhalten einer Applikation zu tätigen.
+
 \section{Vergleich LOD Systeme}
 Die unterschiedlichen LOD Systeme bieten allesamt ihre Vor- und Nachteile. In diesem Schritt wird erläutert, welche Art LOD System in dieser Arbeit eingesetzt werden soll.
 
