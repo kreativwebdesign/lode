@@ -65,7 +65,7 @@ const scene = createScene()
 // run the render loop
 engine.runRenderLoop(function () {
   scene.render()
-  console.log('::benchmark::fps::', engine.getFps().toFixed())
+  console.log('::benchmark::fps::' + engine.getFps().toFixed())
 })
 // the canvas/window resize event handler
 window.addEventListener('resize', function () {
