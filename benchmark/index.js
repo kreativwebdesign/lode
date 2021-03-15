@@ -3,6 +3,7 @@ const puppeteer = require('puppeteer')
 const yargs = require('yargs/yargs')
 const { hideBin } = require('yargs/helpers')
 const { waitFor, startLogGroup, createFolderIfNotExist } = require('./helpers')
+const { reporter, analyze } = require('./analyze')
 
 const argv = yargs(hideBin(process.argv)).argv
 
@@ -13,28 +14,7 @@ const main = async () => {
   const browser = await puppeteer.launch()
   const page = await browser.newPage()
 
-  const reportGroups = {
-    fps: [],
-  }
-
-  const report = (log) => {
-    const namespaces = log.split('::')
-    if (namespaces.length !== 4) {
-      console.error(
-        'received non matching log message, must follow ::benchmark::namepsace::value semantics',
-        log
-      )
-      return
-    }
-    const action = namespaces[2]
-    switch (action) {
-      case 'fps':
-        reportGroups.fps.push(parseInt(namespaces[3]))
-        break
-      default:
-        console.error('unknown action', action, log)
-    }
-  }
+  const { report, getReport } = reporter()
 
   page.on('console', (message) => {
     const log = message.text()
@@ -66,24 +46,8 @@ const main = async () => {
   console.log('start analyzer')
 
   const trace = JSON.parse(fs.readFileSync(`${TEMP_FOLDER}trace.json`, 'utf8'))
-
   const events = trace.traceEvents ? trace.traceEvents : trace
-
-  let totalTime = 0
-  let numberOfEvents = 0
-  events.forEach((event) => {
-    if (event.name.toLowerCase().includes('gpu')) {
-      // complete events only
-      if (event.ph === 'X') {
-        // tdur is in microseconds (instead of ms)
-        totalTime += event.dur
-        numberOfEvents++
-      }
-    }
-  })
-  console.log('gpu duration: ' + totalTime)
-  console.log('total tasks: ' + numberOfEvents)
-  console.log('fps: ' + reportGroups.fps)
+  analyze(getReport(), events)
 }
 
 main()
