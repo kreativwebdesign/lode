@@ -23,37 +23,24 @@ const createScene = function () {
   camera.setTarget(BABYLON.Vector3.Zero())
   // Attach the camera to the canvas
   camera.attachControl(canvas, false)
-  // Create a basic light, aiming 0, 1, 0 - meaning, to the sky
-  const light = new BABYLON.HemisphericLight(
-    'light1',
-    new BABYLON.Vector3(0, 1, 0),
-    scene
-  )
-
-  // Create a built-in "ground" shape; its constructor takes 6 params : name, width, height, subdivision, scene, updatable
-  const ground = BABYLON.Mesh.CreateGround('ground1', 6, 6, 2, scene, false)
 
   // define custom nodes based on flag
   const useOptimized = window.location.search.includes('optimize')
   console.log('optimized: ' + useOptimized)
-  for (let i = 0; i < 60; i++) {
-    let knot
-    if (useOptimized) {
-      knot = BABYLON.Mesh.CreateTorusKnot('knot1', 0.5, 0.2, 16, 8, 2, 3, scene)
-    } else {
-      knot = BABYLON.Mesh.CreateTorusKnot(
-        'knot2',
-        0.5,
-        0.2,
-        2056,
-        64,
-        2,
-        3,
-        scene
-      )
+  
+  BABYLON.SceneLoader.Append(
+    "assets/Shoe/",
+    `Shoe-${useOptimized ? "LOD1" : "LOD0"}.gltf`,
+    scene,
+    function (scene) {
+      // Create a default arc rotate camera and light.
+      scene.createDefaultCameraOrLight(true, true, true);
+
+      // The default camera looks at the back of the asset.
+      // Rotate the camera by 180 degrees to the front of the asset.
+      scene.activeCamera.alpha += Math.PI;
     }
-    knot.position.x = -3 + i * 0.1
-  }
+  );
 
   scene.debugLayer.show()
 
