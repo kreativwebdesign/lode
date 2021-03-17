@@ -52,9 +52,12 @@ Die Verbindung zwischen zwei Vertices ist eine sogenannte Edge (Kante).
 Verbindet man die Punkte eines Polygons und füllt die Fläche, ergibt sich schlussendlich ein Face (Fläche).
 
 \paragraph{Visuelle Attribute}
-Neben den geometrischen Attributen verfügt ein Modell ebenfalls über rein visuelle Attribute.
+Neben den geometrischen Attributen verfügt ein Modell ebenfalls über visuelle Attribute.
+
 So wird für jeden Vertex ein sogenannter Normal definiert. Ein Normal ist ein Vektor der im einfachsten Fall perpendikular zu den zwei an diesem Vertex verbundenen Edges verläuft. Normals werden häufig für das berechnen von Reflektionen verwendet.
 Normals werden auch für Performanz Optimierungen eingesetzt, dazu mehr in \autoref{chap:backfaceCulling}.
+
+Um die Oberfläche von Modellen zu definieren wird häufig ein sogenanntes Texture Mapping durchgeführt. Hierfür sind zusätzliche Informationen für ein Modell notwendig. In der Praxis finden viele weitere Methoden Anwendung, auf diese wird jedoch hier nicht weiter eingegangen.
 
 \section{Transformation von Modellen}
 
