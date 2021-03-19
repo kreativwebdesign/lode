@@ -123,6 +123,28 @@ In Abbildung \ref{fig:transformationVertexRemovalOriginal} wird der zentrale Ver
   \end{minipage}
 \end{figure}
 
+\section{Rendering Pipeline}
+Die Rendering Pipeline ist zuständig um eine definierte Szene auf einem Ausgabegerät zu visualisieren. Die verschiedenen Schritte werden im folgenden Abschnitt kurz erläutert. Es wird dabei ein simples 3D Modell auf einen normalen 2D Display visualisiert. Die verschiedenen Schritte sind in Abbildung \ref{fig:renderingPipelineOverview} aufgezeigt.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\columnwidth]{grundlagen/pipeline/graphics-pipeline.png}
+  \caption{Schritte einer Rendering Pipeline}
+  \label{fig:renderingPipelineOverview}
+\end{figure}
+
+\paragraph{Applikation}
+Im ersten Schritt wird die Szenerie aufbereitet, Modelle in den Arbeitsspeicher geladen, Positionen und Rotationen der Modelle definiert. Diese Schritte werden auf der CPU durchgeführt.
+
+\paragraph{Geometrie}
+Anschliessend werden die Definitionen an die Geometrie Pipeline geliefert. Diese ist zuständig um die Modelle auszurichten, die Beleuchtung zu bestimmen und die 2D Projektion vorzunehmen.
+
+\paragraph{Rasterization}
+Im letzten Schritt werden kontinuierliche Objekte zu diskreten Fragmenten verarbeitet. Der Anwender hat hierbei in vielen Engines die Möglichkeit den Prozess mithilfe eines Fragment Shaders anzupassen.
+
+\paragraph{Bildschirm}
+Am Schluss wird das vom Rasterizatino Prozess generierte Bild auf dem Bildschirm dargestellt.
+
 \section{Einführung LOD}
 Als Level Of Detail (LOD) werden die verschiedenen Detailstufen bei der virtuellen Darstellung bezeichnet.
 Dies wird verwendet, um die Geschwindigkeit von Anwendungen zu steigern, indem Objekte im Nahbereich detailiert angezeigt werden; wohingegen Elemente im Fernbereich deutlich vereinfacht dargestellt werden.
