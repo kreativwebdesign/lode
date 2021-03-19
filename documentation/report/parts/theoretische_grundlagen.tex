@@ -61,18 +61,60 @@ Um die Oberfläche von Modellen zu definieren wird häufig ein sogenanntes Textu
 
 \section{Transformation von Modellen}
 
-Mit diesen Primitiven lassen sich verschiedene Transformationen unter anderem zur Vereinfachung des Modelles durchführen.
-Im Folgenden werden einfache Transformationen erläutert.
+Um ein Modell vereinfachen zu können muss es verändert werden.
+Diese Veränderungen können in Basis Operationen vereinfacht erläutert werden.
+
+Im Folgenden werden Transformationen mithilfe einer 2D Visualisierung erläutert. Das Modell könnte jedoch ebenfalls im dreidimensionalen Raum sein - die funktionsweise bleibt identisch.
+
+Für die folgenden Beispiele wird jeweils das Modell aus Abbildung \ref{fig:transformationOriginal} verwendet.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\columnwidth]{grundlagen/transformationen/original.png}
+  \caption{Modell Basis}
+  \label{fig:transformationOriginal}
+\end{figure}
+
+\paragraph{Edge Collapse}
+Hierbei werden zwei nebeneinanderliegende Vertices kombiniert, siehe Abbildung \ref{fig:transformationEdgeCollapse}.
+Die Umkehrfunktion nennt man Vertex Split.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\columnwidth]{grundlagen/transformationen/edge-collapse.png}
+  \caption{Edge Collapse}
+  \label{fig:transformationEdgeCollapse}
+\end{figure}
+
+\paragraph{Halfedge Collapse}
+Hierbei wird ein Vertex direkt entfernt und alle Edges auf einen danebenliegenden Vertex zusammengelegt, siehe Abbildung \ref{fig:transformationHalfedgeCollapse}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\columnwidth]{grundlagen/transformationen/half-edge-collapse.png}
+  \caption{Halfedge Collapse}
+  \label{fig:transformationHalfedgeCollapse}
+\end{figure}
 
 \paragraph{Vertex Removal}
 Hierbei wird ein Vertex entfernt und das Resultat neu trianguliert.
+In Abbildung \ref{fig:transformationVertexRemovalOriginal} wird der zentrale Vertex entfernt. Der neu triangulierte Polygon ist in Abbildung \ref{fig:transformationVertexRemovalFinal} ersichtlich.
 
-\paragraph{Edge Collapse}
-Hierbei werden zwei nebeneinanderliegende Vertices kombiniert.
-Die Umkehrfunktion nennt man Vertex Split.
-
-\paragraph{Halfedge Collapse}
-Hierbei werden verschiedene Edges  zusammengelegt.
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{.5\textwidth}
+    \centering
+    \includegraphics[width=.4\linewidth]{grundlagen/transformationen/vertex-removal-original.png}
+    \captionof{figure}{Vertex Removal Ausgangslage}
+    \label{fig:transformationVertexRemovalOriginal}
+  \end{minipage}
+  \begin{minipage}{.5\textwidth}
+    \centering
+    \includegraphics[width=.4\linewidth]{grundlagen/transformationen/vertex-removal-final.png}
+    \captionof{figure}{Vertex Removal Resultat}
+    \label{fig:transformationVertexRemovalFinal}
+  \end{minipage}
+\end{figure}
 
 \section{Einführung LOD}
 Als Level Of Detail (LOD) werden die verschiedenen Detailstufen bei der virtuellen Darstellung bezeichnet.
