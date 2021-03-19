@@ -147,9 +147,6 @@ Level of Detail auch bekannt als polygonale Simplifizierung, geometrische Simpli
 
 Wie in der Abbildung \ref{fig:LevelOfDetailVisualisierungvierHasen} zu erkennen ist, wird von links nach rechts der Detailgrad und somit die Komplexität des Objektes reduziert. Sind es im Bild ganz links noch 69'451 Polygone, wird es bereits im ersten Schritt auf 2'502 Polygone reduziert. Dies ist eine enorme Reduktion von ca 96.5\%. Im dritten Schritt wird die Anzahl Polygone wiederum um ca. 90\% auf 251 reduziert. Schlussendlich hat das letzte Objekt noch 76 Polygone was knapp 0.1\% der ursprünglichen Anzahl entspricht.
 
-\paragraph{Parallel rendering}
-Lorem ipsum
-
 \paragraph{Frustum culling}
 Polygone, welche nicht im Kamera Frustum enthalten sind, werden bei dieser Methode nicht weiter prozessiert.
 Dies reduziert die Anzahl Polygone drastisch.
@@ -164,9 +161,11 @@ Alle Polygone, welche in die andere Richtung zeigen werden nicht gezeichnet.
 Dies ist nicht immer gewünscht, für die meisten Anwendungen ist diese Optimierung jedoch aktiviert.
 Als Grundlage für die Berechnung werden die Normals der Vertices berücksichtigt.
 
-\paragraph{Image-based rendering}
-Lorem ipsum
+\paragraph{Parallel rendering}
+Auch bekannt unter Distributed Rendering ist der Einsatz von Techniken aus dem Parallel Programming in Visualisierungs Anwendungen. 
 
+\paragraph{Image-based rendering}
+In gewissen Fällen kann das Modellieren übersprungen werden. So kann anhand von Bildmaterial eine 3D Illusion erzeugt werden.
 
 \subsection{Verschiedene Ansätze zur Generierung von LOD Modellen}
 Es gibt verschiedene Ansätze, 3D-Modelle mittels LOD zu vereinfachen. In diesem Abschnitt werden einige davon detaillierter erläutert so wie ihre Vor- und Nachteile aufgezeigt.
