@@ -14,7 +14,7 @@ const main = async () => {
   const browser = await puppeteer.launch()
   const page = await browser.newPage()
 
-  const { report, getReport } = reporter()
+  const { report, reportPerformanceEntries, getReport } = reporter()
 
   page.on('console', (message) => {
     const log = message.text()
@@ -36,6 +36,17 @@ const main = async () => {
 
   await page.tracing.stop()
   finishGroup()
+
+  const context = await page.mainFrame().executionContext()
+  const entries = JSON.parse(
+    await context.evaluate(() => {
+      return JSON.stringify(window.performance.getEntries())
+    })
+  )
+
+  entries.forEach((entry) => {
+    reportPerformanceEntries(entry)
+  })
 
   // screenshot is only used for manual qa
   await page.screenshot({ path: `${TEMP_FOLDER}screenshot.jpg` })
