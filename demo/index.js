@@ -27,16 +27,19 @@ const createScene = function () {
   // define custom nodes based on flag
   const useOptimized = window.location.search.includes('optimize')
   console.log('optimized: ' + useOptimized)
-  
+
+  performance.mark('gltfLoadStart')
   BABYLON.SceneLoader.Append(
-    "assets/Shoe/",
-    `Shoe-${useOptimized ? "LOD1" : "LOD0"}.gltf`,
+    'assets/Shoe/',
+    `Shoe-${useOptimized ? 'LOD1' : 'LOD0'}.gltf`,
     scene,
     function (scene) {
+      performance.mark('gltfLoadEnd')
       // Create a default arc rotate camera and light.
-      scene.createDefaultCameraOrLight(true, true, true);
+      scene.createDefaultCameraOrLight(true, true, true)
+      performance.measure('modelLoading', 'gltfLoadStart', 'gltfLoadEnd')
     }
-  );
+  )
 
   scene.debugLayer.show()
 
@@ -47,8 +50,11 @@ const createScene = function () {
 const scene = createScene()
 // run the render loop
 engine.runRenderLoop(function () {
+  performance.mark('renderLoopStart')
   scene.render()
+  performance.mark('renderLoopEnd')
   console.log('::benchmark::fps::' + engine.getFps().toFixed())
+  performance.measure('renderLoop', 'renderLoopStart', 'renderLoopEnd')
 })
 // the canvas/window resize event handler
 window.addEventListener('resize', function () {

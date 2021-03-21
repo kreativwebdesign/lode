@@ -4,10 +4,15 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node index.js --inspect"
+    "start": "node index.js --inspect",
+    "test": "jest"
   },
   "dependencies": {
+    "mathjs": "^9.3.0",
     "puppeteer": "^8.0.0",
     "yargs": "^16.2.0"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3"
   }
 }
