@@ -13,7 +13,7 @@ Im folgenden wird der Begriff "Das Web" vereinfacht für die Plattform von versc
 3D-Visualisierungen werden in vielen Branchen verwendet.
 So sind zum Beispiel im medizinischen Bereich 3D Scans hilfreich bei der Analyse von Verletzungen.
 Virtual Reality, CAD Anwendungen oder Computerspiele sind weitere Anwendungebiete, welche 3D Visualisierungen einsetzen.
-In vielen weiteren Bereichen sind dank leistungsstärkeren Geräten auch realere und somit komplexere Visualisierungen möglich. 
+In vielen weiteren Bereichen sind dank leistungsstärkeren Geräten auch realere und somit komplexere Visualisierungen möglich.
 
 Viele Anwendungen sind auf spezifische Hardware wie zum Beispiel die Spielkonsolen PlayStation oder Xbox angewiesen. Dies hat den Nachteil, dass die Verteilung der Software schwieriger ist, da spezifische Hardware notwendig ist. Selbstverständlich ist dies für gewisse Anwendungsgebiete kein Problem.
 
@@ -88,8 +88,17 @@ Die Umkehrfunktion nennt man Vertex Split.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\columnwidth]{grundlagen/transformationen/edge-collapse.png}
-  \caption{Edge Collapse}
+  \begin{subfigure}{.5\textwidth}
+    \centering
+    \includegraphics[width=.8\linewidth]{grundlagen/transformationen/original.png}
+    \caption{Modell Ausgangslage}
+  \end{subfigure}%
+  \begin{subfigure}{.5\textwidth}
+    \centering
+    \includegraphics[width=.8\linewidth]{grundlagen/transformationen/edge-collapse.png}
+    \caption{Edge Collapse}
+  \end{subfigure}
+  \caption{Transformation mittels Edge Collapse}
   \label{fig:transformationEdgeCollapse}
 \end{figure}
 
@@ -98,8 +107,17 @@ Hierbei wird ein Vertex direkt entfernt und alle Edges auf einen danebenliegende
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\columnwidth]{grundlagen/transformationen/half-edge-collapse.png}
-  \caption{Halfedge Collapse}
+  \begin{subfigure}{.5\textwidth}
+    \centering
+    \includegraphics[width=.8\linewidth]{grundlagen/transformationen/original.png}
+    \caption{Modell Ausgangslage}
+  \end{subfigure}%
+  \begin{subfigure}{.5\textwidth}
+    \centering
+    \includegraphics[width=.8\linewidth]{grundlagen/transformationen/half-edge-collapse.png}
+    \caption{Halfedge Collapse}
+  \end{subfigure}
+  \caption{Transformation mittels Halfegde Collapse}
   \label{fig:transformationHalfedgeCollapse}
 \end{figure}
 
@@ -109,18 +127,20 @@ In Abbildung \ref{fig:transformationVertexRemovalOriginal} wird der zentrale Ver
 
 \begin{figure}[H]
   \centering
-  \begin{minipage}{.5\textwidth}
+  \begin{subfigure}{.5\textwidth}
     \centering
-    \includegraphics[width=.4\linewidth]{grundlagen/transformationen/vertex-removal-original.png}
-    \captionof{figure}{Vertex Removal Ausgangslage}
+    \includegraphics[width=.8\linewidth]{grundlagen/transformationen/vertex-removal-original.png}
+    \caption{Modell Ausgangslage}
     \label{fig:transformationVertexRemovalOriginal}
-  \end{minipage}
-  \begin{minipage}{.5\textwidth}
+  \end{subfigure}%
+  \begin{subfigure}{.5\textwidth}
     \centering
-    \includegraphics[width=.4\linewidth]{grundlagen/transformationen/vertex-removal-final.png}
-    \captionof{figure}{Vertex Removal Resultat}
+    \includegraphics[width=.8\linewidth]{grundlagen/transformationen/vertex-removal-final.png}
+    \caption{Vertex Removal}
     \label{fig:transformationVertexRemovalFinal}
-  \end{minipage}
+  \end{subfigure}
+  \caption{Transformation mittels Vertex Removal}
+  \label{fig:transformationVertexRemoval}
 \end{figure}
 
 \section{Graphics Pipeline}
@@ -184,7 +204,7 @@ Dies ist nicht immer gewünscht, für die meisten Anwendungen ist diese Optimier
 Als Grundlage für die Berechnung werden die Normals der Vertices berücksichtigt.
 
 \paragraph{Parallel rendering}
-Auch bekannt unter Distributed Rendering ist der Einsatz von Techniken aus dem Parallel Programming in Visualisierungsanwendungen. 
+Auch bekannt unter Distributed Rendering ist der Einsatz von Techniken aus dem Parallel Programming in Visualisierungsanwendungen.
 
 \paragraph{Image-based rendering}
 In gewissen Fällen kann das Modellieren übersprungen werden. So kann anhand von Bildmaterial eine 3D-Illusion erzeugt werden.
