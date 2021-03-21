@@ -193,6 +193,17 @@ Wie in der Abbildung \ref{fig:LevelOfDetailVisualisierungvierHasen} zu erkennen 
 Polygone, welche nicht im Kamera Frustum enthalten sind, werden bei dieser Methode nicht weiter prozessiert.
 Dies reduziert die Anzahl Polygone drastisch.
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\columnwidth]{grundlagen/Camera-Frustum.png}
+  \caption{Camera Frustum}
+  \label{fig:CameraFrustum}
+\end{figure}
+
+Ein Frustum ist eine geometrische Form, die einer Pyramide ähnelt, welcher die Spitze abgeschnitten wurde.
+Das Kamera-Frustum bezeichnet den Raum, welcher von der Kamera aufgezeichnet wird. Dieser Breich startet eine gewisse Distanz von der Kamera entfernt und endet weit hinten wieder, da nicht bis ins unendliche Objekte sichtbar sind.
+Wie in Abbildung \ref{fig:CameraFrustum} zusehen ist, beginnt das Kamera-Frustum in der nähe der Kamera und dehnt sich ein wenig aus bis es gegen Ende des Spektrums beschränkt wird.
+
 \paragraph{Occlusion culling}
 Polygone bzw. Objekte, welche komplett von anderen Objekten überdeckt werden, werden bei dieser Variante nicht prozessiert.
 
