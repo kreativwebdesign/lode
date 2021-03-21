@@ -74,7 +74,7 @@ const getMedian = (raw) => {
   return (values[half - 1] + values[half]) / 2.0
 }
 
-const analyze = (reportGroups, events) => {
+const analyzeTraceEvents = (events) => {
   let traceEventGroupStats = {}
   for (const group of taskGroups) {
     traceEventGroupStats[group.id] = {
@@ -99,7 +99,11 @@ const analyze = (reportGroups, events) => {
     }
   })
 
-  console.log(traceEventGroupStats)
+  return traceEventGroupStats
+}
+
+const generateReport = (reportGroups, traceEventGroups) => {
+  console.log(traceEventGroups)
   console.log('median fps: ' + getMedian(reportGroups.fps))
   console.log(
     'renderloop median duration: ' + getMedian(reportGroups.renderLoop)
@@ -110,5 +114,6 @@ const analyze = (reportGroups, events) => {
 
 module.exports = {
   reporter,
-  analyze,
+  analyzeTraceEvents,
+  generateReport,
 }

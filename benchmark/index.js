@@ -3,7 +3,7 @@ const puppeteer = require('puppeteer')
 const yargs = require('yargs/yargs')
 const { hideBin } = require('yargs/helpers')
 const { waitFor, startLogGroup, createFolderIfNotExist } = require('./helpers')
-const { reporter, analyze } = require('./analyze')
+const { reporter, analyzeTraceEvents, generateReport } = require('./analyze')
 
 const argv = yargs(hideBin(process.argv)).argv
 
@@ -58,7 +58,8 @@ const main = async () => {
 
   const trace = JSON.parse(fs.readFileSync(`${TEMP_FOLDER}trace.json`, 'utf8'))
   const events = trace.traceEvents ? trace.traceEvents : trace
-  analyze(getReport(), events)
+  const traceEventGroups = analyzeTraceEvents(events)
+  generateReport(getReport(), traceEventGroups)
 }
 
 main()
