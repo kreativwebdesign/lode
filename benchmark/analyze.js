@@ -103,13 +103,16 @@ const analyzeTraceEvents = (events) => {
 }
 
 const generateReport = (reportGroups, traceEventGroups) => {
-  console.log(traceEventGroups)
-  console.log('median fps: ' + getMedian(reportGroups.fps))
-  console.log(
-    'renderloop median duration: ' + getMedian(reportGroups.renderLoop)
-  )
-  console.log('number of renders: ' + reportGroups.renderLoop.length)
-  console.log('model load duration: ' + reportGroups.modelLoading)
+  return {
+    medianFps: getMedian(reportGroups.fps),
+    gpuTotalTime: traceEventGroups.gpu.totalTime,
+    debug: {
+      totalGpuEvents: traceEventGroups.gpu.totalEvents,
+      medianRenderLoopDuration: getMedian(reportGroups.renderLoop),
+      totalRenders: reportGroups.renderLoop.length,
+      totalModelLoadDuration: reportGroups.modelLoading,
+    },
+  }
 }
 
 module.exports = {

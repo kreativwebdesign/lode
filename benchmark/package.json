@@ -8,6 +8,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "mathjs": "^9.3.0",
     "puppeteer": "^8.0.0",
     "yargs": "^16.2.0"
   },
