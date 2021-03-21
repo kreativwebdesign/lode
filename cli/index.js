@@ -1,32 +1,19 @@
-const glob = require("glob");
-const fs = require("fs");
-const figlet = require("figlet");
-const print = require("./lib/print");
-const { performLOD } = require("./lib/lod");
-const { getOptions } = require("./lib/config");
+const { Command } = require("commander");
+const app = require("./lib/app");
+const program = new Command();
 
-const main = () => {
-  print.warn(figlet.textSync("LODE", { horizontalLayout: "full" }));
+program
+  .version("v0.0.1")
+  .description("CLI for creating different LOD artifacts.");
 
-  const appOptions = getOptions();
+program
+  .command("run", { isDefault: true })
+  .description("Generate different LOD artifacts")
+  .option("-w, --watch", "Watch source files")
+  .option("-s, --source <pattern>", "Source glob pattern")
+  .option("-c, --config <configfile>", "Path to config file")
+  .action(app.run);
 
-  const sourceFiles = glob.sync(appOptions.source);
+program.command("init").description("Setup LOD configuration").action(app.init);
 
-  if (sourceFiles.length === 0) {
-    print.error("No files found matching", appOptions.source);
-    print.error("Aborting");
-    return;
-  }
-
-  print.info("Running initial LOD transformation:");
-  sourceFiles.forEach(performLOD);
-
-  if (appOptions.watch) {
-    print.info("watching files...");
-    sourceFiles.forEach((file) =>
-      fs.watchFile(file, { persistent: true }, () => performLOD(file))
-    );
-  }
-};
-
-main();
+program.parse();

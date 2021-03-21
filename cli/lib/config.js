@@ -1,11 +1,8 @@
 const fs = require("fs");
 const print = require("./print");
-const commander = require("./commander");
-const fileExists = require("./files");
-const defaultOptions = require("./default-options");
+const { fileExists } = require("./files");
 
-const getOptions = () => {
-  const options = commander.opts();
+const mergeOptionsWithConfigFile = (options, defaultOptions) => {
   const configFilePath = options.config || defaultOptions.config;
 
   if (fileExists(configFilePath)) {
@@ -28,5 +25,5 @@ const getOptions = () => {
 };
 
 module.exports = {
-  getOptions,
+  mergeOptionsWithConfigFile,
 };
