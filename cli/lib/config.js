@@ -1,9 +1,32 @@
-const yargs = require("yargs/yargs");
-const { hideBin } = require("yargs/helpers");
+const fs = require("fs");
+const print = require("./print");
+const commander = require("./commander");
+const fileExists = require("./files");
+const defaultOptions = require("./default-options");
 
-const argv = yargs(hideBin(process.argv)).argv;
-const source = argv.source || "**/*.gltf";
+const getOptions = () => {
+  const options = commander.opts();
+  const configFilePath = options.config || defaultOptions.config;
+
+  if (fileExists(configFilePath)) {
+    const configFile = fs.readFileSync(configFilePath);
+    const config = JSON.parse(configFile);
+    return {
+      ...defaultOptions,
+      ...config,
+      ...options,
+    };
+  } else {
+    if (options.config) {
+      print.warn("Config file not found:", options.config);
+    }
+    return {
+      ...defaultOptions,
+      ...options,
+    };
+  }
+};
 
 module.exports = {
-  source,
+  getOptions,
 };

@@ -1,0 +1,4 @@
+{
+  "source": "test-data/**/*.gltf",
+  "watch": "false"
+}

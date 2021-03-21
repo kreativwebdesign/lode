@@ -1,30 +1,32 @@
-const chalk = require("chalk");
 const glob = require("glob");
 const fs = require("fs");
 const figlet = require("figlet");
+const print = require("./lib/print");
 const { performLOD } = require("./lib/lod");
-const { source } = require("./lib/config");
+const { getOptions } = require("./lib/config");
 
 const main = () => {
-  console.log(
-    chalk.yellow(figlet.textSync("LODE", { horizontalLayout: "full" }))
-  );
+  print.warn(figlet.textSync("LODE", { horizontalLayout: "full" }));
 
-  const sourceFiles = glob.sync(source);
+  const appOptions = getOptions();
+
+  const sourceFiles = glob.sync(appOptions.source);
 
   if (sourceFiles.length === 0) {
-    console.log(chalk.red("No files found matching", source));
-    console.log(chalk.red("Aborting"));
+    print.error("No files found matching", appOptions.source);
+    print.error("Aborting");
     return;
   }
 
-  console.log("Running initial LOD transformation:");
+  print.info("Running initial LOD transformation:");
   sourceFiles.forEach(performLOD);
 
-  console.log("watching files...");
-  sourceFiles.forEach((file) =>
-    fs.watchFile(file, { persistent: true }, () => performLOD(file))
-  );
+  if (appOptions.watch) {
+    print.info("watching files...");
+    sourceFiles.forEach((file) =>
+      fs.watchFile(file, { persistent: true }, () => performLOD(file))
+    );
+  }
 };
 
 main();
