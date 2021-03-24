@@ -25,10 +25,8 @@ const run = (commanderOptions) => {
   sourceFiles.forEach(performLOD);
 
   if (opts.watch) {
-    print.info("somehow watching files...");
-    sourceFiles.forEach((file) =>
-      fs.watchFile(file, { persistent: true }, () => performLOD(file))
-    );
+    print.info("watching files...");
+    sourceFiles.forEach((file) => fs.watch(file, () => performLOD(file)));
   }
 };
 
