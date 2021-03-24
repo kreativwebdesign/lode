@@ -6,7 +6,7 @@ const fileExists = (filePath) => {
 };
 
 const createFolderPath = (dirname) => {
-  fs.mkdir(dirname, { recursive: true }, (err) => {
+  fs.mkdirSync(dirname, { recursive: true }, (err) => {
     if (err) throw err;
   });
 };
