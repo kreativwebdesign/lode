@@ -7,5 +7,7 @@
 *.out
 *.synctex.gz
 *.toc
+*.bbl
+*.blg
 
 __latexindent_temp.tex
