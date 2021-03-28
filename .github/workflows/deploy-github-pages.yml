@@ -1,39 +1,31 @@
-# This is a basic workflow to help you get started with Actions
+# This workflow will do a clean install of node dependencies, build the source code and deploy on github pages
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
 name: CI
 
-# Controls when the action will run. 
 on:
   push:
-    branches:
-      # NOTE: You may want to limit the trigger branch to be "main" or "master" etc.
-      - 'main'
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-  publish:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out
-        uses: actions/checkout@v2
-
-      - name: Generate your content
-        run: cd demo && yarn install && yarn build
-
-      - name: Publish current workdir (which contains generated content) to GitHub Pages
-        uses: rayluo/github-pages-overwriter@v1.1
-
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2.3.4
         with:
+          persist-credentials: false
 
-          # Optional. Default value "." means the root directory of your project will be published.
-          # You can use whatever directory your project uses, for example "wwwroot".
-          # Such a directory does *not* have to already exist in your repo,
-          # it could be an output directory created dynamically by your static website builder.
-          source-directory: demo/build
-
-          # Optional. Default value "gh_pages".
-          # It specifies the temporary branch which hosts the static website.
-          # Each build will OVERWRITE this branch.
-          target-branch: gh_pages
+      - name: Install and Build 🔧
+        run: |
+          cd demo
+          yarn install --frozen-lockfile
+          yarn build
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.0
+        with:
+          BRANCH: gh-pages
+          FOLDER: demo/build
+          CLEAN: true # Automatically remove deleted files from the deploy branch
