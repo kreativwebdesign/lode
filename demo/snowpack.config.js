@@ -16,6 +16,7 @@ module.exports = {
     /* ... */
   },
   buildOptions: {
-    /* ... */
+    // the default _snowpack is being ignored by jekyll
+    metaUrlPath: '__snowpack__',
   },
-};
+}
