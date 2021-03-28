@@ -1,6 +1,6 @@
-import BABYLON from './__snowpack__/pkg/babylonjs.js'
-import './__snowpack__/pkg/babylonjs-loaders.js'
-import './__snowpack__/pkg/babylonjs-materials.js'
+import BABYLON from './_snowpack/pkg/babylonjs.js'
+import './_snowpack/pkg/babylonjs-loaders.js'
+import './_snowpack/pkg/babylonjs-materials.js'
 
 // Get the canvas DOM element
 const canvas = document.getElementById('renderCanvas')
