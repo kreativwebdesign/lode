@@ -1,0 +1,7 @@
+{
+  "imports": {
+    "babylonjs": "./babylonjs.js",
+    "babylonjs-loaders": "./babylonjs-loaders.js",
+    "babylonjs-materials": "./babylonjs-materials.js"
+  }
+}
