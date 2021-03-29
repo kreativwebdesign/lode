@@ -23,17 +23,18 @@ camera.position.set(0, 5, 10);
 const controls = new OrbitControls(camera, renderer.domElement);
 
 const loadGltf = (scene, gltfPath, position, scale) => {
+  let resolve = null;
+  const promise = new Promise((res) => {
+    resolve = res;
+  });
   loader.load(
     gltfPath,
     // called when the resource is loaded
     function (gltf) {
-      performance.mark("gltfLoadEnd");
-
       scene.add(gltf.scene);
       gltf.scene.scale.set(...scale);
       gltf.scene.position.set(...position);
-
-      performance.measure("modelLoading", "gltfLoadStart", "gltfLoadEnd");
+      resolve();
     },
     // called while loading is progressing
     function (xhr) {
@@ -44,6 +45,7 @@ const loadGltf = (scene, gltfPath, position, scale) => {
       console.log("An error happened");
     }
   );
+  return promise;
 };
 
 // CreateScene function that creates and return the scene
@@ -62,21 +64,37 @@ const createScene = function () {
   const directionalLight = new THREE.DirectionalLight(0xffffff, 5);
   scene.add(directionalLight);
 
-  loadGltf(
-    scene,
-    `assets/Shoe/Shoe-${useOptimized ? "LOD1" : "LOD0"}.gltf`,
-    [-5, 0, 0],
-    [20, 20, 20]
-  );
-  loadGltf(scene, `assets/Avocado/Avocado.gltf`, [0, 0, 0], [20, 20, 20]);
-  loadGltf(
-    scene,
-    `assets/DamagedHelmet/DamagedHelmet.gltf`,
-    [5, 0, 0],
-    [5, 5, 5]
-  );
-  loadGltf(scene, `assets/SciFiHelmet/SciFiHelmet.gltf`, [0, 5, 0], [5, 5, 5]);
-
+  Promise.all([
+    loadGltf(
+      scene,
+      `assets/Shoe/Shoe-${useOptimized ? "LOD1" : "LOD0"}.gltf`,
+      [-5, 0, 0],
+      [20, 20, 20]
+    ),
+    loadGltf(
+      scene,
+      `assets/Avocado/Avocado-${useOptimized ? "LOD1" : "LOD0"}.gltf`,
+      [0, -5, 0],
+      [20, 20, 20]
+    ),
+    loadGltf(
+      scene,
+      `assets/DamagedHelmet/DamagedHelmet-${
+        useOptimized ? "LOD1" : "LOD0"
+      }.gltf`,
+      [5, 0, 0],
+      [2, 2, 2]
+    ),
+    loadGltf(
+      scene,
+      `assets/SciFiHelmet/SciFiHelmet-${useOptimized ? "LOD1" : "LOD0"}.gltf`,
+      [0, 5, 0],
+      [2, 2, 2]
+    ),
+  ]).then(() => {
+    performance.mark("gltfLoadEnd");
+    performance.measure("modelLoading", "gltfLoadStart", "gltfLoadEnd");
+  });
   // Return the created scene
   return scene;
 };
