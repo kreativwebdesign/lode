@@ -53,7 +53,7 @@ const main = async () => {
   const scene = await createScene();
   renderer.setAnimationLoop(render);
 
-  // for inspector: https://chrome.google.com/webstore/detail/threejs-inspector/
+  // for inspector: https://chrome.google.com/webstore/detail/threejs-inspector/dnhjfclbfhcbcdfpjaeacomhbdfjbebi
   window.scene = scene;
   window.THREE = THREE;
 };
