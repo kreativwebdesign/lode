@@ -1,7 +1,7 @@
 {
   "imports": {
-    "babylonjs": "./babylonjs.js",
-    "babylonjs-loaders": "./babylonjs-loaders.js",
-    "babylonjs-materials": "./babylonjs-materials.js"
+    "three": "./three.js",
+    "three/examples/jsm/controls/OrbitControls": "./three/examples/jsm/controls/OrbitControls.js",
+    "three/examples/jsm/loaders/GLTFLoader": "./three/examples/jsm/loaders/GLTFLoader.js"
   }
 }
