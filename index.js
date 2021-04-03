@@ -1,5 +1,5 @@
-import * as THREE from "./__snowpack__/pkg/three.js";
-import { OrbitControls } from "./__snowpack__/pkg/three/examples/jsm/controls/OrbitControls.js";
+import * as THREE from "./_snowpack/pkg/three.js";
+import { OrbitControls } from "./_snowpack/pkg/three/examples/jsm/controls/OrbitControls.js";
 import { loadGltfs } from "./src/gltf-loader.js";
 import gltfs from "./src/gltfs.js";
 import { measureFPS } from "./src/measure-fps.js";

@@ -1,4 +1,4 @@
-import { GLTFLoader } from "../__snowpack__/pkg/three/examples/jsm/loaders/GLTFLoader.js";
+import { GLTFLoader } from "../_snowpack/pkg/three/examples/jsm/loaders/GLTFLoader.js";
 
 const loader = new GLTFLoader();
 
