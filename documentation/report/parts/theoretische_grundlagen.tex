@@ -20,20 +20,20 @@ Viele Anwendungen sind auf spezifische Hardware wie zum Beispiel die Spielkonsol
 Für hardwareunabhängige Anwendungen eignet sich das Web hervorragend. Viele Benutzer haben Zugang zu einem Desktop, Tablet oder Mobiltelefon.
 Somit ermöglicht das Web Anwendungen mit weniger Aufwand einer grösseren Masse zugänglich zu machen.
 Heutzutage ist es auch möglich, komplexe 3D Visualisierungen im Web zu realisieren.
-Als Basis dafür dient meist das von der Khronos Group entwickelte WebGL, das von allen modernen Browsern unterstützt wird. WebGL ist eine low-level JavaScript API für 3D Visualisierungen. \cite{webGl1Spec}
-Alternativ zu WebGL wird zurzeit ein weiterer Standard entwickelt: WebGPU. Dieser ist zur Zeit des Schreibens noch in Entwicklung und wird deshalb nicht weiter berücksichtigt, auch wenn ein grosses Potenzial vorhanden ist. \cite{webGPUCharter}
+Als Basis dafür dient meist das von der Khronos Group entwickelte \gls{WebGL}, das von allen modernen Browsern unterstützt wird. WebGL ist eine low-level JavaScript API für 3D Visualisierungen. \cite{webGl1Spec}
+Alternativ zu WebGL wird zurzeit ein weiterer Standard entwickelt: \gls{WebGPU}. Dieser ist zur Zeit des Schreibens noch in Entwicklung und wird deshalb nicht weiter berücksichtigt, auch wenn ein grosses Potenzial vorhanden ist. \cite{webGPUCharter}
 
 Die Unabhängigkeit der Hardware bedeutet jedoch auch, dass Optimierung der Performanz in Webanwendungen unabdinglich ist, um allen Benutzern ein optimales Erlebnis zu ermöglichen.
 Im Vergleich zu fixen Hardware Anwendungen ist es realistisch, dass eine Web Anwendung sowohl auf einem leistungsfähigen Desktop Computer als auch auf einem günstigen Mobilgerät verwendet wird.
 
-Zudem ist WebGL eine junge Technologie und wurde erst 2011 veröffentlicht – verglichen mit dem initialen Release Date von OpenGL welches im Jahre 1992 publiziert wurde. \cite{webGl1Spec,openGlSpec}
+Zudem ist WebGL eine junge Technologie und wurde erst 2011 veröffentlicht – verglichen mit dem initialen Release Date von \gls{OpenGL} welches im Jahre 1992 publiziert wurde. \cite{webGl1Spec,openGlSpec}
 Nicht nur das Alter, sondern auch die Natur der Web Plattform haben dazu beigetragen, dass WebGL ein langsames Wachstum zu Beginn verspürt hat. Um einen Webstandard wie WebGL einsetzen zu können müssen alle grossen Browser die Spezifikation implementieren. So hat zum Beispiel Internet Explorer 10 keinen Support und es wurde erstmals Ende 2013 möglich im Internet Explorer 11 3D Anwendungen für ein breites Publikum zu entwickeln.
 
 \section{3D-Modelle}
 Ein Modell stellt ein Objekt aus der realen Welt vereinfacht dar.
 3D-Modelle können vereinfacht als Gruppe von Punkten definiert werden.
 Um im dreidimensionalen Raum Objekte visualisieren zu können sind mindestens drei Punkte notwendig.
-Punkte von 3D Modellen werden im folgenden als Vertex (Eckpunkte) bezeichnet und können als Vektor definiert werden.
+Punkte von 3D Modellen werden im folgenden als \gls{Vertex} (Eckpunkte) bezeichnet und können als \gls{Vektor} definiert werden.
 So können wir einen Vertex am Ursprung eines Koordinatensystems definieren als:
 $$ V =
 \begin{bmatrix}
@@ -47,23 +47,23 @@ Für eine Sammlung von Punkten wird generell der Term Polygon verwendet.
 Ein Modell besteht aus einer beliebigen Anzahl Polygone.
 Polygone bestehen aus einer theoretisch beliebigen Anzahl Vertices.
 
-Die Verbindung zwischen zwei Vertices ist eine sogenannte Edge (Kante).
-Verbindet man die Punkte eines Polygons und füllt die Fläche, ergibt sich schlussendlich ein Face (Fläche).
+Die Verbindung zwischen zwei Vertices ist eine sogenannte \gls{Edge} (Kante).
+Verbindet man die Punkte eines Polygons und füllt die Fläche, ergibt sich schlussendlich ein \gls{Face} (Fläche).
 
 \paragraph{Weitere Attribute}
 Neben den geometrischen Attributen verfügt ein Modell ebenfalls über visuelle Attribute.
 
-So wird für jeden Vertex ein sogenannter Normal definiert. Ein Normal ist ein Vektor der im einfachsten Fall perpendikular zu den zwei an diesem Vertex verbundenen Edges verläuft. Normals werden häufig für das Berechnen von Reflexionen verwendet.
+So wird für jeden Vertex ein sogenannter \gls{Normal} definiert. Ein Normal ist ein Vektor der im einfachsten Fall \gls{Perpendikular} zu den zwei an diesem Vertex verbundenen Edges verläuft. Normals werden häufig für das Berechnen von \gls{Reflexionen} verwendet.
 Normals werden auch für Performanz Optimierungen eingesetzt, dazu mehr in \autoref{chap:backfaceCulling}.
 
-Um die Oberfläche von Modellen zu definieren wird häufig ein sogenanntes Texture Mapping durchgeführt. Hierfür sind zusätzliche Informationen für ein Modell notwendig. In der Praxis finden viele weitere Methoden Anwendung, auf diese wird jedoch hier nicht weiter eingegangen.
+Um die Oberfläche von Modellen zu definieren wird häufig ein sogenanntes \gls{Texture Mapping} durchgeführt. Hierfür sind zusätzliche Informationen für ein Modell notwendig. In der Praxis finden viele weitere Methoden Anwendung, auf diese wird jedoch hier nicht weiter eingegangen.
 
 \paragraph{Formate}
 Um ein 3D Modell in einer Anwendung zu verwenden, muss ein entsprechendes Format verwendet werden. Hierfür steht eine Vielzahl von Optionen zur Auswahl. Aufgrund der Menge wird hier jedoch nur oberflächlich auf die bekanntesten Formate eingegangen.
 
-Wavefront OBJ ist ein offenes Dateiformat das von Wavefront Technologies 1989 entwickelt wurde. Das Format ist jedoch speichertechnisch ineffizient und verfügt zudem nur über ein limitiertes Feature Set. \cite{objSpec}
-FBX ist ein proprietäres Format, welches von Autodesk verwaltet wird. Das Verwenden von FBX Daten ist offiziell nur mit einer C++ FBX SDK möglich, welche für das Web nicht geeignet ist.
-Im Kontrast zu diesen beiden Formaten gibt es seit 2015 ein offenes und modernes sowie auf Speicherplatz Reduktion fokussiertes Format: glTF. Dieses Format wird von der Khronos Gruppe entwickelt und wird in dieser Arbeit als Austauschformat verwendet. \cite{gltf1Spec}
+Wavefront \gls{OBJ} ist ein offenes Dateiformat das von Wavefront Technologies 1989 entwickelt wurde. Das Format ist jedoch speichertechnisch ineffizient und verfügt zudem nur über ein limitiertes Feature Set. \cite{objSpec}
+\gls{FBX} ist ein proprietäres Format, welches von Autodesk verwaltet wird. Das Verwenden von FBX Daten ist offiziell nur mit einer C++ FBX SDK möglich, welche für das Web nicht geeignet ist.
+Im Kontrast zu diesen beiden Formaten gibt es seit 2015 ein offenes und modernes sowie auf Speicherplatz Reduktion fokussiertes Format: \gls{glTF}. Dieses Format wird von der Khronos Gruppe entwickelt und wird in dieser Arbeit als Austauschformat verwendet. \cite{gltf1Spec}
 
 \section{Transformation von Modellen}
 
@@ -121,7 +121,7 @@ Hierbei wird ein Vertex direkt entfernt und alle Edges auf einen danebenliegende
 \end{figure}
 
 \paragraph{Vertex Removal}
-Hierbei wird ein Vertex entfernt und das Resultat neu trianguliert.
+Hierbei wird ein Vertex entfernt und das Resultat neu \gls{Trianguliert}.
 In Abbildung \ref{fig:transformationVertexRemovalOriginal} wird der zentrale Vertex entfernt. Der neu triangulierte Polygon ist in Abbildung \ref{fig:transformationVertexRemovalFinal} ersichtlich.
 
 \begin{figure}[H]
@@ -153,13 +153,13 @@ Die Graphics Pipeline ist zuständig um eine definierte Szene auf einem Ausgabeg
 \end{figure}
 
 \paragraph{Applikation}
-Im ersten Schritt wird die Szenerie aufbereitet, Modelle in den Arbeitsspeicher geladen, Positionen und Rotationen der Modelle definiert. Diese Schritte werden auf der CPU durchgeführt.
+Im ersten Schritt wird die \gls{Szenerie} aufbereitet, Modelle in den Arbeitsspeicher geladen, Positionen und Rotationen der Modelle definiert. Diese Schritte werden auf der \gls{CPU} durchgeführt.
 
 \paragraph{Geometrie}
 Anschliessend werden die Definitionen an die Geometrie Pipeline geliefert. Diese ist zuständig um die Modelle auszurichten, die Beleuchtung zu bestimmen und die 2D Projektion vorzunehmen.
 
 \paragraph{Rasterization}
-Im letzten Schritt werden kontinuierliche Objekte zu diskreten Fragmenten verarbeitet. Der Anwender hat hierbei in vielen Engines die Möglichkeit, den Prozess mithilfe eines Fragmentshaders anzupassen.
+Im letzten Schritt werden kontinuierliche Objekte zu diskreten Fragmenten verarbeitet. Der Anwender hat hierbei in vielen Engines die Möglichkeit, den Prozess mithilfe eines \gls{Fragmentshaders} anzupassen.
 
 \paragraph{Bildschirm}
 Am Schluss wird das vom Rasterization Prozess generierte Bild auf dem Bildschirm dargestellt.
@@ -177,7 +177,7 @@ Im Idealfall geschieht dies jedoch, ohne dass der Anwender dies bemerkt.
 In diesem Abschnitt werden mögliche Ansätze erklärt, welche helfen sollen, die Render-Perfomanz zu erhöhen. Diese Arbeit konzentriert sich jedoch auf den Ansatz von Level of Detail; die anderen Ansätze werden nur kurz erläutert.
 
 \paragraph{Level of Detail}
-Level of Detail auch bekannt als polygonale Simplifizierung, geometrische Simplifizierung oder Mesh Reduzierung basiert darauf, die Komplexität von Objekten zu reduzieren, welche weiter von der Kamera entfernt werden. Es gibt verschiedene Ansätze zur Generierung von LODs, welche in Abschnitt XY im Detail erläutert werden. Zudem braucht es einen berechenbare Methode, die Genauigkeit von Modellen zu definieren, um diese entsprechend anzuwenden. Schlussendlich ist dann noch zu definieren, ab wann welche Artefakte verwendet werden soll, basierend auf der Genauigkeit und der Komplexität.
+Level of Detail auch bekannt als polygonale Simplifizierung, geometrische Simplifizierung oder \gls{Mesh} Reduzierung basiert darauf, die Komplexität von Objekten zu reduzieren, welche weiter von der Kamera entfernt werden. Es gibt verschiedene Ansätze zur Generierung von LODs, welche in Abschnitt XY im Detail erläutert werden. Zudem braucht es einen berechenbare Methode, die Genauigkeit von Modellen zu definieren, um diese entsprechend anzuwenden. Schlussendlich ist dann noch zu definieren, ab wann welche Artefakte verwendet werden soll, basierend auf der Genauigkeit und der Komplexität.
 
 \begin{figure}[H]
 \centering
@@ -226,7 +226,7 @@ Es gibt verschiedene Ansätze, 3D-Modelle mittels LOD zu vereinfachen. In diesem
 Bei diskreten LOD werden für ein detailliertes Modell mehrere weniger detaillierte Modelle verwendet.
 Abhängig von der Distanz zum Betrachter wird das optimale Modell gewählt.
 \begin{itemize}
-  \pro Simplizität: Keine Anpassungen am Scene Graph notwendig
+  \pro Simplizität: Keine Anpassungen am \gls{Scene Graph} notwendig
   \con Harte Grenzen: Veränderung des Objektes kann merkbar sein
   \con Kein Clustering möglich: Probleme bei sehr grossen oder vielen kleinen Modellen
 \end{itemize}

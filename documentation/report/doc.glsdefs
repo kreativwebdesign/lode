@@ -1,0 +1,60 @@
+\ifglsentryexists{latex}{}%
+{%
+\gls@defglossaryentry{latex}%
+{%
+name={latex},%
+sort={latex},%
+type={main},%
+first={latex},%
+firstplural={latexs},%
+text={latex},%
+plural={latexs},%
+description={Is a markup language},%
+descriptionplural={Is a markup language},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{latex2}{}%
+{%
+\gls@defglossaryentry{latex2}%
+{%
+name={latex15},%
+sort={latex15},%
+type={main},%
+first={latex15},%
+firstplural={latex15s},%
+text={latex15},%
+plural={latex15s},%
+description={Is a markup language},%
+descriptionplural={Is a markup language},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
