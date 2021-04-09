@@ -5,6 +5,7 @@ This is a demo showing the benefits of using LODs.
 ## Info
 
 There are currently two variants:
+
 - optimized
 - non optimized
 
