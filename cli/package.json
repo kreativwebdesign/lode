@@ -15,5 +15,8 @@
     "glob": "^7.1.6",
     "inquirer": "^8.0.0",
     "yargs": "^16.2.0"
+  },
+  "devDependencies": {
+    "prettier": "2.2.1"
   }
 }

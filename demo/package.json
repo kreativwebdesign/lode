@@ -13,5 +13,8 @@
     "babylonjs-materials": "^4.2.0",
     "snowpack": "^3.0.13",
     "three": "^0.126.1"
+  },
+  "devDependencies": {
+    "prettier": "2.2.1"
   }
 }
