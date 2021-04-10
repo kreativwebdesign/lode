@@ -1,9 +1,9 @@
-const glob = require("glob");
-const fs = require("fs");
-const figlet = require("figlet");
-const print = require("../print");
-const { performLOD } = require("../lod");
-const { mergeOptionsWithConfigFile } = require("../config");
+import glob from "glob";
+import fs from "fs";
+import figlet from "figlet";
+import * as print from "../print.js";
+import { performLOD } from "../lod.js";
+import { mergeOptionsWithConfigFile } from "../config.js";
 
 const defaultRunOptions = {
   source: "**/*.gltf",
@@ -30,4 +30,4 @@ const run = (commanderOptions) => {
   }
 };
 
-module.exports = run;
+export default run;

@@ -1,7 +1,7 @@
-const fs = require("fs");
-const path = require("path");
+import fs from "fs";
+import path from "path";
 
-const fileExists = (filePath) => {
+export const fileExists = (filePath) => {
   return fs.existsSync(filePath);
 };
 
@@ -11,15 +11,10 @@ const createFolderPath = (dirname) => {
   });
 };
 
-const createFile = (filePath, content) => {
+export const createFile = (filePath, content) => {
   const dirname = path.dirname(filePath);
   if (!fileExists(dirname)) {
     createFolderPath(dirname);
   }
   fs.writeFileSync(filePath, content);
-};
-
-module.exports = {
-  fileExists,
-  createFile,
 };

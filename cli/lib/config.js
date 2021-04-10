@@ -1,8 +1,8 @@
-const fs = require("fs");
-const print = require("./print");
-const { fileExists } = require("./files");
+import fs from "fs";
+import * as print from "./print.js";
+import { fileExists } from "./files.js";
 
-const mergeOptionsWithConfigFile = (options, defaultOptions) => {
+export const mergeOptionsWithConfigFile = (options, defaultOptions) => {
   const configFilePath = options.config || defaultOptions.config;
 
   if (fileExists(configFilePath)) {
@@ -22,8 +22,4 @@ const mergeOptionsWithConfigFile = (options, defaultOptions) => {
       ...options,
     };
   }
-};
-
-module.exports = {
-  mergeOptionsWithConfigFile,
 };

@@ -1,4 +1,4 @@
-const reporter = () => {
+export const reporter = () => {
   const reportGroups = {
     modelLoading: null,
     fps: [],
@@ -74,7 +74,7 @@ const getMedian = (raw) => {
   return (values[half - 1] + values[half]) / 2.0;
 };
 
-const analyzeTraceEvents = (events) => {
+export const analyzeTraceEvents = (events) => {
   let traceEventGroupStats = {};
   for (const group of taskGroups) {
     traceEventGroupStats[group.id] = {
@@ -102,7 +102,7 @@ const analyzeTraceEvents = (events) => {
   return traceEventGroupStats;
 };
 
-const generateReport = (reportGroups, traceEventGroups) => {
+export const generateReport = (reportGroups, traceEventGroups) => {
   return {
     medianFps: getMedian(reportGroups.fps),
     gpuTotalTime: traceEventGroups.gpu.totalTime,
@@ -113,10 +113,4 @@ const generateReport = (reportGroups, traceEventGroups) => {
       totalModelLoadDuration: reportGroups.modelLoading,
     },
   };
-};
-
-module.exports = {
-  reporter,
-  analyzeTraceEvents,
-  generateReport,
 };

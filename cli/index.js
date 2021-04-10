@@ -1,5 +1,6 @@
-const { Command } = require("commander");
-const app = require("./lib/app");
+import { Command } from "commander";
+import * as app from "./lib/app/index.js";
+
 const program = new Command();
 
 program

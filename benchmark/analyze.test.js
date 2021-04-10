@@ -1,5 +1,5 @@
-const fs = require("fs");
-const { analyzeTraceEvents } = require("./analyze");
+import fs from "fs";
+import { analyzeTraceEvents } from "./analyze.js";
 
 describe("analyzeTraceEvents", () => {
   const loadTrace = (file) => {

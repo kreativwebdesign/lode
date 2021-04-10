@@ -1,6 +1,6 @@
-const commander = require("commander");
+import commander from "commander";
 
-module.exports = commander
+export default commander
   .version("v0.0.1")
   .description("CLI for creating different LOD artifacts.")
   .option("-w, --watch", "Watch source files")
