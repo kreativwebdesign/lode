@@ -1,6 +1,6 @@
-const inquirer = require("inquirer");
-const print = require("../print");
-const { fileExists, createFile } = require("../files");
+import inquirer from "inquirer";
+import * as print from "../print.js";
+import { fileExists, createFile } from "../files.js";
 
 const questions = [
   {
@@ -65,4 +65,4 @@ const init = async () => {
   }
 };
 
-module.exports = init;
+export default init;

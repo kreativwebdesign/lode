@@ -1,13 +1,6 @@
-const chalk = require("chalk");
+import chalk from "chalk";
 
-const info = (...args) => console.log(chalk.white(...args));
-const success = (...args) => console.log(chalk.green(...args));
-const warn = (...args) => console.log(chalk.yellow(...args));
-const error = (...args) => console.log(chalk.red(...args));
-
-module.exports = {
-  info,
-  success,
-  warn,
-  error,
-};
+export const info = (...args) => console.log(chalk.white(...args));
+export const success = (...args) => console.log(chalk.green(...args));
+export const warn = (...args) => console.log(chalk.yellow(...args));
+export const error = (...args) => console.log(chalk.red(...args));
