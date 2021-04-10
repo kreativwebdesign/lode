@@ -1,6 +1,6 @@
-const fs = require("fs");
+import fs from "fs";
 
-const startTimer = () => {
+export const startTimer = () => {
   const start = process.hrtime.bigint();
   return () => {
     const end = process.hrtime.bigint(start);
@@ -8,7 +8,7 @@ const startTimer = () => {
   };
 };
 
-const waitFor = async (ms) => {
+export const waitFor = async (ms) => {
   await new Promise((resolve) => {
     setTimeout(() => {
       resolve();
@@ -16,7 +16,7 @@ const waitFor = async (ms) => {
   });
 };
 
-const startLogGroup = (group) => {
+export const startLogGroup = (group) => {
   const stopTimer = startTimer();
   console.log(group + " started");
 
@@ -26,15 +26,8 @@ const startLogGroup = (group) => {
   };
 };
 
-const createFolderIfNotExist = (folder) => {
+export const createFolderIfNotExist = (folder) => {
   if (!fs.existsSync(folder)) {
     fs.mkdirSync(folder);
   }
-};
-
-module.exports = {
-  startTimer,
-  waitFor,
-  startLogGroup,
-  createFolderIfNotExist,
 };

@@ -1,10 +1,10 @@
-const fs = require("fs");
-const math = require("mathjs");
-const puppeteer = require("puppeteer");
-const yargs = require("yargs/yargs");
-const { hideBin } = require("yargs/helpers");
-const { waitFor, startLogGroup, createFolderIfNotExist } = require("./helpers");
-const { reporter, analyzeTraceEvents, generateReport } = require("./analyze");
+import fs from "fs";
+import * as math from "mathjs";
+import puppeteer from "puppeteer";
+import yargs from "yargs";
+import { hideBin } from "yargs/helpers";
+import { waitFor, startLogGroup, createFolderIfNotExist } from "./helpers.js";
+import { reporter, analyzeTraceEvents, generateReport } from "./analyze.js";
 
 const argv = yargs(hideBin(process.argv)).argv;
 
