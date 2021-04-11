@@ -103,3 +103,13 @@
 
 % shortcut for emphasize
 \newcommand{\e}{\emph}
+
+\newcommand{\fgls}[2]{{
+  \newglossaryentry{#1}
+  {
+    name={#1},
+    description={{#2}}
+  }
+  \gls{#1}
+  \footnote{#2}
+}}
