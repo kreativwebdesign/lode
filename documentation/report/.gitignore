@@ -5,6 +5,7 @@
 *.glo
 *.gls
 *.glsdefs
+*.ist
 *.lof
 *.log
 *.lot
