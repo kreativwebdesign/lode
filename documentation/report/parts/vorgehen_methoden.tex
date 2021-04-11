@@ -15,16 +15,16 @@ Es gibt einige Ansätze, die das Durchführen eines Benchmarks vereinfachen. In 
 
 \paragraph{Browser Umgebung}
 Um den Umfang des Benchmarks überschaubar zu halten, wurde ausschliesslich ein Benchmark für Google Chrome entwickelt.
-Google Chrome basiert auf \fgls{Chromium}{Beschreibung}, dieselbe Engine, welche auch Microsoft Edge oder Opera verwenden.
+Google Chrome basiert auf \fgls{Chromium}{Open Source Browser-Projekt. Grundlage von Browsern wie Google Chrome, Edge oder Opera}, dieselbe Engine, welche auch Microsoft Edge oder Opera verwenden.
 Einen Benchmark basierend auf Google Chrome liefert somit auch Indizien für diese beiden Browser, auch wenn gewisse Abweichungen möglich sind.
 Neben dem Marktführer Chrome sind Mozilla Firefox oder Safari von Apple ebenfalls Optionen. Jedoch wurde primär aufgrund des Marktanteils zugunsten von Google Chrome entschieden.
 
 \paragraph{Automation}
 Um die Tests durchzuführen, wird ein Testautomationstool benötigt; unter anderem der Einsatz von Selenium wurde in Erwägung gezogen.
 Der Vorteil von Selenium ist insbesondere, dass der Benchmark für weitere Browser ausgeweitet werden könnte.
-Da jedoch das Analysieren der \fgls{GPU}{Beschreibung} Daten stark vom System abhängig ist und dafür zusätzliche Komplexität notwendig wäre, wird in diesem Benchmark die im Google Chrome integrierten Chrome DevTools eingesetzt.
-Selenium bietet zurzeit eine suboptimale Integration für das \emph{Chrome DevTools Protocol}{Beschreibung}.
-\fgls{Puppeteer}{Beschreibung}, eine weitere Option für die Automation, ist eine Bibliothek, die eine vereinfachte Schnittstelle zu einer Headless Chrome Instanz bietet.
+Da jedoch das Analysieren der GPU Daten stark vom System abhängig ist und dafür zusätzliche Komplexität notwendig wäre, wird in diesem Benchmark die im Google Chrome integrierten Chrome DevTools eingesetzt.
+Selenium bietet zurzeit eine suboptimale Integration für das \emph{Chrome DevTools Protocol}.
+\fgls{Puppeteer}{NodeJS Library, die eine API anbietet zum steuern von Chromium oder Chrome über das Chrome DevTools Protocol}, eine weitere Option für die Automation, ist eine Bibliothek, die eine vereinfachte Schnittstelle zu einer Headless Chrome Instanz bietet.
 Sie wird zudem direkt von Google entwickelt und bietet somit eine stabile Grundlage zur Kommunikation mit den DevTools.
 
 \paragraph{Profiling}
@@ -36,15 +36,15 @@ Die Analyse dieser Daten ermöglicht es, eine Aussage zum Laufzeitverhalten eine
 Bei einem Testablauf werden folgende Schritte durchlaufen:
 
 \begin{enumerate}
-  \item Öffne Applikation in \fgls{Headless Chrome}{Beschreibung} Instanz.
+  \item Öffne Applikation in \emph{Headless Chrome} Instanz.
   \item Warte bis Seite geladen ist.
-  \item Starte \fgls{Profiling}{Beschreibung}.
+  \item Starte \emph{Profiling}.
   \item Warte $n$ Sekunden.
-  \item Stoppe \emph{Profiling}{Beschreibung}.
+  \item Stoppe \emph{Profiling}.
   \item Werte Daten aus.
 \end{enumerate}
 
-Der Test erfasst kontinuierlich die \fgls{FPS}{Beschreibung}. Zudem wird aus dem \emph{Profiling} eine Kennzahl bzgl. der GPU Nutzung berechnet.
+Der Test erfasst kontinuierlich die \fgls{FPS}{Frames per Second. Bilder pro Sekunde. Gängige Art, die Performanz der Rendering Engine zu messen}. Zudem wird aus dem \emph{Profiling} eine Kennzahl bzgl. der GPU Nutzung berechnet.
 
 \paragraph{Analyse der Daten}
 Um eine zuverlässige Aussage treffen zu können, wird der Vorgang mehrfach wiederholt. Für jeden Durchlauf wird der Median der \emph{FPS} Daten berechnet.
