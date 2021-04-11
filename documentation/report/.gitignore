@@ -1,6 +1,10 @@
 *.aux
 *.fdb_latexmk
 *.fls
+*.glg
+*.glo
+*.gls
+*.glsdefs
 *.lof
 *.log
 *.lot
