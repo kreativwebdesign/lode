@@ -1,0 +1,31 @@
+{
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "pdflatex, makeglossaries, pdflatex",
+      "tools": [
+        "pdflatex",
+        "makeglossaries",
+        "pdflatex",
+      ]
+    },
+  ],
+  "latex-workshop.latex.tools": [
+    {
+      "name": "pdflatex",
+      "command": "pdflatex",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%"
+      ]
+    },
+    {
+      "name": "makeglossaries",
+      "command": "makeglossaries",
+      "args": [
+        "%DOCFILE%"
+      ]
+    }
+  ],
+}
