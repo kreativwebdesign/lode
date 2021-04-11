@@ -6,6 +6,7 @@
         "pdflatex",
         "makeglossaries",
         "pdflatex",
+        "pdflatex"
       ]
     },
   ],
