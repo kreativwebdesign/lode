@@ -14,5 +14,6 @@
 *.toc
 *.bbl
 *.blg
+*.run.xml
 
 __latexindent_temp.tex
