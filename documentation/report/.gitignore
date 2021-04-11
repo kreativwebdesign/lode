@@ -1,4 +1,5 @@
 *.aux
+*.bcf
 *.fdb_latexmk
 *.fls
 *.glg
