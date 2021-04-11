@@ -1,14 +1,21 @@
 {
+  "latex-workshop.latex.recipe.default": "first",
   "latex-workshop.latex.recipes": [
     {
-      "name": "pdflatex, makeglossaries, pdflatex",
+      "name": "pdflatex",
       "tools": [
         "pdflatex",
-        "makeglossaries",
-        "pdflatex",
-        "pdflatex"
       ]
     },
+    {
+      "name": "pdflatex with glossary",
+      "tools": [
+        "pdflatex",
+        "clean-glsdefs",
+        "makeglossaries",
+        "pdflatex"
+      ]
+    }
   ],
   "latex-workshop.latex.tools": [
     {
@@ -17,8 +24,15 @@
       "args": [
         "-synctex=1",
         "-interaction=nonstopmode",
-        "-file-line-error",
-        "%DOC%"
+        "-undump=pdflatex",
+        "%DOCFILE%"
+      ]
+    },
+    {
+      "name": "clean-glsdefs",
+      "command": "rm",
+      "args": [
+        "%DOC%.glsdefs"
       ]
     },
     {
@@ -28,5 +42,5 @@
         "%DOCFILE%"
       ]
     }
-  ],
+  ]
 }
