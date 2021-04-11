@@ -2,31 +2,76 @@
   "latex-workshop.latex.recipe.default": "first",
   "latex-workshop.latex.recipes": [
     {
-      "name": "pdflatex",
+      "name": "Default",
       "tools": [
-        "pdflatex",
+        "latexmk"
       ]
     },
     {
-      "name": "pdflatex with glossary",
+      "name": "Full",
       "tools": [
-        "pdflatex",
+        "xelatex",
+        "biber",
         "clean-glsdefs",
         "makeglossaries",
-        "pdflatex"
+        "xelatex",
+        "xelatex",
       ]
-    }
+    },
   ],
   "latex-workshop.latex.tools": [
     {
-      "name": "pdflatex",
-      "command": "pdflatex",
+      "name": "xelatex",
+      "command": "xelatex",
+      "args": [
+        "--synctex=1",
+        "-interaction=nonstopmode",
+        "%DOC%"
+      ]
+    },
+    {
+      "name": "biber",
+      "command": "biber",
+      "args": [
+        "%DOC%",
+      ]
+    },
+    {
+      "name": "latexmk",
+      "command": "latexmk",
       "args": [
         "-synctex=1",
         "-interaction=nonstopmode",
-        "-undump=pdflatex",
+        "-file-line-error",
+        "-pdf",
+        "-outdir=%OUTDIR%",
+        "%DOC%"
+      ],
+      "env": {}
+    },
+    {
+      "name": "makeindex",
+      "command": "makeindex",
+      "args": [
         "%DOCFILE%"
-      ]
+      ],
+      "env": {}
+    },
+    {
+      "name": "bibtex",
+      "command": "bibtex",
+      "args": [
+        "%DOCFILE%"
+      ],
+      "env": {}
+    },
+    {
+      "name": "makeglossaries",
+      "command": "makeglossaries",
+      "args": [
+        "%DOCFILE%"
+      ],
+      "env": {}
     },
     {
       "name": "clean-glsdefs",
@@ -35,12 +80,5 @@
         "%DOC%.glsdefs"
       ]
     },
-    {
-      "name": "makeglossaries",
-      "command": "makeglossaries",
-      "args": [
-        "%DOCFILE%"
-      ]
-    }
-  ]
+  ],
 }
