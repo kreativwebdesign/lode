@@ -1,6 +1,12 @@
 *.aux
+*.bcf
 *.fdb_latexmk
 *.fls
+*.glg
+*.glo
+*.gls
+*.glsdefs
+*.ist
 *.lof
 *.log
 *.lot
@@ -9,5 +15,6 @@
 *.toc
 *.bbl
 *.blg
+*.run.xml
 
 __latexindent_temp.tex

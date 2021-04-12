@@ -1,5 +1,9 @@
 \documentclass[a4paper, 11pt,abstract=on]{scrreprt}
 
+\usepackage{glossaries}
+
+\makeglossaries
+
 \input{preamble.tex}
 
 \title{Title}
@@ -18,15 +22,15 @@
 \includepdf{ressources/Erklaerung_BA}
 
 
-\selectlanguage{ngerman} 
+\selectlanguage{ngerman}
 \begin{abstract}
 \input{parts/zusammenfassung}
 \end{abstract}
-\selectlanguage{english} 
+\selectlanguage{english}
 \begin{abstract}
 \input{parts/abstract}
 \end{abstract}
-\selectlanguage{ngerman} 
+\selectlanguage{ngerman}
 
 \chapter*{Vorwort}
 \input{parts/vorwort}
