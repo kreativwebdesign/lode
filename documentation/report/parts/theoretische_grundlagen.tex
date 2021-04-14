@@ -66,7 +66,7 @@ FBX ist ein proprietäres Format, welches von Autodesk verwaltet wird. Das Verwe
 Im Kontrast zu diesen beiden Formaten gibt es seit 2015 ein offenes und modernes sowie auf Speicherplatz Reduktion fokussiertes Format: glTF. Dieses Format wird von der Khronos Gruppe entwickelt und wird in dieser Arbeit als Austauschformat verwendet. \cite{gltf1Spec}
 
 \subparagraph{glTF}
-Die meisten 3D-Bearbeitungsapplikationen wie Blender (.blend), Maya (.ma) oder Lightwave3D (.lws) verwenden ihre eigenen proprietären Dateiformate. Deswegen brauchte es für jedes Eingangsformat für jedes Ausgangsformat einen \e{converter}, wie in Abbildung \ref{fig:contentPipelineWithoutGltf} ersichtlich.
+Die meisten 3D-Grafikprogramme wie Blender (.blend), Maya (.ma) oder Lightwave3D (.lws) verwenden ihre eigenen proprietären Dateiformate. Deswegen brauchte es für jedes Eingangsformat für jedes Ausgangsformat einen \e{converter}, wie in Abbildung \ref{fig:contentPipelineWithoutGltf} ersichtlich.
 
 \begin{figure}[H]
   \centering
@@ -96,12 +96,11 @@ Die wichtigsten Elemente dieser Struktur kurz erläutert:
 \begin{itemize}
   \item \textbf{Scene}: Einstiegspunkt der Szenerie und verweist auf alle Top-Level \e{nodes}.
   \item \textbf{Node}: Kann eine Transformation (Rotation, Translation oder Skalierung) beinhalten oder eine Kamera, \e{Skin}, Animation, ein \e{Mesh} oder \e{Childnodes} referenzieren.
-  \item  \textbf{Camera}: Definiert die Ansichtskonfiguration.
   \item  \textbf{Mesh}: Beschreibt ein geometrisches Objekt und verweist auf \e{accessor}, welcher die effektiven geometrischen Daten beinhaltet und auf \e{material}, das beschreibt, wie das Objekt beim Rendern aussehen soll.
   \item \textbf{Accessor}: Verweis auf die Binärdaten (\e{BufferView}), welche die effektiven Eigenschaften für \e{meshes}, \e{skins} und \e{animations} kompakt beinhaltet.
   \item \textbf{BufferView}: Definiert eine Ansicht (Länge, Ort, Typ)auf einen \e{Buffer}.
   \item \textbf{Buffer}: Verweist auf einen Block von Binärdaten, welchen die effektiven Daten des 3D-Modells platzsparend beinhaltet.
-  \item Weitere Elemente, welche im Rahmen dieser nicht relevant sind und nicht im Detail betrachtet werden, sind: \e{skin}, \e{material}, \e{animation}, \e{texture}.
+  \item Weitere Elemente, welche im Rahmen dieser Arbeit nicht relevant sind und nicht im Detail betrachtet werden, sind: \e{camera}, \e{skin}, \e{material}, \e{animation}, \e{texture}.
 \end{itemize}
 
 \section{Transformation von Modellen}
