@@ -391,6 +391,7 @@ export const updateTriangles = (
 };
 
 const MAX_ITERATIONS = 100;
+const AGGRESSIVENESS = 7;
 
 /**
  * Main Function to simplify a given mesh
@@ -402,8 +403,6 @@ const MAX_ITERATIONS = 100;
  * @returns
  */
 export const simplify = (vertices, triangles, targetTriangles = 200) => {
-  let agressiveness = 7;
-
   let references = initializeData(vertices, triangles);
   let deletedTriangles = 0;
   let initialTriangleCount = triangles.length;
@@ -426,7 +425,7 @@ export const simplify = (vertices, triangles, targetTriangles = 200) => {
     // The following numbers works well for most models.
     // If it does not, try to adjust the 3 parameters
     //
-    const threshold = 0.000000001 * Math.pow(iteration + 3, agressiveness);
+    const threshold = 0.000000001 * Math.pow(iteration + 3, AGGRESSIVENESS);
 
     // remove vertices & mark deleted triangles
     triangles.forEach((triangle) => {
