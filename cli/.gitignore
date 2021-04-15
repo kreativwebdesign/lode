@@ -1,0 +1,2 @@
+# ignore generated output, probably has to be updated as soon as CLI is more production ready
+/generated

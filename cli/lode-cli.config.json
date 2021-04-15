@@ -1,4 +1,4 @@
 {
-  "source": "**/*.gltf",
+  "source": "test-data/duck.gltf",
   "watch": true
 }
