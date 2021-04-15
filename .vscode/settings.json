@@ -4,6 +4,9 @@
     {
       "name": "Default",
       "tools": [
+        "latexmk",
+        "bibtex",
+        "latexmk",
         "latexmk"
       ]
     },
@@ -11,6 +14,7 @@
       "name": "Full",
       "tools": [
         "xelatex",
+        "bibtex",
         "clean-glsdefs",
         "makeglossaries",
         "xelatex",
@@ -26,13 +30,6 @@
         "--synctex=1",
         "-interaction=nonstopmode",
         "%DOC%"
-      ]
-    },
-    {
-      "name": "biber",
-      "command": "biber",
-      "args": [
-        "%DOC%",
       ]
     },
     {
