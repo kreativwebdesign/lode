@@ -394,6 +394,7 @@ const MAX_ITERATIONS = 100;
 
 /**
  * Main Function to simplify a given mesh
+ * Algorithm based on https://www.cs.cmu.edu/~./garland/Papers/quadrics.pdf
  * Iteration approach and threshold values are based on https://github.com/sp4cerat/Fast-Quadric-Mesh-Simplification
  * @param {*} vertices
  * @param {*} triangles
