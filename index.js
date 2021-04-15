@@ -40,7 +40,7 @@ const createScene = async function () {
   return scene;
 };
 
-function render(scene) {
+function render() {
   performance.mark("renderLoopStart");
   renderer.render(scene, camera);
   controls.update();
@@ -51,21 +51,21 @@ function render(scene) {
 
 const main = async () => {
   const scene = await createScene();
-  renderer.setAnimationLoop(() => render(scene));
+  renderer.setAnimationLoop(render);
 
   // for inspector: https://chrome.google.com/webstore/detail/threejs-inspector/dnhjfclbfhcbcdfpjaeacomhbdfjbebi
   window.scene = scene;
   window.THREE = THREE;
-
-  // the canvas/window resize event handler
-  window.addEventListener("resize", function () {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-
-    renderer.setSize(window.innerWidth, window.innerHeight);
-
-    render(scene);
-  });
 };
 
 main();
+
+// the canvas/window resize event handler
+window.addEventListener("resize", function () {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+
+  renderer.setSize(window.innerWidth, window.innerHeight);
+
+  render();
+});
