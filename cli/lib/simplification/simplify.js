@@ -133,7 +133,6 @@ export const calculateError = (vertex1, vertex2) => {
 
   if (det != 0 && !isBorder) {
     // qDelta is invertible
-    // TODO: check source
     // vx = A41/det(q_delta)
     resultPoint[0] = (-1 / det) * qDelta.det(1, 2, 3, 4, 5, 6, 5, 7, 8);
 
@@ -393,6 +392,7 @@ export const updateTriangles = (
 
 /**
  * Main Function to simplify a given mesh
+ * Iteration approach and threshold values are based on https://github.com/sp4cerat/Fast-Quadric-Mesh-Simplification
  * @param {*} vertices
  * @param {*} triangles
  * @param {*} targetTriangles Target threshold of triangles to reach
