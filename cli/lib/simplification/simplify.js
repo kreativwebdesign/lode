@@ -390,6 +390,8 @@ export const updateTriangles = (
   return deletedTriangles;
 };
 
+const MAX_ITERATIONS = 100;
+
 /**
  * Main Function to simplify a given mesh
  * Iteration approach and threshold values are based on https://github.com/sp4cerat/Fast-Quadric-Mesh-Simplification
@@ -405,7 +407,7 @@ export const simplify = (vertices, triangles, targetTriangles = 200) => {
   let deletedTriangles = 0;
   let initialTriangleCount = triangles.length;
 
-  for (let iteration = 0; iteration < 100; iteration++) {
+  for (let iteration = 0; iteration < MAX_ITERATIONS; iteration++) {
     if (initialTriangleCount - deletedTriangles <= targetTriangles) {
       break;
     }
