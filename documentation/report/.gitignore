@@ -17,4 +17,7 @@
 *.blg
 *.run.xml
 
+# ignore pdf as it's built by the pipeline
+doc.pdf
+
 __latexindent_temp.tex

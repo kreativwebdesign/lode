@@ -1,5 +1,9 @@
 name: Build LaTeX document
-on: [push]
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 jobs:
   build_latex:
     runs-on: ubuntu-latest
@@ -11,3 +15,8 @@ jobs:
         with:
           working_directory: documentation/report/
           root_file: doc.tex
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: report
+          path: documentation/report/doc.pdf
