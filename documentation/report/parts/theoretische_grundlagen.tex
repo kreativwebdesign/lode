@@ -7,18 +7,18 @@
 % !TEX encoding = UTF-8 Unicode
 % !TEX root = ../doc.tex
 \section{Kontext}
-In der Arbeit wird der Fokus auf die Web Plattform gelegt. Die meisten Grundlagen sind jedoch auch unabhängig davon zutreffend.
-Für die Vereinfachung wird im folgenden der Begriff "Das Web" für die Plattform von verschiedenen Web Technologien genutzt. Dies beinhaltet insbesondere vom W3C veröffentlichte Spezifikationen.
+In der Arbeit wird der Fokus auf die Web-Plattform gelegt. Die meisten Grundlagen sind jedoch auch unabhängig davon zutreffend.
+Für die Vereinfachung wird im Folgenden der Begriff "Das Web" für die Plattform von verschiedenen Web Technologien genutzt. Dies beinhaltet insbesondere vom W3C veröffentlichte Spezifikationen.
 
 \section{3D-Rendering im Web}
 3D-Visualisierungen werden in vielen Branchen verwendet.
-Virtual Reality, CAD Anwendungen oder Computerspiele sind bekannte Anwendunsgebiete, welche 3D Visualisierungen einsetzen.
+Virtual Reality, CAD Anwendungen oder Computerspiele sind bekannte Anwendungsgebiete, welche 3D Visualisierungen einsetzen.
 Dank leistungsstärkeren Geräten sind in vielen weiteren Bereichen realere Visualisierungen möglich.
 
 Anwendungen können auf spezifische Hardware wie zum Beispiel die Spielkonsolen PlayStation oder Xbox ausgerichtet sein. Dies hat den Nachteil, dass die Verteilung der Software aufwändiger ist, da spezifische Hardware notwendig ist. Für gewisse Anwendungsgebiete ist dies kein Problem.
 
 Für hardwareunabhängige Anwendungen eignet sich das Web hervorragend. Viele Benutzer haben Zugang zu einem Desktop, Tablet oder Mobiltelefon.
-Somit ermöglicht das Web Anwendungen mit weniger Aufwand inem grossen Zielpublikum zugänglich zu machen.
+Somit ermöglicht das Web Anwendungen mit weniger Aufwand einem grossen Zielpublikum zugänglich zu machen.
 Seit einigen Jahren ist es auch möglich, 3D Visualisierungen im Web zu realisieren.
 Als Basis dafür dient meist das von der Khronos Group entwickelte WebGL, das von allen modernen Browsern unterstützt wird. WebGL ist eine low-level JavaScript API für 3D Visualisierungen. \cite{webGl1Spec}
 Alternativ zu WebGL wird zurzeit ein weiterer Standard entwickelt: WebGPU. Dieser ist zur Zeit des Schreibens noch in Entwicklung und wird deshalb nicht weiter berücksichtigt, auch wenn ein grosses Potenzial vorhanden ist. \cite{webGPUCharter}
@@ -27,7 +27,7 @@ Die Unabhängigkeit der Hardware bedeutet jedoch auch, dass Optimierung der Perf
 Im Vergleich zu fixen Hardware Anwendungen ist es realistisch, dass eine Web Anwendung sowohl auf einem leistungsfähigen Desktop Computer als auch auf einem günstigen Mobilgerät verwendet wird.
 
 Zudem ist WebGL eine junge Technologie und wurde erst 2011 veröffentlicht – verglichen mit dem initialen Release Date von \fgls{OpenGL}{Spezifikation einer Programmierschnittstelle zur Entwicklung von 2D und 3D-Grafikanwendungen} welches im Jahre 1992 publiziert wurde. \cite{webGl1Spec,openGlSpec}
-Nicht nur das Alter, sondern auch die Natur der Web Plattform haben dazu beigetragen, dass WebGL ein langsames Wachstum verspürt hat. Um einen Webstandard wie WebGL einsetzen zu können müssen alle grossen Browser die Spezifikation implementieren. Ansonsten kann der grosse Vorteil des Webs - einfache Verteilung an alle Benutzer - nicht in vollem Umfang genutzt werden. So hat zum Beispiel Internet Explorer 10 keinen Support und es wurde erstmals Ende 2013 möglich im Internet Explorer 11 3D Anwendungen für ein breites Publikum zu entwickeln.
+Nicht nur das Alter, sondern auch die Natur der Web Plattform haben dazu beigetragen, dass WebGL ein langsames Wachstum verspürt hat. Um einen Webstandard wie WebGL einsetzen zu können müssen alle grossen Browser die Spezifikation implementieren. Ansonsten kann der grosse Vorteil des Webs – einfache Verteilung an alle Benutzer – nicht in vollem Umfang genutzt werden. So hat zum Beispiel Internet Explorer 10 keinen Support und es wurde erstmals Ende 2013 möglich im Internet Explorer 11 3D Anwendungen für ein breites Publikum zu entwickeln.
 
 \section{3D-Modelle}
 Ein Modell stellt ein Objekt aus der realen Welt vereinfacht dar.
@@ -42,7 +42,7 @@ $$ V =
   0
 \end{bmatrix}
 $$
-Eine Sammlung von drei Vertices bildet ein Triangle (Dreieck). Hiermit kann ein Triangle generell wie folgt definiert werden:
+Eine Sammlung von drei \e{Vertices} bildet ein \e{Triangle} (Dreieck). Hiermit kann ein \e{Triangle} generell wie folgt definiert werden:
 $$ T =
 \begin{bmatrix}
   V \\
@@ -50,7 +50,7 @@ $$ T =
   V
 \end{bmatrix}
 $$
-Um komplexere Formen wie Vierecke (Quads) zu bilden werden jeweils mehrere Triangle kombiniert. Abbildung \ref{fig:modelSimpleTriangulation} zeigt die Vereinfachung eines Quads in zwei Triangle.
+Um komplexere Formen wie Vierecke (\e{Quads}) zu bilden, werden jeweils mehrere \e{Triangle} kombiniert. Abbildung \ref{fig:modelSimpleTriangulation} zeigt die Vereinfachung eines \e{Quads} in zwei \e{Triangle}.
 \begin{figure}[H]
   \centering
   \begin{subfigure}{.5\textwidth}
@@ -63,7 +63,7 @@ Um komplexere Formen wie Vierecke (Quads) zu bilden werden jeweils mehrere Trian
     \includegraphics[width=.8\linewidth]{grundlagen/model/polygon-triangulation.png}
     \caption{Polygon als Sammlung von Triangles}
   \end{subfigure}
-  \caption{Vereinfachung von Polygone als Sammlung von Triangles}
+  \caption{Vereinfachung von Polygone als Sammlung von \e{Triangles}}
   \label{fig:modelSimpleTriangulation}
 \end{figure}
 
@@ -85,7 +85,7 @@ Um die Oberfläche von Modellen zu definieren wird häufig ein sogenanntes \fgls
 Um ein 3D Modell in einer Anwendung zu verwenden, muss ein entsprechendes Format verwendet werden. Hierfür steht eine Vielzahl von Optionen zur Auswahl. Aufgrund der Menge wird hier jedoch nur oberflächlich auf die bekanntesten Formate eingegangen.
 
 \subparagraph{OBJ}
-Wavefront OBJ ist ein offenes Dateiformat das von Wavefront Technologies 1989 entwickelt wurde. Das Format ist jedoch speichertechnisch ineffizient und verfügt zudem nur über ein limitiertes Feature Set. Desweiteren gibt es keine zentrale Instanz, welche eine Spezifikation liefert und Informationen sind deshalb schwerer zu finden. \cite{objSpec}
+Wavefront OBJ ist ein offenes Dateiformat das von Wavefront Technologies 1989 entwickelt wurde. Das Format ist jedoch speichertechnisch ineffizient und verfügt zudem nur über ein limitiertes Feature Set. Des Weiteren gibt es keine zentrale Instanz, welche eine Spezifikation liefert und Informationen sind deshalb schwerer zu finden. \cite{objSpec}
 
 \subparagraph{FBX}
 FBX ist ein proprietäres Format, welches von Autodesk verwaltet wird. Das Verwenden von FBX Daten ist jedoch offiziell nur mit einer C++ FBX SDK möglich, welche für das Web nicht geeignet ist. Aufgrund der proprietären Natur gibt es keine Bestrebungen das Format offener zu gestalten.
@@ -93,7 +93,7 @@ FBX ist ein proprietäres Format, welches von Autodesk verwaltet wird. Das Verwe
 \subparagraph{glTF}
 Seit 2015 ein offenes und modernes sowie auf Speicherplatz Reduktion fokussiertes Format: glTF. Dieses Format wird von der Khronos Gruppe entwickelt. \cite{gltf1Spec} In dieser Arbeit wird es als Austauschformat verwendet, deshalb wird im folgenden genauer auf das Format eingegangen.
 
-Die meisten 3D-Grafikprogramme wie Blender (.blend) verwenden ihre eigenen Dateiformate. Diese Datiformate sind jedoch für den Einsatz in einer Applikation ungeeignet da sie insbesondere nicht für die Laufzeitperformanz optimiert sind. Deswegen brauchte es für jedes Eingangsformat für jedes Ausgangsformat einen \e{converter}, wie in Abbildung \ref{fig:contentPipelineWithoutGltf} ersichtlich.
+Die meisten 3D-Grafikprogramme wie Blender (.blend) verwenden ihre eigenen Dateiformate. Diese Dateiformate sind jedoch für den Einsatz in einer Applikation ungeeignet da sie insbesondere nicht für die Laufzeitperformanz optimiert sind. Deswegen brauchte es für jedes Eingangsformat für jedes Ausgangsformat einen \e{converter}, wie in Abbildung \ref{fig:contentPipelineWithoutGltf} ersichtlich.
 
 \begin{figure}[H]
   \centering
@@ -147,7 +147,7 @@ Für die folgenden Beispiele wird jeweils das Modell aus Abbildung \ref{fig:tran
 \end{figure}
 
 \paragraph{Edge Collapse}
-Hierbei werden zwei nebeneinanderliegende Vertices kombiniert, siehe Abbildung \ref{fig:transformationEdgeCollapse}.
+Hierbei werden zwei nebeneinanderliegende \e{Vertices} kombiniert, siehe Abbildung \ref{fig:transformationEdgeCollapse}.
 Die Umkehrfunktion nennt man Vertex Split.
 
 \begin{figure}[H]
@@ -297,7 +297,7 @@ Es ist zudem häufig nicht möglich grosse Modelle sinnvoll zu vereinfachen. So 
 Im Gegensatz zu DLOD wird bei CLOD vereinfachende Veränderungen an einem Modell gespeichert.
 
 Der Hauptunterschied zu DLOD besteht in den weichen Grenzen, so ist es signifikant weniger auffällig da zwischen den verschiedenen Auflösungen interpoliert werden kann.
-Der Hauptnachteil ist jedoch, dass diese Interepolation insbesondere Auswirkungen auf die Laufzeit Performanz der Applikation hat.
+Der Hauptnachteil ist jedoch, dass diese Interpolation insbesondere Auswirkungen auf die Laufzeit Performanz der Applikation hat.
 Das Problem des Clusterings ist auch für diese Variante nicht gelöst.
 
 \paragraph{Hierarchische LOD (HLOD)}
