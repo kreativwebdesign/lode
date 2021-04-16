@@ -21,6 +21,9 @@ jobs:
         with:
           name: report
           path: documentation/report/doc.pdf
+      - name: Rename file to prevent it from being ignored
+        run: |
+          mv documentation/report/doc.pdf documentation/report/report.pdf
       - name: Deploy to separate branch 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.0
         with:
