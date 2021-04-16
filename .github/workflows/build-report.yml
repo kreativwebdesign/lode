@@ -25,5 +25,5 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@4.1.0
         with:
           BRANCH: report
-          FOLDER: documentation/report/
+          FOLDER: documentation/report
           CLEAN: true # Automatically remove deleted files from the deploy branch
