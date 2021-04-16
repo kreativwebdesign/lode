@@ -18,5 +18,11 @@ program
   .action(app.run);
 
 program.command("init").description("Setup LOD configuration").action(app.init);
+program
+  .command("clean")
+  .description("Cleans the output folder")
+  .option("-c, --config <configfile>", "Path to config file")
+  .option("-o, --outputFoldername <name>", "Name of the output folder")
+  .action(app.clean);
 
 program.parse();

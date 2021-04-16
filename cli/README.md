@@ -15,6 +15,8 @@ To setup a configuration file, run `yarn start init`. This will guide you throug
 ```lode-cli.config.json
 {
   "source": "**/*.gltf",
+  "outputFoldername": "lode-build",
+  "clearOutputBeforeRun": true,
   "watch": false
 }
 
@@ -37,3 +39,7 @@ Run `yarn start` or `yarn start run` to execute it. You can pass various options
 ### help
 
 Run `yarn start help` to display help.
+
+### clean
+
+Run `yarn start clean` to clean the output folder. You can pass the same `outputFoldername` and `config` option as for the `run` command.
