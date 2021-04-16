@@ -1,7 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { loadGltfs } from "./src/gltf-loader";
-import gltfs from "./src/gltfs";
+import { getLod } from "./src/gltf-loader";
 import { measureFPS } from "./src/measure-fps";
 
 const renderer = new THREE.WebGLRenderer();
@@ -32,8 +31,9 @@ const createScene = async function () {
   const directionalLight = new THREE.DirectionalLight(0xffffff, 5);
   scene.add(directionalLight);
 
-  console.log(gltfs);
-  await loadGltfs(scene, gltfs);
+  const duckLod = await getLod(2, "../lode-build/assets/Duck", "duck");
+  scene.add(duckLod);
+
   performance.mark("gltfLoadEnd");
   performance.measure("modelLoading", "gltfLoadStart", "gltfLoadEnd");
   // Return the created scene
