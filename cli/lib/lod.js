@@ -1,11 +1,16 @@
 import { NodeIO } from "@gltf-transform/core";
 import { prepareData, simplify } from "./simplification/simplify.js";
-import { createBaseFolderPathForFile } from "./files.js";
+import * as print from "./print.js";
 
 const io = new NodeIO();
 
-export const performLOD = (file) => {
-  console.log("performing LOD algorithm on file", file);
+export const copyOriginalArtifact = (pathName, file) => {
+  const doc = io.read(file);
+  io.write(pathName, doc);
+};
+
+export const performLOD = (pathName, file) => {
+  print.info("performing LOD algorithm on file", file);
 
   const doc = io.read(file);
 
@@ -48,6 +53,5 @@ export const performLOD = (file) => {
   primitive.setAttribute("TEXCOORD_0");
   primitive.setAttribute("TANGENT");
 
-  createBaseFolderPathForFile(`./generated/${file}`);
-  io.write(`./generated/${file}`, newDoc);
+  io.write(pathName, newDoc);
 };
