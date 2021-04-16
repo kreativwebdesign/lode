@@ -21,10 +21,13 @@ jobs:
         with:
           name: report
           path: documentation/report/doc.pdf
-      - name: Deploy
-        uses: s0/git-publish-subdir-action@develop
-        env:
-          REPO: self
-          BRANCH: report
-          FOLDER: documentation/report/doc.pdf
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Push to report branch
+        run: |
+          cd documentation/report
+          mkdir deploy-path
+          mv doc.pdf deploy-path/doc.pdf
+          cd deploy-path
+          git init
+          git add .
+          git commit -m "Deploy Report"
+          git push --force "https://github.com/kreativwebdesign/lode" main:report > /dev/null 2>&1
