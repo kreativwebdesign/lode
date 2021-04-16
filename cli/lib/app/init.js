@@ -35,6 +35,31 @@ const questions = [
     },
   },
   {
+    name: "outputFoldername",
+    type: "input",
+    message: "Where should i store the generated artifacts?",
+    default: "lode-build",
+    when: (answers) => {
+      return answers.overwriteConfigFile !== false;
+    },
+    validate: function (value) {
+      if (value.length) {
+        return true;
+      } else {
+        return "Please enter a valid filename";
+      }
+    },
+  },
+  {
+    name: "clearOutputBeforeRun",
+    type: "comfirm",
+    message: "Should i delete the output folder before running?",
+    default: true,
+    when: (answers) => {
+      return answers.overwriteConfigFile !== false;
+    },
+  },
+  {
     name: "watch",
     type: "confirm",
     message: "Do you want to run lode-cli in watch mode by default?",
@@ -55,6 +80,8 @@ const init = async () => {
       answers.configFilepath,
       `{
   "source": "${answers.sourcePattern}",
+  "outputFoldername": "${answers.outputFoldername}",
+  "clearOutputBeforeRun": "${answers.clearOutputBeforeRun}",
   "watch": ${answers.watch}
 }`
     );
