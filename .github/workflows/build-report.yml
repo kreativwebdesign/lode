@@ -15,6 +15,7 @@ jobs:
         with:
           working_directory: documentation/report/
           root_file: doc.tex
+          pre_compile: xelatex doc && bibtex doc && makeglossaries doc && xelatex doc
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
