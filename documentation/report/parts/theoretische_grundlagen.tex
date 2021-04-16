@@ -234,15 +234,15 @@ Als Level Of Detail (LOD) werden die verschiedenen Detailstufen bei der virtuell
 Dies wird verwendet, um die Geschwindigkeit von Anwendungen zu steigern, indem Objekte im Nahbereich detailiert angezeigt werden; wohingegen Elemente im Fernbereich deutlich vereinfacht dargestellt werden.
 
 \subsection{Das Problem}
-Geometrische Objekte können zu Komplex werden, um jederzeit performant und interaktiv gerendert zu werden.
-Gerade wenn viele Objekte zur selben Zeit sichtbar sind, lohnt es sich, zu priorisieren und gewisse Objekte in reduzierter Qualität anzuzeigen.
+Modelle können zu komplex werden, um jederzeit performant und interaktiv gerendert zu werden.
+Insbesondere wenn viele Objekte gleichzeitig sichtbar sind, lohnt es sich, zu priorisieren und gewisse Objekte in reduzierter Qualität anzuzeigen.
 Im Idealfall geschieht dies jedoch, ohne dass der Anwender dies bemerkt.
 
 \subsection{Lösungsansätze}
 In diesem Abschnitt werden mögliche Ansätze erklärt, welche helfen sollen, die Render-Perfomanz zu erhöhen. Diese Arbeit konzentriert sich jedoch auf den Ansatz von Level of Detail; die anderen Ansätze werden nur kurz erläutert.
 
 \paragraph{Level of Detail}
-Level of Detail auch bekannt als polygonale Simplifizierung, geometrische Simplifizierung oder Mesh Reduzierung basiert darauf, die Komplexität von Objekten zu reduzieren, welche weiter von der Kamera entfernt werden. Es gibt verschiedene Ansätze zur Generierung von LODs, welche in Abschnitt XY im Detail erläutert werden. Zudem braucht es einen berechenbare Methode, die Genauigkeit von Modellen zu definieren, um diese entsprechend anzuwenden. Schlussendlich ist dann noch zu definieren, ab wann welche Artefakte verwendet werden soll, basierend auf der Genauigkeit und der Komplexität.
+Level of Detail auch bekannt als polygonale Simplifizierung, geometrische Simplifizierung oder Mesh Reduzierung basiert darauf, die Komplexität von Objekten zu reduzieren, welche weiter von der Kamera entfernt sind. Es gibt verschiedene Ansätze zur Generierung von LODs, welche in Abschnitt XY im Detail erläutert werden. Zudem braucht es eine berechenbare Methode, die Genauigkeit von Modellen zu definieren, um diese entsprechend anzuwenden. Schlussendlich ist dann noch zu definieren, ab wann welche Artefakte verwendet werden soll, basierend auf der Genauigkeit und der Komplexität.
 
 \begin{figure}[H]
 \centering
@@ -259,14 +259,14 @@ Dies reduziert die Anzahl Polygone drastisch.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\columnwidth]{grundlagen/Camera-Frustum.png}
-  \caption{Camera Frustum}
+  \includegraphics[width=0.7\columnwidth]{grundlagen/Camera-Frustum.png}
+  \caption{Kamera Frustum}
   \label{fig:CameraFrustum}
 \end{figure}
 
 Ein Frustum ist eine geometrische Form, die einer Pyramide ähnelt, welcher die Spitze abgeschnitten wurde.
 Das Kamera-Frustum bezeichnet den Raum, welcher von der Kamera aufgezeichnet wird. Dieser Breich startet eine gewisse Distanz von der Kamera entfernt und endet weit hinten wieder, da nicht bis ins unendliche Objekte sichtbar sind.
-Wie in Abbildung \ref{fig:CameraFrustum} zusehen ist, beginnt das Kamera-Frustum in der nähe der Kamera und dehnt sich ein wenig aus bis es gegen Ende des Spektrums beschränkt wird.
+Wie in Abbildung \ref{fig:CameraFrustum} zusehen ist, beginnt das Kamera-Frustum in der Nähe der Kamera und dehnt sich ein wenig aus bis es gegen Ende des Spektrums beschränkt wird.
 
 \paragraph{Occlusion culling}
 Polygone bzw. Objekte, welche komplett von anderen Objekten überdeckt werden, werden bei dieser Variante nicht prozessiert.
@@ -284,28 +284,24 @@ Auch bekannt unter Distributed Rendering ist der Einsatz von Techniken aus dem P
 \paragraph{Image-based rendering}
 In gewissen Fällen kann das Modellieren übersprungen werden. So kann anhand von Bildmaterial eine 3D-Illusion erzeugt werden.
 
-\subsection{Verschiedene Ansätze zur Generierung von LOD Modellen}
+\subsection{Ansätze für LOD Artefakte}
 Es gibt verschiedene Ansätze, 3D-Modelle mittels LOD zu vereinfachen. In diesem Abschnitt werden einige davon detaillierter erläutert so wie ihre Vor- und Nachteile aufgezeigt.
 
 \paragraph{Diskrete LOD (DLOD)}
-Bei diskreten LOD werden für ein detailliertes Modell mehrere weniger detaillierte Modelle verwendet.
-Abhängig von der Distanz zum Betrachter wird das optimale Modell gewählt.
-\begin{itemize}
-  \pro Simplizität: Keine Anpassungen am \fgls{Scene Graph}{Objektorientierte Datenstruktur zur Beschreibung von 2D- oder 3D-Szenarien} notwendig
-  \con Harte Grenzen: Veränderung des Objektes kann merkbar sein
-  \con Kein Clustering möglich: Probleme bei sehr grossen oder vielen kleinen Modellen
-\end{itemize}
+Bei diskreten LOD werden für ein detailliertes Modell mehrere weniger detaillierte Modelle erstellt.
+Abhängig von der Distanz zum Betrachter wird das optimale Modell gewählt. Es sind hierfür nur minimale Anpassungen am \fgls{Scene Graph}{Objektorientierte Datenstruktur zur Beschreibung von 2D- oder 3D-Szenarien} notwendig da ausschliesslich ganze Modelle ausgetauscht werden.
+Ein Nachteil sind jedoch merkbare harte Grenzen. Der Benutzer stellt beim umhergehen in der Szene fest, wenn das Modell mit einer einfacheren Version ausgetauscht wird.
+Es ist zudem häufig nicht möglich grosse Modelle sinnvoll zu vereinfachen. So ist der Ansatz für Terrain ungeeignet. Ähnlicherweise ist es auch nicht möglich viele sehr kleine Modelle zu kombinieren da jedes Modell unabhängig ist.
 
 \paragraph{Kontinuierliche LOD (CLOD)}
 Im Gegensatz zu DLOD wird bei CLOD vereinfachende Veränderungen an einem Modell gespeichert.
-\begin{itemize}
-  \pro Weiche Grenzen: Interpolation zwischen Auflösungen ist möglich
-  \con Runtime Performance
-  \con Kein Clustering möglich
-\end{itemize}
+
+Der Hauptunterschied zu DLOD besteht in den weichen Grenzen, so ist es signifikant weniger auffällig da zwischen den verschiedenen Auflösungen interpoliert werden kann.
+Der Hauptnachteil ist jedoch, dass diese Interepolation insbesondere Auswirkungen auf die Laufzeit Performanz der Applikation hat.
+Das Problem des Clusterings ist auch für diese Variante nicht gelöst.
 
 \paragraph{Hierarchische LOD (HLOD)}
 Bei HLOD werden mehrere Objekte in einen Cluster gruppiert.
-\begin{itemize}
-  \pro Clustering möglich
-\end{itemize}
+Diese Methode erlaubt es somit zum Beispiel Terrains optimal abzubilden. So werden Ausschnitte, welche nahe beim Benutzer sind mit hoher Auflösung dargestellt während weiter entferntere Teile der Umgebung mit weniger Details ausgestattet sind.
+Zudem ist es möglich viele kleinere Objekte bei entsprechenden Distanzen zu kombinieren.
+Der Hauptnachteil liegt darin, dass hierfür signifikante Anpassungen am Scene Graph notwendig sind und für den Entwickler ein spürbarer Unterschied entstehen kann.
