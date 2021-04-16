@@ -30,6 +30,8 @@ Run `yarn start` or `yarn start run` to execute it. You can pass various options
 | `-c`, `--config` | Path to config file      | `./lode-cli.config.json` |
 | `-w`, `--watch`  | Watch source files       | `false`                  |
 | `-s`, `--source` | Source glob pattern      | `**/*.gltf`              |
+| `-o`, `--outputFoldername` | Outputfoldername | `lode-build`           |
+| `--cleanOutputBeforeRun`   | Clean output folder before run | `**/*.gltf` |
 | `-h`, `--help`   | Display help for command |                          |
 
 ### help

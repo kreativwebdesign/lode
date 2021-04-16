@@ -13,6 +13,8 @@ program
   .option("-w, --watch", "Watch source files")
   .option("-s, --source <pattern>", "Source glob pattern")
   .option("-c, --config <configfile>", "Path to config file")
+  .option("-o, --outputFoldername <name>", "Name of the output folder")
+  .option("--clearOutputBeforeRun", "Clean output folder before run")
   .action(app.run);
 
 program.command("init").description("Setup LOD configuration").action(app.init);
