@@ -2,8 +2,12 @@ name: Build LaTeX document
 on:
   push:
     branches: [ main ]
+    paths:
+      - 'documentation/report/**'
   pull_request:
     branches: [ main ]
+    paths:
+      - 'documentation/report/**'
 jobs:
   build_latex:
     runs-on: ubuntu-latest
