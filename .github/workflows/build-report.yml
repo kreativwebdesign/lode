@@ -15,7 +15,6 @@ jobs:
         with:
           working_directory: documentation/report/
           root_file: doc.tex
-          pre_compile: xelatex doc && bibtex doc && makeglossaries doc && xelatex doc
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
@@ -23,10 +22,11 @@ jobs:
           path: documentation/report/doc.pdf
       - name: Rename file to prevent it from being ignored
         run: |
-          mv documentation/report/doc.pdf documentation/report/report.pdf
+          mkdir documentation/report/pdf-output
+          mv documentation/report/doc.pdf documentation/report/pdf-output/report.pdf
       - name: Deploy to separate branch 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.0
         with:
           BRANCH: report
-          FOLDER: documentation/report
+          FOLDER: documentation/report/pdf-output
           CLEAN: true # Automatically remove deleted files from the deploy branch
