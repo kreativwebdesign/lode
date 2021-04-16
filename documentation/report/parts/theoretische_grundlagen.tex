@@ -84,12 +84,16 @@ Um die Oberfläche von Modellen zu definieren wird häufig ein sogenanntes \fgls
 \paragraph{Formate}
 Um ein 3D Modell in einer Anwendung zu verwenden, muss ein entsprechendes Format verwendet werden. Hierfür steht eine Vielzahl von Optionen zur Auswahl. Aufgrund der Menge wird hier jedoch nur oberflächlich auf die bekanntesten Formate eingegangen.
 
+\subparagraph{OBJ}
 Wavefront OBJ ist ein offenes Dateiformat das von Wavefront Technologies 1989 entwickelt wurde. Das Format ist jedoch speichertechnisch ineffizient und verfügt zudem nur über ein limitiertes Feature Set. Desweiteren gibt es keine zentrale Instanz, welche eine Spezifikation liefert und Informationen sind deshalb schwerer zu finden. \cite{objSpec}
+
+\subparagraph{FBX}
 FBX ist ein proprietäres Format, welches von Autodesk verwaltet wird. Das Verwenden von FBX Daten ist jedoch offiziell nur mit einer C++ FBX SDK möglich, welche für das Web nicht geeignet ist. Aufgrund der proprietären Natur gibt es keine Bestrebungen das Format offener zu gestalten.
-Im Kontrast zu diesen beiden Formaten gibt es seit 2015 ein offenes und modernes sowie auf Speicherplatz Reduktion fokussiertes Format: glTF. Dieses Format wird von der Khronos Gruppe entwickelt und wird in dieser Arbeit als Austauschformat verwendet. \cite{gltf1Spec}
 
 \subparagraph{glTF}
-Die meisten 3D-Grafikprogramme wie Blender (.blend), Maya (.ma) oder Lightwave3D (.lws) verwenden ihre eigenen proprietären Dateiformate. Deswegen brauchte es für jedes Eingangsformat für jedes Ausgangsformat einen \e{converter}, wie in Abbildung \ref{fig:contentPipelineWithoutGltf} ersichtlich.
+Seit 2015 ein offenes und modernes sowie auf Speicherplatz Reduktion fokussiertes Format: glTF. Dieses Format wird von der Khronos Gruppe entwickelt. \cite{gltf1Spec} In dieser Arbeit wird es als Austauschformat verwendet, deshalb wird im folgenden genauer auf das Format eingegangen.
+
+Die meisten 3D-Grafikprogramme wie Blender (.blend) verwenden ihre eigenen Dateiformate. Diese Datiformate sind jedoch für den Einsatz in einer Applikation ungeeignet da sie insbesondere nicht für die Laufzeitperformanz optimiert sind. Deswegen brauchte es für jedes Eingangsformat für jedes Ausgangsformat einen \e{converter}, wie in Abbildung \ref{fig:contentPipelineWithoutGltf} ersichtlich.
 
 \begin{figure}[H]
   \centering
@@ -99,7 +103,7 @@ Die meisten 3D-Grafikprogramme wie Blender (.blend), Maya (.ma) oder Lightwave3D
 \end{figure}
 
 Durch die immer breiter werdende Nachfrage nach 3D-Applikationen wurde ein Format benötigt, dass zum einen Applikationsunabhängig verwendet und zum anderen performant im Web eingesetzt werden kann. \cite{gltf1Spec}
-Durch diese Abstraktion können hunderte \e{converter} vermieden werden und nur wenige, sehr spezifische Dateiformate benötigen noch einen einzigen \e{converter}. Diese neue Pipeline ist in Abbildung \ref{fig:contentPipelineWithGltf} dargestellt. \cite{gltf1Spec}
+Durch diese Abstraktion kann eine Vielzahl \e{converter} vermieden werden und nur wenige, sehr spezifische Dateiformate benötigen noch einen einzigen \e{converter}. Diese neue Pipeline ist in Abbildung \ref{fig:contentPipelineWithGltf} dargestellt. \cite{gltf1Spec}
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\columnwidth]{grundlagen/gltf/contentPipelineWithGltf.png}
