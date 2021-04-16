@@ -9,6 +9,11 @@ const createFolderPath = (dirname) => {
   fs.mkdirSync(dirname, { recursive: true });
 };
 
+export const getFolderPath = (filePath) => path.dirname(filePath);
+export const getFilename = (filePath) => path.basename(filePath);
+export const getFilenameWithoutExtension = (filename) =>
+  filename.split(".").slice(0, -1).join(".");
+
 export const createBaseFolderPathForFile = (filePath) => {
   const dirname = path.dirname(filePath);
   if (!fileExists(dirname)) {
@@ -19,4 +24,8 @@ export const createBaseFolderPathForFile = (filePath) => {
 export const createFile = (filePath, content) => {
   createBaseFolderPathForFile(filePath);
   fs.writeFileSync(filePath, content);
+};
+
+export const rmDir = (path) => {
+  fs.rmSync(path, { recursive: true, force: true });
 };
