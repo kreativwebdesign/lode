@@ -4,34 +4,12 @@
     {
       "name": "Default",
       "tools": [
-        "latexmk",
-        "bibtex",
-        "latexmk",
-        "latexmk"
-      ]
-    },
-    {
-      "name": "Full",
-      "tools": [
-        "xelatex",
-        "bibtex",
         "clean-glsdefs",
-        "makeglossaries",
-        "xelatex",
-        "xelatex",
+        "latexmk",
       ]
     },
   ],
   "latex-workshop.latex.tools": [
-    {
-      "name": "xelatex",
-      "command": "xelatex",
-      "args": [
-        "--synctex=1",
-        "-interaction=nonstopmode",
-        "%DOC%"
-      ]
-    },
     {
       "name": "latexmk",
       "command": "latexmk",
@@ -46,33 +24,10 @@
       "env": {}
     },
     {
-      "name": "makeindex",
-      "command": "makeindex",
-      "args": [
-        "%DOCFILE%"
-      ],
-      "env": {}
-    },
-    {
-      "name": "bibtex",
-      "command": "bibtex",
-      "args": [
-        "%DOCFILE%"
-      ],
-      "env": {}
-    },
-    {
-      "name": "makeglossaries",
-      "command": "makeglossaries",
-      "args": [
-        "%DOCFILE%"
-      ],
-      "env": {}
-    },
-    {
       "name": "clean-glsdefs",
       "command": "rm",
       "args": [
+        "-f",
         "%DOC%.glsdefs"
       ]
     },
