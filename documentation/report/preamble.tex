@@ -110,3 +110,33 @@
   \gls{#1}
   \footnote{#2}
 }}
+
+\newcommand{\fglspl}[2]{{
+  \newglossaryentry{#1}
+  {
+    name={#1},
+    description={{#2}}
+  }
+  \glspl{#1}
+  \footnote{#2}
+}}
+
+\newcommand{\fGls}[2]{{
+  \newglossaryentry{#1}
+  {
+    name={#1},
+    description={{#2}}
+  }
+  \Gls{#1}
+  \footnote{#2}
+}}
+
+\newcommand{\fGlspl}[2]{{
+  \newglossaryentry{#1}
+  {
+    name={#1},
+    description={{#2}}
+  }
+  \Glspl{#1}
+  \footnote{#2}
+}}
