@@ -21,13 +21,9 @@ jobs:
         with:
           name: report
           path: documentation/report/doc.pdf
-      - name: Push to report branch
-        run: |
-          cd documentation/report
-          mkdir deploy-path
-          mv doc.pdf deploy-path/doc.pdf
-          cd deploy-path
-          git init
-          git add .
-          git commit -m "Deploy Report"
-          git push --force "https://github.com/kreativwebdesign/lode" main:report > /dev/null 2>&1
+      - name: Deploy to separate branch 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.0
+        with:
+          BRANCH: report
+          FOLDER: documentation/report/
+          CLEAN: true # Automatically remove deleted files from the deploy branch
