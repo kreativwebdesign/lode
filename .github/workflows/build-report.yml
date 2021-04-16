@@ -26,5 +26,5 @@ jobs:
         env:
           REPO: self
           BRANCH: report
-          FOLDER: documentation/report
+          FOLDER: documentation/report/doc.pdf
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
