@@ -1,0 +1,184 @@
+{
+  "asset": {
+    "generator": "glTF-Transform v0.9.9",
+    "version": "2.0"
+  },
+  "accessors": [
+    {
+      "type": "VEC3",
+      "componentType": 5126,
+      "count": 79086,
+      "max": [
+        8.66904354095459,
+        1.3194634914398193,
+        6.214841365814209
+      ],
+      "min": [
+        -8.66904354095459,
+        -18.225360870361328,
+        -0.7123635411262512
+      ],
+      "normalized": false,
+      "bufferView": 0,
+      "byteOffset": 0
+    },
+    {
+      "type": "VEC3",
+      "componentType": 5126,
+      "count": 79086,
+      "max": [
+        0.999969482421875,
+        0.999755859375,
+        0.999969482421875
+      ],
+      "min": [
+        -0.999969482421875,
+        -0.999847412109375,
+        -0.999969482421875
+      ],
+      "normalized": false,
+      "bufferView": 0,
+      "byteOffset": 12
+    },
+    {
+      "type": "VEC2",
+      "componentType": 5126,
+      "count": 79086,
+      "max": [
+        0.980883002281189,
+        0.9514200091362
+      ],
+      "min": [
+        0.022678999230265617,
+        0.052069008350372314
+      ],
+      "normalized": false,
+      "bufferView": 0,
+      "byteOffset": 24
+    },
+    {
+      "type": "SCALAR",
+      "componentType": 5125,
+      "count": 416682,
+      "max": [
+        79085
+      ],
+      "min": [
+        0
+      ],
+      "normalized": false,
+      "bufferView": 1,
+      "byteOffset": 0
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 2530752,
+      "byteStride": 32,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 2530752,
+      "byteLength": 1666728,
+      "target": 34963
+    }
+  ],
+  "buffers": [
+    {
+      "uri": "dragon.bin",
+      "byteLength": 4197480
+    }
+  ],
+  "materials": [
+    {
+      "name": "(null).001",
+      "alphaMode": "OPAQUE",
+      "doubleSided": true,
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.800000011920929,
+          0.800000011920929,
+          0.800000011920929,
+          1
+        ],
+        "roughnessFactor": 0.5,
+        "metallicFactor": 0
+      },
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Dragon.001",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "mode": 4,
+          "material": 0,
+          "indices": 3
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "Light",
+      "translation": [
+        4.076245307922363,
+        5.903861999511719,
+        -1.0054539442062378
+      ],
+      "rotation": [
+        0.16907575726509094,
+        0.7558803558349609,
+        -0.27217137813568115,
+        0.570947527885437
+      ]
+    },
+    {
+      "name": "Camera",
+      "translation": [
+        7.358891487121582,
+        4.958309173583984,
+        6.925790786743164
+      ],
+      "rotation": [
+        0.483536034822464,
+        0.33687159419059753,
+        -0.20870360732078552,
+        0.7804827094078064
+      ]
+    },
+    {
+      "name": "dragon",
+      "rotation": [
+        0.7071068286895752,
+        0,
+        0,
+        0.7071067094802856
+      ],
+      "mesh": 0
+    }
+  ],
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0,
+        1,
+        2
+      ]
+    }
+  ]
+}
