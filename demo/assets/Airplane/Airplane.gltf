@@ -34,7 +34,8 @@
     {
       "mesh": 0,
       "name": "11805_airplane_v2_L2",
-      "rotation": [0.7071068286895752, 0, 0, 0.7071067094802856]
+      "rotation": [0.7071068286895752, 0, 0, 0.7071067094802856],
+      "scale": [0.005, 0.005, 0.005]
     }
   ],
   "materials": [
@@ -209,7 +210,7 @@
   "buffers": [
     {
       "byteLength": 2599400,
-      "uri": "Airplane.bin"
+      "uri": "airplane.bin"
     }
   ]
 }

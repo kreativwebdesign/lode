@@ -22,54 +22,41 @@ camera.position.set(0, 0, 25);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 
+const optimizedGltfBasePath = "./lode-build/assets/";
+const nonOptimizedGltfBasePath = "assets/";
+
+const lods = [
+  { name: "duck", position: [5, 0, 0] },
+  { name: "airplane", position: [-5, 0, 0] },
+  { name: "camera", position: [0, 5, 0] },
+  { name: "dragon", position: [0, -5, 10] },
+];
+
 const setupOptimizedScene = async (scene) => {
-  const duckLod = await getLod(2, "../lode-build/assets/Duck", "duck");
-  scene.add(duckLod);
-
-  const airplaneLod = await getLod(
-    2,
-    "../lode-build/assets/Airplane",
-    "airplane"
+  const gltfLods = await Promise.all(
+    lods.map((lod) =>
+      getLod(2, `${optimizedGltfBasePath}${lod.name}`, lod.name)
+    )
   );
-  scene.add(airplaneLod);
-  airplaneLod.levels.forEach((level) => {
-    level.object.position.set(5, 0, 0);
-    level.object.scale.set(0.01, 0.01, 0.01);
-  });
 
-  const cameraLod = await getLod(2, "../lode-build/assets/Camera", "camera");
-  scene.add(cameraLod);
-  cameraLod.levels.forEach((level) => {
-    level.object.position.set(-5, 0, 0);
-    level.object.scale.set(1, 1, 1);
-  });
-
-  const dragonLod = await getLod(2, "../lode-build/assets/Dragon", "dragon");
-  scene.add(dragonLod);
-  dragonLod.levels.forEach((level) => {
-    level.object.position.set(0, -5, 0);
-    level.object.scale.set(0.5, 0.5, 0.5);
+  gltfLods.forEach((lod, i) => {
+    scene.add(lod);
+    lod.levels.forEach((level) => {
+      level.object.position.set(...lods[i].position);
+    });
   });
 };
 
 const setupNonOptimizedScene = async (scene) => {
-  const duckGltf = await loadGltfAsync("assets/Duck/duck.gltf");
-  scene.add(duckGltf.scene);
-
-  const airplaneGltf = await loadGltfAsync("assets/Airplane/Airplane.gltf");
-  scene.add(airplaneGltf.scene);
-  airplaneGltf.scene.position.set(5, 0, 0);
-  airplaneGltf.scene.scale.set(0.01, 0.01, 0.01);
-
-  const cameraGltf = await loadGltfAsync("assets/Camera/camera.gltf");
-  scene.add(cameraGltf.scene);
-  cameraGltf.scene.position.set(-5, 0, 0);
-  cameraGltf.scene.scale.set(1, 1, 1);
-
-  const dragonGltf = await loadGltfAsync("assets/Dragon/dragon.gltf");
-  scene.add(dragonGltf.scene);
-  dragonGltf.scene.position.set(0, -5, 0);
-  dragonGltf.scene.scale.set(0.5, 0.5, 0.5);
+  const gltfs = await Promise.all(
+    lods.map((lod) =>
+      loadGltfAsync(`${nonOptimizedGltfBasePath}${lod.name}/${lod.name}.gltf`)
+    )
+  );
+  gltfs.forEach((gltf, i) => {
+    scene.add(gltf.scene);
+    gltf.scene.position.set(...lods[i].position);
+  });
 };
 
 // CreateScene function that creates and return the scene
@@ -87,7 +74,7 @@ const createScene = async function () {
   if (useOptimized) {
     await setupOptimizedScene(scene);
   } else {
-    setupNonOptimizedScene(scene);
+    await setupNonOptimizedScene(scene);
   }
 
   performance.mark("gltfLoadEnd");
