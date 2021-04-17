@@ -65,9 +65,24 @@ Anschliessend wird die Varianz der \e{\gls{FPS}} für die unoptimierten respekti
 \section{Vergleich LOD Systeme}
 Die verschiedenen LOD Systeme sowie ihre Vor- und Nachteile werden in \autoref{chap:differentLodApproaches} erläutert. In diesem Schritt wird erläutert, welche Art LOD System in dieser Arbeit eingesetzt werden soll.
 
-Insbesondere unter Berücksichtigung der Tatsache, dass Laufzeitperformanz essentiell für Web Anwendungen ist wurde entschieden nicht auf kontinuerliche LOD Systeme zu setzen.
-Zudem wurde entschieden, kein hierarchisches LOD System zu entwickeln, um die Integration des Tools für die Entwickler einer Webanwendung möglichst einfach zu gestalten.
+Insbesondere unter Berücksichtigung der Tatsache, dass Laufzeitperformanz essentiell für Webanwendungen ist, wurde entschieden nicht auf kontinuerliche LOD Systeme zu setzen.
+Zudem wurde entschieden kein hierarchisches LOD System zu entwickeln, um die Integration des Tools für die Entwickler einer Webanwendung möglichst einfach zu gestalten.
 Das diskrete LOD System ist für Grafiker und Entwickler die einfachste zu verwenden und deckt somit auch die breiteste Benutzerbasis und die meisten Anwendungsfälle ab. Aufgrund dessen, wird im Rahmen dieser Arbeit ein Algorithmus dieses Systems entwickelt und in den Entwicklungsprozess integriert.
+Eine Übersicht über die verschiedenen Kriterien kann in Tabelle \ref{table:lodSystemComparison} gefunden werden.
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{||p{8cm} c c c||} 
+  \hline
+  Kriterium & DLOD & CLOD & HLOD \\
+  Auswirkung auf Downloadgrösse & mittel & klein & klein \\ 
+  Auswirkung auf Laufzeitverhalten & klein & mittel & klein \\
+  Integration in bestehende Arbeitsabläufe & einfach & einfach & umständlich \\
+  \hline
+  \end{tabular}
+  \caption{Vergleichsmatrix für LOD Systeme}
+  \label{table:lodSystemComparison}
+\end{table}
 
 \section{Vergleich LOD Algorithmen}
 Ein LOD Algorithmus hat das Ziel für ein gegebenes Modell eine vereinfachte Darstellung zu finden, welche das Original ausreichend annähert.
