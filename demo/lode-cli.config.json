@@ -2,5 +2,5 @@
   "source": "assets/**/*.gltf",
   "outputFoldername": "lode-build",
   "clearOutputBeforeRun": "true",
-  "watch": true
+  "watch": false
 }
