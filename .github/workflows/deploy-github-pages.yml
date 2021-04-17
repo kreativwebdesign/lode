@@ -5,9 +5,9 @@ name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build-and-deploy:
@@ -19,10 +19,10 @@ jobs:
           persist-credentials: false
 
       - name: Install CLI 🔧
-          run: |
-            cd cli
-            yarn install --frozen-lockfile
-            cd ..
+        run: |
+          cd cli
+          yarn install --frozen-lockfile
+          cd ..
 
       - name: Install and Build 🔧
         run: |
