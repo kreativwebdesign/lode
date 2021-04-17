@@ -18,6 +18,12 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Install CLI 🔧
+          run: |
+            cd cli
+            yarn install --frozen-lockfile
+            cd ..
+
       - name: Install and Build 🔧
         run: |
           cd demo
