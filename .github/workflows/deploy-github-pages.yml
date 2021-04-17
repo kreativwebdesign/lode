@@ -28,6 +28,7 @@ jobs:
         run: |
           cd demo
           yarn install --frozen-lockfile
+          yarn lode-cli
           yarn build
           yarn lode-cli
       - name: Deploy 🚀
