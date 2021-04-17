@@ -1,10 +1,8 @@
 import * as THREE from "./_snowpack/pkg/three.js";
 import { OrbitControls } from "./_snowpack/pkg/three/examples/jsm/controls/OrbitControls.js";
-import { getLod } from "./src/gltf-loader.js";
+import { loadGltfs } from "./src/gltf-loader.js";
+import gltfs from "./src/gltfs.js";
 import { measureFPS } from "./src/measure-fps.js";
-import loadGltfAsync from "./src/async-gltf-loader.js";
-
-const useOptimized = window.location.search.includes("optimize");
 
 const renderer = new THREE.WebGLRenderer();
 
@@ -18,59 +16,9 @@ const camera = new THREE.PerspectiveCamera(
   1000
 );
 
-camera.position.set(0, 0, 25);
+camera.position.set(0, 5, 10);
 
 const controls = new OrbitControls(camera, renderer.domElement);
-
-const setupOptimizedScene = async (scene) => {
-  const duckLod = await getLod(2, "../lode-build/assets/Duck", "duck");
-  scene.add(duckLod);
-
-  const airplaneLod = await getLod(
-    2,
-    "../lode-build/assets/Airplane",
-    "airplane"
-  );
-  scene.add(airplaneLod);
-  airplaneLod.levels.forEach((level) => {
-    level.object.position.set(5, 0, 0);
-    level.object.scale.set(0.01, 0.01, 0.01);
-  });
-
-  const cameraLod = await getLod(2, "../lode-build/assets/Camera", "camera");
-  scene.add(cameraLod);
-  cameraLod.levels.forEach((level) => {
-    level.object.position.set(-5, 0, 0);
-    level.object.scale.set(1, 1, 1);
-  });
-
-  const dragonLod = await getLod(2, "../lode-build/assets/Dragon", "dragon");
-  scene.add(dragonLod);
-  dragonLod.levels.forEach((level) => {
-    level.object.position.set(0, -5, 0);
-    level.object.scale.set(0.5, 0.5, 0.5);
-  });
-};
-
-const setupNonOptimizedScene = async (scene) => {
-  const duckGltf = await loadGltfAsync("assets/Duck/duck.gltf");
-  scene.add(duckGltf.scene);
-
-  const airplaneGltf = await loadGltfAsync("assets/Airplane/Airplane.gltf");
-  scene.add(airplaneGltf.scene);
-  airplaneGltf.scene.position.set(5, 0, 0);
-  airplaneGltf.scene.scale.set(0.01, 0.01, 0.01);
-
-  const cameraGltf = await loadGltfAsync("assets/Camera/camera.gltf");
-  scene.add(cameraGltf.scene);
-  cameraGltf.scene.position.set(-5, 0, 0);
-  cameraGltf.scene.scale.set(1, 1, 1);
-
-  const dragonGltf = await loadGltfAsync("assets/Dragon/dragon.gltf");
-  scene.add(dragonGltf.scene);
-  dragonGltf.scene.position.set(0, -5, 0);
-  dragonGltf.scene.scale.set(0.5, 0.5, 0.5);
-};
 
 // CreateScene function that creates and return the scene
 const createScene = async function () {
@@ -84,12 +32,8 @@ const createScene = async function () {
   const directionalLight = new THREE.DirectionalLight(0xffffff, 5);
   scene.add(directionalLight);
 
-  if (useOptimized) {
-    await setupOptimizedScene(scene);
-  } else {
-    setupNonOptimizedScene(scene);
-  }
-
+  console.log(gltfs);
+  await loadGltfs(scene, gltfs);
   performance.mark("gltfLoadEnd");
   performance.measure("modelLoading", "gltfLoadStart", "gltfLoadEnd");
   // Return the created scene

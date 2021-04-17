@@ -5,8 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "snowpack dev",
-    "build": "snowpack build",
-    "lode-cli": "node ../cli/index.js"
+    "build": "snowpack build"
   },
   "dependencies": {
     "babylonjs": "^4.2.0",
