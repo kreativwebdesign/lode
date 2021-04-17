@@ -74,6 +74,17 @@ Ein LOD Algorithmus hat das Ziel für ein gegebenes Modell eine vereinfachte Dar
 Diese Art von Problem ist in der Literatur als \e{Surface Simplification} bekannt.
 Die wohl weitverbreiteste Art ist die von Garland und Heckbert 1997 definierte \e{Surface Simplification using Quadric Error Metrics}.
 \cite{surfaceSimplificationUsingQuadricErrorMetrices}
+Im folgenden Abschnitt wird auf verschiedene Lösungsansätze eingegangen.
+
+\paragraph{Vertex Dezimierung}
+Algorithmen dieser Kategorie entfernen jeweils einen Vertex und triangluieren das entstehende Loch neu.
+Eine weitere Möglichkeit ist das \e{Vertex Clustering}, hierbei wird ein Modell in verschiedene Gitterzellen aufgeteilt. Die Punkte innerhalb einer Gitterzelle werden dann in einen einzigen Punkten zusammengelegt.
+
+\paragraph{Edge Collapse}
+Hierbei werden iterativ Edges entfernt und die beiden Vertices zu einem Punkt zusammengelegt.
+
+\paragraph{Face Collapse}
+Bei dieser Variante werden jeweils Flächen entfernt und die umliegenden Flächen zusammengelegt.
 
 \section{Pipeline Integration}
 Die Lösung soll in eine wiederverwendbare und konfigurierbare Pipeline integriert werden.
