@@ -8,41 +8,11 @@
         {
             "name" : "Scene",
             "nodes" : [
-                0,
-                1,
-                2
+                0
             ]
         }
     ],
     "nodes" : [
-        {
-            "name" : "Light",
-            "rotation" : [
-                0.16907575726509094,
-                0.7558803558349609,
-                -0.27217137813568115,
-                0.570947527885437
-            ],
-            "translation" : [
-                4.076245307922363,
-                5.903861999511719,
-                -1.0054539442062378
-            ]
-        },
-        {
-            "name" : "Camera",
-            "rotation" : [
-                0.483536034822464,
-                0.33687159419059753,
-                -0.20870360732078552,
-                0.7804827094078064
-            ],
-            "translation" : [
-                7.358891487121582,
-                4.958309173583984,
-                6.925790786743164
-            ]
-        },
         {
             "mesh" : 0,
             "name" : "airplane",
@@ -51,6 +21,11 @@
                 0,
                 0,
                 0.7071067094802856
+            ],
+            "scale" : [
+                0.004999999888241291,
+                0.004999999888241291,
+                0.004999999888241291
             ]
         }
     ],
@@ -62,7 +37,7 @@
                 0,
                 0
             ],
-            "name" : "airplane_body.001",
+            "name" : "airplane_body.002",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 0,
@@ -79,7 +54,7 @@
                 0,
                 0
             ],
-            "name" : "airplane_wings.001",
+            "name" : "airplane_wings.002",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 1,
@@ -92,7 +67,7 @@
     ],
     "meshes" : [
         {
-            "name" : "11805_airplane_v2_L2.001",
+            "name" : "11805_airplane_v2_L2.002",
             "primitives" : [
                 {
                     "attributes" : {
@@ -139,29 +114,29 @@
         {
             "bufferView" : 0,
             "componentType" : 5126,
-            "count" : 37649,
+            "count" : 42278,
             "max" : [
-                1.4594392776489258,
-                2.2861814498901367,
-                3.4257936477661133
+                319.1271057128906,
+                499.906005859375,
+                749.0983276367188
             ],
             "min" : [
-                -1.4729706048965454,
-                0.13358841836452484,
-                -3.443948268890381
+                -322.0859069824219,
+                29.211000442504883,
+                -753.068115234375
             ],
             "type" : "VEC3"
         },
         {
             "bufferView" : 1,
             "componentType" : 5126,
-            "count" : 37649,
+            "count" : 42278,
             "type" : "VEC3"
         },
         {
             "bufferView" : 2,
             "componentType" : 5126,
-            "count" : 37649,
+            "count" : 42278,
             "type" : "VEC2"
         },
         {
@@ -173,29 +148,29 @@
         {
             "bufferView" : 4,
             "componentType" : 5126,
-            "count" : 25409,
+            "count" : 27460,
             "max" : [
-                3.598931074142456,
-                1.1095384359359741,
-                1.8307374715805054
+                786.957275390625,
+                242.61630249023438,
+                400.31671142578125
             ],
             "min" : [
-                -3.6124579906463623,
-                0.341761976480484,
-                -0.7588083148002625
+                -789.9151000976562,
+                74.7311019897461,
+                -165.9241943359375
             ],
             "type" : "VEC3"
         },
         {
             "bufferView" : 5,
             "componentType" : 5126,
-            "count" : 25409,
+            "count" : 27460,
             "type" : "VEC3"
         },
         {
             "bufferView" : 6,
             "componentType" : 5126,
-            "count" : 25409,
+            "count" : 27460,
             "type" : "VEC2"
         },
         {
@@ -208,48 +183,48 @@
     "bufferViews" : [
         {
             "buffer" : 0,
-            "byteLength" : 451788,
+            "byteLength" : 507336,
             "byteOffset" : 0
         },
         {
             "buffer" : 0,
-            "byteLength" : 451788,
-            "byteOffset" : 451788
+            "byteLength" : 507336,
+            "byteOffset" : 507336
         },
         {
             "buffer" : 0,
-            "byteLength" : 301192,
-            "byteOffset" : 903576
+            "byteLength" : 338224,
+            "byteOffset" : 1014672
         },
         {
             "buffer" : 0,
             "byteLength" : 354024,
-            "byteOffset" : 1204768
+            "byteOffset" : 1352896
         },
         {
             "buffer" : 0,
-            "byteLength" : 304908,
-            "byteOffset" : 1558792
+            "byteLength" : 329520,
+            "byteOffset" : 1706920
         },
         {
             "buffer" : 0,
-            "byteLength" : 304908,
-            "byteOffset" : 1863700
+            "byteLength" : 329520,
+            "byteOffset" : 2036440
         },
         {
             "buffer" : 0,
-            "byteLength" : 203272,
-            "byteOffset" : 2168608
+            "byteLength" : 219680,
+            "byteOffset" : 2365960
         },
         {
             "buffer" : 0,
             "byteLength" : 227424,
-            "byteOffset" : 2371880
+            "byteOffset" : 2585640
         }
     ],
     "buffers" : [
         {
-            "byteLength" : 2599304,
+            "byteLength" : 2813064,
             "uri" : "airplane.bin"
         }
     ]
