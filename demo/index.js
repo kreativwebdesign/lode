@@ -2,6 +2,9 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { getLod } from "./src/gltf-loader";
 import { measureFPS } from "./src/measure-fps";
+import loadGltfAsync from "./src/async-gltf-loader";
+
+const useOptimized = window.location.search.includes("optimize");
 
 const renderer = new THREE.WebGLRenderer();
 
@@ -19,18 +22,7 @@ camera.position.set(0, 0, 10);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 
-// CreateScene function that creates and return the scene
-const createScene = async function () {
-  const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0xbbbbbb);
-
-  performance.mark("gltfLoadStart");
-
-  const light = new THREE.AmbientLight(0xffffff);
-  scene.add(light);
-  const directionalLight = new THREE.DirectionalLight(0xffffff, 5);
-  scene.add(directionalLight);
-
+const setupOptimizedScene = async (scene) => {
   const duckLod = await getLod(2, "../lode-build/assets/Duck", "duck");
   scene.add(duckLod);
 
@@ -58,6 +50,45 @@ const createScene = async function () {
     level.object.position.set(0, -5, 0);
     level.object.scale.set(0.5, 0.5, 0.5);
   });
+};
+
+const setupNonOptimizedScene = async (scene) => {
+  const duckGltf = await loadGltfAsync("assets/Duck/duck.gltf");
+  scene.add(duckGltf.scene);
+
+  const airplaneGltf = await loadGltfAsync("assets/Airplane/Airplane.gltf");
+  scene.add(airplaneGltf.scene);
+  airplaneGltf.scene.position.set(5, 0, 0);
+  airplaneGltf.scene.scale.set(0.01, 0.01, 0.01);
+
+  const cameraGltf = await loadGltfAsync("assets/Camera/camera.gltf");
+  scene.add(cameraGltf.scene);
+  cameraGltf.scene.position.set(-5, 0, 0);
+  cameraGltf.scene.scale.set(1, 1, 1);
+
+  const dragonGltf = await loadGltfAsync("assets/Dragon/dragon.gltf");
+  scene.add(dragonGltf.scene);
+  dragonGltf.scene.position.set(0, -5, 0);
+  dragonGltf.scene.scale.set(0.5, 0.5, 0.5);
+};
+
+// CreateScene function that creates and return the scene
+const createScene = async function () {
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0xbbbbbb);
+
+  performance.mark("gltfLoadStart");
+
+  const light = new THREE.AmbientLight(0xffffff);
+  scene.add(light);
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 5);
+  scene.add(directionalLight);
+
+  if (useOptimized) {
+    await setupOptimizedScene(scene);
+  } else {
+    setupNonOptimizedScene(scene);
+  }
 
   performance.mark("gltfLoadEnd");
   performance.measure("modelLoading", "gltfLoadStart", "gltfLoadEnd");

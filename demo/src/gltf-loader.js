@@ -1,5 +1,4 @@
 import * as THREE from "three";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import loadGltfAsync from "./async-gltf-loader";
 
 export const getLod = async (levelCount, basePath, fileName) => {
