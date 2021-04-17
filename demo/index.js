@@ -18,18 +18,20 @@ const camera = new THREE.PerspectiveCamera(
   1000
 );
 
-camera.position.set(0, 0, 25);
+camera.position.set(0, 0, 30);
 
 const controls = new OrbitControls(camera, renderer.domElement);
+controls.autoRotate = true;
+controls.autoRotateSpeed = 4;
 
 const optimizedGltfBasePath = "./lode-build/assets/";
 const nonOptimizedGltfBasePath = "assets/";
 
 const lods = [
-  { name: "duck", position: [5, 0, 0] },
-  { name: "airplane", position: [-5, 0, 0] },
-  { name: "camera", position: [0, 5, 0] },
-  { name: "dragon", position: [0, -5, 10] },
+  { name: "duck", position: [20, 0, 0] },
+  { name: "airplane", position: [-20, 0, 0] },
+  { name: "camera", position: [0, 0, 20] },
+  { name: "dragon", position: [0, 0, -20] },
 ];
 
 const setupOptimizedScene = async (scene) => {
@@ -41,9 +43,7 @@ const setupOptimizedScene = async (scene) => {
 
   gltfLods.forEach((lod, i) => {
     scene.add(lod);
-    lod.levels.forEach((level) => {
-      level.object.position.set(...lods[i].position);
-    });
+    lod.position.set(...lods[i].position);
   });
 };
 
