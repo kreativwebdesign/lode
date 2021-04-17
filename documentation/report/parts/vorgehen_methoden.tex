@@ -9,7 +9,7 @@
 \section{Nutzen LOD}
 Um den Nutzen von LOD quantifizieren zu können, wird in einer ersten Phase ein Benchmark aufgestellt.
 Ziel ist es, das Laufzeitverhalten unter Einsatz eines optimierten Modells zu analysieren und somit den maximal möglichen Einfluss von LOD auf die Leistung klassifizieren zu können.
-Angestrebt werden sollten 60 \fgls{FPS}{Frames per Second. Bilder pro Sekunde. Gängige Art, die Performanz der \gls{Rendering Engine} zu messen}. Wenn die unoptimierte Variante diesen Wert erreicht oder gar übersteigt, ist eine Optimierung nicht notwendig. Erreicht die optimierte Variante diesen Wert nicht, ist die Szenerie nach wie vor zu komplex. Ziel der Arbeit ist es, einen Algorithmus zu entwickeln, der für Szenarien unter 60 \e{\gls{FPS}} diese erhöht und im Idealfall auf ebendiesen Wert hebt.
+Angestrebt werden 60 \fgls{FPS}{Frames per Second. Bilder pro Sekunde. Gängige Art, die Performanz der \gls{Rendering Engine} zu messen}. Wenn die unoptimierte Variante diesen Wert erreicht oder gar übersteigt, ist eine Optimierung nicht notwendig. Erreicht die optimierte Variante diesen Wert nicht, ist die Szenerie nach wie vor zu komplex. Ziel der Arbeit ist es, einen Algorithmus zu entwickeln, der für Szenarien unter 60 \e{\gls{FPS}} diese erhöht und im Idealfall auf ebendiesen Wert hebt.
 
 \subsection{Definition Benchmark}
 In diesem Abschnitt werden die verschiedenen erwägten Optionen erläutert und die Abgrenzungen aufgezeigt.
@@ -19,21 +19,25 @@ Um den Umfang des Benchmarks überschaubar zu halten, wurde ausschliesslich ein 
 Google Chrome basiert auf \fgls{Chromium}{Open Source Browser-Projekt. Grundlage von Browsern wie Google Chrome, Edge oder Opera}, dieselbe Engine, welche auch Microsoft Edge oder Opera verwenden.
 Einen Benchmark basierend auf Google Chrome liefert somit auch Indizien für diese beiden Browser, auch wenn gewisse Abweichungen möglich sind.
 Neben dem Marktführer Chrome sind Mozilla Firefox oder Safari von Apple ebenfalls Optionen. Jedoch wurde primär aufgrund des Marktanteils von total rund 70\% \cite{browserUsage} zugunsten von Google Chrome entschieden.
+Die getroffenen Aussagen bezüglich Laufzeitverhalten behalten ihre Gültigkeit auch für andere Browser.
 
 \paragraph{Automation}
 Um die Tests durchzuführen, wird ein Testautomationstool benötigt; unter anderem der Einsatz von Selenium wurde in Erwägung gezogen.
 Der Vorteil von Selenium ist insbesondere, dass der Benchmark für weitere Browser ausgeweitet werden könnte.
-Da jedoch das Analysieren der GPU Daten stark vom System abhängig ist und dafür zusätzliche Komplexität notwendig wäre, wird in diesem Benchmark die im Google Chrome integrierten Chrome DevTools eingesetzt.
-Selenium bietet zurzeit eine suboptimale Integration für das \emph{Chrome DevTools Protocol}.
-\fgls{Puppeteer}{NodeJS Library, die eine API anbietet zum steuern von \gls{Chromium} oder Chrome über das Chrome DevTools Protocol}, eine weitere Option für die Automation, ist eine Bibliothek, die eine vereinfachte Schnittstelle zu einer Headless Chrome Instanz bietet.
-Sie wird zudem direkt von Google entwickelt und bietet somit eine stabile Grundlage zur Kommunikation mit den DevTools.
+Da jedoch das Analysieren der GPU Daten stark vom System abhängig ist und dafür zusätzliche Komplexität notwendig wäre, wird in diesem Benchmark die im Google Chrome integrierten \e{Chrome DevTools} eingesetzt.
+Selenium bietet zurzeit eine suboptimale Integration für das \e{Chrome DevTools Protocol}.
+Eine unabhängige Arbeit definierte 2017 einen vergleichbaren Benchmark um die Performanz von Three.js und Babylon.js in einem spezifischen Anwendungsgebiet zu vergleichen. Der Benchmark misst die Systemdaten unabhängig von der Browser Instanz. \cite{performanceComparisonBabylonThreejs}
+Um mögliche Diskrepanzen zwischen Systemen möglichst gering zu halten wurde jedoch entschieden auf die bewährte Lösung von Google Chrome zu setzen.
+\fgls{Puppeteer}{Node.js Library, die eine API anbietet zum Steuern von \gls{Chromium} oder Chrome über das Chrome DevTools Protocol}, eine weitere Option für die Automation, ist eine Bibliothek, die eine vereinfachte Schnittstelle zu einer Headless Chrome Instanz bietet.
+Sie wird zudem direkt von Google entwickelt und bietet somit eine stabile Grundlage zur Kommunikation mit den \e{Chrome DevTools}.
 
 \paragraph{Profiling}
-Die Chrome DevTools erlauben es, ein detailliertes Profil einer Applikation anzulegen.
-Im Profil befinden sich Informationen zu CPU/GPU Auslastung aber auch generelle Informationen bzgl. der \gls{Rendering Engine} werden gesammelt.
+Die \e{Chrome DevTools} erlauben es, ein detailliertes Laufzeitprofil einer Applikation anzulegen.
+Im Profil befinden sich Informationen zu CPU- und GPU-Auslastung aber auch generelle Informationen bzgl. der \gls{Rendering Engine} werden gesammelt.
 Die Analyse dieser Daten ermöglicht es, eine Aussage zum Laufzeitverhalten einer Applikation zu tätigen.
 
-\paragraph{Testablauf}
+\paragraph{Testaufbau}
+Derselbe Testablauf wird sowohl für die optimierte als auch für die unoptimierte Version verwendet.
 Bei einem Testablauf werden folgende Schritte durchlaufen:
 
 \begin{enumerate}
@@ -47,15 +51,29 @@ Bei einem Testablauf werden folgende Schritte durchlaufen:
 
 Der Test erfasst kontinuierlich die \e{\gls{FPS}}. Zudem wird aus dem \emph{Profiling} eine Kennzahl bzgl. der GPU Nutzung berechnet.
 
+\paragraph{Aufbau Testapplikation}
+Die Testapplikation stellt eine komplexe Szenerie dar. Der Betrachter fliegt während dem Ablauf kontinuierlich über die Szenerie. Dies stellt die optimalen Bedingungen für den Einsatz von LOD Artefakten dar.
+
+\paragraph{Testumgebung}
+Um während den Tests möglichst faire Bedingungen zu gewährleisten wird die Maschine zuvor wie bei anderen Benchmarks vorbereitet. Für diesen Benchmark wurden deshalb die Instruktionen von \e{Tracer Bench} zur Behebung von Rauschen.
+\cite{tracerBenchNoiseMitigation}
+
 \paragraph{Analyse der Daten}
 Um eine zuverlässige Aussage treffen zu können, wird der Vorgang mehrfach wiederholt. Für jeden Durchlauf wird der Median der \e{\gls{FPS}} Daten berechnet.
 Anschliessend wird die Varianz der \e{\gls{FPS}} für die unoptimierten respektive optimierten Werte berechnet. Die Varianz dient als Kennzahl, um eine statistische Signifikanz nachweisen zu können. Abschliessend werden die Werte der beiden Versionen verglichen.
 
 \section{Vergleich LOD Systeme}
-Die unterschiedlichen LOD Systeme bieten allesamt ihre Vor- und Nachteile. In diesem Schritt wird erläutert, welche Art LOD System in dieser Arbeit eingesetzt werden soll.
+Die verschiedenen LOD Systeme sowie ihre Vor- und Nachteile werden in \autoref{chap:differentLodApproaches} erläutert. In diesem Schritt wird erläutert, welche Art LOD System in dieser Arbeit eingesetzt werden soll.
+
+Insbesondere unter Berücksichtigung der Tatsache, dass Laufzeitperformanz essentiell für Web Anwendungen ist wurde entschieden nicht auf kontinuerliche LOD Systeme zu setzen.
+Zudem wurde entschieden, kein hierarchisches LOD System zu entwickeln, um die Integration des Tools für die Entwickler einer Webanwendung möglichst einfach zu gestalten.
+Das diskrete LOD System ist für Grafiker und Entwickler die einfachste zu verwenden und deckt somit auch die breiteste Benutzerbasis und die meisten Anwendungsfälle ab. Aufgrund dessen, wird im Rahmen dieser Arbeit ein Algorithmus dieses Systems entwickelt und in den Entwicklungsprozess integriert.
 
 \section{Vergleich LOD Algorithmen}
-Das diskrete LOD System ist für Grafiker und Entwickler die einfachste zu verwenden und deckt somit auch die breiteste Benutzerbasis und die meisten Anwendungsfälle ab. Aufgrund dessen, wird im Rahmen dieser Arbeit ein Algorithmus dieses Systems entwickelt und in den Entwicklungsprozess integriert.
+Ein LOD Algorithmus hat das Ziel für ein gegebenes Modell eine vereinfachte Darstellung zu finden, welche das Original ausreichend annähert.
+Diese Art von Problem ist in der Literatur als \e{Surface Simplification} bekannt.
+Die wohl weitverbreiteste Art ist die von Garland und Heckbert 1997 definierte \e{Surface Simplification using Quadric Error Metrics}.
+\cite{surfaceSimplificationUsingQuadricErrorMetrices}
 
 \section{Pipeline Integration}
 Die Lösung soll in eine wiederverwendbare und konfigurierbare Pipeline integriert werden.
