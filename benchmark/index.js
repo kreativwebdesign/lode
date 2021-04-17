@@ -45,16 +45,34 @@ const main = async () => {
   const baselineGpuTotalTimeVariance = math.variance(baselineGpuTotalTime);
 
   console.log(
+    `report for ${ITERATIONS} iterations, performed on ${new Date()}:`
+  );
+
+  const precision = 3;
+
+  console.log(
     `
-    optimized fps: ${optimizedMedianFpsMean} (${optimizedMedianFpsVariance} variance)
-    baseline fps: ${baselineMedianFpsMean} (${baselineMedianFpsVariance} variance)
+    optimized fps: ${math.round(
+      optimizedMedianFpsMean,
+      precision
+    )} (${math.round(optimizedMedianFpsVariance, precision)} variance)
+    baseline fps: ${math.round(baselineMedianFpsMean, precision)} (${math.round(
+      baselineMedianFpsVariance,
+      precision
+    )} variance)
     `
   );
 
   console.log(
     `
-    optimized gpuTotalTime: ${optimizedGpuTotalTimeMean} (${optimizedGpuTotalTimeVariance} variance)
-    baseline gpuTotalTime: ${baselineGpuTotalTimeMean} (${baselineGpuTotalTimeVariance} variance)
+    optimized gpuTotalTime: ${math.round(
+      optimizedGpuTotalTimeMean,
+      precision
+    )} (${math.round(optimizedGpuTotalTimeVariance, precision)} variance)
+    baseline gpuTotalTime: ${math.round(
+      baselineGpuTotalTimeMean,
+      precision
+    )} (${math.round(baselineGpuTotalTimeVariance, precision)} variance)
     `
   );
 };
