@@ -1,8 +1,10 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { loadGltfs } from "./src/gltf-loader";
-import gltfs from "./src/gltfs";
+import { getLod } from "./src/gltf-loader";
 import { measureFPS } from "./src/measure-fps";
+import loadGltfAsync from "./src/async-gltf-loader";
+
+const useOptimized = window.location.search.includes("optimize");
 
 const renderer = new THREE.WebGLRenderer();
 
@@ -16,9 +18,46 @@ const camera = new THREE.PerspectiveCamera(
   1000
 );
 
-camera.position.set(0, 5, 10);
+camera.position.set(0, 0, 25);
 
 const controls = new OrbitControls(camera, renderer.domElement);
+
+const optimizedGltfBasePath = "./lode-build/assets/";
+const nonOptimizedGltfBasePath = "assets/";
+
+const lods = [
+  { name: "duck", position: [5, 0, 0] },
+  { name: "airplane", position: [-5, 0, 0] },
+  { name: "camera", position: [0, 5, 0] },
+  { name: "dragon", position: [0, -5, 10] },
+];
+
+const setupOptimizedScene = async (scene) => {
+  const gltfLods = await Promise.all(
+    lods.map((lod) =>
+      getLod(2, `${optimizedGltfBasePath}${lod.name}`, lod.name)
+    )
+  );
+
+  gltfLods.forEach((lod, i) => {
+    scene.add(lod);
+    lod.levels.forEach((level) => {
+      level.object.position.set(...lods[i].position);
+    });
+  });
+};
+
+const setupNonOptimizedScene = async (scene) => {
+  const gltfs = await Promise.all(
+    lods.map((lod) =>
+      loadGltfAsync(`${nonOptimizedGltfBasePath}${lod.name}/${lod.name}.gltf`)
+    )
+  );
+  gltfs.forEach((gltf, i) => {
+    scene.add(gltf.scene);
+    gltf.scene.position.set(...lods[i].position);
+  });
+};
 
 // CreateScene function that creates and return the scene
 const createScene = async function () {
@@ -32,8 +71,12 @@ const createScene = async function () {
   const directionalLight = new THREE.DirectionalLight(0xffffff, 5);
   scene.add(directionalLight);
 
-  console.log(gltfs);
-  await loadGltfs(scene, gltfs);
+  if (useOptimized) {
+    await setupOptimizedScene(scene);
+  } else {
+    await setupNonOptimizedScene(scene);
+  }
+
   performance.mark("gltfLoadEnd");
   performance.measure("modelLoading", "gltfLoadStart", "gltfLoadEnd");
   // Return the created scene

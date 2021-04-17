@@ -2,6 +2,9 @@
 
 This is a demo showing the benefits of using LODs.
 
+## LODE - CLI
+Run `yarn lode-cli` to run the lode-cli to generate the simplified meshes used in the optimized version.
+
 ## Info
 
 There are currently two variants:

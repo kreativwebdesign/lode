@@ -5,9 +5,9 @@ name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build-and-deploy:
@@ -18,11 +18,18 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Install CLI 🔧
+        run: |
+          cd cli
+          yarn install --frozen-lockfile
+          cd ..
+
       - name: Install and Build 🔧
         run: |
           cd demo
           yarn install --frozen-lockfile
           yarn build
+          yarn lode-cli
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.0
         with:
