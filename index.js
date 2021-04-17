@@ -77,8 +77,6 @@ const createScene = async function () {
     await setupNonOptimizedScene(scene);
   }
 
-  // notify benchmark when scene is set
-  console.log("::benchmark::loadedModels");
   performance.mark("gltfLoadEnd");
   performance.measure("modelLoading", "gltfLoadStart", "gltfLoadEnd");
   // Return the created scene
