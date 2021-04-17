@@ -1,3 +1,5 @@
+import * as math from "mathjs";
+
 export const reporter = () => {
   const reportGroups = {
     modelLoading: null,
@@ -61,19 +63,6 @@ const taskGroup = {
 
 const taskGroups = Object.values(taskGroup);
 
-const getMedian = (raw) => {
-  const values = [...raw];
-  values.sort((a, b) => a - b);
-
-  const half = Math.floor(values.length / 2);
-
-  if (values.length % 2) {
-    return values[half];
-  }
-
-  return (values[half - 1] + values[half]) / 2.0;
-};
-
 export const analyzeTraceEvents = (events) => {
   let traceEventGroupStats = {};
   for (const group of taskGroups) {
@@ -104,11 +93,14 @@ export const analyzeTraceEvents = (events) => {
 
 export const generateReport = (reportGroups, traceEventGroups) => {
   return {
-    medianFps: getMedian(reportGroups.fps),
+    medianFps: math.median(reportGroups.fps),
     gpuTotalTime: traceEventGroups.gpu.totalTime,
     debug: {
       totalGpuEvents: traceEventGroups.gpu.totalEvents,
-      medianRenderLoopDuration: getMedian(reportGroups.renderLoop),
+      medianRenderLoopDuration:
+        reportGroups.renderLoop.length > 0
+          ? math.median(reportGroups.renderLoop)
+          : null,
       totalRenders: reportGroups.renderLoop.length,
       totalModelLoadDuration: reportGroups.modelLoading,
     },
