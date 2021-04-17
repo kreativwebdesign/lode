@@ -68,9 +68,17 @@ const sample = async (optimize) => {
 
   const { report, reportPerformanceEntries, getReport } = reporter();
 
+  // promise to resolve when models are loaded in scene
+  let resolveLoadedModels = null;
+  let loadedModels = new Promise((resolve) => {
+    resolveLoadedModels = resolve;
+  });
+
   page.on("console", (message) => {
     const log = message.text();
-    if (log.includes("::benchmark::")) {
+    if (log === "::benchmark::loadedModels") {
+      resolveLoadedModels();
+    } else if (log.includes("::benchmark::")) {
       report(log);
     } else {
       console.info("web-console: " + message.text());
@@ -79,7 +87,13 @@ const sample = async (optimize) => {
 
   let finishGroup = startLogGroup("load page");
   await page.goto(`http://localhost:8080?${optimize ? "optimize" : ""}`);
+  await loadedModels;
   finishGroup();
+
+  // screenshot is only used for manual qa
+  await page.screenshot({
+    path: `${TEMP_FOLDER}screenshotPre${optimize}.jpg`,
+  });
 
   finishGroup = startLogGroup("start trace");
   await page.tracing.start({ path: `${TEMP_FOLDER}trace.json` });
@@ -101,7 +115,9 @@ const sample = async (optimize) => {
   });
 
   // screenshot is only used for manual qa
-  await page.screenshot({ path: `${TEMP_FOLDER}screenshot.jpg` });
+  await page.screenshot({
+    path: `${TEMP_FOLDER}screenshotAfter${optimize}.jpg`,
+  });
 
   await browser.close();
   console.log("stop benchmark");
