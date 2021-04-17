@@ -7,16 +7,16 @@
     {
       "type": "VEC3",
       "componentType": 5126,
-      "count": 37649,
+      "count": 42278,
       "max": [
-        1.4594392776489258,
-        2.2861814498901367,
-        3.4257938861846924
+        318.98431396484375,
+        499.906005859375,
+        749.0986938476562
       ],
       "min": [
-        -1.4729706048965454,
-        0.1320706456899643,
-        -3.443948268890381
+        -322.45703125,
+        29.21755027770996,
+        -753.068115234375
       ],
       "normalized": false,
       "bufferView": 0,
@@ -25,16 +25,16 @@
     {
       "type": "VEC3",
       "componentType": 5126,
-      "count": 25409,
+      "count": 27460,
       "max": [
-        3.598931074142456,
-        1.1095384359359741,
-        1.8307374715805054
+        786.957275390625,
+        242.61630249023438,
+        400.31671142578125
       ],
       "min": [
-        -3.6124579906463623,
-        0.341761976480484,
-        -0.7588083148002625
+        -789.9151000976562,
+        74.7311019897461,
+        -165.9241943359375
       ],
       "normalized": false,
       "bufferView": 1,
@@ -43,14 +43,14 @@
     {
       "type": "VEC3",
       "componentType": 5126,
-      "count": 25409,
+      "count": 27460,
       "max": [
         0.9999999403953552,
         1,
         1
       ],
       "min": [
-        -0.9999998807907104,
+        -0.9999999403953552,
         -1,
         -1
       ],
@@ -61,7 +61,7 @@
     {
       "type": "VEC2",
       "componentType": 5126,
-      "count": 25409,
+      "count": 27460,
       "max": [
         0.9959999918937683,
         0.995199978351593
@@ -77,15 +77,15 @@
     {
       "type": "VEC3",
       "componentType": 5126,
-      "count": 37649,
+      "count": 42278,
       "max": [
         1,
         1,
-        1
+        1.0000001192092896
       ],
       "min": [
         -1,
-        -1,
+        -1.0000001192092896,
         -1
       ],
       "normalized": false,
@@ -95,7 +95,7 @@
     {
       "type": "VEC2",
       "componentType": 5126,
-      "count": 37649,
+      "count": 42278,
       "max": [
         0.9955999851226807,
         0.9973999857902527
@@ -106,14 +106,14 @@
       ],
       "normalized": false,
       "bufferView": 2,
-      "byteOffset": 451788
+      "byteOffset": 507336
     },
     {
       "type": "SCALAR",
       "componentType": 5123,
-      "count": 61236,
+      "count": 61959,
       "max": [
-        37639
+        42269
       ],
       "min": [
         8
@@ -127,40 +127,40 @@
       "componentType": 5123,
       "count": 113712,
       "max": [
-        25408
+        27459
       ],
       "min": [
         0
       ],
       "normalized": false,
       "bufferView": 3,
-      "byteOffset": 122472
+      "byteOffset": 123920
     }
   ],
   "bufferViews": [
     {
       "buffer": 0,
       "byteOffset": 0,
-      "byteLength": 451788,
+      "byteLength": 507336,
       "byteStride": 12,
       "target": 34962
     },
     {
       "buffer": 0,
-      "byteOffset": 451788,
-      "byteLength": 813088,
+      "byteOffset": 507336,
+      "byteLength": 878720,
       "byteStride": 32,
       "target": 34962
     },
     {
       "buffer": 0,
-      "byteOffset": 1264876,
-      "byteLength": 752980
+      "byteOffset": 1386056,
+      "byteLength": 845560
     },
     {
       "buffer": 0,
-      "byteOffset": 2017856,
-      "byteLength": 349896,
+      "byteOffset": 2231616,
+      "byteLength": 351344,
       "target": 34963
     }
   ],
@@ -195,12 +195,12 @@
   "buffers": [
     {
       "uri": "airplane.bin",
-      "byteLength": 2367752
+      "byteLength": 2582960
     }
   ],
   "materials": [
     {
-      "name": "airplane_body.001",
+      "name": "airplane_body.002",
       "alphaMode": "OPAQUE",
       "doubleSided": true,
       "pbrMetallicRoughness": {
@@ -224,7 +224,7 @@
       ]
     },
     {
-      "name": "airplane_wings.001",
+      "name": "airplane_wings.002",
       "alphaMode": "OPAQUE",
       "doubleSided": true,
       "pbrMetallicRoughness": {
@@ -250,7 +250,7 @@
   ],
   "meshes": [
     {
-      "name": "11805_airplane_v2_L2.001",
+      "name": "11805_airplane_v2_L2.002",
       "primitives": [
         {
           "attributes": {
@@ -275,40 +275,17 @@
   ],
   "nodes": [
     {
-      "name": "Light",
-      "translation": [
-        4.076245307922363,
-        5.903861999511719,
-        -1.0054539442062378
-      ],
-      "rotation": [
-        0.16907575726509094,
-        0.7558803558349609,
-        -0.27217137813568115,
-        0.570947527885437
-      ]
-    },
-    {
-      "name": "Camera",
-      "translation": [
-        7.358891487121582,
-        4.958309173583984,
-        6.925790786743164
-      ],
-      "rotation": [
-        0.483536034822464,
-        0.33687159419059753,
-        -0.20870360732078552,
-        0.7804827094078064
-      ]
-    },
-    {
       "name": "airplane",
       "rotation": [
         0.7071068286895752,
         0,
         0,
         0.7071067094802856
+      ],
+      "scale": [
+        0.004999999888241291,
+        0.004999999888241291,
+        0.004999999888241291
       ],
       "mesh": 0
     }
@@ -317,9 +294,7 @@
     {
       "name": "Scene",
       "nodes": [
-        0,
-        1,
-        2
+        0
       ]
     }
   ]
