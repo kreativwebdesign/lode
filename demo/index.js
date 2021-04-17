@@ -15,7 +15,7 @@ const camera = new THREE.PerspectiveCamera(
   1000
 );
 
-camera.position.set(0, 5, 10);
+camera.position.set(0, 0, 10);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 
@@ -33,6 +33,31 @@ const createScene = async function () {
 
   const duckLod = await getLod(2, "../lode-build/assets/Duck", "duck");
   scene.add(duckLod);
+
+  const airplaneLod = await getLod(
+    2,
+    "../lode-build/assets/Airplane",
+    "airplane"
+  );
+  scene.add(airplaneLod);
+  airplaneLod.levels.forEach((level) => {
+    level.object.position.set(5, 0, 0);
+    level.object.scale.set(0.01, 0.01, 0.01);
+  });
+
+  const cameraLod = await getLod(2, "../lode-build/assets/Camera", "camera");
+  scene.add(cameraLod);
+  cameraLod.levels.forEach((level) => {
+    level.object.position.set(-5, 0, 0);
+    level.object.scale.set(1, 1, 1);
+  });
+
+  const dragonLod = await getLod(2, "../lode-build/assets/Dragon", "dragon");
+  scene.add(dragonLod);
+  dragonLod.levels.forEach((level) => {
+    level.object.position.set(0, -5, 0);
+    level.object.scale.set(0.5, 0.5, 0.5);
+  });
 
   performance.mark("gltfLoadEnd");
   performance.measure("modelLoading", "gltfLoadStart", "gltfLoadEnd");
