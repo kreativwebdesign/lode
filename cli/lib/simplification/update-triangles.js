@@ -1,4 +1,4 @@
-import { calculateError, calculateTriangleError } from "./error-calculation.js";
+import { calculateTriangleError } from "./error-calculation.js";
 
 // TODO: add unit test
 // Update triangle connections and edge error after an edge is collapsed

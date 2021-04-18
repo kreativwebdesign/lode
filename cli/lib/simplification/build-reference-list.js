@@ -1,4 +1,4 @@
-import Reference from "./reference.js";
+import Reference from "./types/reference.js";
 
 const buildReferenceList = (vertices, triangles) => {
   // init reference counters

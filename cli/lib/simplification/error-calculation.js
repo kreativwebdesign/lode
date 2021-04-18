@@ -1,5 +1,5 @@
 import { vec3 } from "gl-matrix";
-import SymmetricMatrix from "./symmetric-matrix.js";
+import SymmetricMatrix from "./types/symmetric-matrix.js";
 
 // TODO: maybe accept vec3?
 export const calculateVertexError = (q, x, y, z) => {
