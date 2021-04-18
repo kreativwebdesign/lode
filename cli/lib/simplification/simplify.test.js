@@ -1,9 +1,11 @@
 import { vec3 } from "gl-matrix";
-import { initializeData, getReferenceList, compactTriangles } from "./simplify";
 import Vertex from "./vertex.js";
 import SymmetricMatrix from "./symmetric-matrix.js";
 import { prepareData } from "./prepare-data.js";
-import { calculateError, calculateVertexError } from "./error-calculation";
+import { calculateError, calculateVertexError } from "./error-calculation.js";
+import buildReferenceList from "./build-reference-list.js";
+import initializeData from "./initialize-data.js";
+import compactTriangles from "./compact-triangles.js";
 
 describe("simplify", () => {
   const positions = [0, 0, 0, 1, 0, 0, 0, 1, 0];
@@ -105,10 +107,10 @@ describe("simplify", () => {
     });
   });
 
-  describe("getReferenceList", () => {
+  describe("buildReferenceList", () => {
     it("should generate proper references", () => {
       const { triangles, vertices } = prepareData(positions, indices);
-      const references = getReferenceList(vertices, triangles);
+      const references = buildReferenceList(vertices, triangles);
       expect(references[0].triangleIndex).toBe(0);
       expect(references[0].vertexIndex).toBe(0);
       expect(references[1].triangleIndex).toBe(0);
