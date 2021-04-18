@@ -1,8 +1,10 @@
 import { vec3 } from "gl-matrix";
 import SymmetricMatrix from "./types/symmetric-matrix.js";
 
-// TODO: maybe accept vec3?
-export const calculateVertexError = (q, x, y, z) => {
+export const calculateVertexError = (q, point) => {
+  const x = point[0];
+  const y = point[1];
+  const z = point[2];
   const m = q.data;
   return (
     m[0] * x * x +
@@ -18,69 +20,65 @@ export const calculateVertexError = (q, x, y, z) => {
   );
 };
 
+/**
+ * Find optimal solution for given qDelta
+ * @param {*} qDelta Invertible matrix
+ * @param {*} det
+ * @returns
+ */
+const findOptimalVertexPosition = (qDelta, det) => {
+  let resultPoint = vec3.create();
+  // x = A41 / det(qDelta)
+  resultPoint[0] = (-1 / det) * qDelta.det(1, 2, 3, 4, 5, 6, 5, 7, 8);
+
+  // y = A42 / det(qDelta)
+  resultPoint[1] = (1 / det) * qDelta.det(0, 2, 3, 1, 5, 6, 2, 7, 8);
+
+  // z = A43 / det(qDelta)
+  resultPoint[2] = (-1 / det) * qDelta.det(0, 1, 3, 1, 4, 6, 2, 5, 8);
+
+  const error = calculateVertexError(qDelta, resultPoint);
+  return { error, point: resultPoint };
+};
+
+const takeSimpleVertexPosition = (vertex1, vertex2, qDelta) => {
+  let resultPoint = vec3.create();
+  const vertex3Position = vec3.create();
+  vec3.add(vertex3Position, vertex1.position, vertex2.position);
+  vec3.divide(vertex3Position, vertex3Position, vec3.fromValues(2, 2, 2));
+
+  const error1 = calculateVertexError(qDelta, vertex1.position);
+  const error2 = calculateVertexError(qDelta, vertex2.position);
+  const error3 = calculateVertexError(qDelta, vertex3Position);
+  const error = Math.min(error1, error2, error3);
+  if (error1 === error) {
+    vec3.copy(resultPoint, vertex1.position);
+  } else if (error2 === error) {
+    vec3.copy(resultPoint, vertex2.position);
+  } else if (error3 === error) {
+    vec3.copy(resultPoint, vertex3Position);
+  }
+
+  return { error, point: resultPoint };
+};
+
 // error for one edge
 export const calculateError = (vertex1, vertex2) => {
   // compute interpolated vertex
   const qDelta = SymmetricMatrix.add(vertex1.q, vertex2.q);
   const isBorder = vertex1.isBorder && vertex2.isBorder;
-  let error = 0;
-  let resultPoint = vec3.create();
+
   // determinant is used to check if matrix is invertible
   let det = qDelta.det(0, 1, 2, 1, 4, 5, 2, 5, 7);
 
   if (det != 0 && !isBorder) {
-    // qDelta is invertible
-    // vx = A41/det(q_delta)
-    resultPoint[0] = (-1 / det) * qDelta.det(1, 2, 3, 4, 5, 6, 5, 7, 8);
-
-    // vy = A42/det(q_delta)
-    resultPoint[1] = (1 / det) * qDelta.det(0, 2, 3, 1, 5, 6, 2, 7, 8);
-
-    // vz = A43/det(q_delta)
-    resultPoint[2] = (-1 / det) * qDelta.det(0, 1, 3, 1, 4, 6, 2, 5, 8);
-
-    error = calculateVertexError(
-      qDelta,
-      resultPoint[0],
-      resultPoint[1],
-      resultPoint[2]
-    );
+    // matrix is invertible, we can therefore look for the optimal solution
+    return findOptimalVertexPosition(qDelta, det);
   } else {
-    // det = 0 -> find optimal vertex along edge
-
-    const vertex3Position = vec3.create();
-    vec3.add(vertex3Position, vertex1.position, vertex2.position);
-    vec3.divide(vertex3Position, vertex3Position, vec3.fromValues(2, 2, 2));
-
-    const error1 = calculateVertexError(
-      qDelta,
-      vertex1.position[0],
-      vertex1.position[1],
-      vertex1.position[2]
-    );
-    const error2 = calculateVertexError(
-      qDelta,
-      vertex2.position[0],
-      vertex2.position[1],
-      vertex2.position[2]
-    );
-    const error3 = calculateVertexError(
-      qDelta,
-      vertex3Position[0],
-      vertex3Position[1],
-      vertex3Position[2]
-    );
-    error = Math.min(error1, error2, error3);
-    if (error1 === error) {
-      vec3.copy(resultPoint, vertex1.position);
-    } else if (error2 === error) {
-      vec3.copy(resultPoint, vertex2.position);
-    } else if (error3 === error) {
-      vec3.copy(resultPoint, vertex3Position);
-    }
+    // determinant is zero, therefore it's not possible to take optimal solution
+    // for borders it's often an issue with creases, in these cases the simple approach delivers more appropriate results
+    return takeSimpleVertexPosition(vertex1, vertex2, qDelta);
   }
-
-  return { error, point: resultPoint };
 };
 
 export const calculateTriangleError = (triangle, vertices) => {
