@@ -8,24 +8,31 @@ import buildReferenceList from "./build-reference-list.js";
 import compactTriangles from "./compact-triangles.js";
 import updateTriangles from "./update-triangles.js";
 
-const MAX_ITERATIONS = 100;
-const AGGRESSIVENESS = 7;
+const defaultOptions = {
+  targetTriangles: 200,
+  maxIterations: 100,
+  aggressiveness: 7,
+};
 
 /**
- * Main Function to simplify a given mesh
+ * Main Function to simplify a given mesh.
  * Algorithm based on https://www.cs.cmu.edu/~./garland/Papers/quadrics.pdf
  * Iteration approach and threshold values are based on https://github.com/sp4cerat/Fast-Quadric-Mesh-Simplification
  * @param {*} vertices
  * @param {*} triangles
- * @param {*} targetTriangles Target threshold of triangles to reach
+ * @param {*} customOptions Overwrite options to fine tune generated mesh.
  * @returns
  */
-export default (vertices, triangles, targetTriangles = 200) => {
+const simplify = (vertices, triangles, customOptions = {}) => {
+  const { targetTriangles, maxIterations, aggressiveness } = {
+    ...defaultOptions,
+    ...customOptions,
+  };
   let references = initializeData(vertices, triangles);
   let deletedTriangles = 0;
   let initialTriangleCount = triangles.length;
 
-  for (let iteration = 0; iteration < MAX_ITERATIONS; iteration++) {
+  for (let iteration = 0; iteration < maxIterations; iteration++) {
     if (initialTriangleCount - deletedTriangles <= targetTriangles) {
       break;
     }
@@ -43,7 +50,7 @@ export default (vertices, triangles, targetTriangles = 200) => {
     // The following numbers works well for most models.
     // If it does not, try to adjust the 3 parameters
     //
-    const threshold = 0.000000001 * Math.pow(iteration + 3, AGGRESSIVENESS);
+    const threshold = 0.000000001 * Math.pow(iteration + 3, aggressiveness);
 
     // remove vertices & mark deleted triangles
     triangles.forEach((triangle) => {
@@ -147,3 +154,5 @@ export default (vertices, triangles, targetTriangles = 200) => {
 
   return { vertices, triangles };
 };
+
+export default simplify;
