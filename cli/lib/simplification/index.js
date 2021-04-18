@@ -1,7 +1,5 @@
-import { vec3 } from "gl-matrix";
-import SymmetricMatrix from "./symmetric-matrix.js";
-import Reference from "./reference.js";
-import { calculateError, calculateTriangleError } from "./error-calculation.js";
+import SymmetricMatrix from "./types/symmetric-matrix.js";
+import { calculateError } from "./error-calculation.js";
 import { checkCollapseFlip } from "./check-collapse-flip.js";
 import initializeData from "./initialize-data.js";
 import buildReferenceList from "./build-reference-list.js";

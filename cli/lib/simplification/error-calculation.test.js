@@ -1,7 +1,7 @@
 import { vec3 } from "gl-matrix";
 import { calculateError, calculateVertexError } from "./error-calculation.js";
-import SymmetricMatrix from "./symmetric-matrix.js";
-import Vertex from "./vertex.js";
+import SymmetricMatrix from "./types/symmetric-matrix.js";
+import Vertex from "./types/vertex.js";
 
 describe("error calculation", () => {
   describe("calculateVertexError", () => {

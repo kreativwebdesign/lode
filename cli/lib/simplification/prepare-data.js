@@ -1,5 +1,5 @@
-import Triangle from "./triangle.js";
-import Vertex from "./vertex.js";
+import Triangle from "./types/triangle.js";
+import Vertex from "./types/vertex.js";
 
 export const prepareData = (positionsArray, indicesArray) => {
   const groupByThree = (arr) => {
