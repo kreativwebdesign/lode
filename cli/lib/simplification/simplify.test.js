@@ -1,8 +1,10 @@
+import fs from "fs";
 import { vec3 } from "gl-matrix";
 import Vertex from "./vertex.js";
 import SymmetricMatrix from "./symmetric-matrix.js";
 import { prepareData } from "./prepare-data.js";
 import { calculateError, calculateVertexError } from "./error-calculation.js";
+import simplify from "./index.js";
 import buildReferenceList from "./build-reference-list.js";
 import initializeData from "./initialize-data.js";
 import compactTriangles from "./compact-triangles.js";
@@ -10,6 +12,39 @@ import compactTriangles from "./compact-triangles.js";
 describe("simplify", () => {
   const positions = [0, 0, 0, 1, 0, 0, 0, 1, 0];
   const indices = [0, 1, 2];
+
+  /**
+   * this test uses snapshot practices.
+   * if the test fails it does not necessarily mean that there is an error.
+   * the main goal of the test is to ensure consistency while refactoring parts of the algorithm.
+   * Feel free to update the raw as well as processed data structure if required.
+   */
+  describe("integration snapshot test", () => {
+    // raw data contains information parsed from binary glTF buffer
+    const { positionsArray, indicesArray } = JSON.parse(
+      fs.readFileSync("./test-data/snapshot/raw-data-structure.json", "utf-8")
+    );
+    // processed contains newVertices and newTriangles which is the return value of the main method.
+    const outputData = JSON.parse(
+      fs.readFileSync(
+        "./test-data/snapshot/processed-data-structure.json",
+        "utf-8"
+      )
+    );
+
+    const { vertices, triangles } = prepareData(positionsArray, indicesArray);
+
+    const newOutput = simplify(vertices, triangles);
+
+    expect(
+      JSON.parse(
+        JSON.stringify({
+          newVertices: newOutput.vertices,
+          newTriangles: newOutput.triangles,
+        })
+      )
+    ).toEqual(outputData);
+  });
 
   describe("prepare data", () => {
     it("should construct data structures properly", () => {
