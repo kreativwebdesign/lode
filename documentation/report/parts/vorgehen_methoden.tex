@@ -80,7 +80,7 @@ Eine Übersicht über die verschiedenen Kriterien kann in Tabelle \ref{table:lod
   \hline
   Auswirkung auf Downloadgrösse & mittel & mittel & mittel \\ 
   Auswirkung auf Laufzeitverhalten & klein & mittel & mittel \\
-  Auswirkung auf \e{Scene} Graph & lokal & lokal & global \\
+  Auswirkung auf \e{Scene Graph} & lokal & lokal & global \\
   "Visual Pop" vermeidbar & nein & ja & ja \\
   Integration in bestehende Arbeitsabläufe & einfach & einfach & umständlich \\
   \hline
@@ -103,7 +103,7 @@ Im folgenden Abschnitt wird auf verschiedene Lösungsansätze eingegangen.
 
 \paragraph{Vertex Dezimierung}
 Algorithmen dieser Kategorie entfernen jeweils einen Vertex und triangluieren das entstehende Loch neu.
-Eine weitere Möglichkeit ist das \e{Vertex Clustering}, hierbei wird ein Modell in verschiedene Gitterzellen aufgeteilt. Die Punkte innerhalb einer Gitterzelle werden dann in einen einzigen Punkt zusammengelegt. Die visuelle Annäherung dieser Algorithmen bei drastischen Vereinfachungen stellt jedoch häufig ein Problem dar für polygonale Modelle. Sogenannte \fglspl{Point Cloud}{Vertices im dreidimensionalen Raum ohne zugeörige \e{Triangle}}, wie sie bei 3D-Scannern eingesetzt werden, können mit solchen Algorithmen schnell vereinfacht werden.
+Eine weitere Möglichkeit ist das \e{Vertex Clustering}, hierbei wird ein Modell in verschiedene Gitterzellen aufgeteilt. Die Punkte innerhalb einer Gitterzelle werden dann in einen einzigen Punkt zusammengelegt. Die visuelle Annäherung dieser Algorithmen bei drastischen Vereinfachungen stellt jedoch häufig ein Problem dar für polygonale Modelle. Sogenannte \fglspl{Point Cloud}{Vertices im dreidimensionalen Raum ohne zugehörige \e{Triangle}}, wie sie bei 3D-Scannern eingesetzt werden, können mit solchen Algorithmen schnell vereinfacht werden.
 
 \paragraph{Edge Collapse}
 Hierbei werden iterativ \e{Edges} entfernt und die beiden \e{Vertices} zu einem Punkt zusammengelegt.
