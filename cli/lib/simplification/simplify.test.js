@@ -1,9 +1,13 @@
 import { vec3 } from "gl-matrix";
-import { initializeData, getReferenceList, compactTriangles } from "./simplify";
+import {
+  initializeData,
+  getReferenceList,
+  compactTriangles,
+} from "./simplify.js";
 import Vertex from "./vertex.js";
 import SymmetricMatrix from "./symmetric-matrix.js";
 import { prepareData } from "./prepare-data.js";
-import { calculateError, calculateVertexError } from "./error-calculation";
+import { calculateError, calculateVertexError } from "./error-calculation.js";
 
 describe("simplify", () => {
   const positions = [0, 0, 0, 1, 0, 0, 0, 1, 0];
