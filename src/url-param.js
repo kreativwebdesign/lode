@@ -2,7 +2,9 @@ const URL_PARAM_NAME = "optimized";
 const url = new URL(window.location);
 const searchParams = url.searchParams;
 
-export const getOptimized = () => searchParams.get(URL_PARAM_NAME);
+export const getOptimized = () => {
+  return searchParams.get(URL_PARAM_NAME) !== null;
+};
 
 export const setOptimized = (value) => {
   if (value) {
