@@ -3,8 +3,10 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { getLod } from "./src/gltf-loader";
 import { measureFPS } from "./src/measure-fps";
 import loadGltfAsync from "./src/async-gltf-loader";
+import { getOptimized } from "./src/url-param";
+import "./src/optimized-toggle";
 
-const useOptimized = window.location.search.includes("optimize");
+const useOptimized = getOptimized();
 
 const renderer = new THREE.WebGLRenderer();
 
