@@ -1,0 +1,116 @@
+{
+  "asset": {
+    "generator": "BabylonJS",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "byteLength": 2574536,
+      "uri": "skull.bin"
+    }
+  ],
+  "nodes": [
+    {
+      "name": "test",
+      "translation": [0, 0, 0],
+      "scale": [0.1, 0.1, 0.1],
+      "mesh": 0,
+      "rotation": [0, 1, 0, 0]
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "COLOR_0": 2
+          },
+          "indices": 3,
+          "material": 0
+        }
+      ]
+    }
+  ],
+  "scenes": [
+    {
+      "nodes": [0]
+    }
+  ],
+  "scene": 0,
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 502368,
+      "name": "position - test",
+      "byteStride": 12
+    },
+    {
+      "buffer": 0,
+      "byteLength": 502368,
+      "byteOffset": 502368,
+      "name": "normal - test",
+      "byteStride": 12
+    },
+    {
+      "buffer": 0,
+      "byteLength": 669824,
+      "byteOffset": 1004736,
+      "name": "color - test",
+      "byteStride": 16
+    },
+    {
+      "buffer": 0,
+      "byteLength": 899976,
+      "byteOffset": 1674560,
+      "name": "Indices - test"
+    }
+  ],
+  "accessors": [
+    {
+      "name": "position - test",
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 41864,
+      "type": "VEC3",
+      "min": [-23.7722, -30.4938, -29.0242],
+      "max": [23.7722, 30.4701, 29.0169],
+      "byteOffset": 0
+    },
+    {
+      "name": "normal - test",
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 41864,
+      "type": "VEC3",
+      "byteOffset": 0
+    },
+    {
+      "name": "color - test",
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 41864,
+      "type": "VEC4",
+      "byteOffset": 0
+    },
+    {
+      "name": "indices - test",
+      "bufferView": 3,
+      "componentType": 5125,
+      "count": 224994,
+      "type": "SCALAR",
+      "byteOffset": 0
+    }
+  ],
+  "materials": [
+    {
+      "name": "default material",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [0.5, 0.5, 0.5, 1],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.3288090062081349
+      }
+    }
+  ]
+}
