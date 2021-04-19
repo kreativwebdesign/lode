@@ -111,9 +111,9 @@ Der Algorithmus kann wie folgt zusammengefasst werden:
 \subsection{Fehler Metrik}
 Das Ziel der Fehler Metrik ist es eine Heuristik zu definieren, welche den geometrischen Unterschied zwischen dem vereinfachten und dem originalen Modell beschreibt.
 Mithilfe der Fehler Metrik können anschliessend die Transformationen am Modell gemäss den kleinsten Kosten optimiert werden. Der Algorithmus funktioniert grundsätzlich unabhängig von der gewählten Fehler Metrik. So könnten verschiedene Metriken eingesetzt werden.
-Die hier gewählte Metrik definiert den Fehler mithilfe einer symmetrischen 4x4 Matrix. Die Matrix repräsentiert die Distanz eines \e{Vertices} zu einer zugehörigen \e{Face}. Für die Kombination mehrerer \e{Faces} können die Matrizen addiert werden.
+Die hier gewählte Metrik definiert den Fehler mithilfe einer symmetrischen 4×4 Matrix. Die Matrix repräsentiert die Distanz eines \e{Vertices} zu einer zugehörigen \e{Face}. Für die Kombination mehrerer \e{Faces} können die Matrizen addiert werden.
 
-Beim entfernen einer \e{Edge} werden die Fehler Metriken der zugehörigen \e{Vertices} addiert.
+Beim Entfernen einer \e{Edge} werden die Fehler Metriken der zugehörigen \e{Vertices} addiert.
 
 \section{Pipeline Integration}
 Die Lösung soll in eine wiederverwendbare und konfigurierbare Pipeline integriert werden.
