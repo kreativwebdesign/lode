@@ -229,29 +229,12 @@ Im letzten Schritt werden kontinuierliche Objekte zu diskreten Fragmenten verarb
 \paragraph{Bildschirm}
 Am Schluss wird das vom Rasterization Prozess generierte Bild auf dem Bildschirm dargestellt.
 
-\section{Einführung LOD}
-Als Level Of Detail (LOD) werden die verschiedenen Detailstufen bei der virtuellen Darstellung bezeichnet.
-Dies wird verwendet, um die Geschwindigkeit von Anwendungen zu steigern, indem Objekte im Nahbereich detailiert angezeigt werden; wohingegen Elemente im Fernbereich deutlich vereinfacht dargestellt werden.
-
-\subsection{Das Problem}
-Modelle können zu komplex werden, um jederzeit performant und interaktiv gerendert zu werden.
-Insbesondere wenn viele Objekte gleichzeitig sichtbar sind, lohnt es sich, zu priorisieren und gewisse Objekte in reduzierter Qualität anzuzeigen.
+\section{Performanzoptimierung}
+Visualisierungen können zu komplex werden, um jederzeit performant und interaktiv gerendert zu werden.
+Insbesondere wenn viele Objekte gleichzeitig sichtbar sind, lohnt es sich Performanzoptimierungen durchzuführen.
 Im Idealfall geschieht dies jedoch, ohne dass der Anwender dies bemerkt.
 
-\subsection{Lösungsansätze}
-In diesem Abschnitt werden mögliche Ansätze erklärt, welche helfen sollen, die Render-Perfomanz zu erhöhen. Diese Arbeit konzentriert sich jedoch auf den Ansatz von Level of Detail; die anderen Ansätze werden nur kurz erläutert.
-
-\paragraph{Level of Detail}
-Level of Detail auch bekannt als polygonale Simplifizierung, geometrische Simplifizierung oder Mesh Reduzierung basiert darauf, die Komplexität von Objekten zu reduzieren, welche weiter von der Kamera entfernt sind. Es gibt verschiedene Ansätze zur Generierung von LODs, welche in Abschnitt XY im Detail erläutert werden. Zudem braucht es eine berechenbare Methode, die Genauigkeit von Modellen zu definieren, um diese entsprechend anzuwenden. Schlussendlich ist dann noch zu definieren, ab wann welche Artefakte verwendet werden soll, basierend auf der Genauigkeit und der Komplexität.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.8\columnwidth]{LODs-of-a-bunny-model-Courtesy-Stanford-3D-Scanning-Repository-From-left-to-right}
-\caption{Level Of Detail Visualisierung vier Hasen}
-\label{fig:LevelOfDetailVisualisierungvierHasen}
-\end{figure}
-
-Wie in der Abbildung \ref{fig:LevelOfDetailVisualisierungvierHasen} zu erkennen ist, wird von links nach rechts der Detailgrad und somit die Komplexität des Objektes reduziert. Sind es im Bild ganz links noch 69'451 Polygone, wird es bereits im ersten Schritt auf 2'502 Polygone reduziert. Dies ist eine enorme Reduktion von ca 96.5\%. Im dritten Schritt wird die Anzahl Polygone wiederum um ca. 90\% auf 251 reduziert. Schlussendlich hat das letzte Objekt noch 76 Polygone was knapp 0.1\% der ursprünglichen Anzahl entspricht.
+In diesem Abschnitt werden mögliche Ansätze erklärt, welche helfen sollen, die Render-Perfomanz zu erhöhen. Diese Arbeit konzentriert sich jedoch auf den Ansatz von Level of Detail; die anderen Ansätze werden nur kurz erläutert. Detailliert auf Level of Detail wird in \autoref{chap:lodIntroduction} eingegangen.
 
 \paragraph{Frustum culling}
 Polygone, welche nicht im Kamera Frustum enthalten sind, werden bei dieser Methode nicht weiter prozessiert.
@@ -283,6 +266,24 @@ Auch bekannt unter Distributed Rendering ist der Einsatz von Techniken aus dem P
 
 \paragraph{Image-based rendering}
 In gewissen Fällen kann das Modellieren übersprungen werden. So kann anhand von Bildmaterial eine 3D-Illusion erzeugt werden.
+
+\section{Einführung Level of Detail}
+\label{chap:lodIntroduction}
+Als Level Of Detail (LOD) werden die verschiedenen Detailstufen bei der virtuellen Darstellung bezeichnet.
+Dies wird verwendet, um die Geschwindigkeit von Anwendungen zu steigern, indem Objekte im Nahbereich detailiert angezeigt werden; wohingegen Elemente im Fernbereich deutlich vereinfacht dargestellt werden.
+
+Um diese Approximationen zu generieren kann eine Vielzahl von Algorithmen verwendet werden. Dieses Problem ist bekannt als polygonale Simplifizierung, geometrische Simplifizierung oder Mesh Reduzierung. Es gibt verschiedene Ansätze zur Generierung von LODs, welche in Abschnitt XY im Detail erläutert werden. Zudem braucht es eine berechenbare Methode, die Genauigkeit von Modellen zu definieren, um diese entsprechend anzuwenden. Schlussendlich ist dann noch zu definieren, ab wann welche Artefakte verwendet werden soll, basierend auf der Genauigkeit und der Komplexität.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\columnwidth]{LODs-of-a-bunny-model-Courtesy-Stanford-3D-Scanning-Repository-From-left-to-right}
+\caption{Level Of Detail Visualisierung vier Hasen}
+\label{fig:LevelOfDetailVisualisierungvierHasen}
+\end{figure}
+
+Wie in der Abbildung \ref{fig:LevelOfDetailVisualisierungvierHasen} zu erkennen ist, wird von links nach rechts der Detailgrad und somit die Komplexität des Objektes reduziert. Sind es im Bild ganz links noch 69'451 Polygone, wird es bereits im ersten Schritt auf 2'502 Polygone reduziert. Dies ist eine enorme Reduktion von ca 96.5\%. Im dritten Schritt wird die Anzahl Polygone wiederum um ca. 90\% auf 251 reduziert. Schlussendlich hat das letzte Objekt noch 76 Polygone was knapp 0.1\% der ursprünglichen Anzahl entspricht.
+
+
 
 \subsection{Ansätze für LOD Artefakte}
 \label{chap:differentLodApproaches}
