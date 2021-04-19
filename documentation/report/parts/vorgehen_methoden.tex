@@ -94,10 +94,19 @@ Eine Übersicht über die verschiedenen Kriterien kann in Tabelle \ref{table:lod
   \label{table:lodSystemComparison}
 \end{table}
 
-\section{Vergleich LOD Algorithmen}
-Die verschiedenen Klassen von Algorithmen werden in \autoref{chap:lodAlgorithmComparison} kurz erläutrt.
-Die wohl weitverbreiteste Art ist die von Garland und Heckbert 1997 definierte \e{Surface Simplification using Quadric Error Metrics}.
+\section{Surface Simplification Algorithmus}
+Die verschiedenen Klassen von Algorithmen werden in \autoref{chap:lodAlgorithmComparison} kurz erläutert.
+
+Verschiedene Algorithmen wurden für die Implementierung in Betracht gezogen. Die wohl weitverbreiteste Art ist der von Garland und Heckbert 1997 definierte \e{Surface Simplification using Quadric Error Metrics} welcher auf \e{Edge Collapses} basiert.
 \cite{surfaceSimplificationUsingQuadricErrorMetrices}
+
+Der Algorithmus kann wie folgt zusammengefasst werden:
+
+\begin{enumerate}
+  \item Fehler Metrik für alle Vertices berechnen.
+  \item Optionen für \e{Edge Collapse} markieren.
+  \item Optionen mit geringstem Fehler optimieren.
+\end{enumerate}
 
 \section{Pipeline Integration}
 Die Lösung soll in eine wiederverwendbare und konfigurierbare Pipeline integriert werden.
