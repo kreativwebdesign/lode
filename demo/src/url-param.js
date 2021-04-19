@@ -1,4 +1,4 @@
-const URL_PARAM_NAME = "optimized";
+const URL_PARAM_NAME = "optimize";
 const url = new URL(window.location);
 const searchParams = url.searchParams;
 
