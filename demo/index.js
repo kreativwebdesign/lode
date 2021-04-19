@@ -30,7 +30,7 @@ const nonOptimizedGltfBasePath = "assets/";
 const lods = [
   { name: "duck", position: [20, 0, 0] },
   { name: "airplane", position: [-20, 0, 0] },
-  { name: "camera", position: [0, 0, 20] },
+  { name: "skull", position: [0, 0, 20] },
   { name: "dragon", position: [0, 0, -20] },
 ];
 
