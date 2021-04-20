@@ -94,23 +94,26 @@ Eine Übersicht über die verschiedenen Kriterien kann in Tabelle \ref{table:lod
   \label{table:lodSystemComparison}
 \end{table}
 
-\section{Vergleich LOD Algorithmen}
-Ein LOD Algorithmus hat das Ziel für ein gegebenes Modell eine vereinfachte Darstellung zu finden, welche das Original ausreichend annähert.
-Diese Art von Problem ist in der Literatur unter anderem als \e{Surface Simplification} bekannt.
-Die wohl weitverbreiteste Art ist die von Garland und Heckbert 1997 definierte \e{Surface Simplification using Quadric Error Metrics}.
+\section{Surface Simplification Algorithmus}
+Die verschiedenen Klassen von Algorithmen werden in \autoref{chap:lodAlgorithmComparison} kurz erläutert.
+
+Verschiedene Algorithmen wurden für die Implementierung in Betracht gezogen. Die wohl weitverbreiteste Art ist der von Garland und Heckbert 1997 definierte \e{Surface Simplification using Quadric Error Metrics} welcher auf \e{Edge Collapses} basiert.
 \cite{surfaceSimplificationUsingQuadricErrorMetrices}
-Im folgenden Abschnitt wird auf verschiedene Lösungsansätze eingegangen.
 
-\paragraph{Vertex Dezimierung}
-Algorithmen dieser Kategorie entfernen jeweils einen Vertex und triangluieren das entstehende Loch neu.
-Eine weitere Möglichkeit ist das \e{Vertex Clustering}, hierbei wird ein Modell in verschiedene Gitterzellen aufgeteilt. Die Punkte innerhalb einer Gitterzelle werden dann in einen einzigen Punkt zusammengelegt. Die visuelle Annäherung dieser Algorithmen bei drastischen Vereinfachungen stellt jedoch häufig ein Problem dar für polygonale Modelle. Sogenannte \fglspl{Point Cloud}{Vertices im dreidimensionalen Raum ohne zugehörige \e{Triangle}}, wie sie bei 3D-Scannern eingesetzt werden, können mit solchen Algorithmen schnell vereinfacht werden.
+Der Algorithmus kann wie folgt zusammengefasst werden:
 
-\paragraph{Edge Collapse}
-Hierbei werden iterativ \e{Edges} entfernt und die beiden \e{Vertices} zu einem Punkt zusammengelegt.
-Die verschiedenen Algorithmen unterscheiden sich primär in der Selektion der \e{Edges}. Grundsätzlich wird hierfür eine Heuristik verwendet um den Fehler quantifizieren zu können. Anschliessend werden iterativ die \e{Edges} entfernt, welche zu einem minimalen Fehler führen. Beim Zusammenführen von \e{Edges} sind abhängig vom gewählten LOD System unterschiedliche Strategien gefordert. Bei diskreten LOD Systemen soll nach dem Zusammenführen ein optimaler neuer Punkt gefunden werden, bei kontinuierlichen LOD Systemen wird häufig einer der beiden Punkte gewählt um Speicherplatz einsparen zu können.
+\begin{enumerate}
+  \item Fehler Metrik für alle Vertices berechnen.
+  \item Optionen für \e{Edge Collapse} markieren.
+  \item Optionen mit geringstem Fehler optimieren.
+\end{enumerate}
 
-\paragraph{Face Collapse}
-Bei dieser Variante werden jeweils Flächen entfernt und die umliegenden Flächen zusammengelegt.
+\subsection{Fehler Metrik}
+Das Ziel der Fehler Metrik ist es eine Heuristik zu definieren, welche den geometrischen Unterschied zwischen dem vereinfachten und dem originalen Modell beschreibt.
+Mithilfe der Fehler Metrik können anschliessend die Transformationen am Modell gemäss den kleinsten Kosten optimiert werden. Der Algorithmus funktioniert grundsätzlich unabhängig von der gewählten Fehler Metrik. So könnten verschiedene Metriken eingesetzt werden.
+Die hier gewählte Metrik definiert den Fehler mithilfe einer symmetrischen 4×4 Matrix. Die Matrix repräsentiert die Distanz eines \e{Vertices} zu einer zugehörigen \e{Face}. Für die Kombination mehrerer \e{Faces} können die Matrizen addiert werden.
+
+Beim Entfernen einer \e{Edge} werden die Fehler Metriken der zugehörigen \e{Vertices} addiert.
 
 \section{Pipeline Integration}
 Die Lösung soll in eine wiederverwendbare und konfigurierbare Pipeline integriert werden.
