@@ -5,6 +5,7 @@ import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
 import { waitFor, startLogGroup, createFolderIfNotExist } from "./helpers.js";
 import { reporter, analyzeTraceEvents, generateReport } from "./analyze.js";
+import { calculateNinetyFiveConfidenceInterval } from "./stats.js";
 
 const argv = yargs(hideBin(process.argv)).argv;
 
@@ -39,6 +40,24 @@ const main = async () => {
     ({ baselineReport: { gpuTotalTime } }) => gpuTotalTime
   );
 
+  const {
+    upper: optimizedUpper,
+    lower: optimizedLower,
+  } = calculateNinetyFiveConfidenceInterval({
+    mean: optimizedMedianFpsMean,
+    variance: optimizedMedianFpsVariance,
+    samples: ITERATIONS,
+  });
+
+  const {
+    upper: baselineUpper,
+    lower: baselineLower,
+  } = calculateNinetyFiveConfidenceInterval({
+    mean: baselineMedianFpsMean,
+    variance: baselineMedianFpsVariance,
+    samples: ITERATIONS,
+  });
+
   const optimizedGpuTotalTimeMean = math.mean(optimizedGpuTotalTime);
   const optimizedGpuTotalTimeVariance = math.variance(optimizedGpuTotalTime);
   const baselineGpuTotalTimeMean = math.mean(baselineGpuTotalTime);
@@ -56,10 +75,18 @@ const main = async () => {
       optimizedMedianFpsMean,
       precision
     )} (${math.round(optimizedMedianFpsVariance, precision)} variance)
+    the value is with a confidence of 95% between ${math.round(
+      optimizedLower,
+      precision
+    )} and ${math.round(optimizedUpper, precision)}
     baseline fps: ${math.round(baselineMedianFpsMean, precision)} (${math.round(
       baselineMedianFpsVariance,
       precision
     )} variance)
+    the value is with a confidence of 95% between ${math.round(
+      baselineLower,
+      precision
+    )} and ${math.round(baselineUpper, precision)}
     `
   );
 
