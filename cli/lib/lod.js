@@ -39,15 +39,17 @@ export const performLOD = (pathName, file) => {
     triangles
   );
 
-  const newPositions = newVertices.reduce((agg, v) => {
-    return [...agg, v.position[0], v.position[1], v.position[2]];
-  }, []);
-  positions.setArray(new Float32Array(newPositions));
+  const verticesAsFloat = new Float32Array(newVertices.length * 3);
+  newVertices.forEach((v, i) => {
+    verticesAsFloat.set(v.position, i * 3);
+  });
+  positions.setArray(verticesAsFloat);
 
-  const newIndices = newTriangles.reduce((agg, t) => {
-    return [...agg, t.vertices[0], t.vertices[1], t.vertices[2]];
-  }, []);
-  indices.setArray(new Uint16Array(newIndices));
+  const indicesAsInteger = new Uint16Array(newTriangles.length * 3);
+  newTriangles.forEach((t, i) => {
+    indicesAsInteger.set(t.vertices, i * 3);
+  });
+  indices.setArray(indicesAsInteger);
 
   // Remove unprocessed information in order to generate a valid gltf file output
   primitive.setAttribute("NORMAL");
