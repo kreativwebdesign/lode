@@ -24,12 +24,12 @@ const defaultRunOptions = {
 const optimizeFile = (fileStructure, opts) => {
   copyOriginalArtifact(fileStructure.pathNames[0], fileStructure.file);
   fileStructure.pathNames.slice(1).forEach((pathName) => {
-    const originalModified =
+    const originalModified = () =>
       getLastModified(pathName) < getLastModified(fileStructure.file);
     if (
       opts.clearOutputBeforeRun ||
       !fileExists(pathName) ||
-      originalModified
+      originalModified()
     ) {
       performLOD(pathName, fileStructure.file);
     }
