@@ -10,6 +10,8 @@ import {
   getFolderPath,
   getFilenameWithoutExtension,
   rmDir,
+  getLastModified,
+  fileExists,
 } from "../files.js";
 
 const defaultRunOptions = {
@@ -19,10 +21,18 @@ const defaultRunOptions = {
   clearOutputBeforeRun: true,
 };
 
-const optimizeFile = (fileStructure) => {
+const optimizeFile = (fileStructure, opts) => {
   copyOriginalArtifact(fileStructure.pathNames[0], fileStructure.file);
   fileStructure.pathNames.slice(1).forEach((pathName) => {
-    performLOD(pathName, fileStructure.file);
+    const originalModified =
+      getLastModified(pathName) < getLastModified(fileStructure.file);
+    if (
+      opts.clearOutputBeforeRun ||
+      !fileExists(pathName) ||
+      originalModified
+    ) {
+      performLOD(pathName, fileStructure.file);
+    }
   });
 };
 
@@ -69,14 +79,14 @@ const run = (commanderOptions) => {
   print.success("done");
 
   print.info("Running initial LOD transformation:");
-  sourceFiles.forEach((file) => optimizeFile(fileStructure[file]));
+  sourceFiles.forEach((file) => optimizeFile(fileStructure[file], opts));
   print.success("done");
 
   if (opts.watch) {
     print.info("watching files...");
     sourceFiles.forEach((file) => {
       fs.watch(file, () => {
-        optimizeFile(fileStructure[file]);
+        optimizeFile(fileStructure[file], opts);
       });
     });
   }
