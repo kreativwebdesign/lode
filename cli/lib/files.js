@@ -29,3 +29,5 @@ export const createFile = (filePath, content) => {
 export const rmDir = (path) => {
   fs.rmSync(path, { recursive: true, force: true });
 };
+
+export const getLastModified = (file) => fs.statSync(file).mtimeMs;
