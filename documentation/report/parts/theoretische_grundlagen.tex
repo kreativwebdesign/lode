@@ -135,7 +135,7 @@ Die wichtigsten Elemente dieser Struktur kurz erläutert:
 Um ein Modell vereinfachen zu können, muss es verändert werden.
 Diese Veränderungen können in Basis Operationen vereinfacht erläutert werden.
 
-Im Folgenden werden Transformationen mithilfe einer 2D Visualisierung erläutert. Das Modell könnte jedoch ebenfalls im dreidimensionalen Raum sein – die Funktionsweise bleibt identisch.
+Im Folgenden werden Transformationen mithilfe einer 2D Visualisierung erläutert. Das Modell kann jedoch ebenfalls im dreidimensionalen Raum sein – die Funktionsweise bleibt identisch.
 
 Für die folgenden Beispiele wird jeweils das Modell aus Abbildung \ref{fig:transformationOriginal} verwendet.
 
@@ -147,7 +147,7 @@ Für die folgenden Beispiele wird jeweils das Modell aus Abbildung \ref{fig:tran
 \end{figure}
 
 \paragraph{Edge Collapse}
-Hierbei werden zwei nebeneinanderliegende \e{Vertices} kombiniert, siehe Abbildung \ref{fig:transformationEdgeCollapse}.
+Hierbei werden zwei nebeneinanderliegende \e{Vertices} kombiniert. Durch diese Operation kann ein \e{Vertex} entfernt werden. In Abbildung \ref{fig:transformationEdgeCollapse} kann die Anzahl \e{Triangles} um zwei verringert werden. Beim \e{Edge Collapse} wird ein neuer \e{Vertex} definiert und zwei bestehende entfernt. Die Anzahl entfernter \e{Triangles} ist abhängig von der Situation. Unter Umständen kann so auch nur ein einzelner \e{Triangle} entfernt werden.
 Die Umkehrfunktion nennt man Vertex Split.
 
 \begin{figure}[H]
@@ -167,7 +167,7 @@ Die Umkehrfunktion nennt man Vertex Split.
 \end{figure}
 
 \paragraph{Halfedge Collapse}
-Hierbei wird ein Vertex direkt entfernt und alle Edges auf einen danebenliegenden Vertex zusammengelegt, siehe Abbildung \ref{fig:transformationHalfedgeCollapse}.
+Hierbei wird ein Vertex direkt entfernt und alle Edges auf einen danebenliegenden Vertex zusammengelegt. Bei dieser Operation muss kein neuer \e{Vertex} definiert werden sondern ein bereits bestehender \e{Vertex} kann wiederverwendet werden. Wie in Abbildung \ref{fig:transformationHalfedgeCollapse} ersichtlich können auch in diesem Fall zwei \e{Triangles} entfernt werden.
 
 \begin{figure}[H]
   \centering
@@ -186,8 +186,8 @@ Hierbei wird ein Vertex direkt entfernt und alle Edges auf einen danebenliegende
 \end{figure}
 
 \paragraph{Vertex Removal}
-Hierbei wird ein Vertex entfernt und das Resultat neu \fgls{Trianguliert}{Verfahren, Polygone in Triangles aufzuteilen}.
-In Abbildung \ref{fig:transformationVertexRemovalOriginal} wird der zentrale Vertex entfernt. Der neu triangulierte Polygon ist in Abbildung \ref{fig:transformationVertexRemovalFinal} ersichtlich.
+Hierbei wird ein Vertex entfernt und das Resultat neu trianguliert. Triangulation ist ein Verfahren um ein Polygon in \e{Triangles} aufzuteilen.
+In Abbildung \ref{fig:transformationVertexRemovalOriginal} wird der zentrale Vertex entfernt. Anschliessend werden alle \e{Triangles} an diesem Punkt entfernt. Das dabei entstehende Loch wird neu mit \e{Triangles} gefüllt. Der neu triangulierte Polygon ist in Abbildung \ref{fig:transformationVertexRemovalFinal} ersichtlich.
 
 \begin{figure}[H]
   \centering
