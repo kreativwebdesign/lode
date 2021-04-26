@@ -1,10 +1,14 @@
 import * as THREE from "three";
 import loadGltfAsync from "./src/async-gltf-loader";
 
-const lodeLoader = {
+const defaultOptions = {
   levelCount: 2,
+};
+
+const lodeLoader = {
+  levelCount: defaultOptions.levelCount,
   init: function (opts) {
-    this.levelCount = opts.levelCount;
+    this.levelCount = opts.levelCount || defaultOptions.levelCount;
   },
   load: async function ({ basePath, artifactName }) {
     const lod = new THREE.LOD();
