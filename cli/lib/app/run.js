@@ -57,7 +57,6 @@ const run = (commanderOptions) => {
   print.warn(figlet.textSync("LODE", { horizontalLayout: "full" }));
   const opts = mergeOptionsWithConfigFile(commanderOptions, defaultRunOptions);
   const sourceFiles = glob.sync(opts.source);
-  const levelCount = 2;
 
   if (opts.clearOutputBeforeRun) {
     print.info("Clearing output folder:");
@@ -74,7 +73,7 @@ const run = (commanderOptions) => {
   const fileStructure = prepareFolders(
     opts.outputFoldername,
     sourceFiles,
-    levelCount
+    opts.levelCount
   );
   print.success("done");
 
