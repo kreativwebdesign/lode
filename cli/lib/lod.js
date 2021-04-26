@@ -10,10 +10,10 @@ export const copyOriginalArtifact = (pathName, file) => {
   io.write(pathName, doc);
 };
 
-export const performLOD = (pathName, file) => {
-  print.info("performing LOD algorithm on file", file);
+export const performLOD = ({ originalFile, levelDefinitions }) => {
+  print.info("performing LOD algorithm on file", originalFile);
 
-  const doc = io.read(file);
+  const doc = io.read(originalFile);
 
   const newDoc = doc.clone();
 
@@ -56,5 +56,5 @@ export const performLOD = (pathName, file) => {
   primitive.setAttribute("TEXCOORD_0");
   primitive.setAttribute("TANGENT");
 
-  io.write(pathName, newDoc);
+  io.write(levelDefinitions[0].pathName, newDoc);
 };

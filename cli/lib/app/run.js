@@ -22,35 +22,34 @@ const defaultRunOptions = {
   clearOutputBeforeRun: true,
 };
 
-const optimizeFile = (fileStructure, opts) => {
-  copyOriginalArtifact(fileStructure.pathNames[0], fileStructure.file);
-  fileStructure.pathNames.slice(1).forEach((pathName) => {
-    const originalModified = () =>
-      getLastModified(pathName) < getLastModified(fileStructure.file);
-    if (
-      opts.clearOutputBeforeRun ||
-      !fileExists(pathName) ||
-      originalModified()
-    ) {
-      performLOD(pathName, fileStructure.file);
-    }
-  });
+const optimizeFile = ({ originalFile, levelDefinitions }, opts) => {
+  const copiedOriginalFile = levelDefinitions[0].pathName;
+  const originalModified = () =>
+    getLastModified(copiedOriginalFile) < getLastModified(originalFile);
+  if (
+    opts.clearOutputBeforeRun ||
+    !fileExists(copiedOriginalFile) ||
+    originalModified()
+  ) {
+    copyOriginalArtifact(copiedOriginalFile, originalFile);
+    performLOD({ originalFile, levelDefinitions: levelDefinitions.slice(1) });
+  }
 };
 
 const prepareFolders = (outputFoldername, sourceFiles, levelCount) => {
-  return sourceFiles.reduce((agg, file) => {
-    const filename = getFilename(file);
+  return sourceFiles.reduce((agg, originalFile) => {
+    const filename = getFilename(originalFile);
     const filenameWithoutExtension = getFilenameWithoutExtension(filename);
-    const folderPath = getFolderPath(file);
+    const folderPath = getFolderPath(originalFile);
 
-    const pathNames = [];
+    const levelDefinitions = [];
     for (let i = 0; i < levelCount; i++) {
       const pathName = `./${outputFoldername}/${folderPath}/${filenameWithoutExtension}-lod-${i}/${filename}`;
       createBaseFolderPathForFile(pathName);
-      pathNames.push(pathName);
+      levelDefinitions.push({ pathName });
     }
 
-    return { ...agg, [file]: { file, pathNames } };
+    return { ...agg, [originalFile]: { originalFile, levelDefinitions } };
   }, {});
 };
 
