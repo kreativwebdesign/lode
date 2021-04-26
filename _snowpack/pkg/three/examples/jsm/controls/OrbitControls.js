@@ -1,4 +1,4 @@
-import { fH as Vector3, ck as MOUSE, f9 as TOUCH, dx as Quaternion, eR as Spherical, aQ as EventDispatcher, fG as Vector2 } from '../../../../common/three.module-91c9237f.js';
+import { a6 as Vector3, cS as MOUSE, fh as TOUCH, dM as Quaternion, e_ as Spherical, bF as EventDispatcher, V as Vector2 } from '../../../../common/three.module-6492b9ea.js';
 
 // This set of controls performs orbiting, dollying (zooming), and panning.
 // Unlike TrackballControls, it maintains the "up" direction object.up (+Y by default).
