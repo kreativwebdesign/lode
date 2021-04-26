@@ -1,13 +1,10 @@
 import * as THREE from "./_snowpack/pkg/three.js";
 import { OrbitControls } from "./_snowpack/pkg/three/examples/jsm/controls/OrbitControls.js";
+import { getLod } from "./src/gltf-loader.js";
 import { measureFPS } from "./src/measure-fps.js";
 import loadGltfAsync from "./src/async-gltf-loader.js";
 import { getOptimized } from "./src/url-param.js";
 import "./src/optimized-toggle.js";
-import lodeLoader from "./_snowpack/pkg/lode-three.js";
-import lodeConfig from "./lode-cli.config.json.proxy.js";
-
-lodeLoader.init(lodeConfig);
 
 const useOptimized = getOptimized();
 
@@ -42,10 +39,7 @@ const lods = [
 const setupOptimizedScene = async (scene) => {
   const gltfLods = await Promise.all(
     lods.map((lod) =>
-      lodeLoader.load({
-        basePath: `${optimizedGltfBasePath}${lod.name}`,
-        artifactName: lod.name,
-      })
+      getLod(2, `${optimizedGltfBasePath}${lod.name}`, lod.name)
     )
   );
 

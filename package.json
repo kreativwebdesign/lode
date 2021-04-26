@@ -9,7 +9,9 @@
     "lode-cli": "node ../cli/index.js"
   },
   "dependencies": {
-    "lode-three": "link:../lode-three",
+    "babylonjs": "^4.2.0",
+    "babylonjs-loaders": "^4.2.0",
+    "babylonjs-materials": "^4.2.0",
     "snowpack": "^3.0.13",
     "three": "^0.126.1"
   },
