@@ -40,7 +40,7 @@ const lodeLoader = {
     );
 
     lodArtifacts.forEach((artifact, i) => {
-      lod.addLevel(artifact.scene, i * 15);
+      lod.addLevel(artifact.scene, i * 20);
     });
     return lod;
   },
