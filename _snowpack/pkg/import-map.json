@@ -1,5 +1,6 @@
 {
   "imports": {
+    "lode-three": "./lode-three.js",
     "three": "./three.js",
     "three/examples/jsm/controls/OrbitControls": "./three/examples/jsm/controls/OrbitControls.js",
     "three/examples/jsm/loaders/GLTFLoader": "./three/examples/jsm/loaders/GLTFLoader.js"
