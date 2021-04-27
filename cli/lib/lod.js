@@ -40,7 +40,11 @@ export const performLOD = ({ originalFile, levelDefinitions }) => {
 
     // currently the level thresholds are not configurable
     // define target triangles as originalTriangles / 2 ^ (level + 2)
-    const targetTriangles = triangles.length / Math.pow(2, level + 2);
+    let targetTriangles = triangles.length / Math.pow(2, level + 2);
+    // last level should be reduced to 200 triangles
+    if (level === levelDefinitions.length - 1) {
+      targetTriangles = 200;
+    }
 
     const {
       vertices: newVertices,
