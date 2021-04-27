@@ -5,74 +5,66 @@
   },
   "accessors": [
     {
-      "name": "position - test",
       "type": "VEC3",
       "componentType": 5126,
-      "count": 41864,
+      "count": 79089,
       "max": [
-        23.772199630737305,
-        30.49827766418457,
-        29.023279190063477
+        8.66904354095459,
+        1.319564700126648,
+        6.214841365814209
       ],
       "min": [
-        -23.774343490600586,
-        -30.506010055541992,
-        -29.01947593688965
+        -8.66904354095459,
+        -18.225360870361328,
+        -0.7123635411262512
       ],
       "normalized": false,
       "bufferView": 0,
       "byteOffset": 0
     },
     {
-      "name": "color - test",
-      "type": "VEC4",
-      "componentType": 5126,
-      "count": 41864,
-      "max": [
-        0.9914400577545166,
-        0.9914400577545166,
-        0.9914400577545166,
-        1
-      ],
-      "min": [
-        0,
-        0,
-        0,
-        1
-      ],
-      "normalized": false,
-      "bufferView": 0,
-      "byteOffset": 12
-    },
-    {
-      "name": "normal - test",
       "type": "VEC3",
       "componentType": 5126,
-      "count": 41864,
+      "count": 79089,
       "max": [
-        0.9999380111694336,
-        0.9999617338180542,
-        0.9999343156814575
+        0.9999919533729553,
+        0.9997820854187012,
+        0.9999984502792358
       ],
       "min": [
-        -0.9999210238456726,
-        -0.9999637007713318,
-        -0.9998589754104614
+        -0.9999919533729553,
+        -0.9998669624328613,
+        -0.9999997615814209
       ],
       "normalized": false,
       "bufferView": 1,
       "byteOffset": 0
     },
     {
-      "name": "indices - test",
-      "type": "SCALAR",
-      "componentType": 5123,
-      "count": 60540,
+      "type": "VEC2",
+      "componentType": 5126,
+      "count": 79089,
       "max": [
-        41863
+        0.980883002281189,
+        0.9514200091362
       ],
       "min": [
-        0
+        0.022678999230265617,
+        0.052069008350372314
+      ],
+      "normalized": false,
+      "bufferView": 1,
+      "byteOffset": 949068
+    },
+    {
+      "type": "SCALAR",
+      "componentType": 5123,
+      "count": 28200,
+      "max": [
+        65523
+      ],
+      "min": [
+        7
       ],
       "normalized": false,
       "bufferView": 2,
@@ -83,41 +75,41 @@
     {
       "buffer": 0,
       "byteOffset": 0,
-      "byteLength": 1172192,
-      "byteStride": 28,
+      "byteLength": 949068,
+      "byteStride": 12,
       "target": 34962
     },
     {
       "buffer": 0,
-      "byteOffset": 1172192,
-      "byteLength": 502368
+      "byteOffset": 949068,
+      "byteLength": 1581780
     },
     {
       "buffer": 0,
-      "byteOffset": 1674560,
-      "byteLength": 121080,
+      "byteOffset": 2530848,
+      "byteLength": 56400,
       "target": 34963
     }
   ],
   "buffers": [
     {
-      "uri": "skull.bin",
-      "byteLength": 1795640
+      "uri": "dragon.bin",
+      "byteLength": 2587248
     }
   ],
   "materials": [
     {
-      "name": "default material",
+      "name": "(null).002",
       "alphaMode": "OPAQUE",
-      "doubleSided": false,
+      "doubleSided": true,
       "pbrMetallicRoughness": {
         "baseColorFactor": [
-          0.5,
-          0.5,
-          0.5,
+          0.800000011920929,
+          0.800000011920929,
+          0.800000011920929,
           1
         ],
-        "roughnessFactor": 0.3288090062081349,
+        "roughnessFactor": 0.5,
         "metallicFactor": 0
       },
       "emissiveFactor": [
@@ -129,11 +121,11 @@
   ],
   "meshes": [
     {
+      "name": "Dragon.002",
       "primitives": [
         {
           "attributes": {
-            "POSITION": 0,
-            "COLOR_0": 1
+            "POSITION": 0
           },
           "mode": 4,
           "material": 0,
@@ -144,23 +136,19 @@
   ],
   "nodes": [
     {
-      "name": "test",
+      "name": "dragon",
       "rotation": [
+        0.7071068286895752,
         0,
-        1,
         0,
-        0
-      ],
-      "scale": [
-        0.1,
-        0.1,
-        0.1
+        0.7071067094802856
       ],
       "mesh": 0
     }
   ],
   "scenes": [
     {
+      "name": "Scene",
       "nodes": [
         0
       ]

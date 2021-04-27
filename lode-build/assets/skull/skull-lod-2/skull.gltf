@@ -12,11 +12,11 @@
       "max": [
         23.772199630737305,
         30.49827766418457,
-        29.023279190063477
+        29.04391098022461
       ],
       "min": [
         -23.774343490600586,
-        -30.506010055541992,
+        -30.589841842651367,
         -29.01947593688965
       ],
       "normalized": false,
@@ -67,7 +67,7 @@
       "name": "indices - test",
       "type": "SCALAR",
       "componentType": 5123,
-      "count": 60540,
+      "count": 28749,
       "max": [
         41863
       ],
@@ -95,14 +95,14 @@
     {
       "buffer": 0,
       "byteOffset": 1674560,
-      "byteLength": 121080,
+      "byteLength": 57500,
       "target": 34963
     }
   ],
   "buffers": [
     {
       "uri": "skull.bin",
-      "byteLength": 1795640
+      "byteLength": 1732060
     }
   ],
   "materials": [

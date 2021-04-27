@@ -7,9 +7,9 @@
     {
       "type": "SCALAR",
       "componentType": 5123,
-      "count": 3204,
+      "count": 807,
       "max": [
-        2397
+        2392
       ],
       "min": [
         6
@@ -58,13 +58,13 @@
       "count": 2399,
       "max": [
         96.8741455078125,
-        164.0869598388672,
-        53.92519760131836
+        165.2351837158203,
+        53.990997314453125
       ],
       "min": [
         -69.07820129394531,
         9.936039924621582,
-        -61.32819747924805
+        -61.47316360473633
       ],
       "normalized": false,
       "bufferView": 2,
@@ -75,17 +75,17 @@
     {
       "buffer": 0,
       "byteOffset": 0,
-      "byteLength": 6408,
+      "byteLength": 1616,
       "target": 34963
     },
     {
       "buffer": 0,
-      "byteOffset": 6408,
+      "byteOffset": 1616,
       "byteLength": 47980
     },
     {
       "buffer": 0,
-      "byteOffset": 54388,
+      "byteOffset": 49596,
       "byteLength": 28788,
       "byteStride": 12,
       "target": 34962
@@ -114,7 +114,7 @@
   "buffers": [
     {
       "uri": "duck.bin",
-      "byteLength": 83176
+      "byteLength": 78384
     }
   ],
   "materials": [

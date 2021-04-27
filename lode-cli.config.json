@@ -1,7 +1,7 @@
 {
   "source": "assets/**/*.gltf",
   "outputFoldername": "lode-build",
-  "levelCount": 2,
+  "levelCount": 4,
   "clearOutputBeforeRun": false,
   "watch": false
 }
