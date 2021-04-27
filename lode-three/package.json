@@ -1,0 +1,9 @@
+{
+  "name": "lode-three",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "peerDependencies": {
+    "three": "^0.128.0"
+  }
+}

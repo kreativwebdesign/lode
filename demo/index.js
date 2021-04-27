@@ -1,10 +1,13 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { getLod } from "./src/gltf-loader";
 import { measureFPS } from "./src/measure-fps";
 import loadGltfAsync from "./src/async-gltf-loader";
 import { getOptimized } from "./src/url-param";
 import "./src/optimized-toggle";
+import lodeLoader from "lode-three";
+import lodeConfig from "./lode-cli.config.json";
+
+lodeLoader.init(lodeConfig);
 
 const useOptimized = getOptimized();
 
@@ -39,7 +42,10 @@ const lods = [
 const setupOptimizedScene = async (scene) => {
   const gltfLods = await Promise.all(
     lods.map((lod) =>
-      getLod(2, `${optimizedGltfBasePath}${lod.name}`, lod.name)
+      lodeLoader.load({
+        basePath: `${optimizedGltfBasePath}${lod.name}`,
+        artifactName: lod.name,
+      })
     )
   );
 
