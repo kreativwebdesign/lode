@@ -51,8 +51,24 @@ const questions = [
     },
   },
   {
+    name: "levelCount",
+    type: "number",
+    message: "How many level of details should i generate (min. 2)",
+    default: 2,
+    when: (answers) => {
+      return answers.overwriteConfigFile !== false;
+    },
+    validate: function (value) {
+      if (value >= 2) {
+        return true;
+      } else {
+        return "Please enter a valid number higher than 2";
+      }
+    },
+  },
+  {
     name: "clearOutputBeforeRun",
-    type: "comfirm",
+    type: "confirm",
     message: "Should i delete the output folder before running?",
     default: true,
     when: (answers) => {
@@ -81,6 +97,7 @@ const init = async () => {
       `{
   "source": "${answers.sourcePattern}",
   "outputFoldername": "${answers.outputFoldername}",
+  "levelCount": ${answers.levelCount},
   "clearOutputBeforeRun": "${answers.clearOutputBeforeRun}",
   "watch": ${answers.watch}
 }`

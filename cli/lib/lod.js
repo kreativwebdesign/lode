@@ -10,51 +10,60 @@ export const copyOriginalArtifact = (pathName, file) => {
   io.write(pathName, doc);
 };
 
-export const performLOD = (pathName, file) => {
-  print.info("performing LOD algorithm on file", file);
+/**
+ * Main operation to generate lod artifacts for the file in originalFile.
+ */
+export const performLOD = ({ originalFile, levelDefinitions }) => {
+  print.info("performing LOD algorithm on file", originalFile);
 
-  const doc = io.read(file);
+  levelDefinitions.forEach(({ pathName }, level) => {
+    const doc = io.read(originalFile);
 
-  const newDoc = doc.clone();
+    const newDoc = doc.clone();
 
-  // currently only one mesh is supported
-  const primitive = newDoc.getRoot().listMeshes()[0].listPrimitives()[0];
+    // currently only one mesh is supported
+    const primitive = newDoc.getRoot().listMeshes()[0].listPrimitives()[0];
 
-  const attributes = primitive.listAttributes();
-  const semantics = primitive.listSemantics();
+    const attributes = primitive.listAttributes();
+    const semantics = primitive.listSemantics();
 
-  const positionIndex = semantics.indexOf("POSITION");
+    const positionIndex = semantics.indexOf("POSITION");
 
-  const positions = attributes[positionIndex];
-  const positionsArray = positions.getArray();
+    const positions = attributes[positionIndex];
+    const positionsArray = positions.getArray();
 
-  const indices = primitive.getIndices();
+    const indices = primitive.getIndices();
 
-  const indicesArray = indices.getArray();
+    const indicesArray = indices.getArray();
 
-  const { vertices, triangles } = prepareData(positionsArray, indicesArray);
+    const { vertices, triangles } = prepareData(positionsArray, indicesArray);
 
-  const { vertices: newVertices, triangles: newTriangles } = simplify(
-    vertices,
-    triangles
-  );
+    // currently the level thresholds are not configurable
+    // define target triangles as originalTriangles / 2 ^ (level + 2)
+    const targetTriangles = triangles.length / Math.pow(2, level + 2);
 
-  const verticesAsFloat = new Float32Array(newVertices.length * 3);
-  newVertices.forEach((v, i) => {
-    verticesAsFloat.set(v.position, i * 3);
+    const {
+      vertices: newVertices,
+      triangles: newTriangles,
+    } = simplify(vertices, triangles, { targetTriangles });
+
+    const verticesAsFloat = new Float32Array(newVertices.length * 3);
+    newVertices.forEach((v, i) => {
+      verticesAsFloat.set(v.position, i * 3);
+    });
+    positions.setArray(verticesAsFloat);
+
+    const indicesAsInteger = new Uint16Array(newTriangles.length * 3);
+    newTriangles.forEach((t, i) => {
+      indicesAsInteger.set(t.vertices, i * 3);
+    });
+    indices.setArray(indicesAsInteger);
+
+    // Remove unprocessed information in order to generate a valid gltf file output
+    primitive.setAttribute("NORMAL");
+    primitive.setAttribute("TEXCOORD_0");
+    primitive.setAttribute("TANGENT");
+
+    io.write(pathName, newDoc);
   });
-  positions.setArray(verticesAsFloat);
-
-  const indicesAsInteger = new Uint16Array(newTriangles.length * 3);
-  newTriangles.forEach((t, i) => {
-    indicesAsInteger.set(t.vertices, i * 3);
-  });
-  indices.setArray(indicesAsInteger);
-
-  // Remove unprocessed information in order to generate a valid gltf file output
-  primitive.setAttribute("NORMAL");
-  primitive.setAttribute("TEXCOORD_0");
-  primitive.setAttribute("TANGENT");
-
-  io.write(pathName, newDoc);
 };
