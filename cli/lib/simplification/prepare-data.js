@@ -16,7 +16,7 @@ export const prepareData = (positionsArray, indicesArray) => {
 
   const positionsGrouped = groupByThree(positionsArray);
 
-  const vertices = positionsGrouped.map(([x, y, z], i) => {
+  const vertices = positionsGrouped.map(([x, y, z]) => {
     return new Vertex(x, y, z);
   });
 
