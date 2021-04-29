@@ -29,7 +29,7 @@ const controls = new OrbitControls(camera, renderer.domElement);
 controls.autoRotate = true;
 controls.autoRotateSpeed = 4;
 
-const optimizedGltfBasePath = "./lode-build/assets/";
+const optimizedGltfBasePath = "./lode-build/assets";
 const nonOptimizedGltfBasePath = "assets/";
 
 const lods = [
@@ -43,7 +43,7 @@ const setupOptimizedScene = async (scene) => {
   const gltfLods = await Promise.all(
     lods.map((lod) =>
       lodeLoader.load({
-        basePath: `${optimizedGltfBasePath}${lod.name}`,
+        basePath: optimizedGltfBasePath,
         artifactName: lod.name,
       })
     )

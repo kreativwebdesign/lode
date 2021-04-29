@@ -15,7 +15,7 @@ const lodeLoader = {
     const lodArtifacts = await Promise.all(
       [...Array(this.levelCount).keys()].map((_, i) =>
         loadGltfAsync(
-          `${basePath}/${artifactName}-lod-${i}/${artifactName}.gltf`
+          `${basePath}/${artifactName}/${artifactName}-lod-${i}/${artifactName}.gltf`
         )
       )
     );
