@@ -7,15 +7,15 @@
 % !TEX encoding = UTF-8 Unicode
 % !TEX root = ../doc.tex
 Die Entwicklung der Webtechnologien ermöglicht es, immer komplexere Applikationen über diesen Weg zugänglich zu machen. Dadurch finden auch vermehrt 3D-Applikationen ihren Weg in die Webbrowser.
-3D-Applikationen haben gerade durch ihre Komplexität und Grösse ganz spezifische Anforderungen, welche durch das noch junge Alter des Entwicklungsprozess' noch mühsam sind, zu erfüllen.
+3D-Applikationen haben durch die zunehmende Komplexität und Grösse spezifische Anforderungen, welche durch das noch junge Alter des Entwicklungsprozess' noch mühsam sind, zu erfüllen.
 Durch die unendlich lange Liste an Geräten, auf welchen ein Webbrowser auf eine solche Applikation zugreifen kann, ist das Optimieren der Performanz unabdingbar.
 Zum Einen ist die Downloadgrösse essenziell, um die Applikation in möglichst vielen Situationen zugänglich zu machen. Zum anderen soll die Rechenleistung der Geräte effizient genutzt werden, um auf möglichst vielen Geräten flüssig zu laufen.
-Ersteres kann verbessert werden, indem ein hochauflösendes 3D-Modell vorgängig vereinfacht wird, um die Dateigrösse zu verringernund, um gerade auf mobilen Geräten Daten zu sparen, wo auf kleineren Bildschirmen sowieso nicht jedes Detail sichtbar ist.
-Das zweite Problem kann angegangen werden, in dem mehrere Detailstufen (\e{Level of Details – LOD}) eines Modells generiert und je nach Entfernung der virtuellen Kamera angezeigt werden. So muss ein Objekt, welches kaum noch sichtbar, ganz hintem im Bild angezeigt wird, nicht mehr hochauflösend sein.
+Ersteres kann verbessert werden, indem ein hochauflösendes 3D-Modell vorgängig vereinfacht wird, um die Dateigrösse zu verringern und, um gerade auf mobilen Geräten Daten zu sparen, wo auf kleineren Bildschirmen onehin nicht jedes Detail sichtbar ist.
+Das zweite Problem kann angegangen werden, indem mehrere Detailstufen (\e{Level of Details – LOD}) eines Modells generiert und je nach Entfernung der virtuellen Kamera angezeigt werden. So muss ein Objekt, welches kaum noch sichtbar, ganz hintem im Bild angezeigt wird, nicht mehr hochauflösend sein.
 Ein Tool, welches das Generieren solcher Artefakten automatisiert, gibt es für die Entwicklung für das Web noch nicht.
 Ziel dieser Arbeit ist, ein solches Tool zu entwickeln und nahtlos in den Arbeitsprozess der Entwickler einzugliedern.
 \bigbreak
-Zuerst wurde mittels eigenentwickelten Benchmarks bewiesen, dass der Einsatz von LOD, die Laufzeitperformanz von 3d-Webapplikationen verbessert.
+Zuerst wurde mittels eigenentwickelten Benchmarks bewiesen, dass der Einsatz von LOD, die Laufzeitperformanz von 3D-Webapplikationen verbessert.
 Danach wurden die verschiedenen Ansätze zur Generierung von solchen LOD-Artefakten verglichen und die zugehörigen Algorithmen analysiert.
 Darauf basierend wurde der gewählte Algorithmus implementiert und ein Tool entworfen, diesen in den Arbeitsprozess zu integrieren.
 \bigbreak
