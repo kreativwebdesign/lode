@@ -29,6 +29,21 @@ Im Vergleich zu fixen Hardware Anwendungen ist es realistisch, dass eine Webanwe
 Zudem ist WebGL eine junge Technologie und wurde erst 2011 veröffentlicht – verglichen mit dem initialen Release Date von \fgls{OpenGL}{Spezifikation einer Programmierschnittstelle zur Entwicklung von 2D und 3D-Grafikanwendungen} welches im Jahre 1992 publiziert wurde. \cite{webGl1Spec,openGlSpec}
 Nicht nur das Alter, sondern auch die Natur der Web Plattform haben dazu beigetragen, dass WebGL ein langsames Wachstum verspürt hat. Um einen Webstandard wie WebGL einsetzen zu können müssen alle grossen Browser die Spezifikation implementieren. Ansonsten kann der grosse Vorteil des Webs – einfache Verteilung an alle Benutzer – nicht in vollem Umfang genutzt werden. So hat zum Beispiel Internet Explorer 10 keinen Support und es wurde erstmals Ende 2013 möglich im Internet Explorer 11 3D Anwendungen für ein breites Publikum zu entwickeln.
 
+\subsection{JavaScript Bibliotheken}
+Für eine einfachere Arbeit mit WebGL gibt es verschiedene JavaScript Bibliotheken, welche eine Abstrahierungsschicht einfügen. Die bekanntesten werden hier kurz erläutert.
+
+\paragraph{Three.js}
+Ist die wohl weitverbreiteste Bibliothek für 3D-Rendering im Web. Die Community hinter Three.js ist aktiv und das offene Produkt wird somit konstant weiterentwickelt. Insbesondere die Erweiterungen für \e{React}, eine populäre Bibliothek für die Entwicklung von Frontend Applikationen, zeigen den Innovationsdrang.
+
+\paragraph{Babylon.js}
+Ein weiterer Kandidat ist Babylon.js, eine offene Bibliothek, welche die Entwicklung von 3D-Applikationen vereinfacht. Babylon.js zeichnet sich vor allem durch ein breites Featureset aus. 
+
+\paragraph{PlayCanvas}
+PlayCanvas ist eine offene 3D Engine, welche auch einen proprietären Cloud Service anbietet.
+
+\paragraph{Unity}
+Unity, welches vor allem für die Entwicklung von Mobile Applikationen bekannt ist, bietet seit längerer Zeit die Möglichkeit Projekte für das Web zu exportieren.
+
 \section{3D-Modelle}
 Ein Modell stellt ein Objekt aus der realen Welt vereinfacht dar.
 3D-Modelle können vereinfacht als Gruppe von Punkten definiert werden.
@@ -80,6 +95,9 @@ So wird für jeden Vertex ein sogenannter \e{Normal} definiert. Ein \e{Normal} i
 \e{Normals} werden auch für gewisse Performanz Optimierungen eingesetzt, dazu mehr in \autoref{chap:backfaceCulling}.
 
 Um die Oberfläche von Modellen zu definieren wird häufig ein sogenanntes \fgls{Texture Mapping}{Verfahren, mittels 2D-Bildern 3D-Objekte zu gestalten} durchgeführt. Hierfür sind zusätzliche Informationen für ein Modell notwendig. In der Praxis finden viele weitere Methoden Anwendung, auf diese wird jedoch hier nicht weiter eingegangen.
+
+\paragraph{Abgrenzung}
+Diese Sektion erläuterte die für diese Arbeit relevanten polygonale Modelle. Alternativen wie zum Beispiel \e{Point Clouds}, welche das Resultat von 3D-Scans sind, werden nicht weiter erläutert. Auch andere Methoden wie \e{NURBS}, welche Modelle mithilfe von mathematisch definierten Flächen modelliert, werden aussen vor gelassen.
 
 \paragraph{Formate}
 Um ein 3D Modell in einer Anwendung zu verwenden, muss ein entsprechendes Format verwendet werden. Hierfür steht eine Vielzahl von Optionen zur Auswahl. Aufgrund der Menge wird hier jedoch nur oberflächlich auf die bekanntesten Formate eingegangen.
