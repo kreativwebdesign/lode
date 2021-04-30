@@ -56,7 +56,10 @@ const prepareFolders = (outputFoldername, sourceFiles) => {
     const filename = getFilename(originalFile);
     const filenameWithoutExtension = getFilenameWithoutExtension(filename);
     const folderPath = getFolderPath(originalFile);
-    const configFile = fs.readFileSync(getModelConfigFile(originalFile));
+    const configFile = fs.readFileSync(
+      getModelConfigFile(originalFile),
+      "utf-8"
+    );
     const modelConfig = JSON.parse(configFile);
 
     const levelDefinitions = [];
