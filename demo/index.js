@@ -26,7 +26,6 @@ camera.position.set(0, 0, 125);
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.autoRotate = true;
 controls.autoRotateSpeed = 4;
-const nonOptimizedGltfBasePath = "assets/";
 
 const lodeContext = lodeLoader.createContext({
   manifest,
@@ -71,7 +70,7 @@ const setupOptimizedScene = async (scene) => {
 const setupNonOptimizedScene = async (scene) => {
   const gltfs = await Promise.all(
     lods.map((lod) =>
-      loadGltfAsync(`${nonOptimizedGltfBasePath}${lod.name}/${lod.name}.gltf`)
+      loadGltfAsync(`${lod.name}/${lod.name.split("/").pop()}.gltf`)
     )
   );
   gltfs.forEach((gltf, i) => {
