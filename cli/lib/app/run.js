@@ -30,7 +30,6 @@ const defaultRunOptions = {
   config: "./lode-cli.config.json",
   levelCount: 2,
   outputFoldername: "lode-build",
-  clearOutputBeforeRun: true,
 };
 
 const generateHash = (originalFile, configuration) =>
