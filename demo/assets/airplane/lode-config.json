@@ -4,7 +4,7 @@
       "threshold": 100
     },
     {
-      "threshold": 150,
+      "threshold": 50,
       "configuration": {
         "targetScale": 0.125
       }

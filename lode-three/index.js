@@ -16,14 +16,22 @@ export const loadModel = async ({ artifactName, lodeContext }) => {
       return loadGltfAsync(filePath);
     })
   );
+
+  const thresholds = [
+    0,
+    ...config.levels.map((level, i) => {
+      const prevThreshold = config.levels[i - 1]?.threshold || 0;
+      const isInfinity = level.threshold === -1;
+      const threshold = isInfinity ? -1 : prevThreshold + level.threshold;
+      return threshold;
+    }),
+  ];
+  console.log(thresholds);
   lodArtifacts.forEach((artifact, i) => {
     if (i === 0) {
       lod.addLevel(artifact.scene, 0);
     } else {
-      const threshold =
-        config.levels[i - 1].threshold === -1
-          ? Infinity
-          : config.levels[i - 1].threshold;
+      const threshold = thresholds[i] === -1 ? Infinity : thresholds[i];
       lod.addLevel(artifact.scene, threshold);
     }
   });

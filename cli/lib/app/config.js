@@ -77,15 +77,8 @@ const config = async (commanderOptions) => {
           when: () => !isFirst,
         },
       ]);
-      const lastThreshold =
-        config.levels[config.levels.length - 1]?.threshold || 0;
-      const threshold =
-        levelConfig.threshold === -1
-          ? -1
-          : lastThreshold + levelConfig.threshold;
-
       config.levels.push({
-        threshold: threshold,
+        threshold: levelConfig.threshold,
         configuration: isFirst
           ? undefined
           : {
