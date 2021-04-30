@@ -5,7 +5,7 @@ import figlet from "figlet";
 import * as print from "../helper/print.js";
 import { performLOD, copyOriginalArtifact } from "../lod.js";
 import { mergeOptionsWithConfigFile } from "../helper/config.js";
-import { MAIN_CONFIG_FILENAME } from "../constants.js";
+import { MANIFEST_FILENAME } from "../constants.js";
 import {
   createBaseFolderPathForFile,
   getFilename,
@@ -85,8 +85,8 @@ const prepareFolders = (outputFoldername, sourceFiles) => {
   }, {});
 };
 
-const buildMainConfigFile = (outputFoldername, sourceFiles) => {
-  const mainConfig = sourceFiles.reduce((agg, sourceFile) => {
+const buildManifest = (outputFoldername, sourceFiles) => {
+  const manifest = sourceFiles.reduce((agg, sourceFile) => {
     const modelConfig = readConfigFile(getModelConfigFile(sourceFile));
 
     return {
@@ -95,8 +95,8 @@ const buildMainConfigFile = (outputFoldername, sourceFiles) => {
     };
   }, {});
   createFile(
-    outputFoldername + "/" + MAIN_CONFIG_FILENAME,
-    JSON.stringify(mainConfig, null, 2)
+    outputFoldername + "/" + MANIFEST_FILENAME,
+    JSON.stringify(manifest, null, 2)
   );
 };
 
@@ -117,7 +117,7 @@ const run = (commanderOptions) => {
   print.info("Running initial LOD transformation:");
   sourceFiles.forEach((file) => optimizeFile(fileStructure[file]));
 
-  buildMainConfigFile(opts.outputFoldername, sourceFiles);
+  buildManifest(opts.outputFoldername, sourceFiles);
 
   if (opts.watch) {
     print.info("watching files...");
@@ -136,7 +136,7 @@ const run = (commanderOptions) => {
           ]);
           optimizeFile(fileStructure[srcFile]);
 
-          buildMainConfigFile(opts.outputFoldername, sourceFiles);
+          buildManifest(opts.outputFoldername, sourceFiles);
         });
     });
   }

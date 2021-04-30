@@ -5,7 +5,7 @@ import loadGltfAsync from "./src/async-gltf-loader";
 import { getOptimized } from "./src/url-param";
 import "./src/optimized-toggle";
 import * as lodeLoader from "lode-three";
-import manifest from "./lode-build/main-lode-config.json";
+import manifest from "./lode-build/lode-manifest.json";
 import lodeConfig from "./lode-cli.config.json";
 
 const useOptimized = getOptimized();
