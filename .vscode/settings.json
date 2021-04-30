@@ -1,4 +1,5 @@
 {
+  "latex-workshop.latex.autoBuild.run": "onSave",
   "latex-workshop.latex.recipe.default": "first",
   "latex-workshop.latex.recipes": [
     {
@@ -32,4 +33,7 @@
       ]
     },
   ],
+  "[latex]": {
+    "editor.formatOnSave": false
+  }
 }
