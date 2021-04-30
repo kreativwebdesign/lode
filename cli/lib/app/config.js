@@ -78,7 +78,7 @@ const config = async (commanderOptions) => {
       config.levels.push({
         threshold: threshold,
         configuration: isFirst
-          ? "raw"
+          ? undefined
           : {
               targetScale: levelConfig.targetScale,
             },
