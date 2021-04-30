@@ -23,6 +23,7 @@ program
   .command("config")
   .option("-c, --config <configfile>", "Path to config file")
   .option("-s, --source <pattern>", "Source glob pattern")
+  .option("-a, --all", "Configure all assets")
   .description("Configure LOD options for each artifact")
   .action(app.config);
 

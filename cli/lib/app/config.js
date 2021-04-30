@@ -2,10 +2,16 @@ import inquirer from "inquirer";
 import glob from "glob";
 import { mergeOptionsWithConfigFile } from "../helper/config.js";
 import * as print from "../helper/print.js";
-import { createFile, getModelConfigFile } from "../helper/files.js";
+import {
+  createFile,
+  fileExists,
+  getModelConfigFile,
+  readFile,
+} from "../helper/files.js";
 
 const defaultConfigOptions = {
   config: "./lode-cli.config.json",
+  all: false,
 };
 
 const config = async (commanderOptions) => {
@@ -16,6 +22,15 @@ const config = async (commanderOptions) => {
 
   const sourceFiles = glob.sync(opts.source);
   for await (const file of sourceFiles) {
+    const configFile = getModelConfigFile(file);
+    const configFileExists = fileExists(configFile);
+
+    if (configFileExists && !opts.all) {
+      break;
+    }
+    const storedConfig = configFileExists
+      ? JSON.parse(readFile(configFile))
+      : {};
     const config = { levels: [] };
     print.success(file);
     const { levelCount } = await inquirer.prompt([
@@ -23,7 +38,7 @@ const config = async (commanderOptions) => {
         name: "levelCount",
         type: "number",
         message: "How many level of details should i generate (min. 2)",
-        default: 2,
+        default: storedConfig.levels?.length || 2,
         validate: function (value) {
           if (value >= 2) {
             return true;
@@ -38,13 +53,22 @@ const config = async (commanderOptions) => {
       const isFirst = i === 0;
       const isLast = i === levelCount - 1;
       const artifactName = i === 0 ? "original" : `LOD-${i}`;
+      const defaults = {
+        firstThreshold: 100,
+        lastThreshold: -1,
+        threshold: 50,
+        targetScale: 1 / Math.pow(2, i + 2),
+      };
       const getDefaultThreshold = () => {
+        if (storedConfig.levels?.[i].threshold) {
+          return storedConfig.levels?.[i].threshold;
+        }
         if (isFirst) {
-          return 100;
+          return defaults.firstThreshold;
         } else if (isLast) {
-          return -1;
+          return defaults.lastThreshold;
         } else {
-          return 50;
+          return defaults.threshold;
         }
       };
       print.success(`${artifactName}:`);
@@ -66,7 +90,7 @@ const config = async (commanderOptions) => {
           name: "targetScale",
           type: "number",
           message: `Target scale for the artifact "${artifactName}" (0-1)`,
-          default: 1 / Math.pow(2, i + 2),
+          default: storedConfig.levels?.[i].targetScale || defaults.targetScale,
           validate: function (value) {
             if (value <= 1 && value > 0) {
               return true;
@@ -86,7 +110,7 @@ const config = async (commanderOptions) => {
             },
       });
     }
-    createFile(getModelConfigFile(file), JSON.stringify(config, null, 2));
+    createFile(configFile, JSON.stringify(config, null, 2));
     print.blankLine();
   }
 };
