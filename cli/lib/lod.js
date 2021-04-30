@@ -44,8 +44,6 @@ export const performLOD = ({ originalFile, levelDefinitions }) => {
           indicesArray
         );
 
-        // currently the level thresholds are not configurable
-        // define target triangles as originalTriangles / 2 ^ (level + 2)
         let targetTriangles = triangles.length * configuration.targetScale;
         // last level should be reduced to 200 triangles
         if (level === levelDefinitions.length - 1) {
