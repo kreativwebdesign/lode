@@ -20,30 +20,31 @@ const loadGltfAsync = (url) => {
   return promise;
 };
 
-const defaultOptions = {
-  levelCount: 2,
+const loadModel = async ({
+  lodeConfig,
+  manifest,
+  ModelBasePath,
+  artifactName,
+}) => {
+  const lod = new LOD();
+  const fileIdentifier = `${lodeConfig.outputFoldername}/${ModelBasePath}/${artifactName}.gltf`;
+  const config = manifest[fileIdentifier];
+  const lodArtifacts = await Promise.all(
+    config.levels.map((_, i) => {
+      const filePath = `/${lodeConfig.outputFoldername}/${ModelBasePath}/${artifactName}-lod-${i}/${artifactName}.gltf`;
+      return loadGltfAsync(filePath);
+    })
+  );
+  lodArtifacts.forEach((artifact, i) => {
+    const threshold =
+      i === 0
+        ? 0
+        : config.levels[i - 1].threshold === -1
+        ? Infinity
+        : config.levels[i - 1].threshold;
+    lod.addLevel(artifact.scene, threshold);
+  });
+  return lod;
 };
 
-const lodeLoader = {
-  levelCount: defaultOptions.levelCount,
-  init: function (opts) {
-    this.levelCount = opts.levelCount || defaultOptions.levelCount;
-  },
-  load: async function ({ basePath, artifactName }) {
-    const lod = new LOD();
-    const lodArtifacts = await Promise.all(
-      [...Array(this.levelCount).keys()].map((_, i) =>
-        loadGltfAsync(
-          `${basePath}/${artifactName}/${artifactName}-lod-${i}/${artifactName}.gltf`
-        )
-      )
-    );
-
-    lodArtifacts.forEach((artifact, i) => {
-      lod.addLevel(artifact.scene, i * 15);
-    });
-    return lod;
-  },
-};
-
-export default lodeLoader;
+export { loadModel };

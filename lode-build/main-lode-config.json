@@ -6,9 +6,15 @@
         "configuration": "raw"
       },
       {
-        "threshold": -1,
+        "threshold": 150,
         "configuration": {
           "targetScale": 0.125
+        }
+      },
+      {
+        "threshold": -1,
+        "configuration": {
+          "targetScale": 0.0625
         }
       }
     ]
@@ -20,9 +26,15 @@
         "configuration": "raw"
       },
       {
-        "threshold": -1,
+        "threshold": 150,
         "configuration": {
           "targetScale": 0.125
+        }
+      },
+      {
+        "threshold": -1,
+        "configuration": {
+          "targetScale": 0.0625
         }
       }
     ]
@@ -34,9 +46,15 @@
         "configuration": "raw"
       },
       {
-        "threshold": -1,
+        "threshold": 150,
         "configuration": {
           "targetScale": 0.125
+        }
+      },
+      {
+        "threshold": -1,
+        "configuration": {
+          "targetScale": 0.0625
         }
       }
     ]
@@ -48,9 +66,15 @@
         "configuration": "raw"
       },
       {
-        "threshold": -1,
+        "threshold": 150,
         "configuration": {
           "targetScale": 0.125
+        }
+      },
+      {
+        "threshold": -1,
+        "configuration": {
+          "targetScale": 0.0625
         }
       }
     ]
