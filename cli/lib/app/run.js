@@ -9,8 +9,10 @@ import {
   getFilename,
   getFolderPath,
   getFilenameWithoutExtension,
-  rmDir,
   getLastModified,
+  createFile,
+  getModelConfigFile,
+  getLodHashFile,
   fileExists,
 } from "../helper/files.js";
 
@@ -22,31 +24,49 @@ const defaultRunOptions = {
   clearOutputBeforeRun: true,
 };
 
-const optimizeFile = ({ originalFile, levelDefinitions }, opts) => {
+const generateHash = (originalFile, configuration) =>
+  getLastModified(originalFile) + JSON.stringify(configuration);
+
+const optimizeFile = ({ originalFile, levelDefinitions }) => {
   const copiedOriginalFile = levelDefinitions[0].pathName;
   const originalModified = () =>
     getLastModified(copiedOriginalFile) < getLastModified(originalFile);
-  if (
-    opts.clearOutputBeforeRun ||
-    !fileExists(copiedOriginalFile) ||
-    originalModified()
-  ) {
+
+  if (!fileExists(copiedOriginalFile) || originalModified()) {
     copyOriginalArtifact(copiedOriginalFile, originalFile);
-    performLOD({ originalFile, levelDefinitions: levelDefinitions.slice(1) });
   }
+  levelDefinitions.slice(1).forEach((levelDefinition) => {
+    const hashFilePath = getLodHashFile(levelDefinition.pathName);
+    const newHash = generateHash(originalFile, levelDefinition.configuration);
+
+    if (
+      fileExists(hashFilePath) &&
+      fs.readFileSync(configFilePath) === newHash
+    ) {
+      return;
+    }
+
+    performLOD({ originalFile, levelDefinition });
+    createFile(hashFilePath, newHash);
+  });
 };
 
-const prepareFolders = (outputFoldername, sourceFiles, levelCount) => {
+const prepareFolders = (outputFoldername, sourceFiles) => {
   return sourceFiles.reduce((agg, originalFile) => {
     const filename = getFilename(originalFile);
     const filenameWithoutExtension = getFilenameWithoutExtension(filename);
     const folderPath = getFolderPath(originalFile);
+    const configFile = fs.readFileSync(getModelConfigFile(originalFile));
+    const modelConfig = JSON.parse(configFile);
 
     const levelDefinitions = [];
-    for (let i = 0; i < levelCount; i++) {
+    for (let i = 0; i < modelConfig.levels.length; i++) {
       const pathName = `./${outputFoldername}/${folderPath}/${filenameWithoutExtension}-lod-${i}/${filename}`;
       createBaseFolderPathForFile(pathName);
-      levelDefinitions.push({ pathName });
+      levelDefinitions.push({
+        pathName,
+        configuration: modelConfig.levels[i].configuration,
+      });
     }
 
     return { ...agg, [originalFile]: { originalFile, levelDefinitions } };
@@ -64,11 +84,7 @@ const run = (commanderOptions) => {
     return;
   }
   print.info("Preparing output folder:");
-  const fileStructure = prepareFolders(
-    opts.outputFoldername,
-    sourceFiles,
-    opts.levelCount
-  );
+  const fileStructure = prepareFolders(opts.outputFoldername, sourceFiles);
   print.success("done");
 
   print.info("Running initial LOD transformation:");

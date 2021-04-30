@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { CONFIG_FILENAME } from "../constants.js";
+import { CONFIG_FILENAME, HASH_FILENAME } from "../constants.js";
 
 export const fileExists = (filePath) => {
   return fs.existsSync(filePath);
@@ -35,3 +35,6 @@ export const getLastModified = (file) => fs.statSync(file).mtimeMs;
 
 export const getModelConfigFile = (file) =>
   getFolderPath(file) + "/" + CONFIG_FILENAME;
+
+export const getLodHashFile = (file) =>
+  getFolderPath(file) + "/" + HASH_FILENAME;
