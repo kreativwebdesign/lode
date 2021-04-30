@@ -23,7 +23,7 @@ const loadGltfAsync = (url) => {
 const loadModel = async ({
   manifest,
   relativePathToLodeOutputFolder,
-  ModelBasePath,
+  modelBasePath,
   artifactName,
 }) => {
   const lod = new LOD();
