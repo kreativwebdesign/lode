@@ -4,10 +4,9 @@ import { measureFPS } from "./src/measure-fps";
 import loadGltfAsync from "./src/async-gltf-loader";
 import { getOptimized } from "./src/url-param";
 import "./src/optimized-toggle";
-import lodeLoader from "lode-three";
+import * as lodeLoader from "lode-three";
+import manifest from "./lode-build/main-lode-config.json";
 import lodeConfig from "./lode-cli.config.json";
-
-lodeLoader.init(lodeConfig);
 
 const useOptimized = getOptimized();
 
@@ -23,27 +22,27 @@ const camera = new THREE.PerspectiveCamera(
   1000
 );
 
-camera.position.set(0, 0, 30);
+camera.position.set(0, 0, 125);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.autoRotate = true;
 controls.autoRotateSpeed = 4;
-
-const optimizedGltfBasePath = "./lode-build/assets";
 const nonOptimizedGltfBasePath = "assets/";
 
 const lods = [
-  { name: "duck", position: [20, 0, 0] },
-  { name: "airplane", position: [-20, 0, 0] },
-  { name: "skull", position: [0, 0, 20] },
-  { name: "dragon", position: [0, 0, -20] },
+  { basePath: "assets/duck", name: "duck", position: [30, 0, 0] },
+  { basePath: "assets/airplane", name: "airplane", position: [-30, 0, 0] },
+  { basePath: "assets/skull", name: "skull", position: [0, 0, 30] },
+  { basePath: "assets/dragon", name: "dragon", position: [0, 0, -30] },
 ];
 
 const setupOptimizedScene = async (scene) => {
   const gltfLods = await Promise.all(
     lods.map((lod) =>
-      lodeLoader.load({
-        basePath: optimizedGltfBasePath,
+      lodeLoader.loadModel({
+        manifest,
+        lodeConfig,
+        ModelBasePath: lod.basePath,
         artifactName: lod.name,
       })
     )
