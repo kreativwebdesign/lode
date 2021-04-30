@@ -2,7 +2,7 @@ import inquirer from "inquirer";
 import glob from "glob";
 import { mergeOptionsWithConfigFile } from "../helper/config.js";
 import * as print from "../helper/print.js";
-import { createFile } from "../helper/files.js";
+import { createFile, getModelConfigFile } from "../helper/files.js";
 
 const defaultConfigOptions = {
   config: "./lode-cli.config.json",
@@ -68,8 +68,15 @@ const config = async (commanderOptions) => {
           when: () => !isFirst,
         },
       ]);
+      const lastThreshold =
+        config.levels[config.levels.length - 1]?.threshold || 0;
+      const threshold =
+        levelConfig.threshold === -1
+          ? -1
+          : lastThreshold + levelConfig.threshold;
+
       config.levels.push({
-        threshold: levelConfig.threshold,
+        threshold: threshold,
         configuration: isFirst
           ? "raw"
           : {
