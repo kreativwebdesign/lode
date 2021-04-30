@@ -75,11 +75,13 @@ const config = async (commanderOptions) => {
       const levelConfig = await inquirer.prompt([
         {
           name: "threshold",
-          type: "number",
-          message: `For which distance should the artifact "${artifactName}" be used? (-1 for infinity)`,
+          type: "input",
+          message: `For which distance should the artifact "${artifactName}" be used?${
+            isLast ? "(-1 for infinity)" : ""
+          }`,
           default: getDefaultThreshold(),
           validate: function (value) {
-            if (value >= 1 || value === -1) {
+            if (value >= 1 || (isLast && value === -1)) {
               return true;
             } else {
               return "Please enter a valid number higher than 0";
@@ -88,7 +90,7 @@ const config = async (commanderOptions) => {
         },
         {
           name: "targetScale",
-          type: "number",
+          type: "input",
           message: `Target scale for the artifact "${artifactName}" (0-1)`,
           default: storedConfig.levels?.[i].targetScale || defaults.targetScale,
           validate: function (value) {
@@ -102,11 +104,11 @@ const config = async (commanderOptions) => {
         },
       ]);
       config.levels.push({
-        threshold: levelConfig.threshold,
+        threshold: parseFloat(levelConfig.threshold),
         configuration: isFirst
           ? undefined
           : {
-              targetScale: levelConfig.targetScale,
+              targetScale: parseFloat(levelConfig.targetScale),
             },
       });
     }
