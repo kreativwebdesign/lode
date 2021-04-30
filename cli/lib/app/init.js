@@ -62,14 +62,14 @@ const questions = [
 ];
 
 const init = async () => {
-  const answers = await inquirer.prompt(questions);
-  if (answers.overwriteConfigFile === false) {
+  const { overwriteConfigFile, ...config } = await inquirer.prompt(questions);
+  if (overwriteConfigFile === false) {
     return;
   }
   try {
-    createFile(answers.configFilepath, JSON.stringify(answers, null, 2));
-    print.success(`${answers.configFilepath} created.`);
-    print.info(`run lode-cli with '-c "${answers.configFilepath}"'`);
+    createFile(config.configFilepath, JSON.stringify(config, null, 2));
+    print.success(`${config.configFilepath} created.`);
+    print.info(`run lode-cli with '-c "${config.configFilepath}"'`);
   } catch (e) {
     print.error(e.message);
   }
