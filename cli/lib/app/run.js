@@ -41,7 +41,7 @@ const optimizeFile = ({ originalFile, levelDefinitions }) => {
 
     if (
       fileExists(hashFilePath) &&
-      fs.readFileSync(configFilePath) === newHash
+      fs.readFileSync(hashFilePath, "utf8") === newHash
     ) {
       return;
     }
@@ -91,14 +91,14 @@ const run = (commanderOptions) => {
   print.success("done");
 
   print.info("Running initial LOD transformation:");
-  sourceFiles.forEach((file) => optimizeFile(fileStructure[file], opts));
+  sourceFiles.forEach((file) => optimizeFile(fileStructure[file]));
   print.success("done");
 
   if (opts.watch) {
     print.info("watching files...");
     sourceFiles.forEach((file) => {
       fs.watch(file, () => {
-        optimizeFile(fileStructure[file], opts);
+        optimizeFile(fileStructure[file]);
       });
     });
   }
