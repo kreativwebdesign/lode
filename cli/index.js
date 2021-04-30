@@ -15,7 +15,6 @@ program
   .option("-c, --config <configfile>", "Path to config file")
   .option("-l, --levelCount <count>", "Amount of detail leves to be generated")
   .option("-o, --outputFoldername <name>", "Name of the output folder")
-  .option("--clearOutputBeforeRun", "Clean output folder before run")
   .action(app.run);
 
 program.command("init").description("Setup LOD configuration").action(app.init);

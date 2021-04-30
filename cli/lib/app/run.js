@@ -58,12 +58,6 @@ const run = (commanderOptions) => {
   const opts = mergeOptionsWithConfigFile(commanderOptions, defaultRunOptions);
   const sourceFiles = glob.sync(opts.source);
 
-  if (opts.clearOutputBeforeRun) {
-    print.info("Clearing output folder:");
-    rmDir(opts.outputFoldername);
-    print.success("done");
-  }
-
   if (sourceFiles.length === 0) {
     print.error("No files found matching", opts.source);
     print.error("Aborting");

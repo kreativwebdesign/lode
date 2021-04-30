@@ -26,7 +26,7 @@ const questions = [
     },
   },
   {
-    name: "sourcePattern",
+    name: "source",
     type: "input",
     message: "For which files do you want to run lode-cli?",
     default: "**/*.gltf",
@@ -67,15 +67,6 @@ const questions = [
     },
   },
   {
-    name: "clearOutputBeforeRun",
-    type: "confirm",
-    message: "Should i delete the output folder before running?",
-    default: true,
-    when: (answers) => {
-      return answers.overwriteConfigFile !== false;
-    },
-  },
-  {
     name: "watch",
     type: "confirm",
     message: "Do you want to run lode-cli in watch mode by default?",
@@ -92,16 +83,7 @@ const init = async () => {
     return;
   }
   try {
-    createFile(
-      answers.configFilepath,
-      `{
-  "source": "${answers.sourcePattern}",
-  "outputFoldername": "${answers.outputFoldername}",
-  "levelCount": ${answers.levelCount},
-  "clearOutputBeforeRun": "${answers.clearOutputBeforeRun}",
-  "watch": ${answers.watch}
-}`
-    );
+    createFile(answers.configFilepath, JSON.stringify(answers, null, 2));
     print.success(`${answers.configFilepath} created.`);
     print.info(`run lode-cli with '-c "${answers.configFilepath}"'`);
   } catch (e) {
