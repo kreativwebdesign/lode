@@ -19,6 +19,14 @@ program
   .action(app.run);
 
 program.command("init").description("Setup LOD configuration").action(app.init);
+
+program
+  .command("config")
+  .option("-c, --config <configfile>", "Path to config file")
+  .option("-s, --source <pattern>", "Source glob pattern")
+  .description("Configure LOD options for each artifact")
+  .action(app.config);
+
 program
   .command("clean")
   .description("Cleans the output folder")

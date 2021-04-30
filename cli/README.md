@@ -23,6 +23,14 @@ To setup a configuration file, run `yarn start init`. This will guide you throug
 
 ```
 
+### config
+Run `yarn start config` to configure the level of details for each model.
+You can pass the following options:
+| Option           | Description              | Default                  |
+| ---------------- | ------------------------ | ------------------------ |
+| `-c`, `--config` | Path to config file      | `./lode-cli.config.json` |
+| `-s`, `--source` | Source glob pattern      | `**/*.gltf`              |
+
 ### run
 
 This command runs the LOD generating. You can pass various options to this command.
