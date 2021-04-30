@@ -34,7 +34,7 @@ export const rmDir = (path) => {
 export const getLastModified = (file) => fs.statSync(file).mtimeMs;
 
 export const getModelConfigFile = (file) =>
-  getFolderPath(file) + "/" + CONFIG_FILENAME;
+  path.join(getFolderPath(file), CONFIG_FILENAME);
 
 export const getLodHashFile = (file) =>
-  getFolderPath(file) + "/" + HASH_FILENAME;
+  path.join(getFolderPath(file), HASH_FILENAME);

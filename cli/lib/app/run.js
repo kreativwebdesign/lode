@@ -1,4 +1,5 @@
 import glob from "glob";
+import path from "path";
 import fs from "fs";
 import chokidar from "chokidar";
 import figlet from "figlet";
@@ -91,11 +92,11 @@ const buildManifest = (outputFoldername, sourceFiles) => {
 
     return {
       ...agg,
-      [outputFoldername + "/" + sourceFile]: modelConfig,
+      [path.join(outputFoldername, sourceFile)]: modelConfig,
     };
   }, {});
   createFile(
-    outputFoldername + "/" + MANIFEST_FILENAME,
+    path.join(outputFoldername, MANIFEST_FILENAME),
     JSON.stringify(manifest, null, 2)
   );
 };
