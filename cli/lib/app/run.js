@@ -99,6 +99,15 @@ const run = (commanderOptions) => {
     sourceFiles.forEach((file) => {
       fs.watch(file, () => {
         optimizeFile(fileStructure[file]);
+        print.success("done");
+      });
+    });
+    sourceFiles.forEach((srcFile) => {
+      const modelConfigFile = getModelConfigFile(srcFile);
+      fs.watch(modelConfigFile, () => {
+        const fileStructure = prepareFolders(opts.outputFoldername, [srcFile]);
+        optimizeFile(fileStructure[srcFile]);
+        print.success("done");
       });
     });
   }
