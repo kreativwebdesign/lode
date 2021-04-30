@@ -57,3 +57,9 @@ This would work for the following folder structure:
       | |-artifact.bin
 
 ```
+
+## Outlook
+
+- Add culled lod at the end of each lod if the last one is not set to infinity.
+- Add helper for loading manifest async
+- Add helper to progressively load LOD-artifacts
