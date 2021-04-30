@@ -61,7 +61,7 @@ const setupOptimizedScene = async (scene) => {
       lodeLoader.loadModel({
         manifest,
         relativePathToLodeOutputFolder: lod.relativePathToLodeOutputFolder,
-        ModelBasePath: lod.basePath,
+        modelBasePath: lod.basePath,
         artifactName: lod.name,
       })
     )

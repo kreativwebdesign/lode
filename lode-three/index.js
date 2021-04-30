@@ -4,7 +4,7 @@ import loadGltfAsync from "./src/async-gltf-loader";
 export const loadModel = async ({
   manifest,
   relativePathToLodeOutputFolder,
-  ModelBasePath,
+  modelBasePath,
   artifactName,
 }) => {
   const lod = new THREE.LOD();
