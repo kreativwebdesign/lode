@@ -19,7 +19,7 @@ import {
 } from "../helper/files.js";
 
 const readConfigFile = (file) => {
-  const configFile = readFile(file, "utf-8");
+  const configFile = readFile(file);
   const parsedJson = JSON.parse(configFile);
   return parsedJson;
 };
@@ -46,9 +46,7 @@ const optimizeFile = ({ originalFile, levelDefinitions }) => {
     .filter((levelDefinition) => {
       const hashFilePath = getLodHashFile(levelDefinition.pathName);
       const newHash = generateHash(originalFile, levelDefinition.configuration);
-      return !(
-        fileExists(hashFilePath) && readFile(hashFilePath, "utf8") === newHash
-      );
+      return !(fileExists(hashFilePath) && readFile(hashFilePath) === newHash);
     });
   if (levelsToBeReGenerated.length > 0) {
     performLOD({ originalFile, levelDefinitions: levelsToBeReGenerated });
