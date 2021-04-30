@@ -1,5 +1,5 @@
 {
-  "lode-build/assets/airplane/airplane.gltf": {
+  "assets/airplane": {
     "levels": [
       {
         "threshold": 100,
@@ -19,7 +19,7 @@
       }
     ]
   },
-  "lode-build/assets/dragon/dragon.gltf": {
+  "assets/dragon": {
     "levels": [
       {
         "threshold": 100,
@@ -39,7 +39,7 @@
       }
     ]
   },
-  "lode-build/assets/duck/duck.gltf": {
+  "assets/duck": {
     "levels": [
       {
         "threshold": 100,
@@ -59,7 +59,7 @@
       }
     ]
   },
-  "lode-build/assets/skull/skull.gltf": {
+  "assets/skull": {
     "levels": [
       {
         "threshold": 100,

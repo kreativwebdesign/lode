@@ -6,7 +6,6 @@ import { getOptimized } from "./src/url-param.js";
 import "./src/optimized-toggle.js";
 import * as lodeLoader from "./_snowpack/pkg/lode-three.js";
 import manifest from "./lode-build/lode-manifest.json.proxy.js";
-import lodeConfig from "./lode-cli.config.json.proxy.js";
 
 const useOptimized = getOptimized();
 
@@ -30,10 +29,30 @@ controls.autoRotateSpeed = 4;
 const nonOptimizedGltfBasePath = "assets/";
 
 const lods = [
-  { basePath: "assets/duck", name: "duck", position: [30, 0, 0] },
-  { basePath: "assets/airplane", name: "airplane", position: [-30, 0, 0] },
-  { basePath: "assets/skull", name: "skull", position: [0, 0, 30] },
-  { basePath: "assets/dragon", name: "dragon", position: [0, 0, -30] },
+  {
+    relativePathToLodeOutputFolder: "./lode-build",
+    basePath: "assets/duck",
+    name: "duck",
+    position: [30, 0, 0],
+  },
+  {
+    relativePathToLodeOutputFolder: "./lode-build",
+    basePath: "assets/airplane",
+    name: "airplane",
+    position: [-30, 0, 0],
+  },
+  {
+    relativePathToLodeOutputFolder: "./lode-build",
+    basePath: "assets/skull",
+    name: "skull",
+    position: [0, 0, 30],
+  },
+  {
+    relativePathToLodeOutputFolder: "./lode-build",
+    basePath: "assets/dragon",
+    name: "dragon",
+    position: [0, 0, -30],
+  },
 ];
 
 const setupOptimizedScene = async (scene) => {
@@ -41,7 +60,7 @@ const setupOptimizedScene = async (scene) => {
     lods.map((lod) =>
       lodeLoader.loadModel({
         manifest,
-        lodeConfig,
+        relativePathToLodeOutputFolder: lod.relativePathToLodeOutputFolder,
         ModelBasePath: lod.basePath,
         artifactName: lod.name,
       })

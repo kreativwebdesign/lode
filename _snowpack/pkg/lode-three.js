@@ -21,17 +21,17 @@ const loadGltfAsync = (url) => {
 };
 
 const loadModel = async ({
-  lodeConfig,
   manifest,
+  relativePathToLodeOutputFolder,
   ModelBasePath,
   artifactName,
 }) => {
   const lod = new LOD();
-  const fileIdentifier = `${lodeConfig.outputFoldername}/${ModelBasePath}/${artifactName}.gltf`;
+  const fileIdentifier = ModelBasePath;
   const config = manifest[fileIdentifier];
   const lodArtifacts = await Promise.all(
     config.levels.map((_, i) => {
-      const filePath = `/${lodeConfig.outputFoldername}/${ModelBasePath}/${artifactName}-lod-${i}/${artifactName}.gltf`;
+      const filePath = `${relativePathToLodeOutputFolder}/${ModelBasePath}/${artifactName}-lod-${i}/${artifactName}.gltf`;
       return loadGltfAsync(filePath);
     })
   );
