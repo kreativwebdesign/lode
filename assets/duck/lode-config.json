@@ -1,8 +1,7 @@
 {
   "levels": [
     {
-      "threshold": 100,
-      "configuration": "raw"
+      "threshold": 100
     },
     {
       "threshold": 150,

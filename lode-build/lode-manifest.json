@@ -2,8 +2,7 @@
   "assets/airplane": {
     "levels": [
       {
-        "threshold": 100,
-        "configuration": "raw"
+        "threshold": 100
       },
       {
         "threshold": 150,
@@ -22,8 +21,7 @@
   "assets/dragon": {
     "levels": [
       {
-        "threshold": 100,
-        "configuration": "raw"
+        "threshold": 100
       },
       {
         "threshold": 150,
@@ -42,8 +40,7 @@
   "assets/duck": {
     "levels": [
       {
-        "threshold": 100,
-        "configuration": "raw"
+        "threshold": 100
       },
       {
         "threshold": 150,
@@ -62,8 +59,7 @@
   "assets/skull": {
     "levels": [
       {
-        "threshold": 100,
-        "configuration": "raw"
+        "threshold": 100
       },
       {
         "threshold": 150,
