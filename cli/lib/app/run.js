@@ -1,9 +1,9 @@
 import glob from "glob";
 import fs from "fs";
 import figlet from "figlet";
-import * as print from "../print.js";
+import * as print from "../helper/print.js";
 import { performLOD, copyOriginalArtifact } from "../lod.js";
-import { mergeOptionsWithConfigFile } from "../config.js";
+import { mergeOptionsWithConfigFile } from "../helper/config.js";
 import {
   createBaseFolderPathForFile,
   getFilename,
@@ -12,7 +12,7 @@ import {
   rmDir,
   getLastModified,
   fileExists,
-} from "../files.js";
+} from "../helper/files.js";
 
 const defaultRunOptions = {
   source: "**/*.gltf",

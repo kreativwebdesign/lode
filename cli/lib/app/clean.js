@@ -1,14 +1,17 @@
-import { mergeOptionsWithConfigFile } from "../config.js";
-import * as print from "../print.js";
-import { rmDir } from "../files.js";
+import { mergeOptionsWithConfigFile } from "../helper/config.js";
+import * as print from "../helper/print.js";
+import { rmDir } from "../helper/files.js";
 
-const defaultRunOptions = {
+const defaultCleanOptions = {
   config: "./lode-cli.config.json",
   outputFoldername: "lode-build",
 };
 
 const clean = (commanderOptions) => {
-  const opts = mergeOptionsWithConfigFile(commanderOptions, defaultRunOptions);
+  const opts = mergeOptionsWithConfigFile(
+    commanderOptions,
+    defaultCleanOptions
+  );
 
   print.info("Clearing output folder:");
   rmDir(opts.outputFoldername);

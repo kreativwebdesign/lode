@@ -1,7 +1,7 @@
 import { NodeIO } from "@gltf-transform/core";
 import simplify from "./simplification/index.js";
 import { prepareData } from "./simplification/prepare-data.js";
-import * as print from "./print.js";
+import * as print from "./helper/print.js";
 
 const io = new NodeIO();
 

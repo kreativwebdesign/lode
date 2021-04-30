@@ -1,6 +1,6 @@
 import inquirer from "inquirer";
-import * as print from "../print.js";
-import { fileExists, createFile } from "../files.js";
+import * as print from "../helper/print.js";
+import { fileExists, createFile } from "../helper/files.js";
 
 const questions = [
   {
