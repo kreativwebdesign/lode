@@ -132,7 +132,7 @@ const sample = async (optimize) => {
 
   let finishGroup = startLogGroup("load page");
   await page.goto(`http://localhost:8080?${optimize ? "optimize" : ""}`);
-  await loadedModels;
+  await Promise.any([loadedModels, waitFor(20000)]);
   finishGroup();
 
   // screenshot is only used for manual qa
