@@ -12,7 +12,7 @@ export const loadModel = async ({
   const config = manifest[fileIdentifier];
   const lodArtifacts = await Promise.all(
     config.levels.map((_, i) => {
-      const filePath = `${relativePathToLodeOutputFolder}/${ModelBasePath}/${artifactName}-lod-${i}/${artifactName}.gltf`;
+      const filePath = `${relativePathToLodeOutputFolder}/${modelBasePath}/${artifactName}-lod-${i}/${artifactName}.gltf`;
       return loadGltfAsync(filePath);
     })
   );
