@@ -28,6 +28,18 @@ You can pass the following options:
 | ---------------- | ------------------------ | ------------------------ |
 | `-c`, `--config` | Path to config file      | `./lode-cli.config.json` |
 | `-s`, `--source` | Source glob pattern      | `**/*.gltf`              |
+| `-a`, `--all`    | Wheter to reconfigure all models | `false`          |
+
+\
+For each model the following options can be set:\
+`How many level of details should i generate (min. 2)`: Set how many level of details the cli should generate for this model. Minimum is two, the first being the original file.\
+\
+Then for each level of detail the following options can be set:\
+`For which distance should the artifact "XXX" be used? (-1 for infinity)`:\
+Set the distance, this artifact should be visible. The values stack onto the previous distance. Type `-1` for the artifact to be rendered infinitely. The first one being the original artifact\
+`Target scale for the artifact "LOD-X" (0-1)`:\
+Set the target scale for this artifact relative to the original size. Choose a value between 1 (being the same as the original) and 0 (being no polygons). This can not be set for the original artifact.
+
 
 ### run
 
