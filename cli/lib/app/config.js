@@ -2,7 +2,7 @@ import inquirer from "inquirer";
 import glob from "glob";
 import { mergeOptionsWithConfigFile } from "../helper/config.js";
 import * as print from "../helper/print.js";
-import { createFile, getFolderPath } from "../helper/files.js";
+import { createFile } from "../helper/files.js";
 
 const defaultConfigOptions = {
   config: "./lode-cli.config.json",
@@ -17,7 +17,6 @@ const config = async (commanderOptions) => {
   const sourceFiles = glob.sync(opts.source);
   for await (const file of sourceFiles) {
     const config = { levels: [] };
-    const folderPath = getFolderPath(file);
     print.success(file);
     const { levelCount } = await inquirer.prompt([
       {
@@ -78,25 +77,9 @@ const config = async (commanderOptions) => {
             },
       });
     }
-    createFile(
-      folderPath + "/lode-config.json",
-      JSON.stringify(config, null, 2)
-    );
+    createFile(getModelConfigFile(file), JSON.stringify(config, null, 2));
     print.blankLine();
   }
 };
 
 export default config;
-
-/*
-  {
-    levels: [
-      {
-        threshold: 100,
-        configuration: raw | {
-          maxTriangles: 2000
-        }
-      }
-    ]
-  }
-*/
