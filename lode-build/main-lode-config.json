@@ -1,0 +1,58 @@
+{
+  "lode-build/assets/airplane/airplane.gltf": {
+    "levels": [
+      {
+        "threshold": 100,
+        "configuration": "raw"
+      },
+      {
+        "threshold": -1,
+        "configuration": {
+          "targetScale": 0.125
+        }
+      }
+    ]
+  },
+  "lode-build/assets/dragon/dragon.gltf": {
+    "levels": [
+      {
+        "threshold": 100,
+        "configuration": "raw"
+      },
+      {
+        "threshold": -1,
+        "configuration": {
+          "targetScale": 0.125
+        }
+      }
+    ]
+  },
+  "lode-build/assets/duck/duck.gltf": {
+    "levels": [
+      {
+        "threshold": 100,
+        "configuration": "raw"
+      },
+      {
+        "threshold": -1,
+        "configuration": {
+          "targetScale": 0.125
+        }
+      }
+    ]
+  },
+  "lode-build/assets/skull/skull.gltf": {
+    "levels": [
+      {
+        "threshold": 100,
+        "configuration": "raw"
+      },
+      {
+        "threshold": -1,
+        "configuration": {
+          "targetScale": 0.125
+        }
+      }
+    ]
+  }
+}
