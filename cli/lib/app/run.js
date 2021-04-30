@@ -89,10 +89,9 @@ const prepareFolders = (outputFoldername, sourceFiles) => {
 const buildManifest = (outputFoldername, sourceFiles) => {
   const manifest = sourceFiles.reduce((agg, sourceFile) => {
     const modelConfig = readConfigFile(getModelConfigFile(sourceFile));
-
     return {
       ...agg,
-      [path.join(outputFoldername, sourceFile)]: modelConfig,
+      [getFolderPath(sourceFile)]: modelConfig,
     };
   }, {});
   createFile(
