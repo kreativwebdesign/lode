@@ -38,13 +38,22 @@ const config = async (commanderOptions) => {
       const isFirst = i === 0;
       const isLast = i === levelCount - 1;
       const artifactName = i === 0 ? "original" : `LOD-${i}`;
+      const getDefaultThreshold = () => {
+        if (isFirst) {
+          return 100;
+        } else if (isLast) {
+          return -1;
+        } else {
+          return 50;
+        }
+      };
       print.success(`${artifactName}:`);
       const levelConfig = await inquirer.prompt([
         {
           name: "threshold",
           type: "number",
           message: `For which distance should the artifact "${artifactName}" be used? (-1 for infinity)`,
-          default: isFirst ? 100 : isLast ? -1 : 50,
+          default: getDefaultThreshold(),
           validate: function (value) {
             if (value >= 1 || value === -1) {
               return true;
