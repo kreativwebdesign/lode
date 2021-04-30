@@ -1,12 +1,11 @@
-import fs from "fs";
 import * as print from "./print.js";
-import { fileExists } from "./files.js";
+import { fileExists, readFile } from "./files.js";
 
 export const mergeOptionsWithConfigFile = (options, defaultOptions) => {
   const configFilePath = options.config || defaultOptions.config;
 
   if (fileExists(configFilePath)) {
-    const configFile = fs.readFileSync(configFilePath);
+    const configFile = readFile(configFilePath);
     const config = JSON.parse(configFile);
     return {
       ...defaultOptions,

@@ -1,6 +1,5 @@
 import glob from "glob";
 import path from "path";
-import fs from "fs";
 import chokidar from "chokidar";
 import figlet from "figlet";
 import * as print from "../helper/print.js";
@@ -16,10 +15,11 @@ import {
   getModelConfigFile,
   getLodHashFile,
   fileExists,
+  readFile,
 } from "../helper/files.js";
 
 const readConfigFile = (file) => {
-  const configFile = fs.readFileSync(file, "utf-8");
+  const configFile = readFile(file, "utf-8");
   const parsedJson = JSON.parse(configFile);
   return parsedJson;
 };
@@ -47,8 +47,7 @@ const optimizeFile = ({ originalFile, levelDefinitions }) => {
       const hashFilePath = getLodHashFile(levelDefinition.pathName);
       const newHash = generateHash(originalFile, levelDefinition.configuration);
       return !(
-        fileExists(hashFilePath) &&
-        fs.readFileSync(hashFilePath, "utf8") === newHash
+        fileExists(hashFilePath) && readFile(hashFilePath, "utf8") === newHash
       );
     });
   if (levelsToBeReGenerated.length > 0) {

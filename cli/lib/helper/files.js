@@ -38,3 +38,5 @@ export const getModelConfigFile = (file) =>
 
 export const getLodHashFile = (file) =>
   path.join(getFolderPath(file), HASH_FILENAME);
+
+export const readFile = (file) => fs.readFileSync(file, "utf8");
