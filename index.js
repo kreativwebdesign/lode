@@ -4,8 +4,10 @@ import { measureFPS } from "./src/measure-fps.js";
 import loadGltfAsync from "./src/async-gltf-loader.js";
 import { getOptimized } from "./src/url-param.js";
 import "./src/optimized-toggle.js";
-import * as lodeLoader from "./_snowpack/pkg/lode-three.js";
-import manifest from "./lode-build/lode-manifest.json.proxy.js";
+import lodeLoader from "./_snowpack/pkg/lode-three.js";
+import lodeConfig from "./lode-cli.config.json.proxy.js";
+
+lodeLoader.init(lodeConfig);
 
 const useOptimized = getOptimized();
 
@@ -21,41 +23,27 @@ const camera = new THREE.PerspectiveCamera(
   1000
 );
 
-camera.position.set(0, 0, 125);
+camera.position.set(0, 0, 30);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.autoRotate = true;
 controls.autoRotateSpeed = 4;
 
-const lodeContext = lodeLoader.createContext({
-  manifest,
-  basePath: "./lode-build",
-});
+const optimizedGltfBasePath = "./lode-build/assets";
+const nonOptimizedGltfBasePath = "assets/";
 
 const lods = [
-  {
-    name: "assets/duck",
-    position: [30, 0, 0],
-  },
-  {
-    name: "assets/airplane",
-    position: [-30, 0, 0],
-  },
-  {
-    name: "assets/skull",
-    position: [0, 0, 30],
-  },
-  {
-    name: "assets/dragon",
-    position: [0, 0, -30],
-  },
+  { name: "duck", position: [20, 0, 0] },
+  { name: "airplane", position: [-20, 0, 0] },
+  { name: "skull", position: [0, 0, 20] },
+  { name: "dragon", position: [0, 0, -20] },
 ];
 
 const setupOptimizedScene = async (scene) => {
   const gltfLods = await Promise.all(
     lods.map((lod) =>
-      lodeLoader.loadModel({
-        lodeContext,
+      lodeLoader.load({
+        basePath: optimizedGltfBasePath,
         artifactName: lod.name,
       })
     )
@@ -70,7 +58,7 @@ const setupOptimizedScene = async (scene) => {
 const setupNonOptimizedScene = async (scene) => {
   const gltfs = await Promise.all(
     lods.map((lod) =>
-      loadGltfAsync(`${lod.name}/${lod.name.split("/").pop()}.gltf`)
+      loadGltfAsync(`${nonOptimizedGltfBasePath}${lod.name}/${lod.name}.gltf`)
     )
   );
   gltfs.forEach((gltf, i) => {
