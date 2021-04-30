@@ -27,7 +27,6 @@ const readConfigFile = (file) => {
 const defaultRunOptions = {
   source: "**/*.gltf",
   config: "./lode-cli.config.json",
-  levelCount: 2,
   outputFoldername: "lode-build",
 };
 

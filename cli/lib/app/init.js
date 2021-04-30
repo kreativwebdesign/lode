@@ -51,22 +51,6 @@ const questions = [
     },
   },
   {
-    name: "levelCount",
-    type: "number",
-    message: "How many level of details should i generate (min. 2)",
-    default: 2,
-    when: (answers) => {
-      return answers.overwriteConfigFile !== false;
-    },
-    validate: function (value) {
-      if (value >= 2) {
-        return true;
-      } else {
-        return "Please enter a valid number higher than 2";
-      }
-    },
-  },
-  {
     name: "watch",
     type: "confirm",
     message: "Do you want to run lode-cli in watch mode by default?",

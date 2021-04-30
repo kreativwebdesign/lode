@@ -18,15 +18,6 @@ and then load your artifacts:
 lodLoader.load({ basePath: './lode-build/your-files', artifactName: 'artifactName' })
 ```
 
-### init
-This method accepts one argument of type lode-cli-config.
-Relevant properties are:
-```
-{
-  levelCount: 2, // Amount of detail levels to be generated
-}
-```
-
 ### load
 This method accepts the basePath of your generated artifacts where all your artifacts are and the specific artifact name.
 ```
