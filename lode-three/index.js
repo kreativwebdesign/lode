@@ -17,13 +17,15 @@ export const loadModel = async ({
     })
   );
   lodArtifacts.forEach((artifact, i) => {
-    const threshold =
-      i === 0
-        ? 0
-        : config.levels[i - 1].threshold === -1
-        ? Infinity
-        : config.levels[i - 1].threshold;
-    lod.addLevel(artifact.scene, threshold);
+    if (i === 0) {
+      lod.addLevel(artifact.scene, 0);
+    } else {
+      const threshold =
+        config.levels[i - 1].threshold === -1
+          ? Infinity
+          : config.levels[i - 1].threshold;
+      lod.addLevel(artifact.scene, threshold);
+    }
   });
   return lod;
 };
