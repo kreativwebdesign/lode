@@ -45,7 +45,6 @@ const loadModel = async ({ artifactName, lodeContext }) => {
       return threshold;
     }),
   ];
-  console.log(thresholds);
   lodArtifacts.forEach((artifact, i) => {
     if (i === 0) {
       lod.addLevel(artifact.scene, 0);
