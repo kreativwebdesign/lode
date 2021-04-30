@@ -11,7 +11,6 @@ import {
   createBaseFolderPathForFile,
   getFilename,
   getFolderPath,
-  getFilenameWithoutExtension,
   getLastModified,
   createFile,
   getModelConfigFile,
