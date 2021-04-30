@@ -28,13 +28,13 @@
       "count": 27460,
       "max": [
         786.957275390625,
-        242.61630249023438,
-        400.31671142578125
+        247.88348388671875,
+        403.8321533203125
       ],
       "min": [
         -789.9151000976562,
-        74.68692779541016,
-        -165.9241943359375
+        72.17256164550781,
+        -166.04574584960938
       ],
       "normalized": false,
       "bufferView": 1,
@@ -125,12 +125,12 @@
     {
       "type": "SCALAR",
       "componentType": 5123,
-      "count": 28653,
+      "count": 18585,
       "max": [
         27457
       ],
       "min": [
-        8
+        18
       ],
       "normalized": false,
       "bufferView": 3,
@@ -160,7 +160,7 @@
     {
       "buffer": 0,
       "byteOffset": 2231616,
-      "byteLength": 181228,
+      "byteLength": 161092,
       "target": 34963
     }
   ],
@@ -195,7 +195,7 @@
   "buffers": [
     {
       "uri": "airplane.bin",
-      "byteLength": 2412844
+      "byteLength": 2392708
     }
   ],
   "materials": [

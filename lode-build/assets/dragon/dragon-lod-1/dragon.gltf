@@ -59,12 +59,12 @@
     {
       "type": "SCALAR",
       "componentType": 5123,
-      "count": 140022,
+      "count": 61500,
       "max": [
-        65532
+        65523
       ],
       "min": [
-        2
+        4
       ],
       "normalized": false,
       "bufferView": 2,
@@ -87,14 +87,14 @@
     {
       "buffer": 0,
       "byteOffset": 2530848,
-      "byteLength": 280044,
+      "byteLength": 123000,
       "target": 34963
     }
   ],
   "buffers": [
     {
       "uri": "dragon.bin",
-      "byteLength": 2810892
+      "byteLength": 2653848
     }
   ],
   "materials": [
