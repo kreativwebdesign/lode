@@ -65,7 +65,6 @@ export const performLOD = ({ originalFile, levelDefinition }) => {
       primitive.setAttribute("TEXCOORD_0");
       primitive.setAttribute("TANGENT");
     });
-  // const primitive = newDoc.getRoot().listMeshes()[0].listPrimitives()[0];
 
   io.write(pathName, newDoc);
 };
