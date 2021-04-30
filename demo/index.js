@@ -28,29 +28,26 @@ controls.autoRotate = true;
 controls.autoRotateSpeed = 4;
 const nonOptimizedGltfBasePath = "assets/";
 
+const lodeContext = lodeLoader.createContext({
+  manifest,
+  basePath: "./lode-build",
+});
+
 const lods = [
   {
-    relativePathToLodeOutputFolder: "./lode-build",
-    basePath: "assets/duck",
-    name: "duck",
+    name: "assets/duck",
     position: [30, 0, 0],
   },
   {
-    relativePathToLodeOutputFolder: "./lode-build",
-    basePath: "assets/airplane",
-    name: "airplane",
+    name: "assets/airplane",
     position: [-30, 0, 0],
   },
   {
-    relativePathToLodeOutputFolder: "./lode-build",
-    basePath: "assets/skull",
-    name: "skull",
+    name: "assets/skull",
     position: [0, 0, 30],
   },
   {
-    relativePathToLodeOutputFolder: "./lode-build",
-    basePath: "assets/dragon",
-    name: "dragon",
+    name: "assets/dragon",
     position: [0, 0, -30],
   },
 ];
@@ -59,9 +56,7 @@ const setupOptimizedScene = async (scene) => {
   const gltfLods = await Promise.all(
     lods.map((lod) =>
       lodeLoader.loadModel({
-        manifest,
-        relativePathToLodeOutputFolder: lod.relativePathToLodeOutputFolder,
-        modelBasePath: lod.basePath,
+        lodeContext,
         artifactName: lod.name,
       })
     )

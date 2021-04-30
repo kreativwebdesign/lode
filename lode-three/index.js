@@ -1,18 +1,18 @@
 import * as THREE from "three";
 import loadGltfAsync from "./src/async-gltf-loader";
 
-export const loadModel = async ({
+export const createContext = ({ basePath, manifest }) => ({
+  basePath,
   manifest,
-  relativePathToLodeOutputFolder,
-  modelBasePath,
-  artifactName,
-}) => {
+});
+
+export const loadModel = async ({ artifactName, lodeContext }) => {
   const lod = new THREE.LOD();
-  const fileIdentifier = ModelBasePath;
-  const config = manifest[fileIdentifier];
+  const config = lodeContext.manifest[artifactName];
+  const name = artifactName.split("/").pop();
   const lodArtifacts = await Promise.all(
     config.levels.map((_, i) => {
-      const filePath = `${relativePathToLodeOutputFolder}/${modelBasePath}/${artifactName}-lod-${i}/${artifactName}.gltf`;
+      const filePath = `${lodeContext.basePath}/${artifactName}/lod-${i}/${name}.gltf`;
       return loadGltfAsync(filePath);
     })
   );

@@ -68,13 +68,12 @@ const optimizeFile = ({ originalFile, levelDefinitions }) => {
 const prepareFolders = (outputFoldername, sourceFiles) => {
   return sourceFiles.reduce((agg, originalFile) => {
     const filename = getFilename(originalFile);
-    const filenameWithoutExtension = getFilenameWithoutExtension(filename);
     const folderPath = getFolderPath(originalFile);
     const modelConfig = readConfigFile(getModelConfigFile(originalFile));
 
     const levelDefinitions = [];
     for (let i = 0; i < modelConfig.levels.length; i++) {
-      const pathName = `./${outputFoldername}/${folderPath}/${filenameWithoutExtension}-lod-${i}/${filename}`;
+      const pathName = `./${outputFoldername}/${folderPath}/lod-${i}/${filename}`;
       createBaseFolderPathForFile(pathName);
       levelDefinitions.push({
         pathName,
