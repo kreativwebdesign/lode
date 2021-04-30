@@ -1,6 +1,6 @@
 # LODE-CLI
 
-This CLI helps you to generate LOD artifacts for you gltf files.
+This CLI helps to automatically generate LOD artifacts for `.gltf` files.
 
 ## Usage
 
