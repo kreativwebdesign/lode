@@ -43,21 +43,25 @@ const optimizeFile = ({ originalFile, levelDefinitions }) => {
   if (!fileExists(copiedOriginalFile) || originalModified()) {
     copyOriginalArtifact(copiedOriginalFile, originalFile);
   }
-  levelDefinitions.slice(1).forEach((levelDefinition) => {
-    const hashFilePath = getLodHashFile(levelDefinition.pathName);
-    const newHash = generateHash(originalFile, levelDefinition.configuration);
-
-    if (
-      fileExists(hashFilePath) &&
-      fs.readFileSync(hashFilePath, "utf8") === newHash
-    ) {
-      return;
-    }
-
-    performLOD({ originalFile, levelDefinition });
-    createFile(hashFilePath, newHash);
+  const levelsToBeReGenerated = levelDefinitions
+    .slice(1)
+    .filter((levelDefinition) => {
+      const hashFilePath = getLodHashFile(levelDefinition.pathName);
+      const newHash = generateHash(originalFile, levelDefinition.configuration);
+      return !(
+        fileExists(hashFilePath) &&
+        fs.readFileSync(hashFilePath, "utf8") === newHash
+      );
+    });
+  if (levelsToBeReGenerated.length > 0) {
+    performLOD({ originalFile, levelDefinitions: levelsToBeReGenerated });
+    levelsToBeReGenerated.forEach((levelDefinition) => {
+      const hashFilePath = getLodHashFile(levelDefinition.pathName);
+      const newHash = generateHash(originalFile, levelDefinition.configuration);
+      createFile(hashFilePath, newHash);
+    });
     print.success("done");
-  });
+  }
 };
 
 const prepareFolders = (outputFoldername, sourceFiles) => {
