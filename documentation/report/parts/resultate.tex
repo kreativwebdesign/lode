@@ -10,7 +10,56 @@ Das Resultat besteht wie beschrieben aus verschiedenen Artefakten. In diesem Abs
 
 \section{Benchmark}
 
-Der Benchmark dient als Mittel um den Nutzen von LOD in Webanwendungen quantifizieren zu können. Die dafür zur Hand genommene Masseinheit ist \gls{FPS}.
+In diesem Abschnitt werden die verschiedenen erwägten Optionen erläutert und die Abgrenzungen aufgezeigt.
+Das Ziel des Benchmarks ist der Vergleich einer Version ohne Einsatz von LOD und einer Umgebung, welche LODs einsetzt. Um eine möglichst praxisnahe Aussage treffen zu können wird hierfür eine Demo Szenerie verwendet, welche einer echten Anwendung so nah wie möglich kommt. Somit wird gewährleistet, dass es nicht nur in der Theorie einen Nutzen für LODs gibt sondern dieser in der Praxis vorhanden ist.
+
+\paragraph{Browser Umgebung}
+Um den Umfang des Benchmarks überschaubar zu halten, wurde ausschliesslich ein Benchmark für Google Chrome entwickelt.
+Google Chrome basiert auf \fgls{Chromium}{Open Source Browser-Projekt welches von Google entwickelt wird.}, dieselbe Engine, welche auch Microsoft Edge oder Opera verwenden.
+Einen Benchmark basierend auf Google Chrome liefert somit auch Indizien für diese beiden Browser, auch wenn gewisse Abweichungen möglich sind.
+Neben dem Marktführer Chrome sind Mozilla Firefox oder Safari von Apple ebenfalls Optionen. Jedoch wurde primär aufgrund des Marktanteils von total rund 70\% \cite{browserUsage} zugunsten von Google Chrome entschieden.
+Die getroffenen Aussagen bezüglich Laufzeitverhalten behalten ihre Gültigkeit auch für andere Browser.
+
+\paragraph{Automation}
+Um die Tests durchzuführen, wird ein Testautomationstool benötigt; unter anderem der Einsatz von Selenium wurde in Erwägung gezogen.
+Der Vorteil von Selenium ist insbesondere, dass der Benchmark für weitere Browser ausgeweitet werden könnte.
+Da jedoch das Analysieren der GPU Daten stark vom System abhängig ist und dafür zusätzliche Komplexität notwendig wäre, wird in diesem Benchmark die im Google Chrome integrierten \e{Chrome DevTools} eingesetzt.
+Selenium bietet zurzeit eine suboptimale Integration für das \e{Chrome DevTools Protocol}.
+Um mögliche Diskrepanzen zwischen Systemen möglichst gering zu halten wurde jedoch entschieden auf die bewährte Lösung von Google Chrome zu setzen.
+\fgls{Puppeteer}{Node.js Library, die eine API anbietet zum Steuern von \gls{Chromium} oder Chrome über das Chrome DevTools Protocol}, eine weitere Option für die Automation, ist eine Bibliothek, die eine vereinfachte Schnittstelle zu einer Headless Chrome Instanz bietet.
+Sie wird zudem direkt von Google entwickelt und bietet somit eine stabile Grundlage zur Kommunikation mit den \e{Chrome DevTools}.
+
+\paragraph{Profiling}
+Die \e{Chrome DevTools} erlauben es, ein detailliertes Laufzeitprofil einer Applikation anzulegen.
+Im Profil befinden sich Informationen zu CPU- und GPU-Auslastung aber auch generelle Informationen bzgl. der \gls{Rendering Engine} werden gesammelt.
+Die Analyse dieser Daten ermöglicht es, eine Aussage zum Laufzeitverhalten einer Applikation zu tätigen.
+
+\paragraph{Testaufbau}
+Derselbe Testablauf wird sowohl für die optimierte als auch für die unoptimierte Version verwendet.
+Bei einem Testablauf werden folgende Schritte durchlaufen:
+
+\begin{enumerate}
+  \item Öffne Applikation in \emph{Headless Chrome} Instanz.
+  \item Warte bis Seite geladen ist.
+  \item Starte \emph{Profiling}.
+  \item Warte $n$ Sekunden.
+  \item Stoppe \emph{Profiling}.
+  \item Werte Daten aus.
+\end{enumerate}
+
+\paragraph{Aufbau Testapplikation}
+Die Testapplikation stellt eine komplexe Szenerie dar. Der Betrachter fliegt während dem Ablauf kontinuierlich über die Szenerie. Dies stellt die optimalen Bedingungen für den Einsatz von LOD Artefakten dar.
+
+\paragraph{Testumgebung}
+Um während den Tests möglichst faire Bedingungen zu gewährleisten wird die Maschine zuvor wie bei anderen Benchmarks vorbereitet. Ziel ist es, Seiteneffekte zu minimieren. Für diesen Benchmark wurden deshalb die Instruktionen von \e{Tracer Bench} zur Behebung von Rauschen befolgt.
+\cite{tracerBenchNoiseMitigation}
+
+\paragraph{Analyse der Daten}
+Um eine zuverlässige Aussage treffen zu können, wird der Vorgang mehrfach wiederholt. Für jeden Durchlauf wird der Median der \e{\gls{FPS}} Daten berechnet.
+Anschliessend wird die Varianz der \e{\gls{FPS}} für die unoptimierten respektive optimierten Werte berechnet. Die Varianz dient als Kennzahl, um eine Signifikanz der Daten nachweisen zu können.
+
+\subparagraph{Konfidenzintervall}
+Die Signifikanz wird mithilfe eines statistischen Konfidenzintervalls nachgewiesen. Hierfür wird der Durchschnitt aller Mediane verwendet, zusätzlich wird ein Konfidenzintervall von 95\% gewählt. Somit wird gewährleistet, dass das Resultat des Benchmarks verlässlich ist und für einen Vergleich verwendet werden kann.
 
 \section{LOD Pipeline}
 
