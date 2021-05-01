@@ -47,6 +47,26 @@ Bei einem Testablauf werden folgende Schritte durchlaufen:
   \item Werte Daten aus.
 \end{enumerate}
 
+Der Test erfasst die in Tabelle \ref{table:benchmarkFigures} aufgeführten Kennzahlen.
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{ c p{8cm} }
+  \hline
+  Kennzahl & Beschreibung \\
+  \hline
+  Median \e{\gls{FPS}} & Die \e{\gls{FPS}} werden kontinuierlich berechnet. Um krasse Abweichungen zu ignorieren wird der Median verwendet. \\
+  Totale GPU Zeit & Die totale Zeit, welche die GPU für Berechungen benötigt. \\
+  Median Render Loop Dauer & Der Median aller Laufzeiten der Render Loop. \\
+  Anzahl GPU Events & Anzahl der Events an die GPU. \\
+  Zeit für das Laden der Modelle & Totale Zeit für das Laden aller Modelle der Szenerie. \\
+  Anzahl Renders & Wie oft wurde ein neues Bild gezeichnet. \\
+  \hline
+  \end{tabular}
+  \caption{Kennzahlen für Benchmark}
+  \label{table:benchmarkFigures}
+\end{table}
+
 \paragraph{Aufbau Testapplikation}
 Die Testapplikation stellt eine komplexe Szenerie dar. Der Betrachter fliegt während dem Ablauf kontinuierlich über die Szenerie. Dies stellt die optimalen Bedingungen für den Einsatz von LOD Artefakten dar.
 
