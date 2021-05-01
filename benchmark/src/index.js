@@ -60,21 +60,21 @@ const main = async () => {
     `report for ${ITERATIONS} iterations, performed on ${new Date()}:`
   );
 
-  console.log(
-    `
-    optimized fps: ${optimizedMedianFpsMean} (${optimizedMedianFpsVariance} variance)
-    the value is with a confidence of 95% between ${optimizedLower} and ${optimizedUpper}
-    baseline fps: ${baselineMedianFpsMean} (${baselineMedianFpsVariance} variance)
-    the value is with a confidence of 95% between ${baselineLower} and ${baselineUpper}
-    `
-  );
+  console.log(`
+optimized fps: ${optimizedMedianFpsMean} (${optimizedMedianFpsVariance} variance)
+the value is with a confidence of 95% between ${optimizedLower} and ${optimizedUpper}
+baseline fps: ${baselineMedianFpsMean} (${baselineMedianFpsVariance} variance)
+the value is with a confidence of 95% between ${baselineLower} and ${baselineUpper}
+`);
 
-  console.log(
-    `
-    optimized gpuTotalTime: ${optimizedGpuTotalTimeMean} (${optimizedGpuTotalTimeVariance} variance)
-    baseline gpuTotalTime: ${baselineGpuTotalTimeMean} (${baselineGpuTotalTimeVariance} variance)
-    `
-  );
+  console.log(`
+further information for interpreting data:
+`);
+
+  console.log(`
+optimized gpuTotalTime: ${optimizedGpuTotalTimeMean} (${optimizedGpuTotalTimeVariance} variance)
+baseline gpuTotalTime: ${baselineGpuTotalTimeMean} (${baselineGpuTotalTimeVariance} variance)
+`);
 };
 
 const sample = async (optimize) => {
