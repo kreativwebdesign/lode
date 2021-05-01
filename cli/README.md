@@ -61,3 +61,7 @@ Run `yarn start help` to display help.
 ### clean
 
 Run `yarn start clean` to clean the output folder. You can pass the same `outputFoldername` and `config` option as for the `run` command.
+
+## Dev
+
+Run `yarn setup` to get up and running

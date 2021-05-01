@@ -20,7 +20,13 @@ Have a look at [report](https://github.com/kreativwebdesign/lode/blob/report/rep
 
 ### Node.js
 
-Yarn is generally used as package manager. Therefore, do a `yarn install` to install packages.
+#### Prerequisites
+- yarn ~1.x
+- node > v16
+
+#### Dev
+
+Set them all up locally with `yarn setup` inside the root project or individually by running that same command inside the project you want to setup.
 
 The default script to start a project is `yarn start`, if something other applied it's written in the specific project.
 
