@@ -1,6 +1,5 @@
 {
   "source": "test-data/**/*.gltf",
   "outputFoldername": "lode-build",
-  "clearOutputBeforeRun": false,
   "watch": false
 }

@@ -1,7 +1,7 @@
 import { NodeIO } from "@gltf-transform/core";
 import simplify from "./simplification/index.js";
 import { prepareData } from "./simplification/prepare-data.js";
-import * as print from "./print.js";
+import * as print from "./helper/print.js";
 
 const io = new NodeIO();
 
@@ -16,7 +16,7 @@ export const copyOriginalArtifact = (pathName, file) => {
 export const performLOD = ({ originalFile, levelDefinitions }) => {
   print.info("performing LOD algorithm on file", originalFile);
 
-  levelDefinitions.forEach(({ pathName }, level) => {
+  levelDefinitions.forEach(({ pathName, configuration }, level) => {
     const doc = io.read(originalFile);
 
     const newDoc = doc.clone();
@@ -44,9 +44,7 @@ export const performLOD = ({ originalFile, levelDefinitions }) => {
           indicesArray
         );
 
-        // currently the level thresholds are not configurable
-        // define target triangles as originalTriangles / 2 ^ (level + 2)
-        let targetTriangles = triangles.length / Math.pow(2, level + 2);
+        let targetTriangles = triangles.length * configuration.targetScale;
         // last level should be reduced to 200 triangles
         if (level === levelDefinitions.length - 1) {
           targetTriangles = 200;
@@ -74,7 +72,6 @@ export const performLOD = ({ originalFile, levelDefinitions }) => {
         primitive.setAttribute("TEXCOORD_0");
         primitive.setAttribute("TANGENT");
       });
-    // const primitive = newDoc.getRoot().listMeshes()[0].listPrimitives()[0];
 
     io.write(pathName, newDoc);
   });

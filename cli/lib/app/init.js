@@ -1,6 +1,6 @@
 import inquirer from "inquirer";
-import * as print from "../print.js";
-import { fileExists, createFile } from "../files.js";
+import * as print from "../helper/print.js";
+import { fileExists, createFile } from "../helper/files.js";
 
 const questions = [
   {
@@ -26,7 +26,7 @@ const questions = [
     },
   },
   {
-    name: "sourcePattern",
+    name: "source",
     type: "input",
     message: "For which files do you want to run lode-cli?",
     default: "**/*.gltf",
@@ -51,31 +51,6 @@ const questions = [
     },
   },
   {
-    name: "levelCount",
-    type: "number",
-    message: "How many level of details should i generate (min. 2)",
-    default: 2,
-    when: (answers) => {
-      return answers.overwriteConfigFile !== false;
-    },
-    validate: function (value) {
-      if (value >= 2) {
-        return true;
-      } else {
-        return "Please enter a valid number higher than 2";
-      }
-    },
-  },
-  {
-    name: "clearOutputBeforeRun",
-    type: "confirm",
-    message: "Should i delete the output folder before running?",
-    default: true,
-    when: (answers) => {
-      return answers.overwriteConfigFile !== false;
-    },
-  },
-  {
     name: "watch",
     type: "confirm",
     message: "Do you want to run lode-cli in watch mode by default?",
@@ -87,23 +62,14 @@ const questions = [
 ];
 
 const init = async () => {
-  const answers = await inquirer.prompt(questions);
-  if (answers.overwriteConfigFile === false) {
+  const { overwriteConfigFile, ...config } = await inquirer.prompt(questions);
+  if (overwriteConfigFile === false) {
     return;
   }
   try {
-    createFile(
-      answers.configFilepath,
-      `{
-  "source": "${answers.sourcePattern}",
-  "outputFoldername": "${answers.outputFoldername}",
-  "levelCount": ${answers.levelCount},
-  "clearOutputBeforeRun": "${answers.clearOutputBeforeRun}",
-  "watch": ${answers.watch}
-}`
-    );
-    print.success(`${answers.configFilepath} created.`);
-    print.info(`run lode-cli with '-c "${answers.configFilepath}"'`);
+    createFile(config.configFilepath, JSON.stringify(config, null, 2));
+    print.success(`${config.configFilepath} created.`);
+    print.info(`run lode-cli with '-c "${config.configFilepath}"'`);
   } catch (e) {
     print.error(e.message);
   }

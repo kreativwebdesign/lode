@@ -11,6 +11,7 @@
   "dependencies": {
     "@gltf-transform/core": "^0.9.9",
     "chalk": "^4.1.0",
+    "chokidar": "^3.5.1",
     "clear": "^0.1.0",
     "cli-config": "^0.4.2",
     "commander": "^7.1.0",

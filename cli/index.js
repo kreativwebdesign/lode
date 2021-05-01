@@ -15,10 +15,18 @@ program
   .option("-c, --config <configfile>", "Path to config file")
   .option("-l, --levelCount <count>", "Amount of detail leves to be generated")
   .option("-o, --outputFoldername <name>", "Name of the output folder")
-  .option("--clearOutputBeforeRun", "Clean output folder before run")
   .action(app.run);
 
 program.command("init").description("Setup LOD configuration").action(app.init);
+
+program
+  .command("config")
+  .option("-c, --config <configfile>", "Path to config file")
+  .option("-s, --source <pattern>", "Source glob pattern")
+  .option("-a, --all", "Configure all assets")
+  .description("Configure LOD options for each artifact")
+  .action(app.config);
+
 program
   .command("clean")
   .description("Cleans the output folder")

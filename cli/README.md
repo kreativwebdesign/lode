@@ -1,6 +1,6 @@
 # LODE-CLI
 
-This CLI helps you to generate LOD artifacts for you gltf files.
+This CLI helps to automatically generate LOD artifacts for `.gltf` files.
 
 ## Usage
 
@@ -16,12 +16,30 @@ To setup a configuration file, run `yarn start init`. This will guide you throug
 {
   "source": "**/*.gltf",
   "outputFoldername": "lode-build",
-  "levelCount": 2,
-  "clearOutputBeforeRun": true,
   "watch": false
 }
 
 ```
+
+### config
+Run `yarn start config` to configure the level of details for each model.
+You can pass the following options:
+| Option           | Description              | Default                  |
+| ---------------- | ------------------------ | ------------------------ |
+| `-c`, `--config` | Path to config file      | `./lode-cli.config.json` |
+| `-s`, `--source` | Source glob pattern      | `**/*.gltf`              |
+| `-a`, `--all`    | Wheter to reconfigure all models | `false`          |
+
+\
+For each model the following options can be set:\
+`How many level of details should i generate (min. 2)`: Set how many level of details the cli should generate for this model. Minimum is two, the first being the original file.\
+\
+Then for each level of detail the following options can be set:\
+`For which distance should the artifact "XXX" be used? (-1 for infinity)`:\
+Set the distance, this artifact should be visible. The values stack onto the previous distance. Type `-1` for the last artifact to be rendered infinitely (only valid for the last artifact). The first one being the original artifact\
+`Target scale for the artifact "LOD-X" (0-1)`:\
+Set the target scale for this artifact relative to the original size. Choose a value between 1 (being the same as the original) and 0 (being no polygons). This can not be set for the original artifact.
+
 
 ### run
 
@@ -33,8 +51,6 @@ Run `yarn start` or `yarn start run` to execute it. You can pass various options
 | `-c`, `--config` | Path to config file      | `./lode-cli.config.json` |
 | `-s`, `--source` | Source glob pattern      | `**/*.gltf`              |
 | `-o`, `--outputFoldername` | Outputfoldername | `lode-build`           |
-| `-l`, `--levelCount` | Amount of detail leves to be generated | `2`    |
-| `--cleanOutputBeforeRun`   | Clean output folder before run | `**/*.gltf` |
 | `-w`, `--watch`  | Watch source files       | `false`                  |
 | `-h`, `--help`   | Display help for command |                          |
 

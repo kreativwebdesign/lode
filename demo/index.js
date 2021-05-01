@@ -4,10 +4,8 @@ import { measureFPS } from "./src/measure-fps";
 import loadGltfAsync from "./src/async-gltf-loader";
 import { getOptimized } from "./src/url-param";
 import "./src/optimized-toggle";
-import lodeLoader from "lode-three";
-import lodeConfig from "./lode-cli.config.json";
-
-lodeLoader.init(lodeConfig);
+import * as lodeLoader from "lode-three";
+import manifest from "./lode-build/lode-manifest.json";
 
 const useOptimized = getOptimized();
 
@@ -23,27 +21,41 @@ const camera = new THREE.PerspectiveCamera(
   1000
 );
 
-camera.position.set(0, 0, 30);
+camera.position.set(0, 0, 125);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.autoRotate = true;
 controls.autoRotateSpeed = 4;
 
-const optimizedGltfBasePath = "./lode-build/assets";
-const nonOptimizedGltfBasePath = "assets/";
+const lodeContext = lodeLoader.createContext({
+  manifest,
+  basePath: "./lode-build",
+});
 
 const lods = [
-  { name: "duck", position: [20, 0, 0] },
-  { name: "airplane", position: [-20, 0, 0] },
-  { name: "skull", position: [0, 0, 20] },
-  { name: "dragon", position: [0, 0, -20] },
+  {
+    name: "assets/duck",
+    position: [30, 0, 0],
+  },
+  {
+    name: "assets/airplane",
+    position: [-30, 0, 0],
+  },
+  {
+    name: "assets/skull",
+    position: [0, 0, 30],
+  },
+  {
+    name: "assets/dragon",
+    position: [0, 0, -30],
+  },
 ];
 
 const setupOptimizedScene = async (scene) => {
   const gltfLods = await Promise.all(
     lods.map((lod) =>
-      lodeLoader.load({
-        basePath: optimizedGltfBasePath,
+      lodeLoader.loadModel({
+        lodeContext,
         artifactName: lod.name,
       })
     )
@@ -58,7 +70,7 @@ const setupOptimizedScene = async (scene) => {
 const setupNonOptimizedScene = async (scene) => {
   const gltfs = await Promise.all(
     lods.map((lod) =>
-      loadGltfAsync(`${nonOptimizedGltfBasePath}${lod.name}/${lod.name}.gltf`)
+      loadGltfAsync(`${lod.name}/${lod.name.split("/").pop()}.gltf`)
     )
   );
   gltfs.forEach((gltf, i) => {
