@@ -4,6 +4,10 @@
 name: Run Benchmark
 
 on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'documentation/report/**'
   pull_request:
     branches: [main]
     paths-ignore:
