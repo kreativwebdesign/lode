@@ -51,6 +51,10 @@ const main = async () => {
     baselineLower,
     baselineUpper,
     gpuTotalTime,
+    medianRenderLoopDuration,
+    totalGpuEvents,
+    totalModelLoadDuration,
+    totalRenders,
   } = generateHolisticReport(reports);
 
   console.log(
@@ -68,10 +72,17 @@ the value is with a confidence of 95% between ${baselineLower} and ${baselineUpp
 further information for interpreting data:
 `);
 
-  console.log(`
-optimized gpuTotalTime: ${gpuTotalTime.optimized.mean} (${gpuTotalTime.optimized.variance} variance)
-baseline gpuTotalTime: ${gpuTotalTime.baseline.mean} (${gpuTotalTime.baseline.variance} variance)
-`);
+  const logReportSection = (sectionName, data) => {
+    console.log(`${sectionName}:
+optimized: ${data.optimized.mean} (${data.optimized.variance} variance)
+baseline: ${data.baseline.mean} (${data.baseline.variance} variance)`);
+  };
+
+  logReportSection("gpuTotalTime", gpuTotalTime);
+  logReportSection("medianRenderLoopDuration", medianRenderLoopDuration);
+  logReportSection("totalGpuEvents", totalGpuEvents);
+  logReportSection("totalModelLoadDuration", totalModelLoadDuration);
+  logReportSection("totalRenders", totalRenders);
 };
 
 const sample = async (optimize) => {
