@@ -5,9 +5,9 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "start": "node index.js --inspect",
+    "start": "node index.js",
     "test": "jest",
-    "run-demo": "cd ../demo && yarn start & wait-on http://localhost:8080"
+    "run-demo": "cd ../demo && yarn serve & wait-on http://localhost:8080"
   },
   "dependencies": {
     "mathjs": "^9.3.0",
