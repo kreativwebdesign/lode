@@ -10,7 +10,8 @@ lode generates different levels for a given `glTF` file and permits to use these
 
 ## Sub Projects
 
-This repo contains different sub projects which have a uniform way of using them.
+This repo contains different sub projects which have a uniform way of using them.\
+Set them all up locally with `yarn setup` inside the root project or individually by running that same command inside the project you want to setup.
 
 ### Report
 

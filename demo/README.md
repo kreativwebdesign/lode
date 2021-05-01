@@ -2,6 +2,10 @@
 
 This is a demo showing the benefits of using LODs.
 
+## Dev
+
+Run `yarn setup` to get up and running and then `yarn start`
+
 ## LODE - CLI
 Run `yarn lode-cli` to run the lode-cli to generate the simplified meshes used in the optimized version.
 

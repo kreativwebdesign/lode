@@ -7,7 +7,8 @@
     "start": "snowpack dev",
     "build": "snowpack build",
     "lode-cli": "node ../cli/index.js",
-    "serve": "serve ./build -p 8080"
+    "serve": "serve ./build -p 8080",
+    "setup": "yarn install && yarn lode-cli && yarn upgrade lode-three"
   },
   "dependencies": {
     "lode-three": "link:../lode-three",

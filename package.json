@@ -1,0 +1,14 @@
+{
+  "name": "lode",
+  "version": "1.0.0",
+  "license": "MIT",
+  "type": "module",
+  "repository": "https://github.com/kreativwebdesign/lode.git",
+  "scripts": {
+    "setup-benchmark": "cd ./benchmark && yarn setup",
+    "setup-cli": "cd ./cli && yarn setup",
+    "setup-lode-three": "cd ./lode-three && yarn setup",
+    "setup-demo": "cd ./demo && yarn setup",
+    "setup": "yarn setup-benchmark && yarn setup-cli && yarn setup-lode-three && yarn setup-demo"
+  }
+}

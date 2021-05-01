@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "node index.js",
-    "test": "jest"
+    "test": "jest",
+    "setup": "yarn install"
   },
   "dependencies": {
     "@gltf-transform/core": "^0.9.9",
