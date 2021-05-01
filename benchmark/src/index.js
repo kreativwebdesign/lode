@@ -1,12 +1,11 @@
 import fs from "fs";
-import * as math from "mathjs";
 import puppeteer from "puppeteer";
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
 import { waitFor, startLogGroup, createFolderIfNotExist } from "./helpers.js";
 import { reporter, analyzeTraceEvents, generateReport } from "./analyze.js";
-import { calculateNinetyFiveConfidenceInterval } from "./stats.js";
 import { logDetail, setLogDetail } from "./logger.js";
+import { generateHolisticReport } from "./reporter.js";
 
 const argv = yargs(hideBin(process.argv)).argv;
 
@@ -42,86 +41,48 @@ const main = async () => {
     });
   }
 
-  const optimizedMedianFps = reports.map(
-    ({ optimizedReport: { medianFps } }) => medianFps
-  );
-  const baselineMedianFps = reports.map(
-    ({ baselineReport: { medianFps } }) => medianFps
-  );
-  const optimizedMedianFpsMean = math.mean(optimizedMedianFps);
-  const optimizedMedianFpsVariance = math.variance(optimizedMedianFps);
-  const baselineMedianFpsMean = math.mean(baselineMedianFps);
-  const baselineMedianFpsVariance = math.variance(baselineMedianFps);
-
-  const optimizedGpuTotalTime = reports.map(
-    ({ optimizedReport: { gpuTotalTime } }) => gpuTotalTime
-  );
-  const baselineGpuTotalTime = reports.map(
-    ({ baselineReport: { gpuTotalTime } }) => gpuTotalTime
-  );
-
   const {
-    upper: optimizedUpper,
-    lower: optimizedLower,
-  } = calculateNinetyFiveConfidenceInterval({
-    mean: optimizedMedianFpsMean,
-    variance: optimizedMedianFpsVariance,
-    samples: ITERATIONS,
-  });
-
-  const {
-    upper: baselineUpper,
-    lower: baselineLower,
-  } = calculateNinetyFiveConfidenceInterval({
-    mean: baselineMedianFpsMean,
-    variance: baselineMedianFpsVariance,
-    samples: ITERATIONS,
-  });
-
-  const optimizedGpuTotalTimeMean = math.mean(optimizedGpuTotalTime);
-  const optimizedGpuTotalTimeVariance = math.variance(optimizedGpuTotalTime);
-  const baselineGpuTotalTimeMean = math.mean(baselineGpuTotalTime);
-  const baselineGpuTotalTimeVariance = math.variance(baselineGpuTotalTime);
+    optimizedMedianFpsMean,
+    optimizedMedianFpsVariance,
+    optimizedLower,
+    optimizedUpper,
+    baselineMedianFpsMean,
+    baselineMedianFpsVariance,
+    baselineLower,
+    baselineUpper,
+    gpuTotalTime,
+    medianRenderLoopDuration,
+    totalGpuEvents,
+    totalModelLoadDuration,
+    totalRenders,
+  } = generateHolisticReport(reports);
 
   console.log(
     `report for ${ITERATIONS} iterations, performed on ${new Date()}:`
   );
 
-  const precision = 3;
+  console.log(`
+optimized fps: ${optimizedMedianFpsMean} (${optimizedMedianFpsVariance} variance)
+the value is with a confidence of 95% between ${optimizedLower} and ${optimizedUpper}
+baseline fps: ${baselineMedianFpsMean} (${baselineMedianFpsVariance} variance)
+the value is with a confidence of 95% between ${baselineLower} and ${baselineUpper}
+`);
 
-  console.log(
-    `
-    optimized fps: ${math.round(
-      optimizedMedianFpsMean,
-      precision
-    )} (${math.round(optimizedMedianFpsVariance, precision)} variance)
-    the value is with a confidence of 95% between ${math.round(
-      optimizedLower,
-      precision
-    )} and ${math.round(optimizedUpper, precision)}
-    baseline fps: ${math.round(baselineMedianFpsMean, precision)} (${math.round(
-      baselineMedianFpsVariance,
-      precision
-    )} variance)
-    the value is with a confidence of 95% between ${math.round(
-      baselineLower,
-      precision
-    )} and ${math.round(baselineUpper, precision)}
-    `
-  );
+  console.log(`
+further information for interpreting data:
+`);
 
-  console.log(
-    `
-    optimized gpuTotalTime: ${math.round(
-      optimizedGpuTotalTimeMean,
-      precision
-    )} (${math.round(optimizedGpuTotalTimeVariance, precision)} variance)
-    baseline gpuTotalTime: ${math.round(
-      baselineGpuTotalTimeMean,
-      precision
-    )} (${math.round(baselineGpuTotalTimeVariance, precision)} variance)
-    `
-  );
+  const logReportSection = (sectionName, data) => {
+    console.log(`${sectionName}:
+optimized: ${data.optimized.mean} (${data.optimized.variance} variance)
+baseline: ${data.baseline.mean} (${data.baseline.variance} variance)`);
+  };
+
+  logReportSection("gpuTotalTime", gpuTotalTime);
+  logReportSection("medianRenderLoopDuration", medianRenderLoopDuration);
+  logReportSection("totalGpuEvents", totalGpuEvents);
+  logReportSection("totalModelLoadDuration", totalModelLoadDuration);
+  logReportSection("totalRenders", totalRenders);
 };
 
 const sample = async (optimize) => {
