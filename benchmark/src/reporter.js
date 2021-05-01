@@ -3,6 +3,10 @@ import { calculateNinetyFiveConfidenceInterval } from "./stats.js";
 
 const ROUNDING_PRECISION = 3;
 
+const round = (number) => {
+  return math.round(number, ROUNDING_PRECISION);
+};
+
 export const calculateFigure = (reports, selector) => {
   const optimizedValues = reports.map(({ optimizedReport }) =>
     selector(optimizedReport)
@@ -12,15 +16,11 @@ export const calculateFigure = (reports, selector) => {
   );
 
   return {
-    optimizedMean: math.mean(optimizedValues),
-    optimizedVariance: math.variance(optimizedValues),
-    baselineMean: math.mean(baselineValues),
-    baselineVariance: math.variance(baselineValues),
+    optimizedMean: round(math.mean(optimizedValues)),
+    optimizedVariance: round(math.variance(optimizedValues)),
+    baselineMean: round(math.mean(baselineValues)),
+    baselineVariance: round(math.variance(baselineValues)),
   };
-};
-
-const round = (number) => {
-  return math.round(number, ROUNDING_PRECISION);
 };
 
 /**
@@ -92,56 +92,40 @@ export const generateHolisticReport = (reports) => {
   );
 
   return {
-    optimizedMedianFpsMean: round(optimizedMedianFpsMean),
-    optimizedMedianFpsVariance: round(optimizedMedianFpsVariance),
+    optimizedMedianFpsMean,
+    optimizedMedianFpsVariance,
     optimizedLower: round(optimizedLower),
     optimizedUpper: round(optimizedUpper),
 
-    baselineMedianFpsMean: round(baselineMedianFpsMean),
-    baselineMedianFpsVariance: round(baselineMedianFpsVariance),
+    baselineMedianFpsMean,
+    baselineMedianFpsVariance,
     baselineLower: round(baselineLower),
     baselineUpper: round(baselineUpper),
 
-    optimizedGpuTotalTimeMean: round(optimizedGpuTotalTimeMean),
-    optimizedGpuTotalTimeVariance: round(optimizedGpuTotalTimeVariance),
+    optimizedGpuTotalTimeMean,
+    optimizedGpuTotalTimeVariance,
 
-    baselineGpuTotalTimeMean: round(baselineGpuTotalTimeMean),
-    baselineGpuTotalTimeVariance: round(baselineGpuTotalTimeVariance),
+    baselineGpuTotalTimeMean,
+    baselineGpuTotalTimeVariance,
 
-    optimizedTotalGpuEventsMean: round(optimizedTotalGpuEventsMean),
-    optimizedTotalGpuEventsVariance: round(optimizedTotalGpuEventsVariance),
-    baselineTotalGpuEventsMean: round(baselineTotalGpuEventsMean),
-    baselineTotalGpuEventsVariance: round(baselineTotalGpuEventsVariance),
+    optimizedTotalGpuEventsMean,
+    optimizedTotalGpuEventsVariance,
+    baselineTotalGpuEventsMean,
+    baselineTotalGpuEventsVariance,
 
-    optimizedTotalModelLoadDurationMean: round(
-      optimizedTotalModelLoadDurationMean
-    ),
-    optimizedTotalModelLoadDurationVariance: round(
-      optimizedTotalModelLoadDurationVariance
-    ),
-    baselineTotalModelLoadDurationMean: round(
-      baselineTotalModelLoadDurationMean
-    ),
-    baselineTotalModelLoadDurationVariance: round(
-      baselineTotalModelLoadDurationVariance
-    ),
+    optimizedTotalModelLoadDurationMean,
+    optimizedTotalModelLoadDurationVariance,
+    baselineTotalModelLoadDurationMean,
+    baselineTotalModelLoadDurationVariance,
 
-    optimizedTotalRendersMean: round(optimizedTotalRendersMean),
-    optimizedTotalRendersVariance: round(optimizedTotalRendersVariance),
-    baselineTotalRendersMean: round(baselineTotalRendersMean),
-    baselineTotalRendersVariance: round(baselineTotalRendersVariance),
+    optimizedTotalRendersMean,
+    optimizedTotalRendersVariance,
+    baselineTotalRendersMean,
+    baselineTotalRendersVariance,
 
-    optimizedMedianRenderLoopDurationMean: round(
-      optimizedMedianRenderLoopDurationMean
-    ),
-    optimizedMedianRenderLoopDurationVariance: round(
-      optimizedMedianRenderLoopDurationVariance
-    ),
-    baselineMedianRenderLoopDurationMean: round(
-      baselineMedianRenderLoopDurationMean
-    ),
-    baselineMedianRenderLoopDurationVariance: round(
-      baselineMedianRenderLoopDurationVariance
-    ),
+    optimizedMedianRenderLoopDurationMean,
+    optimizedMedianRenderLoopDurationVariance,
+    baselineMedianRenderLoopDurationMean,
+    baselineMedianRenderLoopDurationVariance,
   };
 };
