@@ -9,13 +9,29 @@ import { calculateNinetyFiveConfidenceInterval } from "./stats.js";
 
 const argv = yargs(hideBin(process.argv)).argv;
 
+const SAMPLE_TIMEOUT_MS = 20000;
+
 const main = async () => {
   const ITERATIONS = argv.iterations || 10;
   console.log("start benchmark with " + ITERATIONS + " iterations");
   const reports = [];
   for (let i = 0; i < ITERATIONS; i++) {
-    const optimizedReport = await sample(true);
-    const baselineReport = await sample(false);
+    const optimizedReport = await Promise.any([
+      sample(true),
+      waitFor(SAMPLE_TIMEOUT_MS),
+    ]);
+
+    const baselineReport = await Promise.any([
+      sample(false),
+      waitFor(SAMPLE_TIMEOUT_MS),
+    ]);
+
+    if (optimizedReport === undefined || baselineReport === undefined) {
+      throw new Error(
+        "got undefined report, likely due to timeout. Ensure that benchmark is working and otherwise tune timeout."
+      );
+    }
+
     reports.push({
       optimizedReport,
       baselineReport,
