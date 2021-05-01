@@ -16,10 +16,14 @@ export const calculateFigure = (reports, selector) => {
   );
 
   return {
-    optimizedMean: round(math.mean(optimizedValues)),
-    optimizedVariance: round(math.variance(optimizedValues)),
-    baselineMean: round(math.mean(baselineValues)),
-    baselineVariance: round(math.variance(baselineValues)),
+    optimized: {
+      mean: round(math.mean(optimizedValues)),
+      variance: round(math.variance(optimizedValues)),
+    },
+    baseline: {
+      mean: round(math.mean(baselineValues)),
+      variance: round(math.variance(baselineValues)),
+    },
   };
 };
 
@@ -29,10 +33,14 @@ export const calculateFigure = (reports, selector) => {
  */
 export const generateHolisticReport = (reports) => {
   const {
-    optimizedMean: optimizedMedianFpsMean,
-    optimizedVariance: optimizedMedianFpsVariance,
-    baselineMean: baselineMedianFpsMean,
-    baselineVariance: baselineMedianFpsVariance,
+    optimized: {
+      mean: optimizedMedianFpsMean,
+      variance: optimizedMedianFpsVariance,
+    },
+    baseline: {
+      mean: baselineMedianFpsMean,
+      variance: baselineMedianFpsVariance,
+    },
   } = calculateFigure(reports, (report) => report.medianFps);
 
   const {
@@ -53,40 +61,27 @@ export const generateHolisticReport = (reports) => {
     samples: reports.length,
   });
 
-  const {
-    optimizedMean: optimizedGpuTotalTimeMean,
-    optimizedVariance: optimizedGpuTotalTimeVariance,
-    baselineMean: baselineGpuTotalTimeMean,
-    baselineVariance: baselineGpuTotalTimeVariance,
-  } = calculateFigure(reports, (report) => report.gpuTotalTime);
+  const gpuTotalTime = calculateFigure(
+    reports,
+    (report) => report.gpuTotalTime
+  );
 
-  const {
-    optimizedMean: optimizedTotalGpuEventsMean,
-    optimizedVariance: optimizedTotalGpuEventsVariance,
-    baselineMean: baselineTotalGpuEventsMean,
-    baselineVariance: baselineTotalGpuEventsVariance,
-  } = calculateFigure(reports, (report) => report.debug.totalGpuEvents);
+  const totalGpuEvents = calculateFigure(
+    reports,
+    (report) => report.debug.totalGpuEvents
+  );
 
-  const {
-    optimizedMean: optimizedTotalModelLoadDurationMean,
-    optimizedVariance: optimizedTotalModelLoadDurationVariance,
-    baselineMean: baselineTotalModelLoadDurationMean,
-    baselineVariance: baselineTotalModelLoadDurationVariance,
-  } = calculateFigure(reports, (report) => report.debug.totalModelLoadDuration);
+  const totalModelLoadDuration = calculateFigure(
+    reports,
+    (report) => report.debug.totalModelLoadDuration
+  );
 
-  const {
-    optimizedMean: optimizedTotalRendersMean,
-    optimizedVariance: optimizedTotalRendersVariance,
-    baselineMean: baselineTotalRendersMean,
-    baselineVariance: baselineTotalRendersVariance,
-  } = calculateFigure(reports, (report) => report.debug.totalRenders);
+  const totalRenders = calculateFigure(
+    reports,
+    (report) => report.debug.totalRenders
+  );
 
-  const {
-    optimizedMean: optimizedMedianRenderLoopDurationMean,
-    optimizedVariance: optimizedMedianRenderLoopDurationVariance,
-    baselineMean: baselineMedianRenderLoopDurationMean,
-    baselineVariance: baselineMedianRenderLoopDurationVariance,
-  } = calculateFigure(
+  const medianRenderLoopDuration = calculateFigure(
     reports,
     (report) => report.debug.medianRenderLoopDuration
   );
@@ -102,30 +97,10 @@ export const generateHolisticReport = (reports) => {
     baselineLower: round(baselineLower),
     baselineUpper: round(baselineUpper),
 
-    optimizedGpuTotalTimeMean,
-    optimizedGpuTotalTimeVariance,
-
-    baselineGpuTotalTimeMean,
-    baselineGpuTotalTimeVariance,
-
-    optimizedTotalGpuEventsMean,
-    optimizedTotalGpuEventsVariance,
-    baselineTotalGpuEventsMean,
-    baselineTotalGpuEventsVariance,
-
-    optimizedTotalModelLoadDurationMean,
-    optimizedTotalModelLoadDurationVariance,
-    baselineTotalModelLoadDurationMean,
-    baselineTotalModelLoadDurationVariance,
-
-    optimizedTotalRendersMean,
-    optimizedTotalRendersVariance,
-    baselineTotalRendersMean,
-    baselineTotalRendersVariance,
-
-    optimizedMedianRenderLoopDurationMean,
-    optimizedMedianRenderLoopDurationVariance,
-    baselineMedianRenderLoopDurationMean,
-    baselineMedianRenderLoopDurationVariance,
+    gpuTotalTime,
+    medianRenderLoopDuration,
+    totalGpuEvents,
+    totalModelLoadDuration,
+    totalRenders,
   };
 };

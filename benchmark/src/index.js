@@ -50,10 +50,7 @@ const main = async () => {
     baselineMedianFpsVariance,
     baselineLower,
     baselineUpper,
-    optimizedGpuTotalTimeMean,
-    optimizedGpuTotalTimeVariance,
-    baselineGpuTotalTimeMean,
-    baselineGpuTotalTimeVariance,
+    gpuTotalTime,
   } = generateHolisticReport(reports);
 
   console.log(
@@ -72,8 +69,8 @@ further information for interpreting data:
 `);
 
   console.log(`
-optimized gpuTotalTime: ${optimizedGpuTotalTimeMean} (${optimizedGpuTotalTimeVariance} variance)
-baseline gpuTotalTime: ${baselineGpuTotalTimeMean} (${baselineGpuTotalTimeVariance} variance)
+optimized gpuTotalTime: ${gpuTotalTime.optimized.mean} (${gpuTotalTime.optimized.variance} variance)
+baseline gpuTotalTime: ${gpuTotalTime.baseline.mean} (${gpuTotalTime.baseline.variance} variance)
 `);
 };
 

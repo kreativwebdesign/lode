@@ -72,35 +72,68 @@ describe("reporter", () => {
     ];
 
     expect(generateHolisticReport(reports)).toEqual({
-      baselineGpuTotalTimeMean: 2722.989,
-      baselineGpuTotalTimeVariance: 24.012,
       baselineLower: 38.039,
       baselineMedianFpsMean: 42,
       baselineMedianFpsVariance: 12.25,
       baselineUpper: 45.961,
-      optimizedGpuTotalTimeMean: 2194.879,
-      optimizedGpuTotalTimeVariance: 1889.006,
       optimizedLower: 60,
       optimizedMedianFpsMean: 60,
       optimizedMedianFpsVariance: 0,
       optimizedUpper: 60,
 
-      baselineMedianRenderLoopDurationMean: 0.876,
-      baselineMedianRenderLoopDurationVariance: 0.142,
-      baselineTotalGpuEventsMean: 181.333,
-      baselineTotalGpuEventsVariance: 11334.333,
-      baselineTotalModelLoadDurationMean: 260.632,
-      baselineTotalModelLoadDurationVariance: 8653.976,
-      baselineTotalRendersMean: 114.333,
-      baselineTotalRendersVariance: 3236.333,
-      optimizedMedianRenderLoopDurationMean: 0.717,
-      optimizedMedianRenderLoopDurationVariance: 0.121,
-      optimizedTotalGpuEventsMean: 346.667,
-      optimizedTotalGpuEventsVariance: 13694.333,
-      optimizedTotalModelLoadDurationMean: 415.068,
-      optimizedTotalModelLoadDurationVariance: 26699.602,
-      optimizedTotalRendersMean: 220,
-      optimizedTotalRendersVariance: 3819,
+      gpuTotalTime: {
+        optimized: {
+          mean: 2194.879,
+          variance: 1889.006,
+        },
+        baseline: {
+          mean: 2722.989,
+          variance: 24.012,
+        },
+      },
+      medianRenderLoopDuration: {
+        optimized: {
+          mean: 0.717,
+          variance: 0.121,
+        },
+        baseline: {
+          mean: 0.876,
+          variance: 0.142,
+        },
+      },
+
+      totalGpuEvents: {
+        optimized: {
+          mean: 346.667,
+          variance: 13694.333,
+        },
+        baseline: {
+          mean: 181.333,
+          variance: 11334.333,
+        },
+      },
+
+      totalModelLoadDuration: {
+        optimized: {
+          mean: 415.068,
+          variance: 26699.602,
+        },
+        baseline: {
+          mean: 260.632,
+          variance: 8653.976,
+        },
+      },
+
+      totalRenders: {
+        optimized: {
+          mean: 220,
+          variance: 3819,
+        },
+        baseline: {
+          mean: 114.333,
+          variance: 3236.333,
+        },
+      },
     });
   });
 });
