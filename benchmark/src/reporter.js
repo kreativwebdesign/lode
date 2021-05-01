@@ -54,6 +54,37 @@ export const generateHolisticReport = (reports) => {
     baselineVariance: baselineGpuTotalTimeVariance,
   } = calculateFigure(reports, (report) => report.gpuTotalTime);
 
+  const {
+    optimizedMean: optimizedTotalGpuEventsMean,
+    optimizedVariance: optimizedTotalGpuEventsVariance,
+    baselineMean: baselineTotalGpuEventsMean,
+    baselineVariance: baselineTotalGpuEventsVariance,
+  } = calculateFigure(reports, (report) => report.debug.totalGpuEvents);
+
+  const {
+    optimizedMean: optimizedTotalModelLoadDurationMean,
+    optimizedVariance: optimizedTotalModelLoadDurationVariance,
+    baselineMean: baselineTotalModelLoadDurationMean,
+    baselineVariance: baselineTotalModelLoadDurationVariance,
+  } = calculateFigure(reports, (report) => report.debug.totalModelLoadDuration);
+
+  const {
+    optimizedMean: optimizedTotalRendersMean,
+    optimizedVariance: optimizedTotalRendersVariance,
+    baselineMean: baselineTotalRendersMean,
+    baselineVariance: baselineTotalRendersVariance,
+  } = calculateFigure(reports, (report) => report.debug.totalRenders);
+
+  const {
+    optimizedMean: optimizedMedianRenderLoopDurationMean,
+    optimizedVariance: optimizedMedianRenderLoopDurationVariance,
+    baselineMean: baselineMedianRenderLoopDurationMean,
+    baselineVariance: baselineMedianRenderLoopDurationVariance,
+  } = calculateFigure(
+    reports,
+    (report) => report.debug.medianRenderLoopDuration
+  );
+
   const precision = 3;
 
   return {
@@ -79,6 +110,68 @@ export const generateHolisticReport = (reports) => {
     baselineGpuTotalTimeMean: math.round(baselineGpuTotalTimeMean, precision),
     baselineGpuTotalTimeVariance: math.round(
       baselineGpuTotalTimeVariance,
+      precision
+    ),
+
+    optimizedTotalGpuEventsMean: math.round(
+      optimizedTotalGpuEventsMean,
+      precision
+    ),
+    optimizedTotalGpuEventsVariance: math.round(
+      optimizedTotalGpuEventsVariance,
+      precision
+    ),
+    baselineTotalGpuEventsMean: math.round(
+      baselineTotalGpuEventsMean,
+      precision
+    ),
+    baselineTotalGpuEventsVariance: math.round(
+      baselineTotalGpuEventsVariance,
+      precision
+    ),
+
+    optimizedTotalModelLoadDurationMean: math.round(
+      optimizedTotalModelLoadDurationMean,
+      precision
+    ),
+    optimizedTotalModelLoadDurationVariance: math.round(
+      optimizedTotalModelLoadDurationVariance,
+      precision
+    ),
+    baselineTotalModelLoadDurationMean: math.round(
+      baselineTotalModelLoadDurationMean,
+      precision
+    ),
+    baselineTotalModelLoadDurationVariance: math.round(
+      baselineTotalModelLoadDurationVariance,
+      precision
+    ),
+
+    optimizedTotalRendersMean: math.round(optimizedTotalRendersMean, precision),
+    optimizedTotalRendersVariance: math.round(
+      optimizedTotalRendersVariance,
+      precision
+    ),
+    baselineTotalRendersMean: math.round(baselineTotalRendersMean, precision),
+    baselineTotalRendersVariance: math.round(
+      baselineTotalRendersVariance,
+      precision
+    ),
+
+    optimizedMedianRenderLoopDurationMean: math.round(
+      optimizedMedianRenderLoopDurationMean,
+      precision
+    ),
+    optimizedMedianRenderLoopDurationVariance: math.round(
+      optimizedMedianRenderLoopDurationVariance,
+      precision
+    ),
+    baselineMedianRenderLoopDurationMean: math.round(
+      baselineMedianRenderLoopDurationMean,
+      precision
+    ),
+    baselineMedianRenderLoopDurationVariance: math.round(
+      baselineMedianRenderLoopDurationVariance,
       precision
     ),
   };
