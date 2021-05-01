@@ -1,4 +1,5 @@
 import fs from "fs";
+import { logDetail } from "./logger.js";
 
 export const startTimer = () => {
   const start = process.hrtime.bigint();
@@ -18,11 +19,11 @@ export const waitFor = async (ms) => {
 
 export const startLogGroup = (group) => {
   const stopTimer = startTimer();
-  console.log(group + " started");
+  logDetail(group + " started");
 
   return () => {
     const diff = stopTimer();
-    console.log(group + " ended, duration: " + diff + "ns");
+    logDetail(group + " ended, duration: " + diff + "ns");
   };
 };
 
