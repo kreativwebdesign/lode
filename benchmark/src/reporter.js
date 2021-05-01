@@ -1,6 +1,8 @@
 import * as math from "mathjs";
 import { calculateNinetyFiveConfidenceInterval } from "./stats.js";
 
+const ROUNDING_PRECISION = 3;
+
 export const calculateFigure = (reports, selector) => {
   const optimizedValues = reports.map(({ optimizedReport }) =>
     selector(optimizedReport)
@@ -15,6 +17,10 @@ export const calculateFigure = (reports, selector) => {
     baselineMean: math.mean(baselineValues),
     baselineVariance: math.variance(baselineValues),
   };
+};
+
+const round = (number) => {
+  return math.round(number, ROUNDING_PRECISION);
 };
 
 /**
@@ -85,94 +91,57 @@ export const generateHolisticReport = (reports) => {
     (report) => report.debug.medianRenderLoopDuration
   );
 
-  const precision = 3;
-
   return {
-    optimizedMedianFpsMean: math.round(optimizedMedianFpsMean, precision),
-    optimizedMedianFpsVariance: math.round(
-      optimizedMedianFpsVariance,
-      precision
-    ),
-    optimizedLower: math.round(optimizedLower, precision),
-    optimizedUpper: math.round(optimizedUpper, precision),
+    optimizedMedianFpsMean: round(optimizedMedianFpsMean),
+    optimizedMedianFpsVariance: round(optimizedMedianFpsVariance),
+    optimizedLower: round(optimizedLower),
+    optimizedUpper: round(optimizedUpper),
 
-    baselineMedianFpsMean: math.round(baselineMedianFpsMean, precision),
-    baselineMedianFpsVariance: math.round(baselineMedianFpsVariance, precision),
-    baselineLower: math.round(baselineLower, precision),
-    baselineUpper: math.round(baselineUpper, precision),
+    baselineMedianFpsMean: round(baselineMedianFpsMean),
+    baselineMedianFpsVariance: round(baselineMedianFpsVariance),
+    baselineLower: round(baselineLower),
+    baselineUpper: round(baselineUpper),
 
-    optimizedGpuTotalTimeMean: math.round(optimizedGpuTotalTimeMean, precision),
-    optimizedGpuTotalTimeVariance: math.round(
-      optimizedGpuTotalTimeVariance,
-      precision
-    ),
+    optimizedGpuTotalTimeMean: round(optimizedGpuTotalTimeMean),
+    optimizedGpuTotalTimeVariance: round(optimizedGpuTotalTimeVariance),
 
-    baselineGpuTotalTimeMean: math.round(baselineGpuTotalTimeMean, precision),
-    baselineGpuTotalTimeVariance: math.round(
-      baselineGpuTotalTimeVariance,
-      precision
-    ),
+    baselineGpuTotalTimeMean: round(baselineGpuTotalTimeMean),
+    baselineGpuTotalTimeVariance: round(baselineGpuTotalTimeVariance),
 
-    optimizedTotalGpuEventsMean: math.round(
-      optimizedTotalGpuEventsMean,
-      precision
+    optimizedTotalGpuEventsMean: round(optimizedTotalGpuEventsMean),
+    optimizedTotalGpuEventsVariance: round(optimizedTotalGpuEventsVariance),
+    baselineTotalGpuEventsMean: round(baselineTotalGpuEventsMean),
+    baselineTotalGpuEventsVariance: round(baselineTotalGpuEventsVariance),
+
+    optimizedTotalModelLoadDurationMean: round(
+      optimizedTotalModelLoadDurationMean
     ),
-    optimizedTotalGpuEventsVariance: math.round(
-      optimizedTotalGpuEventsVariance,
-      precision
+    optimizedTotalModelLoadDurationVariance: round(
+      optimizedTotalModelLoadDurationVariance
     ),
-    baselineTotalGpuEventsMean: math.round(
-      baselineTotalGpuEventsMean,
-      precision
+    baselineTotalModelLoadDurationMean: round(
+      baselineTotalModelLoadDurationMean
     ),
-    baselineTotalGpuEventsVariance: math.round(
-      baselineTotalGpuEventsVariance,
-      precision
+    baselineTotalModelLoadDurationVariance: round(
+      baselineTotalModelLoadDurationVariance
     ),
 
-    optimizedTotalModelLoadDurationMean: math.round(
-      optimizedTotalModelLoadDurationMean,
-      precision
-    ),
-    optimizedTotalModelLoadDurationVariance: math.round(
-      optimizedTotalModelLoadDurationVariance,
-      precision
-    ),
-    baselineTotalModelLoadDurationMean: math.round(
-      baselineTotalModelLoadDurationMean,
-      precision
-    ),
-    baselineTotalModelLoadDurationVariance: math.round(
-      baselineTotalModelLoadDurationVariance,
-      precision
-    ),
+    optimizedTotalRendersMean: round(optimizedTotalRendersMean),
+    optimizedTotalRendersVariance: round(optimizedTotalRendersVariance),
+    baselineTotalRendersMean: round(baselineTotalRendersMean),
+    baselineTotalRendersVariance: round(baselineTotalRendersVariance),
 
-    optimizedTotalRendersMean: math.round(optimizedTotalRendersMean, precision),
-    optimizedTotalRendersVariance: math.round(
-      optimizedTotalRendersVariance,
-      precision
+    optimizedMedianRenderLoopDurationMean: round(
+      optimizedMedianRenderLoopDurationMean
     ),
-    baselineTotalRendersMean: math.round(baselineTotalRendersMean, precision),
-    baselineTotalRendersVariance: math.round(
-      baselineTotalRendersVariance,
-      precision
+    optimizedMedianRenderLoopDurationVariance: round(
+      optimizedMedianRenderLoopDurationVariance
     ),
-
-    optimizedMedianRenderLoopDurationMean: math.round(
-      optimizedMedianRenderLoopDurationMean,
-      precision
+    baselineMedianRenderLoopDurationMean: round(
+      baselineMedianRenderLoopDurationMean
     ),
-    optimizedMedianRenderLoopDurationVariance: math.round(
-      optimizedMedianRenderLoopDurationVariance,
-      precision
-    ),
-    baselineMedianRenderLoopDurationMean: math.round(
-      baselineMedianRenderLoopDurationMean,
-      precision
-    ),
-    baselineMedianRenderLoopDurationVariance: math.round(
-      baselineMedianRenderLoopDurationVariance,
-      precision
+    baselineMedianRenderLoopDurationVariance: round(
+      baselineMedianRenderLoopDurationVariance
     ),
   };
 };
