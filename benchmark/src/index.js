@@ -6,14 +6,18 @@ import { hideBin } from "yargs/helpers";
 import { waitFor, startLogGroup, createFolderIfNotExist } from "./helpers.js";
 import { reporter, analyzeTraceEvents, generateReport } from "./analyze.js";
 import { calculateNinetyFiveConfidenceInterval } from "./stats.js";
+import { logDetail, setLogDetail } from "./logger.js";
 
 const argv = yargs(hideBin(process.argv)).argv;
 
 const SAMPLE_TIMEOUT_MS = 20000;
 
+const LOG_DETAILS = argv.logDetails || false;
+setLogDetail(LOG_DETAILS);
+
 const main = async () => {
   const ITERATIONS = argv.iterations || 10;
-  console.log("start benchmark with " + ITERATIONS + " iterations");
+  logDetail("start benchmark with " + ITERATIONS + " iterations");
   const reports = [];
   for (let i = 0; i < ITERATIONS; i++) {
     const optimizedReport = await Promise.any([
@@ -123,7 +127,7 @@ const main = async () => {
 const sample = async (optimize) => {
   const TEMP_FOLDER = "tmp/";
   createFolderIfNotExist(TEMP_FOLDER);
-  console.log("start benchmark");
+  logDetail("start benchmark");
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
 
@@ -142,7 +146,7 @@ const sample = async (optimize) => {
     } else if (log.includes("::benchmark::")) {
       report(log);
     } else {
-      console.info("web-console: " + message.text());
+      logDetail("web-console: " + message.text());
     }
   });
 
@@ -181,9 +185,9 @@ const sample = async (optimize) => {
   });
 
   await browser.close();
-  console.log("stop benchmark");
+  logDetail("stop benchmark");
 
-  console.log("start analyzer");
+  logDetail("start analyzer");
 
   const trace = JSON.parse(fs.readFileSync(`${TEMP_FOLDER}trace.json`, "utf8"));
   const events = trace.traceEvents ? trace.traceEvents : trace;

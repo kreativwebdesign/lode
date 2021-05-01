@@ -4,7 +4,8 @@ The benchmark expects `../demo` project to be running.
 
 The benchmark will automatically run a number of samples, to customize the amount of samples, pass `--iterations=n`.
 
-Interpreting the data is currently wip but the logs give an indication of what is already being tracked.
+By default the benchmark will only show the report. In order to show more detailed information which is helpful for debugging pass `--logDetails`.
+This will log more information from the demo scene.
 
 ## Dev
 Run `yarn setup` to get up and running and then `yarn start`
