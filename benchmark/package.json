@@ -1,11 +1,11 @@
 {
   "name": "lode-benchmarker",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/index.js",
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "start": "node index.js",
+    "start": "node src/index.js",
     "test": "jest",
     "run-demo": "cd ../demo && yarn serve & wait-on http://localhost:8080",
     "setup": "yarn install"
