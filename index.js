@@ -4,7 +4,7 @@ import { measureFPS } from "./src/measure-fps.js";
 import loadGltfAsync from "./src/async-gltf-loader.js";
 import { getOptimized } from "./src/url-param.js";
 import "./src/optimized-toggle.js";
-import * as lodeLoader from "./_snowpack/pkg/lode-three.js";
+import * as lodeLoader from "./_snowpack/link/lode-three/index.js";
 import manifest from "./lode-build/lode-manifest.json.proxy.js";
 
 const useOptimized = getOptimized();

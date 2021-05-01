@@ -1,32 +1,13 @@
-import { L as LOD } from './common/three.module-6492b9ea.js';
-import { G as GLTFLoader } from './common/GLTFLoader-3e3b6855.js';
+import * as THREE from "../../pkg/three.js";
+import loadGltfAsync from "./src/async-gltf-loader.js";
 
-const loader = new GLTFLoader();
-
-const loadGltfAsync = (url) => {
-  let resolve;
-  let reject;
-  const promise = new Promise((res, rej) => {
-    resolve = res;
-    reject = rej;
-  });
-  loader.load(
-    url,
-    (gltf) => resolve(gltf),
-    () => {},
-    (err) => reject(err)
-  );
-
-  return promise;
-};
-
-const createContext = ({ basePath, manifest }) => ({
+export const createContext = ({ basePath, manifest }) => ({
   basePath,
   manifest,
 });
 
-const loadModel = async ({ artifactName, lodeContext }) => {
-  const lod = new LOD();
+export const loadModel = async ({ artifactName, lodeContext }) => {
+  const lod = new THREE.LOD();
   const config = lodeContext.manifest[artifactName];
   const name = artifactName.split("/").pop();
   const lodArtifacts = await Promise.all(
@@ -55,5 +36,3 @@ const loadModel = async ({ artifactName, lodeContext }) => {
   });
   return lod;
 };
-
-export { createContext, loadModel };
