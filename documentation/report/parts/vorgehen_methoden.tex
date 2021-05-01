@@ -67,6 +67,32 @@ In der Webentwicklung ist es üblich, über \fgls{CLI}{Command Line Interface �
 Um den Nutzen von LOD quantifizieren zu können, wird in einer ersten Phase ein Benchmark aufgestellt.
 Ziel ist es, das Laufzeitverhalten unter Einsatz eines optimierten Modells zu analysieren und somit den maximal möglichen Einfluss von LOD auf die Leistung klassifizieren zu können.
 
+\subsection{Kennzahlen für Nutzen}
+
+Der Nutzen eines Systems definiert sich durch eine Vielzahl von Kennzahlen welche in verschiedenen Phasen gemessen werden können. Die verschieden für die Entwicklung von Webanwendungen relevanten Aspekte werden im folgenden Abschnitt erläutert. Seblstverständlich kann nicht auf alle Aspekte eingegangen werden, es werden lediglich die relevantesten berücksichtigt.
+
+\paragraph{Entwicklungszeit}
+
+Entwicklungszeit beziffert den Aufwand für die Entwicklung einer Anwendung und kann häufig direkt in Arbeitsstunden beziffert werden.
+Die Auswirkungen eines Systems auf die Entwicklungszeit ist entscheidend dafür, ob etwas eingesetzt werden kann. Ein System mit riesigem Nutzen für die Laufzeit im Browser, welches jedoch signifikanten Mehraufwand für die Entwicklungszeit bedeutet wird in der Praxis keine grosse Bedeutung finden da Entwicklungskosten hoch sind.
+
+\paragraph{Download}
+
+Die Downloadzeit ist grundsätzlich linear abhängig von der Dateigrösse.
+Je grösser die Dateien, desto mehr Bandbreite wird verwendet. Dies hat direkte Auswirkungen auf die Zeit bis eine Anwendung benutzt werden kann. Ziel ist es die Downloadgrösse möglichst tief zu halten.
+Dank der heutigen Bandbreiten ist dies für viele Anwendungsbereiche ein kleinerwerdendes Problem.
+Zudem können Probleme in diesem Bereich teilweise kaschiert werden indem man das Ladeverhalten optimiert. Häufig sind nicht alle Artefakte notwendig um eine verwendbare Anwendung darzustellen und der Rest kann phasenweise nachgeladen werden.
+Ausserdem ist es auch möglich Artefakte bereits vorzuladen.
+
+\paragraph{Laufzeit}
+
+Entscheidend ist, unabhängig von der Applikation, das Laufzeitverhalten. Eine Applikation, welche eine schlechte User Experience liefert ist inakzeptabel.
+
+\paragraph{Berücksichtige Kennzahlen}
+In dieser Arbeit wird ein hoeher Wert darauf gelegt, dass die Entwicklungszeit möglichst geringfügig verändert wird. Zudem werden wo möglich Empfehlungen getätigt um die Downloadgrösse möglichst marginal zu verändern.
+Die somit primäre Kennzahl für die Beurteilung - und auch anspruchsvollste - sind die Auswirkungen auf das Laufzeitverhalten.
+Angestrebt werden grundsätzlich immer 60 \fgls{FPS}{Frames per Second. Bilder pro Sekunde. Gängige Art, die Performanz der \gls{Rendering Engine} zu messen}. Wenn eine bestimmte Szenerie diese 60 \e{\gls{FPS}} nicht erreicht ist ein Performanzproblem vorhanden.
+
 \subsection{Mögliche Ansätze}
 
 Verschiedene Varianten können gewählt werden um den Nutzen aufzuzeigen. Die verschiedenen in Betracht gezogenen Ansätze werden in diesem Abschnitt erläutert.
@@ -77,7 +103,7 @@ Sinnvoll wäre es das Modell in konstanter Distanz zur Kamera um zwei Achsen dre
 Der primäre Nachteil bei dieser Variante liegt an der Aussagekraft. Die einzige belegte Aussage ist, dass es möglich ist Performanzeinsparungen mit Vereinfachungen zu erhalten. Dies dient jedoch nicht als Beleg, dass der Einsatz von LOD Artefakten Performanzengpässe lösen kann.
 
 \paragraph{Szeneriebetrachtung}
-Angestrebt werden grundsätzlich immer 60 \fgls{FPS}{Frames per Second. Bilder pro Sekunde. Gängige Art, die Performanz der \gls{Rendering Engine} zu messen}. Wenn eine bestimmte Szenerie diese 60 \e{\gls{FPS}} nicht erreicht ist ein Performanzproblem vorhanden. Bei diesem Ansatz wird für eine Szenerie möglichst geringfügig angepasst und die Auswirkungen auf die Performanz verglichen.
+Bei diesem Ansatz wird eine gegebene Szenerie möglichst geringfügig angepasst und die Auswirkungen auf die Performanz verglichen.
 Wenn die unoptimierte Variante 60 \e{\gls{FPS}} erreicht oder gar übersteigt, ist eine Optimierung nicht notwendig. Somit muss eine Szenerie gewählt werden, welche diesen Wert unterschreitet. 
 Ziel ist es dann die LOD Artefakte in dieselbe Szenerie zu integrieren und die \e{FPS} zu steigern. Ziel der Arbeit ist es, ein System zu entwickeln, das für Szenarien unter 60 \e{\gls{FPS}} diese erhöht und im Idealfall auf ebendiesen Wert hebt.
 Eine solche Szenerie soll grundsätzlich Modelle sowohl nah als auch in grosser Distanz zeigen. Ein Beispiel für eine solche Szenerie ist eine Visualisierung aus  Vogelperspektive mit Zoom Verhalten.
