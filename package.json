@@ -9,6 +9,7 @@
     "setup-cli": "cd ./cli && yarn setup",
     "setup-lode-three": "cd ./lode-three && yarn setup",
     "setup-demo": "cd ./demo && yarn setup",
-    "setup": "yarn setup-benchmark && yarn setup-cli && yarn setup-lode-three && yarn setup-demo"
+    "setup-lode-ui": "cd ./lode-ui && yarn setup",
+    "setup": "yarn setup-benchmark && yarn setup-cli && yarn setup-lode-three && yarn setup-demo && yarn setup-lode-ui"
   }
 }
