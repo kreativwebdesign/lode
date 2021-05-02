@@ -4,10 +4,10 @@ import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import * as lodeLoader from "lode-three";
 import { useEffect, useRef, useState } from "react";
-import DistanceToObject from "./DistanceToObject";
 import useBasePath from "./useBasePath";
 import useManifest from "./useManifest";
 import useParam from "./useParam";
+import Infopanel from "./InfoPanel";
 
 const useLode = () => {
   const [lod, setLod] = useState();
@@ -49,11 +49,11 @@ function LODViewer() {
   return (
     <Box h="100%">
       <Canvas>
-        <OrbitControls autoRotate onWheel={() => console.log("update")} />
+        <OrbitControls autoRotate />
         <ambientLight />
         <pointLight position={[10, 10, 10]} />
         <primitive object={lod} />
-        <DistanceToObject object={lod} />
+        <Infopanel object={lod} />
       </Canvas>
     </Box>
   );
