@@ -4,8 +4,8 @@
   "license": "MIT",
   "dependencies": {
     "@chakra-ui/react": "^1.6.0",
-    "@emotion/react": "^11",
-    "@emotion/styled": "^11",
+    "@emotion/react": "^11.1.5",
+    "@emotion/styled": "^11.3.0",
     "@react-three/drei": "^4.3.2",
     "@react-three/fiber": "^6.0.19",
     "@testing-library/jest-dom": "^5.11.4",
