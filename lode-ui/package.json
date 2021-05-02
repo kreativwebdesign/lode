@@ -1,6 +1,7 @@
 {
   "name": "lode-ui",
   "version": "0.1.0",
+  "license": "MIT",
   "dependencies": {
     "@chakra-ui/react": "^1.6.0",
     "@emotion/react": "^11",
