@@ -27,6 +27,7 @@ function TriangleCount({ url }) {
     setTimeout(() => {
       setTriangleCount(gl.info.render.triangles);
     }, 500);
+    // eslint-disable-next-line
   }, [url]);
 
   if (triangleCount === 0) {
@@ -68,4 +69,3 @@ function GltfModel({ url }) {
 }
 
 export default Model;
-// renderer.info.render.triangles

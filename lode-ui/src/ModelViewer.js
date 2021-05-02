@@ -1,4 +1,5 @@
 import { Box, Center, Flex } from "@chakra-ui/layout";
+import LODViewer from "./LODViewer";
 import Model from "./Model";
 import useBasePath from "./useBasePath";
 import useManifest from "./useManifest";
@@ -18,16 +19,21 @@ function ModelViewer() {
   const fileName = name.split("/").pop();
 
   return (
-    <Flex justify="center" borderBottomWidth={1}>
-      {(fileDescription?.levels || []).map((_, i) => {
-        return (
-          <Box h="100%" borderLeftWidth={i !== 0 ? 1 : 0} key={i}>
-            <Model
-              url={`${basePath}/assets/${name}/lod-${i}/${fileName}.gltf`}
-            />
-          </Box>
-        );
-      })}
+    <Flex direction="column" h="100%">
+      <Flex justify="center" borderBottomWidth={1}>
+        {(fileDescription?.levels || []).map((_, i) => {
+          return (
+            <Box h="100%" borderLeftWidth={i !== 0 ? 1 : 0} key={i}>
+              <Model
+                url={`${basePath}/assets/${name}/lod-${i}/${fileName}.gltf`}
+              />
+            </Box>
+          );
+        })}
+      </Flex>
+      <Box flexGrow="2">
+        <LODViewer />
+      </Box>
     </Flex>
   );
 }
