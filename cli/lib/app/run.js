@@ -17,6 +17,7 @@ import {
   fileExists,
   readFile,
 } from "../helper/files.js";
+import { startServer } from "../server/index.js";
 
 const readConfigFile = (file) => {
   const configFile = readFile(file);
@@ -113,7 +114,11 @@ const run = (commanderOptions) => {
   buildManifest(opts.outputFoldername, sourceFiles);
 
   if (opts.watch) {
-    print.info("watching files...");
+    print.info("watching files and running lode api server on port 3001...");
+
+    startServer({
+      outputFoldername: opts.outputFoldername,
+    });
 
     chokidar
       .watch(opts.source)

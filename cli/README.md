@@ -51,7 +51,7 @@ Run `yarn start` or `yarn start run` to execute it. You can pass various options
 | `-c`, `--config` | Path to config file      | `./lode-cli.config.json` |
 | `-s`, `--source` | Source glob pattern      | `**/*.gltf`              |
 | `-o`, `--outputFoldername` | Outputfoldername | `lode-build`           |
-| `-w`, `--watch`  | Watch source files       | `false`                  |
+| `-w`, `--watch`  | Watch source files and start lode API server on port 3001       | `false`                  |
 | `-h`, `--help`   | Display help for command |                          |
 
 ### help
