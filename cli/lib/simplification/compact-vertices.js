@@ -3,19 +3,19 @@ const compactVertices = (triangles, vertices) => {
   let vertexRefList = new Array(vertices.length);
 
   vertices.forEach((_, i) => {
-    vertexRefList[i] = 0;
+    vertexRefList[i] = false;
   });
 
   triangles.forEach((triangle) => {
     triangle.vertices.forEach((vertexIndex) => {
-      vertexRefList[vertexIndex] = 1;
+      vertexRefList[vertexIndex] = true;
     });
   });
 
   let newVertices = [];
 
   vertexRefList = vertexRefList.map((hit, index) => {
-    if (hit === 1) {
+    if (hit) {
       newVertices.push(vertices[index]);
       return newVertices.length - 1;
     }
