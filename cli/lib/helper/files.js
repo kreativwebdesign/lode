@@ -24,7 +24,12 @@ export const createBaseFolderPathForFile = (filePath) => {
 
 export const createFile = (filePath, content) => {
   createBaseFolderPathForFile(filePath);
+  return writeFile(filePath, content);
+};
+
+export const writeFile = (filePath, content) => {
   fs.writeFileSync(filePath, content);
+  return readFile(filePath);
 };
 
 export const rmDir = (path) => {
