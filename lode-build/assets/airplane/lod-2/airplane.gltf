@@ -7,16 +7,16 @@
     {
       "type": "VEC3",
       "componentType": 5126,
-      "count": 14135,
+      "count": 42278,
       "max": [
-        317.9831848144531,
-        498.5843200683594,
+        318.98431396484375,
+        499.906005859375,
         749.0986938476562
       ],
       "min": [
         -322.45703125,
         29.21755027770996,
-        -749.267578125
+        -753.068115234375
       ],
       "normalized": false,
       "bufferView": 0,
@@ -25,15 +25,15 @@
     {
       "type": "VEC3",
       "componentType": 5126,
-      "count": 5748,
+      "count": 27460,
       "max": [
-        786.9495239257812,
-        247.26234436035156,
+        786.957275390625,
+        247.88348388671875,
         403.8321533203125
       ],
       "min": [
-        -789.5349731445312,
-        74.41117858886719,
+        -789.9151000976562,
+        72.17256164550781,
         -166.04574584960938
       ],
       "normalized": false,
@@ -113,10 +113,10 @@
       "componentType": 5123,
       "count": 61959,
       "max": [
-        14134
+        42269
       ],
       "min": [
-        0
+        8
       ],
       "normalized": false,
       "bufferView": 3,
@@ -127,10 +127,10 @@
       "componentType": 5123,
       "count": 18585,
       "max": [
-        5747
+        27457
       ],
       "min": [
-        0
+        18
       ],
       "normalized": false,
       "bufferView": 3,
@@ -141,25 +141,25 @@
     {
       "buffer": 0,
       "byteOffset": 0,
-      "byteLength": 169620,
+      "byteLength": 507336,
       "byteStride": 12,
       "target": 34962
     },
     {
       "buffer": 0,
-      "byteOffset": 169620,
-      "byteLength": 68976,
+      "byteOffset": 507336,
+      "byteLength": 329520,
       "byteStride": 12,
       "target": 34962
     },
     {
       "buffer": 0,
-      "byteOffset": 238596,
+      "byteOffset": 836856,
       "byteLength": 1394760
     },
     {
       "buffer": 0,
-      "byteOffset": 1633356,
+      "byteOffset": 2231616,
       "byteLength": 161092,
       "target": 34963
     }
@@ -195,7 +195,7 @@
   "buffers": [
     {
       "uri": "airplane.bin",
-      "byteLength": 1794448
+      "byteLength": 2392708
     }
   ],
   "materials": [

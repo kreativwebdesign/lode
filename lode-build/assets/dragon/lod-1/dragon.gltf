@@ -7,16 +7,16 @@
     {
       "type": "VEC3",
       "componentType": 5126,
-      "count": 13526,
+      "count": 79089,
       "max": [
-        8.622207641601562,
-        1.3194634914398193,
-        6.209191799163818
+        8.66904354095459,
+        1.319564700126648,
+        6.214841365814209
       ],
       "min": [
-        -8.622207641601562,
+        -8.66904354095459,
         -18.225360870361328,
-        -0.7034703493118286
+        -0.7123635411262512
       ],
       "normalized": false,
       "bufferView": 0,
@@ -61,10 +61,10 @@
       "componentType": 5123,
       "count": 61500,
       "max": [
-        13525
+        65523
       ],
       "min": [
-        0
+        4
       ],
       "normalized": false,
       "bufferView": 2,
@@ -75,18 +75,18 @@
     {
       "buffer": 0,
       "byteOffset": 0,
-      "byteLength": 162312,
+      "byteLength": 949068,
       "byteStride": 12,
       "target": 34962
     },
     {
       "buffer": 0,
-      "byteOffset": 162312,
+      "byteOffset": 949068,
       "byteLength": 1581780
     },
     {
       "buffer": 0,
-      "byteOffset": 1744092,
+      "byteOffset": 2530848,
       "byteLength": 123000,
       "target": 34963
     }
@@ -94,7 +94,7 @@
   "buffers": [
     {
       "uri": "dragon.bin",
-      "byteLength": 1867092
+      "byteLength": 2653848
     }
   ],
   "materials": [
