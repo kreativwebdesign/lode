@@ -9,10 +9,10 @@
       "componentType": 5123,
       "count": 1677,
       "max": [
-        2397
+        333
       ],
       "min": [
-        6
+        0
       ],
       "normalized": false,
       "bufferView": 0,
@@ -55,16 +55,16 @@
     {
       "type": "VEC3",
       "componentType": 5126,
-      "count": 2399,
+      "count": 334,
       "max": [
         96.8741455078125,
         164.64892578125,
         53.990997314453125
       ],
       "min": [
-        -69.07820129394531,
-        9.936039924621582,
-        -61.32819747924805
+        -68.9219970703125,
+        10.009638786315918,
+        -61.23469924926758
       ],
       "normalized": false,
       "bufferView": 2,
@@ -86,7 +86,7 @@
     {
       "buffer": 0,
       "byteOffset": 51336,
-      "byteLength": 28788,
+      "byteLength": 4008,
       "byteStride": 12,
       "target": 34962
     }
@@ -114,7 +114,7 @@
   "buffers": [
     {
       "uri": "duck.bin",
-      "byteLength": 80124
+      "byteLength": 55344
     }
   ],
   "materials": [
