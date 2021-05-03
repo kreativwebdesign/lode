@@ -12,6 +12,7 @@ import { useRecoilState } from "recoil";
 import lodLevelState from "./state/lodLevel";
 import distanceToObjectState from "./state/distanceToObject";
 import AnalyseCanvas from "./AnalyseCanvas";
+import deepEql from "deep-eql";
 
 const useLode = () => {
   const [lod, setLod] = useState();
@@ -26,7 +27,7 @@ function LODViewer() {
   const basePath = useBasePath();
   const artifactName = useParam("name");
   const [lod, loadLod] = useLode();
-  const nameRef = useRef(null);
+  const artifactRef = useRef(null);
 
   const manifest = useManifest();
   const [currentLodLevel, setCurrentLodLevel] = useRecoilState(lodLevelState);
@@ -36,14 +37,17 @@ function LODViewer() {
 
   useEffect(() => {
     const manifestNotEmpty = Object.keys(manifest).length > 0;
-    const artifactNameChanged = nameRef.current !== artifactName;
-    if (manifestNotEmpty && artifactNameChanged) {
+    const artifactChanged = !deepEql(artifactRef.current, {
+      artifactName,
+      manifest,
+    });
+    if (manifestNotEmpty && artifactChanged) {
       const lodeContext = lodeLoader.createContext({
         basePath: `${basePath}/assets`,
         manifest,
       });
       loadLod({ lodeContext, artifactName });
-      nameRef.current = artifactName;
+      artifactRef.current = { artifactName, manifest };
     }
   }, [artifactName, manifest, basePath, loadLod]);
 
