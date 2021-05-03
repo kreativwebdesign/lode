@@ -8,41 +8,20 @@
       "name": "position - test",
       "type": "VEC3",
       "componentType": 5126,
-      "count": 41864,
+      "count": 720,
       "max": [
         24.1981258392334,
         30.912172317504883,
-        29.13802146911621
+        29.043731689453125
       ],
       "min": [
-        -23.879804611206055,
-        -30.853849411010742,
+        -23.38347816467285,
+        -30.59031867980957,
         -29.324949264526367
       ],
       "normalized": false,
       "bufferView": 0,
       "byteOffset": 0
-    },
-    {
-      "name": "color - test",
-      "type": "VEC4",
-      "componentType": 5126,
-      "count": 41864,
-      "max": [
-        0.9914400577545166,
-        0.9914400577545166,
-        0.9914400577545166,
-        1
-      ],
-      "min": [
-        0,
-        0,
-        0,
-        1
-      ],
-      "normalized": false,
-      "bufferView": 0,
-      "byteOffset": 12
     },
     {
       "name": "normal - test",
@@ -64,15 +43,36 @@
       "byteOffset": 0
     },
     {
+      "name": "color - test",
+      "type": "VEC4",
+      "componentType": 5126,
+      "count": 41864,
+      "max": [
+        0.9914400577545166,
+        0.9914400577545166,
+        0.9914400577545166,
+        1
+      ],
+      "min": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "normalized": false,
+      "bufferView": 1,
+      "byteOffset": 502368
+    },
+    {
       "name": "indices - test",
       "type": "SCALAR",
       "componentType": 5123,
       "count": 4164,
       "max": [
-        41825
+        719
       ],
       "min": [
-        66
+        0
       ],
       "normalized": false,
       "bufferView": 2,
@@ -83,18 +83,18 @@
     {
       "buffer": 0,
       "byteOffset": 0,
-      "byteLength": 1172192,
-      "byteStride": 28,
+      "byteLength": 8640,
+      "byteStride": 12,
       "target": 34962
     },
     {
       "buffer": 0,
-      "byteOffset": 1172192,
-      "byteLength": 502368
+      "byteOffset": 8640,
+      "byteLength": 1172192
     },
     {
       "buffer": 0,
-      "byteOffset": 1674560,
+      "byteOffset": 1180832,
       "byteLength": 8328,
       "target": 34963
     }
@@ -102,7 +102,7 @@
   "buffers": [
     {
       "uri": "skull.bin",
-      "byteLength": 1682888
+      "byteLength": 1189160
     }
   ],
   "materials": [
@@ -132,8 +132,7 @@
       "primitives": [
         {
           "attributes": {
-            "POSITION": 0,
-            "COLOR_0": 1
+            "POSITION": 0
           },
           "mode": 4,
           "material": 0,
