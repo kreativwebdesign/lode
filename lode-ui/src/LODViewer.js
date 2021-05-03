@@ -1,4 +1,4 @@
-import { Box, Center } from "@chakra-ui/layout";
+import { Box, Center, Flex } from "@chakra-ui/layout";
 import { Spinner } from "@chakra-ui/spinner";
 import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
@@ -8,6 +8,10 @@ import useBasePath from "./useBasePath";
 import useManifest from "./useManifest";
 import useParam from "./useParam";
 import Infopanel from "./InfoPanel";
+import { useRecoilState } from "recoil";
+import lodLevelState from "./state/lodLevel";
+import distanceToObjectState from "./state/distanceToObject";
+import AnalyseCanvas from "./AnalyseCanvas";
 
 const useLode = () => {
   const [lod, setLod] = useState();
@@ -25,6 +29,10 @@ function LODViewer() {
   const nameRef = useRef(null);
 
   const manifest = useManifest();
+  const [currentLodLevel, setCurrentLodLevel] = useRecoilState(lodLevelState);
+  const [distanceToObject, setDistanceToObject] = useRecoilState(
+    distanceToObjectState
+  );
 
   useEffect(() => {
     const manifestNotEmpty = Object.keys(manifest).length > 0;
@@ -47,15 +55,28 @@ function LODViewer() {
     );
   }
   return (
-    <Box h="100%">
-      <Canvas>
-        <OrbitControls autoRotate />
-        <ambientLight />
-        <pointLight position={[10, 10, 10]} />
-        <primitive object={lod} />
-        <Infopanel object={lod} />
-      </Canvas>
-    </Box>
+    <Flex h="100%" direction="column" justify="center">
+      <Box flexGrow={1}>
+        <Canvas>
+          <OrbitControls autoRotate />
+          <ambientLight />
+          <pointLight position={[10, 10, 10]} />
+          <primitive object={lod} />
+          <AnalyseCanvas
+            object={lod}
+            setCurrentLodLevel={setCurrentLodLevel}
+            setDistanceToObject={setDistanceToObject}
+            currentLodLevel={currentLodLevel}
+            distanceToObject={distanceToObject}
+          />
+        </Canvas>
+      </Box>
+      <Infopanel
+        object={lod}
+        currentLodLevel={currentLodLevel}
+        distanceToObject={distanceToObject}
+      />
+    </Flex>
   );
 }
 
