@@ -71,6 +71,7 @@ export const performLOD = ({ originalFile, levelDefinitions }) => {
         primitive.setAttribute("NORMAL");
         primitive.setAttribute("TEXCOORD_0");
         primitive.setAttribute("TANGENT");
+        primitive.setAttribute("COLOR_0");
       });
 
     io.write(pathName, newDoc);
