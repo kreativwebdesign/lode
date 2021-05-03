@@ -3147,7 +3147,11 @@
   ],
   "newTriangles": [
     {
-      "vertices": [3, 0, 17],
+      "vertices": [
+        3,
+        0,
+        17
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3163,7 +3167,11 @@
       ]
     },
     {
-      "vertices": [3, 11, 0],
+      "vertices": [
+        3,
+        11,
+        0
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3179,7 +3187,11 @@
       ]
     },
     {
-      "vertices": [19, 2, 27],
+      "vertices": [
+        19,
+        2,
+        27
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3195,7 +3207,11 @@
       ]
     },
     {
-      "vertices": [27, 2, 1],
+      "vertices": [
+        27,
+        2,
+        1
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3211,7 +3227,11 @@
       ]
     },
     {
-      "vertices": [19, 27, 33],
+      "vertices": [
+        19,
+        27,
+        33
+      ],
       "deleted": false,
       "isDirty": true,
       "normal": {
@@ -3227,7 +3247,11 @@
       ]
     },
     {
-      "vertices": [33, 5, 19],
+      "vertices": [
+        33,
+        5,
+        19
+      ],
       "deleted": false,
       "isDirty": true,
       "normal": {
@@ -3243,7 +3267,11 @@
       ]
     },
     {
-      "vertices": [6, 5, 28],
+      "vertices": [
+        6,
+        5,
+        28
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3259,7 +3287,11 @@
       ]
     },
     {
-      "vertices": [10, 11, 3],
+      "vertices": [
+        10,
+        11,
+        3
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3275,7 +3307,11 @@
       ]
     },
     {
-      "vertices": [3, 14, 13],
+      "vertices": [
+        3,
+        14,
+        13
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3291,7 +3327,11 @@
       ]
     },
     {
-      "vertices": [13, 10, 3],
+      "vertices": [
+        13,
+        10,
+        3
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3307,7 +3347,11 @@
       ]
     },
     {
-      "vertices": [48, 14, 6],
+      "vertices": [
+        48,
+        14,
+        6
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3323,7 +3367,11 @@
       ]
     },
     {
-      "vertices": [6, 14, 5],
+      "vertices": [
+        6,
+        14,
+        5
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3339,7 +3387,11 @@
       ]
     },
     {
-      "vertices": [15, 7, 30],
+      "vertices": [
+        15,
+        7,
+        30
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3355,7 +3407,11 @@
       ]
     },
     {
-      "vertices": [15, 9, 7],
+      "vertices": [
+        15,
+        9,
+        7
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3371,7 +3427,11 @@
       ]
     },
     {
-      "vertices": [124, 16, 8],
+      "vertices": [
+        124,
+        16,
+        8
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3387,7 +3447,11 @@
       ]
     },
     {
-      "vertices": [17, 1, 2],
+      "vertices": [
+        17,
+        1,
+        2
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3403,7 +3467,11 @@
       ]
     },
     {
-      "vertices": [12, 128, 21],
+      "vertices": [
+        12,
+        128,
+        21
+      ],
       "deleted": false,
       "isDirty": true,
       "normal": {
@@ -3419,7 +3487,11 @@
       ]
     },
     {
-      "vertices": [21, 128, 18],
+      "vertices": [
+        21,
+        128,
+        18
+      ],
       "deleted": false,
       "isDirty": true,
       "normal": {
@@ -3435,7 +3507,11 @@
       ]
     },
     {
-      "vertices": [23, 22, 26],
+      "vertices": [
+        23,
+        22,
+        26
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3451,7 +3527,11 @@
       ]
     },
     {
-      "vertices": [5, 23, 19],
+      "vertices": [
+        5,
+        23,
+        19
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3467,7 +3547,11 @@
       ]
     },
     {
-      "vertices": [19, 26, 2],
+      "vertices": [
+        19,
+        26,
+        2
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3483,7 +3567,11 @@
       ]
     },
     {
-      "vertices": [3, 20, 14],
+      "vertices": [
+        3,
+        20,
+        14
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3499,7 +3587,11 @@
       ]
     },
     {
-      "vertices": [20, 5, 14],
+      "vertices": [
+        20,
+        5,
+        14
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3515,7 +3607,11 @@
       ]
     },
     {
-      "vertices": [25, 22, 20],
+      "vertices": [
+        25,
+        22,
+        20
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3531,7 +3627,11 @@
       ]
     },
     {
-      "vertices": [3, 25, 20],
+      "vertices": [
+        3,
+        25,
+        20
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3547,7 +3647,11 @@
       ]
     },
     {
-      "vertices": [25, 17, 2],
+      "vertices": [
+        25,
+        17,
+        2
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3563,7 +3667,11 @@
       ]
     },
     {
-      "vertices": [22, 23, 5],
+      "vertices": [
+        22,
+        23,
+        5
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3579,7 +3687,11 @@
       ]
     },
     {
-      "vertices": [12, 21, 24],
+      "vertices": [
+        12,
+        21,
+        24
+      ],
       "deleted": true,
       "isDirty": false,
       "normal": {
@@ -3595,7 +3707,11 @@
       ]
     },
     {
-      "vertices": [22, 25, 26],
+      "vertices": [
+        22,
+        25,
+        26
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3611,7 +3727,11 @@
       ]
     },
     {
-      "vertices": [21, 18, 24],
+      "vertices": [
+        21,
+        18,
+        24
+      ],
       "deleted": true,
       "isDirty": false,
       "normal": {
@@ -3627,7 +3747,11 @@
       ]
     },
     {
-      "vertices": [27, 40, 33],
+      "vertices": [
+        27,
+        40,
+        33
+      ],
       "deleted": false,
       "isDirty": true,
       "normal": {
@@ -3643,7 +3767,11 @@
       ]
     },
     {
-      "vertices": [33, 4, 40],
+      "vertices": [
+        33,
+        4,
+        40
+      ],
       "deleted": true,
       "isDirty": false,
       "normal": {
@@ -3659,7 +3787,11 @@
       ]
     },
     {
-      "vertices": [20, 22, 5],
+      "vertices": [
+        20,
+        22,
+        5
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3675,7 +3807,11 @@
       ]
     },
     {
-      "vertices": [3, 17, 25],
+      "vertices": [
+        3,
+        17,
+        25
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3691,7 +3827,11 @@
       ]
     },
     {
-      "vertices": [1, 37, 27],
+      "vertices": [
+        1,
+        37,
+        27
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3707,7 +3847,11 @@
       ]
     },
     {
-      "vertices": [27, 37, 39],
+      "vertices": [
+        27,
+        37,
+        39
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3723,7 +3867,11 @@
       ]
     },
     {
-      "vertices": [27, 39, 40],
+      "vertices": [
+        27,
+        39,
+        40
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3739,7 +3887,11 @@
       ]
     },
     {
-      "vertices": [30, 7, 9],
+      "vertices": [
+        30,
+        7,
+        9
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3755,7 +3907,11 @@
       ]
     },
     {
-      "vertices": [31, 32, 29],
+      "vertices": [
+        31,
+        32,
+        29
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3771,7 +3927,11 @@
       ]
     },
     {
-      "vertices": [11, 38, 0],
+      "vertices": [
+        11,
+        38,
+        0
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3787,7 +3947,11 @@
       ]
     },
     {
-      "vertices": [36, 35, 37],
+      "vertices": [
+        36,
+        35,
+        37
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3803,7 +3967,11 @@
       ]
     },
     {
-      "vertices": [37, 35, 39],
+      "vertices": [
+        37,
+        35,
+        39
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3819,7 +3987,11 @@
       ]
     },
     {
-      "vertices": [35, 56, 39],
+      "vertices": [
+        35,
+        56,
+        39
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3835,7 +4007,11 @@
       ]
     },
     {
-      "vertices": [39, 56, 40],
+      "vertices": [
+        39,
+        56,
+        40
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3851,7 +4027,11 @@
       ]
     },
     {
-      "vertices": [62, 56, 59],
+      "vertices": [
+        62,
+        56,
+        59
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3867,7 +4047,11 @@
       ]
     },
     {
-      "vertices": [40, 56, 62],
+      "vertices": [
+        40,
+        56,
+        62
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3883,7 +4067,11 @@
       ]
     },
     {
-      "vertices": [6, 34, 61],
+      "vertices": [
+        6,
+        34,
+        61
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3899,7 +4087,11 @@
       ]
     },
     {
-      "vertices": [41, 42, 123],
+      "vertices": [
+        41,
+        42,
+        123
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3915,7 +4107,11 @@
       ]
     },
     {
-      "vertices": [41, 43, 60],
+      "vertices": [
+        41,
+        43,
+        60
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3931,7 +4127,11 @@
       ]
     },
     {
-      "vertices": [42, 41, 60],
+      "vertices": [
+        42,
+        41,
+        60
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3947,7 +4147,11 @@
       ]
     },
     {
-      "vertices": [38, 11, 44],
+      "vertices": [
+        38,
+        11,
+        44
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3963,7 +4167,11 @@
       ]
     },
     {
-      "vertices": [46, 45, 44],
+      "vertices": [
+        46,
+        45,
+        44
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3979,7 +4187,11 @@
       ]
     },
     {
-      "vertices": [11, 46, 44],
+      "vertices": [
+        11,
+        46,
+        44
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -3995,7 +4207,11 @@
       ]
     },
     {
-      "vertices": [61, 45, 6],
+      "vertices": [
+        61,
+        45,
+        6
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4011,7 +4227,11 @@
       ]
     },
     {
-      "vertices": [6, 45, 48],
+      "vertices": [
+        6,
+        45,
+        48
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4027,7 +4247,11 @@
       ]
     },
     {
-      "vertices": [32, 31, 49],
+      "vertices": [
+        32,
+        31,
+        49
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4043,7 +4267,11 @@
       ]
     },
     {
-      "vertices": [51, 58, 53],
+      "vertices": [
+        51,
+        58,
+        53
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4059,7 +4287,11 @@
       ]
     },
     {
-      "vertices": [58, 51, 59],
+      "vertices": [
+        58,
+        51,
+        59
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4075,7 +4307,11 @@
       ]
     },
     {
-      "vertices": [45, 47, 44],
+      "vertices": [
+        45,
+        47,
+        44
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4091,7 +4327,11 @@
       ]
     },
     {
-      "vertices": [62, 47, 61],
+      "vertices": [
+        62,
+        47,
+        61
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4107,7 +4347,11 @@
       ]
     },
     {
-      "vertices": [47, 45, 61],
+      "vertices": [
+        47,
+        45,
+        61
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4123,7 +4367,11 @@
       ]
     },
     {
-      "vertices": [47, 53, 44],
+      "vertices": [
+        47,
+        53,
+        44
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4139,7 +4387,11 @@
       ]
     },
     {
-      "vertices": [53, 47, 51],
+      "vertices": [
+        53,
+        47,
+        51
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4155,7 +4407,11 @@
       ]
     },
     {
-      "vertices": [35, 36, 53],
+      "vertices": [
+        35,
+        36,
+        53
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4171,7 +4427,11 @@
       ]
     },
     {
-      "vertices": [58, 35, 53],
+      "vertices": [
+        58,
+        35,
+        53
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4187,7 +4447,11 @@
       ]
     },
     {
-      "vertices": [44, 53, 38],
+      "vertices": [
+        44,
+        53,
+        38
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4203,7 +4467,11 @@
       ]
     },
     {
-      "vertices": [51, 62, 59],
+      "vertices": [
+        51,
+        62,
+        59
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4219,7 +4487,11 @@
       ]
     },
     {
-      "vertices": [57, 55, 52],
+      "vertices": [
+        57,
+        55,
+        52
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4235,7 +4507,11 @@
       ]
     },
     {
-      "vertices": [52, 55, 50],
+      "vertices": [
+        52,
+        55,
+        50
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4251,7 +4527,11 @@
       ]
     },
     {
-      "vertices": [129, 52, 50],
+      "vertices": [
+        129,
+        52,
+        50
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4267,7 +4547,11 @@
       ]
     },
     {
-      "vertices": [36, 38, 53],
+      "vertices": [
+        36,
+        38,
+        53
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4283,7 +4567,11 @@
       ]
     },
     {
-      "vertices": [50, 54, 129],
+      "vertices": [
+        50,
+        54,
+        129
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4299,7 +4587,11 @@
       ]
     },
     {
-      "vertices": [29, 32, 49],
+      "vertices": [
+        29,
+        32,
+        49
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4315,7 +4607,11 @@
       ]
     },
     {
-      "vertices": [13, 46, 10],
+      "vertices": [
+        13,
+        46,
+        10
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4331,7 +4627,11 @@
       ]
     },
     {
-      "vertices": [10, 46, 11],
+      "vertices": [
+        10,
+        46,
+        11
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4347,7 +4647,11 @@
       ]
     },
     {
-      "vertices": [62, 33, 40],
+      "vertices": [
+        62,
+        33,
+        40
+      ],
       "deleted": false,
       "isDirty": true,
       "normal": {
@@ -4363,7 +4667,11 @@
       ]
     },
     {
-      "vertices": [36, 37, 1],
+      "vertices": [
+        36,
+        37,
+        1
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4379,7 +4687,11 @@
       ]
     },
     {
-      "vertices": [122, 64, 63],
+      "vertices": [
+        122,
+        64,
+        63
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4395,7 +4707,11 @@
       ]
     },
     {
-      "vertices": [122, 65, 64],
+      "vertices": [
+        122,
+        65,
+        64
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4411,7 +4727,11 @@
       ]
     },
     {
-      "vertices": [122, 5, 65],
+      "vertices": [
+        122,
+        5,
+        65
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4427,7 +4747,11 @@
       ]
     },
     {
-      "vertices": [63, 64, 66],
+      "vertices": [
+        63,
+        64,
+        66
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4443,7 +4767,11 @@
       ]
     },
     {
-      "vertices": [63, 66, 67],
+      "vertices": [
+        63,
+        66,
+        67
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4459,7 +4787,11 @@
       ]
     },
     {
-      "vertices": [64, 65, 66],
+      "vertices": [
+        64,
+        65,
+        66
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4475,7 +4807,11 @@
       ]
     },
     {
-      "vertices": [66, 78, 67],
+      "vertices": [
+        66,
+        78,
+        67
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4491,7 +4827,11 @@
       ]
     },
     {
-      "vertices": [66, 72, 78],
+      "vertices": [
+        66,
+        72,
+        78
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4507,7 +4847,11 @@
       ]
     },
     {
-      "vertices": [65, 68, 66],
+      "vertices": [
+        65,
+        68,
+        66
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4523,7 +4867,11 @@
       ]
     },
     {
-      "vertices": [66, 68, 72],
+      "vertices": [
+        66,
+        68,
+        72
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4539,7 +4887,11 @@
       ]
     },
     {
-      "vertices": [5, 33, 65],
+      "vertices": [
+        5,
+        33,
+        65
+      ],
       "deleted": false,
       "isDirty": true,
       "normal": {
@@ -4555,7 +4907,11 @@
       ]
     },
     {
-      "vertices": [65, 33, 68],
+      "vertices": [
+        65,
+        33,
+        68
+      ],
       "deleted": false,
       "isDirty": true,
       "normal": {
@@ -4571,7 +4927,11 @@
       ]
     },
     {
-      "vertices": [67, 78, 74],
+      "vertices": [
+        67,
+        78,
+        74
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4587,7 +4947,11 @@
       ]
     },
     {
-      "vertices": [75, 71, 70],
+      "vertices": [
+        75,
+        71,
+        70
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4603,7 +4967,11 @@
       ]
     },
     {
-      "vertices": [70, 71, 75],
+      "vertices": [
+        70,
+        71,
+        75
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4619,7 +4987,11 @@
       ]
     },
     {
-      "vertices": [79, 73, 72],
+      "vertices": [
+        79,
+        73,
+        72
+      ],
       "deleted": false,
       "isDirty": true,
       "normal": {
@@ -4635,7 +5007,11 @@
       ]
     },
     {
-      "vertices": [73, 79, 74],
+      "vertices": [
+        73,
+        79,
+        74
+      ],
       "deleted": false,
       "isDirty": true,
       "normal": {
@@ -4651,7 +5027,11 @@
       ]
     },
     {
-      "vertices": [78, 72, 74],
+      "vertices": [
+        78,
+        72,
+        74
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4667,7 +5047,11 @@
       ]
     },
     {
-      "vertices": [79, 72, 68],
+      "vertices": [
+        79,
+        72,
+        68
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4683,7 +5067,11 @@
       ]
     },
     {
-      "vertices": [87, 81, 86],
+      "vertices": [
+        87,
+        81,
+        86
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4699,7 +5087,11 @@
       ]
     },
     {
-      "vertices": [111, 81, 87],
+      "vertices": [
+        111,
+        81,
+        87
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4715,7 +5107,11 @@
       ]
     },
     {
-      "vertices": [115, 86, 82],
+      "vertices": [
+        115,
+        86,
+        82
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4731,7 +5127,11 @@
       ]
     },
     {
-      "vertices": [83, 85, 88],
+      "vertices": [
+        83,
+        85,
+        88
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4747,7 +5147,11 @@
       ]
     },
     {
-      "vertices": [83, 87, 86],
+      "vertices": [
+        83,
+        87,
+        86
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4763,7 +5167,11 @@
       ]
     },
     {
-      "vertices": [83, 86, 85],
+      "vertices": [
+        83,
+        86,
+        85
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4779,7 +5187,11 @@
       ]
     },
     {
-      "vertices": [85, 118, 88],
+      "vertices": [
+        85,
+        118,
+        88
+      ],
       "deleted": false,
       "isDirty": true,
       "normal": {
@@ -4795,7 +5207,11 @@
       ]
     },
     {
-      "vertices": [85, 84, 118],
+      "vertices": [
+        85,
+        84,
+        118
+      ],
       "deleted": false,
       "isDirty": true,
       "normal": {
@@ -4811,7 +5227,11 @@
       ]
     },
     {
-      "vertices": [84, 85, 86],
+      "vertices": [
+        84,
+        85,
+        86
+      ],
       "deleted": false,
       "isDirty": true,
       "normal": {
@@ -4827,7 +5247,11 @@
       ]
     },
     {
-      "vertices": [89, 86, 115],
+      "vertices": [
+        89,
+        86,
+        115
+      ],
       "deleted": false,
       "isDirty": true,
       "normal": {
@@ -4843,7 +5267,11 @@
       ]
     },
     {
-      "vertices": [84, 80, 85],
+      "vertices": [
+        84,
+        80,
+        85
+      ],
       "deleted": true,
       "isDirty": false,
       "normal": {
@@ -4859,7 +5287,11 @@
       ]
     },
     {
-      "vertices": [84, 86, 89],
+      "vertices": [
+        84,
+        86,
+        89
+      ],
       "deleted": false,
       "isDirty": true,
       "normal": {
@@ -4875,7 +5307,11 @@
       ]
     },
     {
-      "vertices": [89, 80, 84],
+      "vertices": [
+        89,
+        80,
+        84
+      ],
       "deleted": true,
       "isDirty": false,
       "normal": {
@@ -4891,7 +5327,11 @@
       ]
     },
     {
-      "vertices": [79, 90, 74],
+      "vertices": [
+        79,
+        90,
+        74
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4907,7 +5347,11 @@
       ]
     },
     {
-      "vertices": [68, 91, 79],
+      "vertices": [
+        68,
+        91,
+        79
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4923,7 +5367,11 @@
       ]
     },
     {
-      "vertices": [69, 121, 68],
+      "vertices": [
+        69,
+        121,
+        68
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4939,7 +5387,11 @@
       ]
     },
     {
-      "vertices": [79, 91, 90],
+      "vertices": [
+        79,
+        91,
+        90
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4955,7 +5407,11 @@
       ]
     },
     {
-      "vertices": [121, 91, 68],
+      "vertices": [
+        121,
+        91,
+        68
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4971,7 +5427,11 @@
       ]
     },
     {
-      "vertices": [82, 86, 81],
+      "vertices": [
+        82,
+        86,
+        81
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -4987,7 +5447,11 @@
       ]
     },
     {
-      "vertices": [28, 5, 122],
+      "vertices": [
+        28,
+        5,
+        122
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -5003,7 +5467,11 @@
       ]
     },
     {
-      "vertices": [63, 92, 122],
+      "vertices": [
+        63,
+        92,
+        122
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -5019,7 +5487,11 @@
       ]
     },
     {
-      "vertices": [92, 95, 94],
+      "vertices": [
+        92,
+        95,
+        94
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -5035,7 +5507,11 @@
       ]
     },
     {
-      "vertices": [92, 63, 96],
+      "vertices": [
+        92,
+        63,
+        96
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -5051,7 +5527,11 @@
       ]
     },
     {
-      "vertices": [96, 93, 92],
+      "vertices": [
+        96,
+        93,
+        92
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -5067,7 +5547,11 @@
       ]
     },
     {
-      "vertices": [93, 95, 92],
+      "vertices": [
+        93,
+        95,
+        92
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -5083,7 +5567,11 @@
       ]
     },
     {
-      "vertices": [28, 94, 34],
+      "vertices": [
+        28,
+        94,
+        34
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -5099,7 +5587,11 @@
       ]
     },
     {
-      "vertices": [63, 67, 96],
+      "vertices": [
+        63,
+        67,
+        96
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -5115,7 +5607,11 @@
       ]
     },
     {
-      "vertices": [95, 93, 97],
+      "vertices": [
+        95,
+        93,
+        97
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -5131,7 +5627,11 @@
       ]
     },
     {
-      "vertices": [67, 98, 96],
+      "vertices": [
+        67,
+        98,
+        96
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -5147,7 +5647,11 @@
       ]
     },
     {
-      "vertices": [96, 98, 93],
+      "vertices": [
+        96,
+        98,
+        93
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -5163,7 +5667,11 @@
       ]
     },
     {
-      "vertices": [97, 61, 95],
+      "vertices": [
+        97,
+        61,
+        95
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -5179,7 +5687,11 @@
       ]
     },
     {
-      "vertices": [107, 99, 98],
+      "vertices": [
+        107,
+        99,
+        98
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -5195,7 +5707,11 @@
       ]
     },
     {
-      "vertices": [98, 99, 93],
+      "vertices": [
+        98,
+        99,
+        93
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -5211,7 +5727,11 @@
       ]
     },
     {
-      "vertices": [61, 97, 62],
+      "vertices": [
+        61,
+        97,
+        62
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -5227,7 +5747,11 @@
       ]
     },
     {
-      "vertices": [98, 67, 107],
+      "vertices": [
+        98,
+        67,
+        107
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -5243,7 +5767,11 @@
       ]
     },
     {
-      "vertices": [99, 106, 93],
+      "vertices": [
+        99,
+        106,
+        93
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -5259,7 +5787,11 @@
       ]
     },
     {
-      "vertices": [93, 106, 97],
+      "vertices": [
+        93,
+        106,
+        97
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -5275,7 +5807,11 @@
       ]
     },
     {
-      "vertices": [67, 74, 107],
+      "vertices": [
+        67,
+        74,
+        107
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -5291,7 +5827,11 @@
       ]
     },
     {
-      "vertices": [97, 106, 62],
+      "vertices": [
+        97,
+        106,
+        62
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -5307,7 +5847,11 @@
       ]
     },
     {
-      "vertices": [62, 106, 69],
+      "vertices": [
+        62,
+        106,
+        69
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -5323,7 +5867,11 @@
       ]
     },
     {
-      "vertices": [107, 74, 103],
+      "vertices": [
+        107,
+        74,
+        103
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -5339,7 +5887,11 @@
       ]
     },
     {
-      "vertices": [106, 108, 69],
+      "vertices": [
+        106,
+        108,
+        69
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -5355,7 +5907,11 @@
       ]
     },
     {
-      "vertices": [92, 94, 122],
+      "vertices": [
+        92,
+        94,
+        122
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -5371,7 +5927,11 @@
       ]
     },
     {
-      "vertices": [100, 101, 104],
+      "vertices": [
+        100,
+        101,
+        104
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -5387,7 +5947,11 @@
       ]
     },
     {
-      "vertices": [101, 100, 104],
+      "vertices": [
+        101,
+        100,
+        104
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -5403,7 +5967,11 @@
       ]
     },
     {
-      "vertices": [102, 106, 99],
+      "vertices": [
+        102,
+        106,
+        99
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -5419,7 +5987,11 @@
       ]
     },
     {
-      "vertices": [103, 105, 107],
+      "vertices": [
+        103,
+        105,
+        107
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -5435,7 +6007,11 @@
       ]
     },
     {
-      "vertices": [119, 110, 112],
+      "vertices": [
+        119,
+        110,
+        112
+      ],
       "deleted": false,
       "isDirty": true,
       "normal": {
@@ -5451,7 +6027,11 @@
       ]
     },
     {
-      "vertices": [111, 112, 110],
+      "vertices": [
+        111,
+        112,
+        110
+      ],
       "deleted": false,
       "isDirty": true,
       "normal": {
@@ -5467,7 +6047,11 @@
       ]
     },
     {
-      "vertices": [119, 110, 113],
+      "vertices": [
+        119,
+        110,
+        113
+      ],
       "deleted": true,
       "isDirty": false,
       "normal": {
@@ -5483,7 +6067,11 @@
       ]
     },
     {
-      "vertices": [115, 82, 89],
+      "vertices": [
+        115,
+        82,
+        89
+      ],
       "deleted": false,
       "isDirty": true,
       "normal": {
@@ -5499,7 +6087,11 @@
       ]
     },
     {
-      "vertices": [110, 89, 82],
+      "vertices": [
+        110,
+        89,
+        82
+      ],
       "deleted": false,
       "isDirty": true,
       "normal": {
@@ -5515,7 +6107,11 @@
       ]
     },
     {
-      "vertices": [89, 114, 118],
+      "vertices": [
+        89,
+        114,
+        118
+      ],
       "deleted": true,
       "isDirty": false,
       "normal": {
@@ -5531,7 +6127,11 @@
       ]
     },
     {
-      "vertices": [89, 115, 114],
+      "vertices": [
+        89,
+        115,
+        114
+      ],
       "deleted": true,
       "isDirty": false,
       "normal": {
@@ -5547,7 +6147,11 @@
       ]
     },
     {
-      "vertices": [117, 109, 118],
+      "vertices": [
+        117,
+        109,
+        118
+      ],
       "deleted": true,
       "isDirty": true,
       "normal": {
@@ -5563,7 +6167,11 @@
       ]
     },
     {
-      "vertices": [118, 109, 84],
+      "vertices": [
+        118,
+        109,
+        84
+      ],
       "deleted": false,
       "isDirty": true,
       "normal": {
@@ -5579,7 +6187,11 @@
       ]
     },
     {
-      "vertices": [117, 116, 118],
+      "vertices": [
+        117,
+        116,
+        118
+      ],
       "deleted": true,
       "isDirty": false,
       "normal": {
@@ -5595,7 +6207,11 @@
       ]
     },
     {
-      "vertices": [89, 119, 118],
+      "vertices": [
+        89,
+        119,
+        118
+      ],
       "deleted": false,
       "isDirty": true,
       "normal": {
@@ -5611,7 +6227,11 @@
       ]
     },
     {
-      "vertices": [118, 84, 89],
+      "vertices": [
+        118,
+        84,
+        89
+      ],
       "deleted": false,
       "isDirty": true,
       "normal": {
@@ -5627,7 +6247,11 @@
       ]
     },
     {
-      "vertices": [118, 112, 88],
+      "vertices": [
+        118,
+        112,
+        88
+      ],
       "deleted": false,
       "isDirty": true,
       "normal": {
@@ -5643,7 +6267,11 @@
       ]
     },
     {
-      "vertices": [112, 118, 119],
+      "vertices": [
+        112,
+        118,
+        119
+      ],
       "deleted": false,
       "isDirty": true,
       "normal": {
@@ -5659,7 +6287,11 @@
       ]
     },
     {
-      "vertices": [111, 87, 112],
+      "vertices": [
+        111,
+        87,
+        112
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -5675,7 +6307,11 @@
       ]
     },
     {
-      "vertices": [83, 112, 87],
+      "vertices": [
+        83,
+        112,
+        87
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -5691,7 +6327,11 @@
       ]
     },
     {
-      "vertices": [83, 88, 112],
+      "vertices": [
+        83,
+        88,
+        112
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -5707,7 +6347,11 @@
       ]
     },
     {
-      "vertices": [118, 84, 109],
+      "vertices": [
+        118,
+        84,
+        109
+      ],
       "deleted": false,
       "isDirty": true,
       "normal": {
@@ -5723,7 +6367,11 @@
       ]
     },
     {
-      "vertices": [118, 119, 117],
+      "vertices": [
+        118,
+        119,
+        117
+      ],
       "deleted": true,
       "isDirty": true,
       "normal": {
@@ -5739,7 +6387,11 @@
       ]
     },
     {
-      "vertices": [116, 117, 88],
+      "vertices": [
+        116,
+        117,
+        88
+      ],
       "deleted": true,
       "isDirty": false,
       "normal": {
@@ -5755,7 +6407,11 @@
       ]
     },
     {
-      "vertices": [103, 90, 108],
+      "vertices": [
+        103,
+        90,
+        108
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -5771,7 +6427,11 @@
       ]
     },
     {
-      "vertices": [108, 120, 69],
+      "vertices": [
+        108,
+        120,
+        69
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -5787,7 +6447,11 @@
       ]
     },
     {
-      "vertices": [69, 120, 121],
+      "vertices": [
+        69,
+        120,
+        121
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -5803,7 +6467,11 @@
       ]
     },
     {
-      "vertices": [74, 90, 103],
+      "vertices": [
+        74,
+        90,
+        103
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -5819,7 +6487,11 @@
       ]
     },
     {
-      "vertices": [120, 108, 90],
+      "vertices": [
+        120,
+        108,
+        90
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -5835,7 +6507,11 @@
       ]
     },
     {
-      "vertices": [110, 119, 89],
+      "vertices": [
+        110,
+        119,
+        89
+      ],
       "deleted": false,
       "isDirty": true,
       "normal": {
@@ -5851,7 +6527,11 @@
       ]
     },
     {
-      "vertices": [94, 95, 34],
+      "vertices": [
+        94,
+        95,
+        34
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -5867,7 +6547,11 @@
       ]
     },
     {
-      "vertices": [73, 76, 72],
+      "vertices": [
+        73,
+        76,
+        72
+      ],
       "deleted": false,
       "isDirty": true,
       "normal": {
@@ -5883,7 +6567,11 @@
       ]
     },
     {
-      "vertices": [72, 76, 74],
+      "vertices": [
+        72,
+        76,
+        74
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -5899,7 +6587,11 @@
       ]
     },
     {
-      "vertices": [73, 77, 79],
+      "vertices": [
+        73,
+        77,
+        79
+      ],
       "deleted": true,
       "isDirty": false,
       "normal": {
@@ -5915,7 +6607,11 @@
       ]
     },
     {
-      "vertices": [73, 74, 76],
+      "vertices": [
+        73,
+        74,
+        76
+      ],
       "deleted": false,
       "isDirty": true,
       "normal": {
@@ -5931,7 +6627,11 @@
       ]
     },
     {
-      "vertices": [102, 99, 105],
+      "vertices": [
+        102,
+        99,
+        105
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -5947,7 +6647,11 @@
       ]
     },
     {
-      "vertices": [102, 108, 106],
+      "vertices": [
+        102,
+        108,
+        106
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -5963,7 +6667,11 @@
       ]
     },
     {
-      "vertices": [105, 99, 107],
+      "vertices": [
+        105,
+        99,
+        107
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -5979,7 +6687,11 @@
       ]
     },
     {
-      "vertices": [108, 102, 103],
+      "vertices": [
+        108,
+        102,
+        103
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -5995,7 +6707,11 @@
       ]
     },
     {
-      "vertices": [102, 105, 103],
+      "vertices": [
+        102,
+        105,
+        103
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -6011,7 +6727,11 @@
       ]
     },
     {
-      "vertices": [47, 62, 51],
+      "vertices": [
+        47,
+        62,
+        51
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -6027,7 +6747,11 @@
       ]
     },
     {
-      "vertices": [62, 69, 33],
+      "vertices": [
+        62,
+        69,
+        33
+      ],
       "deleted": false,
       "isDirty": true,
       "normal": {
@@ -6043,7 +6767,11 @@
       ]
     },
     {
-      "vertices": [34, 95, 61],
+      "vertices": [
+        34,
+        95,
+        61
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -6059,7 +6787,11 @@
       ]
     },
     {
-      "vertices": [17, 0, 1],
+      "vertices": [
+        17,
+        0,
+        1
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -6075,7 +6807,11 @@
       ]
     },
     {
-      "vertices": [0, 38, 36],
+      "vertices": [
+        0,
+        38,
+        36
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -6091,7 +6827,11 @@
       ]
     },
     {
-      "vertices": [0, 36, 1],
+      "vertices": [
+        0,
+        36,
+        1
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -6107,7 +6847,11 @@
       ]
     },
     {
-      "vertices": [69, 68, 33],
+      "vertices": [
+        69,
+        68,
+        33
+      ],
       "deleted": false,
       "isDirty": true,
       "normal": {
@@ -6123,7 +6867,11 @@
       ]
     },
     {
-      "vertices": [68, 4, 33],
+      "vertices": [
+        68,
+        4,
+        33
+      ],
       "deleted": true,
       "isDirty": false,
       "normal": {
@@ -6139,7 +6887,11 @@
       ]
     },
     {
-      "vertices": [60, 43, 42],
+      "vertices": [
+        60,
+        43,
+        42
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -6155,7 +6907,11 @@
       ]
     },
     {
-      "vertices": [42, 43, 123],
+      "vertices": [
+        42,
+        43,
+        123
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -6171,7 +6927,11 @@
       ]
     },
     {
-      "vertices": [8, 16, 124],
+      "vertices": [
+        8,
+        16,
+        124
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -6187,7 +6947,11 @@
       ]
     },
     {
-      "vertices": [6, 28, 34],
+      "vertices": [
+        6,
+        28,
+        34
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -6203,7 +6967,11 @@
       ]
     },
     {
-      "vertices": [122, 94, 28],
+      "vertices": [
+        122,
+        94,
+        28
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -6219,7 +6987,11 @@
       ]
     },
     {
-      "vertices": [126, 12, 127],
+      "vertices": [
+        126,
+        12,
+        127
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -6235,7 +7007,11 @@
       ]
     },
     {
-      "vertices": [12, 21, 127],
+      "vertices": [
+        12,
+        21,
+        127
+      ],
       "deleted": false,
       "isDirty": true,
       "normal": {
@@ -6251,7 +7027,11 @@
       ]
     },
     {
-      "vertices": [21, 125, 127],
+      "vertices": [
+        21,
+        125,
+        127
+      ],
       "deleted": false,
       "isDirty": true,
       "normal": {
@@ -6267,7 +7047,11 @@
       ]
     },
     {
-      "vertices": [26, 25, 2],
+      "vertices": [
+        26,
+        25,
+        2
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -6283,7 +7067,11 @@
       ]
     },
     {
-      "vertices": [128, 12, 126],
+      "vertices": [
+        128,
+        12,
+        126
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -6299,7 +7087,11 @@
       ]
     },
     {
-      "vertices": [23, 26, 19],
+      "vertices": [
+        23,
+        26,
+        19
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -6315,7 +7107,11 @@
       ]
     },
     {
-      "vertices": [125, 21, 18],
+      "vertices": [
+        125,
+        21,
+        18
+      ],
       "deleted": false,
       "isDirty": true,
       "normal": {
@@ -6331,7 +7127,11 @@
       ]
     },
     {
-      "vertices": [54, 130, 129],
+      "vertices": [
+        54,
+        130,
+        129
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -6347,7 +7147,11 @@
       ]
     },
     {
-      "vertices": [50, 130, 54],
+      "vertices": [
+        50,
+        130,
+        54
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -6363,7 +7167,11 @@
       ]
     },
     {
-      "vertices": [55, 130, 50],
+      "vertices": [
+        55,
+        130,
+        50
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -6379,7 +7187,11 @@
       ]
     },
     {
-      "vertices": [55, 57, 130],
+      "vertices": [
+        55,
+        57,
+        130
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -6395,7 +7207,11 @@
       ]
     },
     {
-      "vertices": [35, 58, 56],
+      "vertices": [
+        35,
+        58,
+        56
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {
@@ -6411,7 +7227,11 @@
       ]
     },
     {
-      "vertices": [58, 59, 56],
+      "vertices": [
+        58,
+        59,
+        56
+      ],
       "deleted": false,
       "isDirty": false,
       "normal": {

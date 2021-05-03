@@ -4,6 +4,7 @@ import { checkCollapseFlip } from "./check-collapse-flip.js";
 import initializeData from "./initialize-data.js";
 import buildReferenceList from "./build-reference-list.js";
 import compactTriangles from "./compact-triangles.js";
+import compactVertices from "./compact-vertices.js";
 import updateTriangles from "./update-triangles.js";
 
 const defaultOptions = {
@@ -150,7 +151,7 @@ const simplify = (vertices, triangles, customOptions = {}) => {
     });
   }
 
-  return { vertices, triangles };
+  return compactVertices(triangles, vertices);
 };
 
 export default simplify;
