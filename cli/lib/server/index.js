@@ -1,6 +1,7 @@
 import glob from "glob";
 import path from "path";
-import sirv from "sirv";
+import serveStatic from "serve-static";
+import express from "express";
 import { App } from "@tinyhttp/app";
 import { json } from "milliparsec";
 import { cors } from "@tinyhttp/cors";
@@ -15,7 +16,7 @@ export const startServer = (opts) => {
     .use(json())
     .use(cors({ origin: "*", allowedHeaders: "*" }))
     .options("*", cors())
-    .use("/assets", sirv(opts.outputFoldername))
+    .use("/assets", serveStatic(opts.outputFoldername, { maxAge: 0 }))
     .get("/", (_, res) => {
       res.send("<h1>lode API is running</h1>");
     })
