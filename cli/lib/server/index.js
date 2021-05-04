@@ -1,7 +1,6 @@
 import glob from "glob";
 import path from "path";
 import serveStatic from "serve-static";
-import express from "express";
 import { App } from "@tinyhttp/app";
 import { json } from "milliparsec";
 import { cors } from "@tinyhttp/cors";
