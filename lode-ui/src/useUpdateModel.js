@@ -4,7 +4,7 @@ import manifestState from "./state/manifest";
 
 function useUpdateModel() {
   const basePath = useBasePath();
-  const [_, setManifest] = useRecoilState(manifestState);
+  const [, setManifest] = useRecoilState(manifestState);
 
   function updateModel({ name, model }) {
     fetch(`${basePath}/updateModel`, {
