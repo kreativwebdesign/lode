@@ -45,10 +45,6 @@ export const performLOD = ({ originalFile, levelDefinitions }) => {
         );
 
         let targetTriangles = triangles.length * configuration.targetScale;
-        // last level should be reduced to 200 triangles
-        if (level === levelDefinitions.length - 1) {
-          targetTriangles = 200;
-        }
 
         const {
           vertices: newVertices,
