@@ -1,4 +1,5 @@
 import glob from "glob";
+import path from "path";
 import chokidar from "chokidar";
 import figlet from "figlet";
 import * as print from "../../helper/print.js";
@@ -32,7 +33,7 @@ const run = (commanderOptions) => {
   if (opts.watch) {
     print.info("watching files and running lode api server on port 3001...");
 
-    startServer(opts);
+    const { oncePubSub } = startServer(opts);
 
     chokidar
       .watch(opts.source)
@@ -51,6 +52,11 @@ const run = (commanderOptions) => {
           buildManifest(opts.outputFoldername, sourceFiles);
         });
     });
+    chokidar
+      .watch(path.join(opts.outputFoldername, opts.source))
+      .on("change", (file) => {
+        oncePubSub.pub(file);
+      });
   }
 };
 

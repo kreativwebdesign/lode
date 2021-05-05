@@ -8,8 +8,29 @@ import { readFile, writeFile } from "../helper/files.js";
 import { CONFIG_FILENAME, MANIFEST_FILENAME } from "../constants.js";
 import buildManifest from "../app/run/buildManifest.js";
 
+function createOncePubSub() {
+  const pubSub = {
+    changes: [],
+    subscribers: [],
+    sub: function (subscriber) {
+      this.subscribers.push(subscriber);
+      return subscriber;
+    },
+    pub: function (change) {
+      this.changes.push(change);
+      this.subscribers.forEach((subscriber) => subscriber(this.changes));
+      this.changes = [];
+    },
+    unsub: function (subscriber) {
+      this.subscribers = this.subscribers.filter((sub) => sub !== subscriber);
+    },
+  };
+  return pubSub;
+}
+
 export const startServer = (opts) => {
   const app = new App();
+  const oncePubSub = createOncePubSub();
 
   app
     .use(json())
@@ -25,6 +46,19 @@ export const startServer = (opts) => {
       );
       res.status(200).send(file);
     })
+    .get("/changes", (req, res) => {
+      const listener = (changes) => {
+        const timestamp = new Date().getMilliseconds();
+        const manifest = readFile(
+          path.join(opts.outputFoldername, MANIFEST_FILENAME)
+        );
+        res
+          .status(200)
+          .send({ changes, timestamp, manifest: JSON.parse(manifest) });
+        oncePubSub.unsub(listener);
+      };
+      oncePubSub.sub(listener);
+    })
     .post("/updateModel", async (req, res) => {
       const { name, model } = req.body;
       writeFile(
@@ -38,5 +72,5 @@ export const startServer = (opts) => {
     })
     .listen(3001);
 
-  return app;
+  return { app, oncePubSub };
 };
