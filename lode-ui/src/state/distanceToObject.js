@@ -1,8 +1,8 @@
 import { atom } from "recoil";
 
-const DistanceToObject = atom({
-  key: "DistanceToObject",
+const distanceToObject = atom({
+  key: "distanceToObject",
   default: 0,
 });
 
-export default DistanceToObject;
+export default distanceToObject;
