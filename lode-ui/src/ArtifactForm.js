@@ -53,7 +53,7 @@ function ArtifactForm({ level, updateArtifact, startingDistance }) {
       )}
       <Flex as="label" align="center" justify="space-between">
         (Visible from: {startingDistance}-{distance})
-        <Button type="submit">Speichern</Button>
+        <Button type="submit">Save</Button>
       </Flex>
     </Box>
   );
