@@ -3,10 +3,13 @@ import { OrbitControls } from "@react-three/drei";
 import { Html } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { useMemo, useState } from "react";
+import { useRecoilState } from "recoil";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import artifactChangesState from "./state/artifactChanges";
 import TriangleCount from "./TriangleCount";
 
 function Model({ url }) {
+  const [artifactChanges] = useRecoilState(artifactChangesState);
   return (
     <Box>
       <Canvas>
@@ -14,15 +17,15 @@ function Model({ url }) {
         <ambientLight />
         <pointLight position={[10, 10, 10]} />
 
-        <GltfModel url={url} />
+        <GltfModel url={url} artifactChanges={artifactChanges} />
       </Canvas>
     </Box>
   );
 }
 
-function GltfModel({ url }) {
+function GltfModel({ url, artifactChanges }) {
   const [gltf, set] = useState();
-  useMemo(() => new GLTFLoader().load(url, set), [url]);
+  useMemo(() => new GLTFLoader().load(url, set), [url, artifactChanges]);
 
   if (!gltf) {
     return (
