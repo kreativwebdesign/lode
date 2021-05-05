@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import deepEql from "deep-eql";
 import { Button } from "@chakra-ui/button";
 
-function ArtifactForm({ level, updateArtifact }) {
+function ArtifactForm({ level, updateArtifact, startingDistance }) {
   const { distance, ...l } = level;
   const [levelState, setLevel] = useState(l);
   useEffect(() => {
@@ -28,7 +28,7 @@ function ArtifactForm({ level, updateArtifact }) {
     <Box as="form" onSubmit={onSubmit}>
       <Flex as="label" align="center">
         <Box flexShrink={0} mr={2}>
-          Trigger at distance:
+          Visibility distance:
         </Box>
         <Input
           value={levelState.threshold}
@@ -47,12 +47,12 @@ function ArtifactForm({ level, updateArtifact }) {
             onChange={onTargetScaleChange}
             min={0}
             max={1}
-            step={0.00001}
+            step="any"
           />
         </Flex>
       )}
       <Flex as="label" align="center" justify="space-between">
-        (Visible from: {distance - l.threshold}-{distance})
+        (Visible from: {startingDistance}-{distance})
         <Button type="submit">Speichern</Button>
       </Flex>
     </Box>

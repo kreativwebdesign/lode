@@ -54,6 +54,7 @@ function ModelViewer() {
               <ArtifactForm
                 level={level}
                 updateArtifact={(level) => handleUpdate(level, i)}
+                startingDistance={levels[i - 1]?.distance || 0}
               />
             </Box>
           );
