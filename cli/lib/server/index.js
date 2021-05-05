@@ -10,16 +10,13 @@ import buildManifest from "../app/run/buildManifest.js";
 
 function createOncePubSub() {
   const pubSub = {
-    changes: [],
     subscribers: [],
     sub: function (subscriber) {
       this.subscribers.push(subscriber);
       return subscriber;
     },
     pub: function (change) {
-      this.changes.push(change);
-      this.subscribers.forEach((subscriber) => subscriber(this.changes));
-      this.changes = [];
+      this.subscribers.forEach((subscriber) => subscriber(change));
     },
     unsub: function (subscriber) {
       this.subscribers = this.subscribers.filter((sub) => sub !== subscriber);
@@ -47,14 +44,14 @@ export const startServer = (opts) => {
       res.status(200).send(file);
     })
     .get("/changes", (req, res) => {
-      const listener = (changes) => {
+      const listener = (change) => {
         const timestamp = new Date().getMilliseconds();
         const manifest = readFile(
           path.join(opts.outputFoldername, MANIFEST_FILENAME)
         );
         res
           .status(200)
-          .send({ changes, timestamp, manifest: JSON.parse(manifest) });
+          .send({ change, timestamp, manifest: JSON.parse(manifest) });
         oncePubSub.unsub(listener);
       };
       oncePubSub.sub(listener);
