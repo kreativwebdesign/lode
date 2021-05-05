@@ -8,16 +8,16 @@
       "name": "position - test",
       "type": "VEC3",
       "componentType": 5126,
-      "count": 2857,
+      "count": 720,
       "max": [
-        23.589107513427734,
-        30.417688369750977,
-        29.13802146911621
+        24.1981258392334,
+        30.912172317504883,
+        29.043731689453125
       ],
       "min": [
-        -23.8253231048584,
-        -30.475801467895508,
-        -28.84237289428711
+        -23.38347816467285,
+        -30.59031867980957,
+        -29.324949264526367
       ],
       "normalized": false,
       "bufferView": 0,
@@ -67,9 +67,9 @@
       "name": "indices - test",
       "type": "SCALAR",
       "componentType": 5123,
-      "count": 15156,
+      "count": 4164,
       "max": [
-        2856
+        719
       ],
       "min": [
         0
@@ -83,26 +83,26 @@
     {
       "buffer": 0,
       "byteOffset": 0,
-      "byteLength": 34284,
+      "byteLength": 8640,
       "byteStride": 12,
       "target": 34962
     },
     {
       "buffer": 0,
-      "byteOffset": 34284,
+      "byteOffset": 8640,
       "byteLength": 1172192
     },
     {
       "buffer": 0,
-      "byteOffset": 1206476,
-      "byteLength": 30312,
+      "byteOffset": 1180832,
+      "byteLength": 8328,
       "target": 34963
     }
   ],
   "buffers": [
     {
       "uri": "skull.bin",
-      "byteLength": 1236788
+      "byteLength": 1189160
     }
   ],
   "materials": [
