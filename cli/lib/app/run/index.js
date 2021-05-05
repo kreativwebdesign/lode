@@ -33,7 +33,7 @@ const run = (commanderOptions) => {
   if (opts.watch) {
     print.info("watching files and running lode api server on port 3001...");
 
-    const { oncePubSub } = startServer(opts);
+    const { pubSub } = startServer(opts);
 
     chokidar
       .watch(opts.source)
@@ -55,7 +55,7 @@ const run = (commanderOptions) => {
     chokidar
       .watch(path.join(opts.outputFoldername, opts.source))
       .on("change", (file) => {
-        oncePubSub.pub(file);
+        pubSub.pub(file);
       });
   }
 };

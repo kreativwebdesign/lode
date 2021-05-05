@@ -8,7 +8,7 @@ import { readFile, writeFile } from "../helper/files.js";
 import { CONFIG_FILENAME, MANIFEST_FILENAME } from "../constants.js";
 import buildManifest from "../app/run/buildManifest.js";
 
-function createOncePubSub() {
+function createPubSub() {
   const pubSub = {
     subscribers: [],
     sub: function (subscriber) {
@@ -27,7 +27,7 @@ function createOncePubSub() {
 
 export const startServer = (opts) => {
   const app = new App();
-  const oncePubSub = createOncePubSub();
+  const pubSub = createPubSub();
 
   app
     .use(json())
@@ -52,9 +52,9 @@ export const startServer = (opts) => {
         res
           .status(200)
           .send({ change, timestamp, manifest: JSON.parse(manifest) });
-        oncePubSub.unsub(listener);
+        pubSub.unsub(listener);
       };
-      oncePubSub.sub(listener);
+      pubSub.sub(listener);
     })
     .post("/updateModel", async (req, res) => {
       const { name, model } = req.body;
@@ -69,5 +69,5 @@ export const startServer = (opts) => {
     })
     .listen(3001);
 
-  return { app, oncePubSub };
+  return { app, pubSub };
 };
