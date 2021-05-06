@@ -25,6 +25,8 @@ function Model({ url }) {
 
 function GltfModel({ url, artifactChanges }) {
   const [gltf, set] = useState();
+  // trigger a reload also on artifact changes when we get a reload message from the server
+  // eslint-disable-next-line
   useMemo(() => new GLTFLoader().load(url, set), [url, artifactChanges]);
 
   if (!gltf) {
