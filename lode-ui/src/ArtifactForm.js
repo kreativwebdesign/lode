@@ -14,7 +14,7 @@ function ArtifactForm({ level, updateArtifact, startingDistance }) {
     // only apply effect when the level changes for example bc of a new manifest.
     // adding the levelState to the dep-array would trigger it everytime, the user inputs something
     // eslint-disable-next-line
-  }, [l]);
+  }, [level]);
   const onThresholdChange = (e) =>
     setLevel((l) => ({ ...l, threshold: parseInt(e.target.value) }));
   const onTargetScaleChange = (e) =>
