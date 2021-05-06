@@ -1,16 +1,26 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import "./App.css";
+import { BrowserRouter as Router } from "react-router-dom";
+import { ChakraProvider, Grid, GridItem } from "@chakra-ui/react";
+import { RecoilRoot } from "recoil";
 import ModelChooser from "./ModelChooser";
 import ModelViewer from "./ModelViewer";
+import theme from "./theme";
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route path="/model/" component={ModelViewer} />
-        <Route path="/" component={ModelChooser} />
-      </Switch>
-    </Router>
+    <RecoilRoot>
+      <ChakraProvider theme={theme}>
+        <Router>
+          <Grid h="100%" templateColumns="200px 1fr" templateRows="1fr">
+            <GridItem borderWidth={1} rowSpan={2}>
+              <ModelChooser />
+            </GridItem>
+            <GridItem>
+              <ModelViewer />
+            </GridItem>
+          </Grid>
+        </Router>
+      </ChakraProvider>
+    </RecoilRoot>
   );
 }
 

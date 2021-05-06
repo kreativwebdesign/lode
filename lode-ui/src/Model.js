@@ -1,28 +1,48 @@
-import { OrbitControls, useGLTF } from "@react-three/drei";
+import { Box, Spinner } from "@chakra-ui/react";
+import { OrbitControls } from "@react-three/drei";
+import { Html } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { Suspense, useRef } from "react";
+import { useMemo, useState } from "react";
+import { useRecoilState } from "recoil";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import artifactChangesState from "./state/artifactChanges";
+import TriangleCount from "./TriangleCount";
 
 function Model({ url }) {
-  const statsParent = useRef(null);
+  const [artifactChanges] = useRecoilState(artifactChangesState);
   return (
-    <div ref={statsParent}>
+    <Box>
       <Canvas>
-        <OrbitControls />
+        <OrbitControls autoRotate />
         <ambientLight />
         <pointLight position={[10, 10, 10]} />
 
-        <Suspense fallback={null}>
-          <GltfModel url={url} />
-        </Suspense>
+        <GltfModel url={url} artifactChanges={artifactChanges} />
       </Canvas>
-    </div>
+    </Box>
   );
 }
 
-function GltfModel({ url }) {
-  const { scene } = useGLTF(url);
+function GltfModel({ url, artifactChanges }) {
+  const [gltf, set] = useState();
+  // trigger a reload also on artifact changes when we get a reload message from the server
+  // eslint-disable-next-line
+  useMemo(() => new GLTFLoader().load(url, set), [url, artifactChanges]);
 
-  return <primitive object={scene} />;
+  if (!gltf) {
+    return (
+      <Html>
+        <Spinner />
+      </Html>
+    );
+  }
+
+  return (
+    <>
+      <primitive object={gltf.scene} />
+      <TriangleCount url={url} />
+    </>
+  );
 }
 
 export default Model;
