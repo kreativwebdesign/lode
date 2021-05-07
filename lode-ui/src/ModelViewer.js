@@ -1,4 +1,4 @@
-import { Box, Center, Flex } from "@chakra-ui/layout";
+import { Badge, Box, Center, Flex } from "@chakra-ui/layout";
 import { useRecoilState } from "recoil";
 import LODViewer from "./LODViewer";
 import Model from "./Model";
@@ -10,10 +10,37 @@ import lodLevelState from "./state/lodLevel";
 import ArtifactForm from "./ArtifactForm";
 import populateDistance from "./helper/populateDistance";
 
+function DetailModel({ level, startingDistance, handleUpdate, isActive, url }) {
+  return (
+    <Flex
+      flexDirection="column"
+      justifyContent="space-between"
+      h="100%"
+      position="relative"
+      boxShadow="lg"
+    >
+      <Model url={url} />
+      {isActive && (
+        <Box position="absolute" top="0px" right="5px" zIndex={2}>
+          <Badge colorScheme="purple">Active</Badge>
+        </Box>
+      )}
+      <Box px={2} pb={2}>
+        <ArtifactForm
+          level={level}
+          updateArtifact={handleUpdate}
+          startingDistance={startingDistance}
+        />
+      </Box>
+    </Flex>
+  );
+}
+
 function ModelViewer() {
   const basePath = useBasePath();
-  const updateModel = useUpdateModel();
   const name = useParam("name");
+  const fileName = name.split("/").pop();
+  const updateModel = useUpdateModel;
   const [lodLevel] = useRecoilState(lodLevelState);
 
   const manifest = useManifest();
@@ -23,7 +50,6 @@ function ModelViewer() {
   }
 
   const fileDescription = manifest[name];
-  const fileName = name.split("/").pop();
   const levels = populateDistance(fileDescription);
 
   const handleUpdate = (artifact, i) => {
@@ -38,27 +64,17 @@ function ModelViewer() {
   return (
     <Flex direction="column" h="100%">
       <Flex justify="center" borderBottomWidth={1}>
-        {(levels || []).map((level, i) => {
-          return (
-            <Box
-              h="100%"
-              borderLeftWidth={i !== 0 ? 1 : 0}
-              key={i}
-              background={
-                i === lodLevel ? "rgba(200, 200, 200, 0.2)" : undefined
-              }
-            >
-              <Model
-                url={`${basePath}/assets/${name}/lod-${i}/${fileName}.gltf`}
-              />
-              <ArtifactForm
-                level={level}
-                updateArtifact={(level) => handleUpdate(level, i)}
-                startingDistance={levels[i - 1]?.distance || 0}
-              />
-            </Box>
-          );
-        })}
+        {(levels || []).map((level, i) => (
+          <Box m={4} key={i}>
+            <DetailModel
+              level={level}
+              url={`${basePath}/assets/${name}/lod-${i}/${fileName}.gltf`}
+              isActive={i === lodLevel}
+              startingDistance={levels[i - 1]?.distance || 0}
+              handleUpdate={(level) => handleUpdate(level, i)}
+            />
+          </Box>
+        ))}
       </Flex>
       <Box flexGrow="2">
         <LODViewer />
