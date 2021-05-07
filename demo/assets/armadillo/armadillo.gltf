@@ -1,0 +1,80 @@
+{
+  "asset": {
+    "version": "2.0",
+    "generator": "Open Asset Import Library (assimp v5.0.639693989)"
+  },
+  "accessors": [
+    {
+      "bufferView": 0,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 172974,
+      "type": "VEC3",
+      "max": [63.5001335144043, 97.0804214477539, 57.71400451660156],
+      "min": [-63.5001220703125, -54.241539001464847, -57.714515686035159]
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 0,
+      "componentType": 5125,
+      "count": 1037832,
+      "type": "SCALAR",
+      "max": [172973],
+      "min": [0]
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 6227016,
+      "uri": "armadillo.bin"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 2075688,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 2075688,
+      "byteLength": 4151328,
+      "target": 34963
+    }
+  ],
+  "materials": [
+    {
+      "name": "material",
+      "pbrMetallicRoughness": {
+        "metallicFactor": 0.0
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "mode": 4,
+          "material": 0,
+          "indices": 1,
+          "attributes": {
+            "POSITION": 0
+          }
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "scale": [0.03, 0.03, 0.03]
+    }
+  ],
+  "scenes": [
+    {
+      "nodes": [0]
+    }
+  ],
+  "scene": 0
+}
