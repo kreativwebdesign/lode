@@ -1,0 +1,144 @@
+{
+    "asset" : {
+        "generator" : "Khronos glTF Blender I/O v1.2.75",
+        "version" : "2.0"
+    },
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "Apricot_02_hi_poly"
+        }
+    ],
+    "materials" : [
+        {
+            "doubleSided" : true,
+            "emissiveFactor" : [
+                0,
+                0,
+                0
+            ],
+            "name" : "Apricot_02_material",
+            "normalTexture" : {
+                "index" : 0,
+                "texCoord" : 0
+            },
+            "pbrMetallicRoughness" : {
+                "baseColorTexture" : {
+                    "index" : 1,
+                    "texCoord" : 0
+                },
+                "metallicFactor" : 0,
+                "roughnessFactor" : 0.7211133241653442
+            }
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "Apricot_02_hi_poly",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1,
+                        "TEXCOORD_0" : 2
+                    },
+                    "indices" : 3,
+                    "material" : 0
+                }
+            ]
+        }
+    ],
+    "textures" : [
+        {
+            "source" : 0
+        },
+        {
+            "source" : 1
+        }
+    ],
+    "images" : [
+        {
+            "mimeType" : "image/png",
+            "name" : "Apricot_02_normal",
+            "uri" : "Apricot_02_normal.png"
+        },
+        {
+            "mimeType" : "image/png",
+            "name" : "Apricot_02_diffuse",
+            "uri" : "Apricot_02_diffuse.png"
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 43361,
+            "max" : [
+                1.4256006479263306,
+                3.7123894691467285,
+                1.467442512512207
+            ],
+            "min" : [
+                -1.4256006479263306,
+                6.451661871409442e-09,
+                -1.4674417972564697
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 43361,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5126,
+            "count" : 43361,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 3,
+            "componentType" : 5123,
+            "count" : 258048,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 520332,
+            "byteOffset" : 0
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 520332,
+            "byteOffset" : 520332
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 346888,
+            "byteOffset" : 1040664
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 516096,
+            "byteOffset" : 1387552
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 1903648,
+            "uri" : "apricot.bin"
+        }
+    ]
+}

@@ -1,0 +1,187 @@
+{
+  "asset": {
+    "generator": "glTF-Transform v0.9.9",
+    "version": "2.0"
+  },
+  "accessors": [
+    {
+      "type": "VEC3",
+      "componentType": 5126,
+      "count": 4787,
+      "max": [
+        1.4274290800094604,
+        3.7138516902923584,
+        1.4670144319534302
+      ],
+      "min": [
+        -1.4276719093322754,
+        -0.0010838342132046819,
+        -1.4665690660476685
+      ],
+      "normalized": false,
+      "bufferView": 0,
+      "byteOffset": 0
+    },
+    {
+      "type": "VEC3",
+      "componentType": 5126,
+      "count": 43361,
+      "max": [
+        0.9997050762176514,
+        0.9999051690101624,
+        0.9999215006828308
+      ],
+      "min": [
+        -0.9999385476112366,
+        -0.9999904632568359,
+        -0.9998549818992615
+      ],
+      "normalized": false,
+      "bufferView": 1,
+      "byteOffset": 0
+    },
+    {
+      "type": "VEC2",
+      "componentType": 5126,
+      "count": 43361,
+      "max": [
+        0.9980000257492065,
+        0.9980000257492065
+      ],
+      "min": [
+        0.0020000000949949026,
+        0.2843000292778015
+      ],
+      "normalized": false,
+      "bufferView": 1,
+      "byteOffset": 520332
+    },
+    {
+      "type": "SCALAR",
+      "componentType": 5123,
+      "count": 22872,
+      "max": [
+        4786
+      ],
+      "min": [
+        0
+      ],
+      "normalized": false,
+      "bufferView": 2,
+      "byteOffset": 0
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 57444,
+      "byteStride": 12,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 57444,
+      "byteLength": 867220
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 924664,
+      "byteLength": 45744,
+      "target": 34963
+    }
+  ],
+  "samplers": [
+    {
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "textures": [
+    {
+      "source": 1,
+      "sampler": 0
+    },
+    {
+      "source": 0,
+      "sampler": 0
+    }
+  ],
+  "images": [
+    {
+      "name": "Apricot_02_normal",
+      "mimeType": "image/png",
+      "uri": "Apricot_02_normal.png"
+    },
+    {
+      "name": "Apricot_02_diffuse",
+      "mimeType": "image/png",
+      "uri": "Apricot_02_diffuse.png"
+    }
+  ],
+  "buffers": [
+    {
+      "uri": "apricot.bin",
+      "byteLength": 970408
+    }
+  ],
+  "materials": [
+    {
+      "name": "Apricot_02_material",
+      "alphaMode": "OPAQUE",
+      "doubleSided": true,
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "roughnessFactor": 0.7211133241653442,
+        "metallicFactor": 0,
+        "baseColorTexture": {
+          "index": 0,
+          "texCoord": 0
+        }
+      },
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "normalTexture": {
+        "index": 1,
+        "texCoord": 0
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Apricot_02_hi_poly",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0
+          },
+          "mode": 4,
+          "material": 0,
+          "indices": 3
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "Apricot_02_hi_poly",
+      "mesh": 0
+    }
+  ],
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ]
+}

@@ -49,6 +49,18 @@ const lods = [
     name: "assets/dragon",
     position: [0, 0, -30],
   },
+  {
+    name: "assets/boat",
+    position: [20, 0, -20],
+  },
+  {
+    name: "assets/armadillo",
+    position: [20, 0, 20],
+  },
+  {
+    name: "assets/apricot",
+    position: [-20, 0, -20],
+  },
 ];
 
 const setupOptimizedScene = async (scene) => {
