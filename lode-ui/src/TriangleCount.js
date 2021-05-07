@@ -1,7 +1,8 @@
-import { Box, Flex } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import { Html } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
 import { useEffect, useState } from "react";
+import TransparentBox from "./TransparentBox";
 
 function TriangleCount({ url }) {
   const { gl } = useThree();
@@ -27,10 +28,9 @@ function TriangleCount({ url }) {
       justify="flex-start"
       direction="column"
       pointerEvents="none"
+      zIndexRange={[0, 1]}
     >
-      <Box bg="rgba(255, 255, 255, 0.5)" p={2}>
-        Triangle count: {triangleCount}
-      </Box>
+      <TransparentBox>Triangle count: {triangleCount}</TransparentBox>
     </Flex>
   );
 }

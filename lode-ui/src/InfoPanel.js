@@ -1,5 +1,6 @@
 import React from "react";
-import { Box, Flex } from "@chakra-ui/layout";
+import { Flex } from "@chakra-ui/layout";
+import TransparentBox from "./TransparentBox";
 
 function Infopanel({ distanceToObject, currentLodLevel }) {
   return (
@@ -9,12 +10,8 @@ function Infopanel({ distanceToObject, currentLodLevel }) {
       direction="row"
       pointerEvents="none"
     >
-      <Box bg="rgba(255, 255, 255, 0.5)" p={5}>
-        Distance to object: {distanceToObject}
-      </Box>
-      <Box bg="rgba(255, 255, 255, 0.5)" p={5}>
-        Current level: {currentLodLevel}
-      </Box>
+      <TransparentBox>Distance to object: {distanceToObject}</TransparentBox>
+      <TransparentBox>Current level: {currentLodLevel}</TransparentBox>
     </Flex>
   );
 }

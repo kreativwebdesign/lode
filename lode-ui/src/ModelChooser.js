@@ -6,18 +6,34 @@ import useParam from "./useParam";
 function ModelChooser() {
   const manifest = useManifest();
   const modelName = useParam("name");
+  const activeStyles = {
+    background: "purple.100",
+    color: "purple.800",
+    boxShadow: "lg",
+  };
+  const inactiveStyles = {
+    _hover: {
+      background: "orange.100",
+      color: "orange.800",
+      boxShadow: "lg",
+    },
+  };
   return (
-    <Box as="ul" p="5" listStyleType="none">
+    <Box as="nav" p="5" listStyleType="none">
       {Object.entries(manifest || {}).map(([name]) => {
         return (
-          <Box as="li" mb="2" key={name}>
-            <Box
-              as={Link}
-              to={`/model?name=${name}`}
-              color={modelName === name ? "tomato" : "black"}
-            >
-              {name}
-            </Box>
+          <Box
+            mb="2"
+            key={name}
+            as={Link}
+            to={`/model?name=${name}`}
+            display="block"
+            px={3}
+            py={2}
+            borderRadius="xl"
+            {...(modelName === name ? activeStyles : inactiveStyles)}
+          >
+            {name}
           </Box>
         );
       })}

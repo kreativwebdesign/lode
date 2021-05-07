@@ -4,6 +4,21 @@ import { useEffect, useState } from "react";
 import deepEql from "deep-eql";
 import { Button } from "@chakra-ui/button";
 
+function InputBox({ children }) {
+  return <Box maxWidth="100px">{children}</Box>;
+}
+
+function InputGroup({ label, children, ...props }) {
+  return (
+    <Flex as="label" align="center" justifyContent="space-between" {...props}>
+      <Box flexShrink={0} mr={2} minWidth="150px">
+        {label}:
+      </Box>
+      {children}
+    </Flex>
+  );
+}
+
 function ArtifactForm({ level, updateArtifact, startingDistance }) {
   const { distance, ...l } = level;
   const [levelState, setLevel] = useState(l);
@@ -31,32 +46,30 @@ function ArtifactForm({ level, updateArtifact, startingDistance }) {
   };
   return (
     <Box as="form" onSubmit={onSubmit}>
-      <Flex as="label" align="center">
-        <Box flexShrink={0} mr={2}>
-          Visibility distance:
-        </Box>
-        <Input
-          value={levelState.threshold}
-          type="number"
-          onChange={onThresholdChange}
-        />
-      </Flex>
-      {!!levelState.configuration && (
-        <Flex as="label" align="center">
-          <Box flexShrink={0} mr={2}>
-            Targetscale:
-          </Box>
+      <InputGroup label="Visibility distance">
+        <InputBox>
           <Input
-            value={levelState.configuration.targetScale}
+            value={levelState.threshold}
             type="number"
-            onChange={onTargetScaleChange}
-            min={0}
-            max={1}
-            step="any"
+            onChange={onThresholdChange}
           />
-        </Flex>
+        </InputBox>
+      </InputGroup>
+      {!!levelState.configuration && (
+        <InputGroup label="Targetscale" mt={2}>
+          <InputBox>
+            <Input
+              value={levelState.configuration.targetScale}
+              type="number"
+              onChange={onTargetScaleChange}
+              min={0}
+              max={1}
+              step="any"
+            />
+          </InputBox>
+        </InputGroup>
       )}
-      <Flex as="label" align="center" justify="space-between">
+      <Flex as="label" align="center" justify="space-between" mt={2}>
         (Visible from: {startingDistance}-{distance})
         <Button type="submit">Save</Button>
       </Flex>
