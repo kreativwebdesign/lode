@@ -18,6 +18,63 @@
       }
     ]
   },
+  "assets/apricot": {
+    "levels": [
+      {
+        "threshold": 100
+      },
+      {
+        "threshold": 50,
+        "configuration": {
+          "targetScale": 0.125
+        }
+      },
+      {
+        "threshold": -1,
+        "configuration": {
+          "targetScale": 0.0625
+        }
+      }
+    ]
+  },
+  "assets/armadillo": {
+    "levels": [
+      {
+        "threshold": 100
+      },
+      {
+        "threshold": 50,
+        "configuration": {
+          "targetScale": 0.125
+        }
+      },
+      {
+        "threshold": -1,
+        "configuration": {
+          "targetScale": 0.0625
+        }
+      }
+    ]
+  },
+  "assets/boat": {
+    "levels": [
+      {
+        "threshold": 100
+      },
+      {
+        "threshold": 50,
+        "configuration": {
+          "targetScale": 0.125
+        }
+      },
+      {
+        "threshold": -1,
+        "configuration": {
+          "targetScale": 0.0625
+        }
+      }
+    ]
+  },
   "assets/dragon": {
     "levels": [
       {

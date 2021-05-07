@@ -1,0 +1,114 @@
+{
+  "asset": {
+    "generator": "glTF-Transform v0.9.9",
+    "version": "2.0"
+  },
+  "accessors": [
+    {
+      "type": "VEC3",
+      "componentType": 5126,
+      "count": 172974,
+      "max": [
+        63.5001335144043,
+        97.0804214477539,
+        57.71400451660156
+      ],
+      "min": [
+        -63.5001220703125,
+        -54.241539001464844,
+        -57.714515686035156
+      ],
+      "normalized": false,
+      "bufferView": 0,
+      "byteOffset": 0
+    },
+    {
+      "type": "SCALAR",
+      "componentType": 5125,
+      "count": 1037832,
+      "max": [
+        172973
+      ],
+      "min": [
+        0
+      ],
+      "normalized": false,
+      "bufferView": 1,
+      "byteOffset": 0
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 2075688,
+      "byteStride": 12,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 2075688,
+      "byteLength": 4151328,
+      "target": 34963
+    }
+  ],
+  "buffers": [
+    {
+      "uri": "armadillo.bin",
+      "byteLength": 6227016
+    }
+  ],
+  "materials": [
+    {
+      "name": "material",
+      "alphaMode": "OPAQUE",
+      "doubleSided": false,
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "roughnessFactor": 1,
+        "metallicFactor": 0
+      },
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0
+          },
+          "mode": 4,
+          "material": 0,
+          "indices": 1
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "scale": [
+        0.03,
+        0.03,
+        0.03
+      ],
+      "mesh": 0
+    }
+  ],
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ]
+    }
+  ]
+}
