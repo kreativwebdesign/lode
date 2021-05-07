@@ -26,7 +26,7 @@ const config = async (commanderOptions) => {
     const configFileExists = fileExists(configFile);
 
     if (configFileExists && !opts.all) {
-      break;
+      continue;
     }
     const storedConfig = configFileExists
       ? JSON.parse(readFile(configFile))
