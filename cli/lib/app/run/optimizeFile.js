@@ -9,7 +9,7 @@ import {
 } from "../../helper/files.js";
 import generateHash from "./generateHash.js";
 
-const optimizeFile = ({ originalFile, levelDefinitions }) => {
+const optimizeFile = async ({ originalFile, levelDefinitions }) => {
   const copiedOriginalFile = levelDefinitions[0].pathName;
   const originalModified = () =>
     getLastModified(copiedOriginalFile) < getLastModified(originalFile);
@@ -25,7 +25,7 @@ const optimizeFile = ({ originalFile, levelDefinitions }) => {
       return !(fileExists(hashFilePath) && readFile(hashFilePath) === newHash);
     });
   if (levelsToBeReGenerated.length > 0) {
-    performLOD({ originalFile, levelDefinitions: levelsToBeReGenerated });
+    await performLOD({ originalFile, levelDefinitions: levelsToBeReGenerated });
     levelsToBeReGenerated.forEach((levelDefinition) => {
       const hashFilePath = getLodHashFile(levelDefinition.pathName);
       const newHash = generateHash(originalFile, levelDefinition.configuration);

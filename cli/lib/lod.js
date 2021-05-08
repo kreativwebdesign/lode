@@ -1,5 +1,7 @@
+import path from "path";
 import { NodeIO } from "@gltf-transform/core";
 import { Document, Accessor } from "@gltf-transform/core";
+import { getAverageColor } from "fast-average-color-node";
 import simplify from "./simplification/index.js";
 import { prepareData } from "./simplification/prepare-data.js";
 import * as print from "./helper/print.js";
@@ -14,10 +16,10 @@ export const copyOriginalArtifact = (pathName, file) => {
 /**
  * Main operation to generate lod artifacts for the file in originalFile.
  */
-export const performLOD = ({ originalFile, levelDefinitions }) => {
+export const performLOD = async ({ originalFile, levelDefinitions }) => {
   print.info("performing LOD algorithm on file", originalFile);
 
-  levelDefinitions.forEach(({ pathName, configuration }) => {
+  for (const { pathName, configuration } of levelDefinitions) {
     const doc = io.read(originalFile);
     const originalNode = doc.getRoot().listNodes()[0];
 
@@ -32,69 +34,91 @@ export const performLOD = ({ originalFile, levelDefinitions }) => {
     node.setMesh(mesh);
     scene.addChild(node);
 
+    let primitiveIndex = 0;
     // currently only one mesh is supported
-    doc
-      .getRoot()
-      .listMeshes()[0]
-      .listPrimitives()
-      .forEach((primitive, primitiveIndex) => {
-        const attributes = primitive.listAttributes();
-        const semantics = primitive.listSemantics();
+    for (const primitive of doc.getRoot().listMeshes()[0].listPrimitives()) {
+      primitiveIndex++;
+      const basePath = path.dirname(originalFile);
 
-        const positionIndex = semantics.indexOf("POSITION");
-
-        const positions = attributes[positionIndex];
-        const positionsArray = positions.getArray();
-
-        const indices = primitive.getIndices();
-
-        const indicesArray = indices.getArray();
-
-        const { vertices, triangles } = prepareData(
-          positionsArray,
-          indicesArray
+      // obtain basic color
+      const baseColorTexture = primitive.getMaterial().getBaseColorTexture();
+      // define default color
+      let color = [1, 1, 1, 1];
+      if (baseColorTexture) {
+        const textureFileName = baseColorTexture.getURI();
+        const texturePath = path.join(basePath, textureFileName);
+        const averageColor = await getAverageColor(texturePath);
+        color = averageColor.value.map(
+          // convert from 255 to 1
+          (val) => val / 255
         );
+      }
 
-        let targetTriangles = triangles.length * configuration.targetScale;
+      const material = newDoc.createMaterial(`material_${primitiveIndex}`);
+      material.setBaseColorFactor(color);
 
-        const {
-          vertices: newVertices,
-          triangles: newTriangles,
-        } = simplify(vertices, triangles, { targetTriangles });
+      // obtain raw structure
+      const attributes = primitive.listAttributes();
+      const semantics = primitive.listSemantics();
 
-        const verticesAsFloat = new Float32Array(newVertices.length * 3);
-        newVertices.forEach((v, i) => {
-          verticesAsFloat.set(v.position, i * 3);
-        });
+      const positionIndex = semantics.indexOf("POSITION");
 
-        const indicesAsInteger = new Uint16Array(newTriangles.length * 3);
-        newTriangles.forEach((t, i) => {
-          indicesAsInteger.set(t.vertices, i * 3);
-        });
+      const positions = attributes[positionIndex];
+      const positionsArray = positions.getArray();
 
-        const newPrimitive = newDoc.createPrimitive();
+      const indices = primitive.getIndices();
 
-        const buffer1 = newDoc.createBuffer(`buffer_${primitiveIndex}_1`);
+      const indicesArray = indices.getArray();
 
-        const positionAccessor = newDoc
-          .createAccessor(`data_${primitiveIndex}_1`)
-          .setArray(verticesAsFloat)
-          .setType(Accessor.Type.VEC3)
-          .setBuffer(buffer1);
+      const { vertices, triangles } = prepareData(positionsArray, indicesArray);
 
-        newPrimitive.setAttribute("POSITION", positionAccessor);
+      let targetTriangles = triangles.length * configuration.targetScale;
 
-        const buffer2 = newDoc.createBuffer(`buffer_${primitiveIndex}_2`);
+      // simplify structure
+      const {
+        vertices: newVertices,
+        triangles: newTriangles,
+      } = simplify(vertices, triangles, { targetTriangles });
 
-        const indicesAccessor = newDoc
-          .createAccessor(`data_${primitiveIndex}_2`)
-          .setArray(indicesAsInteger)
-          .setType(Accessor.Type.SCALAR)
-          .setBuffer(buffer2);
-        newPrimitive.setIndices(indicesAccessor);
-        mesh.addPrimitive(newPrimitive);
+      // convert to glTF compatible format
+      const verticesAsFloat = new Float32Array(newVertices.length * 3);
+      newVertices.forEach((v, i) => {
+        verticesAsFloat.set(v.position, i * 3);
       });
 
+      const indicesAsInteger = new Uint16Array(newTriangles.length * 3);
+      newTriangles.forEach((t, i) => {
+        indicesAsInteger.set(t.vertices, i * 3);
+      });
+
+      const newPrimitive = newDoc.createPrimitive();
+
+      // store information in buffers
+      const buffer1 = newDoc.createBuffer(`buffer_${primitiveIndex}_1`);
+
+      const positionAccessor = newDoc
+        .createAccessor(`data_${primitiveIndex}_1`)
+        .setArray(verticesAsFloat)
+        .setType(Accessor.Type.VEC3)
+        .setBuffer(buffer1);
+
+      newPrimitive.setAttribute("POSITION", positionAccessor);
+
+      const buffer2 = newDoc.createBuffer(`buffer_${primitiveIndex}_2`);
+
+      const indicesAccessor = newDoc
+        .createAccessor(`data_${primitiveIndex}_2`)
+        .setArray(indicesAsInteger)
+        .setType(Accessor.Type.SCALAR)
+        .setBuffer(buffer2);
+
+      // apply data on primitive
+      newPrimitive.setIndices(indicesAccessor);
+      mesh.addPrimitive(newPrimitive);
+      newPrimitive.setMaterial(material);
+    }
+
+    // write new file
     io.write(pathName, newDoc);
-  });
+  }
 };
