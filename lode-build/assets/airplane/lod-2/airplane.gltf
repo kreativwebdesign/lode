@@ -5,7 +5,7 @@
   },
   "accessors": [
     {
-      "name": "data_0_1",
+      "name": "data_1_1",
       "type": "VEC3",
       "componentType": 5126,
       "count": 14135,
@@ -24,7 +24,7 @@
       "byteOffset": 0
     },
     {
-      "name": "data_0_2",
+      "name": "data_1_2",
       "type": "SCALAR",
       "componentType": 5123,
       "count": 61959,
@@ -39,7 +39,7 @@
       "byteOffset": 0
     },
     {
-      "name": "data_1_1",
+      "name": "data_2_1",
       "type": "VEC3",
       "componentType": 5126,
       "count": 5748,
@@ -58,7 +58,7 @@
       "byteOffset": 0
     },
     {
-      "name": "data_1_2",
+      "name": "data_2_2",
       "type": "SCALAR",
       "componentType": 5123,
       "count": 18585,
@@ -103,24 +103,66 @@
   ],
   "buffers": [
     {
-      "name": "buffer_0_1",
+      "name": "buffer_1_1",
       "uri": "airplane_1.bin",
       "byteLength": 169620
     },
     {
-      "name": "buffer_0_2",
+      "name": "buffer_1_2",
       "uri": "airplane_2.bin",
       "byteLength": 123920
     },
     {
-      "name": "buffer_1_1",
+      "name": "buffer_2_1",
       "uri": "airplane_3.bin",
       "byteLength": 68976
     },
     {
-      "name": "buffer_1_2",
+      "name": "buffer_2_2",
       "uri": "airplane_4.bin",
       "byteLength": 37172
+    }
+  ],
+  "materials": [
+    {
+      "name": "material_1",
+      "alphaMode": "OPAQUE",
+      "doubleSided": false,
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.8196078431372549,
+          0.8431372549019608,
+          0.8705882352941177,
+          1
+        ],
+        "roughnessFactor": 1,
+        "metallicFactor": 1
+      },
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "material_2",
+      "alphaMode": "OPAQUE",
+      "doubleSided": false,
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.803921568627451,
+          0.8235294117647058,
+          0.8509803921568627,
+          1
+        ],
+        "roughnessFactor": 1,
+        "metallicFactor": 1
+      },
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ]
     }
   ],
   "meshes": [
@@ -132,6 +174,7 @@
             "POSITION": 0
           },
           "mode": 4,
+          "material": 0,
           "indices": 1
         },
         {
@@ -139,6 +182,7 @@
             "POSITION": 2
           },
           "mode": 4,
+          "material": 1,
           "indices": 3
         }
       ]

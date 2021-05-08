@@ -5,7 +5,7 @@
   },
   "accessors": [
     {
-      "name": "data_0_1",
+      "name": "data_1_1",
       "type": "VEC3",
       "componentType": 5126,
       "count": 7723,
@@ -24,7 +24,7 @@
       "byteOffset": 0
     },
     {
-      "name": "data_0_2",
+      "name": "data_1_2",
       "type": "SCALAR",
       "componentType": 5123,
       "count": 39885,
@@ -56,14 +56,36 @@
   ],
   "buffers": [
     {
-      "name": "buffer_0_1",
+      "name": "buffer_1_1",
       "uri": "apricot_1.bin",
       "byteLength": 92676
     },
     {
-      "name": "buffer_0_2",
+      "name": "buffer_1_2",
       "uri": "apricot_2.bin",
       "byteLength": 79772
+    }
+  ],
+  "materials": [
+    {
+      "name": "material_1",
+      "alphaMode": "OPAQUE",
+      "doubleSided": false,
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.8705882352941177,
+          0.6823529411764706,
+          0.21176470588235294,
+          1
+        ],
+        "roughnessFactor": 1,
+        "metallicFactor": 1
+      },
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ]
     }
   ],
   "meshes": [
@@ -75,6 +97,7 @@
             "POSITION": 0
           },
           "mode": 4,
+          "material": 0,
           "indices": 1
         }
       ]
