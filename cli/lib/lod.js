@@ -1,4 +1,5 @@
 import { NodeIO } from "@gltf-transform/core";
+import { Document, Accessor } from "@gltf-transform/core";
 import simplify from "./simplification/index.js";
 import { prepareData } from "./simplification/prepare-data.js";
 import * as print from "./helper/print.js";
@@ -16,17 +17,27 @@ export const copyOriginalArtifact = (pathName, file) => {
 export const performLOD = ({ originalFile, levelDefinitions }) => {
   print.info("performing LOD algorithm on file", originalFile);
 
-  levelDefinitions.forEach(({ pathName, configuration }, level) => {
+  levelDefinitions.forEach(({ pathName, configuration }) => {
     const doc = io.read(originalFile);
+    const originalNode = doc.getRoot().listNodes()[0];
 
-    const newDoc = doc.clone();
+    const newDoc = new Document();
+    const scene = newDoc.createScene("scene");
+    const node = newDoc.createNode("node");
+    node.setRotation(originalNode.getRotation());
+    node.setScale(originalNode.getScale());
+
+    const mesh = newDoc.createMesh("mesh");
+
+    node.setMesh(mesh);
+    scene.addChild(node);
 
     // currently only one mesh is supported
-    newDoc
+    doc
       .getRoot()
       .listMeshes()[0]
       .listPrimitives()
-      .forEach((primitive) => {
+      .forEach((primitive, primitiveIndex) => {
         const attributes = primitive.listAttributes();
         const semantics = primitive.listSemantics();
 
@@ -55,19 +66,33 @@ export const performLOD = ({ originalFile, levelDefinitions }) => {
         newVertices.forEach((v, i) => {
           verticesAsFloat.set(v.position, i * 3);
         });
-        positions.setArray(verticesAsFloat);
 
         const indicesAsInteger = new Uint16Array(newTriangles.length * 3);
         newTriangles.forEach((t, i) => {
           indicesAsInteger.set(t.vertices, i * 3);
         });
-        indices.setArray(indicesAsInteger);
 
-        // Remove unprocessed information in order to generate a valid gltf file output
-        primitive.setAttribute("NORMAL");
-        primitive.setAttribute("TEXCOORD_0");
-        primitive.setAttribute("TANGENT");
-        primitive.setAttribute("COLOR_0");
+        const newPrimitive = newDoc.createPrimitive();
+
+        const buffer1 = newDoc.createBuffer(`buffer_${primitiveIndex}_1`);
+
+        const positionAccessor = newDoc
+          .createAccessor(`data_${primitiveIndex}_1`)
+          .setArray(verticesAsFloat)
+          .setType(Accessor.Type.VEC3)
+          .setBuffer(buffer1);
+
+        newPrimitive.setAttribute("POSITION", positionAccessor);
+
+        const buffer2 = newDoc.createBuffer(`buffer_${primitiveIndex}_2`);
+
+        const indicesAccessor = newDoc
+          .createAccessor(`data_${primitiveIndex}_2`)
+          .setArray(indicesAsInteger)
+          .setType(Accessor.Type.SCALAR)
+          .setBuffer(buffer2);
+        newPrimitive.setIndices(indicesAccessor);
+        mesh.addPrimitive(newPrimitive);
       });
 
     io.write(pathName, newDoc);
