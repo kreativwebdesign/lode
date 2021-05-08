@@ -39,8 +39,8 @@ function DetailModel({ level, startingDistance, handleUpdate, isActive, url }) {
 function ModelViewer() {
   const basePath = useBasePath();
   const name = useParam("name");
-  const fileName = name.split("/").pop();
-  const updateModel = useUpdateModel;
+  const fileName = (name || "").split("/").pop();
+  const updateModel = useUpdateModel();
   const [lodLevel] = useRecoilState(lodLevelState);
 
   const manifest = useManifest();
