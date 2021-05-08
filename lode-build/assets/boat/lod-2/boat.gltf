@@ -5,6 +5,7 @@
   },
   "accessors": [
     {
+      "name": "data_0_1",
       "type": "VEC3",
       "componentType": 5126,
       "count": 9276,
@@ -23,40 +24,7 @@
       "byteOffset": 0
     },
     {
-      "type": "VEC3",
-      "componentType": 5126,
-      "count": 101124,
-      "max": [
-        1.0000001192092896,
-        1.0000001192092896,
-        1.0000001192092896
-      ],
-      "min": [
-        -1.0000001192092896,
-        -1.0000001192092896,
-        -1.0000001192092896
-      ],
-      "normalized": false,
-      "bufferView": 1,
-      "byteOffset": 0
-    },
-    {
-      "type": "VEC2",
-      "componentType": 5126,
-      "count": 101124,
-      "max": [
-        49.812400817871094,
-        6.732850074768066
-      ],
-      "min": [
-        -25.094900131225586,
-        -25
-      ],
-      "normalized": false,
-      "bufferView": 1,
-      "byteOffset": 1213488
-    },
-    {
+      "name": "data_0_2",
       "type": "SCALAR",
       "componentType": 5123,
       "count": 38634,
@@ -67,7 +35,7 @@
         0
       ],
       "normalized": false,
-      "bufferView": 2,
+      "bufferView": 1,
       "byteOffset": 0
     }
   ],
@@ -80,69 +48,47 @@
       "target": 34962
     },
     {
-      "buffer": 0,
-      "byteOffset": 111312,
-      "byteLength": 2022480
-    },
-    {
-      "buffer": 0,
-      "byteOffset": 2133792,
+      "buffer": 1,
+      "byteOffset": 0,
       "byteLength": 77268,
       "target": 34963
     }
   ],
   "buffers": [
     {
-      "uri": "boat.bin",
-      "byteLength": 2211060
-    }
-  ],
-  "materials": [
+      "name": "buffer_0_1",
+      "uri": "boat_1.bin",
+      "byteLength": 111312
+    },
     {
-      "name": "Shaded Wireframe",
-      "alphaMode": "OPAQUE",
-      "doubleSided": true,
-      "pbrMetallicRoughness": {
-        "baseColorFactor": [
-          0.800000011920929,
-          0.800000011920929,
-          0.800000011920929,
-          1
-        ],
-        "roughnessFactor": 0.5,
-        "metallicFactor": 0
-      },
-      "emissiveFactor": [
-        0,
-        0,
-        0
-      ]
+      "name": "buffer_0_2",
+      "uri": "boat_2.bin",
+      "byteLength": 77268
     }
   ],
   "meshes": [
     {
-      "name": "Boat",
+      "name": "mesh",
       "primitives": [
         {
           "attributes": {
             "POSITION": 0
           },
           "mode": 4,
-          "material": 0,
-          "indices": 3
+          "indices": 1
         }
       ]
     }
   ],
   "nodes": [
     {
-      "name": "Boat",
+      "name": "node",
       "mesh": 0
     }
   ],
   "scenes": [
     {
-      "name": "Scene",
+      "name": "scene",
       "nodes": [
         0
       ]

@@ -5,6 +5,7 @@
   },
   "accessors": [
     {
+      "name": "data_0_1",
       "type": "VEC3",
       "componentType": 5126,
       "count": 13526,
@@ -23,40 +24,7 @@
       "byteOffset": 0
     },
     {
-      "type": "VEC3",
-      "componentType": 5126,
-      "count": 79089,
-      "max": [
-        0.9999919533729553,
-        0.9997820854187012,
-        0.9999984502792358
-      ],
-      "min": [
-        -0.9999919533729553,
-        -0.9998669624328613,
-        -0.9999997615814209
-      ],
-      "normalized": false,
-      "bufferView": 1,
-      "byteOffset": 0
-    },
-    {
-      "type": "VEC2",
-      "componentType": 5126,
-      "count": 79089,
-      "max": [
-        0.980883002281189,
-        0.9514200091362
-      ],
-      "min": [
-        0.022678999230265617,
-        0.052069008350372314
-      ],
-      "normalized": false,
-      "bufferView": 1,
-      "byteOffset": 949068
-    },
-    {
+      "name": "data_0_2",
       "type": "SCALAR",
       "componentType": 5123,
       "count": 61500,
@@ -67,7 +35,7 @@
         0
       ],
       "normalized": false,
-      "bufferView": 2,
+      "bufferView": 1,
       "byteOffset": 0
     }
   ],
@@ -80,63 +48,41 @@
       "target": 34962
     },
     {
-      "buffer": 0,
-      "byteOffset": 162312,
-      "byteLength": 1581780
-    },
-    {
-      "buffer": 0,
-      "byteOffset": 1744092,
+      "buffer": 1,
+      "byteOffset": 0,
       "byteLength": 123000,
       "target": 34963
     }
   ],
   "buffers": [
     {
-      "uri": "dragon.bin",
-      "byteLength": 1867092
-    }
-  ],
-  "materials": [
+      "name": "buffer_0_1",
+      "uri": "dragon_1.bin",
+      "byteLength": 162312
+    },
     {
-      "name": "(null).002",
-      "alphaMode": "OPAQUE",
-      "doubleSided": true,
-      "pbrMetallicRoughness": {
-        "baseColorFactor": [
-          0.800000011920929,
-          0.800000011920929,
-          0.800000011920929,
-          1
-        ],
-        "roughnessFactor": 0.5,
-        "metallicFactor": 0
-      },
-      "emissiveFactor": [
-        0,
-        0,
-        0
-      ]
+      "name": "buffer_0_2",
+      "uri": "dragon_2.bin",
+      "byteLength": 123000
     }
   ],
   "meshes": [
     {
-      "name": "Dragon.002",
+      "name": "mesh",
       "primitives": [
         {
           "attributes": {
             "POSITION": 0
           },
           "mode": 4,
-          "material": 0,
-          "indices": 3
+          "indices": 1
         }
       ]
     }
   ],
   "nodes": [
     {
-      "name": "dragon",
+      "name": "node",
       "rotation": [
         0.7071068286895752,
         0,
@@ -148,7 +94,7 @@
   ],
   "scenes": [
     {
-      "name": "Scene",
+      "name": "scene",
       "nodes": [
         0
       ]

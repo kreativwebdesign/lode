@@ -5,7 +5,7 @@
   },
   "accessors": [
     {
-      "name": "position - test",
+      "name": "data_0_1",
       "type": "VEC3",
       "componentType": 5126,
       "count": 2857,
@@ -24,47 +24,7 @@
       "byteOffset": 0
     },
     {
-      "name": "normal - test",
-      "type": "VEC3",
-      "componentType": 5126,
-      "count": 41864,
-      "max": [
-        0.9999380111694336,
-        0.9999617338180542,
-        0.9999343156814575
-      ],
-      "min": [
-        -0.9999210238456726,
-        -0.9999637007713318,
-        -0.9998589754104614
-      ],
-      "normalized": false,
-      "bufferView": 1,
-      "byteOffset": 0
-    },
-    {
-      "name": "color - test",
-      "type": "VEC4",
-      "componentType": 5126,
-      "count": 41864,
-      "max": [
-        0.9914400577545166,
-        0.9914400577545166,
-        0.9914400577545166,
-        1
-      ],
-      "min": [
-        0,
-        0,
-        0,
-        1
-      ],
-      "normalized": false,
-      "bufferView": 1,
-      "byteOffset": 502368
-    },
-    {
-      "name": "indices - test",
+      "name": "data_0_2",
       "type": "SCALAR",
       "componentType": 5123,
       "count": 15156,
@@ -75,7 +35,7 @@
         0
       ],
       "normalized": false,
-      "bufferView": 2,
+      "bufferView": 1,
       "byteOffset": 0
     }
   ],
@@ -88,62 +48,41 @@
       "target": 34962
     },
     {
-      "buffer": 0,
-      "byteOffset": 34284,
-      "byteLength": 1172192
-    },
-    {
-      "buffer": 0,
-      "byteOffset": 1206476,
+      "buffer": 1,
+      "byteOffset": 0,
       "byteLength": 30312,
       "target": 34963
     }
   ],
   "buffers": [
     {
-      "uri": "skull.bin",
-      "byteLength": 1236788
-    }
-  ],
-  "materials": [
+      "name": "buffer_0_1",
+      "uri": "skull_1.bin",
+      "byteLength": 34284
+    },
     {
-      "name": "default material",
-      "alphaMode": "OPAQUE",
-      "doubleSided": false,
-      "pbrMetallicRoughness": {
-        "baseColorFactor": [
-          0.5,
-          0.5,
-          0.5,
-          1
-        ],
-        "roughnessFactor": 0.3288090062081349,
-        "metallicFactor": 0
-      },
-      "emissiveFactor": [
-        0,
-        0,
-        0
-      ]
+      "name": "buffer_0_2",
+      "uri": "skull_2.bin",
+      "byteLength": 30312
     }
   ],
   "meshes": [
     {
+      "name": "mesh",
       "primitives": [
         {
           "attributes": {
             "POSITION": 0
           },
           "mode": 4,
-          "material": 0,
-          "indices": 3
+          "indices": 1
         }
       ]
     }
   ],
   "nodes": [
     {
-      "name": "test",
+      "name": "node",
       "rotation": [
         0,
         1,
@@ -160,6 +99,7 @@
   ],
   "scenes": [
     {
+      "name": "scene",
       "nodes": [
         0
       ]

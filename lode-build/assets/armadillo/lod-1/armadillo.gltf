@@ -5,6 +5,7 @@
   },
   "accessors": [
     {
+      "name": "data_0_1",
       "type": "VEC3",
       "componentType": 5126,
       "count": 26347,
@@ -23,6 +24,7 @@
       "byteOffset": 0
     },
     {
+      "name": "data_0_2",
       "type": "SCALAR",
       "componentType": 5123,
       "count": 151950,
@@ -46,49 +48,33 @@
       "target": 34962
     },
     {
-      "buffer": 0,
-      "byteOffset": 316164,
+      "buffer": 1,
+      "byteOffset": 0,
       "byteLength": 303900,
       "target": 34963
     }
   ],
   "buffers": [
     {
-      "uri": "armadillo.bin",
-      "byteLength": 620064
-    }
-  ],
-  "materials": [
+      "name": "buffer_0_1",
+      "uri": "armadillo_1.bin",
+      "byteLength": 316164
+    },
     {
-      "name": "material",
-      "alphaMode": "OPAQUE",
-      "doubleSided": false,
-      "pbrMetallicRoughness": {
-        "baseColorFactor": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "roughnessFactor": 1,
-        "metallicFactor": 0
-      },
-      "emissiveFactor": [
-        0,
-        0,
-        0
-      ]
+      "name": "buffer_0_2",
+      "uri": "armadillo_2.bin",
+      "byteLength": 303900
     }
   ],
   "meshes": [
     {
+      "name": "mesh",
       "primitives": [
         {
           "attributes": {
             "POSITION": 0
           },
           "mode": 4,
-          "material": 0,
           "indices": 1
         }
       ]
@@ -96,6 +82,7 @@
   ],
   "nodes": [
     {
+      "name": "node",
       "scale": [
         0.03,
         0.03,
@@ -106,6 +93,7 @@
   ],
   "scenes": [
     {
+      "name": "scene",
       "nodes": [
         0
       ]
