@@ -11,7 +11,7 @@ import prepareFolders from "./prepareFolders.js";
 import optimizeFile from "./optimizeFile.js";
 import buildManifest from "./buildManifest.js";
 
-const run = (commanderOptions) => {
+const run = async (commanderOptions) => {
   print.warn(figlet.textSync("LODE", { horizontalLayout: "full" }));
   const opts = mergeOptionsWithConfigFile(commanderOptions, defaultRunOptions);
   const sourceFiles = glob.sync(opts.source);
@@ -26,7 +26,9 @@ const run = (commanderOptions) => {
   print.success("done");
 
   print.info("Running initial LOD transformation:");
-  sourceFiles.forEach((file) => optimizeFile(fileStructure[file]));
+  for (const file of sourceFiles) {
+    await optimizeFile(fileStructure[file]);
+  }
 
   buildManifest(opts.outputFoldername, sourceFiles);
 
