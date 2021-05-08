@@ -40,7 +40,7 @@ function ModelViewer() {
   const basePath = useBasePath();
   const name = useParam("name");
   const fileName = (name || "").split("/").pop();
-  const updateModel = useUpdateModel;
+  const updateModel = useUpdateModel();
   const [lodLevel] = useRecoilState(lodLevelState);
 
   const manifest = useManifest();
