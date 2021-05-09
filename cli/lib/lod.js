@@ -7,11 +7,6 @@ import * as print from "./helper/print.js";
 
 const io = new NodeIO();
 
-export const copyOriginalArtifact = (pathName, file) => {
-  const doc = io.read(file);
-  io.write(pathName, doc);
-};
-
 /**
  * Main operation to generate lod artifacts for the file in originalFile.
  */
