@@ -79,7 +79,7 @@
           1
         ],
         "roughnessFactor": 1,
-        "metallicFactor": 1
+        "metallicFactor": 0
       },
       "emissiveFactor": [
         0,

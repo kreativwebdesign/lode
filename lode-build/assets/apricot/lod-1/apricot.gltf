@@ -70,7 +70,7 @@
     {
       "name": "material_1",
       "alphaMode": "OPAQUE",
-      "doubleSided": false,
+      "doubleSided": true,
       "pbrMetallicRoughness": {
         "baseColorFactor": [
           0.8705882352941177,
@@ -78,8 +78,8 @@
           0.21176470588235294,
           1
         ],
-        "roughnessFactor": 1,
-        "metallicFactor": 1
+        "roughnessFactor": 0.7211133241653442,
+        "metallicFactor": 0
       },
       "emissiveFactor": [
         0,

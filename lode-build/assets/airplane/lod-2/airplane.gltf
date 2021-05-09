@@ -127,7 +127,7 @@
     {
       "name": "material_1",
       "alphaMode": "OPAQUE",
-      "doubleSided": false,
+      "doubleSided": true,
       "pbrMetallicRoughness": {
         "baseColorFactor": [
           0.8196078431372549,
@@ -135,8 +135,8 @@
           0.8705882352941177,
           1
         ],
-        "roughnessFactor": 1,
-        "metallicFactor": 1
+        "roughnessFactor": 0.850928783416748,
+        "metallicFactor": 0
       },
       "emissiveFactor": [
         0,
@@ -147,7 +147,7 @@
     {
       "name": "material_2",
       "alphaMode": "OPAQUE",
-      "doubleSided": false,
+      "doubleSided": true,
       "pbrMetallicRoughness": {
         "baseColorFactor": [
           0.803921568627451,
@@ -155,8 +155,8 @@
           0.8509803921568627,
           1
         ],
-        "roughnessFactor": 1,
-        "metallicFactor": 1
+        "roughnessFactor": 0.850928783416748,
+        "metallicFactor": 0
       },
       "emissiveFactor": [
         0,
