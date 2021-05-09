@@ -11,7 +11,7 @@ Das Resultat besteht wie beschrieben aus verschiedenen Artefakten. In diesem Abs
 \section{Benchmark}
 
 In diesem Abschnitt werden die verschiedenen erwägten Optionen erläutert und die Abgrenzungen aufgezeigt.
-Das Ziel des Benchmarks ist der Vergleich einer Version ohne Einsatz von LOD und einer Umgebung, welche LODs einsetzt. Um eine möglichst praxisnahe Aussage treffen zu können wird hierfür eine Demo Szenerie verwendet, welche einer echten Anwendung so nah wie möglich kommt. Somit wird gewährleistet, dass es nicht nur in der Theorie einen Nutzen für LODs gibt sondern dieser in der Praxis vorhanden ist.
+Das Ziel des Benchmarks ist der Vergleich einer Version ohne Einsatz von LOD und einer Umgebung, welche LODs einsetzt. Um eine möglichst praxisnahe Aussage treffen zu können wird hierfür eine Demo Szenerie verwendet, welche einer echten Anwendung so nah wie möglich kommt. Somit wird gewährleistet, dass es nicht nur in der Theorie einen Nutzen für LODs gibt, sondern dieser in der Praxis vorhanden ist.
 
 \paragraph{Browser Umgebung}
 Um den Umfang des Benchmarks überschaubar zu halten, wurde ausschliesslich ein Benchmark für Google Chrome entwickelt.
@@ -51,15 +51,21 @@ Der Test erfasst die in Tabelle \ref{table:benchmarkFigures} aufgeführten Kennz
 
 \begin{table}[H]
   \centering
-  \begin{tabular}{ c p{8cm} }
+  \begin{tabular}{ l p{8cm} }
   \hline
   Kennzahl & Beschreibung \\
   \hline
+  \hline
   Median \e{\gls{FPS}} & Die \e{\gls{FPS}} werden kontinuierlich berechnet. Um krasse Abweichungen zu ignorieren wird der Median verwendet. \\
+  \hline
   Totale GPU Zeit & Die totale Zeit, welche die GPU für Berechungen benötigt. \\
+  \hline
   Median Render Loop Dauer & Der Median aller Laufzeiten der Render Loop. \\
+  \hline
   Anzahl GPU Events & Anzahl der Events an die GPU. \\
+  \hline
   Zeit für das Laden der Modelle & Totale Zeit für das Laden aller Modelle der Szenerie. \\
+  \hline
   Anzahl Renders & Wie oft wurde ein neues Bild gezeichnet. \\
   \hline
   \end{tabular}
@@ -83,7 +89,7 @@ Die Signifikanz wird mithilfe eines statistischen Konfidenzintervalls nachgewies
 
 \section{LOD Pipeline}
 
-Der Kern der Arbeit stellt die LOD Pipeline, auch \e{lode} genannt, dar. Dieses Tool liefert eine für das Web optimierte Möglichkeit LOD Artefakte für eine Vielzahl von Anwendungsgebieten zu generieren.
+Der Kern der Arbeit stellt die LOD Pipeline, \e{lode} genannt, dar. Dieses Tool liefert eine für das Web optimierte Möglichkeit LOD Artefakte für eine Vielzahl von Anwendungsgebieten zu generieren.
 
 \subsection{Workflow}
 
@@ -92,9 +98,9 @@ Für ein gegebenes Modell werden innerhalb vom Modellierungstool wie z.B. Blende
 
 \subsection{lode Pipeline}
 
-Das Ziel von \e{lode} ist es für ein möglichst breites Spektrum von Anwendungsfällen eine einfache Lösung anzubieten und somit die Hemmschwelle für den Einsatz von LOD Artfakten zu reduzieren.
+Das Ziel von \e{lode} ist es, für ein möglichst breites Spektrum von Anwendungsfällen eine einfache Lösung anzubieten und somit die Hemmschwelle für den Einsatz von LOD Artfakten zu reduzieren.
 
-Deshalb setzt \e{lode} konsequent auf modern Entwicklungsprozesse, manuelle Schritte sollen auf ein Minimum reduziert werden.
+Deshalb setzt \e{lode} konsequent auf moderne Entwicklungsprozesse, manuelle Schritte sollen auf ein Minimum reduziert werden.
 
 \subsection{Automatische Generierung von Detail Levels}
 Damit für den Endbenutzer die Konfiguration übersichtlich bleibt, soll der Einsatz von zum Beispiel heuristischen Methoden hilfreiche Basiskonfigurationen liefern.
