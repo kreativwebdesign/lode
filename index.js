@@ -9,7 +9,7 @@ import manifest from "./lode-build/lode-manifest.json.proxy.js";
 
 const useOptimized = getOptimized();
 
-const renderer = new THREE.WebGLRenderer({ antialias: true });
+const renderer = new THREE.WebGLRenderer();
 
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);

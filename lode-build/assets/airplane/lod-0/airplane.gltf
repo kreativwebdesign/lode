@@ -1,298 +1,231 @@
 {
-  "asset": {
-    "generator": "glTF-Transform v0.9.9",
-    "version": "2.0"
-  },
-  "accessors": [
-    {
-      "type": "VEC3",
-      "componentType": 5126,
-      "count": 42278,
-      "max": [
-        319.1271057128906,
-        499.906005859375,
-        749.0983276367188
-      ],
-      "min": [
-        -322.0859069824219,
-        29.211000442504883,
-        -753.068115234375
-      ],
-      "normalized": false,
-      "bufferView": 0,
-      "byteOffset": 0
+    "asset" : {
+        "generator" : "Khronos glTF Blender I/O v1.2.75",
+        "version" : "2.0"
     },
-    {
-      "type": "VEC3",
-      "componentType": 5126,
-      "count": 42278,
-      "max": [
-        1,
-        1,
-        1.0000001192092896
-      ],
-      "min": [
-        -1,
-        -1.0000001192092896,
-        -1
-      ],
-      "normalized": false,
-      "bufferView": 0,
-      "byteOffset": 12
-    },
-    {
-      "type": "VEC2",
-      "componentType": 5126,
-      "count": 42278,
-      "max": [
-        0.9955999851226807,
-        0.9973999857902527
-      ],
-      "min": [
-        0.0026000000070780516,
-        0.007899999618530273
-      ],
-      "normalized": false,
-      "bufferView": 0,
-      "byteOffset": 24
-    },
-    {
-      "type": "VEC3",
-      "componentType": 5126,
-      "count": 27460,
-      "max": [
-        786.957275390625,
-        242.61630249023438,
-        400.31671142578125
-      ],
-      "min": [
-        -789.9151000976562,
-        74.7311019897461,
-        -165.9241943359375
-      ],
-      "normalized": false,
-      "bufferView": 1,
-      "byteOffset": 0
-    },
-    {
-      "type": "VEC3",
-      "componentType": 5126,
-      "count": 27460,
-      "max": [
-        0.9999999403953552,
-        1,
-        1
-      ],
-      "min": [
-        -0.9999999403953552,
-        -1,
-        -1
-      ],
-      "normalized": false,
-      "bufferView": 1,
-      "byteOffset": 12
-    },
-    {
-      "type": "VEC2",
-      "componentType": 5126,
-      "count": 27460,
-      "max": [
-        0.9959999918937683,
-        0.995199978351593
-      ],
-      "min": [
-        0.005799999926239252,
-        0.004999995231628418
-      ],
-      "normalized": false,
-      "bufferView": 1,
-      "byteOffset": 24
-    },
-    {
-      "type": "SCALAR",
-      "componentType": 5123,
-      "count": 177012,
-      "max": [
-        42277
-      ],
-      "min": [
-        0
-      ],
-      "normalized": false,
-      "bufferView": 2,
-      "byteOffset": 0
-    },
-    {
-      "type": "SCALAR",
-      "componentType": 5123,
-      "count": 113712,
-      "max": [
-        27459
-      ],
-      "min": [
-        0
-      ],
-      "normalized": false,
-      "bufferView": 2,
-      "byteOffset": 354024
-    }
-  ],
-  "bufferViews": [
-    {
-      "buffer": 0,
-      "byteOffset": 0,
-      "byteLength": 1352896,
-      "byteStride": 32,
-      "target": 34962
-    },
-    {
-      "buffer": 0,
-      "byteOffset": 1352896,
-      "byteLength": 878720,
-      "byteStride": 32,
-      "target": 34962
-    },
-    {
-      "buffer": 0,
-      "byteOffset": 2231616,
-      "byteLength": 581448,
-      "target": 34963
-    }
-  ],
-  "samplers": [
-    {
-      "wrapS": 10497,
-      "wrapT": 10497
-    }
-  ],
-  "textures": [
-    {
-      "source": 0,
-      "sampler": 0
-    },
-    {
-      "source": 1,
-      "sampler": 0
-    }
-  ],
-  "images": [
-    {
-      "name": "airplane_body_diffuse_v1",
-      "mimeType": "image/jpeg",
-      "uri": "airplane_body_diffuse_v1.jpg"
-    },
-    {
-      "name": "airplane_wings_diffuse_v1",
-      "mimeType": "image/jpeg",
-      "uri": "airplane_wings_diffuse_v1.jpg"
-    }
-  ],
-  "buffers": [
-    {
-      "uri": "airplane.bin",
-      "byteLength": 2813064
-    }
-  ],
-  "materials": [
-    {
-      "name": "airplane_body.002",
-      "alphaMode": "OPAQUE",
-      "doubleSided": true,
-      "pbrMetallicRoughness": {
-        "baseColorFactor": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "roughnessFactor": 0.850928783416748,
-        "metallicFactor": 0,
-        "baseColorTexture": {
-          "index": 0,
-          "texCoord": 0
-        }
-      },
-      "emissiveFactor": [
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "name": "airplane_wings.002",
-      "alphaMode": "OPAQUE",
-      "doubleSided": true,
-      "pbrMetallicRoughness": {
-        "baseColorFactor": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "roughnessFactor": 0.850928783416748,
-        "metallicFactor": 0,
-        "baseColorTexture": {
-          "index": 1,
-          "texCoord": 0
-        }
-      },
-      "emissiveFactor": [
-        0,
-        0,
-        0
-      ]
-    }
-  ],
-  "meshes": [
-    {
-      "name": "11805_airplane_v2_L2.002",
-      "primitives": [
+    "scene" : 0,
+    "scenes" : [
         {
-          "attributes": {
-            "POSITION": 0,
-            "NORMAL": 1,
-            "TEXCOORD_0": 2
-          },
-          "mode": 4,
-          "material": 0,
-          "indices": 6
+            "name" : "Scene",
+            "nodes" : [
+                0
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "airplane",
+            "rotation" : [
+                0.7071068286895752,
+                0,
+                0,
+                0.7071067094802856
+            ],
+            "scale" : [
+                0.004999999888241291,
+                0.004999999888241291,
+                0.004999999888241291
+            ]
+        }
+    ],
+    "materials" : [
+        {
+            "doubleSided" : true,
+            "emissiveFactor" : [
+                0,
+                0,
+                0
+            ],
+            "name" : "airplane_body.002",
+            "pbrMetallicRoughness" : {
+                "baseColorTexture" : {
+                    "index" : 0,
+                    "texCoord" : 0
+                },
+                "metallicFactor" : 0,
+                "roughnessFactor" : 0.850928783416748
+            }
         },
         {
-          "attributes": {
-            "POSITION": 3,
-            "NORMAL": 4,
-            "TEXCOORD_0": 5
-          },
-          "mode": 4,
-          "material": 1,
-          "indices": 7
+            "doubleSided" : true,
+            "emissiveFactor" : [
+                0,
+                0,
+                0
+            ],
+            "name" : "airplane_wings.002",
+            "pbrMetallicRoughness" : {
+                "baseColorTexture" : {
+                    "index" : 1,
+                    "texCoord" : 0
+                },
+                "metallicFactor" : 0,
+                "roughnessFactor" : 0.850928783416748
+            }
         }
-      ]
-    }
-  ],
-  "nodes": [
-    {
-      "name": "airplane",
-      "rotation": [
-        0.7071068286895752,
-        0,
-        0,
-        0.7071067094802856
-      ],
-      "scale": [
-        0.004999999888241291,
-        0.004999999888241291,
-        0.004999999888241291
-      ],
-      "mesh": 0
-    }
-  ],
-  "scenes": [
-    {
-      "name": "Scene",
-      "nodes": [
-        0
-      ]
-    }
-  ]
+    ],
+    "meshes" : [
+        {
+            "name" : "11805_airplane_v2_L2.002",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1,
+                        "TEXCOORD_0" : 2
+                    },
+                    "indices" : 3,
+                    "material" : 0
+                },
+                {
+                    "attributes" : {
+                        "POSITION" : 4,
+                        "NORMAL" : 5,
+                        "TEXCOORD_0" : 6
+                    },
+                    "indices" : 7,
+                    "material" : 1
+                }
+            ]
+        }
+    ],
+    "textures" : [
+        {
+            "source" : 0
+        },
+        {
+            "source" : 1
+        }
+    ],
+    "images" : [
+        {
+            "mimeType" : "image/jpeg",
+            "name" : "airplane_body_diffuse_v1",
+            "uri" : "airplane_body_diffuse_v1.jpg"
+        },
+        {
+            "mimeType" : "image/jpeg",
+            "name" : "airplane_wings_diffuse_v1",
+            "uri" : "airplane_wings_diffuse_v1.jpg"
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 42278,
+            "max" : [
+                319.1271057128906,
+                499.906005859375,
+                749.0983276367188
+            ],
+            "min" : [
+                -322.0859069824219,
+                29.211000442504883,
+                -753.068115234375
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 42278,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5126,
+            "count" : 42278,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 3,
+            "componentType" : 5123,
+            "count" : 177012,
+            "type" : "SCALAR"
+        },
+        {
+            "bufferView" : 4,
+            "componentType" : 5126,
+            "count" : 27460,
+            "max" : [
+                786.957275390625,
+                242.61630249023438,
+                400.31671142578125
+            ],
+            "min" : [
+                -789.9151000976562,
+                74.7311019897461,
+                -165.9241943359375
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 5,
+            "componentType" : 5126,
+            "count" : 27460,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 6,
+            "componentType" : 5126,
+            "count" : 27460,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 7,
+            "componentType" : 5123,
+            "count" : 113712,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 507336,
+            "byteOffset" : 0
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 507336,
+            "byteOffset" : 507336
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 338224,
+            "byteOffset" : 1014672
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 354024,
+            "byteOffset" : 1352896
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 329520,
+            "byteOffset" : 1706920
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 329520,
+            "byteOffset" : 2036440
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 219680,
+            "byteOffset" : 2365960
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 227424,
+            "byteOffset" : 2585640
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 2813064,
+            "uri" : "airplane.bin"
+        }
+    ]
 }
