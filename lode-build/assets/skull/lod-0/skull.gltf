@@ -1,125 +1,21 @@
 {
   "asset": {
-    "generator": "glTF-Transform v0.9.9",
+    "generator": "BabylonJS",
     "version": "2.0"
   },
-  "accessors": [
-    {
-      "name": "position - test",
-      "type": "VEC3",
-      "componentType": 5126,
-      "count": 41864,
-      "max": [
-        23.772199630737305,
-        30.47010040283203,
-        29.01689910888672
-      ],
-      "min": [
-        -23.772199630737305,
-        -30.493799209594727,
-        -29.024200439453125
-      ],
-      "normalized": false,
-      "bufferView": 0,
-      "byteOffset": 0
-    },
-    {
-      "name": "normal - test",
-      "type": "VEC3",
-      "componentType": 5126,
-      "count": 41864,
-      "max": [
-        0.9999380111694336,
-        0.9999617338180542,
-        0.9999343156814575
-      ],
-      "min": [
-        -0.9999210238456726,
-        -0.9999637007713318,
-        -0.9998589754104614
-      ],
-      "normalized": false,
-      "bufferView": 0,
-      "byteOffset": 12
-    },
-    {
-      "name": "color - test",
-      "type": "VEC4",
-      "componentType": 5126,
-      "count": 41864,
-      "max": [
-        0.9914400577545166,
-        0.9914400577545166,
-        0.9914400577545166,
-        1
-      ],
-      "min": [
-        0,
-        0,
-        0,
-        1
-      ],
-      "normalized": false,
-      "bufferView": 0,
-      "byteOffset": 24
-    },
-    {
-      "name": "indices - test",
-      "type": "SCALAR",
-      "componentType": 5125,
-      "count": 224994,
-      "max": [
-        41863
-      ],
-      "min": [
-        0
-      ],
-      "normalized": false,
-      "bufferView": 1,
-      "byteOffset": 0
-    }
-  ],
-  "bufferViews": [
-    {
-      "buffer": 0,
-      "byteOffset": 0,
-      "byteLength": 1674560,
-      "byteStride": 40,
-      "target": 34962
-    },
-    {
-      "buffer": 0,
-      "byteOffset": 1674560,
-      "byteLength": 899976,
-      "target": 34963
-    }
-  ],
   "buffers": [
     {
-      "uri": "skull.bin",
-      "byteLength": 2574536
+      "byteLength": 2574536,
+      "uri": "skull.bin"
     }
   ],
-  "materials": [
+  "nodes": [
     {
-      "name": "default material",
-      "alphaMode": "OPAQUE",
-      "doubleSided": false,
-      "pbrMetallicRoughness": {
-        "baseColorFactor": [
-          0.5,
-          0.5,
-          0.5,
-          1
-        ],
-        "roughnessFactor": 0.3288090062081349,
-        "metallicFactor": 0
-      },
-      "emissiveFactor": [
-        0,
-        0,
-        0
-      ]
+      "name": "test",
+      "translation": [0, 0, 0],
+      "scale": [0.1, 0.1, 0.1],
+      "mesh": 0,
+      "rotation": [0, 1, 0, 0]
     }
   ],
   "meshes": [
@@ -131,35 +27,90 @@
             "NORMAL": 1,
             "COLOR_0": 2
           },
-          "mode": 4,
-          "material": 0,
-          "indices": 3
+          "indices": 3,
+          "material": 0
         }
       ]
     }
   ],
-  "nodes": [
-    {
-      "name": "test",
-      "rotation": [
-        0,
-        1,
-        0,
-        0
-      ],
-      "scale": [
-        0.1,
-        0.1,
-        0.1
-      ],
-      "mesh": 0
-    }
-  ],
   "scenes": [
     {
-      "nodes": [
-        0
-      ]
+      "nodes": [0]
+    }
+  ],
+  "scene": 0,
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 502368,
+      "name": "position - test",
+      "byteStride": 12
+    },
+    {
+      "buffer": 0,
+      "byteLength": 502368,
+      "byteOffset": 502368,
+      "name": "normal - test",
+      "byteStride": 12
+    },
+    {
+      "buffer": 0,
+      "byteLength": 669824,
+      "byteOffset": 1004736,
+      "name": "color - test",
+      "byteStride": 16
+    },
+    {
+      "buffer": 0,
+      "byteLength": 899976,
+      "byteOffset": 1674560,
+      "name": "Indices - test"
+    }
+  ],
+  "accessors": [
+    {
+      "name": "position - test",
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 41864,
+      "type": "VEC3",
+      "min": [-23.7722, -30.4938, -29.0242],
+      "max": [23.7722, 30.4701, 29.0169],
+      "byteOffset": 0
+    },
+    {
+      "name": "normal - test",
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 41864,
+      "type": "VEC3",
+      "byteOffset": 0
+    },
+    {
+      "name": "color - test",
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 41864,
+      "type": "VEC4",
+      "byteOffset": 0
+    },
+    {
+      "name": "indices - test",
+      "bufferView": 3,
+      "componentType": 5125,
+      "count": 224994,
+      "type": "SCALAR",
+      "byteOffset": 0
+    }
+  ],
+  "materials": [
+    {
+      "name": "default material",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [0.5, 0.5, 0.5, 1],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.3288090062081349
+      }
     }
   ]
 }
