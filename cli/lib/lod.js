@@ -1,6 +1,5 @@
 import path from "path";
-import { NodeIO } from "@gltf-transform/core";
-import { Document, Accessor } from "@gltf-transform/core";
+import { Document, Accessor, NodeIO } from "@gltf-transform/core";
 import { getAverageColor } from "fast-average-color-node";
 import simplify from "./simplification/index.js";
 import { prepareData } from "./simplification/prepare-data.js";
@@ -40,22 +39,28 @@ export const performLOD = async ({ originalFile, levelDefinitions }) => {
       primitiveIndex++;
       const basePath = path.dirname(originalFile);
 
+      const baseMaterial = primitive.getMaterial();
       // obtain basic color
-      const baseColorTexture = primitive.getMaterial().getBaseColorTexture();
+      const baseColorTexture = baseMaterial.getBaseColorTexture();
       // define default color
-      let color = [1, 1, 1, 1];
+
+      let color = baseMaterial.getBaseColorFactor();
       if (baseColorTexture) {
         const textureFileName = baseColorTexture.getURI();
         const texturePath = path.join(basePath, textureFileName);
         const averageColor = await getAverageColor(texturePath);
         color = averageColor.value.map(
-          // convert from 255 to 1
+          // convert from rgb to linear
           (val) => val / 255
         );
       }
 
       const material = newDoc.createMaterial(`material_${primitiveIndex}`);
       material.setBaseColorFactor(color);
+
+      material.setMetallicFactor(baseMaterial.getMetallicFactor());
+      material.setRoughnessFactor(baseMaterial.getRoughnessFactor());
+      material.setDoubleSided(baseMaterial.getDoubleSided());
 
       // obtain raw structure
       const attributes = primitive.listAttributes();
