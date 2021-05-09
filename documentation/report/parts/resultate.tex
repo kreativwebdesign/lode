@@ -27,6 +27,20 @@ Deshalb setzt \e{lode} konsequent auf moderne Entwicklungsprozesse, manuelle Sch
 
 Ein Modell wird erstellt und als glTF innerhalb des Projekts gespeichert. Eine zum Modell gehörige Konfigurationsdatei wird angelegt und \e{lode} generiert die darin beschriebenen LOD Artfakte. Die Artfakten können innerhalb der Applikation mithilfe einer Bibliothek geladen werden. Bei Anpassungen an der Konfigurationsdatei werden die neuen Detailstufen automatisch generiert. Das zugehörige \e{lode-ui} bietet zudem die Möglichkeit die verschiedenen Detailstufen miteinander vergleichen zu können und die Konfiguration möglichst einfach zu justieren.
 
+\section{LOD Generierung}
+
+Für das Erstellen von LOD Artefakten wurde ein für LOD Artefakte optimierte Version des in \autoref{chap:surfaceSimplificationAlgorithm} erklärten \e{Surface Simplification Algorithmus} entwickelt.
+
+\subsection{Artefakte}
+
+Die generierten Artefakte sind unabhängig voneinander. So ist es nicht notwendig alle Artefakte zu jeder Zeit zu laden. Dies hat den primären Vorteil, dass es möglich ist progressives Laden als Erweiterung zuzulassen. Progressives laden bedeutet, dass zuerst die LOD Artefakte mit den wenigsten Details geladen werden und angezeigt werden bis die detaillierteren Level visualisiert werden.
+Es ist sogar möglich auf gewissen Geräten die detaillierten Level überhaupt nicht zu laden und so zum Beispiel Bandbreite zu sparen.
+
+\subsection{Texturen}
+
+Bei vielen Modellen sind der grösste Teil der Speichergrösse die Texturen. Das Optimieren der geometrischen Struktur reduziert die zugehörigen Texturen jedoch nicht. Um trotzdem möglichst grosse Einsparungen für die Texturen zu ermöglichen wurde eine Methode entwickelt, welche versucht die prominenteste Farbe eines Modelles zu extrahieren und diese für die Vereinfachungen zu verwenden.
+Diese Technik führt zu signifikanten Detailverlusten bei der Nahbetrachtung und ist somit ungeeignet für das Verwenden bei der ersten LOD Stufe. Für alle weiteren Stufen überwiegt jedoch der Vorteil der Vereinfachung im Vergleich zum Detailverlust.
+
 \section{Benchmark}
 
 In diesem Abschnitt werden die verschiedenen erwägten Optionen erläutert und die Abgrenzungen aufgezeigt.
