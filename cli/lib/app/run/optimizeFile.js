@@ -1,8 +1,10 @@
 import * as print from "../../helper/print.js";
-import { performLOD, copyOriginalArtifact } from "../../lod.js";
+import { performLOD } from "../../lod.js";
 import {
+  copyFolder,
   getLastModified,
   createFile,
+  getFolderPath,
   getLodHashFile,
   fileExists,
   readFile,
@@ -15,7 +17,9 @@ const optimizeFile = async ({ originalFile, levelDefinitions }) => {
     getLastModified(copiedOriginalFile) < getLastModified(originalFile);
 
   if (!fileExists(copiedOriginalFile) || originalModified()) {
-    copyOriginalArtifact(copiedOriginalFile, originalFile);
+    const srcDir = getFolderPath(originalFile);
+    const destDir = getFolderPath(copiedOriginalFile);
+    copyFolder(srcDir, destDir);
   }
   const levelsToBeReGenerated = levelDefinitions
     .slice(1)
