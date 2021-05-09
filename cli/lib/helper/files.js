@@ -1,4 +1,5 @@
 import fs from "fs";
+import fse from "fs-extra";
 import path from "path";
 import { CONFIG_FILENAME, HASH_FILENAME } from "../constants.js";
 
@@ -45,3 +46,5 @@ export const getLodHashFile = (file) =>
   path.join(getFolderPath(file), HASH_FILENAME);
 
 export const readFile = (file) => fs.readFileSync(file, "utf8");
+
+export const copyFolder = (srcDir, destDir) => fse.copySync(srcDir, destDir);

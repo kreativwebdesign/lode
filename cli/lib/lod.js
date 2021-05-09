@@ -4,12 +4,14 @@ import { getAverageColor } from "fast-average-color-node";
 import simplify from "./simplification/index.js";
 import { prepareData } from "./simplification/prepare-data.js";
 import * as print from "./helper/print.js";
+import { getFolderPath, copyFolder } from "./helper/files.js";
 
 const io = new NodeIO();
 
 export const copyOriginalArtifact = (pathName, file) => {
-  const doc = io.read(file);
-  io.write(pathName, doc);
+  const srcDir = getFolderPath(file);
+  const destDir = getFolderPath(pathName);
+  copyFolder(srcDir, destDir);
 };
 
 /**
