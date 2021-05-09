@@ -23,9 +23,9 @@ Das Ziel von \e{lode} ist es, für ein möglichst breites Spektrum von Anwendung
 
 Deshalb setzt \e{lode} konsequent auf moderne Entwicklungsprozesse, manuelle Schritte sollen auf ein Minimum reduziert werden.
 
-\subsection{Automatische Generierung von Detail Levels}
-Damit für den Endbenutzer die Konfiguration übersichtlich bleibt, soll der Einsatz von zum Beispiel heuristischen Methoden hilfreiche Basiskonfigurationen liefern.
-Zum einen geht es hier um das Festlegen der Thresholds, aber auch das Definieren des Dezimierungs- / Vereinfachungsfaktors spielt eine wichtige Rolle.
+\subsection{lode Ablauf}
+
+Ein Modell wird erstellt und als glTF innerhalb des Projekts gespeichert. Eine zum Modell gehörige Konfigurationsdatei wird angelegt und \e{lode} generiert die darin beschriebenen LOD Artfakte. Die Artfakten können innerhalb der Applikation mithilfe einer Bibliothek geladen werden. Bei Anpassungen an der Konfigurationsdatei werden die neuen Detailstufen automatisch generiert. Das zugehörige \e{lode-ui} bietet zudem die Möglichkeit die verschiedenen Detailstufen miteinander vergleichen zu können und die Konfiguration möglichst einfach zu justieren.
 
 \section{Benchmark}
 
