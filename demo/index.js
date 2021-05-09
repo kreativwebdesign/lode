@@ -61,6 +61,24 @@ const lods = [
     name: "assets/apricot",
     position: [-20, 0, -20],
   },
+  {
+    name: "assets/frank",
+    position: [-20, 0, 20],
+    scale: [0.05, 0.05, 0.05],
+  },
+  {
+    name: "assets/head",
+    position: [-15, 0, -15],
+  },
+  {
+    name: "assets/skull2",
+    position: [-15, 0, -15],
+  },
+  {
+    name: "assets/human",
+    position: [15, 0, -15],
+    scale: [0.05, 0.05, 0.05],
+  },
 ];
 
 const setupOptimizedScene = async (scene) => {
@@ -76,6 +94,7 @@ const setupOptimizedScene = async (scene) => {
   gltfLods.forEach((lod, i) => {
     scene.add(lod);
     lod.position.set(...lods[i].position);
+    lod.scale.set(...(lods[i].scale || [1, 1, 1]));
   });
 };
 
@@ -88,6 +107,7 @@ const setupNonOptimizedScene = async (scene) => {
   gltfs.forEach((gltf, i) => {
     scene.add(gltf.scene);
     gltf.scene.position.set(...lods[i].position);
+    gltf.scene.scale.set(...(lods[i].scale || [1, 1, 1]));
   });
 };
 
@@ -124,6 +144,7 @@ function render(scene) {
   performance.mark("renderLoopEnd");
   performance.measure("renderLoop", "renderLoopStart", "renderLoopEnd");
   console.log("::benchmark::fps::" + measureFPS());
+  console.log(renderer.info.render.triangles);
 }
 
 const main = async () => {
