@@ -51,32 +51,32 @@ const lods = [
   },
   {
     name: "assets/boat",
-    position: [20, 0, -20],
+    position: [25, 0, -15],
   },
   {
     name: "assets/armadillo",
-    position: [20, 0, 20],
+    position: [25, 0, 15],
   },
   {
     name: "assets/apricot",
-    position: [-20, 0, -20],
+    position: [15, 0, 25],
   },
   {
     name: "assets/frank",
-    position: [-20, 0, 20],
+    position: [-15, 0, 25],
     scale: [0.05, 0.05, 0.05],
   },
   {
     name: "assets/head",
-    position: [-15, 0, -15],
+    position: [-25, 0, -15],
   },
   {
     name: "assets/skull2",
-    position: [-15, 0, -15],
+    position: [-15, 0, -25],
   },
   {
     name: "assets/human",
-    position: [15, 0, -15],
+    position: [15, 0, -25],
     scale: [0.05, 0.05, 0.05],
   },
 ];
