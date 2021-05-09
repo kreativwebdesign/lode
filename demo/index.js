@@ -144,7 +144,6 @@ function render(scene) {
   performance.mark("renderLoopEnd");
   performance.measure("renderLoop", "renderLoopStart", "renderLoopEnd");
   console.log("::benchmark::fps::" + measureFPS());
-  console.log(renderer.info.render.triangles);
 }
 
 const main = async () => {
