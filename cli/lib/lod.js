@@ -41,12 +41,17 @@ export const performLOD = async ({ originalFile, levelDefinitions }) => {
 
       const baseMaterial = primitive.getMaterial();
       // obtain basic color
-      const baseColorTexture = baseMaterial.getBaseColorTexture();
-      // define default color
+      let colorTexture = baseMaterial.getBaseColorTexture();
 
+      // if no base color texture is defined, try emissive texture instead
+      if (!colorTexture) {
+        colorTexture = baseMaterial.getEmissiveTexture();
+      }
+
+      // define default color
       let color = baseMaterial.getBaseColorFactor();
-      if (baseColorTexture) {
-        const textureFileName = baseColorTexture.getURI();
+      if (colorTexture) {
+        const textureFileName = colorTexture.getURI();
         const texturePath = path.join(basePath, textureFileName);
         const averageColor = await getAverageColor(texturePath);
         color = averageColor.value.map(
