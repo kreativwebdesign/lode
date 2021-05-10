@@ -7,6 +7,37 @@ import "./src/optimized-toggle";
 import * as lodeLoader from "lode-three";
 import manifest from "./lode-build/lode-manifest.json";
 
+const config = {
+  objectCount: 20,
+  positionRanges: {
+    x: { min: -60, max: 60 },
+    y: { min: 0, max: 0 },
+    z: { min: -1000, max: 75 },
+  },
+};
+
+function generateRandomIntegerInRange(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+function generateRandomPosition() {
+  const { positionRanges } = config;
+  const y = generateRandomIntegerInRange(
+    positionRanges.y.min,
+    positionRanges.y.max
+  );
+  const z = generateRandomIntegerInRange(
+    positionRanges.z.min,
+    positionRanges.z.max
+  );
+  const absoluteZ = -1 * z + positionRanges.z.max;
+  const x = generateRandomIntegerInRange(
+    positionRanges.x.min - absoluteZ / 1.3,
+    positionRanges.x.max + absoluteZ / 1.3
+  );
+  return [x, y, z];
+}
+
 const useOptimized = getOptimized();
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -21,7 +52,7 @@ const camera = new THREE.PerspectiveCamera(
   1000
 );
 
-camera.position.set(0, 0, 125);
+camera.position.set(0, 50, 125);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.autoRotate = true;
@@ -81,6 +112,17 @@ const lods = [
   },
 ];
 
+const renderObjects = (scene, objs, selector = (obj) => obj) => {
+  objs.map(selector).forEach((obj, i) => {
+    for (let j = 0; j < config.objectCount; j++) {
+      const clone = obj.clone();
+      scene.add(clone);
+      clone.position.set(...generateRandomPosition());
+      clone.scale.set(...(lods[i].scale || [1, 1, 1]));
+    }
+  });
+};
+
 const setupOptimizedScene = async (scene) => {
   const gltfLods = await Promise.all(
     lods.map((lod) =>
@@ -91,11 +133,7 @@ const setupOptimizedScene = async (scene) => {
     )
   );
 
-  gltfLods.forEach((lod, i) => {
-    scene.add(lod);
-    lod.position.set(...lods[i].position);
-    lod.scale.set(...(lods[i].scale || [1, 1, 1]));
-  });
+  renderObjects(scene, gltfLods, (lod) => lod);
 };
 
 const setupNonOptimizedScene = async (scene) => {
@@ -104,11 +142,7 @@ const setupNonOptimizedScene = async (scene) => {
       loadGltfAsync(`${lod.name}/${lod.name.split("/").pop()}.gltf`)
     )
   );
-  gltfs.forEach((gltf, i) => {
-    scene.add(gltf.scene);
-    gltf.scene.position.set(...lods[i].position);
-    gltf.scene.scale.set(...(lods[i].scale || [1, 1, 1]));
-  });
+  renderObjects(scene, gltfs, (gltf) => gltf.scene);
 };
 
 // CreateScene function that creates and return the scene
