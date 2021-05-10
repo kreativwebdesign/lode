@@ -80,12 +80,11 @@ Die Lösung soll in eine wiederverwendbare und konfigurierbare Pipeline integrie
 In der Webentwicklung ist es üblich, über \fgls{CLI}{Command Line Interface – Kommandozeile} Arbeitsschritte zu automatisieren. Es soll demnach ein \e{\gls{CLI}} erstellt und auf \fgls{npm}{Node Package Manager} öffentlich zugänglich gemacht werden, welches nahtlos in den Entwicklungsablauf integriert werden kann. Über eine Konfiguration soll angegeben werden können, wo nach den \e{.glTF} Dateien gesucht, wie die Output-Dateien benennt und in welchem Modus das Tool gestartet werden soll. Ebenso werden Algorithmus-Einstellungen in dieser Konfiguration gesetzt werden können. Es soll einfach zu bedienen, gut dokumentiert und gut gewählte Standardeinstellungen haben. Zudem soll das Tool im einmal Modus laufen können oder kontinuierlich sich ändernde Dateien neu optimieren.
 
 \section{Nutzen LOD}
-Um den Nutzen von LOD quantifizieren zu können, wird in einer ersten Phase ein Benchmark aufgestellt.
-Ziel ist es, das Laufzeitverhalten unter Einsatz eines optimierten Modells zu analysieren und somit den maximal möglichen Einfluss von LOD auf die Leistung klassifizieren zu können.
+Um den Nutzen von LOD quantifizieren zu können müssen verschiedene Aspekte berücksichtigt werden.
 
 \subsection{Aspekte für Nutzen}
 
-Der Nutzen eines Systems definiert sich durch eine Vielzahl von Aspekte welche in verschiedenen Phasen aufgeteilt werden können. Die verschieden für die Entwicklung von Webanwendungen relevanten Aspekte werden im folgenden Abschnitt erläutert. Selbstverständlich kann nicht auf alle Aspekte eingegangen werden, es werden lediglich die relevantesten berücksichtigt.
+Der Nutzen eines Systems definiert sich durch eine Vielzahl von Aspekte welche in verschiedenen Phasen aufgeteilt werden können. Die verschieden für die Entwicklung von Webanwendungen relevanten Aspekte werden im folgenden Abschnitt erläutert. Es werden hierbei lediglich die Relevantesten berücksichtigt.
 
 \paragraph{Entwicklungszeit}
 
@@ -106,16 +105,18 @@ Entscheidend ist, unabhängig von der Applikation, das Laufzeitverhalten. Eine A
 Das Laufzeitverhalten wird durch eine Vielzahl von Aspekten beeinflusst.
 Angestrebt werden grundsätzlich immer 60 \fgls{FPS}{Frames per Second. Bilder pro Sekunde. Gängige Art, die Performanz der \gls{Rendering Engine} zu messen}. Wenn eine bestimmte Szenerie diese 60 \e{\gls{FPS}} nicht erreicht ist ein Performanzproblem vorhanden.
 
-\paragraph{Benchmarkaspekte}
+\paragraph{Berücksichtigung der Aspekte}
 In dieser Arbeit wird ein hoher Wert darauf gelegt, dass die Entwicklungszeit möglichst geringfügig verändert wird. Zudem werden, wo möglich, Empfehlungen getätigt um die Downloadgrösse möglichst marginal zu verändern.
 Die somit primären Aspekte für die Beurteilung sind die Auswirkungen auf das Laufzeitverhalten.
+
+Um diese Beurteilung tätigen zu können wird im folgenden ein Benchmark definiert. Ziel ist es, das Laufzeitverhalten zu analysieren und somit den maximal möglichen Einfluss von LOD auf die Leistung klassifizieren zu können. Hierbei werden verschiedene Aspekte betrachtet.
 
 \subsection{Mögliche Ansätze}
 
 Verschiedene Varianten können gewählt werden um den Nutzen aufzuzeigen. Die verschiedenen in Betracht gezogenen Ansätze werden in diesem Abschnitt erläutert.
 
 \paragraph{Modellbetrachtung}
-Grundsätzlich kann der Nutzen einfach beziffert werden indem die Kosten zum Rendering eines Modelles berechnet werden. So können die Kosten in benutzter GPU Ressourcen gemessen werden indem man die Kosten eines spezifischen \e{Draw Calls} misst. Diese Art von Benchmark ist relativ einfach zu implementieren und liefert genaue Resultate. Die Auswirkungen von Nebeneffekten können beinahe vollständig negiert werden.
+Grundsätzlich kann der Nutzen beziffert werden indem die Kosten zum Rendering eines Modelles berechnet werden. So können die Kosten in benutzter GPU Ressourcen gemessen werden indem man die Kosten eines spezifischen \e{Draw Calls} misst. Diese Art von Benchmark ist relativ einfach zu implementieren und liefert genaue Resultate. Die Auswirkungen von Nebeneffekten können beinahe vollständig negiert werden.
 Sinnvoll wäre es das Modell in konstanter Distanz zur Kamera um zwei Achsen drehen zu lassen und die Messung solange durchzuführen, bis eine ganze Umdrehung stattgefunden hat.
 Der primäre Nachteil bei dieser Variante liegt an der Aussagekraft. Die einzige belegte Aussage ist, dass es möglich ist Performanzeinsparungen mit Vereinfachungen zu erhalten. Dies dient jedoch nicht als Beleg, dass der Einsatz von LOD Artefakten Performanzengpässe lösen kann.
 
@@ -123,8 +124,8 @@ Der primäre Nachteil bei dieser Variante liegt an der Aussagekraft. Die einzige
 Bei diesem Ansatz wird eine gegebene Szenerie möglichst geringfügig angepasst und die Auswirkungen auf die Performanz verglichen.
 Wenn die unoptimierte Variante 60 \e{\gls{FPS}} erreicht oder gar übersteigt, ist eine Optimierung nicht notwendig. Somit muss eine Szenerie gewählt werden, welche diesen Wert unterschreitet. 
 Ziel ist es dann die LOD Artefakte in dieselbe Szenerie zu integrieren und die \e{FPS} zu steigern. Ziel der Arbeit ist es, ein System zu entwickeln, das für Szenarien unter 60 \e{\gls{FPS}} diese erhöht und im Idealfall auf ebendiesen Wert hebt.
-Eine solche Szenerie soll grundsätzlich Modelle sowohl nah als auch in grosser Distanz zeigen. Ein Beispiel für eine solche Szenerie ist eine Visualisierung aus  Vogelperspektive mit Zoom Verhalten.
-Die Aussagekraft eines solchen Tests ist ausreichend um einen Beleg für den positiven Nutzen des Systems zu haben.
+Eine solche Szenerie soll grundsätzlich Modelle sowohl nah als auch in grosser Distanz zeigen. Ein Beispiel für eine solche Szenerie ist eine Visualisierung aus Vogelperspektive mit Zoomverhalten.
+Im Vergleich zur Modellbetrachtung ist die Aussagekraft eines solchen Tests ausreichend um einen Beleg für den positiven Nutzen des Systems zu haben. Sollt es nicht möglich sein die \e{FPS} zu steigern, liefert der Einsatz von LOD keinen nachweisbaren Nutzen.
 
-\subparagraph{Vergleichbare Arbeiten}
+\subsection{Vergleichbare Arbeiten}
 Eine unabhängige Arbeit definierte 2017 einen vergleichbaren Benchmark um die Performanz von Three.js und Babylon.js in einem spezifischen Anwendungsgebiet zu vergleichen. Der Benchmark entwickelte vergleichbare Szenerien und vergleicht die Ressourcennutzung der beiden Varianten. \cite{performanceComparisonBabylonThreejs}
