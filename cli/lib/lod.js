@@ -1,5 +1,5 @@
 import path from "path";
-import { Document, Accessor, NodeIO } from "@gltf-transform/core";
+import { ColorUtils, Document, Accessor, NodeIO } from "@gltf-transform/core";
 import { getAverageColor } from "fast-average-color-node";
 import simplify from "./simplification/index.js";
 import { prepareData } from "./simplification/prepare-data.js";
@@ -49,10 +49,10 @@ export const performLOD = async ({ originalFile, levelDefinitions }) => {
         const textureFileName = colorTexture.getURI();
         const texturePath = path.join(basePath, textureFileName);
         const averageColor = await getAverageColor(texturePath);
-        color = averageColor.value.map(
-          // convert from rgb to linear
-          (val) => val / 255
-        );
+        const colorAsValue = parseInt("0x" + averageColor.hex.substr(1));
+        const factor = ColorUtils.hexToFactor(colorAsValue, []);
+
+        color = [...factor, averageColor.value[3] / 255];
       }
 
       const material = newDoc.createMaterial(`material_${primitiveIndex}`);
