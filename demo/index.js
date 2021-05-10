@@ -66,48 +66,44 @@ const lodeContext = lodeLoader.createContext({
 const lods = [
   {
     name: "assets/duck",
-    position: [30, 0, 0],
+    scale: [3, 3, 3],
   },
   {
     name: "assets/airplane",
-    position: [-30, 0, 0],
   },
   {
     name: "assets/skull",
-    position: [0, 0, 30],
   },
   {
     name: "assets/dragon",
-    position: [0, 0, -30],
   },
   {
     name: "assets/boat",
-    position: [25, 0, -15],
   },
   {
     name: "assets/armadillo",
-    position: [25, 0, 15],
   },
   {
     name: "assets/apricot",
-    position: [15, 0, 25],
   },
   {
     name: "assets/frank",
-    position: [-15, 0, 25],
     scale: [0.05, 0.05, 0.05],
   },
   {
     name: "assets/head",
-    position: [-25, 0, -15],
+    scale: [2, 2, 2],
   },
   {
     name: "assets/skull2",
-    position: [-15, 0, -25],
+    scale: [3, 3, 3],
+  },
+  {
+    name: "assets/shiba",
+    scale: [5, 5, 5],
   },
   {
     name: "assets/human",
-    position: [15, 0, -25],
     scale: [0.05, 0.05, 0.05],
   },
 ];
