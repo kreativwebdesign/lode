@@ -49,8 +49,9 @@ export const performLOD = async ({ originalFile, levelDefinitions }) => {
         const textureFileName = colorTexture.getURI();
         const texturePath = path.join(basePath, textureFileName);
         const averageColor = await getAverageColor(texturePath);
-        const colorAsValue = parseInt("0x" + averageColor.hex.substr(1));
-        const factor = ColorUtils.hexToFactor(colorAsValue, []);
+        // converts string to number representation
+        const colorAsNumber = parseInt("0x" + averageColor.hex.substr(1));
+        const factor = ColorUtils.hexToFactor(colorAsNumber, []);
 
         color = [...factor, averageColor.value[3] / 255];
       }
