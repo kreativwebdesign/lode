@@ -159,6 +159,16 @@ const createScene = async function () {
     await setupNonOptimizedScene(scene);
   }
 
+  const geometry = new THREE.PlaneGeometry(10000, 10000);
+  const material = new THREE.MeshBasicMaterial({
+    color: 0x99b535,
+    side: THREE.DoubleSide,
+  });
+  const plane = new THREE.Mesh(geometry, material);
+  plane.rotation.x = 1.5708;
+  plane.position.y = -5;
+  scene.add(plane);
+
   // notify benchmark when scene is set
   console.log("::benchmark::loadedModels");
   performance.mark("gltfLoadEnd");
