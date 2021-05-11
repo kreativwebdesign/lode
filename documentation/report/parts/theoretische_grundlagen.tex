@@ -192,7 +192,7 @@ In Abbildung \ref{fig:transformationVertexRemovalOriginal} wird der zentrale Ver
 \end{figure}
 
 \section{Grafikpipeline}
-Die Grafikpipeline ist zuständig um eine definierte Szene auf einem Ausgabegerät zu visualisieren. Die verschiedenen Schritte werden im folgenden Abschnitt kurz erläutert. Es wird dabei ein simples 3D-Modell auf einen 2D Display wie zum Beispiel ein Monitor visualisiert. Die verschiedenen Schritte sind in Abbildung \ref{fig:renderingPipelineOverview} aufgezeigt.
+Die Grafikpipeline ist zuständig um eine definierte Szene auf einem Ausgabegerät zu visualisieren. Die verschiedenen Schritte werden im folgenden Abschnitt kurz erläutert. Es wird dabei ein simples 3D-Modell auf einem 2D-Display, wie zum Beispiel einem Monitor, visualisiert. Die verschiedenen Schritte sind in Abbildung \ref{fig:renderingPipelineOverview} aufgezeigt.
 
 \begin{figure}[H]
   \centering
@@ -221,7 +221,7 @@ const indices = new Uint16Array(
 \end{figure}
 
 \paragraph{Vertexshader}
-Anschliessend werden die Daten an die GPU gesendet. Der erste Schritt ist der sogenannte Vertexshader. Auftrag des Vertexshaders ist es die \e{Vertices} zu transformieren. Die Modelle werden ausgerichtet, die Beleuchtung bestimmt und die 2D Projektion vorgenommen. Ein Beispiel für einen simplen Vertexhsader ist in Abbildung \ref{fig:vertexShader} ersichtlich.
+Anschliessend werden die Daten an die GPU gesendet. Der erste Schritt ist der sogenannte Vertexshader. Auftrag des Vertexshaders ist es, die \e{Vertices} zu transformieren. Die Modelle werden ausgerichtet, die Beleuchtung bestimmt und die 2D-Projektion vorgenommen. Ein Beispiel für einen simplen Vertexhsader ist in Abbildung \ref{fig:vertexShader} ersichtlich.
 
 \begin{figure}[H]
 \begin{lstlisting}
