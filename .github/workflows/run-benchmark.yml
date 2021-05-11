@@ -1,5 +1,5 @@
-# This code will run the benchmark
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+# This code will run the benchmark to ensure everything is working e2e
+# The generated results are not reliable
 
 name: Run Benchmark
 
@@ -43,4 +43,4 @@ jobs:
           cd benchmark
           yarn install --frozen-lockfile
           yarn run-demo
-          yarn start --iterations=2 --timeout 60000
+          yarn start --iterations=2 --timeout 60000 --headless
