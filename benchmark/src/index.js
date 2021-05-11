@@ -12,6 +12,8 @@ const argv = yargs(hideBin(process.argv)).argv;
 const LOG_DETAILS = argv.logDetails || false;
 setLogDetail(LOG_DETAILS);
 
+const HEADLESS = argv.headless || false;
+
 const main = async () => {
   const ITERATIONS = argv.iterations || 10;
   const SAMPLE_TIMEOUT_MS = argv.timeout || 20000;
@@ -88,7 +90,7 @@ const sample = async (optimize) => {
   const TEMP_FOLDER = "tmp/";
   createFolderIfNotExist(TEMP_FOLDER);
   logDetail("start benchmark");
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({ headless: HEADLESS });
   const page = await browser.newPage();
 
   const { report, reportPerformanceEntries, getReport } = reporter();
