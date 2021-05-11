@@ -1,6 +1,5 @@
 import { vec3 } from "gl-matrix";
 
-// TODO: add unit test
 // Check if a triangle flips when this edge is removed
 export const checkCollapseFlip = (
   point,
