@@ -45,7 +45,7 @@ Unity sowie Unreal verfügen über umfangreiche LOD Systeme. Eine Analyse dieser
 
 \paragraph{Unreal}
 
-Unreal verfügt sowohl über ein DLOD System als auch über ein HLOD System. Das HLOD Tool zeichnet sich insbesondere dadurch aus, dass es die verschiedenen HLOD Artefakte automatisch generieren kann. Dies ermöglicht es kommplexe Strukturen direkt innerhalb von Unreal zu kombinieren. \cite{unrealProxyLod}
+Unreal verfügt sowohl über ein DLOD System als auch über ein HLOD System. Das HLOD Tool zeichnet sich insbesondere dadurch aus, dass es die verschiedenen HLOD Artefakte automatisch generieren kann. Dies ermöglicht es, komplexe Strukturen direkt innerhalb von Unreal zu kombinieren. \cite{unrealProxyLod}
 
 \paragraph{Unity}
 
@@ -80,11 +80,11 @@ Die Lösung soll in eine wiederverwendbare und konfigurierbare Pipeline integrie
 In der Webentwicklung ist es üblich, über \fgls{CLI}{Command Line Interface – Kommandozeile} Arbeitsschritte zu automatisieren. Es soll demnach ein \e{\gls{CLI}} erstellt und auf \fgls{npm}{Node Package Manager} öffentlich zugänglich gemacht werden, welches nahtlos in den Entwicklungsablauf integriert werden kann. Über eine Konfiguration soll angegeben werden können, wo nach den \e{.glTF} Dateien gesucht, wie die Output-Dateien benennt und in welchem Modus das Tool gestartet werden soll. Ebenso werden Algorithmus-Einstellungen in dieser Konfiguration gesetzt werden können. Es soll einfach zu bedienen, gut dokumentiert und gut gewählte Standardeinstellungen haben. Zudem soll das Tool im einmal Modus laufen können oder kontinuierlich sich ändernde Dateien neu optimieren.
 
 \section{Nutzen LOD}
-Um den Nutzen von LOD quantifizieren zu können müssen verschiedene Aspekte berücksichtigt werden.
+Um den Nutzen von LOD quantifizieren zu können, müssen verschiedene Aspekte berücksichtigt werden.
 
 \subsection{Aspekte für Nutzen}
 
-Der Nutzen eines Systems definiert sich durch eine Vielzahl von Aspekte welche in verschiedenen Phasen aufgeteilt werden können. Die verschieden für die Entwicklung von Webanwendungen relevanten Aspekte werden im folgenden Abschnitt erläutert. Es werden hierbei lediglich die Relevantesten berücksichtigt.
+Der Nutzen eines Systems definiert sich durch eine Vielzahl von Aspekte, welche in verschiedenen Phasen aufgeteilt werden können. Die verschieden für die Entwicklung von Webanwendungen relevanten Aspekte werden im folgenden Abschnitt erläutert. Es werden hierbei lediglich die Relevantesten berücksichtigt.
 
 \paragraph{Entwicklungszeit}
 
@@ -109,7 +109,7 @@ Angestrebt werden grundsätzlich immer 60 \fgls{FPS}{Frames per Second. Bilder p
 In dieser Arbeit wird ein hoher Wert darauf gelegt, dass die Entwicklungszeit möglichst geringfügig verändert wird. Zudem werden, wo möglich, Empfehlungen getätigt um die Downloadgrösse möglichst marginal zu verändern.
 Die somit primären Aspekte für die Beurteilung sind die Auswirkungen auf das Laufzeitverhalten.
 
-Um diese Beurteilung tätigen zu können wird im folgenden ein Benchmark definiert. Ziel ist es, das Laufzeitverhalten zu analysieren und somit den maximal möglichen Einfluss von LOD auf die Leistung klassifizieren zu können. Hierbei werden verschiedene Aspekte betrachtet.
+Um diese Beurteilung tätigen zu können, wird im Folgenden ein Benchmark definiert. Ziel ist es, das Laufzeitverhalten zu analysieren und somit den maximal möglichen Einfluss von LOD auf die Leistung klassifizieren zu können. Hierbei werden verschiedene Aspekte betrachtet.
 
 \subsection{Mögliche Ansätze}
 
@@ -124,8 +124,8 @@ Der primäre Nachteil bei dieser Variante liegt an der Aussagekraft. Die einzige
 Bei diesem Ansatz wird eine gegebene Szenerie möglichst geringfügig angepasst und die Auswirkungen auf die Performanz verglichen.
 Wenn die unoptimierte Variante 60 \e{\gls{FPS}} erreicht oder gar übersteigt, ist eine Optimierung nicht notwendig. Somit muss eine Szenerie gewählt werden, welche diesen Wert unterschreitet. 
 Ziel ist es dann die LOD Artefakte in dieselbe Szenerie zu integrieren und die \e{FPS} zu steigern. Ziel der Arbeit ist es, ein System zu entwickeln, das für Szenarien unter 60 \e{\gls{FPS}} diese erhöht und im Idealfall auf ebendiesen Wert hebt.
-Eine solche Szenerie soll grundsätzlich Modelle sowohl nah als auch in grosser Distanz zeigen. Ein Beispiel für eine solche Szenerie ist eine Visualisierung aus Vogelperspektive mit Zoomverhalten.
-Im Vergleich zur Modellbetrachtung ist die Aussagekraft eines solchen Tests ausreichend um einen Beleg für den positiven Nutzen des Systems zu haben. Sollte es nicht möglich sein die \e{FPS} zu steigern, liefert der Einsatz von LOD keinen nachweisbaren Nutzen.
+Eine solche Szenerie soll grundsätzlich Modelle sowohl nah als auch in grosser Distanz zeigen. Ein Beispiel für eine solche Szenerie ist eine Visualisierung aus der Vogelperspektive mit Zoomverhalten.
+Im Vergleich zur Modellbetrachtung ist die Aussagekraft eines solchen Tests ausreichend, um einen Beleg für den positiven Nutzen des Systems zu haben. Sollte es nicht möglich sein, die \e{FPS} zu steigern, so liefert der Einsatz von LOD keinen nachweisbaren Nutzen.
 
 \subsection{Vergleichbare Arbeiten}
 Eine unabhängige Arbeit definierte 2017 einen vergleichbaren Benchmark um die Performanz von Three.js und Babylon.js in einem spezifischen Anwendungsgebiet zu vergleichen. Der Benchmark entwickelte vergleichbare Szenerien und vergleicht die Ressourcennutzung der beiden Varianten. \cite{performanceComparisonBabylonThreejs}
