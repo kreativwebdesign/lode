@@ -86,6 +86,8 @@ Bei einem Testablauf werden folgende Schritte durchlaufen:
 
 Der Test erfasst die in Tabelle \ref{table:benchmarkFigures} aufgeführten Kennzahlen.
 
+Die \e{Render Loop} ist eine Schleife, welche kontinuierlich die Grafikpipeline durchläuft.
+
 \begin{table}[H]
   \centering
   \begin{tabular}{ l p{8cm} }
@@ -93,7 +95,7 @@ Der Test erfasst die in Tabelle \ref{table:benchmarkFigures} aufgeführten Kennz
   Kennzahl & Beschreibung \\
   \hline
   \hline
-  Median \e{\gls{FPS}} & Die \e{\gls{FPS}} werden kontinuierlich berechnet. Um krasse Abweichungen zu ignorieren wird der Median verwendet. \\
+  Median \e{\gls{FPS}} & Die \e{\gls{FPS}} werden kontinuierlich berechnet. Um starke Abweichungen zu verwerfen wird der Median verwendet. \\
   \hline
   Totale GPU Zeit & Die totale Zeit, welche die GPU für Berechungen benötigt. \\
   \hline
