@@ -47,7 +47,7 @@ Diese Technik führt zu signifikanten Detailverlusten bei der Nahbetrachtung und
 
 \section{Benchmark}
 
-In diesem Abschnitt werden die verschiedenen erwägten Optionen erläutert und die Abgrenzungen aufgezeigt.
+In diesem Abschnitt wird das Benchmarksetup erläutert. Die verschiedenen technischen Entscheide werden detailliert aufgezeigt.
 Das Ziel des Benchmarks ist der Vergleich einer Version ohne Einsatz von LOD und einer Umgebung, welche LODs einsetzt. Um eine möglichst praxisnahe Aussage treffen zu können wird hierfür eine Demo Szenerie verwendet, welche einer echten Anwendung so nah wie möglich kommt. Somit wird gewährleistet, dass es nicht nur in der Theorie einen Nutzen für LODs gibt, sondern dieser in der Praxis vorhanden ist.
 
 \paragraph{Browser Umgebung}
@@ -76,12 +76,12 @@ Derselbe Testablauf wird sowohl für die optimierte als auch für die unoptimier
 Bei einem Testablauf werden folgende Schritte durchlaufen:
 
 \begin{enumerate}
-  \item Öffne Applikation in \emph{Chromium} Instanz.
-  \item Warte bis Seite geladen ist.
-  \item Starte \emph{Profiling}.
+  \item Öffne Applikation in einer \emph{Chromium} Instanz.
+  \item Warte bis die Seite geladen ist.
+  \item Starte das \emph{Profiling}.
   \item Warte $n$ Sekunden.
-  \item Stoppe \emph{Profiling}.
-  \item Werte Daten aus.
+  \item Stoppe das \emph{Profiling}.
+  \item Werte die Daten aus.
 \end{enumerate}
 
 Der Test erfasst die in Tabelle \ref{table:benchmarkFigures} aufgeführten Kennzahlen.
@@ -112,6 +112,15 @@ Der Test erfasst die in Tabelle \ref{table:benchmarkFigures} aufgeführten Kennz
 
 \paragraph{Aufbau Testapplikation}
 Die Testapplikation stellt eine komplexe Szenerie dar. Der Betrachter fliegt während dem Ablauf kontinuierlich über die Szenerie. Dies stellt die optimalen Bedingungen für den Einsatz von LOD Artefakten dar.
+
+In Abbildung \ref{fig:demoApplication} ist ein Screenshot der Testapplikation ersichtlich. Die Kamera wird kontinuierlich innerhalb der Szene bewegt. Die Kamera wird abhängig von der Systemzeit positioniert. So ist es möglich, dass beide Applikationen - unabhängig von den \e{FPS} jeweils die gleichen Aspekte innerhalb der Applikation visualisieren. Die Modelle werden zudem bei jedem Durchlauf identisch positioniert. Dies gewährleistet, dass das Laufzeitverhalten verlässlich ist.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\columnwidth]{resultate/screenshotdemoapplication.jpg}
+  \caption{Testapplikation}
+  \label{fig:demoApplication}
+\end{figure}
 
 \paragraph{Testumgebung}
 Um während den Tests möglichst faire Bedingungen zu gewährleisten wird die Maschine zuvor wie bei anderen Benchmarks vorbereitet. Ziel ist es, Seiteneffekte zu minimieren. Für diesen Benchmark wurden deshalb die Instruktionen von \e{Tracer Bench} zur Behebung von Rauschen befolgt.
