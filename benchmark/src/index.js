@@ -89,7 +89,7 @@ const sample = async (optimize) => {
   const TEMP_FOLDER = "tmp/";
   createFolderIfNotExist(TEMP_FOLDER);
   logDetail("start benchmark");
-  const browser = await puppeteer.launch({ headless: false });
+  const browser = await puppeteer.launch();
   const page = await browser.newPage();
 
   const { report, reportPerformanceEntries, getReport } = reporter();
