@@ -191,27 +191,66 @@ In Abbildung \ref{fig:transformationVertexRemovalOriginal} wird der zentrale Ver
   \label{fig:transformationVertexRemoval}
 \end{figure}
 
-\section{Graphics Pipeline}
-Die Graphics Pipeline ist zuständig um eine definierte Szene auf einem Ausgabegerät zu visualisieren. Die verschiedenen Schritte werden im folgenden Abschnitt kurz erläutert. Es wird dabei ein simples 3D-Modell auf einen normalen 2D Display visualisiert. Die verschiedenen Schritte sind in Abbildung \ref{fig:renderingPipelineOverview} aufgezeigt.
+\section{Grafikpipeline}
+Die Grafikpipeline ist zuständig um eine definierte Szene auf einem Ausgabegerät zu visualisieren. Die verschiedenen Schritte werden im folgenden Abschnitt kurz erläutert. Es wird dabei ein simples 3D-Modell auf einem 2D-Display, wie zum Beispiel einem Monitor, visualisiert. Die verschiedenen Schritte sind in Abbildung \ref{fig:renderingPipelineOverview} aufgezeigt.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\columnwidth]{grundlagen/pipeline/graphics-pipeline.png}
-  \caption{Schritte einer Graphics Pipeline}
+  \caption{Schritte einer Realtime Rendering Pipeline}
   \label{fig:renderingPipelineOverview}
 \end{figure}
 
 \paragraph{Applikation}
-Im ersten Schritt wird die Szenerie aufbereitet, Modelle in den Arbeitsspeicher geladen, Positionen und Rotationen der Modelle definiert. Diese Schritte werden auf der CPU durchgeführt.
+Im ersten Schritt wird die Szenerie aufbereitet, Modelle in den Arbeitsspeicher geladen, Positionen und Rotationen der Modelle definiert. Diese Schritte werden auf der CPU durchgeführt. Ein Beispiel für das aufsetzen eines einfachen \e{Triangles} bestehnd aus drei \e{Vertices} ist in Abbildung \ref{fig:geometryDefinition} ersichtlich.
 
-\paragraph{Geometrie}
-Anschliessend werden die Definitionen an die Geometrie Pipeline geliefert. Diese ist zuständig um die Modelle auszurichten, die Beleuchtung zu bestimmen und die 2D Projektion vorzunehmen.
+\begin{figure}[H]
+\begin{lstlisting}
+const vertices = new Float32Array([
+  -1, 1, 0, // vertex 0
+  -1, -1, 0, // vertex 1
+  1, -1, 0 // vertex 2
+]);
 
-\paragraph{Rasterization}
-Im letzten Schritt werden kontinuierliche Objekte zu diskreten Fragmenten verarbeitet. Der Anwender hat hierbei in vielen Engines die Möglichkeit, den Prozess mithilfe eines \fgls{Fragmentshaders}{Generiert Farbdefinition für ein einzelnes Pixel mit zugehörigem Tiefenwert} anzupassen.
+const indices = new Uint16Array(
+  [0, 1, 2] // triangle 0
+);
+\end{lstlisting}
+\caption{Definition eines Triangles}
+\label{fig:geometryDefinition}
+\end{figure}
+
+\paragraph{Vertexshader}
+Anschliessend werden die Daten an die GPU gesendet. Der erste Schritt ist der sogenannte Vertexshader. Auftrag des Vertexshaders ist es, die \e{Vertices} zu transformieren. Die Modelle werden ausgerichtet, die Beleuchtung bestimmt und die 2D-Projektion vorgenommen. Ein Beispiel für einen simplen Vertexhsader ist in Abbildung \ref{fig:vertexShader} ersichtlich.
+
+\begin{figure}[H]
+\begin{lstlisting}
+attribute vec3 coordinates;
+
+void main(void) {
+  gl_Position = vec4(coordinates, 1.0);
+}
+\end{lstlisting}
+\caption{Vertexshader für die Definition eines Punktes}
+\label{fig:vertexShader}
+\end{figure}
+
+\paragraph{Fragmentshader}
+Durch die Rasterisierung werden kontinuierliche Objekte zu diskreten Fragmenten verarbeitet. Der Fragmentshader generiert die Farbdefinitionen für die einzelnen Pixel. Ein einfaches Beispiel ist in Abbildung \ref{fig:fragmentShader} ersichtlich.
+
+\begin{figure}[H]
+\begin{lstlisting}
+void main(void) {
+  gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
+}
+\end{lstlisting}
+\caption{Fragmentshader für das definieren von Farbwerten}
+\label{fig:fragmentShader}
+\end{figure}
+
 
 \paragraph{Bildschirm}
-Am Schluss wird das vom Rasterization Prozess generierte Bild auf dem Bildschirm dargestellt.
+Am Schluss wird das vom Fragmentshader generierte Bild auf dem Bildschirm dargestellt.
 
 \section{Performanzoptimierung}
 Visualisierungen können zu komplex werden, um jederzeit performant und interaktiv gerendert zu werden.
@@ -293,6 +332,7 @@ Der Hauptnachteil liegt darin, dass hierfür signifikante Anpassungen am Scene G
 \subsection{Vergleich Algorithmen}
 \label{chap:lodAlgorithmComparison}
 
+Ziel des Algorithmus ist es eine gegebene geometrische Struktur mit möglichst wenig \e{Triangles} so genau wie möglich zu approximieren.
 Diese Art von Problem ist in der Literatur unter anderem als \e{Surface Simplification}, polygonale Simplifizierung, geometrische Simplifizierung oder Mesh Reduzierung bekannt.
 Grundsätzlich kann man die verschiedenen Algorithmen in Kategorien einteilen.
 Im folgenden Abschnitt wird auf die Grundidee der verschiedenen Kategorien eingegangen.
