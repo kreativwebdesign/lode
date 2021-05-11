@@ -10,7 +10,7 @@ import manifest from "./lode-build/lode-manifest.json.proxy.js";
 import models from "./src/models.js";
 
 const config = {
-  objectCount: 20,
+  objectCount: 30,
   positionRanges: {
     x: { min: -60, max: 60 },
     y: { min: 0, max: 0 },
@@ -33,10 +33,6 @@ const camera = new THREE.PerspectiveCamera(
 );
 
 camera.position.set(0, 50, 125);
-
-const controls = new OrbitControls(camera, renderer.domElement);
-// controls.autoRotate = true;
-controls.autoRotateSpeed = 4;
 
 const lodeContext = lodeLoader.createContext({
   manifest,
@@ -123,10 +119,18 @@ const createScene = async function () {
   return scene;
 };
 
+let timeSinceLastUpdate = performance.now();
+function updateCameraPosition() {
+  const delta = performance.now() - timeSinceLastUpdate;
+  camera.position.z -= delta / 60;
+  timeSinceLastUpdate = performance.now();
+}
+
 function render(scene) {
   performance.mark("renderLoopStart");
   renderer.render(scene, camera);
-  controls.update();
+  //controls.update();
+  updateCameraPosition();
   performance.mark("renderLoopEnd");
   performance.measure("renderLoop", "renderLoopStart", "renderLoopEnd");
   console.log("::benchmark::fps::" + measureFPS());

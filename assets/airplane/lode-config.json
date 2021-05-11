@@ -1,10 +1,10 @@
 {
   "levels": [
     {
-      "threshold": 100
+      "threshold": 300
     },
     {
-      "threshold": 50,
+      "threshold": -1,
       "configuration": {
         "targetScale": 0.0625
       }
