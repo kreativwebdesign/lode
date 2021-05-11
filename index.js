@@ -1,5 +1,4 @@
 import * as THREE from "./_snowpack/pkg/three.js";
-import { OrbitControls } from "./_snowpack/pkg/three/examples/jsm/controls/OrbitControls.js";
 import { measureFPS } from "./src/measure-fps.js";
 import loadGltfAsync from "./src/async-gltf-loader.js";
 import generateRandomPosition from "./src/generate-random-position.js";

@@ -1,5 +1,9 @@
+import seedrandom from "../_snowpack/pkg/seedrandom.js";
+
+const random = seedrandom("lode");
+
 function generateRandomIntegerInRange(min, max) {
-  return Math.floor(Math.random() * (max - min)) + min;
+  return Math.floor(random() * (max - min)) + min;
 }
 
 function generateRandomPosition({ positionRanges }) {
