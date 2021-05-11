@@ -43,4 +43,4 @@ jobs:
           cd benchmark
           yarn install --frozen-lockfile
           yarn run-demo
-          yarn start --iterations=5 --logDetails
+          yarn start --iterations=5 --logDetails --timeout 60000
