@@ -16,6 +16,10 @@ const config = {
     y: { min: 0, max: 0 },
     z: { min: -800, max: 75 },
   },
+  cameraConstraints: {
+    max: 125,
+    min: -400,
+  },
 };
 
 const useOptimized = getOptimized();
@@ -120,10 +124,16 @@ const createScene = async function () {
 };
 
 let timeSinceLastUpdate = performance.now();
+let direction = -1;
 function updateCameraPosition() {
   const delta = performance.now() - timeSinceLastUpdate;
-  camera.position.z -= delta / 60;
+  camera.position.z += (delta / 60) * direction;
   timeSinceLastUpdate = performance.now();
+  if (camera.position.z > config.cameraConstraints.max) {
+    direction = -1;
+  } else if (camera.position.z < config.cameraConstraints.min) {
+    direction = 1;
+  }
 }
 
 function render(scene) {
