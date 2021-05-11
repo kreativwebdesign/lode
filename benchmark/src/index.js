@@ -9,13 +9,12 @@ import { generateHolisticReport } from "./reporter.js";
 
 const argv = yargs(hideBin(process.argv)).argv;
 
-const SAMPLE_TIMEOUT_MS = 20000;
-
 const LOG_DETAILS = argv.logDetails || false;
 setLogDetail(LOG_DETAILS);
 
 const main = async () => {
   const ITERATIONS = argv.iterations || 10;
+  const SAMPLE_TIMEOUT_MS = argv.timeout || 20000;
   logDetail("start benchmark with " + ITERATIONS + " iterations");
   const reports = [];
   for (let i = 0; i < ITERATIONS; i++) {
