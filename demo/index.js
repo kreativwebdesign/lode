@@ -1,5 +1,4 @@
 import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { measureFPS } from "./src/measure-fps";
 import loadGltfAsync from "./src/async-gltf-loader";
 import generateRandomPosition from "./src/generate-random-position";
