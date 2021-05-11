@@ -2,41 +2,21 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { measureFPS } from "./src/measure-fps";
 import loadGltfAsync from "./src/async-gltf-loader";
+import generateRandomPosition from "./src/generate-random-position";
 import { getOptimized } from "./src/url-param";
 import "./src/optimized-toggle";
 import * as lodeLoader from "lode-three";
 import manifest from "./lode-build/lode-manifest.json";
+import models from "./src/models";
 
 const config = {
   objectCount: 20,
   positionRanges: {
     x: { min: -60, max: 60 },
     y: { min: 0, max: 0 },
-    z: { min: -1000, max: 75 },
+    z: { min: -800, max: 75 },
   },
 };
-
-function generateRandomIntegerInRange(min, max) {
-  return Math.floor(Math.random() * (max - min)) + min;
-}
-
-function generateRandomPosition() {
-  const { positionRanges } = config;
-  const y = generateRandomIntegerInRange(
-    positionRanges.y.min,
-    positionRanges.y.max
-  );
-  const z = generateRandomIntegerInRange(
-    positionRanges.z.min,
-    positionRanges.z.max
-  );
-  const absoluteZ = -1 * z + positionRanges.z.max;
-  const x = generateRandomIntegerInRange(
-    positionRanges.x.min - absoluteZ / 1.3,
-    positionRanges.x.max + absoluteZ / 1.3
-  );
-  return [x, y, z];
-}
 
 const useOptimized = getOptimized();
 
@@ -55,7 +35,7 @@ const camera = new THREE.PerspectiveCamera(
 camera.position.set(0, 50, 125);
 
 const controls = new OrbitControls(camera, renderer.domElement);
-controls.autoRotate = true;
+// controls.autoRotate = true;
 controls.autoRotateSpeed = 4;
 
 const lodeContext = lodeLoader.createContext({
@@ -63,68 +43,24 @@ const lodeContext = lodeLoader.createContext({
   basePath: "./lode-build",
 });
 
-const lods = [
-  {
-    name: "assets/duck",
-    scale: [3, 3, 3],
-  },
-  {
-    name: "assets/airplane",
-  },
-  {
-    name: "assets/skull",
-  },
-  {
-    name: "assets/dragon",
-  },
-  {
-    name: "assets/boat",
-  },
-  {
-    name: "assets/armadillo",
-  },
-  {
-    name: "assets/apricot",
-  },
-  {
-    name: "assets/frank",
-    scale: [0.05, 0.05, 0.05],
-  },
-  {
-    name: "assets/head",
-    scale: [2, 2, 2],
-  },
-  {
-    name: "assets/skull2",
-    scale: [3, 3, 3],
-  },
-  {
-    name: "assets/shiba",
-    scale: [5, 5, 5],
-  },
-  {
-    name: "assets/human",
-    scale: [0.05, 0.05, 0.05],
-  },
-];
-
 const renderObjects = (scene, objs, selector = (obj) => obj) => {
   objs.map(selector).forEach((obj, i) => {
     for (let j = 0; j < config.objectCount; j++) {
       const clone = obj.clone();
       scene.add(clone);
-      clone.position.set(...generateRandomPosition());
-      clone.scale.set(...(lods[i].scale || [1, 1, 1]));
+      clone.position.set(...generateRandomPosition(config));
+      clone.scale.set(...(models[i].scale || [1, 1, 1]));
+      clone.rotation.set(...(models[i].rotation || [0, 0, 0]));
     }
   });
 };
 
 const setupOptimizedScene = async (scene) => {
   const gltfLods = await Promise.all(
-    lods.map((lod) =>
+    models.map((model) =>
       lodeLoader.loadModel({
         lodeContext,
-        artifactName: lod.name,
+        artifactName: model.name,
       })
     )
   );
@@ -134,8 +70,8 @@ const setupOptimizedScene = async (scene) => {
 
 const setupNonOptimizedScene = async (scene) => {
   const gltfs = await Promise.all(
-    lods.map((lod) =>
-      loadGltfAsync(`${lod.name}/${lod.name.split("/").pop()}.gltf`)
+    models.map((model) =>
+      loadGltfAsync(`${model.name}/${model.name.split("/").pop()}.gltf`)
     )
   );
   renderObjects(scene, gltfs, (gltf) => gltf.scene);
@@ -170,7 +106,7 @@ const createScene = async function () {
 
   plane.receiveShadow = true;
   plane.rotation.x = -Math.PI / 2;
-  plane.position.y = -5;
+  plane.position.y = -7;
   scene.add(plane);
 
   const texture = loader.load("assets/background.jpg", () => {
