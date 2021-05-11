@@ -144,13 +144,12 @@ const setupNonOptimizedScene = async (scene) => {
 // CreateScene function that creates and return the scene
 const createScene = async function () {
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0xbbbbbb);
 
   performance.mark("gltfLoadStart");
 
   const light = new THREE.AmbientLight(0xffffff);
   scene.add(light);
-  const directionalLight = new THREE.DirectionalLight(0xffffff, 5);
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
   scene.add(directionalLight);
 
   if (useOptimized) {
@@ -159,15 +158,26 @@ const createScene = async function () {
     await setupNonOptimizedScene(scene);
   }
 
-  const geometry = new THREE.PlaneGeometry(10000, 10000);
-  const material = new THREE.MeshBasicMaterial({
-    color: 0x99b535,
-    side: THREE.DoubleSide,
-  });
-  const plane = new THREE.Mesh(geometry, material);
-  plane.rotation.x = 1.5708;
+  const geometry = new THREE.PlaneGeometry(100000, 100000);
+  const loader = new THREE.TextureLoader();
+  const groundTexture = loader.load("assets/grass.jpeg");
+  groundTexture.wrapS = groundTexture.wrapT = THREE.RepeatWrapping;
+  groundTexture.repeat.set(1000, 1000);
+  groundTexture.anisotropy = 16;
+  groundTexture.encoding = THREE.sRGBEncoding;
+  const groundMaterial = new THREE.MeshLambertMaterial({ map: groundTexture });
+  const plane = new THREE.Mesh(geometry, groundMaterial);
+
+  plane.receiveShadow = true;
+  plane.rotation.x = -Math.PI / 2;
   plane.position.y = -5;
   scene.add(plane);
+
+  const texture = loader.load("assets/background.jpg", () => {
+    const rt = new THREE.WebGLCubeRenderTarget(texture.image.height);
+    rt.fromEquirectangularTexture(renderer, texture);
+    scene.background = rt.texture;
+  });
 
   // notify benchmark when scene is set
   console.log("::benchmark::loadedModels");
