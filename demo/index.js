@@ -35,7 +35,7 @@ const camera = new THREE.PerspectiveCamera(
 camera.position.set(0, 50, 125);
 
 const controls = new OrbitControls(camera, renderer.domElement);
-// controls.autoRotate = true;
+controls.autoRotate = true;
 controls.autoRotateSpeed = 4;
 
 const lodeContext = lodeLoader.createContext({
