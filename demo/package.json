@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "lode-three": "link:../lode-three",
+    "seedrandom": "^3.0.5",
     "three": "^0.126.1"
   },
   "devDependencies": {
