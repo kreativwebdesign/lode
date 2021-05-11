@@ -1,0 +1,120 @@
+{
+  "asset": {
+    "generator": "glTF-Transform v0.9.9",
+    "version": "2.0"
+  },
+  "accessors": [
+    {
+      "name": "data_1_1",
+      "type": "VEC3",
+      "componentType": 5126,
+      "count": 2961,
+      "max": [
+        55.52019500732422,
+        68.10134887695312,
+        68.42829132080078
+      ],
+      "min": [
+        -55.53571319580078,
+        -41.347877502441406,
+        -59.47077178955078
+      ],
+      "normalized": false,
+      "bufferView": 0,
+      "byteOffset": 0
+    },
+    {
+      "name": "data_1_2",
+      "type": "SCALAR",
+      "componentType": 5123,
+      "count": 9558,
+      "max": [
+        2960
+      ],
+      "min": [
+        0
+      ],
+      "normalized": false,
+      "bufferView": 1,
+      "byteOffset": 0
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 35532,
+      "byteStride": 12,
+      "target": 34962
+    },
+    {
+      "buffer": 1,
+      "byteOffset": 0,
+      "byteLength": 19116,
+      "target": 34963
+    }
+  ],
+  "buffers": [
+    {
+      "name": "buffer_1_1",
+      "uri": "frank_1.bin",
+      "byteLength": 35532
+    },
+    {
+      "name": "buffer_1_2",
+      "uri": "frank_2.bin",
+      "byteLength": 19116
+    }
+  ],
+  "materials": [
+    {
+      "name": "material_1",
+      "alphaMode": "OPAQUE",
+      "doubleSided": true,
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.12743768042608497,
+          0.11443537381770343,
+          0.10461648408208657,
+          1
+        ],
+        "roughnessFactor": 0.6000000238418579,
+        "metallicFactor": 0
+      },
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "meshes": [
+    {
+      "name": "mesh",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0
+          },
+          "mode": 4,
+          "material": 0,
+          "indices": 1
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "node",
+      "mesh": 0
+    }
+  ],
+  "scenes": [
+    {
+      "name": "scene",
+      "nodes": [
+        0
+      ]
+    }
+  ]
+}

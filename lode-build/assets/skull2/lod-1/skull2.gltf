@@ -1,0 +1,126 @@
+{
+  "asset": {
+    "generator": "glTF-Transform v0.9.9",
+    "version": "2.0"
+  },
+  "accessors": [
+    {
+      "name": "data_1_1",
+      "type": "VEC3",
+      "componentType": 5126,
+      "count": 1523,
+      "max": [
+        0.6648958921432495,
+        0.8772373795509338,
+        0.9938830733299255
+      ],
+      "min": [
+        -0.6750662922859192,
+        -0.9201039671897888,
+        -1.01316237449646
+      ],
+      "normalized": false,
+      "bufferView": 0,
+      "byteOffset": 0
+    },
+    {
+      "name": "data_1_2",
+      "type": "SCALAR",
+      "componentType": 5123,
+      "count": 6075,
+      "max": [
+        1522
+      ],
+      "min": [
+        0
+      ],
+      "normalized": false,
+      "bufferView": 1,
+      "byteOffset": 0
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 18276,
+      "byteStride": 12,
+      "target": 34962
+    },
+    {
+      "buffer": 1,
+      "byteOffset": 0,
+      "byteLength": 12152,
+      "target": 34963
+    }
+  ],
+  "buffers": [
+    {
+      "name": "buffer_1_1",
+      "uri": "skull2_1.bin",
+      "byteLength": 18276
+    },
+    {
+      "name": "buffer_1_2",
+      "uri": "skull2_2.bin",
+      "byteLength": 12152
+    }
+  ],
+  "materials": [
+    {
+      "name": "material_1",
+      "alphaMode": "OPAQUE",
+      "doubleSided": false,
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "roughnessFactor": 1,
+        "metallicFactor": 1
+      },
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "meshes": [
+    {
+      "name": "mesh",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0
+          },
+          "mode": 4,
+          "material": 0,
+          "indices": 1
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "node",
+      "rotation": [
+        -0.7071068286895752,
+        0,
+        0,
+        0.7071067094802856
+      ],
+      "mesh": 0
+    }
+  ],
+  "scenes": [
+    {
+      "name": "scene",
+      "nodes": [
+        0
+      ]
+    }
+  ]
+}

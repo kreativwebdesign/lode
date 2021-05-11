@@ -8,16 +8,16 @@
       "name": "data_1_1",
       "type": "VEC3",
       "componentType": 5126,
-      "count": 21124,
+      "count": 9276,
       "max": [
-        1.4146878719329834,
-        2.187622308731079,
-        5.622215270996094
+        1.4146748781204224,
+        2.0417065620422363,
+        5.623560905456543
       ],
       "min": [
-        -1.4155735969543457,
-        -0.12643325328826904,
-        -4.338570594787598
+        -1.414764404296875,
+        -0.12643158435821533,
+        -4.098057270050049
       ],
       "normalized": false,
       "bufferView": 0,
@@ -27,9 +27,9 @@
       "name": "data_1_2",
       "type": "SCALAR",
       "componentType": 5123,
-      "count": 95421,
+      "count": 38634,
       "max": [
-        21123
+        9275
       ],
       "min": [
         0
@@ -43,14 +43,14 @@
     {
       "buffer": 0,
       "byteOffset": 0,
-      "byteLength": 253488,
+      "byteLength": 111312,
       "byteStride": 12,
       "target": 34962
     },
     {
       "buffer": 1,
       "byteOffset": 0,
-      "byteLength": 190844,
+      "byteLength": 77268,
       "target": 34963
     }
   ],
@@ -58,12 +58,12 @@
     {
       "name": "buffer_1_1",
       "uri": "boat_1.bin",
-      "byteLength": 253488
+      "byteLength": 111312
     },
     {
       "name": "buffer_1_2",
       "uri": "boat_2.bin",
-      "byteLength": 190844
+      "byteLength": 77268
     }
   ],
   "materials": [

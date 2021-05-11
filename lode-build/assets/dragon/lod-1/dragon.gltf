@@ -8,14 +8,14 @@
       "name": "data_1_1",
       "type": "VEC3",
       "componentType": 5126,
-      "count": 13526,
+      "count": 6726,
       "max": [
-        8.622207641601562,
+        8.60299301147461,
         1.3194634914398193,
-        6.209191799163818
+        6.209813594818115
       ],
       "min": [
-        -8.622207641601562,
+        -8.60299301147461,
         -18.225360870361328,
         -0.7034703493118286
       ],
@@ -27,9 +27,9 @@
       "name": "data_1_2",
       "type": "SCALAR",
       "componentType": 5123,
-      "count": 61500,
+      "count": 28200,
       "max": [
-        13525
+        6725
       ],
       "min": [
         0
@@ -43,14 +43,14 @@
     {
       "buffer": 0,
       "byteOffset": 0,
-      "byteLength": 162312,
+      "byteLength": 80712,
       "byteStride": 12,
       "target": 34962
     },
     {
       "buffer": 1,
       "byteOffset": 0,
-      "byteLength": 123000,
+      "byteLength": 56400,
       "target": 34963
     }
   ],
@@ -58,12 +58,12 @@
     {
       "name": "buffer_1_1",
       "uri": "dragon_1.bin",
-      "byteLength": 162312
+      "byteLength": 80712
     },
     {
       "name": "buffer_1_2",
       "uri": "dragon_2.bin",
-      "byteLength": 123000
+      "byteLength": 56400
     }
   ],
   "materials": [

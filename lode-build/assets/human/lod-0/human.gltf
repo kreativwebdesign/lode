@@ -1,0 +1,209 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v1.2.75",
+    "version": "2.0"
+  },
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [0]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "Mesh_0.002",
+      "rotation": [-0.7071068286895752, 0, 0, 0.7071067094802856]
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "emissiveFactor": [1, 1, 1],
+      "emissiveTexture": {
+        "index": 0,
+        "texCoord": 0
+      },
+      "name": "blinn1SG",
+      "normalTexture": {
+        "index": 1,
+        "texCoord": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [0, 0, 0, 1],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.6000000238418579
+      }
+    },
+    {
+      "doubleSided": true,
+      "emissiveFactor": [0, 0, 0],
+      "name": "temp_ldefault1",
+      "normalTexture": {
+        "index": 2,
+        "texCoord": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [0, 0, 0, 1],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.8999999761581421
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Mesh_0.002",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0
+        },
+        {
+          "attributes": {
+            "POSITION": 4,
+            "NORMAL": 5,
+            "TEXCOORD_0": 6
+          },
+          "indices": 7,
+          "material": 1
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "source": 0
+    },
+    {
+      "source": 1
+    },
+    {
+      "source": 2
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/png",
+      "name": "blinn1SG_emissive",
+      "uri": "blinn1SG_emissive.png"
+    },
+    {
+      "mimeType": "image/png",
+      "name": "blinn1SG_normal",
+      "uri": "blinn1SG_normal.png"
+    },
+    {
+      "mimeType": "image/png",
+      "name": "temp_ldefault1_normal",
+      "uri": "temp_ldefault1_normal.png"
+    }
+  ],
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 115126,
+      "max": [69.62208557128906, 57.38462829589844, 107.81139373779297],
+      "min": [-69.49568176269531, -7.317307949066162, -105.48660278320312],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 115126,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 115126,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5125,
+      "count": 557127,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5126,
+      "count": 11041,
+      "max": [28.435237884521484, 47.565025329589844, 13.888250350952148],
+      "min": [-28.414602279663086, -1.470132827758789, -22.411718368530273],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 5,
+      "componentType": 5126,
+      "count": 11041,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 6,
+      "componentType": 5126,
+      "count": 11041,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 7,
+      "componentType": 5123,
+      "count": 63264,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 1381512,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 1381512,
+      "byteOffset": 1381512
+    },
+    {
+      "buffer": 0,
+      "byteLength": 921008,
+      "byteOffset": 2763024
+    },
+    {
+      "buffer": 0,
+      "byteLength": 2228508,
+      "byteOffset": 3684032
+    },
+    {
+      "buffer": 0,
+      "byteLength": 132492,
+      "byteOffset": 5912540
+    },
+    {
+      "buffer": 0,
+      "byteLength": 132492,
+      "byteOffset": 6045032
+    },
+    {
+      "buffer": 0,
+      "byteLength": 88328,
+      "byteOffset": 6177524
+    },
+    {
+      "buffer": 0,
+      "byteLength": 126528,
+      "byteOffset": 6265852
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 6392380,
+      "uri": "human.bin"
+    }
+  ]
+}

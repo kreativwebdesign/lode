@@ -6,12 +6,6 @@
     {
       "threshold": 50,
       "configuration": {
-        "targetScale": 0.125
-      }
-    },
-    {
-      "threshold": -1,
-      "configuration": {
         "targetScale": 0.0625
       }
     }

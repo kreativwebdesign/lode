@@ -7,12 +7,6 @@
       {
         "threshold": 50,
         "configuration": {
-          "targetScale": 0.125
-        }
-      },
-      {
-        "threshold": -1,
-        "configuration": {
           "targetScale": 0.0625
         }
       }
@@ -25,12 +19,6 @@
       },
       {
         "threshold": 50,
-        "configuration": {
-          "targetScale": 0.125
-        }
-      },
-      {
-        "threshold": -1,
         "configuration": {
           "targetScale": 0.0625
         }
@@ -45,12 +33,6 @@
       {
         "threshold": 50,
         "configuration": {
-          "targetScale": 0.125
-        }
-      },
-      {
-        "threshold": -1,
-        "configuration": {
           "targetScale": 0.0625
         }
       }
@@ -63,12 +45,6 @@
       },
       {
         "threshold": 50,
-        "configuration": {
-          "targetScale": 0.125
-        }
-      },
-      {
-        "threshold": -1,
         "configuration": {
           "targetScale": 0.0625
         }
@@ -83,12 +59,6 @@
       {
         "threshold": 50,
         "configuration": {
-          "targetScale": 0.125
-        }
-      },
-      {
-        "threshold": -1,
-        "configuration": {
           "targetScale": 0.0625
         }
       }
@@ -102,11 +72,57 @@
       {
         "threshold": 50,
         "configuration": {
-          "targetScale": 0.125
+          "targetScale": 0.0625
         }
+      }
+    ]
+  },
+  "assets/frank": {
+    "levels": [
+      {
+        "threshold": 100
       },
       {
-        "threshold": -1,
+        "threshold": 50,
+        "configuration": {
+          "targetScale": 0.0625
+        }
+      }
+    ]
+  },
+  "assets/head": {
+    "levels": [
+      {
+        "threshold": 100
+      },
+      {
+        "threshold": 50,
+        "configuration": {
+          "targetScale": 0.0625
+        }
+      }
+    ]
+  },
+  "assets/human": {
+    "levels": [
+      {
+        "threshold": 100
+      },
+      {
+        "threshold": 50,
+        "configuration": {
+          "targetScale": 0.0625
+        }
+      }
+    ]
+  },
+  "assets/shiba": {
+    "levels": [
+      {
+        "threshold": 100
+      },
+      {
+        "threshold": 50,
         "configuration": {
           "targetScale": 0.0625
         }
@@ -121,11 +137,18 @@
       {
         "threshold": 50,
         "configuration": {
-          "targetScale": 0.125
+          "targetScale": 0.0625
         }
+      }
+    ]
+  },
+  "assets/skull2": {
+    "levels": [
+      {
+        "threshold": 100
       },
       {
-        "threshold": -1,
+        "threshold": 50,
         "configuration": {
           "targetScale": 0.0625
         }
