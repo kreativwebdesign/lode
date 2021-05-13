@@ -43,7 +43,6 @@ const simplify = (vertices, triangles, customOptions = {}) => {
       triangle.isDirty = false;
     });
 
-    // TODO: threshold might have to be tuned later on
     // All triangles with edges below the threshold will be removed
     //
     // The following numbers works well for most models.
