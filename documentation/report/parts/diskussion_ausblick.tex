@@ -22,3 +22,7 @@ Aktuell werden initial alle Level of Details geladen. Dies hat zur Konsequenz, d
 Die optimale Levelwahl kann stark von der Laufzeitumgebung abhängig sein. So sollte zum Beispiel auf mobilen Geräten früher ein einfacheres Modell gezeigt werden als auf leistungsstarken Geräten.
 Deshalb eignet sich eine Wahl der Levels zur Laufzeit, um ein optimales Erlebnis auf allen Geräten zu ermöglichen.
 Nebst dem \e{\gls{CLI}} soll folglich auch ein Javascript-Modul bereitgestellt werden, welches das Laden von glTF Dateien übernimmt und basierend auf der erkannten Performanz das beste Level of Detail einspielen.
+
+\paragraph{Konsequenter Einsatz von glb Dateien}
+
+Aktuell werden in der Demoszenerie glTF Dateien eingesetzt. Das binäre Format glb ist jedoch grundsätzlich glTF vorzuziehen und sollte als primäres Austauschformat verwendet werden. Für das Laufzeitverhalten entsteht kein signifkanter Unterschied durch den Einsatz von glb.
