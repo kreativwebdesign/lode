@@ -1,4 +1,3 @@
-// TODO: add tests
 const compactVertices = (triangles, vertices) => {
   let vertexRefList = new Array(vertices.length);
 
