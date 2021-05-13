@@ -3,7 +3,6 @@
  */
 export default class SymmetricMatrix {
   constructor() {
-    // TODO: maybe use more specialized array?
     this.data = new Array(10);
     for (let i = 0; i < 10; i++) {
       this.data[i] = 0;

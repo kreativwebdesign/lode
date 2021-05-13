@@ -9,7 +9,7 @@ describe("prepare data", () => {
     const { triangles, vertices } = prepareData(positions, indices);
 
     expect(triangles[0].vertices).toEqual([0, 1, 2]);
-    // TODO: should not rely on serialization of external lib
+
     expect(vertices[triangles[0].vertices[0]].position).toEqual(
       vec3.fromValues(0, 0, 0)
     );
