@@ -111,14 +111,17 @@ Die somit primären Aspekte für die Beurteilung sind die Auswirkungen auf das L
 
 Um diese Beurteilung tätigen zu können, wird im Folgenden ein Benchmark definiert. Ziel ist es, das Laufzeitverhalten zu analysieren und somit den maximal möglichen Einfluss von LOD auf die Leistung klassifizieren zu können. Hierbei werden verschiedene Aspekte betrachtet.
 
+\subsection{Vergleichbare Arbeiten}
+Eine unabhängige Arbeit definierte 2017 einen vergleichbaren Benchmark, um die Performanz von Three.js und Babylon.js in einem spezifischen Anwendungsgebiet zu vergleichen. Der Benchmark entwickelte vergleichbare Szenerien und vergleicht die Ressourcennutzung der beiden Varianten \cite{performanceComparisonBabylonThreejs}.
+
 \subsection{Mögliche Ansätze}
 
 Verschiedene Varianten können gewählt werden, um den Nutzen aufzuzeigen. Die verschiedenen in Betracht gezogenen Ansätze werden in diesem Abschnitt erläutert.
 
 \paragraph{Modellbetrachtung}
-Grundsätzlich kann der Nutzen beziffert werden, indem die Kosten zum Rendering eines Modelles berechnet werden. So können die Kosten der benutzten GPU Ressourcen durch das Messen des Aufwandes eines spezifischen \e{Draw Calls} beziffert werden. Diese Art von Benchmark ist simpel zu implementieren und liefert genaue Resultate. Die Auswirkungen von Nebeneffekten können beinahe vollständig negiert werden.
-Sinnvoll wäre es, das Modell in konstanter Distanz zur Kamera um zwei Achsen drehen zu lassen und die Messung solange durchzuführen, bis eine ganze Umdrehung stattgefunden hat.
-Der primäre Nachteil bei dieser Variante liegt an der Aussagekraft. Die einzige belegte Aussage ist, dass es möglich ist, Performanzeinsparungen durch Vereinfachung zu erhalten. Dies dient jedoch nicht als Beleg, dass der Einsatz von LOD Artefakten Performanzengpässe lösen kann.
+Grundsätzlich kann der Nutzen beziffert werden, indem die Kosten zum Rendering eines Modelles berechnet werden. So können die Kosten der benutzten GPU Ressourcen durch das Messen des Aufwandes eines spezifischen \e{Draw Calls} beziffert werden. Die Implementation ist simpel und liefert genaue Resultate. Die Auswirkungen von Nebeneffekten können beinahe vollständig negiert werden.
+Sinnvoll wäre es, das Modell in konstanter Distanz zur Kamera um zwei Achsen drehen zu lassen und die Messung solange durchzuführen, bis eine ganze Umdrehung stattgefunden hat. Das originale Modell kann mit den verschiedenen Stufen verglichen werden und die Performanzverbesserung beziffert werden.
+Der primäre Nachteil bei dieser Variante liegt an der Aussagekraft. Die einzige belegte Aussage ist, dass es möglich ist, Performanzeinsparungen durch Vereinfachung zu erhalten. Dies dient jedoch nicht als Beleg, dass der Einsatz von LOD Artefakten Performanzengpässe lösen kann, da beim Einsatz von LOD weitere Aspekte berücksichtigt werden müssen. Beispiele für diese Aspekte sind: erhöhte Memory Auslastung durch die zusätzlichen Artefakte oder zusätzlich erforderliche Rechenleistung für berechnen des zu wählenden Artefakts. 
 
 \paragraph{Szeneriebetrachtung}
 Bei diesem Ansatz wird eine gegebene Szenerie möglichst geringfügig angepasst und die Auswirkungen auf die Performanz verglichen.
@@ -126,6 +129,3 @@ Wenn die unoptimierte Variante 60 \e{\gls{FPS}} erreicht oder gar übersteigt, i
 Ziel ist es dann, die LOD Artefakte in dieselbe Szenerie zu integrieren und die \e{FPS} zu steigern. Ziel der Arbeit ist es, ein System zu entwickeln, das für Szenarien unter 60 \e{\gls{FPS}} diese erhöht und im Idealfall auf ebendiesen Wert hebt.
 Eine solche Szenerie soll grundsätzlich Modelle sowohl nah als auch in grosser Distanz zeigen. Ein Beispiel für eine solche Szenerie ist eine Visualisierung aus der Vogelperspektive mit Zoomverhalten.
 Im Vergleich zur Modellbetrachtung ist die Aussagekraft eines solchen Tests ausreichend, um einen Beleg für den positiven Nutzen des Systems zu haben. Sollte es nicht möglich sein, die \e{FPS} zu steigern, so liefert der Einsatz von LOD keinen nachweisbaren Nutzen.
-
-\subsection{Vergleichbare Arbeiten}
-Eine unabhängige Arbeit definierte 2017 einen vergleichbaren Benchmark, um die Performanz von Three.js und Babylon.js in einem spezifischen Anwendungsgebiet zu vergleichen. Der Benchmark entwickelte vergleichbare Szenerien und vergleicht die Ressourcennutzung der beiden Varianten. \cite{performanceComparisonBabylonThreejs}

@@ -47,7 +47,6 @@ Diese Technik führt zu signifikanten Detailverlusten bei der Nahbetrachtung und
 
 \section{Benchmark}
 
-In diesem Abschnitt wird das Benchmarksetup erläutert. Die verschiedenen technischen Entscheide werden detailliert aufgezeigt.
 Das Ziel des Benchmarks ist der Vergleich einer Version ohne Einsatz von LOD und einer Umgebung, welche LODs einsetzt. Um eine möglichst praxisnahe Aussage treffen zu können, wird hierfür eine Demo Szenerie verwendet, welche einer echten Anwendung so nah wie möglich kommt. Somit wird gewährleistet, dass es nicht nur in der Theorie einen Nutzen für LODs gibt, sondern dieser in der Praxis vorhanden ist.
 
 \paragraph{Browser Umgebung}
@@ -86,8 +85,6 @@ Bei einem Testablauf werden folgende Schritte durchlaufen:
 
 Der Test erfasst die in Tabelle \ref{table:benchmarkFigures} aufgeführten Kennzahlen.
 
-Die \e{Render Loop} ist eine Schleife, welche kontinuierlich die Grafikpipeline durchläuft.
-
 \begin{table}[H]
   \centering
   \begin{tabular}{ l p{8cm} }
@@ -97,15 +94,15 @@ Die \e{Render Loop} ist eine Schleife, welche kontinuierlich die Grafikpipeline 
   \hline
   Median \e{\gls{FPS}} & Die \e{\gls{FPS}} werden kontinuierlich berechnet. Um starke Abweichungen zu verwerfen wird der Median verwendet. \\
   \hline
+  Dauer für das Laden der Modelle & Totale Zeit für das Laden aller Modelle der Szenerie. Dieser Wert ist relativ zu betrachten, da die Modelle lokal geladen werden und die Zeit für das Laden von einem Server signifkant höher sein kann. Grundsätzlich besteht eine ausreichende Korrelation zwischen Dateigrösse und Zeit für das Laden der Modelle. Ein zusätzlicher Faktor ist jedoch die Anzahl an Dateien, welche geladen werden müssen. \\
+  \hline
+  Median \e{Render Loop} Dauer & Der Median aller Laufzeiten der \e{Render Loop}. \\
+  \hline
+  Anzahl \e{Render Loop} Iterationen & Wie oft wurde ein neues Bild gezeichnet. Umso höher die Zahl, desto mehr verschiedene Frames konnten gerendert werden. \\
+  \hline
   Totale GPU Zeit & Die totale Zeit, welche die GPU für Berechungen benötigt. \\
   \hline
-  Median Render Loop Dauer & Der Median aller Laufzeiten der Render Loop. \\
-  \hline
-  Anzahl GPU Events & Anzahl der Events an die GPU. \\
-  \hline
-  Zeit für das Laden der Modelle & Totale Zeit für das Laden aller Modelle der Szenerie. \\
-  \hline
-  Anzahl Renders & Wie oft wurde ein neues Bild gezeichnet. \\
+  Anzahl GPU Events & Anzahl der Events an die GPU. Dieser Wert soll lediglich dazu dienen um die gemessenen \e{FPS} und die Anzahl \e{Render Loop} Iterationen besser einschätzen zu können. Eine höhere Anzahl an GPU Events steht innerhalb der Demoszenerie im Zusammenhang mit mehr \e{Render Loop} Iterationen. \\
   \hline
   \end{tabular}
   \caption{Kennzahlen für Benchmark}
@@ -133,4 +130,10 @@ Um eine zuverlässige Aussage treffen zu können, wird der Vorgang mehrfach wied
 Anschliessend wird die Varianz der \e{\gls{FPS}} für die unoptimierten respektive optimierten Werte berechnet. Die Varianz dient als Kennzahl, um eine Signifikanz der Daten nachweisen zu können.
 
 \subparagraph{Konfidenzintervall}
-Die Signifikanz wird mithilfe eines statistischen Konfidenzintervalls nachgewiesen. Hierfür wird der Durchschnitt aller Mediane verwendet, zusätzlich wird ein Konfidenzintervall von 95\% gewählt. Somit wird gewährleistet, dass das Resultat des Benchmarks verlässlich ist und für einen Vergleich verwendet werden kann.
+Die Signifikanz wird mithilfe eines statistischen Konfidenzintervalls nachgewiesen. Hierfür wird der Durchschnitt aller Mediane verwendet, zusätzlich wird ein Konfidenzintervall von 95\% gewählt. Es wird gewährleistet, dass das Resultat des Benchmarks verlässlich ist und für einen Vergleich verwendet werden kann.
+
+\subsection{Auswertung}
+
+Der Benchmark wurde auf einer Maschine mit moderner Grafikkarte ausgeführt. Die Resultate zeigen einen klaren Unterschied zwischen der unoptimierten und optimierten Version. So ist die Zeit für das Laden der Modelle zwar geringfügig länger, die Zahl der \e{Render Loop} Iterationen und insbesondere der \e{FPS} geben eine klare Auskunft. Unter Berücksichtigung des berechneten Konfidenzintervalls wird das Resultat als signifikant erachtet. Diese These wird auch durch eine einfache Kontrolle mit dem Auge belegt - die Anzahl \e{FPS} unterscheidet sich merkbar.
+
+Somit ist es möglich einen Nutzen für bestimmte anspruchsvolle 3D-Visualisierungen zu generieren.
