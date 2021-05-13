@@ -192,7 +192,7 @@ In Abbildung \ref{fig:transformationVertexRemovalOriginal} wird der zentrale Ver
 \end{figure}
 
 \section{Grafikpipeline}
-Die Grafikpipeline ist zuständig um eine definierte Szene auf einem Ausgabegerät zu visualisieren. Die verschiedenen Schritte werden im folgenden Abschnitt kurz erläutert. Es wird dabei ein simples 3D-Modell auf einem 2D-Display, wie zum Beispiel einem Monitor, visualisiert. Die verschiedenen Schritte sind in Abbildung \ref{fig:renderingPipelineOverview} aufgezeigt.
+Die Grafikpipeline ist zuständig um eine definierte Szene auf einem Ausgabegerät zu visualisieren. Die verschiedenen Schritte werden im folgenden Abschnitt kurz erläutert. Es wird dabei ein simples 3D-Modell auf einem 2D-Display, wie zum Beispiel einem Monitor, visualisiert. Die verschiedenen Schritte sind in Abbildung \ref{fig:renderingPipelineOverview} aufgezeigt. Die verschiedenen Schritte werden idealerweise 60 mal pro Sekunde wiederholt. Dies findet in der sogenannten \e{Render Loop} statt.
 
 \begin{figure}[H]
   \centering
@@ -236,7 +236,7 @@ void main(void) {
 \end{figure}
 
 \paragraph{Fragmentshader}
-Durch die Rasterisierung werden kontinuierliche Objekte zu diskreten Fragmenten verarbeitet. Der Fragmentshader generiert die Farbdefinitionen für die einzelnen Pixel. Ein einfaches Beispiel ist in Abbildung \ref{fig:fragmentShader} ersichtlich.
+Durch die Rasterisierung werden kontinuierliche Objekte zu diskreten Fragmenten verarbeitet. Der Fragmentshader generiert die Farbdefinitionen für die einzelnen diskreten Fragmente. Dies können einfache Farbwerte sein, es ist jedoch auch möglich Texturen und dergleichen auf Fragmente abbzubilden. Ein einfaches Beispiel für einen Fragmentshader ist in Abbildung \ref{fig:fragmentShader} ersichtlich.
 
 \begin{figure}[H]
 \begin{lstlisting}
@@ -250,7 +250,8 @@ void main(void) {
 
 
 \paragraph{Bildschirm}
-Am Schluss wird das vom Fragmentshader generierte Bild auf dem Bildschirm dargestellt.
+Im Schluss wird für jedes vom Fragmentshader generierte Fragment ein Sichtbarkeitstest durchgeführt. So werden nur die Fragmente, welche von keinem anderen Fragment überdeckt werden, angezeigt. Das generierte Bild wird im Anschluss skaliert und auf dem Bildschirm dargestellt.
+
 
 \section{Performanzoptimierung}
 Visualisierungen können zu komplex werden, um jederzeit performant und interaktiv gerendert zu werden.
