@@ -1,6 +1,5 @@
 import { calculateTriangleError } from "./error-calculation.js";
 
-// TODO: add unit test
 // Update triangle connections and edge error after an edge is collapsed
 const updateTriangles = (
   i0,
