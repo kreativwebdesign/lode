@@ -5,6 +5,7 @@ import { prepareData } from "./prepare-data";
 describe("identifyBorder", () => {
   const pos = [0, 0, 0];
   const positions = [...pos, ...pos, ...pos, ...pos, ...pos];
+  // four triangles, which all share one vertex (0)
   const indices = [0, 1, 2, 0, 2, 3, 0, 3, 4, 0, 4, 1];
 
   it("should identify border vertices", () => {
