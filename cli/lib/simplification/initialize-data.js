@@ -2,6 +2,7 @@ import { vec3 } from "gl-matrix";
 import SymmetricMatrix from "./types/symmetric-matrix.js";
 import { calculateTriangleError } from "./error-calculation.js";
 import buildReferenceList from "./build-reference-list.js";
+import identifyBorder from "./identify-border.js";
 
 const initializeData = (vertices, triangles) => {
   triangles.forEach((triangle) => {
@@ -38,36 +39,7 @@ const initializeData = (vertices, triangles) => {
 
   const references = buildReferenceList(vertices, triangles);
 
-  // identify boundary of mesh (isBorder)
-  // TODO: extract and test
-  let vertexCounts;
-  let vertexIndexes;
-  vertices.forEach((vertex) => {
-    vertexCounts = [];
-    vertexIndexes = [];
-    for (let i = 0; i < vertex.tCount; i++) {
-      const triangleIndex = references[vertex.tStart + i].triangleIndex;
-      const triangle = triangles[triangleIndex];
-      triangle.vertices.forEach((vertexIndex) => {
-        let offset = vertexIndexes.indexOf(vertexIndex);
-        if (offset === -1) {
-          offset = vertexCounts.length;
-        }
-
-        if (offset === vertexCounts.length) {
-          vertexCounts.push(1);
-          vertexIndexes.push(vertexIndex);
-        } else {
-          vertexCounts[offset]++;
-        }
-      });
-    }
-    vertexCounts.forEach((vertexCount, index) => {
-      if (vertexCount === 1) {
-        vertices[vertexIndexes[index]].isBorder = true;
-      }
-    });
-  });
+  identifyBorder(vertices, triangles, references);
 
   return references;
 };
