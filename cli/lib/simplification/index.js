@@ -70,34 +70,35 @@ const simplify = (vertices, triangles, customOptions = {}) => {
           // compute vertex to collapse to
           const { point } = calculateError(vertex0, vertex1);
 
-          const deleted0 = new Array(vertex0.tCount);
-          const deleted1 = new Array(vertex1.tCount);
-
           // don't remove if flipped
-          if (
-            checkCollapseFlip(
-              point,
-              vertexIndex1,
-              vertex0,
-              deleted0,
-              vertices,
-              triangles,
-              references
-            )
-          ) {
+
+          const {
+            flipped: flippedOnFirst,
+            deletedTriangles: deleted0,
+          } = checkCollapseFlip(
+            point,
+            vertexIndex1,
+            vertex0,
+            vertices,
+            triangles,
+            references
+          );
+          if (flippedOnFirst) {
             return;
           }
-          if (
-            checkCollapseFlip(
-              point,
-              vertexIndex0,
-              vertex1,
-              deleted1,
-              vertices,
-              triangles,
-              references
-            )
-          ) {
+
+          const {
+            flipped: flippedOnSecond,
+            deletedTriangles: deleted1,
+          } = checkCollapseFlip(
+            point,
+            vertexIndex0,
+            vertex1,
+            vertices,
+            triangles,
+            references
+          );
+          if (flippedOnSecond) {
             return;
           }
 

@@ -13,11 +13,10 @@ describe("checkCollapseFlip", () => {
     let references = buildReferenceList(vertices, triangles);
     references = initializeData(vertices, triangles);
     let point = vec3.create();
-    const flipped = checkCollapseFlip(
+    const { flipped } = checkCollapseFlip(
       point,
       0,
       { tStart: 0, tCount: 0 },
-      [],
       vertices,
       triangles,
       references
@@ -31,11 +30,10 @@ describe("checkCollapseFlip", () => {
     let references = buildReferenceList(vertices, triangles);
     references = initializeData(vertices, triangles);
     let point = vec3.create();
-    const flipped = checkCollapseFlip(
+    const { flipped } = checkCollapseFlip(
       point,
       0,
       { tStart: 0, tCount: 1 },
-      [],
       vertices,
       triangles,
       references
