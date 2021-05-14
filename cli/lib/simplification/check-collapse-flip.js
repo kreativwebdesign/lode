@@ -5,11 +5,11 @@ export const checkCollapseFlip = (
   newPointAfterCollapse,
   adjacentVertexIndex,
   currentVertex,
-  deletedTriangles,
   vertices,
   triangles,
   references
 ) => {
+  const deletedTriangles = new Array(currentVertex.tCount);
   for (let i = 0; i < currentVertex.tCount; i++) {
     const triangle =
       triangles[references[currentVertex.tStart + i].triangleIndex];
@@ -39,7 +39,7 @@ export const checkCollapseFlip = (
 
     const dotProduct = vec3.dot(d1, d2);
     if (Math.abs(dotProduct) > 0.999) {
-      return true;
+      return { flipped: true, deletedTriangles: [] };
     }
     const n = vec3.create();
     vec3.cross(n, d1, d2);
@@ -47,8 +47,8 @@ export const checkCollapseFlip = (
     deletedTriangles[i] = false;
 
     if (vec3.dot(n, triangle.normal) < 0.2) {
-      return true;
+      return { flipped: true, deletedTriangles: [] };
     }
   }
-  return false;
+  return { flipped: false, deletedTriangles };
 };
