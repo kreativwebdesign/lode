@@ -1,24 +1,21 @@
 // identify boundary of mesh by setting isBorder flag
 const identifyBorder = (vertices, triangles, references) => {
   vertices.forEach((vertex) => {
-    const vertexCounts = [];
-    const vertexIndexes = [];
+    const vertexIndexToCountMap = new Map();
     for (let i = 0; i < vertex.tCount; i++) {
       const triangleIndex = references[vertex.tStart + i].triangleIndex;
       const triangle = triangles[triangleIndex];
       triangle.vertices.forEach((vertexIndex) => {
-        let offset = vertexIndexes.indexOf(vertexIndex);
-        if (offset === -1) {
-          vertexCounts.push(1);
-          vertexIndexes.push(vertexIndex);
-        } else {
-          vertexCounts[offset]++;
-        }
+        const count = vertexIndexToCountMap.get(vertexIndex) || 0;
+        vertexIndexToCountMap.set(vertexIndex, count + 1);
       });
     }
-    vertexCounts.forEach((vertexCount, index) => {
-      if (vertexCount === 1) {
-        vertices[vertexIndexes[index]].isBorder = true;
+
+    // mark all borders
+    vertexIndexToCountMap.forEach((count, vertexIndex) => {
+      // if there is only one triangle on a vertex, it's considered to be a bordering vertex.
+      if (count === 1) {
+        vertices[vertexIndex].isBorder = true;
       }
     });
   });
