@@ -15,16 +15,17 @@ Für die Vereinfachung wird im Folgenden der Begriff "Das Web" für die Plattfor
 Dank der Rechenleistung auf modernen Geräten ist es möglich anspruchsvolle 3D-Visualisierungen in Echtzeit auf diversen Geräten anzuwenden. Da diese Applikationen sehr rechenintensiv sind und gerade mobile Geräte in ihrer Rechenleistung beschränkt sind, ist Performance Optimierung im 3D-Rendering unabdinglich. Insbesondere die Komplexität der Modelle hat einen signifikanten Einfluss auf die Leistung.
 Eine Möglichkeit zur Optimierung ist das Anzeigen von vereinfachten Modellen ab bestimmten Distanzen zum Betrachter. So kann z.B. ein Modell in grosser Distanz vereinfacht dargestellt werden, solange bei genauer Betrachtung mehr Details sichtbar werden.
 In diversen \fglspl{Rendering Engine}{Teilprogramm, das zuständig für die Darstellung von Grafiken ist} gibt es deshalb Möglichkeiten für das Verwenden von sogenannten Level Of Details (LOD) Artefakten.
-Für \fgls{Game Engines}{Framework, das für den Spielverlauf und dessen Darstellung verantwortlich ist} wie Unreal oder Unity gibt es bewährte Möglichkeiten, um den Einsatz von LOD Artefakten zu vereinfachen. Zurzeit gibt es im Web Bereich keine weit verbreitete Möglichkeit für das Generieren von LOD Artefakten.
+Für \fgls{Game Engines}{Framework, das für den Spielverlauf und dessen Darstellung verantwortlich ist} wie Unreal oder Unity gibt es bewährte Möglichkeiten, um den Einsatz von LOD Artefakten zu vereinfachen. Zurzeit gibt es in der Webentwicklung keine weitverbreitete Möglichkeit für das Generieren von LOD Artefakten.
 
 \subsection{3D-Rendering im Web}
 3D-Visualisierungen werden in vielen Branchen verwendet.
 Virtual Reality, CAD Anwendungen oder Computerspiele sind bekannte Anwendungsgebiete, welche 3D-Visualisierungen einsetzen.
 Dank leistungsstärkeren Geräten sind in vielen weiteren Bereichen realere Visualisierungen möglich.
 
-Anwendungen können auf spezifische Hardware wie zum Beispiel die Spielkonsolen PlayStation oder Xbox ausgerichtet sein. Dies hat den Nachteil, dass die Verteilung der Software aufwändiger ist, da spezifische Hardware notwendig ist. Für gewisse Anwendungsgebiete ist dies kein Problem.
+Anwendungen können auf spezifische Hardware wie zum Beispiel die Spielkonsole PlayStation ausgerichtet sein. Es gibt Unterschiede zwischen den Konsolen, grundsätzlich sind die verschiedenen Geräte jedoch überschaubar. In anderen Anwendungsfällen kann eine Applikation für eine dediziertere Hardware entwickelt werden. Somit kann eine Applikation auf die Anforderungen dieser Hardware zugeschnitten werden. Der Nachteil ist die Verteilung der Software. Diese wird umständlicher, da spezifische Hardware notwendig ist. Für gewisse Anwendungsgebiete ist dies kein Problem.
 
-Für hardwareunabhängige Anwendungen eignet sich das Web hervorragend. Viele Benutzer haben Zugang zu einem Desktop, Tablet oder Mobiltelefon.
+Für hardwareunabhängige Anwendungen eignet sich das Web hervorragend.
+Immer mehr Benutzer haben Zugang zu einem Desktop, Tablet, Mobiltelefon oder ein anderes Gerät, welches Zugang zum Internet bietet \cite{peopleWithInternetAccess}.
 Somit ermöglicht das Webanwendungen mit weniger Aufwand einem grossen Zielpublikum zugänglich zu machen.
 Seit einigen Jahren ist es auch möglich, 3D-Visualisierungen im Web zu realisieren.
 Als Basis dafür dient meist das von der Khronos Group entwickelte WebGL, das von allen modernen Browsern unterstützt wird. WebGL ist eine low-level JavaScript API für 3D-Visualisierungen. \cite{webGl1Spec}
@@ -37,19 +38,21 @@ Zudem ist WebGL eine junge Technologie und wurde erst 2011 veröffentlicht – v
 Nicht nur das Alter, sondern auch die Natur der Web-Plattform haben dazu beigetragen, dass WebGL ein langsames Wachstum verspürt hat. Um einen Webstandard wie WebGL einsetzen zu können müssen alle grossen Browser die Spezifikation implementieren. Ansonsten kann der grosse Vorteil des Webs – einfache Verteilung an alle Benutzer – nicht in vollem Umfang genutzt werden. So hat zum Beispiel Internet Explorer 10 keinen Support und es wurde erstmals Ende 2013 möglich im Internet Explorer 11 3D-Anwendungen für ein breites Publikum zu entwickeln.
 
 \subsection{JavaScript Bibliotheken}
-Für eine einfachere Arbeit mit WebGL gibt es verschiedene JavaScript Bibliotheken, welche eine Abstrahierungsschicht einfügen. Die bekanntesten werden hier kurz erläutert.
+Um die Arbeit mit WebGL zu vereinfachen gibt es verschiedene JavaScript Bibliotheken. Die Bekanntesten werden hier kurz erwähnt. Als Indikator für die Popularität wurden die wöchentlichen Downloads auf \fgls{npm}{Node Package Manager} verwendet. Wichtig ist hierbei zu betonen, dass dies alleine keinen verlässlichen Indikator darstellt - für eine kurze Einführung jedoch ausreichend geeignet ist.
 
 \paragraph{Three.js}
-Ist die wohl weitverbreiteste Bibliothek für 3D-Rendering im Web. Die Community hinter Three.js ist aktiv und das offene Produkt wird somit konstant weiterentwickelt. Insbesondere die Erweiterungen für \e{React}, eine populäre Bibliothek für die Entwicklung von Frontend Applikationen, zeigen den Innovationsdrang.
+Ist die wohl weitverbreiteste Bibliothek für 3D-Rendering im Web \cite{threeNpmPackage}.
+Die Community hinter Three.js ist aktiv und das offene Produkt wird somit konstant weiterentwickelt.
+Insbesondere die Erweiterungen für \e{React}, eine populäre Bibliothek für die Entwicklung von Frontend Applikationen, zeigen den Innovationsdrang \cite{threeFiberGithub, reactNpmPackage}.
 
 \paragraph{Babylon.js}
-Ein weiterer Kandidat ist Babylon.js, eine offene Bibliothek, welche die Entwicklung von 3D-Applikationen vereinfacht. Babylon.js zeichnet sich vor allem durch ein breites Featureset aus. 
+Ein weiterer Kandidat ist Babylon.js, eine offene Bibliothek, welche die Entwicklung von 3D-Applikationen vereinfacht. Babylon.js zeichnet sich vor allem durch ein breites Featureset aus \cite{babylonjsNpmPackage}.
 
 \paragraph{PlayCanvas}
-PlayCanvas ist eine offene 3D-Engine, welche auch einen proprietären Cloud Service anbietet.
+PlayCanvas ist eine offene 3D-Engine, welche primär für das Web entwickelt wurde. Als Erweiterung wird zudem ein proprietärer Cloud Service angeboten \cite{playcanvasNpmPackage}.
 
 \paragraph{Unity}
-Unity, welches vor allem für die Entwicklung von Mobile Applikationen bekannt ist, bietet seit längerer Zeit die Möglichkeit Projekte für das Web zu exportieren.
+Unity, welches vor allem für die Entwicklung von Mobile Applikationen bekannt ist, bietet seit längerer Zeit die Möglichkeit Projekte für das Web zu exportieren \cite{unityWeb}.
 
 \subsection{Stand der Technik}
 
