@@ -9,10 +9,10 @@ describe("buildReferenceList", () => {
     const { triangles, vertices } = prepareData(positions, indices);
     const references = buildReferenceList(vertices, triangles);
     expect(references[0].triangleIndex).toBe(0);
-    expect(references[0].vertexIndex).toBe(0);
+    expect(references[0].triangleVertexIndex).toBe(0);
     expect(references[1].triangleIndex).toBe(0);
-    expect(references[1].vertexIndex).toBe(1);
+    expect(references[1].triangleVertexIndex).toBe(1);
     expect(references[2].triangleIndex).toBe(0);
-    expect(references[2].vertexIndex).toBe(2);
+    expect(references[2].triangleVertexIndex).toBe(2);
   });
 });

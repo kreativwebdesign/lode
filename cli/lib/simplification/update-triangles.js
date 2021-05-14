@@ -24,7 +24,7 @@ const updateTriangles = (
       continue;
     }
 
-    triangle.vertices[reference.vertexIndex] = i0;
+    triangle.vertices[reference.triangleVertexIndex] = i0;
     triangle.isDirty = true;
 
     calculateTriangleError(triangle, vertices);
