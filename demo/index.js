@@ -122,12 +122,13 @@ const createScene = async function () {
   return scene;
 };
 
-let timeSinceLastUpdate = performance.now();
+let timeSinceLastUpdate = 0;
 let direction = -1;
 function updateCameraPosition() {
-  const delta = performance.now() - timeSinceLastUpdate;
+  const now = performance.now();
+  const delta = now - timeSinceLastUpdate;
   camera.position.z += (delta / 60) * direction;
-  timeSinceLastUpdate = performance.now();
+  timeSinceLastUpdate = now;
   if (camera.position.z > config.cameraConstraints.max) {
     direction = -1;
   } else if (camera.position.z < config.cameraConstraints.min) {
