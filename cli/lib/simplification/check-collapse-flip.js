@@ -16,7 +16,7 @@ export const checkCollapseFlip = (
       continue;
     }
 
-    const vertexIndex = references[vertex0.tStart + i].vertexIndex;
+    const vertexIndex = references[vertex0.tStart + i].triangleVertexIndex;
     const id1 = triangle.vertices[(vertexIndex + 1) % 3];
     const id2 = triangle.vertices[(vertexIndex + 2) % 3];
 
