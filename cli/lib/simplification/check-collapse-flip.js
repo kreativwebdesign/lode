@@ -2,36 +2,39 @@ import { vec3 } from "gl-matrix";
 
 // Check if a triangle flips when this edge is removed
 export const checkCollapseFlip = (
-  point,
-  index1,
-  vertex0,
-  deleted,
+  newPointAfterCollapse,
+  adjacentVertexIndex,
+  currentVertex,
+  deletedTriangles,
   vertices,
   triangles,
   references
 ) => {
-  for (let i = 0; i < vertex0.tCount; i++) {
-    const triangle = triangles[references[vertex0.tStart + i].triangleIndex];
+  for (let i = 0; i < currentVertex.tCount; i++) {
+    const triangle =
+      triangles[references[currentVertex.tStart + i].triangleIndex];
     if (triangle.deleted) {
       continue;
     }
 
-    const vertexIndex = references[vertex0.tStart + i].triangleVertexIndex;
+    const vertexIndex =
+      references[currentVertex.tStart + i].triangleVertexIndex;
     const id1 = triangle.vertices[(vertexIndex + 1) % 3];
     const id2 = triangle.vertices[(vertexIndex + 2) % 3];
 
     // delete check
-    if (id1 === index1 || id2 === index1) {
-      deleted[i] = true;
+    // if one of the adjacent vertices is the "other vertex" we can mark the triangle as removed
+    if (id1 === adjacentVertexIndex || id2 === adjacentVertexIndex) {
+      deletedTriangles[i] = true;
       continue;
     }
 
     const d1 = vec3.create();
-    vec3.sub(d1, vertices[id1].position, point);
+    vec3.sub(d1, vertices[id1].position, newPointAfterCollapse);
     vec3.normalize(d1, d1);
 
     const d2 = vec3.create();
-    vec3.sub(d2, vertices[id2].position, point);
+    vec3.sub(d2, vertices[id2].position, newPointAfterCollapse);
     vec3.normalize(d2, d2);
 
     const dotProduct = vec3.dot(d1, d2);
@@ -41,7 +44,7 @@ export const checkCollapseFlip = (
     const n = vec3.create();
     vec3.cross(n, d1, d2);
     vec3.normalize(n, n);
-    deleted[i] = false;
+    deletedTriangles[i] = false;
 
     if (vec3.dot(n, triangle.normal) < 0.2) {
       return true;
