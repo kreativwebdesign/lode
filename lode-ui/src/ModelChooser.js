@@ -19,7 +19,7 @@ function ModelChooser() {
     },
   };
   return (
-    <Box as="nav" p="5" listStyleType="none">
+    <Box as="nav" p="3" listStyleType="none">
       {Object.entries(manifest || {}).map(([name]) => {
         return (
           <Box
