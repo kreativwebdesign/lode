@@ -1,6 +1,6 @@
 import React from "react";
 import { Flex } from "@chakra-ui/layout";
-import TransparentBox from "./TransparentBox";
+import TransparentBox from "./components/visual/TransparentBox";
 
 function Infopanel({ distanceToObject, currentLodLevel }) {
   return (
