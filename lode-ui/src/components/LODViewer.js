@@ -4,16 +4,16 @@ import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import * as lodeLoader from "lode-three";
 import { useEffect, useRef, useState } from "react";
-import useBasePath from "./useBasePath";
-import useManifest from "./useManifest";
-import useParam from "./useParam";
+import deepEql from "deep-eql";
+import useBasePath from "../common/useBasePath";
+import useManifest from "../common/useManifest";
+import useParam from "../common/useParam";
 import Infopanel from "./InfoPanel";
 import { useRecoilState } from "recoil";
-import lodLevelState from "./state/lodLevel";
-import distanceToObjectState from "./state/distanceToObject";
-import artifactChangesState from "./state/artifactChanges";
+import lodLevelState from "../state/lodLevel";
+import distanceToObjectState from "../state/distanceToObject";
+import artifactChangesState from "../state/artifactChanges";
 import AnalyseCanvas from "./AnalyseCanvas";
-import deepEql from "deep-eql";
 
 const useLode = () => {
   const [lod, setLod] = useState();

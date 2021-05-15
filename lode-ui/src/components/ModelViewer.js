@@ -2,13 +2,13 @@ import { Badge, Box, Center, Flex } from "@chakra-ui/layout";
 import { useRecoilState } from "recoil";
 import LODViewer from "./LODViewer";
 import Model from "./Model";
-import useBasePath from "./useBasePath";
-import useManifest from "./useManifest";
-import useParam from "./useParam";
-import useUpdateModel from "./useUpdateModel";
-import lodLevelState from "./state/lodLevel";
+import useBasePath from "../common/useBasePath";
+import useManifest from "../common/useManifest";
+import useParam from "../common/useParam";
+import useUpdateModel from "../common/useUpdateModel";
+import lodLevelState from "../state/lodLevel";
 import ArtifactForm from "./ArtifactForm";
-import populateDistance from "./helper/populateDistance";
+import populateDistance from "../helper/populateDistance";
 
 function DetailModel({ level, startingDistance, handleUpdate, isActive, url }) {
   return (

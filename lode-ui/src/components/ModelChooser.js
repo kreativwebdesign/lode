@@ -1,25 +1,27 @@
 import { Box } from "@chakra-ui/layout";
 import { Link } from "react-router-dom";
-import useManifest from "./useManifest";
-import useParam from "./useParam";
+import useManifest from "../common/useManifest";
+import useParam from "../common/useParam";
+
+const activeStyles = {
+  background: "purple.100",
+  color: "purple.800",
+  boxShadow: "lg",
+};
+
+const inactiveStyles = {
+  _hover: {
+    background: "orange.100",
+    color: "orange.800",
+    boxShadow: "lg",
+  },
+};
 
 function ModelChooser() {
   const manifest = useManifest();
   const modelName = useParam("name");
-  const activeStyles = {
-    background: "purple.100",
-    color: "purple.800",
-    boxShadow: "lg",
-  };
-  const inactiveStyles = {
-    _hover: {
-      background: "orange.100",
-      color: "orange.800",
-      boxShadow: "lg",
-    },
-  };
   return (
-    <Box as="nav" p="5" listStyleType="none">
+    <Box as="nav" p="3" listStyleType="none">
       {Object.entries(manifest || {}).map(([name]) => {
         return (
           <Box

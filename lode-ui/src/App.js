@@ -1,8 +1,8 @@
 import { BrowserRouter as Router } from "react-router-dom";
 import { ChakraProvider, Grid, GridItem } from "@chakra-ui/react";
 import { RecoilRoot } from "recoil";
-import ModelChooser from "./ModelChooser";
-import ModelViewer from "./ModelViewer";
+import ModelChooser from "./components/ModelChooser";
+import ModelViewer from "./components/ModelViewer";
 import theme from "./theme";
 
 function App() {

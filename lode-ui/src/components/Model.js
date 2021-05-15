@@ -5,7 +5,7 @@ import { Canvas } from "@react-three/fiber";
 import { useMemo, useState } from "react";
 import { useRecoilState } from "recoil";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import artifactChangesState from "./state/artifactChanges";
+import artifactChangesState from "../state/artifactChanges";
 import TriangleCount from "./TriangleCount";
 
 function Model({ url }) {
