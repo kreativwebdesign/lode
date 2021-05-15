@@ -1,7 +1,7 @@
 import { useRecoilState } from "recoil";
 import useBasePath from "./useBasePath";
-import manifestState from "./state/manifest";
-import artifactChangesState from "./state/artifactChanges";
+import manifestState from "../state/manifest";
+import artifactChangesState from "../state/artifactChanges";
 
 function useUpdateModel() {
   const basePath = useBasePath();
