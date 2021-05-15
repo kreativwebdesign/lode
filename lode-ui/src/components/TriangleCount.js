@@ -2,8 +2,8 @@ import { Flex } from "@chakra-ui/react";
 import { Html } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
 import { useEffect, useState } from "react";
-import TransparentBox from "./components/visual/TransparentBox";
-import { numberFormat } from "./common/format";
+import TransparentBox from "./visual/TransparentBox";
+import { numberFormat } from "../common/format";
 
 function TriangleCount({ url }) {
   const { gl } = useThree();

@@ -1,7 +1,7 @@
 import { Box } from "@chakra-ui/layout";
 import { Link } from "react-router-dom";
-import useManifest from "./common/useManifest";
-import useParam from "./common/useParam";
+import useManifest from "../common/useManifest";
+import useParam from "../common/useParam";
 
 const activeStyles = {
   background: "purple.100",
