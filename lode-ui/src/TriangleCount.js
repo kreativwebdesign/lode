@@ -3,6 +3,7 @@ import { Html } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
 import { useEffect, useState } from "react";
 import TransparentBox from "./TransparentBox";
+import { numberFormat } from "./common/format";
 
 function TriangleCount({ url }) {
   const { gl } = useThree();
@@ -30,7 +31,9 @@ function TriangleCount({ url }) {
       pointerEvents="none"
       zIndexRange={[0, 1]}
     >
-      <TransparentBox>Triangle count: {triangleCount}</TransparentBox>
+      <TransparentBox>
+        {numberFormat.format(triangleCount)} triangles
+      </TransparentBox>
     </Flex>
   );
 }
