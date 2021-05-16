@@ -25,7 +25,30 @@ Deshalb setzt \e{lode} konsequent auf moderne Entwicklungsprozesse, manuelle Sch
 
 \subsection{lode Ablauf}
 
-Ein Modell wird erstellt und als glTF innerhalb des Projekts gespeichert. Eine zum Modell gehörige Konfigurationsdatei wird angelegt und \e{lode} generiert die darin beschriebenen LOD Artfakte. Die Artfakten können innerhalb der Applikation mithilfe einer Bibliothek geladen werden. Bei Anpassungen an der Konfigurationsdatei werden die neuen Detailstufen automatisch generiert. Das zugehörige \e{lode-ui} bietet zudem die Möglichkeit die verschiedenen Detailstufen miteinander vergleichen zu können und die Konfiguration möglichst einfach zu justieren.
+Ein Modell wird erstellt und als glTF innerhalb des Projekts gespeichert. Eine zum Modell gehörige Konfigurationsdatei kann mittels \e{CLI} angelegt werden (wie in Abbildung \ref{fig:lodecliconfig} dargestellt) und \e{lode} generiert die darin beschriebenen LOD Artfakte (in Abbildung \ref{fig:lodeclirun} ersichtlich).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\columnwidth]{resultate/screenshotlodecliconfig.png}
+  \caption{lode \e{CLI} config – Konfiguriert die gewünschten LOD-Artefakten}
+  \label{fig:lodecliconfig}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\columnwidth]{resultate/screenshotlodeclirun.png}
+  \caption{lode \e{CLI} run – Generiert die gewünschten LOD-Artefakten}
+  \label{fig:lodeclirun}
+\end{figure}
+
+Die Artfakten können innerhalb der Applikation mithilfe einer Bibliothek geladen werden. Bei Anpassungen an der Konfigurationsdatei werden die neuen Detailstufen automatisch generiert. Das zugehörige \e{lode-ui} (in Abbildung \ref{fig:lodeui} gezeigt) bietet zudem die Möglichkeit die verschiedenen Detailstufen miteinander vergleichen zu können und die Konfiguration möglichst einfach zu justieren.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\columnwidth]{resultate/screenshotlodeui.png}
+  \caption{lode-ui}
+  \label{fig:lodeui}
+\end{figure}
 
 \section{LOD Generierung}
 
