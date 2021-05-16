@@ -74,31 +74,31 @@ Wavefront OBJ ist ein offenes Dateiformat das von Wavefront Technologies 1989 en
 FBX ist ein proprietäres Format, welches von Autodesk verwaltet wird. Das Verwenden von FBX Daten ist jedoch offiziell nur mit einer C++ FBX SDK möglich, welche für das Web nicht geeignet ist. Aufgrund der proprietären Natur gibt es keine Bestrebungen das Format offener zu gestalten.
 
 \subparagraph{glTF}
-Seit 2015 gibt es ein offenes, modernes sowie auf optimale Speichernutzung fokussiertes Format: glTF. Dieses Format wird von der Khronos Gruppe entwickelt. \cite{gltf1Spec} In dieser Arbeit wird es als Austauschformat verwendet, deshalb wird im folgenden genauer auf das Format eingegangen.
+Seit 2015 gibt es ein offenes, modernes sowie auf optimale Speichernutzung fokussiertes Format: glTF. Dieses Format wird von der Khronos Gruppe entwickelt \cite{gltf1Spec}. In dieser Arbeit wird es als Austauschformat verwendet, deshalb wird im folgenden genauer auf das Format eingegangen.
 
 Die meisten 3D-Grafikprogramme wie Blender (.blend) verwenden ihre eigenen Dateiformate. Diese Dateiformate sind jedoch für den Einsatz in einer Applikation ungeeignet da sie insbesondere nicht für die Laufzeitperformanz optimiert sind. Deswegen brauchte es für jedes Eingangsformat für jedes Ausgangsformat einen \e{converter}, wie in Abbildung \ref{fig:contentPipelineWithoutGltf} ersichtlich.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=1\columnwidth]{grundlagen/gltf/contentPipeline.png}
-  \caption{Convertierungspipeline vor glTF \cite{gltf1Spec}}
+  \caption{Konvertierungspipeline vor glTF \cite{gltfTutorialIntro}}
   \label{fig:contentPipelineWithoutGltf}
 \end{figure}
 
-Durch die immer breiter werdende Nachfrage nach 3D-Applikationen wurde ein Format benötigt, dass zum einen Applikationsunabhängig verwendet und zum anderen performant im Web eingesetzt werden kann. \cite{gltf1Spec}
-Durch diese Abstraktion kann eine Vielzahl \e{converter} vermieden werden und nur wenige, sehr spezifische Dateiformate benötigen noch einen einzigen \e{converter}. Diese neue Pipeline ist in Abbildung \ref{fig:contentPipelineWithGltf} dargestellt. \cite{gltf1Spec}
+Durch die immer breiter werdende Nachfrage nach 3D-Applikationen wurde ein Format benötigt, dass zum einen Applikationsunabhängig verwendet und zum anderen performant im Web eingesetzt werden kann.
+Durch diese Abstraktion kann eine Vielzahl \e{converter} vermieden werden und nur wenige, sehr spezifische Dateiformate benötigen noch einen einzigen \e{converter}. Diese neue Pipeline ist in Abbildung \ref{fig:contentPipelineWithGltf} dargestellt. \cite{gltfTutorialIntro}
 \begin{figure}[H]
   \centering
   \includegraphics[width=1\columnwidth]{grundlagen/gltf/contentPipelineWithGltf.png}
-  \caption{Convertierungspipeline mit glTF \cite{gltf1Spec}}
+  \caption{Konvertierungspipeline mit glTF \cite{gltfTutorialIntro}}
   \label{fig:contentPipelineWithGltf}
 \end{figure}
 
-Die Basisstruktur von glTF basiert auf JSON. Darin ist die komplette Szenerie des Modells beschrieben und in Abbildung \ref{fig:gltfDatastructure} aufgezeigt.\cite{gltf1Spec}
+Die Basisstruktur von glTF basiert auf JSON. Darin ist die komplette Szenerie des Modells beschrieben und in Abbildung \ref{fig:gltfDatastructure} aufgezeigt \cite{gltfTutorialStructure}.
 \begin{figure}[H]
   \centering
   \includegraphics[width=1\columnwidth]{grundlagen/gltf/gltfJsonStructure.png}
-  \caption{glTF Datenstruktur \cite{gltf1Spec}}
+  \caption{glTF Datenstruktur \cite{gltfTutorialStructure}}
   \label{fig:gltfDatastructure}
 \end{figure}
 
@@ -108,10 +108,11 @@ Die wichtigsten Elemente dieser Struktur kurz erläutert:
   \item \textbf{Node}: Kann eine Transformation (Rotation, Translation oder Skalierung) beinhalten oder eine Kamera, \e{Skin}, Animation, ein \e{Mesh} oder \e{Childnodes} referenzieren.
   \item  \textbf{Mesh}: Beschreibt ein geometrisches Objekt und verweist auf \e{accessor}, welcher die effektiven geometrischen Daten beinhaltet und auf \e{material}, das beschreibt, wie das Objekt beim Rendern aussehen soll.
   \item \textbf{Accessor}: Verweis auf die Binärdaten (\e{BufferView}), welche die effektiven Eigenschaften für \e{meshes}, \e{skins} und \e{animations} kompakt beinhaltet.
-  \item \textbf{BufferView}: Definiert eine Ansicht (Länge, Ort, Typ)auf einen \e{Buffer}.
+  \item \textbf{BufferView}: Definiert eine Ansicht (Länge, Ort, Typ) auf einen \e{Buffer}.
   \item \textbf{Buffer}: Verweist auf einen Block von Binärdaten, welchen die effektiven Daten des 3D-Modells platzsparend beinhaltet.
   \item \textbf{Material}: Definiert die visuellen Attribute eines \e{Mesh}.
-  \item Weitere Elemente, welche im Rahmen dieser Arbeit nicht relevant sind und nicht im Detail betrachtet werden, sind: \e{camera}, \e{skin}, \e{animation}, \e{texture}.
+  \item \textbf{Texture}: Definiert wie ein \e{Image} auf ein \e{Material} projiziert wird. Ein \e{Sampler} definiert wie das Bild plaziert werden soll.
+  \item Weitere Elemente, welche im Rahmen dieser Arbeit nicht relevant sind und nicht im Detail betrachtet werden, sind: \e{camera}, \e{skin} und \e{animation}.
 \end{itemize}
 
 \section{Transformation von Modellen}
