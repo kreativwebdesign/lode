@@ -2,7 +2,7 @@ import { Box, Spinner } from "@chakra-ui/react";
 import { OrbitControls } from "@react-three/drei";
 import { Html } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import artifactChangesState from "../state/artifactChanges";
@@ -26,8 +26,7 @@ function Model({ url }) {
 function GltfModel({ url, artifactChanges }) {
   const [gltf, set] = useState();
   // trigger a reload also on artifact changes when we get a reload message from the server
-  // eslint-disable-next-line
-  useMemo(() => new GLTFLoader().load(url, set), [url, artifactChanges]);
+  useEffect(() => new GLTFLoader().load(url, set), [url, artifactChanges]);
 
   if (!gltf) {
     return (
