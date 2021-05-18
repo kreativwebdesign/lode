@@ -1,7 +1,6 @@
 import { Box, Flex } from "@chakra-ui/layout";
 import { Input } from "@chakra-ui/input";
 import { useEffect, useState } from "react";
-import deepEql from "deep-eql";
 import { Button } from "@chakra-ui/button";
 
 function InputBox({ children }) {
@@ -23,12 +22,8 @@ function ArtifactForm({ level, updateArtifact, startingDistance }) {
   const { distance, ...l } = level;
   const [levelState, setLevel] = useState(l);
   useEffect(() => {
-    if (!deepEql(l, levelState)) {
-      setLevel(l);
-    }
-    // only apply effect when the level changes for example bc of a new manifest.
-    // adding the levelState to the dep-array would trigger it everytime, the user inputs something
-    // eslint-disable-next-line
+    const { distance, ...l } = level;
+    setLevel(l);
   }, [level]);
   const onThresholdChange = (e) =>
     setLevel((l) => ({ ...l, threshold: parseInt(e.target.value) }));

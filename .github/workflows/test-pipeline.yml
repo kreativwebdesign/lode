@@ -27,3 +27,9 @@ jobs:
           cd cli
           yarn install --frozen-lockfile
           yarn test
+
+      - name: Install and Test lode-ui 🔧
+        run: |
+          cd lode-ui
+          yarn install --frozen-lockfile
+          yarn test
