@@ -50,6 +50,7 @@ const config = async (commanderOptions) => {
     ]);
 
     for (let i = 0; i < levelCount; i++) {
+      const levelCountChanged = levelCount !== storedConfig.levels?.length;
       const isFirst = i === 0;
       const isLast = i === levelCount - 1;
       const artifactName = i === 0 ? "original" : `LOD-${i}`;
@@ -60,8 +61,8 @@ const config = async (commanderOptions) => {
         targetScale: 1 / Math.pow(2, i + 2),
       };
       const getDefaultThreshold = () => {
-        if (storedConfig.levels?.[i].threshold) {
-          return storedConfig.levels?.[i].threshold;
+        if (!levelCountChanged && storedConfig.levels?.[i]?.threshold) {
+          return storedConfig.levels?.[i]?.threshold;
         }
         if (isFirst) {
           return defaults.firstThreshold;
@@ -71,6 +72,14 @@ const config = async (commanderOptions) => {
           return defaults.threshold;
         }
       };
+      const getDefaultTargetScale = () => {
+        if (levelCountChanged) {
+          return defaults.targetScale;
+        } else {
+          return storedConfig.levels?.[i]?.targetScale || defaults.targetScale;
+        }
+      };
+
       print.success(`${artifactName}:`);
       const levelConfig = await inquirer.prompt([
         {
@@ -92,7 +101,7 @@ const config = async (commanderOptions) => {
           name: "targetScale",
           type: "input",
           message: `Target scale for the artifact "${artifactName}" (0-1)`,
-          default: storedConfig.levels?.[i].targetScale || defaults.targetScale,
+          default: getDefaultTargetScale(),
           validate: function (value) {
             if (value <= 1 && value > 0) {
               return true;
