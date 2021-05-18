@@ -55,10 +55,11 @@ Ansätze für ein HLOD System sind vorhanden, wurden jedoch nicht offiziell in U
 
 \section{Surface Simplification Algorithmus}
 \label{chap:surfaceSimplificationAlgorithm}
-Die verschiedenen Klassen von Algorithmen werden in \autoref{chap:lodAlgorithmComparison} kurz erläutert.
+Die verschiedenen Klassen von Algorithmen werden in \autoref{chap:lodAlgorithmComparison} kurz erläutert. 
 
-Verschiedene Algorithmen wurden für die Implementierung in Betracht gezogen. Die wohl weitverbreiteste Art ist der von Garland und Heckbert 1997 definierte \e{Surface Simplification using Quadric Error Metrics} welcher auf \e{Edge Collapses} basiert \cite{surfaceSimplificationUsingQuadricErrorMetrices, surfaceSimplificationWithColorUsingQuadricErrorMetrices}.
+Verschiedene Algorithmen wurden für die Implementierung in Betracht gezogen. Basierend auf den Erkenntnissen von Luebke wurde als Algorithmus \e{Surface Simplification using Quadric Error Metrics} gewählt \cite{luebkeAlgorithmComparison}. Der Algorithmus wurde von Garland und Heckbert 1997 definiert und basiert auf \e{Edge Collapses}. Der Ansatz überzeugt durch die Balance zwischen Performanz und Qualität \cite{surfaceSimplificationUsingQuadricErrorMetrices, surfaceSimplificationWithColorUsingQuadricErrorMetrices}.
 
+\subsection{Grobablauf}
 Der Algorithmus kann wie folgt zusammengefasst werden:
 
 \begin{enumerate}
@@ -73,6 +74,9 @@ Mithilfe der Fehlermetrik können anschliessend die Transformationen am Modell g
 Die hier gewählte Metrik definiert den Fehler mithilfe einer symmetrischen $4\times 4$ Matrix. Die Matrix repräsentiert die Distanz eines \e{Vertices} zu einer zugehörigen \e{Face}. Für die Kombination mehrerer \e{Faces} können die Matrizen addiert werden.
 
 Beim Entfernen einer \e{Edge} werden die Fehlermetriken der zugehörigen \e{Vertices} addiert.
+
+\subsection{Referenzimplementation}
+Der gewählte Algorithmus wurde bereits mehrfach implementiert. Eine Implementation basierend auf einer formatunabhängigen Datenstruktur ist jedoch nicht vorhanden. Eine oft referenzierte Implementation ist diejenige von Sven Forstmann, welche einige Optimierungen am ursprünglichen Algorithmus vornimmt, um optimale Performanz zu erhalten. Diese Optimierungen eignen sich hervorragend für eine webbasierte Implementation \cite{fastQuadricMeshSimplification}.
 
 \section{Pipeline Integration}
 Die Lösung soll in eine wiederverwendbare und konfigurierbare Pipeline integriert werden.
