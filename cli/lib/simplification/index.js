@@ -32,10 +32,11 @@ const simplify = (vertices, triangles, customOptions = {}) => {
   let initialTriangleCount = triangles.length;
 
   for (let iteration = 0; iteration < maxIterations; iteration++) {
+    // check if targetTriangles are reached
     if (initialTriangleCount - deletedTriangles <= targetTriangles) {
       break;
     }
-    // TODO: do not reinitialize args
+
     triangles = compactTriangles(triangles);
     references = buildReferenceList(vertices, triangles);
 
@@ -71,7 +72,6 @@ const simplify = (vertices, triangles, customOptions = {}) => {
           const { point } = calculateError(vertex0, vertex1);
 
           // don't remove if flipped
-
           const {
             flipped: flippedOnFirst,
             deletedTriangles: deleted0,
@@ -110,20 +110,18 @@ const simplify = (vertices, triangles, customOptions = {}) => {
           vertex0.q = SymmetricMatrix.add(vertex0.q, vertex1.q);
           let tStart = references.length;
 
-          deletedTriangles = updateTriangles(
+          deletedTriangles += updateTriangles(
             vertexIndex0,
             vertex0,
             deleted0,
-            deletedTriangles,
             triangles,
             vertices,
             references
           );
-          deletedTriangles = updateTriangles(
+          deletedTriangles += updateTriangles(
             vertexIndex0,
             vertex1,
             deleted1,
-            deletedTriangles,
             triangles,
             vertices,
             references
@@ -131,22 +129,9 @@ const simplify = (vertices, triangles, customOptions = {}) => {
 
           let tCount = references.length - tStart;
 
-          if (tCount <= vertex0.tCount) {
-            if (tCount > 0) {
-              for (let refIdx = 0; refIdx < tCount; refIdx++) {
-                references[vertex0.tStart + refIdx] =
-                  references[tStart + refIdx];
-              }
-            }
-          } else {
-            vertex0.tStart = tStart;
-          }
-
+          vertex0.tStart = tStart;
           vertex0.tCount = tCount;
-          return;
         }
-
-        // TODO: check if target threshold is reached
       });
     });
   }
