@@ -14,7 +14,6 @@ describe("updateTriangles", () => {
       0,
       { tCount: 1, tStart: 0 },
       [true],
-      0,
       triangles,
       vertices,
       references
