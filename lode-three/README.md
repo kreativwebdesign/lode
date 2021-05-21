@@ -67,3 +67,8 @@ This would work for the following folder structure:
 ## Dev
 
 Run `yarn setup` to get up and running
+
+### Publish
+
+- Prepare versions and ensure clean setup state
+- `npm publish --access public`

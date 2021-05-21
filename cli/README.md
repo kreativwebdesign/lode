@@ -69,3 +69,8 @@ Instead of installing the package one can simply run `npx @kreativwebdesign/lode
 ## Dev
 
 Run `yarn setup` to get up and running
+
+### Publish
+
+- Prepare versions and ensure clean setup state
+- `npm publish --access public`
