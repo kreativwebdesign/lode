@@ -14,31 +14,30 @@ Der grösste Nutzen entsteht in Anwendungen mit komplexen Modellen - für diese 
 
 \subsection{Allgemeingültigkeit}
 
-Innerhalb der Testapplikation, wie in \autoref{chap:testApplication} beschrieben, werden dieselben Modelle mehrfach angezeigt. Dies wird in der Praxis insbesondere bei repetitiven Elementen, wie zum Beispiel Bäumen für Landschaftsgestaltung, verwendet. In solchen Situationen stellen die Anzahl Polygone das primäre Problem für eine schnelle Laufzeitperformanz dar und der Einsatz von LOD Artefakten kann erwägt werden. Die Allgemeingültigkeit ist für Anwendungsfälle mit vergleichbaren Anforderungen gegeben.
+Innerhalb der Testapplikation, wie in \autoref{chap:testApplication} beschrieben, werden dieselben Modelle mehrfach angezeigt. Dies wird in der Praxis insbesondere bei repetitiven Elementen, wie zum Beispiel Bäumen für Landschaftsgestaltung, verwendet. In solchen Situationen stellen die Anzahl Polygone das primäre Problem für eine schnelle Laufzeitperformanz dar und der Einsatz von LOD-Artefakten kann erwägt werden. Die Allgemeingültigkeit ist für Anwendungsfälle mit vergleichbaren Anforderungen gegeben.
 
 \subsection{Abgrenzung}
 
-Ein LOD System kann sinnvoll sein, in einigen Anwendungsgebieten bringt es jedoch nicht den gewünschten Zweck. Wird ein Modell nur auf einer Detailstufe angezeigt, so ist der Einsatz von LOD abzuraten. Sind die Modelle bereits sehr simpel, wie bei \e{Low-Poly-Modellen}, sind die zusätzlichen Vereinfachungen nur von geringem Nutzen.
-So muss der Einsatz von LOD Artefakten für jeden Anwendungsfall separat abgewogen werden. Ein Vorteil von \e{lode} ist die Einfachheit der Integration. So ist es möglich, mit wenig Aufwand den groben Nutzen für ein spezifisches Anwendungsbeispiel abschätzen zu können, ohne dass viel Entwicklungszeit dafür aufgewendet werden muss.
+Ein LOD-System kann sinnvoll sein, in einigen Anwendungsgebieten bringt es jedoch nicht den gewünschten Zweck. Wird ein Modell nur auf einer Detailstufe angezeigt, so ist der Einsatz von LOD abzuraten. Sind die Modelle bereits sehr simpel, wie bei \e{Low-Poly-Modellen}, sind die zusätzlichen Vereinfachungen nur von geringem Nutzen.
+So muss der Einsatz von LOD-Artefakten für jeden Anwendungsfall separat abgewogen werden. Ein Vorteil von \e{lode} ist die Einfachheit der Integration. So ist es möglich, mit wenig Aufwand den groben Nutzen für ein spezifisches Anwendungsbeispiel abschätzen zu können, ohne dass viel Entwicklungszeit dafür aufgewendet werden muss.
 
 \section{Mögliche Erweiterungen}
 Die Möglichkeiten für Erweiterungen zu \e{lode} sind sehr umfangreich. In diesem Abschnitt wird auf einige Möglichkeiten eingegangen.
 
 \paragraph{Akurate Texturinformationen}
-Zurzeit wird die Textur komplett entfernt und durch eine einfache Farbinformation ersetzt. Dies stellt beim aktuellen Einsatz der LOD-Artefakten kein Problem dar. Eine interessante Erweiterung ist so jedoch nicht möglich: Das Vereinfachen der ersten Stufe. Der Algorithmus kann so erweitert werden, dass die Texturinformationen nicht vereinfacht sondern als Teil der \e{Vertices} verwendet werden. Dies würde es ermöglichen, ein Modell, welches über mehrere Millionen Polygone verfügt, und somit ungeeignet für das Web ist, zu vereinfachen und diese erste Vereinfachung als erste Stufe zu verwenden.
+Zurzeit wird die Textur komplett entfernt und durch eine einfache Farbinformation ersetzt. Dies stellt beim aktuellen Einsatz der LOD-Artefakten kein Problem dar. Eine interessante Erweiterung ist so jedoch nicht möglich: Das Vereinfachen der ersten Stufe. Der Algorithmus kann so erweitert werden, dass die Texturinformationen nicht vereinfacht, sondern als Teil der \e{Vertices} verwendet werden. Dies würde es ermöglichen, ein Modell, welches über mehrere Millionen Polygone verfügt, und somit ungeeignet für das Web ist, zu vereinfachen und diese erste Vereinfachung als erste Stufe zu verwenden.
 
 \paragraph{glTF LOD Format}
-Es gibt einen Proposal für die Definition von LODs innerhalb von glTF zu definieren. \cite{glTFExtensionLOD}
-Zur Zeit hat Three.js jedoch noch keinen Support für diese Extension. Auch Babylon.js unterstützt lediglich das progressive Laden von Modellen. \cite{babylonProgressiveLoading}
+Es gibt einen Vorschlag um die Definition von LOD-Stufen innerhalb von glTF zu definieren. \cite{glTFExtensionLOD}
+Zurzeit hat Three.js jedoch noch keinen Support für diese Extension. Auch Babylon.js unterstützt lediglich das progressive Laden von Modellen. \cite{babylonProgressiveLoading}
 
 \paragraph{Progressives Laden}
-Aktuell werden initial alle Level of Details geladen. Dies hat zur Konsequenz, dass im Vergleich zur unoptimierten Variante eine schlechtere initiale Ladezeit resultiert. Um dieses Verhalten zu verbessern beziehungsweise sogar in einen Vorteil zu verwandeln, könnte das System so erweiteret werden, dass die Modelle progressiv geladen werden.
+Aktuell werden initial alle Level of Details geladen. Dies hat zur Konsequenz, dass im Vergleich zur unoptimierten Variante eine schlechtere initiale Ladezeit resultiert. Um dieses Verhalten zu verbessern beziehungsweise sogar in einen Vorteil zu verwandeln, könnte das System so erweitert werden, dass die Modelle progressiv geladen werden.
 
 \paragraph{Levelwahl während Laufzeit}
-Die optimale Levelwahl kann stark von der Laufzeitumgebung abhängig sein. So sollte zum Beispiel auf mobilen Geräten früher ein einfacheres Modell angezeigt werden als auf leistungsstarken Geräten.
+Die optimale Wahl des Levels kann stark von der Laufzeitumgebung abhängig sein. So sollte zum Beispiel auf mobilen Geräten früher ein einfacheres Modell angezeigt werden als auf leistungsstarken Geräten.
 Deshalb eignet sich eine Wahl der Levels zur Laufzeit, um ein optimales Erlebnis auf allen Geräten zu ermöglichen.
 Nebst dem \e{\gls{CLI}} soll folglich auch ein Javascript-Modul bereitgestellt werden, welches das Laden von glTF Dateien übernimmt und basierend auf der erkannten Performanz das beste Level of Detail einspielt.
 
 \paragraph{Konsequenter Einsatz von glb Dateien}
-
-Aktuell werden in der Demoszenerie glTF Dateien eingesetzt. Das binäre Format glb ist jedoch grundsätzlich glTF vorzuziehen und sollte als primäres Austauschformat verwendet werden. Für das Laufzeitverhalten entsteht kein signifkanter Unterschied durch den Einsatz von glb.
+Aktuell werden in der Demoszenerie glTF Dateien eingesetzt. Das binäre Format glb ist jedoch grundsätzlich glTF vorzuziehen und sollte als primäres Austauschformat verwendet werden. Für das Laufzeitverhalten entsteht kein signifikanter Unterschied durch den Einsatz von glb.

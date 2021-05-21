@@ -10,22 +10,22 @@ Das Resultat besteht wie beschrieben aus verschiedenen Artefakten. In diesem Abs
 
 \section{LOD Pipeline}
 
-Der Kern der Arbeit stellt die LOD Pipeline, \e{lode} genannt, dar. Dieses Tool liefert eine für das Web optimierte Möglichkeit LOD Artefakte für eine Vielzahl von Anwendungsgebieten zu generieren.
+Der Kern der Arbeit stellt die LOD-Pipeline, \e{lode} genannt, dar. Dieses Tool liefert eine für das Web optimierte Möglichkeit LOD-Artefakte für eine Vielzahl von Anwendungsgebieten zu generieren.
 
 \subsection{Aktueller Workflow}
 
-Der übliche Ablauf für das generieren von LOD Artefakten ist wie folgt:
-Für ein gegebenes Modell werden innerhalb vom Modellierungstool wie z.B. Blender bestimmte LOD Stufen von Hand generiert. Anschliessend werden die verschiedenen Stufen exportiert und manuell in die Applikation integriert. Fine Tuning erfordert sowohl Anpassungen an den Modellen als auch im Code. Erst muss im Modellierungstool die Anpassung manuell vorgenommen, dann neu in die Applikation geladen und dort neu geprüft werden. Diese Schritte können sich mehrfach wiederholen, was mühselig und teuer ist.
+Der übliche Ablauf für das Generieren von LOD-Artefakten ist wie folgt:
+Für ein gegebenes Modell werden innerhalb vom Modellierungstool wie zum Beispiel Blender bestimmte LOD-Stufen von Hand generiert. Anschliessend werden die verschiedenen Stufen exportiert und manuell in die Applikation integriert. \e{Fine Tuning} erfordert sowohl Anpassungen an den Modellen als auch im Code. Erst muss im Modellierungstool die Anpassung manuell vorgenommen, dann neu in die Applikation geladen und dort neu geprüft werden. Diese Schritte können sich mehrfach wiederholen, was mühselig und teuer ist.
 
 \subsection{lode Pipeline}
 
-Das Ziel von \e{lode} ist es, für ein möglichst breites Spektrum von Anwendungsfällen eine einfache Lösung anzubieten und somit die Hemmschwelle für den Einsatz von LOD Artfakten zu reduzieren.
+Das Ziel von \e{lode} ist es, für ein möglichst breites Spektrum von Anwendungsfällen eine einfache Lösung anzubieten und somit die Hemmschwelle für den Einsatz von LOD-Artfakten zu reduzieren.
 
 Deshalb setzt \e{lode} konsequent auf moderne Entwicklungsprozesse, die nahtlos in die bestehenden Prozesse integriert werden können. Manuelle Schritte sollen auf ein Minimum reduziert und Finetuning so einfach wie möglich werden.
 
 \subsection{lode Ablauf}
 
-3D-Modelle werden erstellt und als glTF-Dateien innerhalb des Projekts gespeichert. Eine zu den Modellen gehörige Konfigurationsdatei kann mittels \e{CLI} angelegt werden (wie in Abbildung \ref{fig:lodecliconfig} dargestellt) und \e{lode} generiert die darin beschriebenen LOD-Artfakte (in Abbildung \ref{fig:lodeclirun} ersichtlich). Wenn sich ein Modell oder eine Konfiguration ändert, werden die notwendigen Schritte automatisch erneut durchgeführt. So ist es möglich, schnell Anpassungen vorzunehmen und die Änderungen im Projekt ohne manuelle Arbeit zu sehen.
+3D-Modelle werden erstellt und als glTF-Dateien innerhalb des Projekts gespeichert. Eine zu den Modellen gehörige Konfigurationsdatei kann mittels \e{CLI} angelegt werden (wie in Abbildung \ref{fig:lodecliconfig} dargestellt) und \e{lode} generiert die darin beschriebenen LOD-Artefakte (in Abbildung \ref{fig:lodeclirun} ersichtlich). Wenn sich ein Modell oder eine Konfiguration ändert, werden die notwendigen Schritte automatisch erneut durchgeführt. So ist es möglich, schnell Anpassungen vorzunehmen und die Änderungen im Projekt ohne manuelle Arbeit zu sehen.
 
 \begin{figure}[H]
   \centering
@@ -41,9 +41,9 @@ Deshalb setzt \e{lode} konsequent auf moderne Entwicklungsprozesse, die nahtlos 
   \label{fig:lodeclirun}
 \end{figure}
 
-Die Artfakte können innerhalb der Applikation mithilfe einer Bibliothek geladen werden. Dabei werden die Sepzifikationen in der Konfigurationsdatei geladen und entsprechend in die Szenerie geladen.
+Die Artefakte können innerhalb der Applikation mithilfe einer Bibliothek geladen werden. Dabei werden die Spezifikationen in der Konfigurationsdatei geladen und entsprechend in die Szenerie geladen.
 
-Das zugehörige \e{lode-ui} (in Abbildung \ref{fig:lodeui} gezeigt) bietet zudem die Möglichkeit, die verschiedenen Detailstufen miteinander zu vergleichen und die Konfiguration möglichst einfach zu justieren. Dies ermöglich es, die Änderungen in Echtzeit zu sehen und die Distanzen, bei welchen Level aktiviert werden, einzustellen. So ist kein manuelles hin und her wechseln zwischen Applikationen mehr notwendig.
+Das zugehörige \e{lode-ui} (in Abbildung \ref{fig:lodeui} gezeigt) bietet zudem die Möglichkeit, die verschiedenen Detailstufen miteinander zu vergleichen und die Konfiguration möglichst einfach zu justieren. Dies ermöglicht es, die Änderungen in Echtzeit zu sehen und die Distanzen, bei welchen Level aktiviert werden, einzustellen. So ist kein manuelles hin und her wechseln zwischen Applikationen mehr notwendig.
 
 \begin{figure}[H]
   \centering
@@ -54,21 +54,21 @@ Das zugehörige \e{lode-ui} (in Abbildung \ref{fig:lodeui} gezeigt) bietet zudem
 
 \section{LOD Generierung}
 
-Für das Erstellen von LOD Artefakten wurde ein für LOD Artefakte optimierte Version des in \autoref{chap:surfaceSimplificationAlgorithm} erklärten \e{Surface Simplification Algorithmus} entwickelt.
+Für das Erstellen von LOD-Artefakten wurde ein für LOD-Artefakte optimierte Version des in \autoref{chap:surfaceSimplificationAlgorithm} erklärten \e{Surface Simplification Algorithmus} entwickelt.
 
 \subsection{Implementation}
 
-Die Implementation des Algorithmus wurde in JavaScript, basierend auf \fGls{Node.js}{JavaScript Ausführungsumgebung welche ohne einen Browser verwendet werden kann}, umgesetzt. Grund dafür ist das einbinden von \e{lode} in bestehende Entwicklungsabläufe in der Webentwicklung. So ist es einfach möglich das Paket kostenlos mithilfe von \gls{npm} zur Verfügung zu stellen.
+Die Implementation des Algorithmus wurde in JavaScript, basierend auf \fGls{Node.js}{JavaScript Ausführungsumgebung, welche ohne einen Browser verwendet werden kann}, umgesetzt. Grund dafür ist das Einbinden von \e{lode} in bestehende Entwicklungsabläufe in der Webentwicklung. So ist es einfach möglich das Paket kostenlos mithilfe von \gls{npm} zur Verfügung zu stellen.
 
 \subsection{Artefakte}
 
-Die generierten Artefakte sind unabhängig voneinander. So ist es nicht notwendig alle Artefakte zu jeder Zeit zu laden. Dies hat den primären Vorteil, dass es möglich ist progressives Laden als Erweiterung zuzulassen. Progressives laden bedeutet, dass zuerst die LOD Artefakte mit den wenigsten Details geladen werden und angezeigt werden bis die detaillierteren Level visualisiert werden.
+Die generierten Artefakte sind unabhängig voneinander. So ist es nicht notwendig alle Artefakte zu jeder Zeit zu laden. Dies hat den primären Vorteil, dass es möglich ist progressives Laden als Erweiterung zuzulassen. Progressives laden bedeutet, dass zuerst die LOD-Artefakte mit den wenigsten Details geladen werden und angezeigt werden bis die detaillierteren Level visualisiert werden.
 Es ist sogar möglich auf gewissen Geräten die detaillierten Level überhaupt nicht zu laden und so zum Beispiel Bandbreite zu sparen.
 
 \subsection{Texturen}
 
-Bei vielen Modellen sind der grösste Teil der Speichergrösse die Texturen. Das Optimieren der geometrischen Struktur reduziert die zugehörigen Texturen jedoch nicht. Um trotzdem möglichst grosse Einsparungen für die Texturen zu ermöglichen wurde eine Methode entwickelt, welche versucht die prominenteste Farbe eines Modelles zu extrahieren und diese für die Vereinfachungen zu verwenden.
-Diese Technik führt zu signifikanten Detailverlusten bei der Nahbetrachtung und ist somit ungeeignet für das Verwenden bei der ersten LOD Stufe. Für alle weiteren Stufen überwiegt jedoch der Vorteil der Vereinfachung im Vergleich zum Detailverlust.
+Bei vielen Modellen sind der grösste Teil der Speichergrösse die Texturen. Das Optimieren der geometrischen Struktur reduziert die zugehörigen Texturen jedoch nicht. Um trotzdem möglichst grosse Einsparungen für die Texturen zu ermöglichen wurde eine Methode entwickelt, welche versucht die prominenteste Farbe eines Modells zu extrahieren und diese für die Vereinfachungen zu verwenden.
+Diese Technik führt zu signifikanten Detailverlusten bei der Nahbetrachtung und ist somit ungeeignet für das Verwenden bei der ersten LOD-Stufe. Für alle weiteren Stufen überwiegt jedoch der Vorteil der Vereinfachung im Vergleich zum Detailverlust.
 
 \section{Benchmark}
 
@@ -76,7 +76,7 @@ Das Ziel des Benchmarks ist der Vergleich einer Version ohne Einsatz von LOD und
 
 \paragraph{Browser Umgebung}
 Um den Umfang des Benchmarks überschaubar zu halten, wurde ausschliesslich ein Benchmark für Google Chrome entwickelt.
-Google Chrome basiert auf \fgls{Chromium}{Open Source Browser-Projekt welches von Google entwickelt wird}, dieselbe Engine, welche auch Microsoft Edge oder Opera verwenden.
+Google Chrome basiert auf \fgls{Chromium}{Open Source Browser-Projekt, welches von Google entwickelt wird}, dieselbe Engine, welche auch Microsoft Edge oder Opera verwenden.
 Einen Benchmark basierend auf Google Chrome liefert somit auch Indizien für diese beiden Browser, auch wenn gewisse Abweichungen möglich sind.
 Neben dem Marktführer Chrome sind Mozilla Firefox oder Safari von Apple ebenfalls Optionen. Jedoch wurde primär aufgrund des Marktanteils von total rund 70\% \cite{browserUsage} zugunsten von Google Chrome entschieden.
 Die getroffenen Aussagen bezüglich Laufzeitverhalten behalten ihre Gültigkeit auch für andere Browser.
@@ -119,7 +119,7 @@ Der Test erfasst die in Tabelle \ref{table:benchmarkFigures} aufgeführten Kennz
   \hline
   Median \e{\gls{FPS}} & Die \e{\gls{FPS}} werden kontinuierlich berechnet. Um starke Abweichungen zu verwerfen wird der Median verwendet. \\
   \hline
-  Dauer für das Laden der Modelle & Totale Zeit für das Laden aller Modelle der Szenerie. Dieser Wert ist relativ zu betrachten, da die Modelle lokal geladen werden und die Zeit für das Laden von einem Server signifkant höher sein kann. Grundsätzlich besteht eine ausreichende Korrelation zwischen Dateigrösse und Zeit für das Laden der Modelle. Ein zusätzlicher Faktor ist jedoch die Anzahl an Dateien, welche geladen werden müssen. \\
+  Dauer für das Laden der Modelle & Totale Zeit für das Laden aller Modelle der Szenerie. Dieser Wert ist relativ zu betrachten, da die Modelle lokal geladen werden und die Zeit für das Laden von einem Server signifikant höher sein kann. Grundsätzlich besteht eine ausreichende Korrelation zwischen Dateigrösse und Zeit für das Laden der Modelle. Ein zusätzlicher Faktor ist jedoch die Anzahl an Dateien, welche geladen werden müssen. \\
   \hline
   Median \e{Render Loop} Dauer & Der Median aller Laufzeiten der \e{Render Loop}. \\
   \hline
@@ -136,7 +136,7 @@ Der Test erfasst die in Tabelle \ref{table:benchmarkFigures} aufgeführten Kennz
 
 \paragraph{Aufbau Testapplikation}
 \label{chap:testApplication}
-Die Testapplikation stellt eine komplexe Szenerie dar. Der Betrachter fliegt während dem Ablauf kontinuierlich über die Szenerie. Dies stellt die optimalen Bedingungen für den Einsatz von LOD Artefakten dar.
+Die Testapplikation stellt eine komplexe Szenerie dar. Der Betrachter fliegt während dem Ablauf kontinuierlich über die Szenerie. Dies stellt die optimalen Bedingungen für den Einsatz von LOD-Artefakten dar.
 
 In Abbildung \ref{fig:demoApplication} ist ein Screenshot der Testapplikation ersichtlich. Die Kamera wird kontinuierlich innerhalb der Szene bewegt. Die Kamera wird abhängig von der Systemzeit positioniert. So ist es möglich, dass beide Applikationen – unabhängig von den \e{FPS} – jeweils die gleichen Aspekte innerhalb der Applikation visualisieren. Die Modelle werden zudem bei jedem Durchlauf identisch positioniert. Dies gewährleistet, dass das Laufzeitverhalten verlässlich ist.
 

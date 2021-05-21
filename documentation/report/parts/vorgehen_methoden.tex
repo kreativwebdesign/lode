@@ -7,13 +7,13 @@
 % !TEX encoding = UTF-8 Unicode
 % !TEX root = ../doc.tex
 \section{Vergleich LOD Systeme}
-Die verschiedenen LOD Systeme sowie ihre Vor- und Nachteile werden in \autoref{chap:differentLodApproaches} erläutert. In diesem Schritt wird erläutert, welche Art LOD System in dieser Arbeit entwickelt werden soll.
+Die verschiedenen LOD Systeme sowie ihre Vor- und Nachteile werden in \autoref{chap:differentLodApproaches} erläutert. In diesem Schritt wird erläutert, welche Art LOD-System in dieser Arbeit entwickelt werden soll.
 
 Die verschiedenen Ansätze unterscheiden sich in einigen Kriterien. Für den Einsatz in einer Webanwendungen ist die Gewichtung der Kriterien anders als für Desktopanwendungen, Spiele oder dergleichen.
-So hat die Dateigrösse der Modelle bei Webanwendungen einen grösseren Einfluss auf die gefühlte Performanz beim Endanwender. Insofern ist die Auswirkung der gewählten Strategie auf die Downloadgrösse ein wichtiges Kriterium. Für diskrete LOD muss für jedes Level ein separates Modell geladen werden. Dies erhöht die Downloadgrösse merkbar. Bei kontinuierlichen LOD Systemen muss das Modell die Unterschiede zwischen verschiedenen Levels persistieren. Mit einem für kontinuierliche LOD ausgelegten Algorithmus kann der benötigte Speicher reduziert werden, indem beim \e{Edge Collapse} nicht auf einen neuen optimalen \e{Vertex} reduziert wird, sondern von den beiden bestehenden \e{Vertices} der passendere gewählt wird. Trotzdem entsteht für jeden \e{Edge Collapse} ein zusätzlicher Speicheraufwand.
-Insbesondere unter Berücksichtigung der Tatsache, dass Laufzeitperformanz essentiell für Webanwendungen ist, wurde entschieden nicht auf kontinuerliche LOD Systeme zu setzen.
-Zudem wurde entschieden kein hierarchisches LOD System zu entwickeln, um die Integration des Tools für die Entwickler einer Webanwendung möglichst einfach zu gestalten.
-Das diskrete LOD System ist für Grafiker und Entwickler die einfachste zu verwenden und deckt somit auch die breiteste Benutzerbasis und die meisten Anwendungsfälle ab. Aufgrund dessen, wird im Rahmen dieser Arbeit ein Algorithmus dieses Systems entwickelt und in den Entwicklungsprozess integriert.
+So hat die Dateigrösse der Modelle bei Webanwendungen einen grösseren Einfluss auf die gefühlte Performanz beim Endanwender. Insofern ist die Auswirkung der gewählten Strategie auf die Downloadgrösse ein wichtiges Kriterium. Für diskrete LOD muss für jedes Level ein separates Modell geladen werden. Dies erhöht die Downloadgrösse merkbar. Bei kontinuierlichen LOD-Systemen muss das Modell die Unterschiede zwischen verschiedenen Levels persistieren. Mit einem für kontinuierliche LOD ausgelegten Algorithmus kann der benötigte Speicher reduziert werden, indem beim \e{Edge Collapse} nicht auf einen neuen optimalen \e{Vertex} reduziert wird, sondern von den beiden bestehenden \e{Vertices} der passendere gewählt wird. Trotzdem entsteht für jeden \e{Edge Collapse} ein zusätzlicher Speicheraufwand.
+Insbesondere unter Berücksichtigung der Tatsache, dass Laufzeitperformanz essenziell für Webanwendungen ist, wurde entschieden nicht auf kontinuierliche LOD-Systeme zu setzen.
+Zudem wurde entschieden kein hierarchisches LOD-System zu entwickeln, um die Integration des Tools für die Entwickler einer Webanwendung möglichst einfach zu gestalten.
+Das diskrete LOD-System ist für Grafiker und Entwickler die einfachste zu verwenden und deckt somit auch die breiteste Benutzerbasis und die meisten Anwendungsfälle ab. Aufgrund dessen, wird im Rahmen dieser Arbeit ein Algorithmus dieses Systems entwickelt und in den Entwicklungsprozess integriert.
 Eine Übersicht über die verschiedenen Kriterien kann in Tabelle \ref{table:lodSystemComparison} gefunden werden.
 
 \begin{table}[H]
@@ -41,21 +41,21 @@ Eine Übersicht über die verschiedenen Kriterien kann in Tabelle \ref{table:lod
 \subsection{Bestehende Systeme}
 \label{chap:existingSolutions}
 
-Unity sowie Unreal verfügen über umfangreiche LOD Systeme. Eine Analyse dieser Systeme bildet somit die Grundlage für die Entwicklung eines neuen Systems.
+Unity sowie Unreal verfügen über umfangreiche LOD-Systeme. Eine Analyse dieser Systeme bildet somit die Grundlage für die Entwicklung eines neuen Systems.
 
 \paragraph{Unreal}
 
-Unreal verfügt sowohl über ein DLOD System als auch über ein HLOD System. Das HLOD Tool zeichnet sich insbesondere dadurch aus, dass es die verschiedenen HLOD Artefakte automatisch generieren kann. Dies ermöglicht es, komplexe Strukturen direkt innerhalb von Unreal zu kombinieren. \cite{unrealProxyLod}
+Unreal verfügt sowohl über ein DLOD-System als auch über ein HLOD-System. Das HLOD-Tool zeichnet sich insbesondere dadurch aus, dass es die verschiedenen HLOD-Artefakte automatisch generieren kann. Dies ermöglicht es, komplexe Strukturen direkt innerhalb von Unreal zu kombinieren. \cite{unrealProxyLod}
 
 \paragraph{Unity}
 
-Unity verfügt über ein DLOD System, welches es erlaubt LOD Artefakte manuell zu definieren.
+Unity verfügt über ein DLOD-System, welches es erlaubt LOD-Artefakte manuell zu definieren.
 Innerhalb der Unity Community gibt es eine Bibliothek für das automatische Generieren von Artefakten, welche für LOD verwendet werden können. \cite{unityMeshSimplification}
-Ansätze für ein HLOD System sind vorhanden, wurden jedoch nicht offiziell in Unity integriert. \cite{unityAutoLod}
+Ansätze für ein HLOD-System sind vorhanden, wurden jedoch nicht offiziell in Unity integriert. \cite{unityAutoLod}
 
 \section{Surface Simplification Algorithmus}
 \label{chap:surfaceSimplificationAlgorithm}
-Die verschiedenen Klassen von Algorithmen werden in \autoref{chap:lodAlgorithmComparison} kurz erläutert. 
+Die verschiedenen Klassen von Algorithmen werden in \autoref{chap:lodAlgorithmComparison} kurz erläutert.
 
 Verschiedene Algorithmen wurden für die Implementierung in Betracht gezogen. Basierend auf den Erkenntnissen von Luebke wurde als Algorithmus \e{Surface Simplification using Quadric Error Metrics} gewählt \cite{luebkeAlgorithmComparison}. Der Algorithmus wurde von Garland und Heckbert 1997 definiert und basiert auf \e{Edge Collapses}. Der Ansatz überzeugt durch die Balance zwischen Performanz und Qualität \cite{surfaceSimplificationUsingQuadricErrorMetrices, surfaceSimplificationWithColorUsingQuadricErrorMetrices}.
 
@@ -65,7 +65,7 @@ Der Algorithmus kann wie folgt zusammengefasst werden:
 \begin{enumerate}
   \item Fehlermetrik für alle Vertices berechnen.
   \item Optionen für \e{Edge Collapse} markieren.
-  \item \e{Edge Collapses} mit geringstem Fehler solange durchführen bis gewünschte Anzahl \e{Vertices} erreicht ist.
+  \item \e{Edge Collapses} mit geringstem Fehler, solange durchführen bis gewünschte Anzahl \e{Vertices} erreicht ist.
 \end{enumerate}
 
 \subsection{Fehlermetrik}
@@ -98,13 +98,13 @@ Die Auswirkungen eines Systems auf die Entwicklungszeit ist entscheidend dafür,
 
 Die Downloadzeit ist grundsätzlich linear abhängig von der Dateigrösse.
 Je grösser die Dateien, desto mehr Bandbreite wird verwendet. Dies hat direkte Auswirkungen auf die Zeit, bis eine Anwendung benutzt werden kann. Ziel ist es, die Downloadgrösse möglichst tief zu halten.
-Dank der heutigen Bandbreiten ist dies für viele Anwendungsbereiche ein kleinerwerdendes Problem.
+Dank der heutigen Bandbreiten ist dies für viele Anwendungsbereiche ein kleiner werdendes Problem.
 Zudem können Probleme in diesem Bereich teilweise kaschiert werden, indem man das Ladeverhalten optimiert. Häufig sind nicht alle Artefakte notwendig, um eine verwendbare Anwendung darzustellen und der Rest kann phasenweise nachgeladen werden.
 Ausserdem ist es auch möglich, Artefakte bereits vorzuladen.
 
 \paragraph{Laufzeit}
 
-Entscheidend ist, unabhängig von der Applikation, das Laufzeitverhalten. Eine Applikation, welche eine schlechte User Experience liefert, ist inakzeptabel.
+Entscheidend ist, unabhängig von der Applikation, das Laufzeitverhalten. Eine Applikation, welche eine schlechte \e{User Experience} liefert, ist inakzeptabel.
 Das Laufzeitverhalten wird durch eine Vielzahl von Aspekten beeinflusst.
 Angestrebt werden grundsätzlich immer 60 \fgls{FPS}{Frames per Second. Bilder pro Sekunde. Gängige Art, die Performanz der \gls{Rendering Engine} zu messen}. Wenn eine bestimmte Szenerie diese 60 \e{\gls{FPS}} nicht erreicht, ist ein Performanzproblem vorhanden.
 
@@ -122,9 +122,9 @@ Eine unabhängige Arbeit definierte 2017 einen vergleichbaren Benchmark, um die 
 Verschiedene Varianten können gewählt werden, um den Nutzen aufzuzeigen. Die verschiedenen in Betracht gezogenen Ansätze werden in diesem Abschnitt erläutert.
 
 \paragraph{Modellbetrachtung}
-Grundsätzlich kann der Nutzen beziffert werden, indem die Kosten zum Rendering eines Modelles berechnet werden. So können die Kosten der benutzten GPU Ressourcen durch das Messen des Aufwandes eines spezifischen \e{Draw Calls} beziffert werden. Die Implementation ist simpel und liefert genaue Resultate. Die Auswirkungen von Nebeneffekten können beinahe vollständig negiert werden.
-Sinnvoll wäre es, das Modell in konstanter Distanz zur Kamera um zwei Achsen drehen zu lassen und die Messung solange durchzuführen, bis eine ganze Umdrehung stattgefunden hat. Das originale Modell kann mit den verschiedenen Stufen verglichen werden und die Performanzverbesserung beziffert werden.
-Der primäre Nachteil bei dieser Variante liegt an der Aussagekraft. Die einzige belegte Aussage ist, dass es möglich ist, Performanzeinsparungen durch Vereinfachung zu erhalten. Dies dient jedoch nicht als Beleg, dass der Einsatz von LOD Artefakten Performanzengpässe lösen kann, da beim Einsatz von LOD weitere Aspekte berücksichtigt werden müssen. Beispiele für diese Aspekte sind: erhöhte Memory Auslastung durch die zusätzlichen Artefakte oder zusätzlich erforderliche Rechenleistung für berechnen des zu wählenden Artefakts. 
+Grundsätzlich kann der Nutzen beziffert werden, indem die Kosten zum Rendering eines Modells berechnet werden. So können die Kosten der benutzten GPU Ressourcen durch das Messen des Aufwandes eines spezifischen \e{Draw Calls} beziffert werden. Die Implementation ist simpel und liefert genaue Resultate. Die Auswirkungen von Nebeneffekten können beinahe vollständig negiert werden.
+Sinnvoll wäre es, das Modell in konstanter Distanz zur Kamera um zwei Achsen drehen zu lassen und die Messung so lange durchzuführen, bis eine ganze Umdrehung stattgefunden hat. Das originale Modell kann mit den verschiedenen Stufen verglichen werden und die Performanzverbesserung beziffert werden.
+Der primäre Nachteil bei dieser Variante liegt an der Aussagekraft. Die einzige belegte Aussage ist, dass es möglich ist, Performanzeinsparungen durch Vereinfachung zu erhalten. Dies dient jedoch nicht als Beleg, dass der Einsatz von LOD Artefakten Performanzengpässe lösen kann, da beim Einsatz von LOD weitere Aspekte berücksichtigt werden müssen. Beispiele für diese Aspekte sind: erhöhte Memory Auslastung durch die zusätzlichen Artefakte oder zusätzlich erforderliche Rechenleistung für das Berechnen des zu wählenden Artefakts.
 
 \paragraph{Szeneriebetrachtung}
 Bei diesem Ansatz wird eine gegebene Szenerie möglichst geringfügig angepasst und die Auswirkungen auf die Performanz verglichen.

@@ -7,7 +7,7 @@
 % !TEX encoding = UTF-8 Unicode
 % !TEX root = ../doc.tex
 
-Im folgenden Abschnitt werden die verschiedenen Grundlagen für die Entwicklung eines LOD Systems kurz erläutert. Die Themen sind soweit als möglich voneinander getrennt.
+Im folgenden Abschnitt werden die verschiedenen Grundlagen für die Entwicklung eines LOD-Systems kurz erläutert. Die Themen sind so weit als möglich voneinander getrennt.
 
 \section{3D-Modelle}
 Ein Modell stellt ein Objekt aus der realen Welt vereinfacht dar.
@@ -65,7 +65,7 @@ Um die Oberfläche von Modellen zu definieren wird häufig ein sogenanntes \fgls
 Diese Sektion erläuterte die für diese Arbeit relevanten polygonale Modelle. Alternativen wie zum Beispiel \e{Point Clouds}, welche das Resultat von 3D-Scans sind, werden nicht weiter erläutert. Auch andere Methoden wie \e{NURBS}, welche Modelle mithilfe von mathematisch definierten Flächen modelliert, werden aussen vor gelassen.
 
 \paragraph{Formate}
-Um ein 3D Modell in einer Anwendung zu verwenden, muss ein entsprechendes Format verwendet werden. Hierfür steht eine Vielzahl von Optionen zur Auswahl. Aufgrund der Menge wird hier jedoch nur oberflächlich auf die bekanntesten Formate eingegangen.
+Um ein 3D-Modell in einer Anwendung zu verwenden, muss ein entsprechendes Format verwendet werden. Hierfür steht eine Vielzahl von Optionen zur Auswahl. Aufgrund der Menge wird hier jedoch nur oberflächlich auf die bekanntesten Formate eingegangen.
 
 \subparagraph{OBJ}
 Wavefront OBJ ist ein offenes Dateiformat das von Wavefront Technologies 1989 entwickelt wurde. Das Format ist jedoch speichertechnisch ineffizient und verfügt zudem nur über ein limitiertes Feature Set. Des Weiteren gibt es keine zentrale Instanz, welche eine Spezifikation liefert und Informationen sind deshalb schwerer zu finden. \cite{objSpec}
@@ -111,7 +111,7 @@ Die wichtigsten Elemente dieser Struktur kurz erläutert:
   \item \textbf{BufferView}: Definiert eine Ansicht (Länge, Ort, Typ) auf einen \e{Buffer}.
   \item \textbf{Buffer}: Verweist auf einen Block von Binärdaten, welchen die effektiven Daten des 3D-Modells platzsparend beinhaltet.
   \item \textbf{Material}: Definiert die visuellen Attribute eines \e{Mesh}.
-  \item \textbf{Texture}: Definiert wie ein \e{Image} auf ein \e{Material} projiziert wird. Ein \e{Sampler} definiert wie das Bild plaziert werden soll.
+  \item \textbf{Texture}: Definiert wie ein \e{Image} auf ein \e{Material} projiziert wird. Ein \e{Sampler} definiert wie das Bild platziert werden soll.
   \item Weitere Elemente, welche im Rahmen dieser Arbeit nicht relevant sind und nicht im Detail betrachtet werden, sind: \e{camera}, \e{skin} und \e{animation}.
 \end{itemize}
 
@@ -193,7 +193,7 @@ In Abbildung \ref{fig:transformationVertexRemovalOriginal} wird der zentrale Ver
 \end{figure}
 
 \section{Grafikpipeline}
-Die Grafikpipeline ist zuständig um eine definierte Szene auf einem Ausgabegerät zu visualisieren. Die verschiedenen Schritte werden im folgenden Abschnitt kurz erläutert. Es wird dabei ein simples 3D-Modell auf einem 2D-Display, wie zum Beispiel einem Monitor, visualisiert. Die verschiedenen Schritte sind in Abbildung \ref{fig:renderingPipelineOverview} aufgezeigt. Die verschiedenen Schritte werden idealerweise 60 mal pro Sekunde wiederholt. Dies findet in der sogenannten \e{Render Loop} statt.
+Die Grafikpipeline ist zuständig um eine definierte Szene auf einem Ausgabegerät zu visualisieren. Die verschiedenen Schritte werden im folgenden Abschnitt kurz erläutert. Es wird dabei ein simples 3D-Modell auf einem 2D-Display, wie zum Beispiel einem Monitor, visualisiert. Die verschiedenen Schritte sind in Abbildung \ref{fig:renderingPipelineOverview} aufgezeigt. Die verschiedenen Schritte werden idealerweise 60 Mal pro Sekunde wiederholt. Dies findet in der sogenannten \e{Render Loop} statt.
 
 \begin{figure}[H]
   \centering
@@ -203,7 +203,7 @@ Die Grafikpipeline ist zuständig um eine definierte Szene auf einem Ausgabeger�
 \end{figure}
 
 \paragraph{Applikation}
-Im ersten Schritt wird die Szenerie aufbereitet, Modelle in den Arbeitsspeicher geladen, Positionen und Rotationen der Modelle definiert. Diese Schritte werden auf der CPU durchgeführt. Ein Beispiel für das aufsetzen eines einfachen \e{Triangles} bestehend aus drei \e{Vertices} ist in Abbildung \ref{fig:geometryDefinition} ersichtlich.
+Im ersten Schritt wird die Szenerie aufbereitet, Modelle in den Arbeitsspeicher geladen, Positionen und Rotationen der Modelle definiert. Diese Schritte werden auf der CPU durchgeführt. Ein Beispiel für das Aufsetzen eines einfachen \e{Triangles} bestehend aus drei \e{Vertices} ist in Abbildung \ref{fig:geometryDefinition} ersichtlich.
 
 \begin{figure}[H]
 \begin{lstlisting}
@@ -237,7 +237,7 @@ void main(void) {
 \end{figure}
 
 \paragraph{Fragmentshader}
-Durch die Rasterisierung werden kontinuierliche Objekte zu diskreten Fragmenten verarbeitet. Der Fragmentshader generiert die Farbdefinitionen für die einzelnen diskreten Fragmente. Dies können einfache Farbwerte sein, es ist jedoch auch möglich Texturen und dergleichen auf Fragmente abbzubilden. Ein einfaches Beispiel für einen Fragmentshader ist in Abbildung \ref{fig:fragmentShader} ersichtlich.
+Durch die Rasterisierung werden kontinuierliche Objekte zu diskreten Fragmenten verarbeitet. Der Fragmentshader generiert die Farbdefinitionen für die einzelnen diskreten Fragmente. Dies können einfache Farbwerte sein, es ist jedoch auch möglich Texturen und dergleichen auf Fragmente abzubilden. Ein einfaches Beispiel für einen Fragmentshader ist in Abbildung \ref{fig:fragmentShader} ersichtlich.
 
 \begin{figure}[H]
 \begin{lstlisting}
@@ -251,7 +251,7 @@ void main(void) {
 
 
 \paragraph{Bildschirm}
-Im Schluss wird für jedes vom Fragmentshader generierte Fragment ein Sichtbarkeitstest durchgeführt. So werden nur die Fragmente, welche von keinem anderen Fragment überdeckt werden, angezeigt. Das generierte Bild wird im Anschluss skaliert und auf dem Bildschirm dargestellt.
+Am Schluss wird für jedes vom Fragmentshader generierte Fragment ein Sichtbarkeitstest durchgeführt. So werden nur die Fragmente, welche von keinem anderen Fragment überdeckt werden, angezeigt. Das generierte Bild wird im Anschluss skaliert und auf dem Bildschirm dargestellt.
 
 
 \section{Performanzoptimierung}
@@ -273,7 +273,7 @@ Dies reduziert die Anzahl Polygone drastisch.
 \end{figure}
 
 Ein Frustum ist eine geometrische Form, die einer Pyramide ähnelt, welcher die Spitze abgeschnitten wurde.
-Das Kamera-Frustum bezeichnet den Raum, welcher von der Kamera aufgezeichnet wird. Dieser Breich startet eine gewisse Distanz von der Kamera entfernt und endet weit hinten wieder, da nicht bis ins unendliche Objekte sichtbar sind.
+Das Kamera-Frustum bezeichnet den Raum, welcher von der Kamera aufgezeichnet wird. Dieser Bereich startet eine gewisse Distanz von der Kamera entfernt und endet weit hinten wieder, da nicht bis ins unendliche Objekte sichtbar sind.
 Wie in Abbildung \ref{fig:CameraFrustum} zusehen ist, beginnt das Kamera-Frustum in der Nähe der Kamera und dehnt sich ein wenig aus bis es gegen Ende des Spektrums beschränkt wird.
 
 \paragraph{Occlusion culling}
@@ -295,9 +295,9 @@ In gewissen Fällen kann das Modellieren übersprungen werden. So kann anhand vo
 \section{Einführung Level of Detail}
 \label{chap:lodIntroduction}
 Als Level Of Detail (LOD) werden die verschiedenen Detailstufen bei der virtuellen Darstellung bezeichnet.
-Dies wird verwendet, um die Geschwindigkeit von Anwendungen zu steigern, indem Objekte im Nahbereich detailiert angezeigt werden; wohingegen Elemente im Fernbereich deutlich vereinfacht dargestellt werden.
+Dies wird verwendet, um die Geschwindigkeit von Anwendungen zu steigern, indem Objekte im Nahbereich detailliert angezeigt werden; wohingegen Elemente im Fernbereich deutlich vereinfacht dargestellt werden.
 
-Ein LOD Algorithmus hat das Ziel für ein gegebenes Modell eine vereinfachte Darstellung zu finden, welche das Original ausreichend annähert. Um diese Approximationen zu generieren, kann eine Vielzahl von Algorithmen verwendet werden. Es gibt verschiedene Ansätze zur Generierung von LODs, welche in \autoref{chap:lodAlgorithmComparison} im Detail erläutert werden.
+Ein LOD-Algorithmus hat das Ziel für ein gegebenes Modell eine vereinfachte Darstellung zu finden, welche das Original ausreichend annähert. Um diese Approximationen zu generieren, kann eine Vielzahl von Algorithmen verwendet werden. Es gibt verschiedene Ansätze zur Generierung von LODs, welche in \autoref{chap:lodAlgorithmComparison} im Detail erläutert werden.
 
 \begin{figure}[H]
 \centering
@@ -329,7 +329,7 @@ Das Problem des Clusterings ist auch für diese Variante nicht gelöst.
 Bei HLOD werden mehrere Objekte in einen Cluster gruppiert.
 Diese Methode erlaubt es somit zum Beispiel Terrains optimal abzubilden. So werden Ausschnitte, welche nahe beim Benutzer sind mit hoher Auflösung dargestellt während weiter entferntere Teile der Umgebung mit weniger Details ausgestattet sind.
 Zudem ist es möglich viele kleinere Objekte bei entsprechenden Distanzen zu kombinieren.
-Der Hauptnachteil liegt darin, dass hierfür signifikante Anpassungen am Scene Graph notwendig sind und für den Entwickler ein spürbarer Unterschied entstehen kann.
+Der Hauptnachteil liegt darin, dass hierfür signifikante Anpassungen am \e{Scene Graph} notwendig sind und für den Entwickler ein spürbarer Unterschied entstehen kann.
 
 \subsection{Vergleich Algorithmen}
 \label{chap:lodAlgorithmComparison}
@@ -345,7 +345,7 @@ Eine weitere Möglichkeit ist das \e{Vertex Clustering}, hierbei wird ein Modell
 
 \paragraph{Edge Collapse}
 Hierbei werden iterativ \e{Edges} entfernt und die beiden \e{Vertices} zu einem Punkt zusammengelegt.
-Die verschiedenen Algorithmen unterscheiden sich primär in der Selektion der \e{Edges}. Grundsätzlich wird hierfür eine Heuristik verwendet um den Fehler quantifizieren zu können. Anschliessend werden iterativ die \e{Edges} entfernt, welche zu einem minimalen Fehler führen. Beim Zusammenführen von \e{Edges} sind abhängig vom gewählten LOD System unterschiedliche Strategien gefordert. Bei diskreten LOD Systemen soll nach dem Zusammenführen ein optimaler neuer Punkt gefunden werden, bei kontinuierlichen LOD Systemen wird häufig einer der beiden Punkte gewählt um Speicherplatz einsparen zu können.
+Die verschiedenen Algorithmen unterscheiden sich primär in der Selektion der \e{Edges}. Grundsätzlich wird hierfür eine Heuristik verwendet um den Fehler quantifizieren zu können. Anschliessend werden iterativ die \e{Edges} entfernt, welche zu einem minimalen Fehler führen. Beim Zusammenführen von \e{Edges} sind abhängig vom gewählten LOD-System unterschiedliche Strategien gefordert. Bei diskreten LOD-Systemen soll nach dem Zusammenführen ein optimaler neuer Punkt gefunden werden, bei kontinuierlichen LOD-Systemen wird häufig einer der beiden Punkte gewählt um Speicherplatz einsparen zu können.
 
 \paragraph{Face Collapse}
 Bei dieser Variante werden jeweils Flächen entfernt und die umliegenden Flächen zusammengelegt.
