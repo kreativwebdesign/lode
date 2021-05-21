@@ -4,7 +4,7 @@ This CLI helps to automatically generate LOD artifacts for `.gltf` files.
 
 ## Use Package
 
-The package can be used via `npm install @kreativwebdesign/lode-cli`, `yarn add @kreativwebdesign/lode-cli` or just `npx @kreativwebdesign/lode-cli`
+The package can be used via `npm install -D @kreativwebdesign/lode-cli`, `yarn add -D @kreativwebdesign/lode-cli` or just `npx @kreativwebdesign/lode-cli`
 
 ### init
 
