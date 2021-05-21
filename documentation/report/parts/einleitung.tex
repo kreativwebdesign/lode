@@ -9,20 +9,20 @@
 
 \section{Kontext}
 In der Arbeit wird der Fokus auf die Web-Plattform gelegt. Die meisten Grundlagen sind jedoch auch unabhängig davon zutreffend.
-Für die Vereinfachung wird im Folgenden der Begriff Web für die Plattform von verschiedenen Web-Technologien genutzt. Dies beinhaltet insbesondere vom World Wide Web Consortium, kurz W3C, veröffentlichte Standards.
+Für die Vereinfachung wird im Folgenden der Begriff Web für die Plattform von verschiedenen Web-Technologien genutzt. Dies beinhaltet insbesondere vom \e{World Wide Web Consortium}, kurz W3C, veröffentlichte Standards.
 
 \section{Ausgangslage}
 Dank der Rechenleistung auf modernen Geräten ist es möglich anspruchsvolle 3D-Visualisierungen in Echtzeit auf diversen Geräten anzuwenden. Da diese Applikationen sehr rechenintensiv sind und gerade mobile Geräte in ihrer Rechenleistung beschränkt sind, ist Performance Optimierung im 3D-Rendering unabdinglich. Insbesondere die Komplexität der Modelle hat einen signifikanten Einfluss auf die Leistung.
 Eine Möglichkeit zur Optimierung ist das Anzeigen von vereinfachten Modellen ab bestimmten Distanzen zum Betrachter. So kann z.B. ein Modell in grosser Distanz vereinfacht dargestellt werden, solange bei genauer Betrachtung mehr Details sichtbar werden.
 In diversen \fglspl{Rendering Engine}{Teilprogramm, das zuständig für die Darstellung von Grafiken ist} gibt es deshalb Möglichkeiten für das Verwenden von sogenannten Level Of Details (LOD) Artefakten.
-Für \fgls{Game Engines}{Framework, das für den Spielverlauf und dessen Darstellung verantwortlich ist} wie Unreal oder Unity gibt es bewährte Möglichkeiten, um den Einsatz von LOD Artefakten zu vereinfachen. Zurzeit gibt es in der Webentwicklung keine weitverbreitete Möglichkeit für das Generieren von solchen Artefakten.
+Für \fgls{Game Engines}{Framework, das für den Spielverlauf und dessen Darstellung verantwortlich ist} wie Unreal oder Unity gibt es bewährte Möglichkeiten, um den Einsatz von LOD-Artefakten zu vereinfachen. Zurzeit gibt es in der Webentwicklung keine weitverbreitete Möglichkeit für das Generieren von solchen Artefakten.
 
 \subsection{3D-Rendering im Web}
 3D-Visualisierungen werden in vielen Branchen verwendet.
 Virtual Reality, CAD Anwendungen oder Computerspiele sind einige bekannte Anwendungsgebiete.
 Dank leistungsstärkeren Geräten sind in vielen weiteren Bereichen realere Visualisierungen möglich.
 
-Anwendungen können auf spezifische Hardware wie zum Beispiel die Spielkonsole PlayStation ausgerichtet sein. Es gibt Unterschiede zwischen den Konsolen, grundsätzlich sind die verschiedenen Geräte jedoch überschaubar. In anderen Anwendungsfällen kann eine Applikation sogar für nur eine dediziertere Hardware entwickelt werden. Somit kann eine Applikation auf die Anforderungen dieser Hardware zugeschnitten werden. Der primäre Nachteil ist die Zugänglichkeit der Software. Diese wird umständlicher, da spezifische Hardware notwendig ist. So ist es einerseits aufwändig die Hardware zu beschaffen, andererseits aber auch eine Kostenfrage. Für gewisse Anwendungsgebiete ist dies kein Problem.
+Anwendungen können auf spezifische Hardware wie zum Beispiel die Spielkonsole PlayStation ausgerichtet sein. Es gibt Unterschiede zwischen den Konsolen, grundsätzlich sind die verschiedenen Geräte jedoch überschaubar. In anderen Anwendungsfällen kann eine Applikation sogar für nur eine dedizierte Hardware entwickelt werden. Somit kann eine Applikation auf die Anforderungen dieser Hardware zugeschnitten werden. Der primäre Nachteil ist die Zugänglichkeit der Software. Diese wird umständlicher, da spezifische Hardware notwendig ist. So ist es einerseits aufwändig die Hardware zu beschaffen, andererseits aber auch eine Kostenfrage. Für gewisse Anwendungsgebiete ist dies kein Problem.
 
 Für hardwareunabhängige Anwendungen eignet sich das Web hervorragend.
 Immer mehr Benutzer haben Zugang zu einem Desktop, Tablet, Mobiltelefon oder ein anderes Gerät, welches Zugang zum Internet bietet \cite{peopleWithInternetAccess}.
@@ -38,7 +38,7 @@ Zudem ist WebGL eine junge Technologie und wurde erst 2011 veröffentlicht – v
 Nicht nur das Alter, sondern auch die Natur der Web-Plattform haben dazu beigetragen, dass WebGL ein langsames Wachstum verspürt hat. Um einen Webstandard wie WebGL einsetzen zu können müssen alle grossen Browser die Spezifikation implementieren. Ansonsten kann der grosse Vorteil des Webs – einfache Verteilung an alle Benutzer – nicht in vollem Umfang genutzt werden. So hat zum Beispiel Internet Explorer 10 keinen Support und es wurde erstmals Ende 2013 möglich im Internet Explorer 11 3D-Anwendungen für ein breites Publikum zu entwickeln.
 
 \subsection{JavaScript Bibliotheken}
-Um die Arbeit mit WebGL zu vereinfachen gibt es verschiedene JavaScript Bibliotheken. Die Bekanntesten werden hier kurz erwähnt. Als Indikator für die Popularität wurden die wöchentlichen Downloads auf \fgls{npm}{Node Package Manager} verwendet. Wichtig ist hierbei zu betonen, dass dies alleine keinen verlässlichen Indikator darstellt - für eine kurze Einführung jedoch ausreichend geeignet ist.
+Um die Arbeit mit WebGL zu vereinfachen, gibt es verschiedene JavaScript Bibliotheken. Die Bekanntesten werden hier kurz erwähnt. Als Indikator für die Popularität wurden die wöchentlichen Downloads auf \fgls{npm}{Node Package Manager} verwendet. Wichtig ist hierbei zu betonen, dass dies alleine keinen verlässlichen Indikator darstellt - für eine kurze Einführung jedoch ausreichend geeignet ist.
 
 \paragraph{Three.js}
 Ist die wohl weitverbreiteste Bibliothek für 3D-Rendering im Web \cite{threeNpmPackage}.
@@ -49,20 +49,20 @@ Insbesondere die Erweiterungen für \e{React}, eine populäre Bibliothek für di
 Ein weiterer Kandidat ist Babylon.js, eine offene Bibliothek, welche die Entwicklung von 3D-Applikationen vereinfacht. Babylon.js zeichnet sich vor allem durch ein breites Featureset aus \cite{babylonjsNpmPackage}.
 
 \paragraph{PlayCanvas}
-PlayCanvas ist eine offene 3D-Engine, welche primär für das Web entwickelt wurde. Als Erweiterung wird zudem ein proprietärer Cloud Service angeboten \cite{playcanvasNpmPackage}.
+\e{PlayCanvas} ist eine offene 3D-Engine, welche primär für das Web entwickelt wurde. Als Erweiterung wird zudem ein proprietärer Cloud Service angeboten \cite{playcanvasNpmPackage}.
 
 \paragraph{Unity}
 Unity, welches vor allem für die Entwicklung von Mobile Applikationen bekannt ist, bietet seit längerer Zeit die Möglichkeit Projekte für das Web zu exportieren \cite{unityWeb}.
-Unity bietet zwar den Source Code für Teile der \e{Engine} offen zur Verfügung, die Lizenz verbietet es jedoch den Code weiterzuverwenden \cite{unityOpenSource}.
-Zudem bietet Unity keine zu Three.js, Babylon.js oder PlayCanvas vergleichbare Integration für die Webentwicklung an. Unity Projekte sind bezüglich der Integration in Webapplikationen vergleichbar mit Flash Anwendungen. Unity wird deshalb in dieser Arbeit nicht weiter berücksichtigt.
+Unity bietet zwar den \e{Sourcecode} für Teile der \e{Engine} offen zur Verfügung, die Lizenz verbietet es jedoch den Code weiterzuverwenden \cite{unityOpenSource}.
+Zudem bietet Unity keine zu Three.js, Babylon.js oder \e{PlayCanvas} vergleichbare Integration für die Webentwicklung an. Unity Projekte sind bezüglich der Integration in Webapplikationen vergleichbar mit Flash Anwendungen. Unity wird deshalb in dieser Arbeit nicht weiter berücksichtigt.
 
 \subsection{Stand der Technik}
 
-Wie erwähnt gibt es bereits umfangreiche LOD Systeme für komplexe Anwendungsgebiete in anderen Umgebungen. Diese werden in der Sektion \autoref{chap:existingSolutions} detaillierter erläutert.
-Die erläuterten Bibliotheken bieten Funktionen für das Laden von LOD Artefakten. Teilweise gibt es die Möglichkeit Vereinfachungen im Browser zu generieren. Das Generieren von LOD Artefakten zur Laufzeit ist jedoch für Webapplikationen nicht geeignet, da dies signifikante Auswirkungen auf das Laufzeitverhalten hat.
+Wie erwähnt gibt es bereits umfangreiche LOD-Systeme für komplexe Anwendungsgebiete in anderen Umgebungen. Diese werden in der Sektion \autoref{chap:existingSolutions} detaillierter erläutert.
+Die erläuterten Bibliotheken bieten Funktionen für das Laden von LOD-Artefakten. Teilweise gibt es die Möglichkeit Vereinfachungen im Browser zu generieren. Das Generieren von LOD-Artefakten zur Laufzeit ist jedoch für Webapplikationen nicht geeignet, da dies signifikante Auswirkungen auf das Laufzeitverhalten hat.
 So dauert das Optimieren eines komplexen Modells wie zum Beispiel bei Babylon.js demonstriert auch auf rechnungsstarken Geräten mehrere Sekunden \cite{babylonAutoLod}.
 
-Des Weiteren sind die Systeme nicht kompatibel mit anderen Bibliotheken. So kann die Auto LOD Lösung von Babylon.js nicht in Three.js verwendet werden, obwohl die Problemstellung dies grundsätzlich erlauben würde.
+Des Weiteren sind die Systeme nicht kompatibel mit anderen Bibliotheken. So kann die automatische LOD-Lösung von Babylon.js nicht in Three.js verwendet werden, obwohl die Problemstellung dies grundsätzlich erlauben würde.
 
 \section{Zielsetzung}
-Ziel der Arbeit ist es, ein Tool zu entwickeln, das den Umgang mit LOD Artefakten im Web vereinfacht. Hierfür muss vorab der Beleg erbracht werden, dass das Laufzeitverhalten der Applikation mit LOD Artfakten verbessert werden kann. Des Weiteren muss ein Algorithmus entwickelt werden, welcher es erlaubt Modelle drastisch zu vereinfachen ohne die grobe geometrische Form zu verlieren. Im Anschluss muss das Tool zur Verfügung gestellt werden, sodass es in der Praxis eingesetzt werden kann. Hierfür muss insbesondere berücksichtigt werden, dass die Artefakte nicht innerhalb des Browsers generiert werden sollen. Zudem soll der Einsatz des Tools einen möglichst geringen Zusatzaufwand bedeuten und für ein breites Spektrum an Modellen angewendet werden können. Des Weiteren soll das Tool soweit erweiterbar sein, dass es für verschiedene Bibliotheken eingesetzt werden kann, ohne den Kern neu entwickeln zu müssen.
+Ziel der Arbeit ist es, ein Tool zu entwickeln, das den Umgang mit LOD-Artefakten im Web vereinfacht. Hierfür muss vorab der Beleg erbracht werden, dass das Laufzeitverhalten der Applikation mit LOD-Artfakten verbessert werden kann. Des Weiteren muss ein Algorithmus entwickelt werden, welcher es erlaubt Modelle drastisch zu vereinfachen, ohne die grobe geometrische Form zu verlieren. Im Anschluss muss das Tool zur Verfügung gestellt werden, sodass es in der Praxis eingesetzt werden kann. Hierfür muss insbesondere berücksichtigt werden, dass die Artefakte nicht innerhalb des Browsers generiert werden sollen. Zudem soll der Einsatz des Tools einen möglichst geringen Zusatzaufwand bedeuten und für ein breites Spektrum an Modellen angewendet werden können. Des Weiteren soll das Tool soweit erweiterbar sein, dass es für verschiedene Bibliotheken eingesetzt werden kann, ohne den Kern neu entwickeln zu müssen.
