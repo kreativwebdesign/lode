@@ -50,13 +50,13 @@ Um komplexere Formen wie Vierecke (\e{Quads}) zu bilden, werden jeweils mehrere 
 Für eine Sammlung von Punkten wird generell der Term Polygon verwendet.
 Ein Modell besteht aus einer beliebigen Anzahl Polygone.
 
-Die Verbindung zwischen zwei Vertices ist eine sogenannte Edge (Kante).
-Verbindet man die Punkte eines Polygons und füllt die Fläche, ergibt sich schlussendlich ein Face (Fläche).
+Die Verbindung zwischen zwei \e{Vertices} ist eine sogenannte \e{Edge} (Kante).
+Verbindet man die Punkte eines Polygons und füllt die Fläche, ergibt sich schlussendlich ein \e{Face} (Fläche).
 
 \paragraph{Weitere Attribute}
 Neben den geometrischen Attributen verfügt ein Modell ebenfalls über visuelle Attribute.
 
-So wird für jeden Vertex ein sogenannter \e{Normal} definiert. Ein \e{Normal} ist ein Vektor der im einfachsten Fall senkrecht zu den zwei an diesem Vertex verbundenen Edges verläuft. In der Geometrie ist dies auch bekannt als Normale. \e{Normals} werden häufig für das Berechnen von Reflexionen verwendet.
+So wird für jeden Vertex ein sogenannter \e{Normal} definiert. Ein \e{Normal} ist ein Vektor der im einfachsten Fall senkrecht zu den zwei an diesem Vertex verbundenen \e{Edges} verläuft. In der Geometrie ist dies auch bekannt als Normale. \e{Normals} werden häufig für das Berechnen von Reflexionen verwendet.
 \e{Normals} werden auch für gewisse Performanz Optimierungen eingesetzt, dazu mehr in \autoref{chap:backfaceCulling}.
 
 Um die Oberfläche von Modellen zu definieren wird häufig ein sogenanntes \fgls{Texture Mapping}{Verfahren, mittels 2D-Bildern 3D-Objekte zu gestalten} durchgeführt. Hierfür sind zusätzliche Informationen für ein Modell notwendig. In der Praxis finden viele weitere Methoden Anwendung, auf diese wird jedoch hier nicht weiter eingegangen.
@@ -145,14 +145,14 @@ Die Umkehrfunktion nennt man Vertex Split.
   \begin{subfigure}{.5\textwidth}
     \centering
     \includegraphics[width=.8\linewidth]{grundlagen/transformationen/edge-collapse.png}
-    \caption{Edge Collapse}
+    \caption{\e{Edge Collapse}}
   \end{subfigure}
-  \caption{Transformation mittels Edge Collapse}
+  \caption{Transformation mittels \e{Edge Collapse}}
   \label{fig:transformationEdgeCollapse}
 \end{figure}
 
 \paragraph{Halfedge Collapse}
-Hierbei wird ein Vertex direkt entfernt und alle Edges auf einen danebenliegenden Vertex zusammengelegt. Bei dieser Operation muss kein neuer \e{Vertex} definiert werden, sondern ein bereits bestehender \e{Vertex} kann wiederverwendet werden. Wie in Abbildung \ref{fig:transformationHalfedgeCollapse} ersichtlich, können auch in diesem Fall zwei \e{Triangles} entfernt werden.
+Hierbei wird ein Vertex direkt entfernt und alle \e{Edges} auf einen danebenliegenden Vertex zusammengelegt. Bei dieser Operation muss kein neuer \e{Vertex} definiert werden, sondern ein bereits bestehender \e{Vertex} kann wiederverwendet werden. Wie in Abbildung \ref{fig:transformationHalfedgeCollapse} ersichtlich, können auch in diesem Fall zwei \e{Triangles} entfernt werden.
 
 \begin{figure}[H]
   \centering
@@ -164,9 +164,9 @@ Hierbei wird ein Vertex direkt entfernt und alle Edges auf einen danebenliegende
   \begin{subfigure}{.5\textwidth}
     \centering
     \includegraphics[width=.8\linewidth]{grundlagen/transformationen/half-edge-collapse.png}
-    \caption{Halfedge Collapse}
+    \caption{\e{Halfedge Collapse}}
   \end{subfigure}
-  \caption{Transformation mittels Halfegde Collapse}
+  \caption{Transformation mittels \e{Halfedge Collapse}}
   \label{fig:transformationHalfedgeCollapse}
 \end{figure}
 
