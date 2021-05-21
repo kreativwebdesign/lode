@@ -2,13 +2,13 @@
 
 This CLI helps to automatically generate LOD artifacts for `.gltf` files.
 
-## Usage
+## Use Package
 
-To run the script inside this repo, use `yarn start`.
+The package can be used via `npm install @kreativwebdesign/lode-cli`, `yarn install @kreativwebdesign/lode-cli` or just `npx @kreativwebdesign/lode-cli`
 
 ### init
 
-To setup a configuration file, run `yarn start init`. This will guide you through the setup for the configuration file. If you change the name of the configuration file, make sure to pass the path to the run command.
+To setup a configuration file, run `npx @kreativwebdesign/lode-cli init`. This will guide you through the setup for the configuration file. If you change the name of the configuration file, make sure to pass the path to the run command.
 
 #### Configuration file
 
@@ -22,7 +22,7 @@ To setup a configuration file, run `yarn start init`. This will guide you throug
 ```
 
 ### config
-Run `yarn start config` to configure the level of details for each model.
+Run `npx @kreativwebdesign/lode-cli config` to configure the level of details for each model.
 You can pass the following options:
 | Option           | Description              | Default                  |
 | ---------------- | ------------------------ | ------------------------ |
@@ -44,7 +44,7 @@ Set the target scale for this artifact relative to the original size. Choose a v
 ### run
 
 This command runs the LOD generating. You can pass various options to this command.
-Run `yarn start` or `yarn start run` to execute it. You can pass various options to the run command. These flags override the configuration file.
+Run `npx @kreativwebdesign/lode-cli` or `npx @kreativwebdesign/lode-cli run` to execute it. You can pass various options to the run command. These flags override the configuration file.
 
 | Option           | Description              | Default                  |
 | ---------------- | ------------------------ | ------------------------ |
@@ -56,11 +56,15 @@ Run `yarn start` or `yarn start run` to execute it. You can pass various options
 
 ### help
 
-Run `yarn start help` to display help.
+Run `npx @kreativwebdesign/lode-cli help` to display help.
 
 ### clean
 
-Run `yarn start clean` to clean the output folder. You can pass the same `outputFoldername` and `config` option as for the `run` command.
+Run `npx @kreativwebdesign/lode-cli clean` to clean the output folder. You can pass the same `outputFoldername` and `config` option as for the `run` command.
+
+## Dev Usage
+
+Instead of installing the package one can simply run `npx @kreativwebdesign/lode-cliyarn start` while working on the cli itself.
 
 ## Dev
 
