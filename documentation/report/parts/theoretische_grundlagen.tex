@@ -30,7 +30,29 @@ $$ T =
   V
 \end{bmatrix}
 $$
-Um komplexere Formen wie \e{Quads} (Vierecke) zu bilden, werden jeweils mehrere \e{Triangle} kombiniert. Abbildung \ref{fig:modelSimpleTriangulation} zeigt die Vereinfachung eines \e{Quads} in zwei \e{Triangle}.
+
+Um komplexere Formen wie \e{Quads} (Vierecke) zu bilden, werden jeweils mehrere \e{Triangle} kombiniert. Für eine Sammlung von Punkten wird generell der Term Polygon verwendet.
+Ein Modell besteht aus einer beliebigen Anzahl Polygone.
+Grundsätzlich gilt somit, dass ein beliebiger Polygon durch mehrere \e{Triangles} repräsentiert werden kann:
+$$ P =
+\begin{bmatrix}
+  V \\
+  V \\
+  V \\
+  V
+\end{bmatrix}
+= \begin{bmatrix}
+  T & T \\
+\end{bmatrix}
+= \begin{bmatrix}
+  V & V \\
+  V & V \\
+  V & V
+\end{bmatrix}
+$$
+
+Abbildung \ref{fig:modelSimpleTriangulation} zeigt die Vereinfachung eines \e{Quads} in zwei \e{Triangle}.
+
 \begin{figure}[H]
   \centering
   \begin{subfigure}{.5\textwidth}
@@ -46,9 +68,6 @@ Um komplexere Formen wie \e{Quads} (Vierecke) zu bilden, werden jeweils mehrere 
   \caption{Vereinfachung von Polygone als Sammlung von \e{Triangles}}
   \label{fig:modelSimpleTriangulation}
 \end{figure}
-
-Für eine Sammlung von Punkten wird generell der Term Polygon verwendet.
-Ein Modell besteht aus einer beliebigen Anzahl Polygone.
 
 Die Verbindung zwischen zwei \e{Vertices} ist eine sogenannte \e{Edge} (Kante).
 Verbindet man die Punkte eines Polygons und füllt die Fläche, ergibt sich schlussendlich ein \e{Face} (Fläche).
