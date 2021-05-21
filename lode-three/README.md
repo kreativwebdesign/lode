@@ -3,10 +3,10 @@ This helper module simplyfies loading lode-generated LOD artifacts in a Three.js
 
 ## Usage
 
-Import the module and the lode-manifest and create the `lodeContext` by calling the `createContext` method.
+Import the module and the lode-manifest and create the `lodeContext` by calling the `createContext` method.
 
 ```
-import * as lodLoader from 'lode-three'
+import * as lodLoader from '@kreativwebdesign/lode-three'
 import manifest from "./lode-build/lode-manifest.json";
 
 const lodeContext = lodeLoader.createContext({
@@ -67,3 +67,8 @@ This would work for the following folder structure:
 ## Dev
 
 Run `yarn setup` to get up and running
+
+### Publish
+
+- Prepare versions and ensure clean setup state
+- `npm publish --access public`

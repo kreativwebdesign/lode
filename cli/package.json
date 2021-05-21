@@ -1,9 +1,18 @@
 {
-  "name": "lode-cli",
-  "version": "1.0.0",
+  "name": "@kreativwebdesign/lode-cli",
+  "version": "0.0.1-alpha.4",
   "main": "index.js",
+  "bin": {
+    "lode-cli": "./index.js"
+  },
   "license": "MIT",
   "type": "module",
+  "description": "Tool to generate lod artifacts for glTF files.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kreativwebdesign/lode.git",
+    "directory": "cli"
+  },
   "scripts": {
     "start": "node index.js",
     "test": "jest",

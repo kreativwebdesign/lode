@@ -1,8 +1,15 @@
 {
-  "name": "lode-three",
-  "version": "1.0.0",
+  "name": "@kreativwebdesign/lode-three",
+  "version": "0.0.1-alpha.2",
   "main": "index.js",
   "license": "MIT",
+  "type": "module",
+  "description": "lode helper to load lod artifacts in Three.js.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kreativwebdesign/lode.git",
+    "directory": "lode-three"
+  },
   "scripts": {
     "setup": "yarn install"
   },
