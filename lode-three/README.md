@@ -3,7 +3,7 @@ This helper module simplyfies loading lode-generated LOD artifacts in a Three.js
 
 ## Usage
 
-Import the module and the lode-manifest and create the `lodeContext` by calling the `createContext` method.
+Import the module and the lode-manifest and create the `lodeContext` by calling the `createContext` method.
 
 ```
 import * as lodLoader from 'lode-three'
