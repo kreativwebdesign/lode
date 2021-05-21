@@ -6,7 +6,7 @@
 % !TEX TS-program = pdflatexmk
 % !TEX encoding = UTF-8 Unicode
 % !TEX root = ../doc.tex
-Das entwickelte Tool, \e{lode}, liefert einen ersten Schritt in die Richtung einer LOD Pipeline, welche für das Web optimiert wurde. Das Tool erreicht das Ziel für eine Vielzahl von Anwendungsgebieten einsetzbar zu sein. Wichtig ist es jedoch festzuhalten, dass es nicht für alle Anwendungen sinnvoll ist. Zum einen soll die Pipeline weiter entwickelt werden und in ihren Kernkompetenzen gestärkt werden, zum anderen gibt es jedoch auch spezifische Gebiete wie zum Beispiel Terrain für welche \e{lode} ungeeignet ist.
+Das entwickelte Tool, \e{lode}, liefert einen ersten Schritt in die Richtung einer LOD Pipeline, welche für das Web optimiert wurde. Das Tool erreicht das Ziel, für eine Vielzahl von Anwendungsgebieten einsetzbar zu sein. Wichtig ist es jedoch festzuhalten, dass es nicht für alle Anwendungen sinnvoll ist. Zum einen soll die Pipeline weiter entwickelt werden und in ihren Kernkompetenzen gestärkt werden, zum anderen gibt es jedoch auch spezifische Gebiete, wie zum Beispiel Terrain, für welche \e{lode} ungeeignet ist.
 
 \section{LOD System}
 
@@ -25,19 +25,19 @@ So muss der Einsatz von LOD Artefakten für jeden Anwendungsfall separat abgewog
 Die Möglichkeiten für Erweiterungen zu \e{lode} sind sehr umfangreich. In diesem Abschnitt wird auf einige Möglichkeiten eingegangen.
 
 \paragraph{Akurate Texturinformationen}
-Zurzeit wird die Textur komplett entfernt und durch eine einfache Farbinformation ersetzt. Dies stellt beim aktuellen Einsatz der LOD kein Problem dar, eine interessante Erweiterung ist so jedoch nicht möglich: Das Vereinfachen der ersten Stufe. Der Algorithmus kann so erweitert werden, dass die Texturinformationen nicht vereinfacht sondern als Teil der \e{Vertices} verwendet werden. Dies würde es ermöglichen ein Modell, welches über mehrere Millionen Polygone verfügt, und somit ungeeignet für das Web ist, zu vereinfachen und diese erste Vereinfachung als erste Stufe zu verwenden.
+Zurzeit wird die Textur komplett entfernt und durch eine einfache Farbinformation ersetzt. Dies stellt beim aktuellen Einsatz der LOD-Artefakten kein Problem dar. Eine interessante Erweiterung ist so jedoch nicht möglich: Das Vereinfachen der ersten Stufe. Der Algorithmus kann so erweitert werden, dass die Texturinformationen nicht vereinfacht sondern als Teil der \e{Vertices} verwendet werden. Dies würde es ermöglichen, ein Modell, welches über mehrere Millionen Polygone verfügt, und somit ungeeignet für das Web ist, zu vereinfachen und diese erste Vereinfachung als erste Stufe zu verwenden.
 
 \paragraph{glTF LOD Format}
 Es gibt einen Proposal für die Definition von LODs innerhalb von glTF zu definieren. \cite{glTFExtensionLOD}
 Zur Zeit hat Three.js jedoch noch keinen Support für diese Extension. Auch Babylon.js unterstützt lediglich das progressive Laden von Modellen. \cite{babylonProgressiveLoading}
 
 \paragraph{Progressives Laden}
-Aktuell werden initial alle Level of Details geladen. Dies hat zur Konsequenz, dass im Vergleich zur unoptimierten Variante eine schlechtere initiale Ladezeit resultiert. Um dieses Verhalten zu verbessern beziehungsweise sogar in einen Vorteil zu verwandeln könnte das System so erweiteret werden, dass die Modelle progressiv geladen werden.
+Aktuell werden initial alle Level of Details geladen. Dies hat zur Konsequenz, dass im Vergleich zur unoptimierten Variante eine schlechtere initiale Ladezeit resultiert. Um dieses Verhalten zu verbessern beziehungsweise sogar in einen Vorteil zu verwandeln, könnte das System so erweiteret werden, dass die Modelle progressiv geladen werden.
 
 \paragraph{Levelwahl während Laufzeit}
-Die optimale Levelwahl kann stark von der Laufzeitumgebung abhängig sein. So sollte zum Beispiel auf mobilen Geräten früher ein einfacheres Modell gezeigt werden als auf leistungsstarken Geräten.
+Die optimale Levelwahl kann stark von der Laufzeitumgebung abhängig sein. So sollte zum Beispiel auf mobilen Geräten früher ein einfacheres Modell angezeigt werden als auf leistungsstarken Geräten.
 Deshalb eignet sich eine Wahl der Levels zur Laufzeit, um ein optimales Erlebnis auf allen Geräten zu ermöglichen.
-Nebst dem \e{\gls{CLI}} soll folglich auch ein Javascript-Modul bereitgestellt werden, welches das Laden von glTF Dateien übernimmt und basierend auf der erkannten Performanz das beste Level of Detail einspielen.
+Nebst dem \e{\gls{CLI}} soll folglich auch ein Javascript-Modul bereitgestellt werden, welches das Laden von glTF Dateien übernimmt und basierend auf der erkannten Performanz das beste Level of Detail einspielt.
 
 \paragraph{Konsequenter Einsatz von glb Dateien}
 
