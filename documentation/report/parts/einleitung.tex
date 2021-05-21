@@ -7,6 +7,15 @@
 % !TEX encoding = UTF-8 Unicode
 % !TEX root = ../doc.tex
 
+3D-Visualisierungen werden in vielen Branchen verwendet. Virtual Reality, CAD-Programme oder Computerspiele sind einige bekannte Anwendungsgebiete. Dank leistungsstärkeren Geräten sind in vielen weiteren Bereichen realere Visualisierungen möglich.
+
+Anwendungen können auf spezifische Hardware wie zum Beispiel die Spielkonsole PlayStation ausgerichtet sein. Es gibt Unterschiede zwischen den Konsolen, grundsätzlich sind die verschiedenen Geräte jedoch überschaubar. In anderen Anwendungsfällen kann eine Applikation sogar für nur eine dedizierte Hardware entwickelt werden. Somit kann eine Applikation auf die Anforderungen dieser Hardware zugeschnitten werden. Der primäre Nachteil ist die Zugänglichkeit der Software. Diese wird umständlicher, da spezifische Hardware notwendig ist. So ist es einerseits aufwändig die Hardware zu beschaffen, andererseits aber auch eine Kostenfrage. Für gewisse Anwendungsgebiete ist dies kein Problem.
+
+Für hardwareunabhängige Anwendungen eignet sich die Web-Plattform hervorragend.
+Immer mehr Benutzer haben Zugang zu einem Desktop, Tablet, Mobiltelefon oder ein anderes Gerät, welches Zugang zum Internet bietet \cite{peopleWithInternetAccess}.
+Somit ermöglicht die Web-Plattform, Anwendungen mit weniger Aufwand einem grossen Zielpublikum zugänglich zu machen.
+Seit einigen Jahren ist es auch möglich, 3D-Visualisierungen im Web zu realisieren.
+
 \section{Kontext}
 In der Arbeit wird der Fokus auf die Web-Plattform gelegt. Die meisten Grundlagen sind jedoch auch unabhängig davon zutreffend.
 Für die Vereinfachung wird im Folgenden der Begriff Web für die Plattform von verschiedenen Web-Technologien genutzt. Dies beinhaltet insbesondere vom \e{World Wide Web Consortium}, kurz W3C, veröffentlichte Standards.
@@ -17,19 +26,10 @@ Eine Möglichkeit zur Optimierung ist das Anzeigen von vereinfachten Modellen ab
 In diversen \fglspl{Rendering Engine}{Teilprogramm, das zuständig für die Darstellung von Grafiken ist} gibt es deshalb Möglichkeiten für das Verwenden von sogenannten Level Of Details (LOD) Artefakten.
 Für \fgls{Game Engines}{Framework, das für den Spielverlauf und dessen Darstellung verantwortlich ist} wie Unreal oder Unity gibt es bewährte Möglichkeiten, um den Einsatz von LOD-Artefakten zu vereinfachen. Zurzeit gibt es in der Webentwicklung keine weitverbreitete Möglichkeit für das Generieren von solchen Artefakten.
 
-\subsection{3D-Rendering im Web}
-3D-Visualisierungen werden in vielen Branchen verwendet.
-Virtual Reality, CAD Anwendungen oder Computerspiele sind einige bekannte Anwendungsgebiete.
-Dank leistungsstärkeren Geräten sind in vielen weiteren Bereichen realere Visualisierungen möglich.
+\subsection{3D im Web}
 
-Anwendungen können auf spezifische Hardware wie zum Beispiel die Spielkonsole PlayStation ausgerichtet sein. Es gibt Unterschiede zwischen den Konsolen, grundsätzlich sind die verschiedenen Geräte jedoch überschaubar. In anderen Anwendungsfällen kann eine Applikation sogar für nur eine dedizierte Hardware entwickelt werden. Somit kann eine Applikation auf die Anforderungen dieser Hardware zugeschnitten werden. Der primäre Nachteil ist die Zugänglichkeit der Software. Diese wird umständlicher, da spezifische Hardware notwendig ist. So ist es einerseits aufwändig die Hardware zu beschaffen, andererseits aber auch eine Kostenfrage. Für gewisse Anwendungsgebiete ist dies kein Problem.
-
-Für hardwareunabhängige Anwendungen eignet sich das Web hervorragend.
-Immer mehr Benutzer haben Zugang zu einem Desktop, Tablet, Mobiltelefon oder ein anderes Gerät, welches Zugang zum Internet bietet \cite{peopleWithInternetAccess}.
-Somit ermöglicht das Web, Anwendungen mit weniger Aufwand einem grossen Zielpublikum zugänglich zu machen.
-Seit einigen Jahren ist es auch möglich, 3D-Visualisierungen im Web zu realisieren.
-Als Basis dafür dient meist das von der Khronos Group entwickelte WebGL, das von allen modernen Browsern unterstützt wird. WebGL ist eine low-level JavaScript API für 3D-Visualisierungen. \cite{webGl1Spec}
-Alternativ zu WebGL wird zurzeit ein weiterer Standard entwickelt: WebGPU. Dieser ist zur Zeit des Schreibens noch in Entwicklung und wird deshalb nicht weiter berücksichtigt, auch wenn ein grosses Potenzial vorhanden ist. \cite{webGPUCharter}
+Als Basis für 3D-Visualisierungen im Web dient meist das von der Khronos Group entwickelte WebGL, das von allen modernen Browsern unterstützt wird. WebGL ist eine low-level JavaScript API für 3D-Visualisierungen \cite{webGl1Spec}.
+Alternativ zu WebGL wird zurzeit ein weiterer Standard entwickelt: WebGPU. Dieser ist zur Zeit des Schreibens noch in Entwicklung und wird deshalb nicht weiter berücksichtigt, auch wenn ein grosses Potenzial vorhanden ist \cite{webGPUCharter}.
 
 Die Unabhängigkeit der Hardware bedeutet jedoch auch, dass Optimierung der Performanz in Webanwendungen unabdinglich ist, um allen Benutzern ein optimales Erlebnis zu ermöglichen.
 Im Vergleich zu fixen Hardware Anwendungen ist es realistisch, dass eine Webanwendung sowohl auf einem leistungsfähigen Desktop Computer als auch auf einem günstigen Mobilgerät verwendet wird.
