@@ -74,64 +74,64 @@ describe("reporter", () => {
     expect(generateHolisticReport(reports)).toEqual({
       baselineLower: 38.039,
       baselineMedianFpsMean: 42,
-      baselineMedianFpsVariance: 12.25,
+      baselineMedianFpsDeviation: 3.5,
       baselineUpper: 45.961,
       optimizedLower: 60,
       optimizedMedianFpsMean: 60,
-      optimizedMedianFpsVariance: 0,
+      optimizedMedianFpsDeviation: 0,
       optimizedUpper: 60,
 
       gpuTotalTime: {
         optimized: {
           mean: 2194.879,
-          variance: 1889.006,
+          standardDeviation: 43.463,
         },
         baseline: {
           mean: 2722.989,
-          variance: 24.012,
+          standardDeviation: 4.9,
         },
       },
       medianRenderLoopDuration: {
         optimized: {
           mean: 0.717,
-          variance: 0.121,
+          standardDeviation: 0.347,
         },
         baseline: {
           mean: 0.876,
-          variance: 0.142,
+          standardDeviation: 0.377,
         },
       },
 
       totalGpuEvents: {
         optimized: {
           mean: 346.667,
-          variance: 13694.333,
+          standardDeviation: 117.023,
         },
         baseline: {
           mean: 181.333,
-          variance: 11334.333,
+          standardDeviation: 106.463,
         },
       },
 
       totalModelLoadDuration: {
         optimized: {
           mean: 415.068,
-          variance: 26699.602,
+          standardDeviation: 163.4,
         },
         baseline: {
           mean: 260.632,
-          variance: 8653.976,
+          standardDeviation: 93.027,
         },
       },
 
       totalRenders: {
         optimized: {
           mean: 220,
-          variance: 3819,
+          standardDeviation: 61.798,
         },
         baseline: {
           mean: 114.333,
-          variance: 3236.333,
+          standardDeviation: 56.889,
         },
       },
     });
