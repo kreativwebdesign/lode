@@ -38,6 +38,8 @@ Eine Übersicht über die verschiedenen Kriterien kann in Tabelle \ref{table:lod
   \label{table:lodSystemComparison}
 \end{table}
 
+\e{Visual Pop} bezeichnet das merkbare Austauschen zweier LOD Artefakte. Im optimalen Fall ist der Austausch zweier Artefakte nicht merkbar.
+
 \subsection{Bestehende Systeme}
 \label{chap:existingSolutions}
 
@@ -87,7 +89,7 @@ Um den Nutzen von LOD quantifizieren zu können, müssen verschiedene Aspekte be
 
 \subsection{Aspekte für Nutzen}
 
-Der Nutzen eines Systems definiert sich durch eine Vielzahl von Aspekte, welche in verschiedenen Phasen aufgeteilt werden können. Die verschieden für die Entwicklung von Webanwendungen relevanten Aspekte werden im folgenden Abschnitt erläutert. Es werden hierbei lediglich die Relevantesten berücksichtigt.
+Der Nutzen eines Systems definiert sich durch eine Vielzahl von Aspekte, welche in verschiedenen Phasen aufgeteilt werden können. Die verschieden für die Entwicklung von 3D-Webanwendungen relevanten Aspekte werden im folgenden Abschnitt erläutert. Es werden hierbei lediglich die Relevantesten berücksichtigt.
 
 \paragraph{Entwicklungszeit}
 
@@ -102,6 +104,10 @@ Dank der heutigen Bandbreiten ist dies für viele Anwendungsbereiche ein kleiner
 Zudem können Probleme in diesem Bereich teilweise kaschiert werden, indem man das Ladeverhalten optimiert. Häufig sind nicht alle Artefakte notwendig, um eine verwendbare Anwendung darzustellen und der Rest kann phasenweise nachgeladen werden.
 Ausserdem ist es auch möglich, Artefakte bereits vorzuladen.
 
+\paragraph{Visuelle Auswirkungen}
+
+Die negativen visuellen Auswirkungen auf eine Anwendung sollen so gering wie möglich ausfallen. Es gilt auch in den visuellen Bereichen die richtige Balance zwischen Laufzeitverhalten und möglichst hohem Realismus zu finden. Ein Beispiel für negative visuelle Auswirkungen ist die Reduktion der Auflösung - eine tiefe Auflösung wird von vielen Benutzern als störend empfunden. Im Zusammenhang mit LOD Artefakten ist insbesondere das sogenannte \e{Visual Popping} erwähnenswert.
+
 \paragraph{Laufzeit}
 
 Entscheidend ist, unabhängig von der Applikation, das Laufzeitverhalten. Eine Applikation, welche eine schlechte \e{User Experience} liefert, ist inakzeptabel.
@@ -109,7 +115,7 @@ Das Laufzeitverhalten wird durch eine Vielzahl von Aspekten beeinflusst.
 Angestrebt werden grundsätzlich immer 60 \fgls{FPS}{Frames per Second. Bilder pro Sekunde. Gängige Art, die Performanz der \gls{Rendering Engine} zu messen}. Wenn eine bestimmte Szenerie diese 60 \e{\gls{FPS}} nicht erreicht, ist ein Performanzproblem vorhanden.
 
 \paragraph{Berücksichtigung der Aspekte}
-In dieser Arbeit wird ein hoher Wert darauf gelegt, dass die Entwicklungszeit möglichst geringfügig verändert wird. Zudem werden, wo möglich, Empfehlungen getätigt, um die Downloadgrösse möglichst marginal zu verändern.
+In dieser Arbeit wird ein hoher Wert darauf gelegt, dass die Entwicklungszeit möglichst geringfügig verändert wird. Zudem werden, wo möglich, Empfehlungen getätigt, um die Downloadgrösse möglichst marginal zu verändern. Das Minimieren der visuellen Auswirkungen kann durch visuelle Vergleiche sichergestellt werden.
 Die somit primären Aspekte für die Beurteilung sind die Auswirkungen auf das Laufzeitverhalten.
 
 Um diese Beurteilung tätigen zu können, wird im Folgenden ein Benchmark definiert. Ziel ist es, das Laufzeitverhalten zu analysieren und somit den maximal möglichen Einfluss von LOD auf die Leistung klassifizieren zu können. Hierbei werden verschiedene Aspekte betrachtet.
