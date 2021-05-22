@@ -180,6 +180,8 @@ Die Testapplikation stellt eine komplexe Szenerie dar. Der Betrachter fliegt wä
 
 In Abbildung \ref{fig:demoApplication} ist ein Screenshot der Testapplikation ersichtlich. Die Kamera wird kontinuierlich innerhalb der Szene bewegt. Die Kamera wird abhängig von der Systemzeit positioniert. So ist es möglich, dass beide Applikationen – unabhängig von den \e{FPS} – jeweils die gleichen Aspekte innerhalb der Applikation visualisieren. Die Modelle werden zudem bei jedem Durchlauf identisch positioniert. Dies gewährleistet, dass das Laufzeitverhalten verlässlich ist.
 
+Jedes Modell wird dabei mehrfach angezeigt, die Modelle werden einmal geladen und anschliessend mittels der \e{clone} Methode von Three.js geklont \cite{threeObject3DClone}. Dies stellt sicher, dass die Datenstruktur der Modelle nicht mehrfach in den Arbeitsspeicher geladen werden muss. Wichtig ist zu erwähnen, dass die Modelle bei dieser Methode mit mehreren \e{Draw Calls} gerendert werden. Der Einsatz von \e{InstancedMesh} wurde in Erwägung gezogen, zeigte jedoch keine nennenswerte Unterschiede zwischen der optimierten und unoptimierten Version \cite{threeInstancedMesh}.
+
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\columnwidth]{resultate/screenshotdemoapplication.jpg}
