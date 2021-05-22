@@ -78,9 +78,36 @@ In Abbildung \ref{fig:lodComparison} ist eine solche Vereinfachung neben dem zug
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\columnwidth]{resultate/lod-comparison.png}
+  \begin{subfigure}{.4\textwidth}
+    \centering
+    \includegraphics[width=.8\linewidth]{resultate/lod-original.png}
+    \caption{Originalmodell}
+  \end{subfigure}
+  \begin{subfigure}{.4\textwidth}
+    \centering
+    \includegraphics[width=.8\linewidth]{resultate/lod-simplified.png}
+    \caption{vereinfachtes Modell}
+  \end{subfigure}
   \caption{Vergleich Originalmodell und vereinfachtes Modell}
   \label{fig:lodComparison}
+\end{figure}
+
+Bei einer Nahbetrachtung der Modelle sind die Unterschiede klar ersichtlich. Bei einer gewissen Distanz sind die Differenzen der beiden Modelle unauffälliger. In Abbildung \ref{fig:lodComparisonDistance} werden dieselben Modelle auf eine Distanz von 72 (m) dargestellt. Die Standardeinstellung für die maximale Distanz des Kamera Frustum liegt bei Babylon.js zum Beispiel bei 10'000 (m) \cite{babylonMaxZ}. Auf diese Distanz kann der orange Schnabel beim Originalmodell noch knapp erkannt werden - andere Details sind auf diese Distanz jedoch nicht ersichtlich.
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}{.4\textwidth}
+    \centering
+    \includegraphics[width=.8\linewidth]{resultate/original-distance.png}
+    \caption{Originalmodell}
+  \end{subfigure}
+  \begin{subfigure}{.4\textwidth}
+    \centering
+    \includegraphics[width=.8\linewidth]{resultate/simplified-distance.png}
+    \caption{vereinfachtes Modell}
+  \end{subfigure}
+  \caption{Vergleich Originalmodell und vereinfachtes Modell auf Distanz}
+  \label{fig:lodComparisonDistance}
 \end{figure}
 
 \section{Benchmark}
