@@ -1,12 +1,11 @@
 export const calculateNinetyFiveConfidenceInterval = ({
   mean,
-  variance,
+  standardDeviation,
   samples,
 }) => {
   const x = mean;
   const zUpper = 1.96;
   const zLower = -zUpper;
-  const standardDeviation = Math.sqrt(variance);
   const n = Math.sqrt(samples);
 
   return {

@@ -18,11 +18,11 @@ export const calculateFigure = (reports, selector) => {
   return {
     optimized: {
       mean: round(math.mean(optimizedValues)),
-      variance: round(math.variance(optimizedValues)),
+      standardDeviation: round(math.std(optimizedValues)),
     },
     baseline: {
       mean: round(math.mean(baselineValues)),
-      variance: round(math.variance(baselineValues)),
+      standardDeviation: round(math.std(baselineValues)),
     },
   };
 };
@@ -35,11 +35,11 @@ export const generateHolisticReport = (reports) => {
   const {
     optimized: {
       mean: optimizedMedianFpsMean,
-      variance: optimizedMedianFpsVariance,
+      standardDeviation: optimizedMedianFpsDeviation,
     },
     baseline: {
       mean: baselineMedianFpsMean,
-      variance: baselineMedianFpsVariance,
+      standardDeviation: baselineMedianFpsDeviation,
     },
   } = calculateFigure(reports, (report) => report.medianFps);
 
@@ -48,7 +48,7 @@ export const generateHolisticReport = (reports) => {
     lower: optimizedLower,
   } = calculateNinetyFiveConfidenceInterval({
     mean: optimizedMedianFpsMean,
-    variance: optimizedMedianFpsVariance,
+    standardDeviation: optimizedMedianFpsDeviation,
     samples: reports.length,
   });
 
@@ -57,7 +57,7 @@ export const generateHolisticReport = (reports) => {
     lower: baselineLower,
   } = calculateNinetyFiveConfidenceInterval({
     mean: baselineMedianFpsMean,
-    variance: baselineMedianFpsVariance,
+    standardDeviation: baselineMedianFpsDeviation,
     samples: reports.length,
   });
 
@@ -88,12 +88,12 @@ export const generateHolisticReport = (reports) => {
 
   return {
     optimizedMedianFpsMean,
-    optimizedMedianFpsVariance,
+    optimizedMedianFpsDeviation,
     optimizedLower: round(optimizedLower),
     optimizedUpper: round(optimizedUpper),
 
     baselineMedianFpsMean,
-    baselineMedianFpsVariance,
+    baselineMedianFpsDeviation,
     baselineLower: round(baselineLower),
     baselineUpper: round(baselineUpper),
 

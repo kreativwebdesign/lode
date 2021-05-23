@@ -44,11 +44,11 @@ const main = async () => {
 
   const {
     optimizedMedianFpsMean,
-    optimizedMedianFpsVariance,
+    optimizedMedianFpsDeviation,
     optimizedLower,
     optimizedUpper,
     baselineMedianFpsMean,
-    baselineMedianFpsVariance,
+    baselineMedianFpsDeviation,
     baselineLower,
     baselineUpper,
     gpuTotalTime,
@@ -63,9 +63,9 @@ const main = async () => {
   );
 
   console.log(`
-optimized fps: ${optimizedMedianFpsMean} (${optimizedMedianFpsVariance} variance)
+optimized fps: ${optimizedMedianFpsMean} (${optimizedMedianFpsDeviation} standard deviation)
 the value is with a confidence of 95% between ${optimizedLower} and ${optimizedUpper}
-baseline fps: ${baselineMedianFpsMean} (${baselineMedianFpsVariance} variance)
+baseline fps: ${baselineMedianFpsMean} (${baselineMedianFpsDeviation} standard deviation)
 the value is with a confidence of 95% between ${baselineLower} and ${baselineUpper}
 `);
 
@@ -75,8 +75,8 @@ further information for interpreting data:
 
   const logReportSection = (sectionName, data) => {
     console.log(`${sectionName}:
-optimized: ${data.optimized.mean} (${data.optimized.variance} variance)
-baseline: ${data.baseline.mean} (${data.baseline.variance} variance)`);
+optimized: ${data.optimized.mean} (${data.optimized.standardDeviation} standard deviation)
+baseline: ${data.baseline.mean} (${data.baseline.standardDeviation} standard deviation)`);
   };
 
   logReportSection("gpuTotalTime", gpuTotalTime);

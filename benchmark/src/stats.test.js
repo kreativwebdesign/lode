@@ -4,7 +4,7 @@ describe("calculateNinetyFiveConfidenceInterval", () => {
   it("should calculate confidence interval", () => {
     const { upper, lower } = calculateNinetyFiveConfidenceInterval({
       mean: 30,
-      variance: 300,
+      standardDeviation: Math.sqrt(300),
       samples: 100,
     });
 
