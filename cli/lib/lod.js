@@ -1,5 +1,6 @@
 import path from "path";
 import { ColorUtils, Document, Accessor, NodeIO } from "@gltf-transform/core";
+import { vec3 } from "gl-matrix";
 import { getAverageColor } from "fast-average-color-node";
 import simplify from "./simplification/index.js";
 import { prepareData } from "./simplification/prepare-data.js";
@@ -76,7 +77,10 @@ export const performLOD = async ({ originalFile, levelDefinitions }) => {
 
       const indicesArray = indices.getArray();
 
-      const { vertices, triangles } = prepareData(positionsArray, indicesArray);
+      const { vertices, triangles, factor } = prepareData(
+        positionsArray,
+        indicesArray
+      );
 
       let targetTriangles = triangles.length * configuration.targetScale;
 
@@ -89,7 +93,13 @@ export const performLOD = async ({ originalFile, levelDefinitions }) => {
       // convert to glTF compatible format
       const verticesAsFloat = new Float32Array(newVertices.length * 3);
       newVertices.forEach((v, i) => {
-        verticesAsFloat.set(v.position, i * 3);
+        const newPosition = vec3.create();
+        vec3.divide(
+          newPosition,
+          v.position,
+          vec3.fromValues(factor, factor, factor)
+        );
+        verticesAsFloat.set(newPosition, i * 3);
       });
 
       const indicesAsInteger = new Uint16Array(newTriangles.length * 3);
