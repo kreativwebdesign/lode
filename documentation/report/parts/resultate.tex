@@ -95,8 +95,23 @@ Es ist sogar möglich, auf gewissen Geräten die detaillierten Level überhaupt 
 \subsection{Texturen}
 
 Bei vielen Modellen sind der grösste Teil der Speichergrösse die Texturen. Das Optimieren der geometrischen Struktur reduziert die zugehörigen Texturen jedoch nicht. Um trotzdem möglichst grosse Einsparungen für die Texturen zu ermöglichen wurde eine Methode entwickelt, welche versucht die prominenteste Farbe eines Modells zu extrahieren und diese für die Vereinfachungen zu verwenden.
+In Abbildung \ref{fig:textureComparison} ist dieser Unterschied visualisiert.
 Diese Technik führt zu signifikanten Detailverlusten bei der Nahbetrachtung und ist somit ungeeignet für das Verwenden bei der ersten LOD-Stufe. Für alle weiteren Stufen überwiegt jedoch der Vorteil der Vereinfachung im Vergleich zum Detailverlust.
-(TODO MB: Bild der Textur-Entfernung)
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}{.4\textwidth}
+    \centering
+    \includegraphics[width=.8\linewidth]{resultate/lod-original-texture.png}
+    \caption{Original Textur}
+  \end{subfigure}
+  \begin{subfigure}{.4\textwidth}
+    \centering
+    \includegraphics[width=.8\linewidth]{resultate/lod-simplified-texture.png}
+    \caption{Vereinfachte Textur}
+  \end{subfigure}
+  \caption{Vergleich der Texturen}
+  \label{fig:textureComparison}
+\end{figure}
 
 \subsection{Vergleich}
 
@@ -235,4 +250,36 @@ Die Signifikanz wird mithilfe eines statistischen Konfidenzintervalls nachgewies
 Der Benchmark wurde auf einer Maschine mit moderner Grafikkarte ausgeführt. Die Resultate zeigen einen klaren Unterschied zwischen der unoptimierten und optimierten Version. So ist die Zeit für das Laden der Modelle zwar geringfügig länger, die Zahl der \e{Render Loop} Iterationen und insbesondere der \e{FPS} geben eine klare Auskunft. Unter Berücksichtigung des berechneten Konfidenzintervalls wird das Resultat als signifikant erachtet. Diese These wird auch durch eine einfache Kontrolle mit dem Auge belegt - die Anzahl \e{FPS} unterscheidet sich merkbar.
 
 Somit ist es möglich einen Nutzen für bestimmte anspruchsvolle 3D-Visualisierungen zu generieren.
-(TODO MB: Screenshot eines sauberen Benchmark-runs)
+
+\begin{figure}[H]
+  \begin{lstlisting}
+    optimized fps: 59.9 (0.316 standard deviation)
+    the value is with a confidence of 95% between 59.704 and 60.096
+    baseline fps: 48.3 (0.483 standard deviation)
+    the value is with a confidence of 95% between 48.001 and 48.599
+
+
+    further information for interpreting data:
+
+    gpuTotalTime:
+    optimized: 108.406 (5.667 standard deviation)
+    baseline: 336.718 (398.204 standard deviation)
+    medianRenderLoopDuration:
+    optimized: 2.067 (0.064 standard deviation)
+    baseline: 1.394 (0.024 standard deviation)
+    totalGpuEvents:
+    optimized: 524.7 (26.081 standard deviation)
+    baseline: 518.6 (17.89 standard deviation)
+    totalModelLoadDuration:
+    optimized: 1350.611 (42.677 standard deviation)
+    baseline: 1233.288 (53.571 standard deviation)
+    totalRenders:
+    optimized: 300.4 (5.602 standard deviation)
+    baseline: 232.3 (5.658 standard deviation)
+  \end{lstlisting}
+\caption{Durchlauf eines Benchmarktests}
+\label{fig:benchmarkRun}
+\end{figure}
+
+Wie in Abbildung \ref{fig:benchmarkRun} zu sehen, konnten die FPS auf 60 FPS gehoben werden im Vergleich zu den 48.2 FPS in der unoptimierten Version.
+Direkt damit verbunden ist die Anzahl \e{total Renders}, welche genauso um ca 30\% gesteigert werden kontte. Auf der Umkehrseite wurde die \e{total model load duration} etwas erhöht, da mehr Modelle geladen werden müssen. Diese wuchs aber nur um rund 10\%.
