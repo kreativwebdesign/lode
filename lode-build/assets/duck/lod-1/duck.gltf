@@ -8,16 +8,16 @@
       "name": "data_1_1",
       "type": "VEC3",
       "componentType": 5126,
-      "count": 171,
+      "count": 176,
       "max": [
-        96.05221557617188,
-        165.2351837158203,
-        53.880863189697266
+        96.0539779663086,
+        164.436279296875,
+        53.036685943603516
       ],
       "min": [
-        -68.16035461425781,
-        10.185136795043945,
-        -61.47316360473633
+        -69.29850006103516,
+        10.012605667114258,
+        -61.377262115478516
       ],
       "normalized": false,
       "bufferView": 0,
@@ -27,9 +27,9 @@
       "name": "data_1_2",
       "type": "SCALAR",
       "componentType": 5123,
-      "count": 807,
+      "count": 825,
       "max": [
-        170
+        175
       ],
       "min": [
         0
@@ -43,14 +43,14 @@
     {
       "buffer": 0,
       "byteOffset": 0,
-      "byteLength": 2052,
+      "byteLength": 2112,
       "byteStride": 12,
       "target": 34962
     },
     {
       "buffer": 1,
       "byteOffset": 0,
-      "byteLength": 1616,
+      "byteLength": 1652,
       "target": 34963
     }
   ],
@@ -58,12 +58,12 @@
     {
       "name": "buffer_1_1",
       "uri": "duck_1.bin",
-      "byteLength": 2052
+      "byteLength": 2112
     },
     {
       "name": "buffer_1_2",
       "uri": "duck_2.bin",
-      "byteLength": 1616
+      "byteLength": 1652
     }
   ],
   "materials": [

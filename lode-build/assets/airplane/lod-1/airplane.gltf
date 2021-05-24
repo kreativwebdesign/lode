@@ -8,16 +8,16 @@
       "name": "data_1_1",
       "type": "VEC3",
       "componentType": 5126,
-      "count": 14135,
+      "count": 15604,
       "max": [
-        317.9831848144531,
-        498.5843200683594,
-        749.0986938476562
+        317.983154296875,
+        498.5830993652344,
+        749.0985717773438
       ],
       "min": [
-        -322.45703125,
-        29.21755027770996,
-        -749.267578125
+        -320.94195556640625,
+        28.933141708374023,
+        -750.3783569335938
       ],
       "normalized": false,
       "bufferView": 0,
@@ -27,9 +27,9 @@
       "name": "data_1_2",
       "type": "SCALAR",
       "componentType": 5123,
-      "count": 61959,
+      "count": 65571,
       "max": [
-        14134
+        15603
       ],
       "min": [
         0
@@ -42,16 +42,16 @@
       "name": "data_2_1",
       "type": "VEC3",
       "componentType": 5126,
-      "count": 5748,
+      "count": 4830,
       "max": [
-        786.9495239257812,
-        247.26234436035156,
-        403.8321533203125
+        786.6465454101562,
+        239.38194274902344,
+        426.8194885253906
       ],
       "min": [
-        -789.5349731445312,
+        -789.7219848632812,
         74.41117858886719,
-        -166.04574584960938
+        -166.045654296875
       ],
       "normalized": false,
       "bufferView": 2,
@@ -61,9 +61,9 @@
       "name": "data_2_2",
       "type": "SCALAR",
       "componentType": 5123,
-      "count": 18585,
+      "count": 17346,
       "max": [
-        5747
+        4829
       ],
       "min": [
         0
@@ -77,27 +77,27 @@
     {
       "buffer": 0,
       "byteOffset": 0,
-      "byteLength": 169620,
+      "byteLength": 187248,
       "byteStride": 12,
       "target": 34962
     },
     {
       "buffer": 1,
       "byteOffset": 0,
-      "byteLength": 123920,
+      "byteLength": 131144,
       "target": 34963
     },
     {
       "buffer": 2,
       "byteOffset": 0,
-      "byteLength": 68976,
+      "byteLength": 57960,
       "byteStride": 12,
       "target": 34962
     },
     {
       "buffer": 3,
       "byteOffset": 0,
-      "byteLength": 37172,
+      "byteLength": 34692,
       "target": 34963
     }
   ],
@@ -105,22 +105,22 @@
     {
       "name": "buffer_1_1",
       "uri": "airplane_1.bin",
-      "byteLength": 169620
+      "byteLength": 187248
     },
     {
       "name": "buffer_1_2",
       "uri": "airplane_2.bin",
-      "byteLength": 123920
+      "byteLength": 131144
     },
     {
       "name": "buffer_2_1",
       "uri": "airplane_3.bin",
-      "byteLength": 68976
+      "byteLength": 57960
     },
     {
       "name": "buffer_2_2",
       "uri": "airplane_4.bin",
-      "byteLength": 37172
+      "byteLength": 34692
     }
   ],
   "materials": [

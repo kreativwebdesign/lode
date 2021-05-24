@@ -8,16 +8,16 @@
       "name": "data_1_1",
       "type": "VEC3",
       "componentType": 5126,
-      "count": 4787,
+      "count": 2857,
       "max": [
-        1.4274290800094604,
-        3.7138516902923584,
-        1.4670144319534302
+        1.4269746541976929,
+        3.7123496532440186,
+        1.4685450792312622
       ],
       "min": [
-        -1.4276719093322754,
-        -0.0010838342132046819,
-        -1.4665690660476685
+        -1.4270046949386597,
+        0.0006282699760049582,
+        -1.468184232711792
       ],
       "normalized": false,
       "bufferView": 0,
@@ -27,9 +27,9 @@
       "name": "data_1_2",
       "type": "SCALAR",
       "componentType": 5123,
-      "count": 22872,
+      "count": 16443,
       "max": [
-        4786
+        2856
       ],
       "min": [
         0
@@ -43,14 +43,14 @@
     {
       "buffer": 0,
       "byteOffset": 0,
-      "byteLength": 57444,
+      "byteLength": 34284,
       "byteStride": 12,
       "target": 34962
     },
     {
       "buffer": 1,
       "byteOffset": 0,
-      "byteLength": 45744,
+      "byteLength": 32888,
       "target": 34963
     }
   ],
@@ -58,12 +58,12 @@
     {
       "name": "buffer_1_1",
       "uri": "apricot_1.bin",
-      "byteLength": 57444
+      "byteLength": 34284
     },
     {
       "name": "buffer_1_2",
       "uri": "apricot_2.bin",
-      "byteLength": 45744
+      "byteLength": 32888
     }
   ],
   "materials": [

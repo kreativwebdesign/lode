@@ -8,16 +8,16 @@
       "name": "data_1_1",
       "type": "VEC3",
       "componentType": 5126,
-      "count": 10059,
+      "count": 10027,
       "max": [
         69.50206756591797,
-        57.34609603881836,
-        107.78685760498047
+        57.407920837402344,
+        107.81238555908203
       ],
       "min": [
-        -69.4217529296875,
-        -7.31341552734375,
-        -105.48352813720703
+        -69.63164520263672,
+        -7.24283504486084,
+        -105.49407958984375
       ],
       "normalized": false,
       "bufferView": 0,
@@ -27,9 +27,9 @@
       "name": "data_1_2",
       "type": "SCALAR",
       "componentType": 5123,
-      "count": 35199,
+      "count": 35091,
       "max": [
-        10058
+        10026
       ],
       "min": [
         0
@@ -42,16 +42,16 @@
       "name": "data_2_1",
       "type": "VEC3",
       "componentType": 5126,
-      "count": 772,
+      "count": 810,
       "max": [
-        28.427783966064453,
-        47.53273391723633,
-        13.934167861938477
+        28.422922134399414,
+        47.5684700012207,
+        13.92123031616211
       ],
       "min": [
-        -28.418092727661133,
-        -1.5147852897644043,
-        -22.466157913208008
+        -28.425020217895508,
+        -1.5160490274429321,
+        -22.378463745117188
       ],
       "normalized": false,
       "bufferView": 2,
@@ -61,9 +61,9 @@
       "name": "data_2_2",
       "type": "SCALAR",
       "componentType": 5123,
-      "count": 3981,
+      "count": 4293,
       "max": [
-        771
+        809
       ],
       "min": [
         0
@@ -77,27 +77,27 @@
     {
       "buffer": 0,
       "byteOffset": 0,
-      "byteLength": 120708,
+      "byteLength": 120324,
       "byteStride": 12,
       "target": 34962
     },
     {
       "buffer": 1,
       "byteOffset": 0,
-      "byteLength": 70400,
+      "byteLength": 70184,
       "target": 34963
     },
     {
       "buffer": 2,
       "byteOffset": 0,
-      "byteLength": 9264,
+      "byteLength": 9720,
       "byteStride": 12,
       "target": 34962
     },
     {
       "buffer": 3,
       "byteOffset": 0,
-      "byteLength": 7964,
+      "byteLength": 8588,
       "target": 34963
     }
   ],
@@ -105,22 +105,22 @@
     {
       "name": "buffer_1_1",
       "uri": "human_1.bin",
-      "byteLength": 120708
+      "byteLength": 120324
     },
     {
       "name": "buffer_1_2",
       "uri": "human_2.bin",
-      "byteLength": 70400
+      "byteLength": 70184
     },
     {
       "name": "buffer_2_1",
       "uri": "human_3.bin",
-      "byteLength": 9264
+      "byteLength": 9720
     },
     {
       "name": "buffer_2_2",
       "uri": "human_4.bin",
-      "byteLength": 7964
+      "byteLength": 8588
     }
   ],
   "materials": [
