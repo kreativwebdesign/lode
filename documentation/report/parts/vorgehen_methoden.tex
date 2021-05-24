@@ -55,7 +55,7 @@ Eine Übersicht über die verschiedenen Kriterien kann in der Tabelle \ref{table
 Innerhalb der \e{Unity} Community gibt es eine Bibliothek für das automatische Generieren von Artefakten, welche für LOD verwendet werden können. \cite{unityMeshSimplification}
 Ansätze für ein HLOD-System sind vorhanden, wurden jedoch nicht offiziell in \e{Unity} integriert. \cite{unityAutoLod}
 
-(TODO: Evtl könnte man hier noch genauer darauf eingehen, wie die Systeme funktionieren und mit Bildern zeigen.)
+(TODO MB: Evtl könnte man hier noch genauer darauf eingehen, wie die Systeme funktionieren und mit Bildern zeigen.)
 
 \section{Surface Simplification Algorithmus}
 \label{chap:surfaceSimplificationAlgorithm}
@@ -85,7 +85,7 @@ Die Lösung soll in eine wiederverwendbare und konfigurierbare Pipeline integrie
 In der Webentwicklung ist es üblich, über \fgls{CLI}{Command Line Interface – Kommandozeile} Arbeitsschritte zu automatisieren. Es soll demnach ein \e{\gls{CLI}} erstellt und auf \gls{npm} öffentlich zugänglich gemacht werden, welches nahtlos in den Entwicklungsablauf integriert werden kann. Über eine Konfiguration soll angegeben werden können, wo nach den \e{.glTF} Dateien gesucht, wohin die Output-Dateien gespeichert und in welchem Modus das Tool gestartet werden soll. Ebenso werden Algorithmus-Einstellungen in dieser Konfiguration gesetzt werden können. Es soll einfach zu bedienen, gut dokumentiert und gut gewählte Standardeinstellungen haben. Zudem soll das Tool im einmal Modus laufen können oder kontinuierlich sich ändernde Dateien neu optimieren.
 
 \section{Nutzen LOD}
-Um den Nutzen von LOD quantifizieren zu können, müssen verschiedene Aspekte berücksichtigt werden. (TODO: Bisschen ausführen)
+Um den Nutzen von LOD quantifizieren zu können, müssen verschiedene Aspekte berücksichtigt werden. Auf der einen Seite ist die Entwicklungszeit zu berücksichtigen, welche sich auf die Kosten der Applikation auswirkt. Auf der anderen Seite sind Aspekte wie die Downloadzeit, die visuellen Unterschiede und die Laufzeit-Performanz der Applikation wichtig, da sie die Qualität der Software beeinflussen.
 
 \subsection{Aspekte für Nutzen}
 
@@ -111,7 +111,7 @@ Beim \e{Visual Popping} handelt sich um den Moment, in dem die Artefakte ausgeta
 
 \paragraph{Laufzeit}
 
-Entscheidend ist, unabhängig von der Applikation, das Laufzeitverhalten. (TODO: Was genau ist "Das Laufzeitverhalten") Eine Applikation, welche eine schlechte \e{User Experience} liefert, ist inakzeptabel.
+Entscheidend ist, unabhängig von der Applikation, das Laufzeitverhalten. (TODO SS: Was genau ist "Das Laufzeitverhalten") Eine Applikation, welche eine schlechte \e{User Experience} liefert, ist inakzeptabel.
 Das Laufzeitverhalten wird durch eine Vielzahl von Aspekten beeinflusst.
 Angestrebt werden grundsätzlich immer 60 \fgls{FPS}{Frames per Second. Bilder pro Sekunde. Die Anzahl der Render-Durchläufe der \gls{Rendering Engine}, die sich darauf auswirkt, wie flüssig eine Applikation läuft.}. Wenn eine bestimmte Szenerie diese 60 \e{\gls{FPS}} nicht erreicht, ist ein Performanzproblem vorhanden und das menschliche Auge kann möglicherweise ein Ruckeln wahrenehmen.
 
