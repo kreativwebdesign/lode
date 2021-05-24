@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { measureFPS } from "./src/measure-fps";
+import { buildFpsMeasurement } from "./src/measure-fps";
 import loadGltfAsync from "./src/async-gltf-loader";
 import generateRandomPosition from "./src/generate-random-position";
 import { getOptimized } from "./src/url-param";
@@ -136,6 +136,8 @@ function updateCameraPosition() {
   }
 }
 
+const measureFps = buildFpsMeasurement();
+
 function render(scene) {
   performance.mark("renderLoopStart");
   renderer.render(scene, camera);
@@ -143,7 +145,10 @@ function render(scene) {
   updateCameraPosition();
   performance.mark("renderLoopEnd");
   performance.measure("renderLoop", "renderLoopStart", "renderLoopEnd");
-  measureFPS();
+  const FPS = measureFps();
+  if (FPS !== undefined) {
+    console.log("::benchmark::fps::" + FPS);
+  }
 }
 
 const main = async () => {
