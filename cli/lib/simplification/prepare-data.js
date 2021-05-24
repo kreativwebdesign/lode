@@ -31,7 +31,7 @@ export const prepareData = (positionsArray, indicesArray) => {
   return { triangles, vertices };
 };
 
-export const getScaleFactor = (vertices) => {
+export const applyScaleFactor = (vertices) => {
   const min = [Infinity, Infinity, Infinity];
   const max = [-Infinity, -Infinity, -Infinity];
 
