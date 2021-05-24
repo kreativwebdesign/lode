@@ -8,16 +8,16 @@
       "name": "data_1_1",
       "type": "VEC3",
       "componentType": 5126,
-      "count": 16332,
+      "count": 1343,
       "max": [
-        0.668556272983551,
-        0.8799268007278442,
-        0.9919244050979614
+        0.6694290041923523,
+        0.8763225674629211,
+        0.9934966564178467
       ],
       "min": [
-        -0.6679636240005493,
-        -0.9085731506347656,
-        -1.005160927772522
+        -0.6705597043037415,
+        -0.9064884781837463,
+        -1.0110646486282349
       ],
       "normalized": false,
       "bufferView": 0,
@@ -27,9 +27,9 @@
       "name": "data_1_2",
       "type": "SCALAR",
       "componentType": 5123,
-      "count": 89559,
+      "count": 6045,
       "max": [
-        16331
+        1342
       ],
       "min": [
         0
@@ -43,14 +43,14 @@
     {
       "buffer": 0,
       "byteOffset": 0,
-      "byteLength": 195984,
+      "byteLength": 16116,
       "byteStride": 12,
       "target": 34962
     },
     {
       "buffer": 1,
       "byteOffset": 0,
-      "byteLength": 179120,
+      "byteLength": 12092,
       "target": 34963
     }
   ],
@@ -58,12 +58,12 @@
     {
       "name": "buffer_1_1",
       "uri": "skull2_1.bin",
-      "byteLength": 195984
+      "byteLength": 16116
     },
     {
       "name": "buffer_1_2",
       "uri": "skull2_2.bin",
-      "byteLength": 179120
+      "byteLength": 12092
     }
   ],
   "materials": [

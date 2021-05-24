@@ -8,16 +8,16 @@
       "name": "data_1_1",
       "type": "VEC3",
       "componentType": 5126,
-      "count": 6574,
+      "count": 4112,
       "max": [
-        55.5509147644043,
+        55.55091857910156,
         68.44965362548828,
         68.42829132080078
       ],
       "min": [
-        -55.5683708190918,
-        -41.48479461669922,
-        -59.511863708496094
+        -55.53571319580078,
+        -41.38542175292969,
+        -59.48245620727539
       ],
       "normalized": false,
       "bufferView": 0,
@@ -27,9 +27,9 @@
       "name": "data_1_2",
       "type": "SCALAR",
       "componentType": 5123,
-      "count": 27447,
+      "count": 14931,
       "max": [
-        6573
+        4111
       ],
       "min": [
         0
@@ -43,14 +43,14 @@
     {
       "buffer": 0,
       "byteOffset": 0,
-      "byteLength": 78888,
+      "byteLength": 49344,
       "byteStride": 12,
       "target": 34962
     },
     {
       "buffer": 1,
       "byteOffset": 0,
-      "byteLength": 54896,
+      "byteLength": 29864,
       "target": 34963
     }
   ],
@@ -58,12 +58,12 @@
     {
       "name": "buffer_1_1",
       "uri": "frank_1.bin",
-      "byteLength": 78888
+      "byteLength": 49344
     },
     {
       "name": "buffer_1_2",
       "uri": "frank_2.bin",
-      "byteLength": 54896
+      "byteLength": 29864
     }
   ],
   "materials": [

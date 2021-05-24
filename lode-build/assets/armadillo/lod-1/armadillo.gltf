@@ -8,15 +8,15 @@
       "name": "data_1_1",
       "type": "VEC3",
       "componentType": 5126,
-      "count": 14968,
+      "count": 10888,
       "max": [
-        63.536338806152344,
-        97.09272003173828,
+        63.52360534667969,
+        97.04593658447266,
         57.678443908691406
       ],
       "min": [
-        -63.517574310302734,
-        -54.21757125854492,
+        -63.48894119262695,
+        -54.223045349121094,
         -57.69422912597656
       ],
       "normalized": false,
@@ -27,9 +27,9 @@
       "name": "data_1_2",
       "type": "SCALAR",
       "componentType": 5123,
-      "count": 89520,
+      "count": 64962,
       "max": [
-        14967
+        10887
       ],
       "min": [
         0
@@ -43,14 +43,14 @@
     {
       "buffer": 0,
       "byteOffset": 0,
-      "byteLength": 179616,
+      "byteLength": 130656,
       "byteStride": 12,
       "target": 34962
     },
     {
       "buffer": 1,
       "byteOffset": 0,
-      "byteLength": 179040,
+      "byteLength": 129924,
       "target": 34963
     }
   ],
@@ -58,12 +58,12 @@
     {
       "name": "buffer_1_1",
       "uri": "armadillo_1.bin",
-      "byteLength": 179616
+      "byteLength": 130656
     },
     {
       "name": "buffer_1_2",
       "uri": "armadillo_2.bin",
-      "byteLength": 179040
+      "byteLength": 129924
     }
   ],
   "materials": [
