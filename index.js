@@ -143,7 +143,7 @@ function render(scene) {
   updateCameraPosition();
   performance.mark("renderLoopEnd");
   performance.measure("renderLoop", "renderLoopStart", "renderLoopEnd");
-  measureFPS();
+  console.log("::benchmark::fps::" + measureFPS());
 }
 
 const main = async () => {
