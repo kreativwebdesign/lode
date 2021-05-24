@@ -54,4 +54,6 @@ export const applyScaleFactor = (vertices) => {
       vec3.fromValues(factor, factor, factor)
     );
   });
+
+  return factor;
 };
