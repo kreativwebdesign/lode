@@ -55,7 +55,14 @@ Eine Übersicht über die verschiedenen Kriterien kann in der Tabelle \ref{table
 Innerhalb der \e{Unity} Community gibt es eine Bibliothek für das automatische Generieren von Artefakten, welche für LOD verwendet werden können. \cite{unityMeshSimplification}
 Ansätze für ein HLOD-System sind vorhanden, wurden jedoch nicht offiziell in \e{Unity} integriert. \cite{unityAutoLod}
 
-(TODO MB: Evtl könnte man hier noch genauer darauf eingehen, wie die Systeme funktionieren und mit Bildern zeigen.)
+In Abbildung \ref{fig:unityDLODGroup} ist zusehen, wie innerhalb von Unity der Übergang zwischen zwei LOD-Artefakten konfiguriert werden können. Hervorzuheben sind hier zum einen den Fade Mode, der das \e{Visual Popping} vermindert und zum anderen die Triggerpunkte, bei welchen das Level gewechselt werden soll.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\columnwidth]{vorgehen/Unity-DLOD.png}
+  \caption{"\e{LOD Group}"-Komponente in Unity für die Konfiguration der Übergänge zwischen LOD-Artefakten \cite{unityLODGroup}}
+  \label{fig:unityDLODGroup}
+\end{figure}
 
 \section{Surface Simplification Algorithmus}
 \label{chap:surfaceSimplificationAlgorithm}
