@@ -1,6 +1,11 @@
 import Reference from "./types/reference.js";
 
 const buildReferenceList = (vertices, triangles) => {
+  vertices.forEach((vertex) => {
+    vertex.tCount = 0;
+    vertex.tStart = 0;
+  });
+
   // init reference counters
   triangles.forEach((triangle) => {
     triangle.vertices.forEach((vertexIndex) => {
