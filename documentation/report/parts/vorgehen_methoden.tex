@@ -107,7 +107,7 @@ Die Auswirkungen eines Systems auf die Entwicklungszeit ist entscheidend dafür,
 
 Die Downloadzeit ist grundsätzlich linear abhängig von der Dateigrösse.
 Je grösser die Dateien, desto mehr Bandbreite wird verwendet. Dies hat direkte Auswirkungen auf die Zeit, bis eine Anwendung benutzt werden kann. Somit sollte die Downloadgrösse möglichst tief gehalten werden.
-Dank der heutigen Bandbreiten in der Schweiz ist dies für viele Anwendungsbereiche ein kleiner werdendes Problem. (TODO: Quelle suchen)
+Dank der heutigen Bandbreiten in der Schweiz ist dies für viele Anwendungsbereiche ein kleiner werdendes Problem. \todo[inline]{Quelle suchen}
 Zudem können Probleme in diesem Bereich teilweise kaschiert werden, indem man das Ladeverhalten optimiert. Häufig sind nicht alle Artefakte notwendig, um eine verwendbare Anwendung darzustellen und der Rest kann phasenweise nachgeladen werden.
 Ausserdem ist es auch möglich, Artefakte bereits vorzuladen.
 
@@ -136,7 +136,7 @@ Eine unabhängige Arbeit definierte 2017 einen vergleichbaren Benchmark, um die 
 Verschiedene Varianten können gewählt werden, um den Nutzen aufzuzeigen. Die verschiedenen in Betracht gezogenen Ansätze werden in diesem Abschnitt erläutert.
 
 \paragraph{Modellbetrachtung}
-Grundsätzlich kann der Nutzen beziffert werden, indem die Kosten zum Rendering eines Modells berechnet werden. So können die Kosten der benutzten GPU Ressourcen durch das Messen des Aufwandes eines spezifischen \e{Draw Calls} (TODO: Was ist ein Draw call? Evtl fussnote/glossar?) beziffert werden. Die Implementation ist simpel und liefert genaue Resultate. Die Auswirkungen von Nebeneffekten können beinahe vollständig negiert werden.
+Grundsätzlich kann der Nutzen beziffert werden, indem die Kosten zum Rendering eines Modells berechnet werden. So können die Kosten der benutzten GPU Ressourcen durch das Messen des Aufwandes eines spezifischen \e{Draw Calls} \todo[inline]{fussnote/glossar/inline/grundlagen: Was ist ein Draw call?} beziffert werden. Die Implementation ist simpel und liefert genaue Resultate. Die Auswirkungen von Nebeneffekten können beinahe vollständig negiert werden.
 Sinnvoll wäre es, das Modell in konstanter Distanz zur Kamera um zwei Achsen drehen zu lassen und die Messung so lange durchzuführen, bis eine ganze Umdrehung stattgefunden hat. Das originale Modell kann mit den verschiedenen Stufen verglichen und die Performanzverbesserung beziffert werden.
 Der primäre Nachteil bei dieser Variante liegt an der Aussagekraft. Die einzige belegte Aussage ist, dass es möglich ist, Performanzeinsparungen durch Vereinfachung zu erhalten. Dies dient jedoch nicht als Beleg, dass der Einsatz von LOD-Artefakten Performanzengpässe lösen kann, da beim Einsatz von LOD weitere Aspekte berücksichtigt werden müssen. Einige Beispiele für diese Aspekte sind: erhöhte Memory Auslastung durch die zusätzlichen Artefakte oder zusätzlich erforderliche Rechenleistung für das Berechnen des zu wählenden Artefakts.
 
