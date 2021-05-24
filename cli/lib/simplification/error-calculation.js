@@ -27,7 +27,7 @@ export const calculateVertexError = (q, point) => {
  * @returns
  */
 const findOptimalVertexPosition = (qDelta, det) => {
-  let resultPoint = vec3.create();
+  const resultPoint = vec3.create();
   // x = A41 / det(qDelta)
   resultPoint[0] = (-1 / det) * qDelta.det(1, 2, 3, 4, 5, 6, 5, 7, 8);
 
@@ -42,7 +42,7 @@ const findOptimalVertexPosition = (qDelta, det) => {
 };
 
 const takeSimpleVertexPosition = (vertex1, vertex2, qDelta) => {
-  let resultPoint = vec3.create();
+  const resultPoint = vec3.create();
   const vertex3Position = vec3.create();
   vec3.add(vertex3Position, vertex1.position, vertex2.position);
   vec3.divide(vertex3Position, vertex3Position, vec3.fromValues(2, 2, 2));
@@ -69,7 +69,7 @@ export const calculateError = (vertex1, vertex2) => {
   const isBorder = vertex1.isBorder && vertex2.isBorder;
 
   // determinant is used to check if matrix is invertible
-  let det = qDelta.det(0, 1, 2, 1, 4, 5, 2, 5, 7);
+  const det = qDelta.det(0, 1, 2, 1, 4, 5, 2, 5, 7);
 
   if (det != 0 && !isBorder) {
     // matrix is invertible, we can therefore look for the optimal solution
