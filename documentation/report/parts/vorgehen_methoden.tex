@@ -116,17 +116,17 @@ Ausserdem ist es auch möglich, Artefakte bereits vorzuladen.
 Die negativen visuellen Auswirkungen auf eine Anwendung sollen so gering wie möglich ausfallen. Es gilt auch in den visuellen Bereichen die richtige Balance zwischen Laufzeitverhalten und möglichst hohem Realismus zu finden. Ein Beispiel für negative visuelle Auswirkungen ist die Reduktion der Auflösung - eine tiefe Auflösung wird von vielen Benutzern als störend empfunden. Im Zusammenhang mit LOD Artefakten ist insbesondere das sogenannte \e{Visual Popping} erwähnenswert.
 Beim \e{Visual Popping} handelt sich um den Moment, in dem die Artefakte ausgetauscht wird und somit kurz aufblitzt. Je subtiler die Änderungen an den Artefakten und je grösser die Distanz von der Kamera ist, desto weniger ist das Austauschen bemerkbar.
 
-\paragraph{Laufzeit}
+\paragraph{Laufzeitverhalten}
 
-Entscheidend ist, unabhängig von der Applikation, das Laufzeitverhalten. (TODO SS: Was genau ist "Das Laufzeitverhalten") Eine Applikation, welche eine schlechte \e{User Experience} liefert, ist inakzeptabel.
+Für jede Applikation ist das Laufzeitverhalten entscheidend. So ist eine schlechte \e{User Experience} inakzeptabel. \e{User Experience} ist häufig Teil der nicht funktionalen Anforderungen und besteht aus mehr als nur dem Laufzeitverhalten.
 Das Laufzeitverhalten wird durch eine Vielzahl von Aspekten beeinflusst.
-Angestrebt werden grundsätzlich immer 60 \fgls{FPS}{Frames per Second. Bilder pro Sekunde. Die Anzahl der Render-Durchläufe der \gls{Rendering Engine}, die sich darauf auswirkt, wie flüssig eine Applikation läuft.}. Wenn eine bestimmte Szenerie diese 60 \e{\gls{FPS}} nicht erreicht, ist ein Performanzproblem vorhanden und das menschliche Auge kann möglicherweise ein Ruckeln wahrenehmen.
+Für flüssige Animationen sind die \e{Frames per Second} (FPS) entscheidend. Bei 10 \e{\fgls{FPS}{Bilder pro Sekunde. Die Anzahl der Render-Durchläufe der \gls{Rendering Engine}, die sich darauf auswirkt, wie flüssig eine Applikation läuft.}} oder weniger, sind flüssige Bewegungen nicht mehr möglich und das menschliche Auge kann ein Ruckeln wahrenehmen. Diese Zahl ist abhängig vom Individuum, als Faustregel gilt das Ziel von 60 \e{\gls{FPS}} \cite{limitsOfHumanVision}.
 
 \paragraph{Berücksichtigung der Aspekte}
-In dieser Arbeit wird ein hoher Wert darauf gelegt, dass die Entwicklungszeit möglichst geringfügig erhöht wird. Zudem werden, wo möglich, Empfehlungen getätigt, um die Downloadgrösse möglichst marginal zu verändern. Das Minimieren der visuellen Auswirkungen kann durch visuelle Vergleiche sichergestellt werden.
+In dieser Arbeit wird ein hoher Wert darauf gelegt, dass die Entwicklungszeit möglichst geringfügig erhöht wird. Zudem werden, wo möglich, Empfehlungen getätigt, um die Downloadgrösse nur marginal zu verändern. Das Minimieren der visuellen Auswirkungen kann durch visuelle Vergleiche sichergestellt werden.
 Die somit primären Aspekte für die Beurteilung sind die Auswirkungen auf das Laufzeitverhalten.
 
-Um diese Beurteilung tätigen zu können, wird im Folgenden ein Benchmark definiert, mit dem Ziel, das Laufzeitverhalten zu analysieren und somit den maximal möglichen Einfluss von LOD auf die Leistung klassifizieren zu können. Hierbei werden verschiedene Aspekte betrachtet.
+Um diese Beurteilung tätigen zu können, wird im Folgenden ein Benchmark definiert, mit dem Ziel, das Laufzeitverhalten zu analysieren und somit den maximal möglichen Einfluss von LOD auf die Leistung klassifizieren zu können. Hierbei werden verschiedene Faktoren betrachtet.
 
 \subsection{Vergleichbare Arbeiten}
 Eine unabhängige Arbeit definierte 2017 einen vergleichbaren Benchmark, um die Performanz von Three.js und Babylon.js in einem spezifischen Anwendungsgebiet zu vergleichen. Der Benchmark entwickelte vergleichbare Szenerien und vergleicht die Ressourcennutzung der beiden Varianten \cite{performanceComparisonBabylonThreejs}.
