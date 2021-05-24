@@ -3,7 +3,10 @@ import { ColorUtils, Document, Accessor, NodeIO } from "@gltf-transform/core";
 import { vec3 } from "gl-matrix";
 import { getAverageColor } from "fast-average-color-node";
 import simplify from "./simplification/index.js";
-import { prepareData } from "./simplification/prepare-data.js";
+import {
+  applyScaleFactor,
+  prepareData,
+} from "./simplification/prepare-data.js";
 import * as print from "./helper/print.js";
 
 const io = new NodeIO();
@@ -77,12 +80,11 @@ export const performLOD = async ({ originalFile, levelDefinitions }) => {
 
       const indicesArray = indices.getArray();
 
-      const { vertices, triangles, factor } = prepareData(
-        positionsArray,
-        indicesArray
-      );
+      const { vertices, triangles } = prepareData(positionsArray, indicesArray);
 
       let targetTriangles = triangles.length * configuration.targetScale;
+
+      const factor = applyScaleFactor(vertices);
 
       // simplify structure
       const {
