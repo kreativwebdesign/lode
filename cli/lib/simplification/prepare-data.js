@@ -1,5 +1,9 @@
+import { vec3 } from "gl-matrix";
 import Triangle from "./types/triangle.js";
 import Vertex from "./types/vertex.js";
+
+const TARGET_FACTOR = 0.1;
+const LOWEST_VALUE = 0.001;
 
 export const prepareData = (positionsArray, indicesArray) => {
   const groupByThree = (arr) => {
@@ -26,4 +30,30 @@ export const prepareData = (positionsArray, indicesArray) => {
   });
 
   return { triangles, vertices };
+};
+
+export const applyScaleFactor = (vertices) => {
+  const min = [Infinity, Infinity, Infinity];
+
+  vertices.forEach((vertex) => {
+    min[0] = Math.min(Math.abs(vertex.position[0]), min[0]);
+    min[1] = Math.min(Math.abs(vertex.position[1]), min[1]);
+    min[2] = Math.min(Math.abs(vertex.position[2]), min[2]);
+  });
+
+  let lowestMin = Math.min(min[0], min[1], min[2]);
+  if (lowestMin < LOWEST_VALUE) {
+    lowestMin = LOWEST_VALUE;
+  }
+  const factor = TARGET_FACTOR / lowestMin;
+
+  vertices.forEach((vertex) => {
+    vec3.multiply(
+      vertex.position,
+      vertex.position,
+      vec3.fromValues(factor, factor, factor)
+    );
+  });
+
+  return factor;
 };
