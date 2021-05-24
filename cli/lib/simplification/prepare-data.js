@@ -3,6 +3,7 @@ import Triangle from "./types/triangle.js";
 import Vertex from "./types/vertex.js";
 
 const TARGET_FACTOR = 0.1;
+const LOWEST_VALUE = 0.001;
 
 export const prepareData = (positionsArray, indicesArray) => {
   const groupByThree = (arr) => {
@@ -41,8 +42,8 @@ export const applyScaleFactor = (vertices) => {
   });
 
   let lowestMin = Math.min(min[0], min[1], min[2]);
-  if (lowestMin === 0) {
-    lowestMin = 0.001;
+  if (lowestMin < LOWEST_VALUE) {
+    lowestMin = LOWEST_VALUE;
   }
   const factor = TARGET_FACTOR / lowestMin;
 
