@@ -16,6 +16,10 @@ Der grösste Nutzen entsteht in Anwendungen mit komplexen Modellen - für diese 
 
 Innerhalb der Testapplikation, wie in \autoref{chap:testApplication} beschrieben, werden dieselben Modelle mehrfach angezeigt. Dies wird in der Praxis insbesondere bei repetitiven Elementen, wie zum Beispiel Bäumen für Landschaftsgestaltung, verwendet. In solchen Situationen stellen die Anzahl Polygone das primäre Problem für eine schnelle Laufzeitperformanz dar und der Einsatz von LOD-Artefakten kann erwägt werden. Die Allgemeingültigkeit ist für Anwendungsfälle mit vergleichbaren Anforderungen gegeben.
 
+\subsection{Anwendbarkeit}
+
+Der Algorithmus kann für eine Vielzahl von verschiedenen Modellen angewendet werden und liefert solide Resultate. Die geometrische Approximierung ist ausreichend für ein LOD-System. Für Spezialfälle wie Randbehandlung sind entsprechende Kontrollen implementiert worden. Als Erweiterung wäre es möglich verschiedene \e{Meshes} eines glTF zu kombinieren und als ein einziges \e{Mesh} zu behandeln. Dies wäre kann man als simples HLOD-System bezeichnen.
+
 \subsection{Abgrenzung}
 
 Ein LOD-System kann sinnvoll sein, in einigen Anwendungsgebieten bringt es jedoch nicht den gewünschten Zweck. Wird ein Modell nur auf einer Detailstufe angezeigt, so ist der Einsatz von LOD abzuraten. Sind die Modelle bereits sehr simpel, wie bei \e{Low-Poly}-Modellen – in Abbildung \ref{fig:lowPolyExample} zu sehen – sind die zusätzlichen Vereinfachungen nur von geringem Nutzen.
