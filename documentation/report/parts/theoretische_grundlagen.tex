@@ -7,7 +7,8 @@
 % !TEX encoding = UTF-8 Unicode
 % !TEX root = ../doc.tex
 
-Im folgenden Abschnitt werden die verschiedenen Grundlagen für die Entwicklung eines LOD-Systems kurz erläutert. Die Themen sind so weit als möglich voneinander getrennt.
+Im folgenden Abschnitt werden die verschiedenen Grundlagen für die Entwicklung eines LOD-Systems kurz erläutert.
+Es werden zuerst die Grundlagen der 3D-Modellierungen und die verschiedenen Dateitypen erläutert. Danach wird auf die Theorie der Transformationen und die Grafik-Pipeline eingegangen. Zum Schluss werden noch einige Optionen zur Performanzoptimierung erläutert.
 
 \section{3D-Modelle}
 Ein Modell stellt ein Objekt aus der realen Welt vereinfacht dar.
@@ -63,7 +64,7 @@ Abbildung \ref{fig:modelSimpleTriangulation} zeigt die Vereinfachung eines \e{Qu
   \begin{subfigure}{.5\textwidth}
     \centering
     \includegraphics[width=.8\linewidth]{grundlagen/model/polygon-triangulation.png}
-    \caption{Polygon als Sammlung von Triangles}
+    \caption{Polygon als Sammlung von \e{Triangles}}
   \end{subfigure}
   \caption{Vereinfachung von Polygone als Sammlung von \e{Triangles}}
   \label{fig:modelSimpleTriangulation}
@@ -75,13 +76,14 @@ Verbindet man die Punkte eines Polygons und füllt die Fläche, ergibt sich schl
 \paragraph{Weitere Attribute}
 Neben den geometrischen Attributen verfügt ein Modell ebenfalls über visuelle Attribute.
 
-So wird für jeden Vertex ein sogenannter \e{Normal} definiert. Ein \e{Normal} ist ein Vektor der im einfachsten Fall senkrecht zu den zwei an diesem Vertex verbundenen \e{Edges} verläuft. In der Geometrie ist dies auch bekannt als Normale. \e{Normals} werden häufig für das Berechnen von Reflexionen verwendet.
+So wird für jeden Vertex ein \e{Normal} definiert. Ein \e{Normal} ist ein Vektor der im einfachsten Fall senkrecht zu den zwei an diesem Vertex verbundenen \e{Edges} verläuft. In der Geometrie ist dies auch bekannt als Normale. \e{Normals} werden häufig für das Berechnen von Reflexionen verwendet.
 \e{Normals} werden auch für gewisse Performanz Optimierungen eingesetzt, dazu mehr in \autoref{chap:backfaceCulling}.
 
-Um die Oberfläche von Modellen zu definieren wird häufig ein sogenanntes \fgls{Texture Mapping}{Verfahren, mittels 2D-Bildern 3D-Objekte zu gestalten} durchgeführt. Hierfür sind zusätzliche Informationen für ein Modell notwendig. In der Praxis finden viele weitere Methoden Anwendung, auf diese wird jedoch hier nicht weiter eingegangen.
+Um die Oberfläche von Modellen zu definieren, wird häufig \fgls{Texture Mapping}{Verfahren, um mittels 2D-Bildern 3D-Objekte zu gestalten} durchgeführt. Hierfür sind zusätzliche Informationen für ein Modell notwendig. In der Praxis finden weitere Methoden Anwendung, auf diese wird jedoch hier nicht weiter eingegangen.
 
 \paragraph{Abgrenzung}
-Diese Sektion erläuterte die für diese Arbeit relevanten polygonalen Modelle. Alternativen wie zum Beispiel \e{Point Clouds}, welche das Resultat von 3D-Scans sind, werden nicht weiter erläutert, da sie selten im Web eingesetzt werden. Auch andere Methoden wie \e{NURBS}, welche Modelle mithilfe von mathematisch definierten Flächen modelliert, werden deshalb aussen vor gelassen.
+Für diese Arbeit sind nur polygonale Modelle relevant.
+Alternativen wie zum Beispiel \e{Point Clouds}, welche das Resultat von 3D-Scans sind, werden nicht weiter erläutert, da sie selten im Web eingesetzt werden. Auch andere Methoden wie \e{NURBS}, welche Modelle mithilfe von mathematisch definierten Flächen modelliert, werden deshalb aussen vor gelassen.
 
 \paragraph{Formate}
 Um ein 3D-Modell in einer Anwendung zu verwenden, muss ein entsprechendes Format verwendet werden. Hierfür steht eine Vielzahl von Optionen zur Auswahl. Aufgrund der Menge wird hier jedoch nur oberflächlich auf die bekanntesten Formate eingegangen.
@@ -95,12 +97,12 @@ FBX ist ein proprietäres Format, welches von Autodesk verwaltet wird. Das Verwe
 \subparagraph{glTF}
 Seit 2015 gibt es ein offenes, modernes sowie auf optimale Speichernutzung fokussiertes Format: glTF. Dieses Format wird von der Khronos Gruppe entwickelt \cite{gltf1Spec}. In dieser Arbeit wird es als Austauschformat verwendet, deshalb wird im folgenden genauer auf das Format eingegangen.
 
-Die meisten 3D-Grafikprogramme wie Blender (.blend) verwenden ihre eigenen Dateiformate. Diese Dateiformate sind jedoch für den Einsatz in einer Applikation ungeeignet da sie insbesondere nicht für die Laufzeitperformanz optimiert sind. Deswegen brauchte es für jedes Eingangsformat für jedes Ausgangsformat einen \e{converter}, wie in Abbildung \ref{fig:contentPipelineWithoutGltf} ersichtlich.
+Die meisten 3D-Grafikprogramme wie Blender (.blend) verwenden ihre eigenen Dateiformate. Diese Dateiformate sind jedoch für den Einsatz in einer Applikation ungeeignet, da sie insbesondere nicht für die Laufzeitperformanz optimiert sind. Deswegen brauchte es für jedes Eingangsformat für jedes Ausgangsformat einen \e{converter}, wie in Abbildung \ref{fig:contentPipelineWithoutGltf} ersichtlich.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=1\columnwidth]{grundlagen/gltf/contentPipeline.png}
-  \caption{Konvertierungspipeline vor glTF \cite{gltfTutorialIntro}}
+  \caption{Konvertierungspipeline ohne glTF \cite{gltfTutorialIntro}}
   \label{fig:contentPipelineWithoutGltf}
 \end{figure}
 
@@ -151,7 +153,7 @@ Für die folgenden Beispiele wird jeweils das Modell aus Abbildung \ref{fig:tran
 \end{figure}
 
 \paragraph{Edge Collapse}
-Hierbei werden zwei nebeneinanderliegende \e{Vertices} kombiniert. Durch diese Operation kann ein \e{Vertex} entfernt werden. In Abbildung \ref{fig:transformationEdgeCollapse} kann die Anzahl \e{Triangles} um zwei verringert werden. Beim \e{Edge Collapse} wird ein neuer \e{Vertex} definiert und zwei bestehende entfernt. Die Anzahl entfernter \e{Triangles} ist abhängig von der Situation. Unter Umständen kann so auch nur ein einzelner \e{Triangle} entfernt werden.
+Hierbei werden zwei nebeneinanderliegende \e{Vertices} kombiniert. Durch diese Operation kann ein Vertex entfernt werden. In Abbildung \ref{fig:transformationEdgeCollapse} kann die Anzahl \e{Triangles} um zwei verringert werden. Beim \e{Edge Collapse} wird ein neuer Vertex definiert und zwei bestehende entfernt. Die Anzahl entfernter \e{Triangles} ist abhängig von der Situation. Unter Umständen kann so auch nur ein einzelner \e{Triangle} entfernt werden.
 Die Umkehrfunktion nennt man Vertex Split.
 
 \begin{figure}[H]
@@ -171,7 +173,7 @@ Die Umkehrfunktion nennt man Vertex Split.
 \end{figure}
 
 \paragraph{Halfedge Collapse}
-Hierbei wird ein Vertex direkt entfernt und alle \e{Edges} auf einen danebenliegenden Vertex zusammengelegt. Bei dieser Operation muss kein neuer \e{Vertex} definiert werden, sondern ein bereits bestehender \e{Vertex} kann wiederverwendet werden. Wie in Abbildung \ref{fig:transformationHalfedgeCollapse} ersichtlich, können auch in diesem Fall zwei \e{Triangles} entfernt werden.
+Hierbei wird ein Vertex direkt entfernt und alle \e{Edges} auf einen danebenliegenden Vertex zusammengelegt. Bei dieser Operation muss kein neuer Vertex definiert werden, sondern ein bereits bestehender Vertex kann wiederverwendet werden. Wie in Abbildung \ref{fig:transformationHalfedgeCollapse} ersichtlich, können auch in diesem Fall zwei \e{Triangles} entfernt werden.
 
 \begin{figure}[H]
   \centering
@@ -222,7 +224,7 @@ Die Grafikpipeline ist zuständig um eine definierte Szene auf einem Ausgabeger�
 \end{figure}
 
 \paragraph{Applikation}
-Im ersten Schritt wird die Szenerie aufbereitet, Modelle in den Arbeitsspeicher geladen, Positionen und Rotationen der Modelle definiert. Diese Schritte werden auf der CPU durchgeführt. Ein Beispiel für das Aufsetzen eines einfachen \e{Triangles} bestehend aus drei \e{Vertices} ist in Abbildung \ref{fig:geometryDefinition} ersichtlich.
+Im ersten Schritt wird die Szenerie aufbereitet, Modelle in den Arbeitsspeicher geladen und Positionen und Rotationen der Modelle definiert. Diese Schritte werden auf der CPU durchgeführt. Ein Beispiel für das Aufsetzen eines einfachen \e{Triangles} bestehend aus drei \e{Vertices} ist in Abbildung \ref{fig:geometryDefinition} ersichtlich.
 
 \begin{figure}[H]
 \begin{lstlisting}
@@ -278,11 +280,12 @@ Visualisierungen können zu komplex werden, um jederzeit performant und interakt
 Insbesondere wenn viele Objekte gleichzeitig sichtbar sind, lohnt es sich Performanzoptimierungen durchzuführen.
 Im Idealfall geschieht dies jedoch, ohne dass der Anwender dies bemerkt.
 
-In diesem Abschnitt werden mögliche Ansätze erklärt, welche helfen sollen, die Render-Performanz zu erhöhen. Diese Arbeit konzentriert sich jedoch auf den Ansatz von Level of Detail; die anderen Ansätze werden nur kurz erläutert. Detailliert auf Level of Detail wird in \autoref{chap:lodIntroduction} eingegangen.
+In diesem Abschnitt werden mögliche Ansätze erklärt, welche helfen sollen, die Render-Performanz zu erhöhen. Diese Arbeit konzentriert sich jedoch auf den Ansatz von Level of Detail; die anderen Ansätze werden nur kurz erläutert. Auf Level of Detail wird in \autoref{chap:lodIntroduction} detailliert eingegangen.
 
 \paragraph{Frustum culling}
-Polygone, welche nicht im Kamera Frustum enthalten sind, werden bei dieser Methode nicht weiter prozessiert.
-Dies reduziert die Anzahl Polygone drastisch.
+Ein Frustum ist eine geometrische Form, die einer Pyramide ähnelt, welcher die Spitze abgeschnitten wurde.
+Das Kamera-Frustum bezeichnet den Raum, welcher von der Kamera aufgezeichnet wird. Dieser Bereich startet eine gewisse Distanz von der Kamera entfernt und endet weit hinten wieder, da nicht bis in die Unendlichkeit Objekte sichtbar sind.
+Wie in Abbildung \ref{fig:CameraFrustum} zusehen ist, beginnt das Kamera-Frustum in der Nähe der Kamera und dehnt sich ein wenig aus bis es gegen Ende des Spektrums beschränkt wird.
 
 \begin{figure}[H]
   \centering
@@ -291,12 +294,19 @@ Dies reduziert die Anzahl Polygone drastisch.
   \label{fig:CameraFrustum}
 \end{figure}
 
-Ein Frustum ist eine geometrische Form, die einer Pyramide ähnelt, welcher die Spitze abgeschnitten wurde.
-Das Kamera-Frustum bezeichnet den Raum, welcher von der Kamera aufgezeichnet wird. Dieser Bereich startet eine gewisse Distanz von der Kamera entfernt und endet weit hinten wieder, da nicht bis ins unendliche Objekte sichtbar sind.
-Wie in Abbildung \ref{fig:CameraFrustum} zusehen ist, beginnt das Kamera-Frustum in der Nähe der Kamera und dehnt sich ein wenig aus bis es gegen Ende des Spektrums beschränkt wird.
+Polygone, welche nicht im Kamera Frustum enthalten sind, werden bei dieser Methode, wie in Abbildung \ref{fig:FrustumCulling} gezeigt, nicht weiter prozessiert.
+Dies reduziert die Anzahl Polygone drastisch.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\columnwidth]{grundlagen/Frustum-Culling.png}
+  \caption{Frustum culling visualisiert. Rote Elemente werden nicht prozessiert.}
+  \label{fig:FrustumCulling}
+\end{figure}
 
 \paragraph{Occlusion culling}
 Polygone bzw. Objekte, welche komplett von anderen Objekten überdeckt werden, werden bei dieser Variante nicht prozessiert.
+\todo[inline]{ausführen}
 
 \paragraph{Backface culling}
 \label{chap:backfaceCulling}
@@ -307,9 +317,11 @@ Als Grundlage für die Berechnung werden die \e{Normals} der \e{Vertices} berüc
 
 \paragraph{Parallel rendering}
 Auch bekannt unter Distributed Rendering ist der Einsatz von Techniken aus dem Parallel Programming in Visualisierungsanwendungen.
+\todo[inline]{ausführen}
 
 \paragraph{Image-based rendering}
 In gewissen Fällen kann das Modellieren übersprungen werden. So kann anhand von Bildmaterial eine 3D-Illusion erzeugt werden.
+\todo[inline]{ausführen}
 
 \section{Einführung Level of Detail}
 \label{chap:lodIntroduction}
@@ -353,18 +365,26 @@ Der Hauptnachteil liegt darin, dass hierfür signifikante Anpassungen am \e{Scen
 \subsection{Vergleich Algorithmen}
 \label{chap:lodAlgorithmComparison}
 
-Ziel des Algorithmus ist es eine gegebene geometrische Struktur mit möglichst wenig \e{Triangles} so genau wie möglich zu approximieren.
+Das Ziel des Algorithmus ist es, eine gegebene geometrische Struktur mit möglichst wenig \e{Triangles} so genau wie möglich zu approximieren.
 Diese Art von Problem ist in der Literatur unter anderem als \e{Surface Simplification}, polygonale Simplifizierung, geometrische Simplifizierung oder Mesh Reduzierung bekannt.
 Grundsätzlich kann man die verschiedenen Algorithmen in Kategorien einteilen.
 Im folgenden Abschnitt wird auf die Grundidee der verschiedenen Kategorien eingegangen.
 
 \paragraph{Vertex Dezimierung}
 Algorithmen dieser Kategorie entfernen jeweils einen Vertex und triangulieren das entstehende Loch neu.
-Eine weitere Möglichkeit ist das \e{Vertex Clustering}, hierbei wird ein Modell in verschiedene Gitterzellen aufgeteilt. Die Punkte innerhalb einer Gitterzelle werden dann in einen einzigen Punkt zusammengelegt. Die visuelle Annäherung dieser Algorithmen bei drastischen Vereinfachungen stellt jedoch häufig ein Problem dar für polygonale Modelle. Sogenannte \fglspl{Point Cloud}{Vertices im dreidimensionalen Raum ohne zugehörige \e{Triangle}}, wie sie bei 3D-Scannern eingesetzt werden, können mit solchen Algorithmen schnell vereinfacht werden.
+Eine weitere Möglichkeit ist das \e{Vertex Clustering}, hierbei wird ein Modell in verschiedene Gitterzellen aufgeteilt. Die Punkte innerhalb einer Gitterzelle werden dann in einen einzigen Punkt zusammengelegt. Die visuelle Annäherung dieser Algorithmen bei drastischen Vereinfachungen stellt jedoch häufig ein Problem dar für polygonale Modelle. Sogenannte \fglspl{Point Cloud}{Vertices im dreidimensionalen Raum ohne zugehörige \e{Triangle}} (in Abbildung \ref{fig:pointCloudTorus} exemplarisch zu sehen), wie sie bei 3D-Scannern eingesetzt werden, können mit solchen Algorithmen schnell vereinfacht werden.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\columnwidth]{grundlagen/point-cloud-torus.png}
+  \caption{Beispiel \e{Point-Cloud} \cite{pointCloudTorus}}
+  \label{fig:pointCloudTorus}
+\end{figure}
 
 \paragraph{Edge Collapse}
 Hierbei werden iterativ \e{Edges} entfernt und die beiden \e{Vertices} zu einem Punkt zusammengelegt.
 Die verschiedenen Algorithmen unterscheiden sich primär in der Selektion der \e{Edges}. Grundsätzlich wird hierfür eine Heuristik verwendet um den Fehler quantifizieren zu können. Anschliessend werden iterativ die \e{Edges} entfernt, welche zu einem minimalen Fehler führen. Beim Zusammenführen von \e{Edges} sind abhängig vom gewählten LOD-System unterschiedliche Strategien gefordert. Bei diskreten LOD-Systemen soll nach dem Zusammenführen ein optimaler neuer Punkt gefunden werden, bei kontinuierlichen LOD-Systemen wird häufig einer der beiden Punkte gewählt um Speicherplatz einsparen zu können.
 
-\paragraph{Face Collapse}
-Bei dieser Variante werden jeweils Flächen entfernt und die umliegenden Flächen zusammengelegt.
+\paragraph{Triangle Collapse}
+Bei dieser Variante werden jeweils ganze Flächen entfernt und die umliegenden \e{Triangles} zusammengelegt.
+\todo[inline]{ausführen}
