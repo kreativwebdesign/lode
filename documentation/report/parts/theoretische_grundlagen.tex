@@ -315,11 +315,17 @@ Alle Polygone, welche in die andere Richtung zeigen werden nicht gezeichnet.
 Dies ist nicht immer gewünscht, für die meisten Anwendungen ist diese Optimierung jedoch aktiviert.
 Als Grundlage für die Berechnung werden die \e{Normals} der \e{Vertices} berücksichtigt.
 
-\paragraph{Parallel rendering}
+\paragraph{Imposters}
+Vergleichbar zu LOD-Artefakten sind sogenannte \e{Imposters}. Dabei wird ein \e{Quad} mit verschiedenen Texturen verwendet. Für jede mögliche Position des Modells wird eine Textur generiert. Das \e{Quad} wird in Richtung Kamera ausgerichtet und abhängig von der Rotation des Modells die geeignete Textur verwendet. Geometrisch kann ein Modell so auf ein absolutes Minimum reduziert werden.
+
+\paragraph{Weitere Ansätze}
+Weitere Ansätze zur Optimierung der Performanz für sehr spezifische Anwendungsfälle werden kurz erwähnt, jedoch nicht weiter erörtert da sie für viele Anwendungen nicht praktikabel sind. 
+
+\subparagraph{Parallel rendering}
 Auch bekannt unter Distributed Rendering ist der Einsatz von Techniken aus dem Parallel Programming in Visualisierungsanwendungen.
 \todo[inline]{ausführen}
 
-\paragraph{Image-based rendering}
+\subparagraph{Image-based rendering}
 In gewissen Fällen kann das Modellieren übersprungen werden. So kann anhand von Bildmaterial eine 3D-Illusion erzeugt werden.
 \todo[inline]{ausführen}
 
