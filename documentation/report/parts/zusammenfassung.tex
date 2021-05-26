@@ -6,11 +6,11 @@
 % !TEX TS-program = pdflatexmk
 % !TEX encoding = UTF-8 Unicode
 % !TEX root = ../doc.tex
-Die Webplattform erlaubt es, 3D-Visualisierungen einem breiten Publikum zugänglich zu machen. Durch die Vielzahl an Geräten, auf welchen eine solche Applikation verwendet werden kann, ist das Optimieren der Performanz unabdingbar. In dieser Arbeit wird eine Option zur Verbesserung der Laufzeitperformanz aufgezeigt, indem mehrere Detailstufen (\e{Level of Details – LOD}) eines Modells generiert und je nach Entfernung der virtuellen Kamera angezeigt werden.
+Die Webplattform erlaubt es, 3D-Visualisierungen einem breiten Publikum zugänglich zu machen. Durch die Vielzahl an Geräten, auf welchen eine solche Applikation verwendet werden kann, ist das Optimieren der Performanz unabdingbar. In dieser Arbeit wird eine Option zur Verbesserung der Laufzeitperformanz aufgezeigt, indem mehrere Detailstufen (\e{Level of Details – LOD}) eines Modells generiert und je nach Entfernung der virtuellen Kamera angezeigt werden. Zurzeit ist für das Generieren und Einsetzen solcher Artefakte im Web beträchtlicher manueller Aufwand erforderlich.
+
 \bigbreak
-Zurzeit ist das Generieren und Einsetzen solcher Artefakte im Web nur bedingt automatisiert und beträchtlicher manueller Aufwand ist erforderlich.
-Verschiedene Ansätze zur Generierung von LOD-Artefakten werden verglichen und zugehörige Algorithmen analysiert.
-Darauf basierend wird der gewählte Algorithmus implementiert und ein Tool entworfen, diesen in den Arbeitsprozess zu integrieren.
+Verschiedene Ansätze zur Generierung von LOD-Artefakten, sowie ihre Vor- und Nachteile, werden aufgezeigt.
+Algorithmen für die Vereinfachung von polygonalen Modellen werden analysiert, der gewählte Algorithmus implementiert und ein Tool entworfen, diesen in den Arbeitsprozess zu integrieren.
 \bigbreak
 Das Resultat ist ein Tool, welches sich nahtlos in den Arbeitsprozess der Entwickler eingliedert und es ermöglicht, mit geringem manuellen Aufwand die Laufzeitperformanz von 3D-Webapplikation zu verbessern.
 Mittels eines Benchmarks wird bewiesen, dass der Einsatz von LOD, die Laufzeitperformanz von spezifischen 3D-Webapplikationen verbessern kann.
