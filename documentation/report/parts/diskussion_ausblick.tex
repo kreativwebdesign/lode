@@ -16,6 +16,10 @@ Der grösste Nutzen entsteht in Anwendungen mit komplexen Modellen - für diese 
 
 Innerhalb der Testapplikation, wie in \autoref{chap:testApplication} beschrieben, werden dieselben Modelle mehrfach angezeigt. Dies wird in der Praxis insbesondere bei repetitiven Elementen, wie zum Beispiel Bäumen für Landschaftsgestaltung, verwendet. In solchen Situationen stellen die Anzahl Polygone das primäre Problem für eine schnelle Laufzeitperformanz dar und der Einsatz von LOD-Artefakten kann erwägt werden. Die Allgemeingültigkeit ist für Anwendungsfälle mit vergleichbaren Anforderungen gegeben.
 
+\subsection{Anwendbarkeit}
+
+Der Algorithmus kann für eine Vielzahl von verschiedenen Modellen angewendet werden und liefert solide Resultate. Die geometrische Approximation ist ausreichend für ein LOD-System. Für Spezialfälle wie Randbehandlung sind entsprechende Kontrollen implementiert worden. Als Erweiterung ist es möglich, verschiedene \e{Meshes} eines glTF zu kombinieren und als ein einziges \e{Mesh} zu behandeln. Vorteil ist, dass noch mehr Vereinfachungen vorgenommen werden können. Dies kann man als simples HLOD-System bezeichnen.
+
 \subsection{Abgrenzung}
 
 Ein LOD-System kann sinnvoll sein, in einigen Anwendungsgebieten bringt es jedoch nicht den gewünschten Zweck. Wird ein Modell nur auf einer Detailstufe angezeigt, so ist der Einsatz von LOD abzuraten. Sind die Modelle bereits sehr simpel, wie bei \e{Low-Poly}-Modellen – in Abbildung \ref{fig:lowPolyExample} zu sehen – sind die zusätzlichen Vereinfachungen nur von geringem Nutzen.
@@ -45,6 +49,10 @@ Aktuell werden initial alle Level of Details geladen. Dies hat zur Konsequenz, d
 Die optimale Wahl des Levels kann stark von der Laufzeitumgebung abhängig sein. So sollte zum Beispiel auf mobilen Geräten früher ein einfacheres Modell angezeigt werden als auf leistungsstarken Geräten. Ein weiterer Faktor ist die Auflösung: Bei Geräten mit niedriger Auflösung kann früher gewechselt werden, da die visuellen Unterschiede zum Original weniger auffällig sind.
 Deshalb eignet sich eine Wahl der Levels zur Laufzeit, um ein optimales Erlebnis auf allen Geräten zu ermöglichen.
 Nebst dem \e{\gls{CLI}} soll folglich auch ein Javascript-Modul bereitgestellt werden, welches das Laden von glTF Dateien übernimmt und basierend auf der erkannten Performanz das beste Level of Detail einspielt.
+
+\paragraph{Fading}
+
+Aktuell finden die Modellwechsel an harten Grenzen statt. Dies hat zur Konsequenz, dass \e{Visual Popping} auftauchen kann. Eine Möglichkeit zur Linderung dieses Problems ist der Einsatz von \e{Fading}. Hierbei werden die Übergänge über grössere Intervalle durchgeführt und Teile der verschiedenen Artefakte dargestellt. Diese Methode wird zum Beispiel bei \e{Unity} angeboten.
 
 \paragraph{Konsequenter Einsatz von glb Dateien}
 Aktuell werden in der Demoszenerie glTF Dateien eingesetzt. Dies kommt daher, dass die Basisinformationen menschenlesbar abgespeichert werden. Das binäre Format glb ist jedoch grundsätzlich glTF vorzuziehen und sollte als primäres Austauschformat verwendet werden. Für das Laufzeitverhalten entsteht kein signifikanter Unterschied durch den Einsatz von glb. Der primäre Vorteil vom glb Format ist, dass alles in einer Datei gespeichert ist und somit nicht zwei Netzwerkabfragen stattfinden müssen – die Downloadzeit wird somit reduziert. Das CLI könnte erweitert werden, auch glb Dateien zu unterstützen.

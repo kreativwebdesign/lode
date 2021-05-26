@@ -87,12 +87,16 @@ Für das Erstellen von LOD-Artefakten wurde ein für LOD-Artefakte optimierte Ve
 
 Die Implementation des Algorithmus wurde in JavaScript, basierend auf \fGls{Node.js}{JavaScript Ausführungsumgebung, welche ohne einen Browser verwendet werden kann}, umgesetzt. Grund dafür ist das Einbinden von \e{lode} in bestehende Entwicklungsabläufe in der Webentwicklung. So ist es einfach möglich, das Paket kostenlos mithilfe von \gls{npm} zur Verfügung zu stellen.
 
-\todo[inline]{mehr details über Implementation: bundary normalization, optimal point, matrices...}
+\todo[inline]{mehr details über Implementation: boundary normalization, optimal point, matrices...}
 
 \subsection{Artefakte}
 
 Die generierten Artefakte sind unabhängig voneinander. So ist es nicht notwendig alle Artefakte zu jeder Zeit zu laden. Dies hat den primären Vorteil, dass es möglich ist, progressives Laden als Erweiterung zuzulassen. Progressives laden bedeutet, dass zuerst die LOD-Artefakte mit den wenigsten Details geladen werden und angezeigt werden bis die detaillierteren Level visualisiert werden.
 Es ist sogar möglich, auf gewissen Geräten die detaillierten Level überhaupt nicht zu laden und so zum Beispiel Bandbreite zu sparen.
+
+\subsection{Fehlermetrik}
+
+Die Fehlermetrik wurde vergleichbar mit der Referenzimplementation justiert. Die Referenzimplementation setzt auf absolute Fehlerwerte. Dies hat zur Konsequenz, dass abhängig von der Skalierung des Modells potenziell zu viel oder zu wenige \e{Edge Collapses} durchgeführt werden. Ein Modell mit geringer Skalierung generiert tiefere Werte für die Fehlermetrik und umgekehrt. Um diesem Umstand gerecht zu werden, wird vorab die Skalierung der Modelle normalisiert. Die \e{Vertices} werden dabei um einen modellabhängigen Faktor angepasst. So haben alle Modelle eine vergleichbare Basis für die Fehlermetrik und starke Unterschiede zwischen verschiedenen Modellen können vermieden werden.
 
 \subsection{Texturen}
 

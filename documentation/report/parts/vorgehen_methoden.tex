@@ -9,8 +9,8 @@
 \section{Vergleich LOD Systeme}
 Die verschiedenen LOD Systeme sowie ihre Vor- und Nachteile werden in \autoref{chap:differentLodApproaches} erläutert. In diesem Schritt wird erläutert, welche Art LOD-System in dieser Arbeit entwickelt werden soll.
 
-Die verschiedenen Ansätze unterscheiden sich in einigen Kriterien. Für den Einsatz in einer Webanwendungen ist die Gewichtung der Kriterien anders als für Desktopanwendungen, Spiele oder dergleichen.
-So hat die Dateigrösse der Modelle bei Webanwendungen einen grösseren Einfluss auf die gefühlte Performanz beim Endanwender. Insofern ist die Auswirkung der gewählten Strategie auf die Downloadgrösse ein wichtiges Kriterium. Für diskrete LOD muss für jedes Level ein separates Modell geladen werden. Dies erhöht die Downloadgrösse merkbar. Bei kontinuierlichen LOD-Systemen muss das Modell die Unterschiede zwischen verschiedenen Levels persistieren. Mit einem für kontinuierliche LOD ausgelegten Algorithmus kann der benötigte Speicher reduziert werden, indem beim \e{Edge Collapse} nicht auf einen neuen optimalen \e{Vertex} reduziert wird, sondern von den beiden bestehenden \e{Vertices} der passendere gewählt wird. Trotzdem entsteht für jeden \e{Edge Collapse} ein zusätzlicher Speicheraufwand.
+Die verschiedenen Ansätze unterscheiden sich in einigen Kriterien. Für den Einsatz in einer Webanwendungen ist die Gewichtung der Kriterien anders als für Desktopanwendungen, Konsolenspiele oder dergleichen.
+So hat die Dateigrösse der Modelle bei Webanwendungen einen grösseren Einfluss auf die gefühlte Performanz beim Endanwender. Insofern ist die Auswirkung der gewählten Strategie auf die Downloadgrösse ein wichtiges Kriterium. Für diskrete LOD muss für jedes Level ein separates Modell geladen werden. Dies kann die Downloadgrösse gegebenenfalls merkbar erhöhen. Bei kontinuierlichen LOD-Systemen muss das Modell die Unterschiede zwischen verschiedenen Levels persistieren. Mit einem für kontinuierliche LOD ausgelegten Algorithmus kann der benötigte Speicher reduziert werden, indem beim \e{Edge Collapse} nicht auf einen neuen optimalen \e{Vertex} reduziert wird, sondern von den beiden bestehenden \e{Vertices} der passendere gewählt wird. Trotzdem entsteht für jeden \e{Edge Collapse} ein zusätzlicher Speicheraufwand.
 Insbesondere unter Berücksichtigung der Tatsache, dass Laufzeitperformanz essenziell für Webanwendungen ist, wurde entschieden nicht auf kontinuierliche LOD-Systeme zu setzen.
 Zudem wurde entschieden kein hierarchisches LOD-System zu entwickeln, um die Integration des Tools für die Entwickler einer Webanwendung möglichst einfach zu gestalten.
 Das diskrete LOD-System ist für Grafiker und Entwickler am einfachsten zu verwenden und deckt somit auch die breiteste Benutzerbasis und die meisten Anwendungsfälle ab. Aufgrund dessen, wird im Rahmen dieser Arbeit ein Algorithmus dieses Systems entwickelt und in den Entwicklungsprozess integriert.
@@ -47,13 +47,13 @@ Eine Übersicht über die verschiedenen Kriterien kann in der Tabelle \ref{table
 
 \paragraph{Unreal}
 
-\e{Unreal} verfügt sowohl über ein DLOD-System als auch über ein HLOD-System. Das HLOD-Tool zeichnet sich insbesondere dadurch aus, dass es die verschiedenen HLOD-Artefakte automatisch generieren kann. Dies ermöglicht es, komplexe Strukturen direkt innerhalb von \e{Unreal} zu kombinieren. \cite{unrealProxyLod}
+\e{Unreal} verfügt sowohl über ein DLOD-System als auch über ein HLOD-System. Das HLOD-Tool zeichnet sich insbesondere dadurch aus, dass es die verschiedenen HLOD-Artefakte automatisch generieren kann. Dies ermöglicht es, komplexe Strukturen direkt innerhalb von \e{Unreal} zu kombinieren \cite{unrealProxyLod}. Der manuelle Aufwand für die Integration des Systems in eine Applikation kann so signifikant reduziert werden und macht den Einsatz eines LOD-Systems attraktiver.
 
 \paragraph{Unity}
 
 \e{Unity} verfügt über ein DLOD-System, welches es erlaubt LOD-Artefakte manuell zu definieren.
-Innerhalb der \e{Unity} Community gibt es eine Bibliothek für das automatische Generieren von Artefakten, welche für LOD verwendet werden können. \cite{unityMeshSimplification}
-Ansätze für ein HLOD-System sind vorhanden, wurden jedoch nicht offiziell in \e{Unity} integriert. \cite{unityAutoLod}
+Innerhalb der \e{Unity} Community gibt es eine Bibliothek für das automatische Generieren von Artefakten, welche für LOD verwendet werden können \cite{unityMeshSimplification}.
+Ansätze für ein HLOD-System sind vorhanden, wurden jedoch nicht offiziell in \e{Unity} integriert \cite{unityAutoLod}.
 
 In Abbildung \ref{fig:unityDLODGroup} ist zusehen, wie innerhalb von Unity der Übergang zwischen zwei LOD-Artefakten konfiguriert werden können. Hervorzuheben sind hier zum einen den Fade Mode, der das \e{Visual Popping} vermindert und zum anderen die Triggerpunkte, bei welchen das Level gewechselt werden soll.
 
@@ -85,7 +85,7 @@ Die hier gewählte Metrik definiert den Fehler mithilfe einer symmetrischen $4\t
 Beim Entfernen einer \e{Edge} werden die Fehlermetriken der zugehörigen \e{Vertices} addiert.
 
 \subsection{Referenzimplementation}
-Der gewählte Algorithmus wurde bereits mehrfach implementiert. Eine Implementation basierend auf einer formatunabhängigen Datenstruktur ist jedoch nicht vorhanden. Eine oft referenzierte Implementation ist diejenige von Sven Forstmann, welche einige Optimierungen am ursprünglichen Algorithmus vornimmt, um optimale Performanz zu erhalten. Diese Optimierungen eignen sich hervorragend für eine webbasierte Implementation \cite{fastQuadricMeshSimplification}.
+Der gewählte Algorithmus wurde bereits mehrfach implementiert. Eine wiederverwendbare Implementation basierend auf einer formatunabhängigen Datenstruktur ist jedoch nicht vorhanden. Eine oft referenzierte Implementation ist diejenige von S. Forstmann, welche einige Optimierungen am ursprünglichen Algorithmus vornimmt, um optimale Performanz zu erhalten. Diese Optimierungen eignen sich hervorragend für eine webbasierte Implementation \cite{fastQuadricMeshSimplification}.
 
 \section{Pipeline Integration}
 Die Lösung soll in eine wiederverwendbare und konfigurierbare Pipeline integriert werden.
