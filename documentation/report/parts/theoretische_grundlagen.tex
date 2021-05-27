@@ -23,7 +23,7 @@ $$ V =
   0
 \end{bmatrix}
 $$
-Eine Sammlung von drei \e{Vertices} bildet ein \e{Triangle} (Dreieck). Hiermit kann ein \e{Triangle} generell wie folgt definiert werden:
+Eine Sammlung von drei \e{Vertices}\footnote{Wir verwenden den in englischer Sprache verfassten Fachliteratur zu 3D-Anwednungen gebräuchlichen Ausdruck.} bildet ein \e{Triangle} (Dreieck). Hiermit kann ein \e{Triangle} generell wie folgt definiert werden:
 $$ T =
 \begin{bmatrix}
   V \\
@@ -77,7 +77,7 @@ Verbindet man die Punkte eines Polygons und füllt die Fläche, ergibt sich schl
 Neben den geometrischen Attributen verfügt ein Modell ebenfalls über visuelle Attribute.
 
 So wird für jeden Vertex ein \e{Normal} definiert. Ein \e{Normal} ist ein Vektor der im einfachsten Fall senkrecht zu den zwei an diesem Vertex verbundenen \e{Edges} verläuft. In der Geometrie ist dies auch bekannt als Normale. \e{Normals} werden häufig für das Berechnen von Reflexionen verwendet.
-\e{Normals} werden auch für gewisse Performanz Optimierungen eingesetzt, dazu mehr in \autoref{chap:backfaceCulling}.
+\e{Normals} werden auch für gewisse Performanzoptimierungen eingesetzt, dazu mehr in \autoref{chap:backfaceCulling}.
 
 Um die Oberfläche von Modellen zu definieren, wird häufig \fgls{Texture Mapping}{Verfahren, um mittels 2D-Bildern 3D-Objekte zu gestalten} durchgeführt. Hierfür sind zusätzliche Informationen für ein Modell notwendig. In der Praxis finden weitere Methoden Anwendung, auf diese wird jedoch hier nicht weiter eingegangen.
 
@@ -106,7 +106,7 @@ Die meisten 3D-Grafikprogramme wie Blender (.blend) verwenden ihre eigenen Datei
   \label{fig:contentPipelineWithoutGltf}
 \end{figure}
 
-Durch die immer breiter werdende Nachfrage nach 3D-Applikationen wurde ein Format benötigt, dass zum einen Applikationsunabhängig verwendet und zum anderen performant im Web eingesetzt werden kann.
+Durch die immer breiter werdende Nachfrage nach 3D-Applikationen wurde ein Format benötigt, dass zum einen applikationsunabhängig verwendet und zum anderen performant im Web eingesetzt werden kann.
 Durch diese Abstraktion kann eine Vielzahl \e{converter} vermieden werden und nur wenige, sehr spezifische Dateiformate benötigen noch einen einzigen \e{converter}. Diese neue Pipeline ist in Abbildung \ref{fig:contentPipelineWithGltf} dargestellt. \cite{gltfTutorialIntro}
 \begin{figure}[H]
   \centering
