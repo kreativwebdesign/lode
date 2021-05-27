@@ -15,13 +15,20 @@ export const calculateFigure = (reports, selector) => {
     selector(baselineReport)
   );
 
+  const optimizedMean = round(math.mean(optimizedValues));
+  const baselineMean = round(math.mean(baselineValues)); // 100%
+
+  const optimizedPercentage = (optimizedMean / baselineMean) * 100;
+  const optimizedDifference = round(optimizedPercentage - 100);
+
   return {
+    difference: optimizedDifference,
     optimized: {
-      mean: round(math.mean(optimizedValues)),
+      mean: optimizedMean,
       standardDeviation: round(math.std(optimizedValues)),
     },
     baseline: {
-      mean: round(math.mean(baselineValues)),
+      mean: baselineMean,
       standardDeviation: round(math.std(baselineValues)),
     },
   };
@@ -33,6 +40,7 @@ export const calculateFigure = (reports, selector) => {
  */
 export const generateHolisticReport = (reports) => {
   const {
+    difference: medianFpsDifference,
     optimized: {
       mean: optimizedMedianFpsMean,
       standardDeviation: optimizedMedianFpsDeviation,
@@ -97,10 +105,58 @@ export const generateHolisticReport = (reports) => {
     baselineLower: round(baselineLower),
     baselineUpper: round(baselineUpper),
 
+    medianFpsDifference,
+
     gpuTotalTime,
     medianRenderLoopDuration,
     totalGpuEvents,
     totalModelLoadDuration,
     totalRenders,
   };
+};
+
+export const reportFormatted = (
+  iterations,
+  {
+    optimizedMedianFpsMean,
+    optimizedMedianFpsDeviation,
+    optimizedLower,
+    optimizedUpper,
+    baselineMedianFpsMean,
+    baselineMedianFpsDeviation,
+    baselineLower,
+    baselineUpper,
+    gpuTotalTime,
+    medianRenderLoopDuration,
+    totalGpuEvents,
+    totalModelLoadDuration,
+    totalRenders,
+  }
+) => {
+  console.log(
+    `report for ${iterations} iterations, performed on ${new Date()}:`
+  );
+
+  console.log(`
+optimized fps: ${optimizedMedianFpsMean} (${optimizedMedianFpsDeviation} standard deviation)
+the value is with a confidence of 95% between ${optimizedLower} and ${optimizedUpper}
+baseline fps: ${baselineMedianFpsMean} (${baselineMedianFpsDeviation} standard deviation)
+the value is with a confidence of 95% between ${baselineLower} and ${baselineUpper}
+`);
+
+  console.log(`
+further information for interpreting data:
+`);
+
+  const logReportSection = (sectionName, data) => {
+    console.log(`${sectionName}:
+optimized: ${data.optimized.mean} (${data.optimized.standardDeviation} standard deviation)
+baseline: ${data.baseline.mean} (${data.baseline.standardDeviation} standard deviation)`);
+  };
+
+  logReportSection("gpuTotalTime", gpuTotalTime);
+  logReportSection("medianRenderLoopDuration", medianRenderLoopDuration);
+  logReportSection("totalGpuEvents", totalGpuEvents);
+  logReportSection("totalModelLoadDuration", totalModelLoadDuration);
+  logReportSection("totalRenders", totalRenders);
 };

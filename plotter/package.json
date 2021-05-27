@@ -1,0 +1,20 @@
+{
+  "name": "plotter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "visualize": "cd visualizer && snowpack dev --port 8081",
+    "setup": "yarn install"
+  },
+  "dependencies": {
+    "plotly.js": "^1.58.4"
+  },
+  "devDependencies": {
+    "puppeteer": "^9.1.1",
+    "snowpack": "^3.5.1",
+    "wait-port": "^0.2.9"
+  }
+}
