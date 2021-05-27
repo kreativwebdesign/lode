@@ -23,7 +23,7 @@ $$ V =
   0
 \end{bmatrix}
 $$
-Eine Sammlung von drei \e{Vertices}\footnote{Wir verwenden den in englischer Sprache verfassten Fachliteratur zu 3D-Anwednungen gebräuchlichen Ausdruck.} bildet ein \e{Triangle} (Dreieck). Hiermit kann ein \e{Triangle} generell wie folgt definiert werden:
+Eine Sammlung von drei \e{Vertices}\footnote{Wir verwenden den in englischer Sprache verfassten Fachliteratur zu 3D-Anwendungen gebräuchlichen Ausdruck.} bildet ein \e{Triangle} (Dreieck). Hiermit kann ein \e{Triangle} generell wie folgt definiert werden:
 $$ T =
 \begin{bmatrix}
   V \\
@@ -307,7 +307,7 @@ Dies reduziert die Anzahl Polygone drastisch.
 \paragraph{Occlusion culling}
 Polygone bzw. Objekte, welche komplett von anderen Objekten überdeckt werden, werden bei dieser Variante nicht prozessiert.
 Dieser Prozess analysiert die Szene mittels einer virtuellen Kamera und merkt sich potenziell nicht sichtbare Objekte. Diese Daten werden dann zur Laufzeit von der Kamera verwendet, um zu bestimmen, ob ein Objekt prozessiert werden soll, oder nicht.
-Damit wird die Anzahl \fGlspl{Draw Call}{Ein Aufruf auf die GPU, um ein Objekt zu zeichnen. Ein \e{Draw Call} wird pro Material pro \e{Mesh} benötigt. Es ist besser, weniger, dafür umfangreiche \e{Draw Calls} abzusetzen, als viele Kleinere. Dies kommt daher, dass die GPU extrem schnell ist und sich die Unterbrechung durch einzelne Aufrufe viel negativer Auswirkt} reduziert und somit die Performanz erhöht.
+Damit wird die Anzahl \fGlspl{Draw Call}{Ein Aufruf auf die GPU, um ein Objekt zu zeichnen. Ein \e{Draw Call} wird pro Material pro \e{Mesh} benötigt. Es ist besser, weniger, dafür umfangreiche \e{Draw Calls} abzusetzen, als viele Kleinere. Dies kommt daher, dass die GPU extrem schnell ist und sich die Unterbrechung durch einzelne Aufrufe viel negativer auswirkt} reduziert und somit die Performanz erhöht.
 
 \paragraph{Backface culling}
 \label{chap:backfaceCulling}
@@ -323,10 +323,10 @@ Vergleichbar zu LOD-Artefakten sind sogenannte \e{Imposters}. Dabei wird ein \e{
 Weitere Ansätze zur Optimierung der Performanz für sehr spezifische Anwendungsfälle werden kurz erwähnt, jedoch nicht weiter erörtert da sie für viele Anwendungen nicht praktikabel sind.
 
 \subparagraph{Parallel rendering}
-Auch bekannt unter Distributed Rendering ist der Einsatz von Techniken aus dem Parallel Programming in Visualisierungsanwendungen. So kann zum Beispiel die Bildfläche in Regione aufgeteilt werden, welche alle individuell und gleichzeitig prozessiert werden. Es gibt aber auch andere Ansätze, wobei die \e{Triangles} anderweitig aufgeteilt und prozessiert werden und dann zum Schluss an den \e{Rasterizer} gesendet werden.
+Auch bekannt unter \e{Distributed Rendering} ist der Einsatz von Techniken aus dem \e{Parallel Programming} in Visualisierungsanwendungen. So kann zum Beispiel die Bildfläche in Regionen aufgeteilt werden, welche alle individuell und gleichzeitig prozessiert werden. Es gibt aber auch andere Ansätze, wobei die \e{Triangles} anderweitig aufgeteilt und prozessiert werden und dann zum Schluss an den \e{Rasterizer} gesendet werden.
 
 \subparagraph{Image-based rendering}
-In gewissen Fällen kann das Modellieren übersprungen werden. So kann anhand von Bildmaterial eine 3D-Illusion erzeugt werden. Da 2D-Bilder aber keine Tiefeninformationen darstellen können im 3-dimensionalen Raum, kann dies zu seltsamenen Effekten führen, wenn sich die Kamera bewegt und kann deshalb nur in sehr spezifischen Anwendungsfällen eingesetzt werden.
+In gewissen Fällen kann das Modellieren übersprungen werden. So kann anhand von Bildmaterial eine 3D-Illusion erzeugt werden. Da 2D-Bilder aber keine Tiefeninformationen darstellen können im 3-dimensionalen Raum, kann dies zu seltsamen Effekten führen, wenn sich die Kamera bewegt und kann deshalb nur in sehr spezifischen Anwendungsfällen eingesetzt werden.
 
 \section{Einführung Level of Detail}
 \label{chap:lodIntroduction}
