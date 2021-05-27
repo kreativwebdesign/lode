@@ -5,7 +5,7 @@ import { hideBin } from "yargs/helpers";
 import { waitFor, startLogGroup, createFolderIfNotExist } from "./helpers.js";
 import { reporter, analyzeTraceEvents, generateReport } from "./analyze.js";
 import { logDetail, setLogDetail } from "./logger.js";
-import { generateHolisticReport } from "./reporter.js";
+import { generateHolisticReport, reportFormatted } from "./reporter.js";
 
 const argv = yargs(hideBin(process.argv)).argv;
 
@@ -13,6 +13,8 @@ const LOG_DETAILS = argv.logDetails || false;
 setLogDetail(LOG_DETAILS);
 
 const HEADLESS = argv.headless || false;
+
+const TEMP_FOLDER = "tmp/";
 
 const main = async () => {
   const ITERATIONS = argv.iterations || 10;
@@ -42,52 +44,16 @@ const main = async () => {
     });
   }
 
-  const {
-    optimizedMedianFpsMean,
-    optimizedMedianFpsDeviation,
-    optimizedLower,
-    optimizedUpper,
-    baselineMedianFpsMean,
-    baselineMedianFpsDeviation,
-    baselineLower,
-    baselineUpper,
-    gpuTotalTime,
-    medianRenderLoopDuration,
-    totalGpuEvents,
-    totalModelLoadDuration,
-    totalRenders,
-  } = generateHolisticReport(reports);
+  const report = generateHolisticReport(reports);
 
-  console.log(
-    `report for ${ITERATIONS} iterations, performed on ${new Date()}:`
+  fs.writeFileSync(
+    `${TEMP_FOLDER}report.json`,
+    JSON.stringify(report, null, 2)
   );
-
-  console.log(`
-optimized fps: ${optimizedMedianFpsMean} (${optimizedMedianFpsDeviation} standard deviation)
-the value is with a confidence of 95% between ${optimizedLower} and ${optimizedUpper}
-baseline fps: ${baselineMedianFpsMean} (${baselineMedianFpsDeviation} standard deviation)
-the value is with a confidence of 95% between ${baselineLower} and ${baselineUpper}
-`);
-
-  console.log(`
-further information for interpreting data:
-`);
-
-  const logReportSection = (sectionName, data) => {
-    console.log(`${sectionName}:
-optimized: ${data.optimized.mean} (${data.optimized.standardDeviation} standard deviation)
-baseline: ${data.baseline.mean} (${data.baseline.standardDeviation} standard deviation)`);
-  };
-
-  logReportSection("gpuTotalTime", gpuTotalTime);
-  logReportSection("medianRenderLoopDuration", medianRenderLoopDuration);
-  logReportSection("totalGpuEvents", totalGpuEvents);
-  logReportSection("totalModelLoadDuration", totalModelLoadDuration);
-  logReportSection("totalRenders", totalRenders);
+  reportFormatted(ITERATIONS, report);
 };
 
 const sample = async (optimize) => {
-  const TEMP_FOLDER = "tmp/";
   createFolderIfNotExist(TEMP_FOLDER);
   logDetail("start benchmark");
   const browser = await puppeteer.launch({ headless: HEADLESS });
