@@ -24,6 +24,7 @@ To setup a configuration file, run `npx @kreativwebdesign/lode-cli init`. This w
 ### config
 Run `npx @kreativwebdesign/lode-cli config` to configure the level of details for each model.
 You can pass the following options:
+
 | Option           | Description              | Default                  |
 | ---------------- | ------------------------ | ------------------------ |
 | `-c`, `--config` | Path to config file      | `./lode-cli.config.json` |
