@@ -307,7 +307,7 @@ Dies reduziert die Anzahl Polygone drastisch.
 \paragraph{Occlusion culling}
 Polygone bzw. Objekte, welche komplett von anderen Objekten überdeckt werden, werden bei dieser Variante nicht prozessiert.
 Dieser Prozess analysiert die Szene mittels einer virtuellen Kamera und merkt sich potenziell nicht sichtbare Objekte. Diese Daten werden dann zur Laufzeit von der Kamera verwendet, um zu bestimmen, ob ein Objekt prozessiert werden soll, oder nicht.
-Damit wird die Anzahl \Glsplural{Draw Call} reduziert und somit die Performanz erhöht.
+Damit wird die Anzahl \fGlspl{Draw Call}{Ein Aufruf auf die GPU, um ein Objekt zu zeichnen. Ein \e{Draw Call} wird pro Material pro \e{Mesh} benötigt. Es ist besser, weniger, dafür umfangreiche \e{Draw Calls} abzusetzen, als viele Kleinere. Dies kommt daher, dass die GPU extrem schnell ist und sich die Unterbrechung durch einzelne Aufrufe viel negativer Auswirkt.} reduziert und somit die Performanz erhöht.
 
 \paragraph{Backface culling}
 \label{chap:backfaceCulling}
