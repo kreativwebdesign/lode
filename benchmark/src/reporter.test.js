@@ -80,6 +80,7 @@ describe("reporter", () => {
       optimizedMedianFpsMean: 60,
       optimizedMedianFpsDeviation: 0,
       optimizedUpper: 60,
+      medianFpsDifference: 42.857,
 
       gpuTotalTime: {
         optimized: {
@@ -90,6 +91,7 @@ describe("reporter", () => {
           mean: 2722.989,
           standardDeviation: 4.9,
         },
+        difference: -19.394,
       },
       medianRenderLoopDuration: {
         optimized: {
@@ -100,6 +102,7 @@ describe("reporter", () => {
           mean: 0.876,
           standardDeviation: 0.377,
         },
+        difference: -18.151,
       },
 
       totalGpuEvents: {
@@ -111,6 +114,7 @@ describe("reporter", () => {
           mean: 181.333,
           standardDeviation: 106.463,
         },
+        difference: 91.177,
       },
 
       totalModelLoadDuration: {
@@ -122,6 +126,7 @@ describe("reporter", () => {
           mean: 260.632,
           standardDeviation: 93.027,
         },
+        difference: 59.254,
       },
 
       totalRenders: {
@@ -133,6 +138,7 @@ describe("reporter", () => {
           mean: 114.333,
           standardDeviation: 56.889,
         },
+        difference: 92.42,
       },
     });
   });
