@@ -23,7 +23,7 @@ $$ V =
   0
 \end{bmatrix}
 $$
-Eine Sammlung von drei \e{Vertices} bildet ein \e{Triangle} (Dreieck). Hiermit kann ein \e{Triangle} generell wie folgt definiert werden:
+Eine Sammlung von drei \e{Vertices}\footnote{Wir verwenden den in englischer Sprache verfassten Fachliteratur zu 3D-Anwendungen gebräuchlichen Ausdruck.} bildet ein \e{Triangle} (Dreieck). Hiermit kann ein \e{Triangle} generell wie folgt definiert werden:
 $$ T =
 \begin{bmatrix}
   V \\
@@ -77,7 +77,7 @@ Verbindet man die Punkte eines Polygons und füllt die Fläche, ergibt sich schl
 Neben den geometrischen Attributen verfügt ein Modell ebenfalls über visuelle Attribute.
 
 So wird für jeden Vertex ein \e{Normal} definiert. Ein \e{Normal} ist ein Vektor der im einfachsten Fall senkrecht zu den zwei an diesem Vertex verbundenen \e{Edges} verläuft. In der Geometrie ist dies auch bekannt als Normale. \e{Normals} werden häufig für das Berechnen von Reflexionen verwendet.
-\e{Normals} werden auch für gewisse Performanz Optimierungen eingesetzt, dazu mehr in \autoref{chap:backfaceCulling}.
+\e{Normals} werden auch für gewisse Performanzoptimierungen eingesetzt, dazu mehr in \autoref{chap:backfaceCulling}.
 
 Um die Oberfläche von Modellen zu definieren, wird häufig \fgls{Texture Mapping}{Verfahren, um mittels 2D-Bildern 3D-Objekte zu gestalten} durchgeführt. Hierfür sind zusätzliche Informationen für ein Modell notwendig. In der Praxis finden weitere Methoden Anwendung, auf diese wird jedoch hier nicht weiter eingegangen.
 
@@ -106,7 +106,7 @@ Die meisten 3D-Grafikprogramme wie Blender (.blend) verwenden ihre eigenen Datei
   \label{fig:contentPipelineWithoutGltf}
 \end{figure}
 
-Durch die immer breiter werdende Nachfrage nach 3D-Applikationen wurde ein Format benötigt, dass zum einen Applikationsunabhängig verwendet und zum anderen performant im Web eingesetzt werden kann.
+Durch die immer breiter werdende Nachfrage nach 3D-Applikationen wurde ein Format benötigt, dass zum einen applikationsunabhängig verwendet und zum anderen performant im Web eingesetzt werden kann.
 Durch diese Abstraktion kann eine Vielzahl \e{converter} vermieden werden und nur wenige, sehr spezifische Dateiformate benötigen noch einen einzigen \e{converter}. Diese neue Pipeline ist in Abbildung \ref{fig:contentPipelineWithGltf} dargestellt. \cite{gltfTutorialIntro}
 \begin{figure}[H]
   \centering
@@ -306,7 +306,8 @@ Dies reduziert die Anzahl Polygone drastisch.
 
 \paragraph{Occlusion culling}
 Polygone bzw. Objekte, welche komplett von anderen Objekten überdeckt werden, werden bei dieser Variante nicht prozessiert.
-\todo[inline]{ausführen}
+Dieser Prozess analysiert die Szene mittels einer virtuellen Kamera und merkt sich potenziell nicht sichtbare Objekte. Diese Daten werden dann zur Laufzeit von der Kamera verwendet, um zu bestimmen, ob ein Objekt prozessiert werden soll, oder nicht.
+Damit wird die Anzahl \fGlspl{Draw Call}{Ein Aufruf auf die GPU, um ein Objekt zu zeichnen. Ein \e{Draw Call} wird pro Material pro \e{Mesh} benötigt. Es ist besser, weniger, dafür umfangreiche \e{Draw Calls} abzusetzen, als viele Kleinere. Dies kommt daher, dass die GPU extrem schnell ist und sich die Unterbrechung durch einzelne Aufrufe viel negativer auswirkt} reduziert und somit die Performanz erhöht.
 
 \paragraph{Backface culling}
 \label{chap:backfaceCulling}
@@ -319,15 +320,13 @@ Als Grundlage für die Berechnung werden die \e{Normals} der \e{Vertices} berüc
 Vergleichbar zu LOD-Artefakten sind sogenannte \e{Imposters}. Dabei wird ein \e{Quad} mit verschiedenen Texturen verwendet. Für jede mögliche Position des Modells wird eine Textur generiert. Das \e{Quad} wird in Richtung Kamera ausgerichtet und abhängig von der Rotation des Modells die geeignete Textur verwendet. Geometrisch kann ein Modell so auf ein absolutes Minimum reduziert werden.
 
 \paragraph{Weitere Ansätze}
-Weitere Ansätze zur Optimierung der Performanz für sehr spezifische Anwendungsfälle werden kurz erwähnt, jedoch nicht weiter erörtert da sie für viele Anwendungen nicht praktikabel sind. 
+Weitere Ansätze zur Optimierung der Performanz für sehr spezifische Anwendungsfälle werden kurz erwähnt, jedoch nicht weiter erörtert da sie für viele Anwendungen nicht praktikabel sind.
 
 \subparagraph{Parallel rendering}
-Auch bekannt unter Distributed Rendering ist der Einsatz von Techniken aus dem Parallel Programming in Visualisierungsanwendungen.
-\todo[inline]{ausführen}
+Auch bekannt unter \e{Distributed Rendering} ist der Einsatz von Techniken aus dem \e{Parallel Programming} in Visualisierungsanwendungen. So kann zum Beispiel die Bildfläche in Regionen aufgeteilt werden, welche alle individuell und gleichzeitig prozessiert werden. Es gibt aber auch andere Ansätze, wobei die \e{Triangles} anderweitig aufgeteilt und prozessiert werden und dann zum Schluss an den \e{Rasterizer} gesendet werden.
 
 \subparagraph{Image-based rendering}
-In gewissen Fällen kann das Modellieren übersprungen werden. So kann anhand von Bildmaterial eine 3D-Illusion erzeugt werden.
-\todo[inline]{ausführen}
+In gewissen Fällen kann das Modellieren übersprungen werden. So kann anhand von Bildmaterial eine 3D-Illusion erzeugt werden. Da 2D-Bilder aber keine Tiefeninformationen darstellen können im 3-dimensionalen Raum, kann dies zu seltsamen Effekten führen, wenn sich die Kamera bewegt und kann deshalb nur in sehr spezifischen Anwendungsfällen eingesetzt werden.
 
 \section{Einführung Level of Detail}
 \label{chap:lodIntroduction}

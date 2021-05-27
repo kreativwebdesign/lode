@@ -77,9 +77,29 @@ Das zugehörige \e{lode-ui} (in Abbildung \ref{fig:lodeui} gezeigt) bietet zudem
 \end{figure}
 
 \paragraph{Verwendung der Artefakte in der Applikation}
-Die Artefakte können innerhalb der Applikation mithilfe einer Bibliothek geladen werden. Dabei werden die Definitionen in der Konfigurationsdatei geladen und das Modell entsprechend in der Szenerie dargestellt.
+Die Artefakte können innerhalb der Applikation mithilfe einer Bibliothek geladen werden. Dabei werden die Definitionen in der Konfigurationsdatei geladen und das Modell entsprechend in der Szenerie dargestellt, wie in Beispielcode \ref{code:lodeThreeUsage} zu sehen ist.
 
-\todo[inline]{code beispiel wie modelle geladen werden?}
+\begin{figure}[H]
+  \begin{lstlisting}[style=JavaScript]
+  import * as lodeLoader from "lode-three";
+  import manifest from "./lode-build/lode-manifest.json";
+
+  const lodeContext = lodeLoader.createContext({
+    manifest,
+    basePath: "./lode-build",
+  });
+
+  const elephantModel = await lodeLoader.loadModel({
+    lodeContext,
+    artifactName: 'assets/elephant',
+  })
+
+  scene.add(elephantModel)
+  clone.position.set(0, 0, 0);
+  \end{lstlisting}
+  \caption{Beispielcode zur Benutzung der LOD-Artefakte mittels \e{lode-three} in \e{Three.js}}
+  \label{code:lodeThreeUsage}
+\end{figure}
 
 \section{LOD Generierung}
 
@@ -167,7 +187,7 @@ Das Ziel des Benchmarks ist der Vergleich einer Version ohne Einsatz von LOD und
 
 \paragraph{Browser Umgebung}
 Um den Umfang des Benchmarks überschaubar zu halten, wurde ausschliesslich ein Benchmark für Google Chrome entwickelt.
-Google Chrome basiert auf \fgls{Chromium}{Open Source Browser-Projekt, welches von Google entwickelt wird}, dieselbe Engine, welche auch Microsoft Edge oder Opera verwenden.
+Google Chrome basiert auf \fgls{Chromium}{Open Source Browser-Projekt, welches von Google entwickelt wird. Andere Browser basieren ebenfalls auf der Code-Basis von Chromium. Namentlich Microsoft Edge und Opera, um die bekanntesten zu nennen}, dieselbe Engine, welche auch Microsoft Edge oder Opera verwenden.
 Einen Benchmark basierend auf Google Chrome liefert somit auch Indizien für diese beiden Browser, auch wenn gewisse Abweichungen möglich sind.
 Neben dem Marktführer Chrome sind Mozilla Firefox oder Safari von Apple ebenfalls Optionen. Jedoch wurde primär aufgrund des Marktanteils von total rund 70\% \cite{browserUsage} zugunsten von Google Chrome entschieden.
 Die getroffenen Aussagen bezüglich Laufzeitverhalten behalten ihre Gültigkeit auch für andere Browser.
@@ -288,8 +308,14 @@ Somit ist es möglich einen Nutzen für bestimmte anspruchsvolle 3D-Visualisieru
 \caption{Durchlauf eines Benchmarktests}
 \label{fig:benchmarkRun}
 \end{figure}
-\todo[inline]{Durch visuelle diagramme ersetzen.}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\columnwidth]{resultate/fpsChartMarcbook.jpg}
+  \caption{FPS Vergleich}
+  \label{fig:fpsComparisonChartMarcbook}
+\end{figure}
+\todo[inline]{Schreibe etwas über diagramm und füge weitere hinzu}
 
 Wie in Abbildung \ref{fig:benchmarkRun} zu sehen, konnten die FPS auf 60 FPS gehoben werden im Vergleich zu den 48.2 FPS in der unoptimierten Version.
-Direkt damit verbunden ist die Anzahl \e{total Renders}, welche genauso um ca 30\% gesteigert werden konnte. Auf der Umkehrseite wurde die \e{total model load duration} etwas erhöht, da mehr Modelle geladen werden müssen. Diese wuchs aber nur um rund 10\%.
-\todo[inline]{Kennzahlen-Bezeichnung auf deutsche version aus Tabelle (und Diagramme) referenzieren}
+Direkt damit verbunden ist die Anzahl \e{Render Loop} Iterationen, welche genauso um ca 30\% gesteigert werden konnte. Auf der Umkehrseite wurde die Dauer für das Laden der Modelle etwas erhöht, da mehr Modelle geladen werden müssen. Diese wuchs aber nur um rund 10\%.
+
