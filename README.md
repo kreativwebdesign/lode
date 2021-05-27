@@ -42,3 +42,7 @@ In order to get a coherent code style [Prettier](https://prettier.io/) is used.
 The report is written in LaTeX. Only the raw `.tex` files and resources are being tracked by git.
 The pdf output is built and deployed to a specific branch automatically using a Github Action.
 Have a look at [report](https://github.com/kreativwebdesign/lode/blob/report/report.pdf) to see the current report built as a pdf.
+
+#### Include READMEs into Latex report
+
+Run `yarn latex-readme` to generate tex files for all markdown files.

@@ -10,6 +10,14 @@
     "setup-lode-three": "cd ./lode-three && yarn setup",
     "setup-demo": "cd ./demo && yarn setup",
     "setup-lode-ui": "cd ./lode-ui && yarn setup",
-    "setup": "yarn setup-benchmark && yarn setup-cli && yarn setup-lode-three && yarn setup-demo && yarn setup-lode-ui"
+    "setup-plotter": "cd ./plotter && yarn setup",
+    "setup": "yarn setup-benchmark && yarn setup-cli && yarn setup-lode-three && yarn setup-demo && yarn setup-lode-ui && yarn setup-plotter",
+    "latex-readme-benchmark": "pandoc -f markdown -t pdf -o ./documentation/report/ressources/packages/benchmark.pdf ./benchmark/README.md",
+    "latex-readme-cli": "pandoc -f markdown -t pdf -o ./documentation/report/ressources/packages/cli.pdf ./cli/README.md",
+    "latex-readme-lode-three": "pandoc -f markdown -t pdf -o ./documentation/report/ressources/packages/lode-three.pdf ./lode-three/README.md",
+    "latex-readme-demo": "pandoc -f markdown -t pdf -o ./documentation/report/ressources/packages/demo.pdf ./demo/README.md",
+    "latex-readme-lode-ui": "pandoc -f markdown -t pdf -o ./documentation/report/ressources/packages/lode-ui.pdf ./lode-ui/README.md",
+    "latex-readme-plotter": "pandoc -f markdown -t pdf -o ./documentation/report/ressources/packages/plotter.pdf ./plotter/README.md",
+    "latex-readme": "yarn latex-readme-benchmark && yarn latex-readme-cli && yarn latex-readme-lode-three && yarn latex-readme-demo && yarn latex-readme-lode-ui && yarn latex-readme-plotter"
   }
 }
