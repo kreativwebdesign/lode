@@ -77,9 +77,29 @@ Das zugehörige \e{lode-ui} (in Abbildung \ref{fig:lodeui} gezeigt) bietet zudem
 \end{figure}
 
 \paragraph{Verwendung der Artefakte in der Applikation}
-Die Artefakte können innerhalb der Applikation mithilfe einer Bibliothek geladen werden. Dabei werden die Definitionen in der Konfigurationsdatei geladen und das Modell entsprechend in der Szenerie dargestellt.
+Die Artefakte können innerhalb der Applikation mithilfe einer Bibliothek geladen werden. Dabei werden die Definitionen in der Konfigurationsdatei geladen und das Modell entsprechend in der Szenerie dargestellt, wie in Beispielcode \ref{code:lodeThreeUsage} zu sehen ist.
 
-\todo[inline]{code beispiel wie modelle geladen werden?}
+\begin{figure}[H]
+  \begin{lstlisting}[style=JavaScript]
+  import * as lodeLoader from "lode-three";
+  import manifest from "./lode-build/lode-manifest.json";
+
+  const lodeContext = lodeLoader.createContext({
+    manifest,
+    basePath: "./lode-build",
+  });
+
+  const elephantModel = await lodeLoader.loadModel({
+    lodeContext,
+    artifactName: 'assets/elephant',
+  })
+
+  scene.add(elephantModel)
+  clone.position.set(0, 0, 0);
+  \end{lstlisting}
+  \caption{Beispielcode zur Benutzung der LOD-Artefakte mittels \e{lode-three} in \e{Three.js}}
+  \label{code:lodeThreeUsage}
+\end{figure}
 
 \section{LOD Generierung}
 
