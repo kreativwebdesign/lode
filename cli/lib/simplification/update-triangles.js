@@ -1,36 +1,33 @@
 import { calculateTriangleError } from "./error-calculation.js";
 
 // Update triangle connections and edge error after an edge is collapsed
-const updateTriangles = (
-  i0,
-  vertex,
-  deleted,
-  triangles,
-  vertices,
-  references
-) => {
+const updateTriangles = (i0, vertex, deleted, triangles, vertices) => {
   let deletedTriangles = 0;
-  for (let i = 0; i < vertex.tCount; i++) {
-    const reference = references[vertex.tStart + i];
-    const triangle = triangles[reference.triangleIndex];
+  let newReferences = [];
+  vertex.triangles.forEach((reference, i) => {
+    const { triangleIndex, triangleVertexIndex } = reference;
+    const triangle = triangles[triangleIndex];
 
     if (triangle.deleted) {
-      continue;
+      return;
     }
 
     if (deleted[i]) {
       triangle.deleted = true;
       deletedTriangles++;
-      continue;
+      return;
     }
 
-    triangle.vertices[reference.triangleVertexIndex] = i0;
+    triangle.vertices[triangleVertexIndex] = i0;
     triangle.isDirty = true;
 
     calculateTriangleError(triangle, vertices);
 
-    references.push(reference);
-  }
+    newReferences.push(reference);
+  });
+
+  vertex.triangles = newReferences;
+
   return deletedTriangles;
 };
 

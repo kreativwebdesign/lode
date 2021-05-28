@@ -27,7 +27,7 @@ const simplify = (vertices, triangles, customOptions = {}) => {
     ...defaultOptions,
     ...customOptions,
   };
-  let references = initializeData(vertices, triangles);
+  initializeData(vertices, triangles);
   let deletedTriangles = 0;
   let initialTriangleCount = triangles.length;
 
@@ -38,7 +38,7 @@ const simplify = (vertices, triangles, customOptions = {}) => {
     }
 
     triangles = compactTriangles(triangles);
-    references = buildReferenceList(vertices, triangles);
+    buildReferenceList(vertices, triangles);
 
     triangles.forEach((triangle) => {
       triangle.isDirty = false;
@@ -80,8 +80,7 @@ const simplify = (vertices, triangles, customOptions = {}) => {
             vertexIndex1,
             vertex0,
             vertices,
-            triangles,
-            references
+            triangles
           );
           if (flippedOnFirst) {
             return;
@@ -95,8 +94,7 @@ const simplify = (vertices, triangles, customOptions = {}) => {
             vertexIndex0,
             vertex1,
             vertices,
-            triangles,
-            references
+            triangles
           );
           if (flippedOnSecond) {
             return;
@@ -108,29 +106,21 @@ const simplify = (vertices, triangles, customOptions = {}) => {
           vertex0.position = point;
           // calculate error
           vertex0.q = SymmetricMatrix.add(vertex0.q, vertex1.q);
-          let tStart = references.length;
 
           deletedTriangles += updateTriangles(
             vertexIndex0,
             vertex0,
             deleted0,
             triangles,
-            vertices,
-            references
+            vertices
           );
           deletedTriangles += updateTriangles(
             vertexIndex0,
             vertex1,
             deleted1,
             triangles,
-            vertices,
-            references
+            vertices
           );
-
-          let tCount = references.length - tStart;
-
-          vertex0.tStart = tStart;
-          vertex0.tCount = tCount;
         }
       });
     });
