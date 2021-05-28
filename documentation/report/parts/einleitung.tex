@@ -41,7 +41,9 @@ Eine Möglichkeit zur Optimierung ist das Anzeigen von vereinfachten Modellen ab
   \caption{Vergleich vereinfachtes Modell (entfernt) Originalmodell (nah)}
 \end{figure}
 
+\todo[inline]{refactor glossareintrag}
 In diversen \fglspl{Rendering Engine}{Teilprogramm, das zuständig für die Darstellung von Grafiken ist} gibt es deshalb Möglichkeiten für das Verwenden von sogenannten Level Of Details (LOD) Artefakten.
+\todo[inline]{refactor glossareintrag}
 Für \fgls{Game Engines}{Framework, das für den Spielverlauf und dessen Darstellung verantwortlich ist} wie \e{Unreal Engine} oder \e{Unity} gibt es bewährte Möglichkeiten, um den Einsatz von LOD-Artefakten zu vereinfachen. Zurzeit gibt es in der Webentwicklung keine weitverbreitete Möglichkeit für das Generieren von solchen Artefakten.
 
 \subsection{3D-Rendering im Web}
@@ -67,6 +69,7 @@ Insbesondere die Erweiterungen für \e{React}, eine populäre Bibliothek für di
 
 \paragraph{Babylon.js}
 Ein weiterer Kandidat ist \e{Babylon.js}, eine offene Bibliothek, welche die Entwicklung von 3D-Applikationen vereinfacht. \e{Babylon.js} zeichnet sich vor allem durch ein breites \e{Featureset} aus \cite{babylonjsNpmPackage}. Babylon.js verfügt zum Beispiel über Erweiterungen für verschiedene Physik-Engines und erleichtert somit den Einsatz von anspruchsvolleren Features. Ausserdem setzt es auf \e{Semantic Versioning}.
+\todo[inline]{bad parts of babylon?}
 
 \paragraph{PlayCanvas}
 \e{PlayCanvas} ist eine offene 3D-Engine, welche primär für das Web entwickelt wurde. Als Erweiterung wird zudem ein proprietärer Cloud Service angeboten \cite{playcanvasNpmPackage}. Die Community ist – im Vergleich zur direkten Konkurrenten, wie zum Beispiel \e{Three.js} – klein. PlayCanvas verfolgt jedoch einen anderen Ansatz und liefert zum Beispiel eine standardmässige Integration für eine Physik-Engine.
@@ -81,6 +84,8 @@ Zudem bietet \e{Unity} keine zu \e{Three.js}, \e{Babylon.js} oder \e{PlayCanvas}
 In anderen Umgebungen gibt es bereits umfangreiche LOD-Systeme für komplexe Anwendungsgebiete. Auf diese wird in der Sektion \autoref{chap:existingSolutions} detaillierter eingegangen.
 Die erläuterten Bibliotheken bieten Funktionen für das Laden von LOD-Artefakten. Teilweise gibt es die Möglichkeit Vereinfachungen im Browser zu generieren. Das Generieren von LOD-Artefakten zur Laufzeit ist jedoch für Webapplikationen nicht geeignet, da dies signifikante Auswirkungen auf das Laufzeitverhalten hat und insbesondere auf schwächeren Geräten die Applikation zusätzlich verlangsamt.
 So dauert das Optimieren eines komplexen Modells wie zum Beispiel bei \e{Babylon.js} demonstriert auch auf rechnungsstarken Geräten mehrere Sekunden \cite{babylonAutoLod}.
+\todo[inline]{Three.js simplification modifier}
+\todo[inline]{Fehlende Teile erwähnen}
 
 Des Weiteren sind die Systeme nicht kompatibel mit anderen Bibliotheken. So kann die automatische LOD-Lösung von \e{Babylon.js} nicht in \e{Three.js} verwendet werden, obwohl die Problemstellung dieselbe ist.
 

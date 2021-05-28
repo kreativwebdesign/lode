@@ -74,6 +74,7 @@ Die Verbindung zwischen zwei \e{Vertices} ist eine sogenannte \e{Edge} (Kante).
 Verbindet man die Punkte eines Polygons und füllt die Fläche, ergibt sich schlussendlich ein \e{Face} (Fläche).
 
 \paragraph{Weitere Attribute}
+\todo[inline]{Texture mapping / UV Mapping erklären (fussnote obsolet)}
 Neben den geometrischen Attributen verfügt ein Modell ebenfalls über visuelle Attribute.
 
 So wird für jeden Vertex ein \e{Normal} definiert. Ein \e{Normal} ist ein Vektor der im einfachsten Fall senkrecht zu den zwei an diesem Vertex verbundenen \e{Edges} verläuft. In der Geometrie ist dies auch bekannt als Normale. \e{Normals} werden häufig für das Berechnen von Reflexionen verwendet.
@@ -105,6 +106,7 @@ Die meisten 3D-Grafikprogramme wie Blender (.blend) verwenden ihre eigenen Datei
   \caption{Konvertierungspipeline ohne glTF \cite{gltfTutorialIntro}}
   \label{fig:contentPipelineWithoutGltf}
 \end{figure}
+\todo[inline]{stylify pipeline bilder -> "pipeliniger", weniger bunt, ...}
 
 Durch die immer breiter werdende Nachfrage nach 3D-Applikationen wurde ein Format benötigt, dass zum einen applikationsunabhängig verwendet und zum anderen performant im Web eingesetzt werden kann.
 Durch diese Abstraktion kann eine Vielzahl \e{converter} vermieden werden und nur wenige, sehr spezifische Dateiformate benötigen noch einen einzigen \e{converter}. Diese neue Pipeline ist in Abbildung \ref{fig:contentPipelineWithGltf} dargestellt. \cite{gltfTutorialIntro}
@@ -321,19 +323,22 @@ Als Grundlage für die Berechnung werden die \e{Normals} der \e{Vertices} berüc
 
 \paragraph{Imposters}
 Vergleichbar zu LOD-Artefakten sind sogenannte \e{Imposters}. Dabei wird ein \e{Quad} mit verschiedenen Texturen verwendet. Für jede mögliche Position des Modells wird eine Textur generiert. Das \e{Quad} wird in Richtung Kamera ausgerichtet und abhängig von der Rotation des Modells die geeignete Textur verwendet. Geometrisch kann ein Modell so auf ein absolutes Minimum reduziert werden.
+\todo[inline]{nachteile -> beleuchtung}
 
 \paragraph{Weitere Ansätze}
 Weitere Ansätze zur Optimierung der Performanz für sehr spezifische Anwendungsfälle werden kurz erwähnt, jedoch nicht weiter erörtert da sie für viele Anwendungen nicht praktikabel sind.
 
 \subparagraph{Parallel rendering}
 Auch bekannt unter \e{Distributed Rendering} ist der Einsatz von Techniken aus dem \e{Parallel Programming} in Visualisierungsanwendungen. So kann zum Beispiel die Bildfläche in Regionen aufgeteilt werden, welche alle individuell und gleichzeitig prozessiert werden. Es gibt aber auch andere Ansätze, wobei die \e{Triangles} anderweitig aufgeteilt und prozessiert werden und dann zum Schluss an den \e{Rasterizer} gesendet werden.
+\todo[inline]{Praxisbeispiele? (vr, projektion...)}
 
 \subparagraph{Image-based rendering}
-In gewissen Fällen kann das Modellieren übersprungen werden. So kann anhand von Bildmaterial eine 3D-Illusion erzeugt werden. Da 2D-Bilder aber keine Tiefeninformationen darstellen können im 3-dimensionalen Raum, kann dies zu seltsamen Effekten führen, wenn sich die Kamera bewegt und kann deshalb nur in sehr spezifischen Anwendungsfällen eingesetzt werden.
+In gewissen Fällen kann das Modellieren übersprungen werden. So kann anhand von Bildmaterial eine 3D-Illusion erzeugt werden. Da 2D-Bilder aber keine Tiefeninformationen darstellen können im dreidimensionalen Raum, kann dies zu seltsamen Effekten führen, wenn sich die Kamera bewegt und kann deshalb nur in sehr spezifischen Anwendungsfällen eingesetzt werden.
+\todo[inline]{Praxisbeispiele? (street view?)}
 
 \section{Einführung Level of Detail}
 \label{chap:lodIntroduction}
-Als Level Of Detail (LOD) werden die verschiedenen Detailstufen bei der virtuellen Darstellung bezeichnet.
+Als Level Of Detail werden die verschiedenen Detailstufen bei der virtuellen Darstellung bezeichnet.
 Dies wird verwendet, um die Geschwindigkeit von Anwendungen zu steigern, indem Objekte im Nahbereich detailliert angezeigt werden; wohingegen Elemente im Fernbereich deutlich vereinfacht dargestellt werden.
 
 Ein LOD-Algorithmus hat das Ziel für ein gegebenes Modell eine vereinfachte Darstellung zu finden, welche das Original ausreichend annähert. Um diese Approximationen zu generieren, kann eine Vielzahl von Algorithmen verwendet werden. Es gibt verschiedene Ansätze zur Generierung von LODs, welche in \autoref{chap:lodAlgorithmComparison} im Detail erläutert werden.
@@ -344,6 +349,7 @@ Ein LOD-Algorithmus hat das Ziel für ein gegebenes Modell eine vereinfachte Dar
 \caption{Level Of Detail Visualisierung vier Hasen}
 \label{fig:LevelOfDetailVisualisierungvierHasen}
 \end{figure}
+\todo[inline]{quelle}
 
 Wie in der Abbildung \ref{fig:LevelOfDetailVisualisierungvierHasen} zu erkennen ist, wird von links nach rechts der Detailgrad und somit die Komplexität des Objektes reduziert. Sind es im Bild ganz links noch 69'451 Polygone, wird es bereits im ersten Schritt auf 2'502 Polygone reduziert. Dies ist eine enorme Reduktion von ca. 96.5\%. Im dritten Schritt wird die Anzahl Polygone wiederum um ca. 90\% auf 251 reduziert. Schlussendlich hat das letzte Objekt noch 76 Polygone was knapp 0.1\% der ursprünglichen Anzahl entspricht.
 
@@ -362,13 +368,15 @@ Im Gegensatz zu DLOD wird bei CLOD vereinfachende Veränderungen an einem Modell
 
 Der Hauptunterschied zu DLOD besteht in den weichen Grenzen, so ist es signifikant weniger auffällig da zwischen den verschiedenen Auflösungen interpoliert werden kann.
 Der Hauptnachteil ist jedoch, dass diese Interpolation insbesondere Auswirkungen auf die Laufzeit Performanz der Applikation hat.
-Das Problem des Clusterings ist auch für diese Variante nicht gelöst.
+Das Problem des \e{Clusterings} ist auch für diese Variante nicht gelöst.
+\todo[inline]{clustering erläutern (bei DLOD?)}
 
 \paragraph{Hierarchische LOD (HLOD)}
 Bei HLOD werden mehrere Objekte in einen Cluster gruppiert.
 Diese Methode erlaubt es somit zum Beispiel Terrains optimal abzubilden. So werden Ausschnitte, welche nahe beim Benutzer sind mit hoher Auflösung dargestellt während weiter entferntere Teile der Umgebung mit weniger Details ausgestattet sind.
 Zudem ist es möglich viele kleinere Objekte bei entsprechenden Distanzen zu kombinieren.
 Der Hauptnachteil liegt darin, dass hierfür signifikante Anpassungen am \e{Scene Graph} notwendig sind und für den Entwickler ein spürbarer Unterschied entstehen kann.
+\todo[inline]{scene graph glossary (entry refactoren)}
 
 \subsection{Vergleich Algorithmen}
 \label{chap:lodAlgorithmComparison}
@@ -381,6 +389,7 @@ Im folgenden Abschnitt wird auf die Grundidee der verschiedenen Kategorien einge
 \paragraph{Vertex Dezimierung}
 Algorithmen dieser Kategorie entfernen jeweils einen Vertex und triangulieren das entstehende Loch neu.
 Eine weitere Möglichkeit ist das \e{Vertex Clustering}, hierbei wird ein Modell in verschiedene Gitterzellen aufgeteilt. Die Punkte innerhalb einer Gitterzelle werden dann in einen einzigen Punkt zusammengelegt. Die visuelle Annäherung dieser Algorithmen bei drastischen Vereinfachungen stellt jedoch häufig ein Problem dar für polygonale Modelle. Sogenannte \fglspl{Point Cloud}{Vertices im dreidimensionalen Raum ohne zugehörige \e{Triangle}} (in Abbildung \ref{fig:pointCloudTorus} exemplarisch zu sehen), wie sie bei 3D-Scannern eingesetzt werden, können mit solchen Algorithmen schnell vereinfacht werden.
+\todo[inline]{point cloud refactoren: glossary in text, point cloud als punkte ohne fläche, delaunay?}
 
 \begin{figure}[H]
   \centering
@@ -395,3 +404,5 @@ Die verschiedenen Algorithmen unterscheiden sich primär in der Selektion der \e
 
 \paragraph{Triangle Collapse}
 Bei dieser Variante werden jeweils ganze Flächen entfernt und die umliegenden \e{Triangles} zusammengelegt. Eine Möglichkeit ist der von Hamann definierte Algorithmus zur Vereinfachung von triangulierten Flächen \cite{triangleCollapseAlgorithm}. Dabei wird die Krümmung eines \e{Triangles} definiert und iterativ derjenige \e{Triangle} mit der geringsten Krümmung entfernt. An die Stelle der drei \e{Vertices} tritt ein neuer \e{Vertex} und die umliegenden Flächen werden neu trianguliert.
+
+\todo[inline]{detailliertere Auslegeordnung?}
