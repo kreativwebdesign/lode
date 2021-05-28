@@ -17,6 +17,8 @@ Der Kern der Arbeit stellt die LOD-Pipeline, \e{lode} genannt, dar. Dieses Tool 
 Der übliche Ablauf für das Generieren von LOD-Artefakten ist wie folgt:
 Für ein gegebenes Modell werden innerhalb vom Modellierungstool wie zum Beispiel Blender bestimmte LOD-Stufen von Hand generiert. Anschliessend werden die verschiedenen Stufen exportiert und manuell in die Applikation integriert. \e{Fine Tuning} erfordert sowohl Anpassungen an den Modellen als auch im Code. Erst muss im Modellierungstool die Anpassung manuell vorgenommen, dann neu in die Applikation geladen und dort neu geprüft werden. Diese Schritte können sich mehrfach wiederholen, was mühselig und teuer ist.
 
+\todo[inline]{Step by step anleitung? (von blender zu justierung in Three.js)}
+
 \subsection{lode Pipeline}
 
 Das Ziel von \e{lode} ist es, für ein möglichst breites Spektrum von Anwendungsfällen eine einfache Lösung anzubieten und somit die Hemmschwelle für den Einsatz von LOD-Artfakten zu reduzieren.
@@ -57,7 +59,7 @@ Der Ablauf der \e{lode}-Pipeline kann in drei Schritte unterteilt werden.
   \label{fig:lodecliconfig}
 \end{figure}
 
-\paragraph{Erstellen der Artefakten}
+\paragraph{Erstellen der Artefakte}
 Danach generiert \e{lode} die in der Konfigurationsdatei beschriebenen LOD-Artefakte (in Abbildung \ref{fig:lodeclirun} ersichtlich). Wenn sich ein Modell oder eine Konfiguration ändert, werden die notwendigen Schritte automatisch erneut durchgeführt. So ist es möglich, schnell Anpassungen vorzunehmen und die Änderungen im Projekt ohne manuelle Arbeit zu sehen.
 
 \begin{figure}[H]
@@ -66,6 +68,7 @@ Danach generiert \e{lode} die in der Konfigurationsdatei beschriebenen LOD-Artef
   \caption{lode \e{CLI} run – Generiert die gewünschten LOD-Artefakten}
   \label{fig:lodeclirun}
 \end{figure}
+\todo[inline]{screenshots mit npx @kweb und ohne cwd}
 
 Das zugehörige \e{lode-ui} (in Abbildung \ref{fig:lodeui} gezeigt) bietet zudem die Möglichkeit, die verschiedenen Detailstufen miteinander zu vergleichen und die Konfiguration möglichst einfach zu justieren. Dies ermöglicht es, die Änderungen in Echtzeit zu sehen und die Distanzen, bei welchen Level aktiviert werden, einzustellen. So ist kein manuelles hin und her wechseln zwischen Applikationen mehr notwendig.
 
@@ -89,12 +92,12 @@ Die Artefakte können innerhalb der Applikation mithilfe einer Bibliothek gelade
     basePath: "./lode-build",
   });
 
-  const elephantModel = await lodeLoader.loadModel({
+  const airplaneModel = await lodeLoader.loadModel({
     lodeContext,
-    artifactName: 'assets/elephant',
+    artifactName: 'assets/airplane',
   })
 
-  scene.add(elephantModel)
+  scene.add(airplaneModel)
   clone.position.set(0, 0, 0);
   \end{lstlisting}
   \caption{Beispielcode zur Benutzung der LOD-Artefakte mittels \e{lode-three} in \e{Three.js}}
@@ -109,7 +112,7 @@ Für das Erstellen von LOD-Artefakten wurde ein für LOD-Artefakte optimierte Ve
 
 Die Implementation des Algorithmus wurde in JavaScript, basierend auf \fGls{Node.js}{JavaScript Ausführungsumgebung, welche ohne einen Browser verwendet werden kann}, umgesetzt. Grund dafür ist das Einbinden von \e{lode} in bestehende Entwicklungsabläufe in der Webentwicklung. So ist es einfach möglich, das Paket kostenlos mithilfe von \gls{npm} zur Verfügung zu stellen.
 
-\todo[inline]{mehr details über Implementation: boundary normalization, optimal point, matrices...}
+\todo[inline]{mehr details über Implementation: boundary normalization, optimal point, matrices, detailablauf...}
 
 \subsection{Artefakte}
 
@@ -140,6 +143,8 @@ Diese Technik führt zu signifikanten Detailverlusten bei der Nahbetrachtung und
   \caption{Vergleich der Texturen}
   \label{fig:textureComparison}
 \end{figure}
+
+\todo[inline]{screenshots im studio modus @marc}
 
 \subsection{Vergleich}
 
