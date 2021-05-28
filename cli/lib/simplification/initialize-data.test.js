@@ -11,7 +11,6 @@ describe("initializeData", () => {
 
     initializeData(vertices, triangles);
 
-    // TODO: make better test setup
     expect(vertices[0].q.data).toEqual([0, 0, 0, 0, 0, 0, 0, 1, 0, 0]);
     expect(triangles[0].normal).toEqual(vec3.fromValues(0, 0, 1));
   });

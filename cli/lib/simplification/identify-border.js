@@ -1,15 +1,14 @@
 // identify boundary of mesh by setting isBorder flag
-const identifyBorder = (vertices, triangles, references) => {
+const identifyBorder = (vertices, triangles) => {
   vertices.forEach((vertex) => {
     const vertexIndexToCountMap = new Map();
-    for (let i = 0; i < vertex.tCount; i++) {
-      const triangleIndex = references[vertex.tStart + i].triangleIndex;
+    vertex.triangles.forEach(({ triangleIndex }) => {
       const triangle = triangles[triangleIndex];
       triangle.vertices.forEach((vertexIndex) => {
         const count = vertexIndexToCountMap.get(vertexIndex) || 0;
         vertexIndexToCountMap.set(vertexIndex, count + 1);
       });
-    }
+    });
 
     // mark all borders
     vertexIndexToCountMap.forEach((count, vertexIndex) => {

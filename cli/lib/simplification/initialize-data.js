@@ -37,11 +37,9 @@ const initializeData = (vertices, triangles) => {
     calculateTriangleError(triangle, vertices);
   });
 
-  const references = buildReferenceList(vertices, triangles);
+  buildReferenceList(vertices, triangles);
 
-  identifyBorder(vertices, triangles, references);
-
-  return references;
+  identifyBorder(vertices, triangles);
 };
 
 export default initializeData;

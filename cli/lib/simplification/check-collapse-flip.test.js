@@ -16,7 +16,7 @@ describe("checkCollapseFlip", () => {
     const { flipped } = checkCollapseFlip(
       point,
       0,
-      { tStart: 0, tCount: 0 },
+      { triangles: [] },
       vertices,
       triangles,
       references
@@ -33,7 +33,7 @@ describe("checkCollapseFlip", () => {
     const { flipped } = checkCollapseFlip(
       point,
       0,
-      { tStart: 0, tCount: 1 },
+      vertices[0],
       vertices,
       triangles,
       references
