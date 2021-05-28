@@ -1,4 +1,4 @@
-# LODE Three
+# lode Three
 This helper module simplyfies loading lode-generated LOD artifacts in a Three.js application.
 
 ## Usage

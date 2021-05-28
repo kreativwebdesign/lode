@@ -19,13 +19,14 @@ In order to tune the levels, lode provides a UI to see the different artifacts i
 
 This repo contains different sub projects which have a uniform way of using them.
 
+### Prerequisites
+- yarn ~1.x
+- node > v16
+- Pandoc
+
 ### Node.js projects
 
 Run `yarn setup` in the root project (this folder) to setup all projects at once.
-
-#### Prerequisites
-- yarn ~1.x
-- node > v16
 
 #### Dev
 
