@@ -40,6 +40,8 @@ Eine Übersicht über die verschiedenen Kriterien kann in der Tabelle \ref{table
 
 \e{Visual Pop} bezeichnet das merkbare Austauschen zweier LOD Artefakte. Im optimalen Fall ist der Austausch zweier Artefakte nicht bemerkbar.
 
+\todo[inline]{drei Sektionen und zusammenfassung mit bezug auf tabelle}
+
 \subsection{Bestehende Systeme}
 \label{chap:existingSolutions}
 
@@ -48,6 +50,8 @@ Eine Übersicht über die verschiedenen Kriterien kann in der Tabelle \ref{table
 \paragraph{Unreal}
 
 \e{Unreal} verfügt sowohl über ein DLOD-System als auch über ein HLOD-System. Das HLOD-Tool zeichnet sich insbesondere dadurch aus, dass es die verschiedenen HLOD-Artefakte automatisch generieren kann. Dies ermöglicht es, komplexe Strukturen direkt innerhalb von \e{Unreal} zu kombinieren \cite{unrealProxyLod}. Der manuelle Aufwand für die Integration des Systems in eine Applikation kann so signifikant reduziert werden und macht den Einsatz eines LOD-Systems attraktiver.
+
+\todo[inline]{Mehr Infos zu Unreal \& Unity - Relevanz in der Praxis mit Bezug auf mobile entwicklung}
 
 \paragraph{Unity}
 
@@ -67,6 +71,7 @@ In Abbildung \ref{fig:unityDLODGroup} ist zusehen, wie innerhalb von Unity der �
 \section{Surface Simplification Algorithmus}
 \label{chap:surfaceSimplificationAlgorithm}
 Verschiedene Algorithmen wurden für die Implementierung in Betracht gezogen. Basierend auf den Erkenntnissen von D. Luebke wurde als Algorithmus \e{Surface Simplification using Quadric Error Metrics} gewählt \cite{luebkeAlgorithmComparison}. Der Algorithmus wurde von M. Garland 1997 definiert und basiert auf \e{Edge Collapses}. Der Ansatz überzeugt durch die Balance zwischen Performanz und Qualität \cite{surfaceSimplificationUsingQuadricErrorMetrices, surfaceSimplificationWithColorUsingQuadricErrorMetrices}.
+\todo[inline]{Mehr über Entscheidungsgrundlage - quadrics als weiterentwicklung von bereits bewährten, Laufzeitverhalten von Alternativen, Erweiterbarkeit. Erwähnen von Abgrenzung bzgl. Treuheit zu original}
 
 \subsection{Grobablauf}
 Der Algorithmus kann wie folgt zusammengefasst werden:
@@ -86,6 +91,8 @@ Beim Entfernen einer \e{Edge} werden die Fehlermetriken der zugehörigen \e{Vert
 
 \subsection{Referenzimplementation}
 Der gewählte Algorithmus wurde bereits mehrfach implementiert. Eine wiederverwendbare Implementation basierend auf einer formatunabhängigen Datenstruktur ist jedoch nicht vorhanden. Eine oft referenzierte Implementation ist diejenige von S. Forstmann, welche einige Optimierungen am ursprünglichen Algorithmus vornimmt, um optimale Performanz zu erhalten. Diese Optimierungen eignen sich hervorragend für eine webbasierte Implementation \cite{fastQuadricMeshSimplification}.
+
+\todo[inline]{Ansätze von Forstmann besonders sinnvoll für LOD Systeme da geometrische Approximation überschaubare Relevanz hat}
 
 \section{Pipeline Integration}
 Die Lösung soll in eine wiederverwendbare und konfigurierbare Pipeline integriert werden.
