@@ -82,6 +82,8 @@ Der Algorithmus kann wie folgt zusammengefasst werden:
   \item \e{Edge Collapses} mit geringstem Fehler, solange durchführen bis gewünschte Anzahl \e{Vertices} erreicht ist.
 \end{enumerate}
 
+\todo[inline]{etwas mehr Informationen zu Grobablauf}
+
 \subsection{Fehlermetrik}
 Die Fehlermetrik dient dazu, eine Heuristik zu definieren, welche den geometrischen Unterschied zwischen dem vereinfachten und dem originalen Modell beschreibt.
 Mithilfe der Fehlermetrik können anschliessend die Transformationen am Modell gemäss den kleinsten Kosten optimiert werden. Der Algorithmus funktioniert grundsätzlich unabhängig von der gewählten Fehlermetrik. So könnten verschiedene Metriken eingesetzt werden.
@@ -89,10 +91,12 @@ Die hier gewählte Metrik definiert den Fehler mithilfe einer symmetrischen $4\t
 
 Beim Entfernen einer \e{Edge} werden die Fehlermetriken der zugehörigen \e{Vertices} addiert.
 
+\todo[inline]{andere fehlermetriken, sinnbildlicher vergleich für verständnis}
+
 \subsection{Referenzimplementation}
 Der gewählte Algorithmus wurde bereits mehrfach implementiert. Eine wiederverwendbare Implementation basierend auf einer formatunabhängigen Datenstruktur ist jedoch nicht vorhanden. Eine oft referenzierte Implementation ist diejenige von S. Forstmann, welche einige Optimierungen am ursprünglichen Algorithmus vornimmt, um optimale Performanz zu erhalten. Diese Optimierungen eignen sich hervorragend für eine webbasierte Implementation \cite{fastQuadricMeshSimplification}.
 
-\todo[inline]{Ansätze von Forstmann besonders sinnvoll für LOD Systeme da geometrische Approximation überschaubare Relevanz hat}
+\todo[inline]{Ansätze von Forstmann besonders sinnvoll für LOD Systeme da geometrische Approximation überschaubare Relevanz hat, performanzvorteile?}
 
 \section{Pipeline Integration}
 Die Lösung soll in eine wiederverwendbare und konfigurierbare Pipeline integriert werden.
@@ -153,3 +157,5 @@ Wenn die unoptimierte Variante 60 \e{\gls{FPS}} erreicht oder gar übersteigt, i
 Das Ziel ist es dann, die LOD-Artefakte in dieselbe Szenerie zu integrieren und die \e{FPS} zu steigern. Ziel der Arbeit ist es, ein System zu entwickeln, das für Szenarien unter 60 \e{\gls{FPS}} diese erhöht und im Idealfall auf ebendiesen Wert hebt.
 Eine solche Szenerie soll grundsätzlich Modelle sowohl nah als auch in grosser Distanz zeigen. Ein Beispiel für eine solche Szenerie ist eine 3D-Welt, in der man sich durch offene Gelände bewegt.
 Im Vergleich zur Modellbetrachtung ist die Aussagekraft eines solchen Tests ausreichend, um einen Beleg für den positiven Nutzen des Systems zu haben. Sollte es nicht möglich sein, die \e{FPS} zu steigern, so liefert der Einsatz von LOD keinen nachweisbaren Nutzen.
+
+\todo[inline]{evt. kurze zusammenfassung weshalb Szeneriebetrachtung bevorzugt wird}
