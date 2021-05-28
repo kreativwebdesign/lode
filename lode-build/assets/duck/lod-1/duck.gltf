@@ -8,7 +8,7 @@
       "name": "data_1_1",
       "type": "VEC3",
       "componentType": 5126,
-      "count": 179,
+      "count": 176,
       "max": [
         96.0539779663086,
         164.436279296875,
@@ -27,9 +27,9 @@
       "name": "data_1_2",
       "type": "SCALAR",
       "componentType": 5123,
-      "count": 816,
+      "count": 825,
       "max": [
-        178
+        175
       ],
       "min": [
         0
@@ -43,14 +43,14 @@
     {
       "buffer": 0,
       "byteOffset": 0,
-      "byteLength": 2148,
+      "byteLength": 2112,
       "byteStride": 12,
       "target": 34962
     },
     {
       "buffer": 1,
       "byteOffset": 0,
-      "byteLength": 1632,
+      "byteLength": 1652,
       "target": 34963
     }
   ],
@@ -58,12 +58,12 @@
     {
       "name": "buffer_1_1",
       "uri": "duck_1.bin",
-      "byteLength": 2148
+      "byteLength": 2112
     },
     {
       "name": "buffer_1_2",
       "uri": "duck_2.bin",
-      "byteLength": 1632
+      "byteLength": 1652
     }
   ],
   "materials": [

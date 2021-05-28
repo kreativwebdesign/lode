@@ -8,10 +8,10 @@
       "name": "data_1_1",
       "type": "VEC3",
       "componentType": 5126,
-      "count": 15467,
+      "count": 15604,
       "max": [
-        318.77410888671875,
-        498.9609069824219,
+        317.983154296875,
+        498.5830993652344,
         749.0985717773438
       ],
       "min": [
@@ -27,9 +27,9 @@
       "name": "data_1_2",
       "type": "SCALAR",
       "componentType": 5123,
-      "count": 64443,
+      "count": 65571,
       "max": [
-        15466
+        15603
       ],
       "min": [
         0
@@ -42,15 +42,15 @@
       "name": "data_2_1",
       "type": "VEC3",
       "componentType": 5126,
-      "count": 4693,
+      "count": 4830,
       "max": [
-        787.0359497070312,
-        264.1466979980469,
-        402.7645263671875
+        786.6465454101562,
+        239.38194274902344,
+        426.8194885253906
       ],
       "min": [
         -789.7219848632812,
-        74.78697204589844,
+        74.41117858886719,
         -166.045654296875
       ],
       "normalized": false,
@@ -61,9 +61,9 @@
       "name": "data_2_2",
       "type": "SCALAR",
       "componentType": 5123,
-      "count": 16491,
+      "count": 17346,
       "max": [
-        4692
+        4829
       ],
       "min": [
         0
@@ -77,27 +77,27 @@
     {
       "buffer": 0,
       "byteOffset": 0,
-      "byteLength": 185604,
+      "byteLength": 187248,
       "byteStride": 12,
       "target": 34962
     },
     {
       "buffer": 1,
       "byteOffset": 0,
-      "byteLength": 128888,
+      "byteLength": 131144,
       "target": 34963
     },
     {
       "buffer": 2,
       "byteOffset": 0,
-      "byteLength": 56316,
+      "byteLength": 57960,
       "byteStride": 12,
       "target": 34962
     },
     {
       "buffer": 3,
       "byteOffset": 0,
-      "byteLength": 32984,
+      "byteLength": 34692,
       "target": 34963
     }
   ],
@@ -105,22 +105,22 @@
     {
       "name": "buffer_1_1",
       "uri": "airplane_1.bin",
-      "byteLength": 185604
+      "byteLength": 187248
     },
     {
       "name": "buffer_1_2",
       "uri": "airplane_2.bin",
-      "byteLength": 128888
+      "byteLength": 131144
     },
     {
       "name": "buffer_2_1",
       "uri": "airplane_3.bin",
-      "byteLength": 56316
+      "byteLength": 57960
     },
     {
       "name": "buffer_2_2",
       "uri": "airplane_4.bin",
-      "byteLength": 32984
+      "byteLength": 34692
     }
   ],
   "materials": [

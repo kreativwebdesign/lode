@@ -8,7 +8,7 @@
       "name": "data_1_1",
       "type": "VEC3",
       "componentType": 5126,
-      "count": 10050,
+      "count": 10027,
       "max": [
         69.50206756591797,
         57.407920837402344,
@@ -27,9 +27,9 @@
       "name": "data_1_2",
       "type": "SCALAR",
       "componentType": 5123,
-      "count": 34923,
+      "count": 35091,
       "max": [
-        10049
+        10026
       ],
       "min": [
         0
@@ -42,7 +42,7 @@
       "name": "data_2_1",
       "type": "VEC3",
       "componentType": 5126,
-      "count": 761,
+      "count": 760,
       "max": [
         28.464859008789062,
         47.56846618652344,
@@ -61,9 +61,9 @@
       "name": "data_2_2",
       "type": "SCALAR",
       "componentType": 5123,
-      "count": 3990,
+      "count": 4008,
       "max": [
-        760
+        759
       ],
       "min": [
         0
@@ -77,27 +77,27 @@
     {
       "buffer": 0,
       "byteOffset": 0,
-      "byteLength": 120600,
+      "byteLength": 120324,
       "byteStride": 12,
       "target": 34962
     },
     {
       "buffer": 1,
       "byteOffset": 0,
-      "byteLength": 69848,
+      "byteLength": 70184,
       "target": 34963
     },
     {
       "buffer": 2,
       "byteOffset": 0,
-      "byteLength": 9132,
+      "byteLength": 9120,
       "byteStride": 12,
       "target": 34962
     },
     {
       "buffer": 3,
       "byteOffset": 0,
-      "byteLength": 7980,
+      "byteLength": 8016,
       "target": 34963
     }
   ],
@@ -105,22 +105,22 @@
     {
       "name": "buffer_1_1",
       "uri": "human_1.bin",
-      "byteLength": 120600
+      "byteLength": 120324
     },
     {
       "name": "buffer_1_2",
       "uri": "human_2.bin",
-      "byteLength": 69848
+      "byteLength": 70184
     },
     {
       "name": "buffer_2_1",
       "uri": "human_3.bin",
-      "byteLength": 9132
+      "byteLength": 9120
     },
     {
       "name": "buffer_2_2",
       "uri": "human_4.bin",
-      "byteLength": 7980
+      "byteLength": 8016
     }
   ],
   "materials": [
