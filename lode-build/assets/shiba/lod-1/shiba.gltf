@@ -8,14 +8,14 @@
       "name": "data_1_1",
       "type": "VEC3",
       "componentType": 5126,
-      "count": 175,
+      "count": 178,
       "max": [
         0.44586387276649475,
-        0.2644140422344208,
+        0.3930450677871704,
         0.3735945522785187
       ],
       "min": [
-        -0.4629018008708954,
+        -0.44586387276649475,
         -1.0080478191375732,
         -1.3710510730743408
       ],
@@ -27,9 +27,9 @@
       "name": "data_1_2",
       "type": "SCALAR",
       "componentType": 5123,
-      "count": 786,
+      "count": 777,
       "max": [
-        174
+        177
       ],
       "min": [
         0
@@ -43,14 +43,14 @@
     {
       "buffer": 0,
       "byteOffset": 0,
-      "byteLength": 2100,
+      "byteLength": 2136,
       "byteStride": 12,
       "target": 34962
     },
     {
       "buffer": 1,
       "byteOffset": 0,
-      "byteLength": 1572,
+      "byteLength": 1556,
       "target": 34963
     }
   ],
@@ -58,12 +58,12 @@
     {
       "name": "buffer_1_1",
       "uri": "shiba_1.bin",
-      "byteLength": 2100
+      "byteLength": 2136
     },
     {
       "name": "buffer_1_2",
       "uri": "shiba_2.bin",
-      "byteLength": 1572
+      "byteLength": 1556
     }
   ],
   "materials": [
