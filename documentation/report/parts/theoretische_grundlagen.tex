@@ -217,7 +217,6 @@ In Abbildung \ref{fig:transformationVertexRemovalOriginal} wird der zentrale Ver
 
 \section{Grafikpipeline}
 \todo[inline]{erweitern mit detaillierteren Informationen}
-\todo[inline]{Draw Call erläutern}
 
 Die Grafikpipeline ist zuständig um eine definierte Szene auf einem Ausgabegerät zu visualisieren. Die verschiedenen Schritte werden im folgenden Abschnitt kurz erläutert. Es wird dabei ein simples 3D-Modell auf einem 2D-Display, wie zum Beispiel einem Monitor, visualisiert. Die verschiedenen Schritte sind in Abbildung \ref{fig:renderingPipelineOverview} aufgezeigt. Die verschiedenen Schritte werden idealerweise 60 Mal pro Sekunde wiederholt. Dies findet in der sogenannten \e{Render Loop} statt.
 
@@ -232,7 +231,7 @@ Die Grafikpipeline ist zuständig um eine definierte Szene auf einem Ausgabeger�
 Im ersten Schritt wird die Szenerie aufbereitet, Modelle in den Arbeitsspeicher geladen und Positionen und Rotationen der Modelle definiert. Diese Schritte werden auf der CPU durchgeführt. Ein Beispiel für das Aufsetzen eines einfachen \e{Triangles} bestehend aus drei \e{Vertices} ist in Abbildung \ref{fig:geometryDefinition} ersichtlich.
 
 \begin{figure}[H]
-\begin{lstlisting}
+\begin{lstlisting}[style=JavaScript]
 const vertices = new Float32Array([
   -1, 1, 0, // vertex 0
   -1, -1, 0, // vertex 1
@@ -246,6 +245,8 @@ const indices = new Uint16Array(
 \caption{Definition eines Triangles}
 \label{fig:geometryDefinition}
 \end{figure}
+
+Anschliessend werden die Daten in einem \e{Draw Call} an die GPU gesendet. Ein \e{Draw Call} wird pro Material pro \e{Mesh} benötigt. Es ist besser, weniger, dafür umfangreiche \e{Draw Calls} abzusetzen, als viele Kleinere. Dies kommt daher, dass die GPU grosse Datenmengen parallel prozessieren kann und sich die Unterbrechung durch einzelne Aufrufe negativer auswirkt.
 
 \paragraph{Vertexshader}
 Anschliessend werden die Daten an die GPU gesendet. Der erste Schritt ist der sogenannte Vertexshader. Auftrag des Vertexshaders ist es, die \e{Vertices} zu transformieren. Die Modelle werden ausgerichtet, die Beleuchtung bestimmt und die 2D-Projektion vorgenommen. Ein Beispiel für einen simplen Vertexhsader ist in Abbildung \ref{fig:vertexShader} ersichtlich.
@@ -312,7 +313,7 @@ Dies reduziert die Anzahl Polygone drastisch.
 \paragraph{Occlusion culling}
 Polygone bzw. Objekte, welche komplett von anderen Objekten überdeckt werden, werden bei dieser Variante nicht prozessiert.
 Dieser Prozess analysiert die Szene mittels einer virtuellen Kamera und merkt sich potenziell nicht sichtbare Objekte. Diese Daten werden dann zur Laufzeit von der Kamera verwendet, um zu bestimmen, ob ein Objekt prozessiert werden soll, oder nicht.
-Damit wird die Anzahl \fGlspl{Draw Call}{Ein Aufruf auf die GPU, um ein Objekt zu zeichnen. Ein \e{Draw Call} wird pro Material pro \e{Mesh} benötigt. Es ist besser, weniger, dafür umfangreiche \e{Draw Calls} abzusetzen, als viele Kleinere. Dies kommt daher, dass die GPU extrem schnell ist und sich die Unterbrechung durch einzelne Aufrufe viel negativer auswirkt} reduziert und somit die Performanz erhöht.
+Damit wird die Anzahl \e{Polygone}, welche gerendert werden müssen, reduziert.
 
 \paragraph{Backface culling}
 \label{chap:backfaceCulling}
