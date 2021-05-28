@@ -1,4 +1,4 @@
-# Demo
+# lode Demo
 
 This is a demo showing the benefits of using LODs.
 

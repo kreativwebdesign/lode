@@ -1,4 +1,4 @@
-# Benchmark
+# lode Benchmark
 
 The benchmark expects `../demo` project to be running.
 
