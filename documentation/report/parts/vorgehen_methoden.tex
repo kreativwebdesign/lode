@@ -18,7 +18,7 @@ Die verschiedenen LOD-Systeme sowie ihre Vor- und Nachteile werden in \autoref{c
 
 \e{Unreal} verfügt sowohl über ein DLOD-System als auch über ein HLOD-System. Das HLOD-Tool zeichnet sich insbesondere dadurch aus, dass es die verschiedenen HLOD-Artefakte automatisch generieren kann. Dies ermöglicht es, komplexe Strukturen direkt innerhalb von \e{Unreal} zu kombinieren \cite{unrealProxyLod}. Der manuelle Aufwand für die Integration des Systems in eine Applikation kann so signifikant reduziert werden und macht den Einsatz eines LOD-Systems attraktiver.
 
-\todo[inline]{Mehr Infos zu Unreal \& Unity - Relevanz in der Praxis mit Bezug auf mobile entwicklung}
+\todo[inline]{@marc Mehr Infos zu Unreal \& Unity - Relevanz in der Praxis mit Bezug auf mobile entwicklung}
 
 \paragraph{Unity}
 
@@ -91,7 +91,7 @@ Das diskrete LOD-System ist für Grafiker und Entwickler am einfachsten zu verwe
 \section{Surface Simplification Algorithmus}
 \label{chap:surfaceSimplificationAlgorithm}
 Verschiedene Algorithmen wurden für die Implementierung in Betracht gezogen. Basierend auf den Erkenntnissen von D. Luebke wurde als Algorithmus \e{Surface Simplification using Quadric Error Metrics} gewählt \cite{luebkeAlgorithmComparison}. Der Algorithmus wurde von M. Garland 1997 definiert und basiert auf \e{Edge Collapses}. Der Ansatz überzeugt durch die Balance zwischen Performanz und Qualität \cite{surfaceSimplificationUsingQuadricErrorMetrices, surfaceSimplificationWithColorUsingQuadricErrorMetrices}.
-\todo[inline]{Mehr über Entscheidungsgrundlage - quadrics als weiterentwicklung von bereits bewährten, Laufzeitverhalten von Alternativen, Erweiterbarkeit. Erwähnen von Abgrenzung bzgl. Treuheit zu original}
+\todo[inline]{@simon Mehr über Entscheidungsgrundlage - quadrics als weiterentwicklung von bereits bewährten, Laufzeitverhalten von Alternativen, Erweiterbarkeit. Erwähnen von Abgrenzung bzgl. Treuheit zu original}
 
 \subsection{Grobablauf}
 Der Algorithmus kann wie folgt zusammengefasst werden:
@@ -102,7 +102,7 @@ Der Algorithmus kann wie folgt zusammengefasst werden:
   \item \e{Edge Collapses} mit geringstem Fehler, solange durchführen bis gewünschte Anzahl \e{Vertices} erreicht ist.
 \end{enumerate}
 
-\todo[inline]{etwas mehr Informationen zu Grobablauf}
+\todo[inline]{@simon etwas mehr Informationen zu Grobablauf}
 
 \subsection{Fehlermetrik}
 Die Fehlermetrik dient dazu, eine Heuristik zu definieren, welche den geometrischen Unterschied zwischen dem vereinfachten und dem originalen Modell beschreibt.
@@ -111,12 +111,12 @@ Die hier gewählte Metrik definiert den Fehler mithilfe einer symmetrischen $4\t
 
 Beim Entfernen einer \e{Edge} werden die Fehlermetriken der zugehörigen \e{Vertices} addiert.
 
-\todo[inline]{andere fehlermetriken, sinnbildlicher vergleich für verständnis}
+\todo[inline]{@simon andere fehlermetriken, sinnbildlicher vergleich für verständnis}
 
 \subsection{Referenzimplementation}
 Der gewählte Algorithmus wurde bereits mehrfach implementiert. Eine wiederverwendbare Implementation basierend auf einer formatunabhängigen Datenstruktur ist jedoch nicht vorhanden. Eine oft referenzierte Implementation ist diejenige von S. Forstmann, welche einige Optimierungen am ursprünglichen Algorithmus vornimmt, um optimale Performanz zu erhalten. Diese Optimierungen eignen sich hervorragend für eine webbasierte Implementation \cite{fastQuadricMeshSimplification}.
 
-\todo[inline]{Ansätze von Forstmann besonders sinnvoll für LOD Systeme da geometrische Approximation überschaubare Relevanz hat, performanzvorteile?}
+\todo[inline]{@simon Ansätze von Forstmann besonders sinnvoll für LOD Systeme da geometrische Approximation überschaubare Relevanz hat, performanzvorteile?}
 
 \section{Pipeline Integration}
 Die Lösung soll in eine wiederverwendbare und konfigurierbare Pipeline integriert werden.
@@ -138,7 +138,7 @@ Die Auswirkungen eines Systems auf die Entwicklungszeit ist entscheidend dafür,
 
 Die Downloadzeit ist grundsätzlich linear abhängig von der Dateigrösse.
 Je grösser die Dateien, desto mehr Bandbreite wird verwendet. Dies hat direkte Auswirkungen auf die Zeit, bis eine Anwendung benutzt werden kann. Somit sollte die Downloadgrösse möglichst tief gehalten werden.
-Dank der heutigen Bandbreiten in der Schweiz ist dies für viele Anwendungsbereiche ein kleiner werdendes Problem. \todo[inline]{Quelle suchen}
+Dank der heutigen Bandbreiten in der Schweiz ist dies für viele Anwendungsbereiche ein kleiner werdendes Problem. \todo[inline]{@marc Quelle suchen}
 Zudem können Probleme in diesem Bereich teilweise kaschiert werden, indem man das Ladeverhalten optimiert. Häufig sind nicht alle Artefakte notwendig, um eine verwendbare Anwendung darzustellen und der Rest kann phasenweise nachgeladen werden.
 Ausserdem ist es auch möglich, Artefakte bereits vorzuladen.
 
@@ -178,4 +178,4 @@ Das Ziel ist es dann, die LOD-Artefakte in dieselbe Szenerie zu integrieren und 
 Eine solche Szenerie soll grundsätzlich Modelle sowohl nah als auch in grosser Distanz zeigen. Ein Beispiel für eine solche Szenerie ist eine 3D-Welt, in der man sich durch offene Gelände bewegt.
 Im Vergleich zur Modellbetrachtung ist die Aussagekraft eines solchen Tests ausreichend, um einen Beleg für den positiven Nutzen des Systems zu haben. Sollte es nicht möglich sein, die \e{FPS} zu steigern, so liefert der Einsatz von LOD keinen nachweisbaren Nutzen.
 
-\todo[inline]{evt. kurze zusammenfassung weshalb Szeneriebetrachtung bevorzugt wird}
+\todo[inline]{@simon evt. kurze zusammenfassung weshalb Szeneriebetrachtung bevorzugt wird}
