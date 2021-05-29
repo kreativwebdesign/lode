@@ -386,8 +386,8 @@ Im folgenden Abschnitt wird auf die Grundidee der verschiedenen Kategorien einge
 
 \paragraph{Vertex Dezimierung}
 Algorithmen dieser Kategorie entfernen jeweils einen Vertex und triangulieren das entstehende Loch neu.
-Eine weitere Möglichkeit ist das \e{Vertex Clustering}, hierbei wird ein Modell in verschiedene Gitterzellen aufgeteilt. Die Punkte innerhalb einer Gitterzelle werden dann in einen einzigen Punkt zusammengelegt. Die visuelle Annäherung dieser Algorithmen bei drastischen Vereinfachungen stellt jedoch häufig ein Problem dar für polygonale Modelle. Sogenannte \fglspl{Point Cloud}{Vertices im dreidimensionalen Raum ohne zugehörige \e{Triangle}} (in Abbildung \ref{fig:pointCloudTorus} exemplarisch zu sehen), wie sie bei 3D-Scannern eingesetzt werden, können mit solchen Algorithmen schnell vereinfacht werden.
-\todo[inline]{@simon point cloud refactoren: glossary in text, point cloud als punkte ohne fläche, delaunay?}
+Eine weitere Möglichkeit ist das \e{Vertex Clustering}, hierbei wird ein Modell in verschiedene Gitterzellen aufgeteilt. Die Punkte innerhalb einer Gitterzelle werden dann in einen einzigen Punkt zusammengelegt. Die visuelle Annäherung dieser Algorithmen bei drastischen Vereinfachungen stellt jedoch häufig ein Problem dar für polygonale Modelle. Sogenannte \e{Point Cloud} können mit solchen Algorithmen schnell vereinfacht werden.
+\e{Point Clouds} sind Vertices im dreidimensionalen Raum ohne zugehörige \e{Triangle}, also ohne Fläche (in Abbildung \ref{fig:pointCloudTorus} exemplarisch zu sehen). Diese Daten können das Resultat eines 3D-Scanners sein.
 
 \begin{figure}[H]
   \centering
