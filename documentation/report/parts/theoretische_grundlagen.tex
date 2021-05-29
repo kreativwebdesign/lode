@@ -359,9 +359,9 @@ Es gibt verschiedene Ansätze, 3D-Modelle mittels LOD zu vereinfachen. In diesem
 
 \paragraph{Diskrete LOD (DLOD)}
 Bei diskreten LOD werden für ein detailliertes Modell mehrere weniger detaillierte Modelle erstellt.
-Abhängig von der Distanz zum Betrachter wird das optimale Modell gewählt. Es sind hierfür nur minimale Anpassungen am \fgls{Scene Graph}{Objektorientierte Datenstruktur zur Beschreibung von 2D- oder 3D-Szenarien} notwendig da ausschliesslich ganze Modelle ausgetauscht werden.
+Abhängig von der Distanz zum Betrachter wird das optimale Modell gewählt. Es sind hierfür nur minimale Anpassungen am \fgls{Scene Graph}{Datenstruktur, welche die räumliche Anordnung der Modelle einer 3D-Szenerie beschreibt} notwendig da ausschliesslich ganze Modelle ausgetauscht werden.
 Ein Nachteil sind jedoch merkbare harte Grenzen. Der Benutzer stellt beim umhergehen in der Szene fest, wenn das Modell mit einer einfacheren Version ausgetauscht wird.
-Es ist zudem häufig nicht möglich grosse Modelle sinnvoll zu vereinfachen. So ist der Ansatz für Terrain ungeeignet. Ähnlicherweise ist es auch nicht möglich viele sehr kleine Modelle zu kombinieren da jedes Modell unabhängig ist.
+Es ist zudem häufig nicht möglich grössere Modelle sinnvoll zu vereinfachen. Grosse Modelle zeichnen sich dadurch aus, dass Teile davon nah sind, während andere Teile fern sind. Die nahen Teile des Modells sollten detailliert angezeigt werden, wohingegen die entfernten Elemente vereinfacht dargestellt werden sollen. So ist der Ansatz zum Beispiel für Terrain ungeeignet. Ähnlicherweise ist es auch nicht möglich viele sehr kleine Modelle zu kombinieren da jedes Modell unabhängig ist. Das Kombinieren von mehreren Modellen wird \e{Clustering} genannt.
 
 \paragraph{Kontinuierliche LOD (CLOD)}
 Im Gegensatz zu DLOD wird bei CLOD vereinfachende Veränderungen an einem Modell gespeichert.
@@ -369,14 +369,12 @@ Im Gegensatz zu DLOD wird bei CLOD vereinfachende Veränderungen an einem Modell
 Der Hauptunterschied zu DLOD besteht in den weichen Grenzen, so ist es signifikant weniger auffällig da zwischen den verschiedenen Auflösungen interpoliert werden kann.
 Der Hauptnachteil ist jedoch, dass diese Interpolation insbesondere Auswirkungen auf die Laufzeit Performanz der Applikation hat.
 Das Problem des \e{Clusterings} ist auch für diese Variante nicht gelöst.
-\todo[inline]{@simon clustering erläutern (bei DLOD?)}
 
 \paragraph{Hierarchische LOD (HLOD)}
-Bei HLOD werden mehrere Objekte in einen Cluster gruppiert.
-Diese Methode erlaubt es somit zum Beispiel Terrains optimal abzubilden. So werden Ausschnitte, welche nahe beim Benutzer sind mit hoher Auflösung dargestellt während weiter entferntere Teile der Umgebung mit weniger Details ausgestattet sind.
+Bei HLOD werden mehrere Objekte in einen \e{Cluster} gruppiert. Diese \e{Cluster} können mithilfe des \e{Scene Graphs} definiert werden.
+Hierarchische Systeme erlauben es somit zum Beispiel Terrains optimal abzubilden. So werden Ausschnitte, welche nahe beim Benutzer sind mit hoher Auflösung dargestellt während weiter entferntere Teile der Umgebung mit weniger Details ausgestattet sind.
 Zudem ist es möglich viele kleinere Objekte bei entsprechenden Distanzen zu kombinieren.
 Der Hauptnachteil liegt darin, dass hierfür signifikante Anpassungen am \e{Scene Graph} notwendig sind und für den Entwickler ein spürbarer Unterschied entstehen kann.
-\todo[inline]{@simon scene graph glossary (entry refactoren)}
 
 \subsection{Vergleich Algorithmen}
 \label{chap:lodAlgorithmComparison}
