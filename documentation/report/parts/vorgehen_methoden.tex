@@ -6,41 +6,8 @@
 % !TEX TS-program = pdflatexmk
 % !TEX encoding = UTF-8 Unicode
 % !TEX root = ../doc.tex
-\section{Vergleich LOD Systeme}
-Die verschiedenen LOD Systeme sowie ihre Vor- und Nachteile werden in \autoref{chap:differentLodApproaches} erläutert. In diesem Schritt wird erläutert, welche Art LOD-System in dieser Arbeit entwickelt werden soll.
-
-Die verschiedenen Ansätze unterscheiden sich in einigen Kriterien. Für den Einsatz in einer Webanwendungen ist die Gewichtung der Kriterien anders als für Desktopanwendungen, Konsolenspiele oder dergleichen.
-So hat die Dateigrösse der Modelle bei Webanwendungen einen grösseren Einfluss auf die gefühlte Performanz beim Endanwender. Insofern ist die Auswirkung der gewählten Strategie auf die Downloadgrösse ein wichtiges Kriterium. Für diskrete LOD muss für jedes Level ein separates Modell geladen werden. Dies kann die Downloadgrösse gegebenenfalls merkbar erhöhen. Bei kontinuierlichen LOD-Systemen muss das Modell die Unterschiede zwischen verschiedenen Levels persistieren. Mit einem für kontinuierliche LOD ausgelegten Algorithmus kann der benötigte Speicher reduziert werden, indem beim \e{Edge Collapse} nicht auf einen neuen optimalen \e{Vertex} reduziert wird, sondern von den beiden bestehenden \e{Vertices} der passendere gewählt wird. Trotzdem entsteht für jeden \e{Edge Collapse} ein zusätzlicher Speicheraufwand.
-Insbesondere unter Berücksichtigung der Tatsache, dass Laufzeitperformanz essenziell für Webanwendungen ist, wurde entschieden nicht auf kontinuierliche LOD-Systeme zu setzen.
-Zudem wurde entschieden kein hierarchisches LOD-System zu entwickeln, um die Integration des Tools für die Entwickler einer Webanwendung möglichst einfach zu gestalten.
-Das diskrete LOD-System ist für Grafiker und Entwickler am einfachsten zu verwenden und deckt somit auch die breiteste Benutzerbasis und die meisten Anwendungsfälle ab. Aufgrund dessen, wird im Rahmen dieser Arbeit ein Algorithmus dieses Systems entwickelt und in den Entwicklungsprozess integriert.
-Eine Übersicht über die verschiedenen Kriterien kann in der Tabelle \ref{table:lodSystemComparison} gefunden werden.
-
-\begin{table}[H]
-  \centering
-  \begin{tabular}{||p{8cm} c c c||}
-  \hline
-  \textbf{Technische Auswirkungen} & DLOD & CLOD & HLOD \\
-  \hline
-  Auswirkung auf Downloadgrösse & mittel & mittel & mittel \\
-  Auswirkung auf Laufzeitverhalten & klein & mittel & mittel \\
-  Auswirkung auf \e{Scene Graph} & lokal & lokal & global \\
-  "Visual Pop" vermeidbar & nein & ja & ja \\
-  Integration in bestehende Arbeitsabläufe & einfach & einfach & umständlich \\
-  \hline
-  \textbf{Möglichkeiten} &  &  &  \\
-  \hline
-  Drastische Reduktion von Polygonen & ja & ja & ja \\
-  Clustering möglich & nein & nein & ja \\
-  \hline
-  \end{tabular}
-  \caption{Übersicht Merkmale der verschiedenen LOD Systeme}
-  \label{table:lodSystemComparison}
-\end{table}
-
-\e{Visual Pop} bezeichnet das merkbare Austauschen zweier LOD Artefakte. Im optimalen Fall ist der Austausch zweier Artefakte nicht bemerkbar.
-
-\todo[inline]{drei Sektionen und zusammenfassung mit bezug auf tabelle}
+\section{Vergleich LOD-Systeme}
+Die verschiedenen LOD-Systeme sowie ihre Vor- und Nachteile werden in \autoref{chap:differentLodApproaches} erläutert. In diesem Schritt wird erläutert, welche Art LOD-System es bereits gibt und welches in dieser Arbeit entwickelt werden soll.
 
 \subsection{Bestehende Systeme}
 \label{chap:existingSolutions}
@@ -67,6 +34,56 @@ In Abbildung \ref{fig:unityDLODGroup} ist zusehen, wie innerhalb von Unity der �
   \caption{'\e{LOD Group}'-Komponente in Unity für die Konfiguration der Übergänge zwischen LOD-Artefakten}
   \label{fig:unityDLODGroup}
 \end{figure}
+
+\subsection{Kriterien}
+
+Die verschiedenen Ansätze unterscheiden sich in einigen Kriterien. Für den Einsatz in einer Webanwendungen ist die Gewichtung der Kriterien anders als für Desktopanwendungen, Konsolenspiele oder dergleichen.
+So hat die Dateigrösse der Modelle bei Webanwendungen einen grösseren Einfluss auf die gefühlte Performanz beim Endanwender. Insofern ist die Auswirkung der gewählten Strategie auf die Downloadgrösse ein wichtiges Kriterium.
+
+\subsection{Vergleich Downloadgrösse}
+
+Für diskrete LOD muss für jedes Level ein separates Modell geladen werden. Dies kann die Downloadgrösse gegebenenfalls merkbar erhöhen. Bei kontinuierlichen LOD-Systemen muss das Modell die Unterschiede zwischen verschiedenen Levels persistieren. Mit einem für kontinuierliche LOD ausgelegten Algorithmus kann der benötigte Speicher reduziert werden, indem beim \e{Edge Collapse} nicht auf einen neuen optimalen \e{Vertex} reduziert wird, sondern von den beiden bestehenden \e{Vertices} der passendere gewählt wird. Trotzdem entsteht für jeden \e{Edge Collapse} ein zusätzlicher Speicheraufwand.
+
+\subsection{Auswirkung auf Laufzeitverhalten}
+
+Der Einsatz von LOD-Systemen hat Auswirkungen auf das Laufzeitverhalten, das Ausmass variiert jedoch. Das Laufzeitverhalten umschreibt hier primär die Arbeit, welche auf der \e{CPU} verrichtet werden muss um die Szenerie adäquat vorzubereiten.
+Insbesondere unter Berücksichtigung der Tatsache, dass Laufzeitperformanz essenziell für Webanwendungen ist, wurde entschieden nicht auf kontinuierliche LOD-Systeme zu setzen.
+
+\subsection{Auswirkung auf Scene Graph}
+Beim Einsatz von LOD-Systemen sind Anpassungen am \gls{Scene Graph} notwendig. Es wird grundsätzlich zwischen lokalen und globalen Anpassungen unterschieden. Bei lokalen Anpassungen wird lediglich der Graph des vereinfachten Modells angepasst, der Rest der Szenerie bleibt unberührt. Bei globalen Anpassungen müssen weiter oben im \e{Scene Graph} Anpassungen gemacht werden.
+
+\subsection{Visual Pop}
+\e{Visual Pop} bezeichnet das merkbare Austauschen zweier LOD Artefakte. Im optimalen Fall ist der Austausch zweier Artefakte nicht bemerkbar. Bei kontinuierlichen Systemen ist es möglich indem die unterschiedlichen Anpassungen graduell durchgeführt werden. Aufgrund der Art des Systems ist dies vergleichbar einfach möglich. Bei diskreten LOD-Systemen gestaltet sich das etwas aufwändiger. Eine Möglichkeit wird in \autoref{chap:fading} erläutert. Wenn die Auswechslung in ausreichender Entfernung vorgenommen werden kann, dann ist \e{Visual Popping} weniger spürbar. 
+
+\subsection{Integration in bestehende Arbeitsabläufe}
+Zudem wurde entschieden kein hierarchisches LOD-System zu entwickeln, um die Integration des Tools für die Entwickler einer Webanwendung möglichst einfach zu gestalten.
+
+\subsection{Entscheidung}
+Eine Übersicht über die verschiedenen Kriterien kann in der Tabelle \ref{table:lodSystemComparison} gefunden werden.
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{||p{8cm} c c c||}
+  \hline
+  \textbf{Technische Auswirkungen} & DLOD & CLOD & HLOD \\
+  \hline
+  Auswirkung auf Downloadgrösse & mittel & mittel & mittel \\
+  Auswirkung auf Laufzeitverhalten & klein & mittel & mittel \\
+  Auswirkung auf \e{Scene Graph} & lokal & lokal & global \\
+  \e{Visual Pop} vermeidbar & umständlich & ja & ja \\
+  Integration in bestehende Arbeitsabläufe & einfach & einfach & umständlich \\
+  \hline
+  \textbf{Möglichkeiten} &  &  &  \\
+  \hline
+  Drastische Reduktion von Polygonen & ja & ja & ja \\
+  Clustering möglich & nein & nein & ja \\
+  \hline
+  \end{tabular}
+  \caption{Übersicht Merkmale der verschiedenen LOD Systeme}
+  \label{table:lodSystemComparison}
+\end{table}
+
+Das diskrete LOD-System ist für Grafiker und Entwickler am einfachsten zu verwenden und deckt somit auch die breiteste Benutzerbasis und die meisten Anwendungsfälle ab. Aufgrund dessen, wird im Rahmen dieser Arbeit ein Tool für dieses System entwickelt und in den Entwicklungsprozess integriert.
 
 \section{Surface Simplification Algorithmus}
 \label{chap:surfaceSimplificationAlgorithm}
