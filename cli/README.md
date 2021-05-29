@@ -52,7 +52,7 @@ Run `npx @kreativwebdesign/lode-cli` or `npx @kreativwebdesign/lode-cli run` to 
 | `-c`, `--config` | Path to config file      | `./lode-cli.config.json` |
 | `-s`, `--source` | Source glob pattern      | `**/*.gltf`              |
 | `-o`, `--outputFoldername` | Outputfoldername | `lode-build`           |
-| `-w`, `--watch`  | Watch source files and start lode API server on port 3001       | `false`                  |
+| `-w`, `--watch`  | Watch source files and start lode server on port 3001       | `false`                  |
 | `-h`, `--help`   | Display help for command |                          |
 
 ### help
@@ -74,4 +74,7 @@ Run `yarn setup` to get up and running
 ### Publish
 
 - Prepare versions and ensure clean setup state
+- `yarn build`
 - `npm publish --access public`
+
+> Currently publish workflow is only tested on Mac.

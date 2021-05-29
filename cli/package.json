@@ -1,6 +1,6 @@
 {
   "name": "@kreativwebdesign/lode-cli",
-  "version": "0.0.1-alpha.4",
+  "version": "0.0.1-alpha.7",
   "main": "index.js",
   "bin": {
     "lode-cli": "./index.js"
@@ -16,7 +16,8 @@
   "scripts": {
     "start": "node index.js",
     "test": "jest",
-    "setup": "yarn install"
+    "setup": "yarn install",
+    "build": "rm -r ./lode-ui-build && cd ../lode-ui && yarn build && cp -R build ../cli/lode-ui-build"
   },
   "dependencies": {
     "@gltf-transform/core": "^0.9.9",
