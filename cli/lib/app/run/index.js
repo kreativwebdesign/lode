@@ -33,7 +33,7 @@ const run = async (commanderOptions) => {
   buildManifest(opts.outputFoldername, sourceFiles);
 
   if (opts.watch) {
-    print.info("watching files and running lode api server on port 3001...");
+    print.info("watching files and running lode server on port 3001...");
 
     const { pubSub } = startServer(opts);
 

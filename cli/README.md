@@ -74,4 +74,7 @@ Run `yarn setup` to get up and running
 ### Publish
 
 - Prepare versions and ensure clean setup state
+- `yarn build`
 - `npm publish --access public`
+
+> Currently publish workflow is only tested on Mac.

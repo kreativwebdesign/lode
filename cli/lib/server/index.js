@@ -5,7 +5,11 @@ import { App } from "@tinyhttp/app";
 import { json } from "milliparsec";
 import { cors } from "@tinyhttp/cors";
 import { readFile, writeFile } from "../helper/files.js";
-import { CONFIG_FILENAME, MANIFEST_FILENAME } from "../constants.js";
+import {
+  CONFIG_FILENAME,
+  LODE_UI_PATH,
+  MANIFEST_FILENAME,
+} from "../constants.js";
 import buildManifest from "../app/run/buildManifest.js";
 
 function createPubSub() {
@@ -34,9 +38,6 @@ export const startServer = (opts) => {
     .use(cors({ origin: "*", allowedHeaders: "*" }))
     .options("*", cors())
     .use("/assets", serveStatic(opts.outputFoldername, { maxAge: 0 }))
-    .get("/", (_, res) => {
-      res.send("<h1>lode API is running</h1>");
-    })
     .get("/manifest", (req, res) => {
       const file = readFile(
         path.join(opts.outputFoldername, MANIFEST_FILENAME)
@@ -67,6 +68,8 @@ export const startServer = (opts) => {
 
       res.status(200).send(manifest);
     })
+    .use("/", serveStatic(LODE_UI_PATH))
+    .use("/model", serveStatic(LODE_UI_PATH))
     .listen(3001);
 
   return { app, pubSub };
