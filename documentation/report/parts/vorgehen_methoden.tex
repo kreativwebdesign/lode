@@ -52,11 +52,14 @@ Insbesondere unter Berücksichtigung der Tatsache, dass Laufzeitperformanz essen
 \subsection{Auswirkung auf Scene Graph}
 Beim Einsatz von LOD-Systemen sind Anpassungen am \gls{Scene Graph} notwendig. Es wird grundsätzlich zwischen lokalen und globalen Anpassungen unterschieden. Bei lokalen Anpassungen wird lediglich der Graph des vereinfachten Modells angepasst, der Rest der Szenerie bleibt unberührt. Bei globalen Anpassungen müssen weiter oben im \e{Scene Graph} Anpassungen gemacht werden.
 
+\subsection{Integration in bestehende Arbeitsabläufe}
+
+Bei diskreten und kontinuierlichen LOD-Systemen ist es möglich marginal in die Arbeitsabläufe einzugreifen. Dies bedeutet, dass keine signifikanten Anpassungen an den Abläufen vorgenommen werden müssen, sondern dass es möglich ist die Abläufe zu erweitern.
+Bei hierarchischen Systemen ist dies nicht gegeben, da es die Kombination mehrerer Modelle vorsieht und somit mehr Konfigurationsaufwand notwendig ist.
+Deshalb wurde entschieden kein hierarchisches LOD-System zu entwickeln, um die Integration des Tools für die Entwickler einer Webanwendung möglichst einfach zu gestalten.
+
 \subsection{Visual Pop}
 \e{Visual Pop} bezeichnet das merkbare Austauschen zweier LOD Artefakte. Im optimalen Fall ist der Austausch zweier Artefakte nicht bemerkbar. Bei kontinuierlichen Systemen ist es möglich indem die unterschiedlichen Anpassungen graduell durchgeführt werden. Aufgrund der Art des Systems ist dies vergleichbar einfach möglich. Bei diskreten LOD-Systemen gestaltet sich das etwas aufwändiger. Eine Möglichkeit wird in \autoref{chap:fading} erläutert. Wenn die Auswechslung in ausreichender Entfernung vorgenommen werden kann, dann ist \e{Visual Popping} weniger spürbar. 
-
-\subsection{Integration in bestehende Arbeitsabläufe}
-Zudem wurde entschieden kein hierarchisches LOD-System zu entwickeln, um die Integration des Tools für die Entwickler einer Webanwendung möglichst einfach zu gestalten.
 
 \subsection{Entscheidung}
 Eine Übersicht über die verschiedenen Kriterien kann in der Tabelle \ref{table:lodSystemComparison} gefunden werden.
@@ -70,8 +73,8 @@ Eine Übersicht über die verschiedenen Kriterien kann in der Tabelle \ref{table
   Auswirkung auf Downloadgrösse & mittel & mittel & mittel \\
   Auswirkung auf Laufzeitverhalten & klein & mittel & mittel \\
   Auswirkung auf \e{Scene Graph} & lokal & lokal & global \\
-  \e{Visual Pop} vermeidbar & umständlich & ja & ja \\
   Integration in bestehende Arbeitsabläufe & einfach & einfach & umständlich \\
+  \e{Visual Pop} vermeidbar & umständlich & ja & ja \\
   \hline
   \textbf{Möglichkeiten} &  &  &  \\
   \hline
