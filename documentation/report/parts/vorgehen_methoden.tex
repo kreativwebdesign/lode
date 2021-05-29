@@ -97,12 +97,12 @@ Verschiedene Algorithmen wurden für die Implementierung in Betracht gezogen. Ba
 Der Algorithmus kann wie folgt zusammengefasst werden:
 
 \begin{enumerate}
-  \item Fehlermetrik für alle \e{Vertices} berechnen.
+  \item Initiale Fehlermetrik für alle \e{Vertices} berechnen.
   \item Optionen für \e{Edge Collapse} markieren.
   \item \e{Edge Collapses} mit geringstem Fehler, solange durchführen bis gewünschte Anzahl \e{Vertices} erreicht ist.
 \end{enumerate}
 
-\todo[inline]{@simon etwas mehr Informationen zu Grobablauf}
+Die verschiedenen Schritte werden im folgenden ausführlicher beschrieben.
 
 \subsection{Fehlermetrik}
 Die Fehlermetrik dient dazu, eine Heuristik zu definieren, welche den geometrischen Unterschied zwischen dem vereinfachten und dem originalen Modell beschreibt.
@@ -113,10 +113,17 @@ Beim Entfernen einer \e{Edge} werden die Fehlermetriken der zugehörigen \e{Vert
 
 \todo[inline]{@simon andere fehlermetriken, sinnbildlicher vergleich für verständnis}
 
+\subsection{Optionen für Edge Collapse}
+
+Die offensichtlichen Optionen für einen \e{Edge Collapse} sind die \e{Edges} aller \e{Triangles}. Wird eine \e{Edge} entfernt, so wird die Fehlermetrik der beiden \e{Vertices} kombiniert.
+Es ist zudem möglich, \e{Vertices}, welche nahe zusammen sind ebenfalls als Optionen für \e{Edge Collapse} zu markieren. Hierdurch können unabhängige Teile des Modells kombiniert werden. Dies kann die Oberfläche jedoch stärker verändern und ist nicht in jedem Anwendungsfall gewünscht.
+
+\subsection{Edge Collapses durchführen}
+
+Die \e{Edge Collapses} mit dem geringsten Fehler werden iterativ durchgeführt. Die Fehlermetriken der beiden \e{Vertices} werden addiert und bilden di Fehlermetrik des neuen \e{Vertex}. Bei Garland werden die Optionen sortiert. So kann sichergestellt werden, dass immer die mathematisch korrekte Reihenfolge der Operationen durchgeführt wird. Grundsätzlich ist es jedoch auch möglich die Optimierungen ohne sortieren durchzuführen, wie die Referenzimplementation aufzeigt. Der Vorteil ohne Sortierung liegt im Geschwindigkeitsgewinn und der Nachteil der Präzision ist vernachlässigbar.
+
 \subsection{Referenzimplementation}
 Der gewählte Algorithmus wurde bereits mehrfach implementiert. Eine wiederverwendbare Implementation basierend auf einer formatunabhängigen Datenstruktur ist jedoch nicht vorhanden. Eine oft referenzierte Implementation ist diejenige von S. Forstmann, welche einige Optimierungen am ursprünglichen Algorithmus vornimmt, um optimale Performanz zu erhalten. Diese Optimierungen eignen sich hervorragend für eine webbasierte Implementation \cite{fastQuadricMeshSimplification}.
-
-\todo[inline]{@simon Ansätze von Forstmann besonders sinnvoll für LOD Systeme da geometrische Approximation überschaubare Relevanz hat, performanzvorteile?}
 
 \section{Pipeline Integration}
 Die Lösung soll in eine wiederverwendbare und konfigurierbare Pipeline integriert werden.
