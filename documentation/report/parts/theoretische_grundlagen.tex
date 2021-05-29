@@ -322,9 +322,8 @@ Alle Polygone, welche in die andere Richtung zeigen werden nicht gezeichnet.
 Dies ist nicht immer gewünscht, für die meisten Anwendungen ist diese Optimierung jedoch aktiviert.
 Als Grundlage für die Berechnung werden die \e{Normals} der \e{Vertices} berücksichtigt.
 
-\paragraph{Imposters}
-Vergleichbar zu LOD-Artefakten sind sogenannte \e{Imposters}. Dabei wird ein \e{Quad} mit verschiedenen Texturen verwendet. Für jede mögliche Position des Modells wird eine Textur generiert. Das \e{Quad} wird in Richtung Kamera ausgerichtet und abhängig von der Rotation des Modells die geeignete Textur verwendet. Geometrisch kann ein Modell so auf ein absolutes Minimum reduziert werden.
-\todo[inline]{@simon nachteile -> beleuchtung}
+\paragraph{Impostors}
+Vergleichbar zu LOD-Artefakten sind sogenannte \e{Impostors}. Dabei wird ein \e{Quad} mit verschiedenen Texturen verwendet. Für jede mögliche Position des Modells wird eine Textur generiert. Das \e{Quad} wird in Richtung Kamera ausgerichtet und abhängig von der Rotation des Modells die geeignete Textur verwendet. Geometrisch kann ein Modell so auf ein absolutes Minimum reduziert werden. Schwierigkeiten dieser Methode sind Modelle, welche spezielle Materialien aufweisen. So ist zum Beispiel das Abbilden von Reflektionen, wie dies bei metallischen Oberflächen der Fall ist, eine Herausforderung \cite{usingImpostors}.
 
 \paragraph{Weitere Ansätze}
 Weitere Ansätze zur Optimierung der Performanz für sehr spezifische Anwendungsfälle werden kurz erwähnt, jedoch nicht weiter erörtert da sie für viele Anwendungen nicht praktikabel sind.
