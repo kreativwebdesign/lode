@@ -15,9 +15,58 @@ Der Kern der Arbeit stellt die LOD-Pipeline, \e{lode} genannt, dar. Dieses Tool 
 \subsection{Aktueller Workflow}
 
 Der übliche Ablauf für das Generieren von LOD-Artefakten ist wie folgt:
-Für ein gegebenes Modell werden innerhalb vom Modellierungstool wie zum Beispiel Blender bestimmte LOD-Stufen von Hand generiert. Anschliessend werden die verschiedenen Stufen exportiert und manuell in die Applikation integriert. \e{Fine Tuning} erfordert sowohl Anpassungen an den Modellen als auch im Code. Erst muss im Modellierungstool die Anpassung manuell vorgenommen, dann neu in die Applikation geladen und dort neu geprüft werden. Diese Schritte können sich mehrfach wiederholen, was mühselig und teuer ist.
+Für ein gegebenes Modell werden innerhalb vom Modellierungstool wie zum Beispiel Blender bestimmte LOD-Stufen von Hand generiert. Dies kann von Hannd selber gemacht werden oder mit vom Modellierungstool zur Verfügung gestellten Funktionen. In Abbildung \ref{fig:manualLodGenerationInBlender} wurden basierend auf dem Original \ref{fig:manualLodGenerationInBlenderOriginal} zwei weiter LOD-Artefakte mittels einem \e{Modifier} erstellt.
 
-\todo[inline]{@marc Step by step anleitung? (von blender zu justierung in Three.js)}
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}{.4\textwidth}
+    \centering
+    \includegraphics[width=1\linewidth]{resultate/aktueller-workflow/original.png}
+    \caption{Original}
+    \label{fig:manualLodGenerationInBlenderOriginal}
+  \end{subfigure}
+  \begin{subfigure}{.4\textwidth}
+    \centering
+    \includegraphics[width=1\linewidth]{resultate/aktueller-workflow/lod-1.png}
+    \caption{LOD-Stufe 1 (0.0625\% Polys)}
+  \end{subfigure}
+  \begin{subfigure}{.4\textwidth}
+    \centering
+    \includegraphics[width=1\linewidth]{resultate/aktueller-workflow/lod-2.png}
+    \caption{LOD-Stufe 2 (0.03125\% Polys)}
+  \end{subfigure}
+  \caption{Manuelles erstellen von LOD-Artefakten in Blender}
+  \label{fig:manualLodGenerationInBlender}
+\end{figure}
+
+Anschliessend werden die verschiedenen Stufen exportiert und manuell in die Applikation integriert. Dafür werden diese direkt im Projekt gespeichert und ins Versionkontrollsystem (zum Beispiel \e{Git}) hinzugefügt.
+
+Diese Artefakte müssen nun im Code einzeln geladen und in die Szenerie hinzugefügt werden. Wie in Codeausschnitt \ref{code:threejsManualLodUsage} im Beispiel von \e{Three.js} zu sehen ist, muss jedes Level manuel geladen und konfiguriert werden.
+\begin{figure}[H]
+  \begin{lstlisting}[style=JavaScript]
+  import * as Three from "three";
+
+  const loader = new Three.GLTFLoader();
+  const lod = new THREE.LOD();
+  const scene = new THREE.Scene();
+
+  loader.load('path/to/duck-original.gltf', (artifact) => {
+    lod.addLevel(artifact.scene, 0);
+  });
+  loader.load('path/to/duck-lod1.gltf', (artifact) => {
+    lod.addLevel(artifact.scene, 150);
+  });
+  loader.load('path/to/duck-lod1.gltf', (artifact) => {
+    lod.addLevel(artifact.scene, 300);
+  });
+
+  scene.add(lod)
+  \end{lstlisting}
+  \caption{Beispielcode zur manuellen Integration der LOD-Artefakte in \e{Three.js}}
+  \label{code:threejsManualLodUsage}
+\end{figure}
+
+\e{Fine Tuning} erfordert sowohl Anpassungen an den Modellen als auch im Code. Erst muss im Modellierungstool die Anpassung manuell vorgenommen, dann neu in die Applikation geladen und dort neu geprüft werden. Diese Schritte können sich mehrfach wiederholen, was mühselig und zeitintensiv ist.
 
 \subsection{lode Pipeline}
 
