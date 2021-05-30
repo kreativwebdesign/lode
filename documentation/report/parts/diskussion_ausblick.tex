@@ -26,17 +26,26 @@ Der Algorithmus kann für eine Vielzahl von verschiedenen Modellen angewendet we
 
 \subsection{Abgrenzung}
 
-Ein LOD-System kann sinnvoll sein, in einigen Anwendungsgebieten bringt es jedoch nicht den gewünschten Zweck. Wird ein Modell nur auf einer Detailstufe angezeigt, so ist der Einsatz von LOD abzuraten. Sind die Modelle bereits sehr simpel, wie bei \e{Low-Poly}-Modellen – in Abbildung \ref{fig:lowPolyExample} zu sehen – sind die zusätzlichen Vereinfachungen nur von geringem Nutzen.
+Ein LOD-System kann sinnvoll sein, in einigen Anwendungsgebieten bringt es jedoch nicht den gewünschten Zweck. Wird ein Modell nur auf einer Detailstufe angezeigt, so ist der Einsatz von LOD abzuraten. Sind die Modelle bereits sehr simpel, wie bei \e{Low-Poly}-Modellen – in Abbildung \ref{fig:lowPolyExample} zu sehen – sind die zusätzlichen Vereinfachungen nur von geringem Nutzen, da, wie in Abbildung \ref{fig:lodModelSimplified} zu sehen ist, das mittels Algorithmus simplifizierte Modell geometrisch sehr ähnlich ist.
 So muss der Einsatz von LOD-Artefakten für jeden Anwendungsfall separat abgewogen werden. Ein Vorteil von \e{lode} ist die Einfachheit der Integration. So ist es möglich, mit wenig Aufwand den groben Nutzen für ein spezifisches Anwendungsbeispiel abschätzen zu können, ohne dass viel Entwicklungszeit dafür aufgewendet werden muss.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\columnwidth]{diskussion/low-poly-example.png}
-  \caption{Beispiel \e{Low-Poly}-Modell}
-  \label{fig:lowPolyExample}
+  \begin{subfigure}{.5\textwidth}
+    \centering
+    \includegraphics[width=0.4\columnwidth]{diskussion/low-poly-example.png}
+    \caption{Beispiel \e{Low-Poly}-Modell}
+    \label{fig:lowPolyExample}
+  \end{subfigure}%
+  \begin{subfigure}{.5\textwidth}
+    \centering
+    \includegraphics[width=0.4\columnwidth]{resultate/lod-simplified.png}
+    \caption{Beispiel Resultat nach LOD-Simplifizierung}
+    \label{fig:lodModelSimplified}
+  \end{subfigure}
+  \caption{Vergleich zwischen Low-Poly und LOD-simplifiziertem Model}
+  \label{fig:comparisonLowPolyAndLOD}
 \end{figure}
-
-\todo[inline]{@marc Direktvergleich mit Ente}
 
 \section{Mögliche Erweiterungen}
 Die Möglichkeiten für Erweiterungen zu \e{lode} sind sehr umfangreich. In diesem Abschnitt wird auf einige Möglichkeiten eingegangen.
