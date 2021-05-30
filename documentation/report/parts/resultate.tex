@@ -265,6 +265,31 @@ Anschliessend werden die neuen Informationen in \e{Buffer} gespeichert. Als Beis
   \caption{Erstellen des \e{Buffers} für die \e{Vertices}}
   \label{code:bufferCreation}
 \end{figure}
+
+\subsubsection{Iteration}
+
+Wie in der Referenzimplementation wird auf einen \e{Threshold-Ansatz} gesetzt. Der \e{Threshold} (zu Deutsch Schwelle) ist ein Wert, welcher welche Fehlertoleranz walten soll. Umso tiefer der \e{Threshold}, desto mehr \e{Edge Collapses} werden durchgeführt. Der \e{Threshold} wird kontinuierlich erhöht, so werden immer weitere \e{Triangles} entfernt. Der gewählte \e{Threshold} basiert direkt auf der Referenzimplementation \cite{fastQuadricMeshSimplification}. Ein Ausschnitt aus dem Quellcode ist in \ref{code:thresholdIteration} ersichtlich. Gewisse Teile wurden für die Übersicht entfernt. Die Variable \e{Triangles} beinhaltet alle \e{Triangles} eines \e{Primtives}. In gewissen Fällen ist es möglich, dass eine ausreichende Vereinfachung nicht in absehbarer Zeit generiert werden kann, dies ist abhängig von den \e{maxIterations}.
+
+\begin{figure}[H]
+  \begin{lstlisting}[style=JavaScript]
+for (let iteration = 0; iteration < maxIterations; iteration++) {
+  // check if targetTriangles are reached
+  if (initialTriangleCount - deletedTriangles <= targetTriangles) {
+    break;
+  }
+
+  const threshold = 0.000000001 * Math.pow(iteration + 3, aggressiveness);
+  triangles.forEach((triangle) => {
+    if (triangle.error[3] > threshold) return;
+    // proceed with edge collapse operation
+    // ...
+  });
+}
+  \end{lstlisting}
+  \caption{Iteration für Vereinfachung}
+  \label{code:thresholdIteration}
+\end{figure}
+
 \section{Benchmark}
 
 Das Ziel des Benchmarks ist der Vergleich einer Version ohne Einsatz von LOD und einer Umgebung, welche LODs einsetzt. Um eine möglichst praxisnahe Aussage treffen zu können, wird hierfür eine Demo-Szenerie verwendet, welche einer echten Anwendung so nah wie möglich kommt. Somit wird gewährleistet, dass es nicht nur in der Theorie einen Nutzen für LODs gibt, sondern dieser in der Praxis vorhanden ist.
