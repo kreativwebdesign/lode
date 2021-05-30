@@ -52,7 +52,8 @@ $$ P =
 \end{bmatrix}
 $$
 
-Abbildung \ref{fig:modelSimpleTriangulation} zeigt die Vereinfachung eines \e{Quads} in zwei \e{Triangle}.
+Abbildung \ref{fig:modelSimpleTriangulation} zeigt die Vereinfachung eines \e{Quads} in zwei \e{Triangle}. Die Verbindung zwischen zwei \e{Vertices} ist eine sogenannte \e{Edge} (Kante).
+Verbindet man die Punkte eines Polygons und füllt die Fläche, ergibt sich schlussendlich ein \e{Face} (Fläche).
 
 \begin{figure}[H]
   \centering
@@ -70,13 +71,12 @@ Abbildung \ref{fig:modelSimpleTriangulation} zeigt die Vereinfachung eines \e{Qu
   \label{fig:modelSimpleTriangulation}
 \end{figure}
 
-Die Verbindung zwischen zwei \e{Vertices} ist eine sogenannte \e{Edge} (Kante).
-Verbindet man die Punkte eines Polygons und füllt die Fläche, ergibt sich schlussendlich ein \e{Face} (Fläche).
-
 \paragraph{Weitere Attribute}
 Neben den geometrischen Attributen verfügt ein Modell ebenfalls über visuelle Attribute.
 
-So wird für jeden Vertex ein \e{Normal} definiert. Ein \e{Normal} ist ein Vektor der im einfachsten Fall senkrecht zu den zwei an diesem Vertex verbundenen \e{Edges} verläuft. In der Geometrie ist dies auch bekannt als Normale. \e{Normals} werden häufig für das Berechnen von Reflexionen verwendet.
+\subparagraph{Normals}
+
+So wird für jeden \e{Vertex} ein \e{Normal} definiert. Ein \e{Normal} ist ein Vektor der im einfachsten Fall senkrecht zu den zwei an diesem \e{Vertex} verbundenen \e{Edges} verläuft. In der Geometrie ist dies auch bekannt als Normale. \e{Normals} werden häufig für das Berechnen von Reflexionen verwendet.
 \e{Normals} werden auch für gewisse Performanzoptimierungen eingesetzt, dazu mehr in \autoref{chap:backfaceCulling}.
 
 \subparagraph{Texturen}
