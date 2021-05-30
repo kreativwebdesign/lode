@@ -281,6 +281,13 @@ Die Signifikanz wird mithilfe eines statistischen Konfidenzintervalls nachgewies
 \subsection{Auswertung}
 \label{chap:benchmarkResults}
 
+Der Benchmark wurde auf verschiedenen Geräten ausgeführt. Im folgenden sind zwei Durchläufe mit jeweils 10 Proben erfasst.
+
+Der erste Durchlauf wurde auf einem MacBook Pro durchgeführt. Wie in Abbildung \ref{fig:benchmarkFpsChartMarcbook} zu sehen, konnten die FPS auf 60 FPS gehoben werden im Vergleich zu den 48.2 FPS in der unoptimierten Version.
+Direkt damit verbunden ist die Anzahl \e{Render Loop} Iterationen, welche genauso um ca 30\% gesteigert werden konnte. Auf der Umkehrseite wurde die Dauer für das Laden der Modelle etwas erhöht, da mehr Modelle geladen werden müssen (siehe \ref{fig:benchmarkDownloadChartMarcbook}). Diese wuchs aber nur um rund 10\%.
+
+Die detaillierten Informationen befinden sich in Anhang \ref{fig:marcbookBenchmarkRun}.
+
 \begin{figure}[H]
   \centering
   \begin{subfigure}{.49\textwidth}
@@ -298,8 +305,25 @@ Die Signifikanz wird mithilfe eines statistischen Konfidenzintervalls nachgewies
   \caption{Vergleich Kennzahlen}
   \label{fig:benchmarkChartMarcbook}
 \end{figure}
-\todo[inline]{@simon Schreibe etwas über diagramm und füge weitere hinzu}
 
-Wie in Abbildung \ref{fig:benchmarkFpsChartMarcbook} zu sehen, konnten die FPS auf 60 FPS gehoben werden im Vergleich zu den 48.2 FPS in der unoptimierten Version.
-Direkt damit verbunden ist die Anzahl \e{Render Loop} Iterationen, welche genauso um ca 30\% gesteigert werden konnte. Auf der Umkehrseite wurde die Dauer für das Laden der Modelle etwas erhöht, da mehr Modelle geladen werden müssen (siehe \ref{fig:benchmarkDownloadChartMarcbook}). Diese wuchs aber nur um rund 10\%.
+Auch der zweite Durchlauf auf einem Dell Gerät führt zu ähnlichen Daten. Auffallend in \ref{fig:benchmarkFpsChartWindows} ist der Unterschied der \e{FPS}. Hierfür muss bemerkt werden, dass es sich um eine integrierte Grafikkarte handelt. Die Unterschiede der Downloadzeit (siehe \ref{fig:benchmarkDownloadChartWindows}) sind vergleichbar mit denjenigen vom ersten Durchlauf.
 
+Die detaillierten Informationen befinden sich in Anhang \ref{fig:windowsBenchmarkRun}.
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}{.49\textwidth}
+    \centering
+    \includegraphics[width=0.9\linewidth]{resultate/windows/fpsChart.jpg}
+    \caption{FPS Vergleich}
+    \label{fig:benchmarkFpsChartWindows}
+  \end{subfigure}
+  \begin{subfigure}{.49\textwidth}
+    \centering
+    \includegraphics[width=0.9\linewidth]{resultate/windows/downloadChart.jpg}
+    \caption{Download Vergleich}
+    \label{fig:benchmarkDownloadChartWindows}
+  \end{subfigure}
+  \caption{Vergleich Kennzahlen}
+  \label{fig:benchmarkChartWindows}
+\end{figure}
