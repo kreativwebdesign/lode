@@ -387,8 +387,8 @@ Der Hauptnachteil liegt darin, dass hierfür signifikante Anpassungen am \e{Scen
 
 Das Ziel des Algorithmus ist es, eine gegebene geometrische Struktur mit möglichst wenig \e{Triangles} so genau wie möglich zu approximieren.
 Diese Art von Problem ist in der Literatur unter anderem als \e{Surface Simplification}, polygonale Simplifizierung, geometrische Simplifizierung oder Mesh Reduzierung bekannt.
-Grundsätzlich kann man die verschiedenen Algorithmen in Kategorien einteilen.
-Im folgenden Abschnitt wird auf die Grundidee der verschiedenen Kategorien eingegangen.
+Im folgenden Abschnitt wird auf die Grundidee einiger Kategorien eingegangen um einen groben Überblick zu verschaffen.
+Für mehr Informationen zu weiteren Ansätzen, siehe \e{Quadric-Based Polygonal Surface Simplification} Sektion 2.4 \cite{quadridBasedSurfaceSimplification}.
 
 \paragraph{Vertex Dezimierung}
 Algorithmen dieser Kategorie entfernen jeweils einen Vertex und triangulieren das entstehende Loch neu.
@@ -408,5 +408,3 @@ Die verschiedenen Algorithmen unterscheiden sich primär in der Selektion der \e
 
 \paragraph{Triangle Collapse}
 Bei dieser Variante werden jeweils ganze Flächen entfernt und die umliegenden \e{Triangles} zusammengelegt. Eine Möglichkeit ist der von Hamann definierte Algorithmus zur Vereinfachung von triangulierten Flächen \cite{triangleCollapseAlgorithm}. Dabei wird die Krümmung eines \e{Triangles} definiert und iterativ derjenige \e{Triangle} mit der geringsten Krümmung entfernt. An die Stelle der drei \e{Vertices} tritt ein neuer \e{Vertex} und die umliegenden Flächen werden neu trianguliert.
-
-\todo[inline]{@simon detailliertere Auslegeordnung?}
