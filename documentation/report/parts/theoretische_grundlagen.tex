@@ -335,12 +335,11 @@ Vergleichbar zu LOD-Artefakten sind sogenannte \e{Impostors}. Dabei wird ein \e{
 Weitere Ansätze zur Optimierung der Performanz für sehr spezifische Anwendungsfälle werden kurz erwähnt, jedoch nicht weiter erörtert da sie für viele Anwendungen nicht praktikabel sind.
 
 \subparagraph{Parallel rendering}
-Auch bekannt unter \e{Distributed Rendering} ist der Einsatz von Techniken aus dem \e{Parallel Programming} in Visualisierungsanwendungen. So kann zum Beispiel die Bildfläche in Regionen aufgeteilt werden, welche alle individuell und gleichzeitig prozessiert werden. Es gibt aber auch andere Ansätze, wobei die \e{Triangles} anderweitig aufgeteilt und prozessiert werden und dann zum Schluss an den \e{Rasterizer} gesendet werden.
-\todo[inline]{Praxisbeispiele? (vr, projektion...)}
+Auch bekannt unter \e{Distributed Rendering} ist der Einsatz von Techniken aus dem \e{Parallel Programming} in Visualisierungsanwendungen. So kann die Aufgabe auf verschiedene GPUs vergeteilt parallel verarbeiet werden. Eine Problemstellung hierbei is jedoch, dass das sinnvolle Aufeilen der Arbei nicht trivial ist. So eignet sich dieser Ansaz jedoch gut für Anwendungen im Bereich von \e{Virtual Reality}, da dort zwei separate Bilder generiert werden müssen und somit leicht zu separieren sind.
 
 \subparagraph{Image-based rendering}
-In gewissen Fällen kann das Modellieren übersprungen werden. So kann anhand von Bildmaterial eine 3D-Illusion erzeugt werden. Da 2D-Bilder aber keine Tiefeninformationen darstellen können im dreidimensionalen Raum, kann dies zu seltsamen Effekten führen, wenn sich die Kamera bewegt und kann deshalb nur in sehr spezifischen Anwendungsfällen eingesetzt werden.
-\todo[inline]{Praxisbeispiele? (street view?)}
+In gewissen Fällen kann das Modellieren übersprungen werden. So kann anhand von Bildmaterial eine 3D-Illusion erzeugt werden. Da 2D-Bilder aber keine Tiefeninformationen darstellen können im dreidimensionalen Raum, kann dies zu seltsamen Effekten führen, wenn sich die Kamera bewegt und kann deshalb nur in sehr spezifischen Anwendungsfällen eingesetzt werden. Die \e{Street View} funktion Google Maps ist ein bekanntes Tool, welches auf \e{Image-based rendering} setzt.
+Beim Bewegen durch die Virtuelle Welt in \e{Street View}, ist auffällig zu sehen, wie sich die Bilder austauschen.
 
 \section{Einführung Level of Detail}
 \label{chap:lodIntroduction}
