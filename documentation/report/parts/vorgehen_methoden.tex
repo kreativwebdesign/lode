@@ -6,14 +6,62 @@
 % !TEX TS-program = pdflatexmk
 % !TEX encoding = UTF-8 Unicode
 % !TEX root = ../doc.tex
-\section{Vergleich LOD Systeme}
-Die verschiedenen LOD Systeme sowie ihre Vor- und Nachteile werden in \autoref{chap:differentLodApproaches} erläutert. In diesem Schritt wird erläutert, welche Art LOD-System in dieser Arbeit entwickelt werden soll.
+\section{Vergleich LOD-Systeme}
+Die verschiedenen LOD-Systeme, sowie ihre Vor- und Nachteile werden in \autoref{chap:differentLodApproaches} erläutert. In diesem Schritt wird erläutert, welche Art LOD-System es bereits gibt und welches in dieser Arbeit entwickelt werden soll.
+
+\subsection{Bestehende Systeme}
+\label{chap:existingSolutions}
+
+\e{Unity} sowie \e{Unreal} verfügen über umfangreiche LOD-Systeme. Eine Analyse dieser Systeme bildet somit die Grundlage für die Entwicklung eines neuen Systems.
+
+\paragraph{Unreal}
+
+\e{Unreal} verfügt sowohl über ein DLOD-System als auch über ein HLOD-System. Das HLOD-Tool zeichnet sich insbesondere dadurch aus, dass es die verschiedenen HLOD-Artefakte automatisch generieren kann. Dies ermöglicht es, komplexe Strukturen direkt innerhalb von \e{Unreal} zu kombinieren \cite{unrealProxyLod}. Der manuelle Aufwand für die Integration des Systems in eine Applikation kann so signifikant reduziert werden und macht den Einsatz eines LOD-Systems attraktiver.
+
+\todo[inline]{@marc Mehr Infos zu Unreal \& Unity - Relevanz in der Praxis mit Bezug auf mobile entwicklung}
+
+\paragraph{Unity}
+
+\e{Unity} verfügt über ein DLOD-System, welches es erlaubt LOD-Artefakte manuell zu definieren.
+Innerhalb der \e{Unity} Community gibt es eine Bibliothek für das automatische Generieren von Artefakten, welche für LOD verwendet werden können \cite{unityMeshSimplification}.
+Ansätze für ein HLOD-System sind vorhanden, wurden jedoch nicht offiziell in \e{Unity} integriert \cite{unityAutoLod}.
+
+In Abbildung \ref{fig:unityDLODGroup} ist zusehen, wie innerhalb von Unity der Übergang zwischen zwei LOD-Artefakten konfiguriert werden können. Hervorzuheben sind hier zum einen den \e{Fade Mode}, der das \e{Visual Popping} vermindert und zum anderen die Triggerpunkte, bei welchen das Level gewechselt werden soll.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\columnwidth]{vorgehen/Unity-DLOD.png}
+  \caption{'\e{LOD Group}'-Komponente in Unity für die Konfiguration der Übergänge zwischen LOD-Artefakten}
+  \label{fig:unityDLODGroup}
+\end{figure}
+
+\subsection{Kriterien}
 
 Die verschiedenen Ansätze unterscheiden sich in einigen Kriterien. Für den Einsatz in einer Webanwendungen ist die Gewichtung der Kriterien anders als für Desktopanwendungen, Konsolenspiele oder dergleichen.
-So hat die Dateigrösse der Modelle bei Webanwendungen einen grösseren Einfluss auf die gefühlte Performanz beim Endanwender. Insofern ist die Auswirkung der gewählten Strategie auf die Downloadgrösse ein wichtiges Kriterium. Für diskrete LOD muss für jedes Level ein separates Modell geladen werden. Dies kann die Downloadgrösse gegebenenfalls merkbar erhöhen. Bei kontinuierlichen LOD-Systemen muss das Modell die Unterschiede zwischen verschiedenen Levels persistieren. Mit einem für kontinuierliche LOD ausgelegten Algorithmus kann der benötigte Speicher reduziert werden, indem beim \e{Edge Collapse} nicht auf einen neuen optimalen \e{Vertex} reduziert wird, sondern von den beiden bestehenden \e{Vertices} der passendere gewählt wird. Trotzdem entsteht für jeden \e{Edge Collapse} ein zusätzlicher Speicheraufwand.
+So hat die Dateigrösse der Modelle bei Webanwendungen einen grösseren Einfluss auf die gefühlte Performanz beim Endanwender. Insofern ist die Auswirkung der gewählten Strategie auf die Downloadgrösse ein wichtiges Kriterium.
+
+\subsection{Vergleich Downloadgrösse}
+
+Für diskrete LOD muss für jedes Level ein separates Modell geladen werden. Dies kann die Downloadgrösse gegebenenfalls merkbar erhöhen. Bei kontinuierlichen LOD-Systemen muss das Modell die Unterschiede zwischen verschiedenen Levels persistieren. Mit einem für kontinuierliche LOD ausgelegten Algorithmus kann der benötigte Speicher reduziert werden, indem beim \e{Edge Collapse} nicht auf einen neuen optimalen \e{Vertex} reduziert wird, sondern von den beiden bestehenden \e{Vertices} der passendere gewählt wird. Trotzdem entsteht für jeden \e{Edge Collapse} ein zusätzlicher Speicheraufwand.
+
+\subsection{Auswirkung auf Laufzeitverhalten}
+
+Der Einsatz von LOD-Systemen hat Auswirkungen auf das Laufzeitverhalten, das Ausmass variiert jedoch. Das Laufzeitverhalten umschreibt hier primär die Arbeit, welche auf der \e{CPU} verrichtet werden muss, um die Szenerie adäquat vorzubereiten.
 Insbesondere unter Berücksichtigung der Tatsache, dass Laufzeitperformanz essenziell für Webanwendungen ist, wurde entschieden nicht auf kontinuierliche LOD-Systeme zu setzen.
-Zudem wurde entschieden kein hierarchisches LOD-System zu entwickeln, um die Integration des Tools für die Entwickler einer Webanwendung möglichst einfach zu gestalten.
-Das diskrete LOD-System ist für Grafiker und Entwickler am einfachsten zu verwenden und deckt somit auch die breiteste Benutzerbasis und die meisten Anwendungsfälle ab. Aufgrund dessen, wird im Rahmen dieser Arbeit ein Algorithmus dieses Systems entwickelt und in den Entwicklungsprozess integriert.
+
+\subsection{Auswirkung auf Scene Graph}
+Beim Einsatz von LOD-Systemen sind Anpassungen am \gls{Scene Graph} notwendig. Es wird grundsätzlich zwischen lokalen und globalen Anpassungen unterschieden. Bei lokalen Anpassungen wird lediglich der Graph des vereinfachten Modells angepasst. Der Rest der Szenerie bleibt unberührt. Bei globalen Anpassungen müssen weiter oben im \e{Scene Graph} Anpassungen gemacht werden.
+
+\subsection{Integration in bestehende Arbeitsabläufe}
+
+Bei diskreten und kontinuierlichen LOD-Systemen ist es möglich, marginal in die Arbeitsabläufe einzugreifen. Dies bedeutet, dass keine signifikanten Anpassungen an den Abläufen vorgenommen werden müssen, sondern dass es möglich ist, die Abläufe zu erweitern.
+Bei hierarchischen Systemen ist dies nicht gegeben, da es die Kombination mehrerer Modelle vorsieht und somit mehr Konfigurationsaufwand notwendig ist.
+Deshalb wurde entschieden kein hierarchisches LOD-System zu entwickeln, um die Integration des Tools für die Entwickler einer Webanwendung möglichst einfach zu gestalten.
+
+\subsection{Visual Pop}
+\e{Visual Pop} bezeichnet das merkbare Austauschen zweier LOD-Artefakte. Im optimalen Fall ist der Austausch zweier Artefakte nicht bemerkbar. Bei kontinuierlichen Systemen ist es möglich, indem die unterschiedlichen Anpassungen graduell durchgeführt werden. Aufgrund der Art des Systems ist dies vergleichbar einfach möglich. Bei diskreten LOD-Systemen gestaltet sich das etwas aufwändiger. Eine Möglichkeit wird in \autoref{chap:fading} erläutert. Wenn die Auswechslung in ausreichender Entfernung vorgenommen werden kann, dann ist \e{Visual Popping} weniger spürbar.
+
+\subsection{Entscheidung}
 Eine Übersicht über die verschiedenen Kriterien kann in der Tabelle \ref{table:lodSystemComparison} gefunden werden.
 
 \begin{table}[H]
@@ -25,8 +73,8 @@ Eine Übersicht über die verschiedenen Kriterien kann in der Tabelle \ref{table
   Auswirkung auf Downloadgrösse & mittel & mittel & mittel \\
   Auswirkung auf Laufzeitverhalten & klein & mittel & mittel \\
   Auswirkung auf \e{Scene Graph} & lokal & lokal & global \\
-  "Visual Pop" vermeidbar & nein & ja & ja \\
   Integration in bestehende Arbeitsabläufe & einfach & einfach & umständlich \\
+  \e{Visual Pop} vermeidbar & umständlich & ja & ja \\
   \hline
   \textbf{Möglichkeiten} &  &  &  \\
   \hline
@@ -38,31 +86,7 @@ Eine Übersicht über die verschiedenen Kriterien kann in der Tabelle \ref{table
   \label{table:lodSystemComparison}
 \end{table}
 
-\e{Visual Pop} bezeichnet das merkbare Austauschen zweier LOD Artefakte. Im optimalen Fall ist der Austausch zweier Artefakte nicht bemerkbar.
-
-\subsection{Bestehende Systeme}
-\label{chap:existingSolutions}
-
-\e{Unity} sowie \e{Unreal} verfügen über umfangreiche LOD-Systeme. Eine Analyse dieser Systeme bildet somit die Grundlage für die Entwicklung eines neuen Systems.
-
-\paragraph{Unreal}
-
-\e{Unreal} verfügt sowohl über ein DLOD-System als auch über ein HLOD-System. Das HLOD-Tool zeichnet sich insbesondere dadurch aus, dass es die verschiedenen HLOD-Artefakte automatisch generieren kann. Dies ermöglicht es, komplexe Strukturen direkt innerhalb von \e{Unreal} zu kombinieren \cite{unrealProxyLod}. Der manuelle Aufwand für die Integration des Systems in eine Applikation kann so signifikant reduziert werden und macht den Einsatz eines LOD-Systems attraktiver.
-
-\paragraph{Unity}
-
-\e{Unity} verfügt über ein DLOD-System, welches es erlaubt LOD-Artefakte manuell zu definieren.
-Innerhalb der \e{Unity} Community gibt es eine Bibliothek für das automatische Generieren von Artefakten, welche für LOD verwendet werden können \cite{unityMeshSimplification}.
-Ansätze für ein HLOD-System sind vorhanden, wurden jedoch nicht offiziell in \e{Unity} integriert \cite{unityAutoLod}.
-
-In Abbildung \ref{fig:unityDLODGroup} ist zusehen, wie innerhalb von Unity der Übergang zwischen zwei LOD-Artefakten konfiguriert werden können. Hervorzuheben sind hier zum einen den Fade Mode, der das \e{Visual Popping} vermindert und zum anderen die Triggerpunkte, bei welchen das Level gewechselt werden soll.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.8\columnwidth]{vorgehen/Unity-DLOD.png}
-  \caption{'\e{LOD Group}'-Komponente in Unity für die Konfiguration der Übergänge zwischen LOD-Artefakten}
-  \label{fig:unityDLODGroup}
-\end{figure}
+Das diskrete LOD-System ist für Grafiker und Entwickler am einfachsten zu verwenden und deckt somit auch die breiteste Benutzerbasis und die meisten Anwendungsfälle ab. Aufgrund dessen, wird im Rahmen dieser Arbeit ein Tool für dieses System entwickelt und in den Entwicklungsprozess integriert.
 
 \section{Surface Simplification Algorithmus}
 \label{chap:surfaceSimplificationAlgorithm}
@@ -72,17 +96,30 @@ Verschiedene Algorithmen wurden für die Implementierung in Betracht gezogen. Ba
 Der Algorithmus kann wie folgt zusammengefasst werden:
 
 \begin{enumerate}
-  \item Fehlermetrik für alle \e{Vertices} berechnen.
+  \item Initiale Fehlermetrik für alle \e{Vertices} berechnen.
   \item Optionen für \e{Edge Collapse} markieren.
   \item \e{Edge Collapses} mit geringstem Fehler, solange durchführen bis gewünschte Anzahl \e{Vertices} erreicht ist.
 \end{enumerate}
 
+Die verschiedenen Schritte werden im folgenden ausführlicher beschrieben.
+
 \subsection{Fehlermetrik}
 Die Fehlermetrik dient dazu, eine Heuristik zu definieren, welche den geometrischen Unterschied zwischen dem vereinfachten und dem originalen Modell beschreibt.
 Mithilfe der Fehlermetrik können anschliessend die Transformationen am Modell gemäss den kleinsten Kosten optimiert werden. Der Algorithmus funktioniert grundsätzlich unabhängig von der gewählten Fehlermetrik. So könnten verschiedene Metriken eingesetzt werden.
-Die hier gewählte Metrik definiert den Fehler mithilfe einer symmetrischen $4\times 4$ Matrix. Die Matrix repräsentiert die Distanz eines \e{Vertices} zu einer zugehörigen \e{Face}. Für die Kombination mehrerer \e{Faces} können die Matrizen addiert werden.
+Die hier gewählte Metrik definiert den Fehler mithilfe einer symmetrischen $4\times 4$ Matrix. Die Matrix repräsentiert die Distanz eines \e{Vertices} zu einer zugehörigen \e{Face}. Für die Kombination mehrerer \e{Faces} können die Matrizen addiert werden. Beim Entfernen einer \e{Edge} werden die Fehlermetriken der zugehörigen \e{Vertices} addiert.
 
-Beim Entfernen einer \e{Edge} werden die Fehlermetriken der zugehörigen \e{Vertices} addiert.
+Umso weiter ein \e{Vertex} von der Idealposition entfernt ist, desto grösser wird der Fehler des \e{Vertices}. Die Idealposition ist hierbei immer die Ursprungsposition.
+
+Für mehr Informationen zu alternativen Fehlermetriken, siehe \e{Quadric-Based Polygonal Surface Simplification} Sektion 3.3 \cite{quadridBasedSurfaceSimplification}.
+
+\subsection{Optionen für Edge Collapse}
+
+Die offensichtlichen Optionen für einen \e{Edge Collapse} sind die \e{Edges} aller \e{Triangles}. Wird eine \e{Edge} entfernt, so wird die Fehlermetrik der beiden \e{Vertices} kombiniert.
+Es ist zudem möglich, \e{Vertices}, welche nahe zusammen sind ebenfalls als Optionen für \e{Edge Collapse} zu markieren. Hierdurch können unabhängige Teile des Modells kombiniert werden. Dies kann die Oberfläche jedoch stärker verändern und ist nicht in jedem Anwendungsfall gewünscht.
+
+\subsection{Edge Collapses durchführen}
+
+Die \e{Edge Collapses} mit dem geringsten Fehler werden iterativ durchgeführt. Die Fehlermetriken der beiden \e{Vertices} werden addiert und bilden die Fehlermetrik des neuen \e{Vertex}. Bei Garland werden die Optionen sortiert. So kann sichergestellt werden, dass immer die mathematisch korrekte Reihenfolge der Operationen durchgeführt wird. Grundsätzlich ist es jedoch auch möglich die Optimierungen ohne sortieren durchzuführen, wie die Referenzimplementation aufzeigt. Der Vorteil ohne Sortierung liegt im Geschwindigkeitsgewinn und der Nachteil der Präzision ist vernachlässigbar.
 
 \subsection{Referenzimplementation}
 Der gewählte Algorithmus wurde bereits mehrfach implementiert. Eine wiederverwendbare Implementation basierend auf einer formatunabhängigen Datenstruktur ist jedoch nicht vorhanden. Eine oft referenzierte Implementation ist diejenige von S. Forstmann, welche einige Optimierungen am ursprünglichen Algorithmus vornimmt, um optimale Performanz zu erhalten. Diese Optimierungen eignen sich hervorragend für eine webbasierte Implementation \cite{fastQuadricMeshSimplification}.
@@ -107,7 +144,7 @@ Die Auswirkungen eines Systems auf die Entwicklungszeit ist entscheidend dafür,
 
 Die Downloadzeit ist grundsätzlich linear abhängig von der Dateigrösse.
 Je grösser die Dateien, desto mehr Bandbreite wird verwendet. Dies hat direkte Auswirkungen auf die Zeit, bis eine Anwendung benutzt werden kann. Somit sollte die Downloadgrösse möglichst tief gehalten werden.
-Dank der heutigen Bandbreiten in der Schweiz ist dies für viele Anwendungsbereiche ein kleiner werdendes Problem. \todo[inline]{Quelle suchen}
+Dank der heutigen Bandbreiten in der Schweiz ist dies für viele Anwendungsbereiche ein kleiner werdendes Problem. \todo[inline]{@marc Quelle suchen}
 Zudem können Probleme in diesem Bereich teilweise kaschiert werden, indem man das Ladeverhalten optimiert. Häufig sind nicht alle Artefakte notwendig, um eine verwendbare Anwendung darzustellen und der Rest kann phasenweise nachgeladen werden.
 Ausserdem ist es auch möglich, Artefakte bereits vorzuladen.
 
@@ -136,7 +173,7 @@ Eine unabhängige Arbeit definierte 2017 einen vergleichbaren Benchmark, um die 
 Verschiedene Varianten können gewählt werden, um den Nutzen aufzuzeigen. Die verschiedenen in Betracht gezogenen Ansätze werden in diesem Abschnitt erläutert.
 
 \paragraph{Modellbetrachtung}
-Grundsätzlich kann der Nutzen beziffert werden, indem die Kosten zum Rendering eines Modells berechnet werden. So können die Kosten der benutzten GPU Ressourcen durch das Messen des Aufwandes eines spezifischen \Glsplural{Draw Call} beziffert werden. Die Implementation ist simpel und liefert genaue Resultate. Die Auswirkungen von Nebeneffekten können beinahe vollständig negiert werden.
+Grundsätzlich kann der Nutzen beziffert werden, indem die Kosten zum Rendering eines Modells berechnet werden. So können die Kosten der benutzten GPU Ressourcen durch das Messen des Aufwandes eines spezifischen \e{Draw Calls} beziffert werden. Die Implementation ist simpel und liefert genaue Resultate. Die Auswirkungen von Nebeneffekten können beinahe vollständig negiert werden.
 Sinnvoll wäre es, das Modell in konstanter Distanz zur Kamera um zwei Achsen drehen zu lassen und die Messung so lange durchzuführen, bis eine ganze Umdrehung stattgefunden hat. Das originale Modell kann mit den verschiedenen Stufen verglichen und die Performanzverbesserung beziffert werden.
 Der primäre Nachteil bei dieser Variante liegt an der Aussagekraft. Die einzige belegte Aussage ist, dass es möglich ist, Performanzeinsparungen durch Vereinfachung zu erhalten. Dies dient jedoch nicht als Beleg, dass der Einsatz von LOD-Artefakten Performanzengpässe lösen kann, da beim Einsatz von LOD weitere Aspekte berücksichtigt werden müssen. Einige Beispiele für diese Aspekte sind: erhöhte Memory Auslastung durch die zusätzlichen Artefakte oder zusätzlich erforderliche Rechenleistung für das Berechnen des zu wählenden Artefakts.
 
@@ -145,4 +182,6 @@ Bei diesem Ansatz wird eine gegebene Szenerie möglichst geringfügig angepasst 
 Wenn die unoptimierte Variante 60 \e{\gls{FPS}} erreicht oder gar übersteigt, ist eine Optimierung nicht notwendig. Somit muss eine Szenerie gewählt werden, welche diesen Wert unterschreitet.
 Das Ziel ist es dann, die LOD-Artefakte in dieselbe Szenerie zu integrieren und die \e{FPS} zu steigern. Ziel der Arbeit ist es, ein System zu entwickeln, das für Szenarien unter 60 \e{\gls{FPS}} diese erhöht und im Idealfall auf ebendiesen Wert hebt.
 Eine solche Szenerie soll grundsätzlich Modelle sowohl nah als auch in grosser Distanz zeigen. Ein Beispiel für eine solche Szenerie ist eine 3D-Welt, in der man sich durch offene Gelände bewegt.
-Im Vergleich zur Modellbetrachtung ist die Aussagekraft eines solchen Tests ausreichend, um einen Beleg für den positiven Nutzen des Systems zu haben. Sollte es nicht möglich sein, die \e{FPS} zu steigern, so liefert der Einsatz von LOD keinen nachweisbaren Nutzen.
+
+\paragraph{Auswahl}
+Im Vergleich zur Modellbetrachtung ist die Aussagekraft einer Szeneriebetrachtung ausreichend, um einen Beleg für den positiven Nutzen des Systems zu haben. Bei der Modellbetrachtung ist es nicht möglich den praktischen Nutzen unter Berücksichtigung verschiedenere Aspekte zu beurteilen, sie dient ausschliesslich zum theoretischen Vergleich. Deshalb werden die Auswirkungen auf das Laufzeitverhalten mithilfe einer Szeneriebetrachtung gemessen. Sollte es nicht möglich sein, die \e{FPS} zu steigern, so liefert der Einsatz von LOD-Artefakten keinen nachweisbaren Nutzen.

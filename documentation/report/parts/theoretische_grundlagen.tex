@@ -7,14 +7,14 @@
 % !TEX encoding = UTF-8 Unicode
 % !TEX root = ../doc.tex
 
-Im folgenden Abschnitt werden die verschiedenen Grundlagen für die Entwicklung eines LOD-Systems kurz erläutert.
-Es werden zuerst die Grundlagen der 3D-Modellierungen und die verschiedenen Dateitypen erläutert. Danach wird auf die Theorie der Transformationen und die Grafik-Pipeline eingegangen. Zum Schluss werden noch einige Optionen zur Performanzoptimierung erläutert.
+Im folgenden Abschnitt werden die Grundlagen für die Entwicklung eines LOD-Systems kurz erläutert.
+Es werden zuerst die Grundlagen der 3D-Modellierungen und verschiedene Dateitypen erläutert. Danach wird auf die Theorie der Transformationen und die Grafik-Pipeline eingegangen. Zum Schluss werden noch einige Optionen zur Performanzoptimierung erläutert.
 
 \section{3D-Modelle}
 Ein Modell stellt ein Objekt aus der realen Welt vereinfacht dar.
 3D-Modelle können vereinfacht als Gruppe von Punkten definiert werden.
 Um im dreidimensionalen Raum Objekte visualisieren zu können sind mindestens drei Punkte notwendig.
-Punkte von 3D-Modellen werden im folgenden als Vertex (Eckpunkte) bezeichnet und können als Vektor definiert werden.
+Punkte von 3D-Modellen werden im folgenden als \e{Vertex} (Eckpunkte) bezeichnet und können als Vektor definiert werden.
 So können wir einen Vertex am Ursprung eines Koordinatensystems definieren als:
 $$ V =
 \begin{bmatrix}
@@ -23,7 +23,7 @@ $$ V =
   0
 \end{bmatrix}
 $$
-Eine Sammlung von drei \e{Vertices}\footnote{Wir verwenden den in englischer Sprache verfassten Fachliteratur zu 3D-Anwendungen gebräuchlichen Ausdruck.} bildet ein \e{Triangle} (Dreieck). Hiermit kann ein \e{Triangle} generell wie folgt definiert werden:
+Eine Sammlung von drei \e{Vertices}\footnote{Wir verwenden die in englischer Sprache verfassten Fachliteratur zu 3D-Anwendungen gebräuchlichen Ausdrücke.} bildet ein \e{Triangle} (Dreieck). Hiermit kann ein \e{Triangle} generell wie folgt definiert werden:
 $$ T =
 \begin{bmatrix}
   V \\
@@ -52,7 +52,8 @@ $$ P =
 \end{bmatrix}
 $$
 
-Abbildung \ref{fig:modelSimpleTriangulation} zeigt die Vereinfachung eines \e{Quads} in zwei \e{Triangle}.
+Abbildung \ref{fig:modelSimpleTriangulation} zeigt die Vereinfachung eines \e{Quads} in zwei \e{Triangle}. Die Verbindung zwischen zwei \e{Vertices} ist eine sogenannte \e{Edge} (Kante).
+Verbindet man die Punkte eines Polygons und füllt die Fläche, ergibt sich schlussendlich ein \e{Face} (Fläche).
 
 \begin{figure}[H]
   \centering
@@ -70,16 +71,16 @@ Abbildung \ref{fig:modelSimpleTriangulation} zeigt die Vereinfachung eines \e{Qu
   \label{fig:modelSimpleTriangulation}
 \end{figure}
 
-Die Verbindung zwischen zwei \e{Vertices} ist eine sogenannte \e{Edge} (Kante).
-Verbindet man die Punkte eines Polygons und füllt die Fläche, ergibt sich schlussendlich ein \e{Face} (Fläche).
-
 \paragraph{Weitere Attribute}
 Neben den geometrischen Attributen verfügt ein Modell ebenfalls über visuelle Attribute.
 
-So wird für jeden Vertex ein \e{Normal} definiert. Ein \e{Normal} ist ein Vektor der im einfachsten Fall senkrecht zu den zwei an diesem Vertex verbundenen \e{Edges} verläuft. In der Geometrie ist dies auch bekannt als Normale. \e{Normals} werden häufig für das Berechnen von Reflexionen verwendet.
+\subparagraph{Normals}
+
+So wird für jeden \e{Vertex} ein \e{Normal} definiert. Ein \e{Normal} ist ein Vektor der im einfachsten Fall senkrecht zu den zwei an diesem \e{Vertex} verbundenen \e{Edges} verläuft. In der Geometrie ist dies auch bekannt als Normale. \e{Normals} werden häufig für das Berechnen von Reflexionen verwendet.
 \e{Normals} werden auch für gewisse Performanzoptimierungen eingesetzt, dazu mehr in \autoref{chap:backfaceCulling}.
 
-Um die Oberfläche von Modellen zu definieren, wird häufig \fgls{Texture Mapping}{Verfahren, um mittels 2D-Bildern 3D-Objekte zu gestalten} durchgeführt. Hierfür sind zusätzliche Informationen für ein Modell notwendig. In der Praxis finden weitere Methoden Anwendung, auf diese wird jedoch hier nicht weiter eingegangen.
+\subparagraph{Texturen}
+Um die Oberfläche von Modellen zu definieren, wird häufig ein \e{Texture Mapping}, auch \e{UV-Mapping} genannt, durchgeführt. Bei diesem Verfahren wird definiert wie eine 2D-Grafik auf ein 3D-Modell abzubilden ist. Dafür wird für jeden \e{Vertex} zwei Koordinaten, $u$ und $v$, definiert. Diese Koordinaten definieren die Position in der 2D-Grafik. In der Praxis finden weitere Methoden Anwendung, auf diese wird hier im Sinne der Übersichtlichkeit nicht weiter eingegangen.
 
 \paragraph{Abgrenzung}
 Für diese Arbeit sind nur polygonale Modelle relevant.
@@ -97,7 +98,7 @@ FBX ist ein proprietäres Format, welches von Autodesk verwaltet wird. Das Verwe
 \subparagraph{glTF}
 Seit 2015 gibt es ein offenes, modernes sowie auf optimale Speichernutzung fokussiertes Format: glTF. Dieses Format wird von der Khronos Gruppe entwickelt \cite{gltf1Spec}. In dieser Arbeit wird es als Austauschformat verwendet, deshalb wird im folgenden genauer auf das Format eingegangen.
 
-Die meisten 3D-Grafikprogramme wie Blender (.blend) verwenden ihre eigenen Dateiformate. Diese Dateiformate sind jedoch für den Einsatz in einer Applikation ungeeignet, da sie insbesondere nicht für die Laufzeitperformanz optimiert sind. Deswegen brauchte es für jedes Eingangsformat für jedes Ausgangsformat einen \e{converter}, wie in Abbildung \ref{fig:contentPipelineWithoutGltf} ersichtlich.
+Die meisten 3D-Grafikprogramme wie Blender (.blend) verwenden ihre eigenen Dateiformate. Diese Dateiformate sind jedoch für den Einsatz in einer Applikation ungeeignet, da sie insbesondere nicht für die Laufzeitperformanz optimiert sind. Deswegen brauchte es für jedes Eingangsformat für jedes Ausgangsformat einen Konverter, wie in Abbildung \ref{fig:contentPipelineWithoutGltf} ersichtlich.
 
 \begin{figure}[H]
   \centering
@@ -106,8 +107,8 @@ Die meisten 3D-Grafikprogramme wie Blender (.blend) verwenden ihre eigenen Datei
   \label{fig:contentPipelineWithoutGltf}
 \end{figure}
 
-Durch die immer breiter werdende Nachfrage nach 3D-Applikationen wurde ein Format benötigt, dass zum einen applikationsunabhängig verwendet und zum anderen performant im Web eingesetzt werden kann.
-Durch diese Abstraktion kann eine Vielzahl \e{converter} vermieden werden und nur wenige, sehr spezifische Dateiformate benötigen noch einen einzigen \e{converter}. Diese neue Pipeline ist in Abbildung \ref{fig:contentPipelineWithGltf} dargestellt. \cite{gltfTutorialIntro}
+Durch die immer grösser werdende Nachfrage nach 3D-Applikationen wurde ein Format benötigt, dass zum einen applikationsunabhängig verwendet und zum anderen performant im Web eingesetzt werden kann.
+Durch diese Abstraktion kann eine Vielzahl Konverter vermieden werden und nur wenige, sehr spezifische Dateiformate benötigen noch einen einzigen Konverter. Diese neue Pipeline ist in Abbildung \ref{fig:contentPipelineWithGltf} dargestellt. \cite{gltfTutorialIntro}
 \begin{figure}[H]
   \centering
   \includegraphics[width=1\columnwidth]{grundlagen/gltf/contentPipelineWithGltf.png}
@@ -214,7 +215,8 @@ In Abbildung \ref{fig:transformationVertexRemovalOriginal} wird der zentrale Ver
 \end{figure}
 
 \section{Grafikpipeline}
-Die Grafikpipeline ist zuständig um eine definierte Szene auf einem Ausgabegerät zu visualisieren. Die verschiedenen Schritte werden im folgenden Abschnitt kurz erläutert. Es wird dabei ein simples 3D-Modell auf einem 2D-Display, wie zum Beispiel einem Monitor, visualisiert. Die verschiedenen Schritte sind in Abbildung \ref{fig:renderingPipelineOverview} aufgezeigt. Die verschiedenen Schritte werden idealerweise 60 Mal pro Sekunde wiederholt. Dies findet in der sogenannten \e{Render Loop} statt.
+
+Die Grafikpipeline ist zuständig um eine definierte Szene auf einem Ausgabegerät zu visualisieren. Die Schritte werden im folgenden Abschnitt nur oberflächlich erläutert, um ein grobes Verständnis zu vermitteln. Es wird dabei ein simples 3D-Modell auf einem 2D-Display, wie zum Beispiel einem Monitor, visualisiert. Die Schritte sind in Abbildung \ref{fig:renderingPipelineOverview} aufgezeigt. Der Prozess wird idealerweise 60 Mal pro Sekunde wiederholt. Dies findet in der sogenannten \e{Render Loop} statt.
 
 \begin{figure}[H]
   \centering
@@ -224,10 +226,18 @@ Die Grafikpipeline ist zuständig um eine definierte Szene auf einem Ausgabeger�
 \end{figure}
 
 \paragraph{Applikation}
-Im ersten Schritt wird die Szenerie aufbereitet, Modelle in den Arbeitsspeicher geladen und Positionen und Rotationen der Modelle definiert. Diese Schritte werden auf der CPU durchgeführt. Ein Beispiel für das Aufsetzen eines einfachen \e{Triangles} bestehend aus drei \e{Vertices} ist in Abbildung \ref{fig:geometryDefinition} ersichtlich.
+Im ersten Schritt wird die Szenerie aufbereitet, Modelle in den Arbeitsspeicher geladen und Positionen und Rotationen der Modelle definiert. Diese Schritte werden auf der CPU durchgeführt. Ein Beispiel für das Aufsetzen eines einfachen \e{Triangles} bestehend aus drei \e{Vertices} ist in Abbildung \ref{fig:geometryDefinition} ersichtlich. Das \e{Triangle} wird anschliessend mithilfe dreier \e{Indices} definiert. Diese \e{Indices} verweisen auf die entsprechenden \e{Vertices}. So entspricht der Eintrag $0$ dem \e{Vertex} an der Position $V_0$. Wobei $V_0$ definiert ist als:
+
+$$
+V_0 = \begin{bmatrix}
+  -1 \\
+  1 \\
+  0
+\end{bmatrix}
+$$
 
 \begin{figure}[H]
-\begin{lstlisting}
+\begin{lstlisting}[style=JavaScript]
 const vertices = new Float32Array([
   -1, 1, 0, // vertex 0
   -1, -1, 0, // vertex 1
@@ -242,11 +252,13 @@ const indices = new Uint16Array(
 \label{fig:geometryDefinition}
 \end{figure}
 
+Anschliessend werden die Daten in einem \e{Draw Call} an die GPU gesendet. Ein \e{Draw Call} wird pro Material pro \e{Mesh} benötigt. Es ist besser, weniger, dafür umfangreiche \e{Draw Calls} abzusetzen, als viele Kleinere. Dies kommt daher, dass die GPU grosse Datenmengen parallel prozessieren kann und sich die Unterbrechung durch einzelne Aufrufe negativer auswirkt.
+
 \paragraph{Vertexshader}
-Anschliessend werden die Daten an die GPU gesendet. Der erste Schritt ist der sogenannte Vertexshader. Auftrag des Vertexshaders ist es, die \e{Vertices} zu transformieren. Die Modelle werden ausgerichtet, die Beleuchtung bestimmt und die 2D-Projektion vorgenommen. Ein Beispiel für einen simplen Vertexhsader ist in Abbildung \ref{fig:vertexShader} ersichtlich.
+Der erste Schritt ist der sogenannte Vertexshader. Auftrag des Vertexshaders ist es, die \e{Vertices} zu transformieren. Die Modelle werden ausgerichtet, die Beleuchtung bestimmt und die 2D-Projektion vorgenommen. Ein Beispiel für einen simplen Vertexhsader ist in Abbildung \ref{fig:vertexShader} ersichtlich. Der Code, welcher in \e{\fgls{GLSL}{OpenGL Shading Language, C-basierte Programmiersprache für das Programmieren von GPU-Prozessen.}} geschrieben ist, wird für jeden \e{Vertex} ausgeführt. Der aktuelle \e{Vertex} ist dabei in der Variable \e{coordinates} abgespeichert. \e{gl\_Position} ist eine spezielle Variable, welche von \e{GLSL} zur Verfügung gestellt wird und den Endpunkt beinhalten soll. Das gegebene Beispiel ist trivial, in der Praxis werden hier häufig die Matrixtransformationen unter anderem für die Kameraperspektive durchgeführt.
 
 \begin{figure}[H]
-\begin{lstlisting}
+\begin{lstlisting}[style=glsl]
 attribute vec3 coordinates;
 
 void main(void) {
@@ -258,10 +270,10 @@ void main(void) {
 \end{figure}
 
 \paragraph{Fragmentshader}
-Durch die Rasterisierung werden kontinuierliche Objekte zu diskreten Fragmenten verarbeitet. Der Fragmentshader generiert die Farbdefinitionen für die einzelnen diskreten Fragmente. Dies können einfache Farbwerte sein, es ist jedoch auch möglich Texturen und dergleichen auf Fragmente abzubilden. Ein einfaches Beispiel für einen Fragmentshader ist in Abbildung \ref{fig:fragmentShader} ersichtlich.
+Durch die Rasterisierung werden kontinuierliche Objekte zu diskreten Fragmenten verarbeitet. Ein Fragment entspricht grundsätzlich einem Pixel. Der Fragmentshader generiert die Farbdefinitionen für die einzelnen diskreten Fragmente. Dies können einfache Farbwerte sein, es ist jedoch auch möglich Texturen und dergleichen auf Fragmente abzubilden. Ein einfaches Beispiel für einen Fragmentshader ist in Abbildung \ref{fig:fragmentShader} ersichtlich. Bei \e{gl\_FragColor} handelt es sich wiederum um eine Variable von \e{GLSL}. Der zugewiesene Wert entspricht der Farbe des Pixels. In diesem Fall ist die Farbe Schwarz. Das Format entspricht rgba: rot, grün, blau, alpha (Transparenz).
 
 \begin{figure}[H]
-\begin{lstlisting}
+\begin{lstlisting}[style=glsl]
 void main(void) {
   gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
 }
@@ -307,7 +319,7 @@ Dies reduziert die Anzahl Polygone drastisch.
 \paragraph{Occlusion culling}
 Polygone bzw. Objekte, welche komplett von anderen Objekten überdeckt werden, werden bei dieser Variante nicht prozessiert.
 Dieser Prozess analysiert die Szene mittels einer virtuellen Kamera und merkt sich potenziell nicht sichtbare Objekte. Diese Daten werden dann zur Laufzeit von der Kamera verwendet, um zu bestimmen, ob ein Objekt prozessiert werden soll, oder nicht.
-Damit wird die Anzahl \fGlspl{Draw Call}{Ein Aufruf auf die GPU, um ein Objekt zu zeichnen. Ein \e{Draw Call} wird pro Material pro \e{Mesh} benötigt. Es ist besser, weniger, dafür umfangreiche \e{Draw Calls} abzusetzen, als viele Kleinere. Dies kommt daher, dass die GPU extrem schnell ist und sich die Unterbrechung durch einzelne Aufrufe viel negativer auswirkt} reduziert und somit die Performanz erhöht.
+Damit wird die Anzahl \e{Polygone}, welche gerendert werden müssen, reduziert.
 
 \paragraph{Backface culling}
 \label{chap:backfaceCulling}
@@ -316,21 +328,22 @@ Alle Polygone, welche in die andere Richtung zeigen werden nicht gezeichnet.
 Dies ist nicht immer gewünscht, für die meisten Anwendungen ist diese Optimierung jedoch aktiviert.
 Als Grundlage für die Berechnung werden die \e{Normals} der \e{Vertices} berücksichtigt.
 
-\paragraph{Imposters}
-Vergleichbar zu LOD-Artefakten sind sogenannte \e{Imposters}. Dabei wird ein \e{Quad} mit verschiedenen Texturen verwendet. Für jede mögliche Position des Modells wird eine Textur generiert. Das \e{Quad} wird in Richtung Kamera ausgerichtet und abhängig von der Rotation des Modells die geeignete Textur verwendet. Geometrisch kann ein Modell so auf ein absolutes Minimum reduziert werden.
+\paragraph{Impostors}
+Vergleichbar zu LOD-Artefakten sind sogenannte \e{Impostors}. Dabei wird ein \e{Quad} mit verschiedenen Texturen verwendet. Für jede mögliche Position des Modells wird eine Textur generiert. Das \e{Quad} wird in Richtung Kamera ausgerichtet und abhängig von der Rotation des Modells die geeignete Textur verwendet. Geometrisch kann ein Modell so auf ein absolutes Minimum reduziert werden. Schwierigkeiten dieser Methode sind Modelle, welche spezielle Materialien aufweisen. So ist zum Beispiel das Abbilden von Reflexionen, wie dies bei metallischen Oberflächen der Fall ist, eine Herausforderung \cite{usingImpostors}.
 
 \paragraph{Weitere Ansätze}
 Weitere Ansätze zur Optimierung der Performanz für sehr spezifische Anwendungsfälle werden kurz erwähnt, jedoch nicht weiter erörtert da sie für viele Anwendungen nicht praktikabel sind.
 
 \subparagraph{Parallel rendering}
-Auch bekannt unter \e{Distributed Rendering} ist der Einsatz von Techniken aus dem \e{Parallel Programming} in Visualisierungsanwendungen. So kann zum Beispiel die Bildfläche in Regionen aufgeteilt werden, welche alle individuell und gleichzeitig prozessiert werden. Es gibt aber auch andere Ansätze, wobei die \e{Triangles} anderweitig aufgeteilt und prozessiert werden und dann zum Schluss an den \e{Rasterizer} gesendet werden.
+Auch bekannt unter \e{Distributed Rendering} ist der Einsatz von Techniken aus dem \e{Parallel Programming} in Visualisierungsanwendungen. So kann die Aufgabe auf verschiedene GPUs verteilt parallel verarbeitet werden. Eine Problemstellung hierbei ist jedoch, dass das sinnvolle Aufteilen der Arbeit nicht trivial ist. So eignet sich dieser Ansatz jedoch gut für Anwendungen im Bereich von \e{Virtual Reality}, da dort zwei separate Bilder generiert werden müssen und somit leicht zu separieren sind \cite{parallelRenderingPhd}.
 
 \subparagraph{Image-based rendering}
-In gewissen Fällen kann das Modellieren übersprungen werden. So kann anhand von Bildmaterial eine 3D-Illusion erzeugt werden. Da 2D-Bilder aber keine Tiefeninformationen darstellen können im 3-dimensionalen Raum, kann dies zu seltsamen Effekten führen, wenn sich die Kamera bewegt und kann deshalb nur in sehr spezifischen Anwendungsfällen eingesetzt werden.
+In gewissen Fällen kann das Modellieren übersprungen werden. So kann anhand von Bildmaterial eine 3D-Illusion erzeugt werden. Da 2D-Bilder aber keine Tiefeninformationen darstellen können im dreidimensionalen Raum, kann dies zu seltsamen Effekten führen, wenn sich die Kamera bewegt und kann deshalb nur in sehr spezifischen Anwendungsfällen eingesetzt werden. Die \e{Street View} funktion Google Maps ist ein bekanntes Tool, welches auf \e{Image-based rendering} setzt.
+Beim Bewegen durch die virtuelle Welt in \e{Street View}, ist auffällig zu sehen, wie sich die Bilder austauschen \cite{imageBasedRendering}.
 
 \section{Einführung Level of Detail}
 \label{chap:lodIntroduction}
-Als Level Of Detail (LOD) werden die verschiedenen Detailstufen bei der virtuellen Darstellung bezeichnet.
+Als Level Of Detail werden die verschiedenen Detailstufen bei der virtuellen Darstellung bezeichnet.
 Dies wird verwendet, um die Geschwindigkeit von Anwendungen zu steigern, indem Objekte im Nahbereich detailliert angezeigt werden; wohingegen Elemente im Fernbereich deutlich vereinfacht dargestellt werden.
 
 Ein LOD-Algorithmus hat das Ziel für ein gegebenes Modell eine vereinfachte Darstellung zu finden, welche das Original ausreichend annähert. Um diese Approximationen zu generieren, kann eine Vielzahl von Algorithmen verwendet werden. Es gibt verschiedene Ansätze zur Generierung von LODs, welche in \autoref{chap:lodAlgorithmComparison} im Detail erläutert werden.
@@ -338,7 +351,7 @@ Ein LOD-Algorithmus hat das Ziel für ein gegebenes Modell eine vereinfachte Dar
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.8\columnwidth]{LODs-of-a-bunny-model-Courtesy-Stanford-3D-Scanning-Repository-From-left-to-right}
-\caption{Level Of Detail Visualisierung vier Hasen}
+\caption{Level Of Detail Visualisierung vier Hasen \cite{stanfordBunnyModel}}
 \label{fig:LevelOfDetailVisualisierungvierHasen}
 \end{figure}
 
@@ -350,20 +363,20 @@ Es gibt verschiedene Ansätze, 3D-Modelle mittels LOD zu vereinfachen. In diesem
 
 \paragraph{Diskrete LOD (DLOD)}
 Bei diskreten LOD werden für ein detailliertes Modell mehrere weniger detaillierte Modelle erstellt.
-Abhängig von der Distanz zum Betrachter wird das optimale Modell gewählt. Es sind hierfür nur minimale Anpassungen am \fgls{Scene Graph}{Objektorientierte Datenstruktur zur Beschreibung von 2D- oder 3D-Szenarien} notwendig da ausschliesslich ganze Modelle ausgetauscht werden.
+Abhängig von der Distanz zum Betrachter wird das optimale Modell gewählt. Es sind hierfür nur minimale Anpassungen am \fgls{Scene Graph}{Datenstruktur, welche die räumliche Anordnung der Modelle einer 3D-Szenerie beschreibt} notwendig da ausschliesslich ganze Modelle ausgetauscht werden.
 Ein Nachteil sind jedoch merkbare harte Grenzen. Der Benutzer stellt beim umhergehen in der Szene fest, wenn das Modell mit einer einfacheren Version ausgetauscht wird.
-Es ist zudem häufig nicht möglich grosse Modelle sinnvoll zu vereinfachen. So ist der Ansatz für Terrain ungeeignet. Ähnlicherweise ist es auch nicht möglich viele sehr kleine Modelle zu kombinieren da jedes Modell unabhängig ist.
+Es ist zudem häufig nicht möglich grössere Modelle sinnvoll zu vereinfachen. Grosse Modelle zeichnen sich dadurch aus, dass Teile davon nah sind, während andere Teile fern sind. Die nahen Teile des Modells sollten detailliert angezeigt werden, wohingegen die entfernten Elemente vereinfacht dargestellt werden sollen. So ist der Ansatz zum Beispiel für Terrain ungeeignet. Ähnlicher Weise ist es auch nicht möglich, viele sehr kleine Modelle zu kombinieren, da jedes Modell unabhängig ist. Das Kombinieren von mehreren Modellen wird \e{Clustering} genannt.
 
 \paragraph{Kontinuierliche LOD (CLOD)}
 Im Gegensatz zu DLOD wird bei CLOD vereinfachende Veränderungen an einem Modell gespeichert.
 
 Der Hauptunterschied zu DLOD besteht in den weichen Grenzen, so ist es signifikant weniger auffällig da zwischen den verschiedenen Auflösungen interpoliert werden kann.
 Der Hauptnachteil ist jedoch, dass diese Interpolation insbesondere Auswirkungen auf die Laufzeit Performanz der Applikation hat.
-Das Problem des Clusterings ist auch für diese Variante nicht gelöst.
+Das Problem des \e{Clusterings} ist auch für diese Variante nicht gelöst.
 
 \paragraph{Hierarchische LOD (HLOD)}
-Bei HLOD werden mehrere Objekte in einen Cluster gruppiert.
-Diese Methode erlaubt es somit zum Beispiel Terrains optimal abzubilden. So werden Ausschnitte, welche nahe beim Benutzer sind mit hoher Auflösung dargestellt während weiter entferntere Teile der Umgebung mit weniger Details ausgestattet sind.
+Bei HLOD werden mehrere Objekte in einen \e{Cluster} gruppiert. Diese \e{Cluster} können mithilfe des \e{Scene Graphs} definiert werden.
+Hierarchische Systeme erlauben es somit, zum Beispiel Terrains optimal abzubilden. So werden Ausschnitte, welche nahe beim Benutzer sind mit hoher Auflösung dargestellt während weiter entferntere Teile der Umgebung mit weniger Details ausgestattet sind.
 Zudem ist es möglich viele kleinere Objekte bei entsprechenden Distanzen zu kombinieren.
 Der Hauptnachteil liegt darin, dass hierfür signifikante Anpassungen am \e{Scene Graph} notwendig sind und für den Entwickler ein spürbarer Unterschied entstehen kann.
 
@@ -372,12 +385,13 @@ Der Hauptnachteil liegt darin, dass hierfür signifikante Anpassungen am \e{Scen
 
 Das Ziel des Algorithmus ist es, eine gegebene geometrische Struktur mit möglichst wenig \e{Triangles} so genau wie möglich zu approximieren.
 Diese Art von Problem ist in der Literatur unter anderem als \e{Surface Simplification}, polygonale Simplifizierung, geometrische Simplifizierung oder Mesh Reduzierung bekannt.
-Grundsätzlich kann man die verschiedenen Algorithmen in Kategorien einteilen.
-Im folgenden Abschnitt wird auf die Grundidee der verschiedenen Kategorien eingegangen.
+Im folgenden Abschnitt wird auf die Grundidee einiger Kategorien eingegangen, um einen groben Überblick zu verschaffen.
+Für mehr Informationen zu weiteren Ansätzen, siehe \e{Quadric-Based Polygonal Surface Simplification} Sektion 2.4 \cite{quadridBasedSurfaceSimplification}.
 
 \paragraph{Vertex Dezimierung}
 Algorithmen dieser Kategorie entfernen jeweils einen Vertex und triangulieren das entstehende Loch neu.
-Eine weitere Möglichkeit ist das \e{Vertex Clustering}, hierbei wird ein Modell in verschiedene Gitterzellen aufgeteilt. Die Punkte innerhalb einer Gitterzelle werden dann in einen einzigen Punkt zusammengelegt. Die visuelle Annäherung dieser Algorithmen bei drastischen Vereinfachungen stellt jedoch häufig ein Problem dar für polygonale Modelle. Sogenannte \fglspl{Point Cloud}{Vertices im dreidimensionalen Raum ohne zugehörige \e{Triangle}} (in Abbildung \ref{fig:pointCloudTorus} exemplarisch zu sehen), wie sie bei 3D-Scannern eingesetzt werden, können mit solchen Algorithmen schnell vereinfacht werden.
+Eine weitere Möglichkeit ist das \e{Vertex Clustering}, hierbei wird ein Modell in verschiedene Gitterzellen aufgeteilt. Die Punkte innerhalb einer Gitterzelle werden dann in einen einzigen Punkt zusammengelegt. Die visuelle Annäherung dieser Algorithmen bei drastischen Vereinfachungen stellt jedoch häufig ein Problem dar für polygonale Modelle. Sogenannte \e{Point Cloud} können mit solchen Algorithmen schnell vereinfacht werden.
+\e{Point Clouds} sind Vertices im dreidimensionalen Raum ohne zugehörige \e{Triangle}, also ohne Fläche (in Abbildung \ref{fig:pointCloudTorus} exemplarisch zu sehen). Diese Daten können das Resultat eines 3D-Scanners sein.
 
 \begin{figure}[H]
   \centering

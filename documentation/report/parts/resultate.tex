@@ -10,12 +10,59 @@ Das Resultat besteht wie beschrieben aus verschiedenen Artefakten. In diesem Abs
 
 \section{LOD Pipeline}
 
-Der Kern der Arbeit stellt die LOD-Pipeline, \e{lode} genannt, dar. Dieses Tool liefert eine für das Web optimierte Möglichkeit, LOD-Artefakte für eine Vielzahl von Anwendungsgebieten zu generieren.
+Der Kern der Arbeit stellt die LOD-Pipeline, \e{lode} genannt, dar. Dieses Tool liefert eine für das Web optimierte Möglichkeit, LOD-Artefakte für eine Vielzahl von Anwendungsgebieten zu generieren. Sämtliche Teile der Arbeit, insbesondere der Quellcode, stehen offen zur Verfügung und können online eingesehen werden \cite{lode}.
 
 \subsection{Aktueller Workflow}
 
-Der übliche Ablauf für das Generieren von LOD-Artefakten ist wie folgt:
-Für ein gegebenes Modell werden innerhalb vom Modellierungstool wie zum Beispiel Blender bestimmte LOD-Stufen von Hand generiert. Anschliessend werden die verschiedenen Stufen exportiert und manuell in die Applikation integriert. \e{Fine Tuning} erfordert sowohl Anpassungen an den Modellen als auch im Code. Erst muss im Modellierungstool die Anpassung manuell vorgenommen, dann neu in die Applikation geladen und dort neu geprüft werden. Diese Schritte können sich mehrfach wiederholen, was mühselig und teuer ist.
+Es gibt verschieden Möglichkeiten, LOD Artefakte in Webapplikationen einzugliedern. Ein möglicher Ablauf für das Generieren von LOD-Artefakten ist wie folgt:
+Für ein gegebenes Modell werden innerhalb vom Modellierungstool wie zum Beispiel Blender bestimmte LOD-Stufen von manuell generiert. Dies kann von Hand selber gemacht werden oder mit vom Modellierungstool zur Verfügung gestellten Funktionen. In Abbildung \ref{fig:manualLodGenerationInBlender} wurden basierend auf dem Original \ref{fig:manualLodGenerationInBlenderOriginal} zwei weiter LOD-Artefakte mittels dem \e{Decimate Modifier} erstellt. Wie in der Abbildung \ref{fig:manualLodGenerationInBlenderSimplified} zu erkennen ist, bleibt hier die Texturinformation beibehalten. Dies kann gewünscht sein, führt aber auch zu grösseren Dateigrössen, was im Web möglichst vermieden werden sollte.
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}{.45\textwidth}
+    \centering
+    \includegraphics[width=1\linewidth]{resultate/aktueller-workflow/original.png}
+    \caption{Original}
+    \label{fig:manualLodGenerationInBlenderOriginal}
+  \end{subfigure}
+  \begin{subfigure}{.45\textwidth}
+    \centering
+    \includegraphics[width=1\linewidth]{resultate/aktueller-workflow/lod-1.png}
+    \caption{LOD-Stufe 1 (0.1\% Polys)}
+    \label{fig:manualLodGenerationInBlenderSimplified}
+  \end{subfigure}
+  \caption{Manuelles erstellen von LOD-Artefakten in Blender}
+  \label{fig:manualLodGenerationInBlender}
+\end{figure}
+
+Anschliessend werden die verschiedenen Stufen exportiert und manuell in die Applikation integriert. Dafür werden diese direkt im Projekt gespeichert und ins Versionskontrollsystem (zum Beispiel \e{Git}) hinzugefügt.
+
+Diese Artefakte müssen nun im Code einzeln geladen und in die Szenerie hinzugefügt werden. Wie in Codeausschnitt \ref{code:threejsManualLodUsage} im Beispiel von \e{Three.js} zu sehen ist, muss jedes Level manuel geladen und konfiguriert werden.
+\begin{figure}[H]
+  \begin{lstlisting}[style=JavaScript]
+  import * as Three from "three";
+
+  const loader = new Three.GLTFLoader();
+  const lod = new THREE.LOD();
+  const scene = new THREE.Scene();
+
+  loader.load('path/to/duck-original.gltf', (artifact) => {
+    lod.addLevel(artifact.scene, 0);
+  });
+  loader.load('path/to/duck-lod1.gltf', (artifact) => {
+    lod.addLevel(artifact.scene, 150);
+  });
+  loader.load('path/to/duck-lod1.gltf', (artifact) => {
+    lod.addLevel(artifact.scene, 300);
+  });
+
+  scene.add(lod)
+  \end{lstlisting}
+  \caption{Beispielcode zur manuellen Integration der LOD-Artefakte in \e{Three.js}}
+  \label{code:threejsManualLodUsage}
+\end{figure}
+
+\e{Fine Tuning} erfordert sowohl Anpassungen an den Modellen als auch im Code. Erst muss im Modellierungstool die Anpassung manuell vorgenommen, dann neu in die Applikation geladen und dort neu geprüft werden. Diese Schritte können sich mehrfach wiederholen, was mühselig und zeitintensiv ist.
 
 \subsection{lode Pipeline}
 
@@ -28,7 +75,7 @@ Deshalb setzt \e{lode} konsequent auf moderne Entwicklungsprozesse, die nahtlos 
 Der Ablauf der \e{lode}-Pipeline kann in drei Schritte unterteilt werden.
 
 \paragraph{Setup und Konfiguration}
-3D-Modelle werden erstellt und als glTF-Dateien innerhalb des Projekts gespeichert. Eine zu den Modellen gehörige Konfigurationsdatei (Abbildung \ref{fig:lodeConfigFile}) kann mittels \e{CLI} angelegt werden (wie in Abbildung \ref{fig:lodecliconfig} dargestellt).
+3D-Modelle werden erstellt und als glTF-Dateien innerhalb des Projekts gespeichert. Eine zu den Modellen gehörige Konfigurationsdatei (Abbildung \ref{fig:lodeConfigFile}) kann mittels \e{CLI}, welches auf \e{NPM} verfügbar ist, angelegt werden (wie in Abbildung \ref{fig:lodecliconfig} dargestellt).
 
 \begin{figure}[H]
   \begin{lstlisting}
@@ -57,7 +104,7 @@ Der Ablauf der \e{lode}-Pipeline kann in drei Schritte unterteilt werden.
   \label{fig:lodecliconfig}
 \end{figure}
 
-\paragraph{Erstellen der Artefakten}
+\paragraph{Erstellen der Artefakte}
 Danach generiert \e{lode} die in der Konfigurationsdatei beschriebenen LOD-Artefakte (in Abbildung \ref{fig:lodeclirun} ersichtlich). Wenn sich ein Modell oder eine Konfiguration ändert, werden die notwendigen Schritte automatisch erneut durchgeführt. So ist es möglich, schnell Anpassungen vorzunehmen und die Änderungen im Projekt ohne manuelle Arbeit zu sehen.
 
 \begin{figure}[H]
@@ -89,12 +136,12 @@ Die Artefakte können innerhalb der Applikation mithilfe einer Bibliothek gelade
     basePath: "./lode-build",
   });
 
-  const elephantModel = await lodeLoader.loadModel({
+  const airplaneModel = await lodeLoader.loadModel({
     lodeContext,
-    artifactName: 'assets/elephant',
+    artifactName: 'assets/airplane',
   })
 
-  scene.add(elephantModel)
+  scene.add(airplaneModel)
   clone.position.set(0, 0, 0);
   \end{lstlisting}
   \caption{Beispielcode zur Benutzung der LOD-Artefakte mittels \e{lode-three} in \e{Three.js}}
@@ -108,8 +155,6 @@ Für das Erstellen von LOD-Artefakten wurde ein für LOD-Artefakte optimierte Ve
 \subsection{Implementation}
 
 Die Implementation des Algorithmus wurde in JavaScript, basierend auf \fGls{Node.js}{JavaScript Ausführungsumgebung, welche ohne einen Browser verwendet werden kann}, umgesetzt. Grund dafür ist das Einbinden von \e{lode} in bestehende Entwicklungsabläufe in der Webentwicklung. So ist es einfach möglich, das Paket kostenlos mithilfe von \gls{npm} zur Verfügung zu stellen.
-
-\todo[inline]{mehr details über Implementation: boundary normalization, optimal point, matrices...}
 
 \subsection{Artefakte}
 
@@ -180,6 +225,74 @@ Bei einer Nahbetrachtung der Modelle sind die Unterschiede klar ersichtlich. Bei
   \caption{Vergleich Originalmodell und vereinfachtes Modell auf Distanz}
   \label{fig:lodComparisonDistance}
 \end{figure}
+
+\subsection{Generierung von glTF}
+
+Für die LOD-Artefakte werden vom Originalmodell unabhängige glTF Dateien erstellt. Dafür wird das Tool \e{glTF-Transform} eingesetzt \cite{gltfTransform}.
+Das Erstellen eines solchen Basismodells ist in \ref{code:gltfTransform} ersichtlich. Hierbei wird die Skalierung und rotation des Originalmodells verwendet (gespeichert in Variable \e{originalNode}).
+
+\begin{figure}[H]
+  \begin{lstlisting}[style=JavaScript]
+const newDoc = new Document();
+const scene = newDoc.createScene("scene");
+const node = newDoc.createNode("node");
+node.setRotation(originalNode.getRotation());
+node.setScale(originalNode.getScale());
+
+const mesh = newDoc.createMesh("mesh");
+  \end{lstlisting}
+  \caption{Basis glTF Generierung}
+  \label{code:gltfTransform}
+\end{figure}
+
+Anschliessend werden die neuen Informationen in \e{Buffer} gespeichert. Als Beispiel hierzu die Generierung des \e{Vertexbuffers} in \ref{code:bufferCreation}. Ein \e{Mesh} kann mehrere \e{Primitives} beinhalten. Ein \e{Primitive} definiert einen Teil des Modells, dies beinhaltet unter anderem \e{Vertices} und \e{Materialinformationen}. Die Variable \e{primitiveIndex} speichert den Index des aktuellen \e{Primitives}. In der Variable \e{verticesAsFloat} werden die neuen \e{Vertices} als \e{Float32Array} abgespeichert.
+
+\begin{figure}[H]
+  \begin{lstlisting}[style=JavaScript]
+const newPrimitive = newDoc.createPrimitive();
+
+const buffer = newDoc.createBuffer(`buffer_${primitiveIndex}_1`);
+
+const positionAccessor = newDoc
+  .createAccessor(`data_${primitiveIndex}_1`)
+  .setArray(verticesAsFloat)
+  .setType(Accessor.Type.VEC3)
+  .setBuffer(buffer);
+
+newPrimitive.setAttribute("POSITION", positionAccessor);
+  \end{lstlisting}
+  \caption{Erstellen des \e{Buffers} für die \e{Vertices}}
+  \label{code:bufferCreation}
+\end{figure}
+
+\subsection{Iterativer Ansatz}
+
+Wie in der Referenzimplementation wird auf einen \e{Threshold} (zu Deutsch Schwelle) gesetzt. Der \e{Threshold} ist ein Wert, welcher bestimmt, welche Fehlertoleranz gelten soll. Umso tiefer der \e{Threshold}, desto mehr \e{Edge Collapses} werden durchgeführt. Der \e{Threshold} wird kontinuierlich erhöht, so werden immer weitere \e{Triangles} entfernt. Der gewählte \e{Threshold} basiert direkt auf der Referenzimplementation \cite{fastQuadricMeshSimplification}. Ein Ausschnitt aus dem Quellcode ist in \ref{code:thresholdIteration} ersichtlich. Gewisse Teile wurden für die Übersicht entfernt. Die Variable \e{Triangles} beinhaltet alle \e{Triangles} eines \e{Primtives}. In gewissen Fällen ist es möglich, dass eine ausreichende Vereinfachung nicht in absehbarer Zeit generiert werden kann. Dies ist abhängig von den \e{maxIterations}.
+
+\begin{figure}[H]
+  \begin{lstlisting}[style=JavaScript]
+for (let iteration = 0; iteration < maxIterations; iteration++) {
+  // check if targetTriangles are reached
+  if (initialTriangleCount - deletedTriangles <= targetTriangles) {
+    break;
+  }
+
+  const threshold = 0.000000001 * Math.pow(iteration + 3, aggressiveness);
+  triangles.forEach((triangle) => {
+    if (triangle.error[3] > threshold) return;
+    // proceed with edge collapse operation
+    // ...
+  });
+}
+  \end{lstlisting}
+  \caption{Iteration für Vereinfachung}
+  \label{code:thresholdIteration}
+\end{figure}
+
+
+\subsection{Edge Collapse}
+
+Bei der Durchführung einer \e{Edge Collapse} Operation muss ein neuer \e{Vertex} gefunden werden. Die bevorzugte Variante ist das Finden der optimalen Position. Für mehr Informationen zu den konkreten Implementationsdetails, siehe \e{Quadric-Based Polygonal Surface Simplification} Sektion 3.5 \cite{quadridBasedSurfaceSimplification}.
 
 \section{Benchmark}
 
@@ -275,47 +388,49 @@ Die Signifikanz wird mithilfe eines statistischen Konfidenzintervalls nachgewies
 \subsection{Auswertung}
 \label{chap:benchmarkResults}
 
-Der Benchmark wurde auf einer Maschine mit moderner Grafikkarte ausgeführt. Die Resultate zeigen einen klaren Unterschied zwischen der unoptimierten und optimierten Version. So ist die Zeit für das Laden der Modelle zwar geringfügig länger, die Zahl der \e{Render Loop} Iterationen und insbesondere der \e{FPS} geben eine klare Auskunft. Unter Berücksichtigung des berechneten Konfidenzintervalls wird das Resultat als signifikant erachtet. Diese These wird auch durch eine einfache Kontrolle mit dem Auge belegt - die Anzahl \e{FPS} unterscheidet sich merkbar.
+Der Benchmark wurde auf verschiedenen Geräten ausgeführt. Im folgenden sind zwei Durchläufe mit jeweils 10 Proben erfasst.
 
-Somit ist es möglich einen Nutzen für bestimmte anspruchsvolle 3D-Visualisierungen zu generieren.
+Der erste Durchlauf wurde auf einem MacBook Pro durchgeführt. Wie in Abbildung \ref{fig:benchmarkFpsChartMarcbook} zu sehen, konnten die FPS auf 60 FPS gehoben werden im Vergleich zu den 48.2 FPS in der unoptimierten Version. Die Standardabweichung ist im Diagramm ebenfalls ersichtlich.
+Direkt damit verbunden ist die Anzahl \e{Render Loop} Iterationen, welche genauso um ca. 30\% gesteigert werden konnte. Auf der Umkehrseite wurde die Dauer für das Laden der Modelle, gemessen in Millisekunden, etwas erhöht, da mehr Modelle geladen werden müssen (siehe \ref{fig:benchmarkDownloadChartMarcbook}). Diese wuchs aber nur um rund 10\%. Zu beachten ist, dass die Modelle lediglich lokal geladen werden - über ein richtiges Netzwerk sind die Ladezeiten entsprechend länger.
 
-\begin{figure}[H]
-  \begin{lstlisting}
-    optimized fps: 59.9 (0.316 standard deviation)
-    the value is with a confidence of 95% between 59.704 and 60.096
-    baseline fps: 48.3 (0.483 standard deviation)
-    the value is with a confidence of 95% between 48.001 and 48.599
+Die detaillierten Informationen befinden sich in Anhang \ref{fig:marcbookBenchmarkRun}.
 
-
-    further information for interpreting data:
-
-    gpuTotalTime:
-    optimized: 108.406 (5.667 standard deviation)
-    baseline: 336.718 (398.204 standard deviation)
-    medianRenderLoopDuration:
-    optimized: 2.067 (0.064 standard deviation)
-    baseline: 1.394 (0.024 standard deviation)
-    totalGpuEvents:
-    optimized: 524.7 (26.081 standard deviation)
-    baseline: 518.6 (17.89 standard deviation)
-    totalModelLoadDuration:
-    optimized: 1350.611 (42.677 standard deviation)
-    baseline: 1233.288 (53.571 standard deviation)
-    totalRenders:
-    optimized: 300.4 (5.602 standard deviation)
-    baseline: 232.3 (5.658 standard deviation)
-  \end{lstlisting}
-\caption{Durchlauf eines Benchmarktests}
-\label{fig:benchmarkRun}
-\end{figure}
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\columnwidth]{resultate/fpsChartMarcbook.jpg}
-  \caption{FPS Vergleich}
-  \label{fig:fpsComparisonChartMarcbook}
+  \begin{subfigure}{.49\textwidth}
+    \centering
+    \includegraphics[width=0.9\linewidth]{resultate/marcbook/fpsChart.jpg}
+    \caption{FPS Vergleich}
+    \label{fig:benchmarkFpsChartMarcbook}
+  \end{subfigure}
+  \begin{subfigure}{.49\textwidth}
+    \centering
+    \includegraphics[width=0.9\linewidth]{resultate/marcbook/downloadChart.jpg}
+    \caption{Download Vergleich}
+    \label{fig:benchmarkDownloadChartMarcbook}
+  \end{subfigure}
+  \caption{Vergleich Kennzahlen}
+  \label{fig:benchmarkChartMarcbook}
 \end{figure}
-\todo[inline]{Schreibe etwas über diagramm und füge weitere hinzu}
 
-Wie in Abbildung \ref{fig:benchmarkRun} zu sehen, konnten die FPS auf 60 FPS gehoben werden im Vergleich zu den 48.2 FPS in der unoptimierten Version.
-Direkt damit verbunden ist die Anzahl \e{Render Loop} Iterationen, welche genauso um ca 30\% gesteigert werden konnte. Auf der Umkehrseite wurde die Dauer für das Laden der Modelle etwas erhöht, da mehr Modelle geladen werden müssen. Diese wuchs aber nur um rund 10\%.
+Auch der zweite Durchlauf auf einem Dell Gerät führt zu ähnlichen Daten. Auffallend in \ref{fig:benchmarkFpsChartWindows} ist der Unterschied der \e{FPS}. Hierfür muss bemerkt werden, dass es sich um eine integrierte Grafikkarte handelt. Die Unterschiede der Downloadzeit (siehe \ref{fig:benchmarkDownloadChartWindows}) sind vergleichbar mit denjenigen vom ersten Durchlauf.
 
+Die detaillierten Informationen befinden sich in Anhang \ref{fig:windowsBenchmarkRun}.
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}{.49\textwidth}
+    \centering
+    \includegraphics[width=0.9\linewidth]{resultate/windows/fpsChart.jpg}
+    \caption{FPS Vergleich}
+    \label{fig:benchmarkFpsChartWindows}
+  \end{subfigure}
+  \begin{subfigure}{.49\textwidth}
+    \centering
+    \includegraphics[width=0.9\linewidth]{resultate/windows/downloadChart.jpg}
+    \caption{Download Vergleich}
+    \label{fig:benchmarkDownloadChartWindows}
+  \end{subfigure}
+  \caption{Vergleich Kennzahlen}
+  \label{fig:benchmarkChartWindows}
+\end{figure}

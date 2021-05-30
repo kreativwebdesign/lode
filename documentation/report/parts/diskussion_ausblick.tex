@@ -12,6 +12,10 @@ Das entwickelte Tool, \e{lode}, liefert einen ersten Schritt in die Richtung ein
 
 Der grösste Nutzen entsteht in Anwendungen mit komplexen Modellen - für diese Situationen bietet \e{lode} einen nachweisbaren Mehrwert. Die Zahlen aus \autoref{chap:benchmarkResults} zeigen den möglichen Nutzen in einem Anwendungsbeispiel.
 
+Die Resultate zeigen einen klaren Unterschied zwischen der unoptimierten und optimierten Version. Die \e{FPS} geben eine klare Auskunft. Unter Berücksichtigung des berechneten Konfidenzintervalls wird das Resultat als signifikant erachtet. Diese These wird auch durch eine Kontrolle mit dem Auge belegt - die Anzahl \e{FPS} unterscheidet sich merkbar. Die Ladezeit der Applikation wurde nur marginal tangiert, die Auswirkungen auf die \e{User Experience} sind vernachlässigbar und können im optimalen Fall sogar durch progressives Laden zu einem Vorteil werden.
+
+Somit ist es möglich, einen Nutzen für bestimmte anspruchsvolle 3D-Visualisierungen zu generieren.
+
 \subsection{Allgemeingültigkeit}
 
 Innerhalb der Testapplikation, wie in \autoref{chap:testApplication} beschrieben, werden dieselben Modelle mehrfach angezeigt. Dies wird in der Praxis insbesondere bei repetitiven Elementen, wie zum Beispiel Bäumen für Landschaftsgestaltung, verwendet. In solchen Situationen stellen die Anzahl Polygone das primäre Problem für eine schnelle Laufzeitperformanz dar und der Einsatz von LOD-Artefakten kann erwägt werden. Die Allgemeingültigkeit ist für Anwendungsfälle mit vergleichbaren Anforderungen gegeben.
@@ -22,14 +26,25 @@ Der Algorithmus kann für eine Vielzahl von verschiedenen Modellen angewendet we
 
 \subsection{Abgrenzung}
 
-Ein LOD-System kann sinnvoll sein, in einigen Anwendungsgebieten bringt es jedoch nicht den gewünschten Zweck. Wird ein Modell nur auf einer Detailstufe angezeigt, so ist der Einsatz von LOD abzuraten. Sind die Modelle bereits sehr simpel, wie bei \e{Low-Poly}-Modellen – in Abbildung \ref{fig:lowPolyExample} zu sehen – sind die zusätzlichen Vereinfachungen nur von geringem Nutzen.
+Ein LOD-System kann sinnvoll sein, in einigen Anwendungsgebieten bringt es jedoch nicht den gewünschten Zweck. Wird ein Modell nur auf einer Detailstufe angezeigt, so ist der Einsatz von LOD abzuraten. Sind die Modelle bereits sehr simpel, wie bei \e{Low-Poly}-Modellen – in Abbildung \ref{fig:lowPolyExample} zu sehen – sind die zusätzlichen Vereinfachungen nur von geringem Nutzen, da, wie in Abbildung \ref{fig:lodModelSimplified} zu sehen ist, das mittels Algorithmus simplifizierte Modell geometrisch sehr ähnlich ist.
 So muss der Einsatz von LOD-Artefakten für jeden Anwendungsfall separat abgewogen werden. Ein Vorteil von \e{lode} ist die Einfachheit der Integration. So ist es möglich, mit wenig Aufwand den groben Nutzen für ein spezifisches Anwendungsbeispiel abschätzen zu können, ohne dass viel Entwicklungszeit dafür aufgewendet werden muss.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\columnwidth]{diskussion/low-poly-example.png}
-  \caption{Beispiel \e{Low-Poly}-Modell}
-  \label{fig:lowPolyExample}
+  \begin{subfigure}{.5\textwidth}
+    \centering
+    \includegraphics[width=0.4\columnwidth]{diskussion/low-poly-example.png}
+    \caption{Beispiel \e{Low-Poly}-Modell}
+    \label{fig:lowPolyExample}
+  \end{subfigure}%
+  \begin{subfigure}{.5\textwidth}
+    \centering
+    \includegraphics[width=0.4\columnwidth]{resultate/lod-simplified.png}
+    \caption{Beispiel Resultat nach LOD-Simplifizierung}
+    \label{fig:lodModelSimplified}
+  \end{subfigure}
+  \caption{Vergleich zwischen Low-Poly und LOD-simplifiziertem Model}
+  \label{fig:comparisonLowPolyAndLOD}
 \end{figure}
 
 \section{Mögliche Erweiterungen}
@@ -40,7 +55,7 @@ Zurzeit wird die Textur komplett entfernt und durch eine einfache Farbinformatio
 
 \paragraph{glTF LOD Format}
 Es gibt einen Vorschlag, um die Definition von LOD-Stufen innerhalb von glTF zu definieren. Dies würde es ermöglichen, verschiedene LOD-Artefakte in einer Datei zu speichern \cite{glTFExtensionLOD}. Was wiederum erlauben würde, Texturinformationen einfacher wiederzuverwenden. Die Pipeline kann grundsätzlich für diesen Anwendungsfall erweitert werden.
-Zurzeit hat Three.js jedoch noch keinen Support für diese Erweiterung. Auch Babylon.js unterstützt lediglich das progressive Laden von Modellen. \cite{babylonProgressiveLoading}
+Zurzeit hat Three.js jedoch noch keinen Support für diese Erweiterung. Auch Babylon.js unterstützt lediglich das progressive Laden von Modellen \cite{babylonProgressiveLoading}.
 
 \paragraph{Progressives Laden}
 Aktuell werden initial alle Level of Details geladen. Dies hat zur Konsequenz, dass im Vergleich zur unoptimierten Variante eine schlechtere initiale Ladezeit resultiert. Um dieses Verhalten zu verbessern beziehungsweise sogar in einen Vorteil zu verwandeln, könnte das System so erweitert werden, dass die Modelle progressiv geladen werden. Es würde also zuerst die kleinste Datei geladen und bereits angezeigt werden, während in der Zwischenzeit die detailreicheren Modelle nachgeladen werden und die detailärmeren ersetzen. Somit reduziert sich die Zeit bis zum ersten visuellen Feedback und die \e{User Experience} kann damit verbessert werden.
@@ -51,7 +66,7 @@ Deshalb eignet sich eine Wahl der Levels zur Laufzeit, um ein optimales Erlebnis
 Nebst dem \e{\gls{CLI}} soll folglich auch ein Javascript-Modul bereitgestellt werden, welches das Laden von glTF Dateien übernimmt und basierend auf der erkannten Performanz das beste Level of Detail einspielt.
 
 \paragraph{Fading}
-
+\label{chap:fading}
 Aktuell finden die Modellwechsel an harten Grenzen statt. Dies hat zur Konsequenz, dass \e{Visual Popping} auftauchen kann. Eine Möglichkeit zur Linderung dieses Problems ist der Einsatz von \e{Fading}. Hierbei werden die Übergänge über grössere Intervalle durchgeführt und Teile der verschiedenen Artefakte dargestellt. Diese Methode wird zum Beispiel bei \e{Unity} angeboten.
 
 \paragraph{Konsequenter Einsatz von glb Dateien}
