@@ -3,6 +3,7 @@
 lode UI provides a web interface for managing lode artifacts.
 
 Key Features are:
+
 - Live configuration of visibility trigger threshold
 - Update target triangle configuration and see generated artifacts
 
