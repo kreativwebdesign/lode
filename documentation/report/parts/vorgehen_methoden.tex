@@ -7,7 +7,7 @@
 % !TEX encoding = UTF-8 Unicode
 % !TEX root = ../doc.tex
 \section{Vergleich LOD-Systeme}
-Die verschiedenen LOD-Systeme sowie ihre Vor- und Nachteile werden in \autoref{chap:differentLodApproaches} erläutert. In diesem Schritt wird erläutert, welche Art LOD-System es bereits gibt und welches in dieser Arbeit entwickelt werden soll.
+Die verschiedenen LOD-Systeme, sowie ihre Vor- und Nachteile werden in \autoref{chap:differentLodApproaches} erläutert. In diesem Schritt wird erläutert, welche Art LOD-System es bereits gibt und welches in dieser Arbeit entwickelt werden soll.
 
 \subsection{Bestehende Systeme}
 \label{chap:existingSolutions}
@@ -26,7 +26,7 @@ Die verschiedenen LOD-Systeme sowie ihre Vor- und Nachteile werden in \autoref{c
 Innerhalb der \e{Unity} Community gibt es eine Bibliothek für das automatische Generieren von Artefakten, welche für LOD verwendet werden können \cite{unityMeshSimplification}.
 Ansätze für ein HLOD-System sind vorhanden, wurden jedoch nicht offiziell in \e{Unity} integriert \cite{unityAutoLod}.
 
-In Abbildung \ref{fig:unityDLODGroup} ist zusehen, wie innerhalb von Unity der Übergang zwischen zwei LOD-Artefakten konfiguriert werden können. Hervorzuheben sind hier zum einen den Fade Mode, der das \e{Visual Popping} vermindert und zum anderen die Triggerpunkte, bei welchen das Level gewechselt werden soll.
+In Abbildung \ref{fig:unityDLODGroup} ist zusehen, wie innerhalb von Unity der Übergang zwischen zwei LOD-Artefakten konfiguriert werden können. Hervorzuheben sind hier zum einen den \e{Fade Mode}, der das \e{Visual Popping} vermindert und zum anderen die Triggerpunkte, bei welchen das Level gewechselt werden soll.
 
 \begin{figure}[H]
   \centering
@@ -46,20 +46,20 @@ Für diskrete LOD muss für jedes Level ein separates Modell geladen werden. Die
 
 \subsection{Auswirkung auf Laufzeitverhalten}
 
-Der Einsatz von LOD-Systemen hat Auswirkungen auf das Laufzeitverhalten, das Ausmass variiert jedoch. Das Laufzeitverhalten umschreibt hier primär die Arbeit, welche auf der \e{CPU} verrichtet werden muss um die Szenerie adäquat vorzubereiten.
+Der Einsatz von LOD-Systemen hat Auswirkungen auf das Laufzeitverhalten, das Ausmass variiert jedoch. Das Laufzeitverhalten umschreibt hier primär die Arbeit, welche auf der \e{CPU} verrichtet werden muss, um die Szenerie adäquat vorzubereiten.
 Insbesondere unter Berücksichtigung der Tatsache, dass Laufzeitperformanz essenziell für Webanwendungen ist, wurde entschieden nicht auf kontinuierliche LOD-Systeme zu setzen.
 
 \subsection{Auswirkung auf Scene Graph}
-Beim Einsatz von LOD-Systemen sind Anpassungen am \gls{Scene Graph} notwendig. Es wird grundsätzlich zwischen lokalen und globalen Anpassungen unterschieden. Bei lokalen Anpassungen wird lediglich der Graph des vereinfachten Modells angepasst, der Rest der Szenerie bleibt unberührt. Bei globalen Anpassungen müssen weiter oben im \e{Scene Graph} Anpassungen gemacht werden.
+Beim Einsatz von LOD-Systemen sind Anpassungen am \gls{Scene Graph} notwendig. Es wird grundsätzlich zwischen lokalen und globalen Anpassungen unterschieden. Bei lokalen Anpassungen wird lediglich der Graph des vereinfachten Modells angepasst. Der Rest der Szenerie bleibt unberührt. Bei globalen Anpassungen müssen weiter oben im \e{Scene Graph} Anpassungen gemacht werden.
 
 \subsection{Integration in bestehende Arbeitsabläufe}
 
-Bei diskreten und kontinuierlichen LOD-Systemen ist es möglich marginal in die Arbeitsabläufe einzugreifen. Dies bedeutet, dass keine signifikanten Anpassungen an den Abläufen vorgenommen werden müssen, sondern dass es möglich ist die Abläufe zu erweitern.
+Bei diskreten und kontinuierlichen LOD-Systemen ist es möglich, marginal in die Arbeitsabläufe einzugreifen. Dies bedeutet, dass keine signifikanten Anpassungen an den Abläufen vorgenommen werden müssen, sondern dass es möglich ist, die Abläufe zu erweitern.
 Bei hierarchischen Systemen ist dies nicht gegeben, da es die Kombination mehrerer Modelle vorsieht und somit mehr Konfigurationsaufwand notwendig ist.
 Deshalb wurde entschieden kein hierarchisches LOD-System zu entwickeln, um die Integration des Tools für die Entwickler einer Webanwendung möglichst einfach zu gestalten.
 
 \subsection{Visual Pop}
-\e{Visual Pop} bezeichnet das merkbare Austauschen zweier LOD Artefakte. Im optimalen Fall ist der Austausch zweier Artefakte nicht bemerkbar. Bei kontinuierlichen Systemen ist es möglich indem die unterschiedlichen Anpassungen graduell durchgeführt werden. Aufgrund der Art des Systems ist dies vergleichbar einfach möglich. Bei diskreten LOD-Systemen gestaltet sich das etwas aufwändiger. Eine Möglichkeit wird in \autoref{chap:fading} erläutert. Wenn die Auswechslung in ausreichender Entfernung vorgenommen werden kann, dann ist \e{Visual Popping} weniger spürbar. 
+\e{Visual Pop} bezeichnet das merkbare Austauschen zweier LOD-Artefakte. Im optimalen Fall ist der Austausch zweier Artefakte nicht bemerkbar. Bei kontinuierlichen Systemen ist es möglich, indem die unterschiedlichen Anpassungen graduell durchgeführt werden. Aufgrund der Art des Systems ist dies vergleichbar einfach möglich. Bei diskreten LOD-Systemen gestaltet sich das etwas aufwändiger. Eine Möglichkeit wird in \autoref{chap:fading} erläutert. Wenn die Auswechslung in ausreichender Entfernung vorgenommen werden kann, dann ist \e{Visual Popping} weniger spürbar.
 
 \subsection{Entscheidung}
 Eine Übersicht über die verschiedenen Kriterien kann in der Tabelle \ref{table:lodSystemComparison} gefunden werden.
@@ -184,4 +184,4 @@ Das Ziel ist es dann, die LOD-Artefakte in dieselbe Szenerie zu integrieren und 
 Eine solche Szenerie soll grundsätzlich Modelle sowohl nah als auch in grosser Distanz zeigen. Ein Beispiel für eine solche Szenerie ist eine 3D-Welt, in der man sich durch offene Gelände bewegt.
 
 \paragraph{Auswahl}
-Im Vergleich zur Modellbetrachtung ist die Aussagekraft einer Szeneriebetrachtung ausreichend, um einen Beleg für den positiven Nutzen des Systems zu haben. Bei der Modellbetrachtung ist es nicht möglich den praktischen Nutzen unter Berücksichtung verschiedenere Aspekte zu beurteilen, sie dient ausschliesslich zum theoretischen Vergleich. Deshalb werden die Auswirkungen auf das Laufzeitverhalten mithilfe einer Szeneriebetrachtung gemessen. Sollte es nicht möglich sein, die \e{FPS} zu steigern, so liefert der Einsatz von LOD-Artefakten keinen nachweisbaren Nutzen.
+Im Vergleich zur Modellbetrachtung ist die Aussagekraft einer Szeneriebetrachtung ausreichend, um einen Beleg für den positiven Nutzen des Systems zu haben. Bei der Modellbetrachtung ist es nicht möglich den praktischen Nutzen unter Berücksichtigung verschiedenere Aspekte zu beurteilen, sie dient ausschliesslich zum theoretischen Vergleich. Deshalb werden die Auswirkungen auf das Laufzeitverhalten mithilfe einer Szeneriebetrachtung gemessen. Sollte es nicht möglich sein, die \e{FPS} zu steigern, so liefert der Einsatz von LOD-Artefakten keinen nachweisbaren Nutzen.

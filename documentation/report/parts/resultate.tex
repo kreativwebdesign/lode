@@ -35,7 +35,7 @@ Für ein gegebenes Modell werden innerhalb vom Modellierungstool wie zum Beispie
   \label{fig:manualLodGenerationInBlender}
 \end{figure}
 
-Anschliessend werden die verschiedenen Stufen exportiert und manuell in die Applikation integriert. Dafür werden diese direkt im Projekt gespeichert und ins Versionkontrollsystem (zum Beispiel \e{Git}) hinzugefügt.
+Anschliessend werden die verschiedenen Stufen exportiert und manuell in die Applikation integriert. Dafür werden diese direkt im Projekt gespeichert und ins Versionskontrollsystem (zum Beispiel \e{Git}) hinzugefügt.
 
 Diese Artefakte müssen nun im Code einzeln geladen und in die Szenerie hinzugefügt werden. Wie in Codeausschnitt \ref{code:threejsManualLodUsage} im Beispiel von \e{Three.js} zu sehen ist, muss jedes Level manuel geladen und konfiguriert werden.
 \begin{figure}[H]
@@ -229,7 +229,7 @@ Bei einer Nahbetrachtung der Modelle sind die Unterschiede klar ersichtlich. Bei
 \subsection{Generierung von glTF}
 
 Für die LOD-Artefakte werden vom Originalmodell unabhängige glTF Dateien erstellt. Dafür wird das Tool \e{glTF-Transform} eingesetzt \cite{gltfTransform}.
-Das erstellen eines solchen Basismodells ist in \ref{code:gltfTransform} ersichtlich. Hierbei wird die Skalierung und rotation des Originalmodells verwendet (gespeichert in Variable \e{originalNode}).
+Das Erstellen eines solchen Basismodells ist in \ref{code:gltfTransform} ersichtlich. Hierbei wird die Skalierung und rotation des Originalmodells verwendet (gespeichert in Variable \e{originalNode}).
 
 \begin{figure}[H]
   \begin{lstlisting}[style=JavaScript]
@@ -267,7 +267,7 @@ newPrimitive.setAttribute("POSITION", positionAccessor);
 
 \subsection{Iterativer Ansatz}
 
-Wie in der Referenzimplementation wird auf einen \e{Threshold} (zu Deutsch Schwelle) gesetzt. Der \e{Threshold} ist ein Wert, welcher bestimmt, welche Fehlertoleranz gelten soll. Umso tiefer der \e{Threshold}, desto mehr \e{Edge Collapses} werden durchgeführt. Der \e{Threshold} wird kontinuierlich erhöht, so werden immer weitere \e{Triangles} entfernt. Der gewählte \e{Threshold} basiert direkt auf der Referenzimplementation \cite{fastQuadricMeshSimplification}. Ein Ausschnitt aus dem Quellcode ist in \ref{code:thresholdIteration} ersichtlich. Gewisse Teile wurden für die Übersicht entfernt. Die Variable \e{Triangles} beinhaltet alle \e{Triangles} eines \e{Primtives}. In gewissen Fällen ist es möglich, dass eine ausreichende Vereinfachung nicht in absehbarer Zeit generiert werden kann, dies ist abhängig von den \e{maxIterations}.
+Wie in der Referenzimplementation wird auf einen \e{Threshold} (zu Deutsch Schwelle) gesetzt. Der \e{Threshold} ist ein Wert, welcher bestimmt, welche Fehlertoleranz gelten soll. Umso tiefer der \e{Threshold}, desto mehr \e{Edge Collapses} werden durchgeführt. Der \e{Threshold} wird kontinuierlich erhöht, so werden immer weitere \e{Triangles} entfernt. Der gewählte \e{Threshold} basiert direkt auf der Referenzimplementation \cite{fastQuadricMeshSimplification}. Ein Ausschnitt aus dem Quellcode ist in \ref{code:thresholdIteration} ersichtlich. Gewisse Teile wurden für die Übersicht entfernt. Die Variable \e{Triangles} beinhaltet alle \e{Triangles} eines \e{Primtives}. In gewissen Fällen ist es möglich, dass eine ausreichende Vereinfachung nicht in absehbarer Zeit generiert werden kann. Dies ist abhängig von den \e{maxIterations}.
 
 \begin{figure}[H]
   \begin{lstlisting}[style=JavaScript]
@@ -391,7 +391,7 @@ Die Signifikanz wird mithilfe eines statistischen Konfidenzintervalls nachgewies
 Der Benchmark wurde auf verschiedenen Geräten ausgeführt. Im folgenden sind zwei Durchläufe mit jeweils 10 Proben erfasst.
 
 Der erste Durchlauf wurde auf einem MacBook Pro durchgeführt. Wie in Abbildung \ref{fig:benchmarkFpsChartMarcbook} zu sehen, konnten die FPS auf 60 FPS gehoben werden im Vergleich zu den 48.2 FPS in der unoptimierten Version. Die Standardabweichung ist im Diagramm ebenfalls ersichtlich.
-Direkt damit verbunden ist die Anzahl \e{Render Loop} Iterationen, welche genauso um ca 30\% gesteigert werden konnte. Auf der Umkehrseite wurde die Dauer für das Laden der Modelle, gemessen in Millisekunden, etwas erhöht, da mehr Modelle geladen werden müssen (siehe \ref{fig:benchmarkDownloadChartMarcbook}). Diese wuchs aber nur um rund 10\%. Zu beachten ist, dass die Modelle lediglich lokal geladen werden - über ein richtiges Netzwerk sind die Ladezeiten entsprechend länger.
+Direkt damit verbunden ist die Anzahl \e{Render Loop} Iterationen, welche genauso um ca. 30\% gesteigert werden konnte. Auf der Umkehrseite wurde die Dauer für das Laden der Modelle, gemessen in Millisekunden, etwas erhöht, da mehr Modelle geladen werden müssen (siehe \ref{fig:benchmarkDownloadChartMarcbook}). Diese wuchs aber nur um rund 10\%. Zu beachten ist, dass die Modelle lediglich lokal geladen werden - über ein richtiges Netzwerk sind die Ladezeiten entsprechend länger.
 
 Die detaillierten Informationen befinden sich in Anhang \ref{fig:marcbookBenchmarkRun}.
 
