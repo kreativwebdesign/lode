@@ -98,7 +98,7 @@ FBX ist ein proprietäres Format, welches von Autodesk verwaltet wird. Das Verwe
 \subparagraph{glTF}
 Seit 2015 gibt es ein offenes, modernes sowie auf optimale Speichernutzung fokussiertes Format: glTF. Dieses Format wird von der Khronos Gruppe entwickelt \cite{gltf1Spec}. In dieser Arbeit wird es als Austauschformat verwendet, deshalb wird im folgenden genauer auf das Format eingegangen.
 
-Die meisten 3D-Grafikprogramme wie Blender (.blend) verwenden ihre eigenen Dateiformate. Diese Dateiformate sind jedoch für den Einsatz in einer Applikation ungeeignet, da sie insbesondere nicht für die Laufzeitperformanz optimiert sind. Deswegen brauchte es für jedes Eingangsformat für jedes Ausgangsformat einen \e{converter}, wie in Abbildung \ref{fig:contentPipelineWithoutGltf} ersichtlich.
+Die meisten 3D-Grafikprogramme wie Blender (.blend) verwenden ihre eigenen Dateiformate. Diese Dateiformate sind jedoch für den Einsatz in einer Applikation ungeeignet, da sie insbesondere nicht für die Laufzeitperformanz optimiert sind. Deswegen brauchte es für jedes Eingangsformat für jedes Ausgangsformat einen Konverter, wie in Abbildung \ref{fig:contentPipelineWithoutGltf} ersichtlich.
 
 \begin{figure}[H]
   \centering
@@ -108,7 +108,7 @@ Die meisten 3D-Grafikprogramme wie Blender (.blend) verwenden ihre eigenen Datei
 \end{figure}
 
 Durch die immer breiter werdende Nachfrage nach 3D-Applikationen wurde ein Format benötigt, dass zum einen applikationsunabhängig verwendet und zum anderen performant im Web eingesetzt werden kann.
-Durch diese Abstraktion kann eine Vielzahl \e{converter} vermieden werden und nur wenige, sehr spezifische Dateiformate benötigen noch einen einzigen \e{converter}. Diese neue Pipeline ist in Abbildung \ref{fig:contentPipelineWithGltf} dargestellt. \cite{gltfTutorialIntro}
+Durch diese Abstraktion kann eine Vielzahl Konverter vermieden werden und nur wenige, sehr spezifische Dateiformate benötigen noch einen einzigen Konverter. Diese neue Pipeline ist in Abbildung \ref{fig:contentPipelineWithGltf} dargestellt. \cite{gltfTutorialIntro}
 \begin{figure}[H]
   \centering
   \includegraphics[width=1\columnwidth]{grundlagen/gltf/contentPipelineWithGltf.png}
