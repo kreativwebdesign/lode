@@ -234,13 +234,13 @@ Das erstellen eines solchen Basismodells ist in \ref{code:gltfTransform} ersicht
 
 \begin{figure}[H]
   \begin{lstlisting}[style=JavaScript]
-    const newDoc = new Document();
-    const scene = newDoc.createScene("scene");
-    const node = newDoc.createNode("node");
-    node.setRotation(originalNode.getRotation());
-    node.setScale(originalNode.getScale());
+const newDoc = new Document();
+const scene = newDoc.createScene("scene");
+const node = newDoc.createNode("node");
+node.setRotation(originalNode.getRotation());
+node.setScale(originalNode.getScale());
 
-    const mesh = newDoc.createMesh("mesh");
+const mesh = newDoc.createMesh("mesh");
   \end{lstlisting}
   \caption{Basis glTF Generierung}
   \label{code:gltfTransform}
@@ -250,25 +250,25 @@ Anschliessend werden die neuen Informationen in \e{Buffer} gespeichert. Als Beis
 
 \begin{figure}[H]
   \begin{lstlisting}[style=JavaScript]
-    const newPrimitive = newDoc.createPrimitive();
+const newPrimitive = newDoc.createPrimitive();
 
-    const buffer = newDoc.createBuffer(`buffer_${primitiveIndex}_1`);
+const buffer = newDoc.createBuffer(`buffer_${primitiveIndex}_1`);
 
-    const positionAccessor = newDoc
-      .createAccessor(`data_${primitiveIndex}_1`)
-      .setArray(verticesAsFloat)
-      .setType(Accessor.Type.VEC3)
-      .setBuffer(buffer);
+const positionAccessor = newDoc
+  .createAccessor(`data_${primitiveIndex}_1`)
+  .setArray(verticesAsFloat)
+  .setType(Accessor.Type.VEC3)
+  .setBuffer(buffer);
 
-    newPrimitive.setAttribute("POSITION", positionAccessor);
+newPrimitive.setAttribute("POSITION", positionAccessor);
   \end{lstlisting}
   \caption{Erstellen des \e{Buffers} für die \e{Vertices}}
   \label{code:bufferCreation}
 \end{figure}
 
-\subsubsection{Iteration}
+\subsection{Iterativer Ansatz}
 
-Wie in der Referenzimplementation wird auf einen \e{Threshold-Ansatz} gesetzt. Der \e{Threshold} (zu Deutsch Schwelle) ist ein Wert, welcher welche Fehlertoleranz walten soll. Umso tiefer der \e{Threshold}, desto mehr \e{Edge Collapses} werden durchgeführt. Der \e{Threshold} wird kontinuierlich erhöht, so werden immer weitere \e{Triangles} entfernt. Der gewählte \e{Threshold} basiert direkt auf der Referenzimplementation \cite{fastQuadricMeshSimplification}. Ein Ausschnitt aus dem Quellcode ist in \ref{code:thresholdIteration} ersichtlich. Gewisse Teile wurden für die Übersicht entfernt. Die Variable \e{Triangles} beinhaltet alle \e{Triangles} eines \e{Primtives}. In gewissen Fällen ist es möglich, dass eine ausreichende Vereinfachung nicht in absehbarer Zeit generiert werden kann, dies ist abhängig von den \e{maxIterations}.
+Wie in der Referenzimplementation wird auf einen \e{Threshold} (zu Deutsch Schwelle) gesetzt. Der \e{Threshold} ist ein Wert, welcher welche Fehlertoleranz walten soll. Umso tiefer der \e{Threshold}, desto mehr \e{Edge Collapses} werden durchgeführt. Der \e{Threshold} wird kontinuierlich erhöht, so werden immer weitere \e{Triangles} entfernt. Der gewählte \e{Threshold} basiert direkt auf der Referenzimplementation \cite{fastQuadricMeshSimplification}. Ein Ausschnitt aus dem Quellcode ist in \ref{code:thresholdIteration} ersichtlich. Gewisse Teile wurden für die Übersicht entfernt. Die Variable \e{Triangles} beinhaltet alle \e{Triangles} eines \e{Primtives}. In gewissen Fällen ist es möglich, dass eine ausreichende Vereinfachung nicht in absehbarer Zeit generiert werden kann, dies ist abhängig von den \e{maxIterations}.
 
 \begin{figure}[H]
   \begin{lstlisting}[style=JavaScript]
