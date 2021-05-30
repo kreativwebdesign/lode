@@ -227,6 +227,44 @@ Bei einer Nahbetrachtung der Modelle sind die Unterschiede klar ersichtlich. Bei
   \label{fig:lodComparisonDistance}
 \end{figure}
 
+\subsection{Generierung von glTF}
+
+Für die LOD-Artefakte werden vom Originalmodell unabhängige glTF Dateien erstellt. Dafür wird das Tool \e{glTF-Transform} eingesetzt \cite{gltfTransform}.
+Das erstellen eines solchen Basismodells ist in \ref{code:gltfTransform} ersichtlich. Hierbei wird die Skalierung und rotation des Originalmodells verwendet (gespeichert in Variable \e{originalNode}).
+
+\begin{figure}[H]
+  \begin{lstlisting}[style=JavaScript]
+    const newDoc = new Document();
+    const scene = newDoc.createScene("scene");
+    const node = newDoc.createNode("node");
+    node.setRotation(originalNode.getRotation());
+    node.setScale(originalNode.getScale());
+
+    const mesh = newDoc.createMesh("mesh");
+  \end{lstlisting}
+  \caption{Basis glTF Generierung}
+  \label{code:gltfTransform}
+\end{figure}
+
+Anschliessend werden die neuen Informationen in \e{Buffer} gespeichert. Als Beispiel hierzu die Generierung des \e{Vertexbuffers} in \ref{code:bufferCreation}. Ein \e{Mesh} kann mehrere \e{Primitives} beinhalten. Ein \e{Primitive} definiert einen Teil des Modells, dies beinhaltet unter anderem \e{Vertices}, \e{Materialinformationen}. Die Variable \e{primitiveIndex} speichert den Index des aktuellen \e{Primitives}. In der Variable \e{verticesAsFloat} werden die neuen \e{Vertices} als \e{Float32Array} abgespeichert.
+
+\begin{figure}[H]
+  \begin{lstlisting}[style=JavaScript]
+    const newPrimitive = newDoc.createPrimitive();
+
+    const buffer = newDoc.createBuffer(`buffer_${primitiveIndex}_1`);
+
+    const positionAccessor = newDoc
+      .createAccessor(`data_${primitiveIndex}_1`)
+      .setArray(verticesAsFloat)
+      .setType(Accessor.Type.VEC3)
+      .setBuffer(buffer);
+
+    newPrimitive.setAttribute("POSITION", positionAccessor);
+  \end{lstlisting}
+  \caption{Erstellen des \e{Buffers} für die \e{Vertices}}
+  \label{code:bufferCreation}
+\end{figure}
 \section{Benchmark}
 
 Das Ziel des Benchmarks ist der Vergleich einer Version ohne Einsatz von LOD und einer Umgebung, welche LODs einsetzt. Um eine möglichst praxisnahe Aussage treffen zu können, wird hierfür eine Demo-Szenerie verwendet, welche einer echten Anwendung so nah wie möglich kommt. Somit wird gewährleistet, dass es nicht nur in der Theorie einen Nutzen für LODs gibt, sondern dieser in der Praxis vorhanden ist.
