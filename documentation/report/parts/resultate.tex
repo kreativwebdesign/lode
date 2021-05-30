@@ -15,7 +15,7 @@ Der Kern der Arbeit stellt die LOD-Pipeline, \e{lode} genannt, dar. Dieses Tool 
 \subsection{Aktueller Workflow}
 
 Es gibt verschieden Möglichkeiten, LOD Artefakte in Webapplikationen einzugliedern. Ein möglicher Ablauf für das Generieren von LOD-Artefakten ist wie folgt:
-Für ein gegebenes Modell werden innerhalb vom Modellierungstool wie zum Beispiel Blender bestimmte LOD-Stufen von manuell generiert. Dies kann von Hand selber gemacht werden oder mit vom Modellierungstool zur Verfügung gestellten Funktionen. In Abbildung \ref{fig:manualLodGenerationInBlender} wurden basierend auf dem Original \ref{fig:manualLodGenerationInBlenderOriginal} zwei weiter LOD-Artefakte mittels dem \e{Decimate Modifier} erstellt.
+Für ein gegebenes Modell werden innerhalb vom Modellierungstool wie zum Beispiel Blender bestimmte LOD-Stufen von manuell generiert. Dies kann von Hand selber gemacht werden oder mit vom Modellierungstool zur Verfügung gestellten Funktionen. In Abbildung \ref{fig:manualLodGenerationInBlender} wurden basierend auf dem Original \ref{fig:manualLodGenerationInBlenderOriginal} zwei weiter LOD-Artefakte mittels dem \e{Decimate Modifier} erstellt. Wie in der Abbildung \ref{fig:manualLodGenerationInBlenderSimplified} zu erkennen ist, bleibt hier die Texturinformation beibehalten. Dies kann gewünscht sein, führt aber auch zu grösseren Dateigrössen, was im Web möglichst vermieden werden sollte.
 
 \begin{figure}[H]
   \centering
@@ -29,6 +29,7 @@ Für ein gegebenes Modell werden innerhalb vom Modellierungstool wie zum Beispie
     \centering
     \includegraphics[width=1\linewidth]{resultate/aktueller-workflow/lod-1.png}
     \caption{LOD-Stufe 1 (0.1\% Polys)}
+    \label{fig:manualLodGenerationInBlenderSimplified}
   \end{subfigure}
   \caption{Manuelles erstellen von LOD-Artefakten in Blender}
   \label{fig:manualLodGenerationInBlender}
