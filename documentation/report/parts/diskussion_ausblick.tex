@@ -12,6 +12,10 @@ Das entwickelte Tool, \e{lode}, liefert einen ersten Schritt in die Richtung ein
 
 Der grösste Nutzen entsteht in Anwendungen mit komplexen Modellen - für diese Situationen bietet \e{lode} einen nachweisbaren Mehrwert. Die Zahlen aus \autoref{chap:benchmarkResults} zeigen den möglichen Nutzen in einem Anwendungsbeispiel.
 
+Die Resultate zeigen einen klaren Unterschied zwischen der unoptimierten und optimierten Version. Die \e{FPS} geben eine klare Auskunft. Unter Berücksichtigung des berechneten Konfidenzintervalls wird das Resultat als signifikant erachtet. Diese These wird auch durch eine Kontrolle mit dem Auge belegt - die Anzahl \e{FPS} unterscheidet sich merkbar. Die Ladezeit der Applikation wurde nur marginal tangiert, die Auswirkungen auf die \e{User Experience} sind vernachlässigbar und können im optimalen Fall sogar durch progressives Laden zu einem Vorteil werden.
+
+Somit ist es möglich einen Nutzen für bestimmte anspruchsvolle 3D-Visualisierungen zu generieren.
+
 \subsection{Allgemeingültigkeit}
 
 Innerhalb der Testapplikation, wie in \autoref{chap:testApplication} beschrieben, werden dieselben Modelle mehrfach angezeigt. Dies wird in der Praxis insbesondere bei repetitiven Elementen, wie zum Beispiel Bäumen für Landschaftsgestaltung, verwendet. In solchen Situationen stellen die Anzahl Polygone das primäre Problem für eine schnelle Laufzeitperformanz dar und der Einsatz von LOD-Artefakten kann erwägt werden. Die Allgemeingültigkeit ist für Anwendungsfälle mit vergleichbaren Anforderungen gegeben.
