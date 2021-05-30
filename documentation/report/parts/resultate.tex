@@ -245,7 +245,7 @@ const mesh = newDoc.createMesh("mesh");
   \label{code:gltfTransform}
 \end{figure}
 
-Anschliessend werden die neuen Informationen in \e{Buffer} gespeichert. Als Beispiel hierzu die Generierung des \e{Vertexbuffers} in \ref{code:bufferCreation}. Ein \e{Mesh} kann mehrere \e{Primitives} beinhalten. Ein \e{Primitive} definiert einen Teil des Modells, dies beinhaltet unter anderem \e{Vertices}, \e{Materialinformationen}. Die Variable \e{primitiveIndex} speichert den Index des aktuellen \e{Primitives}. In der Variable \e{verticesAsFloat} werden die neuen \e{Vertices} als \e{Float32Array} abgespeichert.
+Anschliessend werden die neuen Informationen in \e{Buffer} gespeichert. Als Beispiel hierzu die Generierung des \e{Vertexbuffers} in \ref{code:bufferCreation}. Ein \e{Mesh} kann mehrere \e{Primitives} beinhalten. Ein \e{Primitive} definiert einen Teil des Modells, dies beinhaltet unter anderem \e{Vertices} und \e{Materialinformationen}. Die Variable \e{primitiveIndex} speichert den Index des aktuellen \e{Primitives}. In der Variable \e{verticesAsFloat} werden die neuen \e{Vertices} als \e{Float32Array} abgespeichert.
 
 \begin{figure}[H]
   \begin{lstlisting}[style=JavaScript]
@@ -267,7 +267,7 @@ newPrimitive.setAttribute("POSITION", positionAccessor);
 
 \subsection{Iterativer Ansatz}
 
-Wie in der Referenzimplementation wird auf einen \e{Threshold} (zu Deutsch Schwelle) gesetzt. Der \e{Threshold} ist ein Wert, welcher welche Fehlertoleranz walten soll. Umso tiefer der \e{Threshold}, desto mehr \e{Edge Collapses} werden durchgeführt. Der \e{Threshold} wird kontinuierlich erhöht, so werden immer weitere \e{Triangles} entfernt. Der gewählte \e{Threshold} basiert direkt auf der Referenzimplementation \cite{fastQuadricMeshSimplification}. Ein Ausschnitt aus dem Quellcode ist in \ref{code:thresholdIteration} ersichtlich. Gewisse Teile wurden für die Übersicht entfernt. Die Variable \e{Triangles} beinhaltet alle \e{Triangles} eines \e{Primtives}. In gewissen Fällen ist es möglich, dass eine ausreichende Vereinfachung nicht in absehbarer Zeit generiert werden kann, dies ist abhängig von den \e{maxIterations}.
+Wie in der Referenzimplementation wird auf einen \e{Threshold} (zu Deutsch Schwelle) gesetzt. Der \e{Threshold} ist ein Wert, welcher bestimmt, welche Fehlertoleranz gelten soll. Umso tiefer der \e{Threshold}, desto mehr \e{Edge Collapses} werden durchgeführt. Der \e{Threshold} wird kontinuierlich erhöht, so werden immer weitere \e{Triangles} entfernt. Der gewählte \e{Threshold} basiert direkt auf der Referenzimplementation \cite{fastQuadricMeshSimplification}. Ein Ausschnitt aus dem Quellcode ist in \ref{code:thresholdIteration} ersichtlich. Gewisse Teile wurden für die Übersicht entfernt. Die Variable \e{Triangles} beinhaltet alle \e{Triangles} eines \e{Primtives}. In gewissen Fällen ist es möglich, dass eine ausreichende Vereinfachung nicht in absehbarer Zeit generiert werden kann, dies ist abhängig von den \e{maxIterations}.
 
 \begin{figure}[H]
   \begin{lstlisting}[style=JavaScript]
@@ -292,7 +292,7 @@ for (let iteration = 0; iteration < maxIterations; iteration++) {
 
 \subsection{Edge Collapse}
 
-Bei der Durchführung einer \e{Edge Collapse} Operation muss ein neuer \e{Vertex} gefunden werden. Die bevorzugte Variante ist das finden der optimalen Position. Für mehr Informationen zu den konkreten Implementationsdetails, siehe \e{Quadric-Based Polygonal Surface Simplification} Sektion 3.5 \cite{quadridBasedSurfaceSimplification}.
+Bei der Durchführung einer \e{Edge Collapse} Operation muss ein neuer \e{Vertex} gefunden werden. Die bevorzugte Variante ist das Finden der optimalen Position. Für mehr Informationen zu den konkreten Implementationsdetails, siehe \e{Quadric-Based Polygonal Surface Simplification} Sektion 3.5 \cite{quadridBasedSurfaceSimplification}.
 
 \section{Benchmark}
 
