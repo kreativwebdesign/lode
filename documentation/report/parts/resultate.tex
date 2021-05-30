@@ -290,6 +290,11 @@ for (let iteration = 0; iteration < maxIterations; iteration++) {
   \label{code:thresholdIteration}
 \end{figure}
 
+
+\subsection{Edge Collapse}
+
+Bei der Durchführung einer \e{Edge Collapse} Operation muss ein neuer \e{Vertex} gefunden werden. Die bevorzugte Variante ist das finden der optimalen Position. Für mehr Informationen zu den konkreten Implementationsdetails, siehe \e{Quadric-Based Polygonal Surface Simplification} Sektion 3.5 \cite{quadridBasedSurfaceSimplification}.
+
 \section{Benchmark}
 
 Das Ziel des Benchmarks ist der Vergleich einer Version ohne Einsatz von LOD und einer Umgebung, welche LODs einsetzt. Um eine möglichst praxisnahe Aussage treffen zu können, wird hierfür eine Demo-Szenerie verwendet, welche einer echten Anwendung so nah wie möglich kommt. Somit wird gewährleistet, dass es nicht nur in der Theorie einen Nutzen für LODs gibt, sondern dieser in der Praxis vorhanden ist.
