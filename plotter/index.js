@@ -35,6 +35,12 @@ const main = async () => {
     path: "fpsChart.jpg",
   });
 
+  const downloadChart = await page.$("#download");
+
+  await downloadChart.screenshot({
+    path: "downloadChart.jpg",
+  });
+
   await browser.close();
 
   snowpack.kill();
