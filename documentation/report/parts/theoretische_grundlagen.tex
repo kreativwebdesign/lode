@@ -302,22 +302,25 @@ In diesem Abschnitt werden mögliche Ansätze erklärt, welche helfen sollen, di
 Ein Frustum ist eine geometrische Form, die einer Pyramide ähnelt, welcher die Spitze abgeschnitten wurde.
 Das Kamera-Frustum bezeichnet den Raum, welcher von der Kamera aufgezeichnet wird. Dieser Bereich startet eine gewisse Distanz von der Kamera entfernt und endet weit hinten wieder, da nicht bis in die Unendlichkeit Objekte sichtbar sind.
 Wie in Abbildung \ref{fig:CameraFrustum} zusehen ist, beginnt das Kamera-Frustum in der Nähe der Kamera und dehnt sich ein wenig aus bis es gegen Ende des Spektrums beschränkt wird.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.5\columnwidth]{grundlagen/Camera-Frustum.png}
-  \caption{Kamera Frustum}
-  \label{fig:CameraFrustum}
-\end{figure}
-
 Polygone, welche nicht im Kamera Frustum enthalten sind, werden bei dieser Methode, wie in Abbildung \ref{fig:FrustumCulling} gezeigt, nicht weiter prozessiert.
 Dies reduziert die Anzahl Polygone drastisch.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\columnwidth]{grundlagen/Frustum-Culling.png}
-  \caption{Frustum culling visualisiert. Rote Elemente werden nicht prozessiert.}
-  \label{fig:FrustumCulling}
+  \begin{subfigure}{.5\textwidth}
+    \centering
+    \includegraphics[width=0.5\columnwidth]{grundlagen/Camera-Frustum.png}
+    \caption{Kamera Frustum}
+    \label{fig:CameraFrustum}
+  \end{subfigure}%
+  \begin{subfigure}{.5\textwidth}
+    \centering
+    \includegraphics[width=0.5\columnwidth]{grundlagen/Frustum-Culling.png}
+    \caption{Frustum culling visualisiert. Rote Elemente werden nicht prozessiert.}
+    \label{fig:FrustumCulling}
+  \end{subfigure}
+  \caption{Frustum Culling}
+  \label{fig:transformationVertexRemoval}
 \end{figure}
 
 \paragraph{Occlusion culling}
