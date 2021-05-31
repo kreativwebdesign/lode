@@ -10,9 +10,9 @@ describe("identifyBorder", () => {
 
   it("should identify border vertices", () => {
     const { triangles, vertices } = prepareData(positions, indices);
-    const references = buildReferenceList(vertices, triangles);
+    buildReferenceList(vertices, triangles);
 
-    identifyBorder(vertices, triangles, references);
+    identifyBorder(vertices, triangles);
 
     expect(vertices[0].isBorder).toBeFalsy();
     expect(vertices[1].isBorder).toBeTruthy();
