@@ -10,16 +10,15 @@ describe("checkCollapseFlip", () => {
 
   it("should skip vertices which are not referenced", () => {
     const { triangles, vertices } = prepareData(positions, indices);
-    let references = buildReferenceList(vertices, triangles);
-    references = initializeData(vertices, triangles);
+    buildReferenceList(vertices, triangles);
+    initializeData(vertices, triangles);
     let point = vec3.create();
     const { flipped } = checkCollapseFlip(
       point,
       0,
       { triangles: [] },
       vertices,
-      triangles,
-      references
+      triangles
     );
 
     expect(flipped).toBeFalsy();
@@ -27,16 +26,15 @@ describe("checkCollapseFlip", () => {
 
   it("should report flipping vertices", () => {
     const { triangles, vertices } = prepareData(positions, indices);
-    let references = buildReferenceList(vertices, triangles);
-    references = initializeData(vertices, triangles);
+    buildReferenceList(vertices, triangles);
+    initializeData(vertices, triangles);
     let point = vec3.create();
     const { flipped } = checkCollapseFlip(
       point,
       0,
       vertices[0],
       vertices,
-      triangles,
-      references
+      triangles
     );
 
     expect(flipped).toBeTruthy();
