@@ -26,9 +26,9 @@ $$
 Eine Sammlung von drei \e{Vertices}\footnote{Wir verwenden die in englischer Sprache verfassten Fachliteratur zu 3D-Anwendungen gebräuchlichen Ausdrücke.} bildet ein \e{Triangle} (Dreieck). Ein \e{Triangle} kann somit wie folgt definiert werden:
 $$ T =
 \begin{bmatrix}
-  V \\
-  V \\
-  V
+  V_1 \\
+  V_2 \\
+  V_3
 \end{bmatrix}
 $$
 
@@ -37,18 +37,22 @@ Ein Modell besteht aus einer beliebigen Anzahl Polygone.
 Grundsätzlich gilt somit, dass ein beliebiger Polygon durch mehrere \e{Triangles} repräsentiert werden kann:
 $$ P =
 \begin{bmatrix}
-  V \\
-  V \\
-  V \\
-  V
+  V_1 \\
+  V_2 \\
+  V_3 \\
+  V_4
 \end{bmatrix}
+= T_1 \cup T_2
 = \begin{bmatrix}
-  T & T \\
+  V_1 \\
+  V_2 \\
+  V_3
 \end{bmatrix}
-= \begin{bmatrix}
-  V & V \\
-  V & V \\
-  V & V
+\cup
+\begin{bmatrix}
+  V_1 \\
+  V_2 \\
+  V_4
 \end{bmatrix}
 $$
 
