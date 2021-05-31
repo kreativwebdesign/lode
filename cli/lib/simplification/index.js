@@ -45,10 +45,9 @@ const simplify = (vertices, triangles, customOptions = {}) => {
     });
 
     // All triangles with edges below the threshold will be removed
-    //
+    // https://github.com/sp4cerat/Fast-Quadric-Mesh-Simplification
     // The following numbers works well for most models.
     // If it does not, try to adjust the 3 parameters
-    //
     const threshold = 0.000000001 * Math.pow(iteration + 3, aggressiveness);
 
     // remove vertices & mark deleted triangles
