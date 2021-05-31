@@ -102,7 +102,7 @@ FBX ist ein proprietäres Format, welches von Autodesk verwaltet wird. Das Verwe
 \subparagraph{glTF}
 Seit 2015 gibt es ein offenes, modernes sowie auf optimale Speichernutzung fokussiertes Format: glTF. Dieses Format wird von der Khronos Gruppe entwickelt \cite{gltf1Spec}. In dieser Arbeit wird es als Austauschformat verwendet, deshalb wird im folgenden genauer auf das Format eingegangen.
 
-Die meisten 3D-Grafikprogramme wie Blender (.blend) verwenden ihre eigenen Dateiformate. Diese Dateiformate sind jedoch für den Einsatz in einer Applikation ungeeignet, da sie insbesondere nicht für die Laufzeitperformanz optimiert sind. Deswegen brauchte es für jedes Eingangsformat für jedes Ausgangsformat einen Konverter, wie in Abbildung \ref{fig:contentPipelineWithoutGltf} ersichtlich.
+Die meisten 3D-Grafikprogramme wie Blender (.blend) verwenden ihre eigenen Dateiformate. Diese Dateiformate sind jedoch für den Einsatz in einer Applikation ungeeignet, da sie insbesondere nicht für die Laufzeitumgebung optimiert sind. Deswegen brauchte es für jedes Eingangsformat für jedes Ausgangsformat einen Konverter, wie in Abbildung \ref{fig:contentPipelineWithoutGltf} ersichtlich.
 
 \begin{figure}[H]
   \centering
@@ -350,7 +350,7 @@ Beim Bewegen durch die virtuelle Welt in \e{Street View}, ist auffällig zu sehe
 \section{Einführung Level of Detail}
 \label{chap:lodIntroduction}
 Als Level Of Detail werden die verschiedenen Detailstufen bei der virtuellen Darstellung bezeichnet.
-Dies wird verwendet, um die Geschwindigkeit von Anwendungen zu steigern, indem Objekte im Nahbereich detailliert angezeigt werden; wohingegen Elemente im Fernbereich deutlich vereinfacht dargestellt werden.
+Dies wird verwendet, um die Laufzeitleistung von Anwendungen zu steigern, indem Objekte im Nahbereich detailliert angezeigt werden; wohingegen Elemente im Fernbereich deutlich vereinfacht dargestellt werden.
 
 Ein LOD-Algorithmus hat das Ziel für ein gegebenes Modell eine vereinfachte Darstellung zu finden, welche das Original ausreichend annähert. Um diese Approximationen zu generieren, kann eine Vielzahl von Algorithmen verwendet werden. Es gibt verschiedene Ansätze zur Generierung von LODs, welche in \autoref{chap:lodAlgorithmComparison} im Detail erläutert werden.
 
