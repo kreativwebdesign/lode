@@ -42,7 +42,6 @@ const findOptimalVertexPosition = (qDelta, det) => {
 };
 
 const takeSimpleVertexPosition = (vertex1, vertex2, qDelta) => {
-  const resultPoint = vec3.create();
   const vertex3Position = vec3.create();
   vec3.add(vertex3Position, vertex1.position, vertex2.position);
   vec3.divide(vertex3Position, vertex3Position, vec3.fromValues(2, 2, 2));
@@ -50,16 +49,16 @@ const takeSimpleVertexPosition = (vertex1, vertex2, qDelta) => {
   const error1 = calculateVertexError(qDelta, vertex1.position);
   const error2 = calculateVertexError(qDelta, vertex2.position);
   const error3 = calculateVertexError(qDelta, vertex3Position);
+
   const error = Math.min(error1, error2, error3);
+  let optimalPoint = vertex3Position;
   if (error1 === error) {
-    vec3.copy(resultPoint, vertex1.position);
+    optimalPoint = vertex1.position;
   } else if (error2 === error) {
-    vec3.copy(resultPoint, vertex2.position);
-  } else if (error3 === error) {
-    vec3.copy(resultPoint, vertex3Position);
+    optimalPoint = vertex2.position;
   }
 
-  return { error, point: resultPoint };
+  return { error, point: vec3.clone(optimalPoint) };
 };
 
 // error for one edge
