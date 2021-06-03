@@ -35,7 +35,7 @@ Der manuelle Aufwand für die Integration des Systems in eine Applikation wird s
 Innerhalb der \e{Unity} Community gibt es eine Bibliothek für das automatische Generieren von Artefakten, welche für LOD verwendet werden können \cite{unityMeshSimplification}.
 Ansätze für ein HLOD-System sind vorhanden, wurden jedoch nicht offiziell in \e{Unity} integriert \cite{unityAutoLod}.
 
-In Abbildung \ref{fig:unityDLODGroup} ist zusehen, wie innerhalb von Unity der Übergang zwischen zwei LOD-Artefakten konfiguriert werden können. Hervorzuheben sind hier zum einen den \e{Fade Mode}, der das \e{Visual Popping} vermindert und zum anderen die Triggerpunkte, bei welchen das Level gewechselt werden soll.
+In Abbildung \ref{fig:unityDLODGroup} ist zusehen, wie innerhalb von Unity der Übergang zwischen zwei LOD-Artefakten konfiguriert werden können. Hervorzuheben sind hier zum einen den \e{Fade Mode}, der das \fgls{Visual Popping}{Beim \e{Visual Popping} handelt sich um den Moment, in dem die Artefakte ausgetauscht wird und somit kurz aufblitzt. Je subtiler die Änderungen an den Artefakten und je grösser die Distanz von der Kamera ist, desto weniger ist das Austauschen bemerkbar} vermindert und zum anderen die Triggerpunkte, bei welchen das Level gewechselt werden soll.
 Dies wird in \e{Unity} identisch zu \e{Unreal} gelöst, in dem der Triggerpunkt relativ zur Fenstergrösse festgelegt wird.
 
 \begin{figure}[H]
@@ -160,8 +160,7 @@ Ausserdem ist es auch möglich, Artefakte bereits vorzuladen.
 
 \paragraph{Visuelle Auswirkungen}
 
-Die negativen visuellen Auswirkungen auf eine Anwendung sollen so gering wie möglich ausfallen. Es gilt auch in den visuellen Bereichen die richtige Balance zwischen Laufzeitverhalten und möglichst hohem Realismus zu finden. Ein Beispiel für negative visuelle Auswirkungen ist die Reduktion der Auflösung - eine tiefe Auflösung wird von vielen Benutzern als störend empfunden. Im Zusammenhang mit LOD Artefakten ist insbesondere das sogenannte \e{Visual Popping} erwähnenswert.
-Beim \e{Visual Popping} handelt sich um den Moment, in dem die Artefakte ausgetauscht wird und somit kurz aufblitzt. Je subtiler die Änderungen an den Artefakten und je grösser die Distanz von der Kamera ist, desto weniger ist das Austauschen bemerkbar.
+Die negativen visuellen Auswirkungen auf eine Anwendung sollen so gering wie möglich ausfallen. Es gilt auch in den visuellen Bereichen die richtige Balance zwischen Laufzeitverhalten und möglichst hohem Realismus zu finden. Ein Beispiel für negative visuelle Auswirkungen ist die Reduktion der Auflösung - eine tiefe Auflösung wird von vielen Benutzern als störend empfunden. Im Zusammenhang mit LOD Artefakten ist insbesondere das sogenannte \e{\gls{Visual Popping}} erwähnenswert.
 
 \paragraph{Laufzeitverhalten}
 
