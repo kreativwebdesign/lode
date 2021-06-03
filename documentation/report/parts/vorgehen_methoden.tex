@@ -71,6 +71,8 @@ Deshalb wurde entschieden kein hierarchisches LOD-System zu entwickeln, um die I
 \subsection{Visual Pop}
 \e{Visual Pop} bezeichnet das merkbare Austauschen zweier LOD-Artefakte. Im optimalen Fall ist der Austausch zweier Artefakte nicht bemerkbar. Bei kontinuierlichen Systemen ist es möglich, indem die unterschiedlichen Anpassungen graduell durchgeführt werden. Aufgrund der Art des Systems ist dies vergleichbar einfach möglich. Bei diskreten LOD-Systemen gestaltet sich das etwas aufwändiger. Eine Möglichkeit wird in \autoref{chap:fading} erläutert. Wenn die Auswechslung in ausreichender Entfernung vorgenommen werden kann, dann ist \e{Visual Popping} weniger spürbar.
 
+\todo[inline]{erklärung weshalb visual pop nicht entscheidendes kriterium ist}
+
 \subsection{Entscheidung}
 Eine Übersicht über die verschiedenen Kriterien kann in der Tabelle \ref{table:lodSystemComparison} gefunden werden.
 
@@ -134,6 +136,8 @@ Die \e{Edge Collapses} mit dem geringsten Fehler werden iterativ durchgeführt. 
 \subsection{Referenzimplementation}
 Der gewählte Algorithmus wurde bereits mehrfach implementiert. Eine wiederverwendbare Implementation basierend auf einer formatunabhängigen Datenstruktur ist jedoch nicht vorhanden. Eine oft referenzierte Implementation ist diejenige von S. Forstmann, welche einige Optimierungen am ursprünglichen Algorithmus vornimmt, um optimale Performanz zu erhalten. Diese Optimierungen eignen sich hervorragend für eine webbasierte Implementation \cite{fastQuadricMeshSimplification}.
 
+\todo[inline]{erwähnung Cpp}
+
 \section{Pipeline Integration}
 Die Lösung soll in eine wiederverwendbare und konfigurierbare Pipeline integriert werden.
 In der Webentwicklung ist es üblich, über \fgls{CLI}{Command Line Interface – Kommandozeile. Computer-Mensch-Schnittstelle, welche ermöglicht, durch Eingabe von Befehlswörter Anweisungen an die Maschine zu geben. Vor der Erfindung der Maus war dies die gängige Art mit dem Computer zu kommunizieren. Heute meist nur noch von technisch versierten Benutzern verwendet. So zum Beispiel auch weit verbreitet in der Webentwicklung} Arbeitsschritte zu automatisieren. Es soll demnach ein \e{\gls{CLI}} erstellt und auf \gls{npm} öffentlich zugänglich gemacht werden, welches nahtlos in den Entwicklungsablauf integriert werden kann. Über eine Konfiguration soll angegeben werden können, wo nach den \e{.glTF} Dateien gesucht, wohin die Output-Dateien gespeichert und in welchem Modus das Tool gestartet werden soll. Ebenso werden Algorithmus-Einstellungen in dieser Konfiguration gesetzt werden können. Es soll einfach zu bedienen, gut dokumentiert und gut gewählte Standardeinstellungen haben. Zudem soll das Tool im einmal Modus laufen können oder kontinuierlich sich ändernde Dateien neu optimieren.
@@ -171,6 +175,8 @@ Für flüssige Animationen sind die \e{Frames per Second} (FPS) entscheidend. Be
 \paragraph{Berücksichtigung der Aspekte}
 In dieser Arbeit wird ein hoher Wert darauf gelegt, dass die Entwicklungszeit möglichst geringfügig erhöht wird. Zudem werden, wo möglich, Empfehlungen getätigt, um die Downloadgrösse nur marginal zu verändern. Das Minimieren der visuellen Auswirkungen kann durch visuelle Vergleiche sichergestellt werden.
 Die somit primären Aspekte für die Beurteilung sind die Auswirkungen auf das Laufzeitverhalten.
+
+\todo[inline]{@marc Benchmark in Glossar?}
 
 Um diese Beurteilung tätigen zu können, wird im Folgenden ein Benchmark definiert, mit dem Ziel, das Laufzeitverhalten zu analysieren und somit den maximal möglichen Einfluss von LOD auf die Leistung klassifizieren zu können. Hierbei werden verschiedene Faktoren betrachtet.
 

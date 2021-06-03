@@ -14,8 +14,8 @@ Der Kern der Arbeit stellt die LOD-Pipeline, \e{lode} genannt, dar. Dieses Tool 
 
 \subsection{Aktueller Workflow}
 
-Es gibt verschieden Möglichkeiten, LOD Artefakte in Webapplikationen einzugliedern. Ein möglicher Ablauf für das Generieren von LOD-Artefakten ist wie folgt:
-Für ein gegebenes Modell werden innerhalb vom Modellierungstool wie zum Beispiel Blender bestimmte LOD-Stufen von manuell generiert. Dies kann von Hand selber gemacht werden oder mit vom Modellierungstool zur Verfügung gestellten Funktionen. In Abbildung \ref{fig:manualLodGenerationInBlender} wurden basierend auf dem Original \ref{fig:manualLodGenerationInBlenderOriginal} zwei weiter LOD-Artefakte mittels dem \e{Decimate Modifier} erstellt. Wie in der Abbildung \ref{fig:manualLodGenerationInBlenderSimplified} zu erkennen ist, bleibt hier die Texturinformation beibehalten. Dies kann gewünscht sein, führt aber auch zu grösseren Dateigrössen, was im Web möglichst vermieden werden sollte.
+Es gibt verschiedene, manuelle Möglichkeiten, LOD Artefakte in Webapplikationen einzugliedern. Ein möglicher Ablauf für das Generieren von LOD-Artefakten ist wie folgt:
+Für ein gegebenes Modell werden innerhalb vom Modellierungstool wie zum Beispiel Blender bestimmte LOD-Stufen manuell generiert. Dies kann von Hand selber gemacht werden oder mit vom Modellierungstool zur Verfügung gestellten Funktionen. In Abbildung \ref{fig:manualLodGenerationInBlender} wurden basierend auf dem Original \ref{fig:manualLodGenerationInBlenderOriginal} zwei weiter LOD-Artefakte mittels dem \e{Decimate Modifier} erstellt. Wie in der Abbildung \ref{fig:manualLodGenerationInBlenderSimplified} zu erkennen ist, bleibt hier die Texturinformation beibehalten. Dies kann gewünscht sein, führt aber auch zu grösseren Dateigrössen, was im Web möglichst vermieden werden sollte.
 
 \begin{figure}[H]
   \centering
@@ -66,7 +66,7 @@ Diese Artefakte müssen nun im Code einzeln geladen und in die Szenerie hinzugef
 
 \subsection{lode Pipeline}
 
-Das Ziel von \e{lode} ist es, für ein möglichst breites Spektrum von Anwendungsfällen eine einfache Lösung anzubieten und somit die Hemmschwelle für den Einsatz von LOD-Artfakten zu reduzieren.
+Das Ziel von \e{lode} ist es, für ein möglichst breites Spektrum von Anwendungsfällen eine einfache Lösung anzubieten und somit die Hemmschwelle für den Einsatz von LOD-Artefakten zu reduzieren.
 
 Deshalb setzt \e{lode} konsequent auf moderne Entwicklungsprozesse, die nahtlos in die bestehenden Prozesse integriert werden können. Manuelle Schritte sollen auf ein Minimum reduziert und Finetuning so einfach wie möglich werden.
 
@@ -110,7 +110,7 @@ Danach generiert \e{lode} die in der Konfigurationsdatei beschriebenen LOD-Artef
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\columnwidth]{resultate/screenshotlodeclirun.png}
-  \caption{lode \e{CLI} run – Generiert die gewünschten LOD-Artefakten}
+  \caption{lode \e{CLI} run – Generiert die gewünschten LOD-Artefakte}
   \label{fig:lodeclirun}
 \end{figure}
 
@@ -167,6 +167,7 @@ Die Fehlermetrik wurde vergleichbar mit der Referenzimplementation justiert. Die
 
 \subsection{Texturen}
 
+\todo[inline]{Beispiel? Code?}
 Bei vielen Modellen sind der grösste Teil der Speichergrösse die Texturen. Das Optimieren der geometrischen Struktur reduziert die zugehörigen Texturen jedoch nicht. Um trotzdem möglichst grosse Einsparungen für die Texturen zu ermöglichen wurde eine Methode entwickelt, welche versucht die prominenteste Farbe eines Modells zu extrahieren und diese für die Vereinfachungen zu verwenden.
 In Abbildung \ref{fig:textureComparison} ist dieser Unterschied visualisiert.
 Diese Technik führt zu signifikanten Detailverlusten bei der Nahbetrachtung und ist somit ungeeignet für das Verwenden bei der ersten LOD-Stufe. Für alle weiteren Stufen überwiegt jedoch der Vorteil der Vereinfachung im Vergleich zum Detailverlust.
@@ -204,7 +205,7 @@ In Abbildung \ref{fig:lodComparison} ist eine solche Vereinfachung neben dem zug
     \includegraphics[width=.8\linewidth]{resultate/lod-simplified.png}
     \caption{vereinfachtes Modell}
   \end{subfigure}
-  \caption{Vergleich Originalmodell und vereinfachtes Modell}
+  \caption{Vergleich von Originalmodell mit vereinfachtem Modell}
   \label{fig:lodComparison}
 \end{figure}
 
@@ -222,7 +223,7 @@ Bei einer Nahbetrachtung der Modelle sind die Unterschiede klar ersichtlich. Bei
     \includegraphics[width=.8\linewidth]{resultate/simplified-distance.png}
     \caption{vereinfachtes Modell}
   \end{subfigure}
-  \caption{Vergleich Originalmodell und vereinfachtes Modell auf Distanz}
+  \caption{Vergleich Originalmodell mit vereinfachtem Modell auf Distanz}
   \label{fig:lodComparisonDistance}
 \end{figure}
 
@@ -294,6 +295,8 @@ for (let iteration = 0; iteration < maxIterations; iteration++) {
 
 Bei der Durchführung einer \e{Edge Collapse} Operation muss ein neuer \e{Vertex} gefunden werden. Die bevorzugte Variante ist das Finden der optimalen Position. Für mehr Informationen zu den konkreten Implementationsdetails, siehe \e{Quadric-Based Polygonal Surface Simplification} Sektion 3.5 \cite{quadridBasedSurfaceSimplification}.
 
+
+\todo[inline]{Benchmark sections prevent single child section auswertung}
 \section{Benchmark}
 
 Das Ziel des Benchmarks ist der Vergleich einer Version ohne Einsatz von LOD und einer Umgebung, welche LODs einsetzt. Um eine möglichst praxisnahe Aussage treffen zu können, wird hierfür eine Demo-Szenerie verwendet, welche einer echten Anwendung so nah wie möglich kommt. Somit wird gewährleistet, dass es nicht nur in der Theorie einen Nutzen für LODs gibt, sondern dieser in der Praxis vorhanden ist.

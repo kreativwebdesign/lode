@@ -7,21 +7,23 @@
 % !TEX encoding = UTF-8 Unicode
 % !TEX root = ../doc.tex
 
-3D-Visualisierungen werden in vielen Branchen verwendet. Virtual Reality, CAD-Programme oder Computerspiele sind einige bekannte Anwendungsgebiete. Dank leistungsfähigeren Geräten sind in vielen weiteren Bereichen realistischere Visualisierungen möglich.
+3D-Visualisierungen werden in vielen Branchen verwendet. Virtual Reality, CAD-Programme oder Computerspiele sind einige bekannte Anwendungsgebiete. Dank leistungsfähigeren Geräten sind realistischere Visualisierungen möglich.
 
-Anwendungen können auf spezifische Hardware, wie zum Beispiel die Spielkonsole PlayStation, ausgerichtet sein. Es gibt Unterschiede zwischen den Konsolen, grundsätzlich sind die verschiedenen Geräte jedoch überschaubar. In anderen Anwendungsfällen kann eine Applikation sogar für nur eine dedizierte Hardware entwickelt werden. Dies erlaubt es, eine Applikation auf die Anforderungen dieser Hardware zuzuschneiden. Der primäre Nachteil ist die Zugänglichkeit der Software, da spezifische Hardware notwendig ist. So ist es einerseits aufwändig die Hardware zu beschaffen, andererseits aber auch eine Kostenfrage. Für gewisse Anwendungsgebiete ist dies ein zweitrangiges Problem.
+\todo[inline]{@simon formalität bei überschaubar überprüfen}
+Anwendungen können auf spezifische Hardware, wie zum Beispiel die Spielkonsole PlayStation, ausgerichtet sein. Es gibt Unterschiede zwischen den Konsolen, grundsätzlich sind die verschiedenen Geräte jedoch überschaubar. In anderen Anwendungsfällen kann eine Applikation sogar für nur eine spezifische Hardware entwickelt werden. Dies erlaubt es, eine Applikation auf die Anforderungen dieser Hardware zuzuschneiden. Der primäre Nachteil ist die Zugänglichkeit der Software, da spezifische Hardware notwendig ist. So ist es einerseits aufwändig, die Hardware zu beschaffen, andererseits aber auch eine Kostenfrage. Für gewisse Anwendungsgebiete ist dies ein sekundäres Problem.
 
 Für hardwareunabhängige Anwendungen eignet sich die Webplattform hervorragend.
-Immer mehr Benutzer haben Zugang zu einem Desktop, Tablet, Mobiltelefon oder ein anderes Gerät, welches Zugang zum Internet bietet \cite{peopleWithInternetAccess}.
+Immer mehr Benutzer haben Zugang zu einem Desktop, Tablet, Mobiltelefon oder zu einem anderen Gerät, welches Zugang zum Internet bietet \cite{peopleWithInternetAccess}.
 Somit ermöglicht die Webplattform, Anwendungen mit weniger Aufwand einem grossen Zielpublikum zugänglich zu machen.
 Seit einigen Jahren ist es auch möglich, 3D-Visualisierungen im Web zu realisieren.
 
 \section{Kontext}
-In der Arbeit wird der Fokus auf die Webplattform gelegt. Die Grundlagen sind jedoch auch unabhängig davon zutreffend.
+\todo[inline]{@simon prägnanter formulieren wo grundlagen zutreffen}
+In dieser Arbeit wird der Fokus auf die Webplattform gelegt. Die Grundlagen sind jedoch auch unabhängig davon zutreffend.
 Für die Vereinfachung wird im Folgenden der Begriff Web für die Plattform von verschiedenen Web-Technologien genutzt. Dies beinhaltet insbesondere vom \e{World Wide Web Consortium}, kurz W3C, veröffentlichte Standards.
 
 \section{Ausgangslage}
-Dank der Rechenleistung auf modernen Geräten ist es möglich anspruchsvolle 3D-Visualisierungen in Echtzeit auf diversen Geräten zu implementieren. Da diese Applikationen rechenintensiv sind und gerade mobile Geräte in ihrer Rechenleistung beschränkt sind, ist Performanzoptimierung im 3D-Rendering unabdinglich. Insbesondere die Komplexität der Modelle hat einen signifikanten Einfluss auf die Leistung.
+Dank der Rechenleistung auf modernen Geräten ist es möglich, anspruchsvolle 3D-Visualisierungen in Echtzeit auf diversen Geräten zu implementieren. Da diese Applikationen rechenintensiv sind und gerade mobile Geräte in ihrer Rechenleistung beschränkt sind, ist Performanzoptimierung im 3D-Rendering unabdinglich. Insbesondere die Komplexität der Modelle hat einen signifikanten Einfluss auf die Leistung.
 Eine Möglichkeit zur Optimierung ist das Anzeigen von vereinfachten Modellen ab bestimmten Distanzen zum Betrachter. So kann z.B. ein Modell in grosser Distanz vereinfacht dargestellt werden (Abbildung \ref{fig:lodComparisonSimplified}), solange bei genauer Betrachtung mehr Details sichtbar werden (Abbildung \ref{fig:lodComparisonOriginal}).
 
 \begin{figure}[H]
@@ -46,21 +48,23 @@ Für \e{\fgls{Game Engines}{Framework für Computerspiele, das für den Spielver
 
 \subsection{3D-Rendering im Web}
 
-Als Basis für 3D-Visualisierungen im Web dient meist das von der Khronos Group entwickelte WebGL, das von allen modernen Browsern unterstützt wird. WebGL ist eine low-level JavaScript API für 3D-Visualisierungen \cite{webGl1Spec}.
-Alternativ zu WebGL wird zurzeit ein weiterer Standard entwickelt: WebGPU. Dieser ist zur Zeit des Schreibens noch in Entwicklung und wird deshalb nicht weiter berücksichtigt, auch wenn ein grosses Potenzial vorhanden ist \cite{webGPUCharter}.
+\todo[inline]{@marc begriffe kursiv und als non-referenced glossareintrag}
+\todo[inline]{high level vs low level}
+Als Basis für 3D-Visualisierungen im Web dient meist das von der Khronos Group entwickelte WebGL, das von allen modernen Browsern unterstützt wird. WebGL ist eine \e{Low Level JavaScript API} für 3D-Visualisierungen \cite{webGl1Spec}.
+Alternativ zu WebGL wird zurzeit ein weiterer Standard entwickelt: WebGPU. Dieser ist aktuell noch in Entwicklung und wird deshalb nicht weiter berücksichtigt, auch wenn ein grosses Potenzial vorhanden ist \cite{webGPUCharter}.
 
-Die Unabhängigkeit der Hardware bedeutet jedoch auch, dass Optimierung der Performanz in Webanwendungen unabdinglich ist, um allen Benutzern ein optimales Erlebnis zu ermöglichen.
+Die Unabhängigkeit der Hardware bedeutet, dass Optimierung der Performanz in Webanwendungen notwendig ist, um allen Benutzern ein optimales Erlebnis zu ermöglichen.
 Im Vergleich zu fixen Hardwareanwendungen ist es realistisch, dass eine Webanwendung sowohl auf einem leistungsfähigen Desktop Computer als auch auf einem günstigen Mobilgerät verwendet wird.
 
 Zudem ist WebGL eine junge Technologie und wurde erst 2011 veröffentlicht \cite{webGl1Spec} – verglichen mit dem initialen Veröffentlichungsdatum von \fgls{OpenGL}{Spezifikation einer Programmierschnittstelle zur Entwicklung von 2D- und 3D-Grafikanwendungen} welches im Jahre 1992 publiziert wurde \cite{openGlSpec}.
-Nicht nur das Alter, sondern auch die Natur der Webplattform hat dazu beigetragen, dass WebGL ein langsames Wachstum verspürt hat. Um einen Webstandard wie WebGL einsetzen zu können, müssen alle grossen Browser die Spezifikation implementieren. Ansonsten kann der grosse Vorteil des Webs – einfache Verteilung an alle Benutzer – nicht in vollem Umfang genutzt werden. So hat zum Beispiel Internet Explorer 10 keinen Support und es wurde erstmals Ende 2013 möglich, im Internet Explorer 11 3D-Anwendungen für ein breites Publikum zu entwickeln.
+Nicht nur das Alter, sondern auch die Natur der Webplattform hat dazu beigetragen, dass WebGL ein langsames Wachstum verspürt hat. Um einen Webstandard wie WebGL einsetzen zu können, müssen alle grossen Browser die Spezifikation implementieren. Ansonsten kann der grosse Vorteil des Webs – einfache Verteilung an alle Benutzer – nicht in vollem Umfang genutzt werden. So hat zum Beispiel der Internet Explorer 10 keinen Support und es wurde deshalb erstmals Ende 2013 möglich, im Internet Explorer 11 3D-Anwendungen für ein breites Publikum zu entwickeln.
 
 \subsection{JavaScript Bibliotheken}
-Um die Arbeit mit WebGL zu vereinfachen, gibt es verschiedene JavaScript Bibliotheken. Die Bekanntesten werden hier kurz erwähnt. Als Indikator für die Popularität wurden die wöchentlichen Downloads auf \fgls{npm}{Node Package Manager, Datenbank von JavaScript Paketen und Paketmanager.} verwendet. Wichtig ist, dass dies alleine keinen verlässlichen Indikator darstellt – für eine kurze Übersicht jedoch ausreichend geeignet ist.
+Um die Arbeit mit WebGL zu vereinfachen, gibt es verschiedene JavaScript Bibliotheken. Die bekanntesten werden hier kurz erwähnt. Als Indikator für die Popularität wurden die wöchentlichen Downloads auf \fgls{npm}{Node Package Manager, Datenbank von JavaScript Paketen und Paketmanager.} verwendet. Wichtig ist, dass dies alleine keinen verlässlichen Indikator darstellt – für eine kurze Übersicht jedoch ausreichend geeignet ist.
 
 \paragraph{Three.js}
-Ist die wohl weitverbreiteste Bibliothek für 3D-Rendering im Web \cite{threeNpmPackage}.
-Die Community von \e{Three.js} ist aktiv und das offene Produkt wird kontinuierlich weiterentwickelt. Insbesondere die Erweiterungen für \e{React}, eine populäre Bibliothek für die Entwicklung von Frontend Applikationen, zeigen den Innovationsdrang \cite{threeFiberGithub, reactNpmPackage}.
+\e{Three.js} ist die wohl weitverbreiteste Bibliothek für 3D-Rendering im Web \cite{threeNpmPackage}.
+Die Community von \e{Three.js} ist aktiv und das offene Produkt wird kontinuierlich weiterentwickelt. Insbesondere die Erweiterungen \cite{threeFiberGithub} für \e{React}, eine populäre Bibliothek für die Entwicklung von Frontend Applikationen \cite{reactNpmPackage}, zeigen den Innovationsdrang.
 Die Hauptvorteile liegen in der weiten Verbreitung, dem grossen Fokus auf Performanz und einem soliden Set an Basisfeatures. Elemente wie eine Physik-Engine fehlen jedoch und müssen vom Entwickler integriert werden. Zudem setzt \e{Three.js} nicht auf \fGls{Semantic Versioning}{Konvention für Veröffentlichung von Software Paketen, siehe: semver.org \cite{semanticVersioning}}, was bedeutet, dass jede neue Version potenziell nicht rückwärtskompatible Änderungen beinhalten kann.
 
 \paragraph{Babylon.js}
@@ -78,10 +82,10 @@ Zudem bietet \e{Unity} keine zu \e{Three.js}, \e{Babylon.js} oder \e{PlayCanvas}
 \subsection{Stand der Technik}
 
 In anderen Umgebungen gibt es bereits umfangreiche LOD-Systeme für komplexe Anwendungsgebiete. Auf diese wird in der Sektion \autoref{chap:existingSolutions} detaillierter eingegangen.
-Die erläuterten Bibliotheken bieten Funktionen für das Laden von LOD-Artefakten. Teilweise gibt es die Möglichkeit Vereinfachungen im Browser zu generieren. Das Generieren von LOD-Artefakten zur Laufzeit ist jedoch für Webapplikationen nicht geeignet, da dies signifikante Auswirkungen auf das Laufzeitverhalten hat und insbesondere auf schwächeren Geräten die Applikation zusätzlich verlangsamt.
-So dauert das Optimieren eines komplexen Modells wie zum Beispiel bei \e{Babylon.js} demonstriert auch auf rechnungsstarken Geräten mehrere Sekunden \cite{babylonAutoLod}. \e{Three.js} verfügt über eine vergleichbare Möglichkeit, welche dieselben Limitationen aufweist \cite{threeSimplifyModifier}. Möchte man die Artefakte vorzeitig generieren, so ist es notwendig, diese Schritte manuell durchzuführen. Bei Modellanpassungen entsteht somit ein wiederkehrender manueller Aufwand. Ein Tool für die Konfiguration der Artefakte, wie dies bei \e{Unreal} oder \e{Unity} der Fall ist, steht nicht zur Verfügung.
+Die erläuterten Bibliotheken bieten Funktionen für das Laden von LOD-Artefakten. Teilweise gibt es die Möglichkeit, Vereinfachungen im Browser zu generieren. Das Generieren von LOD-Artefakten zur Laufzeit ist jedoch für Webapplikationen nicht geeignet, da dies signifikante Auswirkungen auf das Laufzeitverhalten hat und insbesondere auf schwächeren Geräten die Applikation zusätzlich verlangsamt.
+So dauert das Optimieren eines komplexen Modells, wie zum Beispiel bei \e{Babylon.js} demonstriert, auch auf rechnungsstarken Geräten mehrere Sekunden \cite{babylonAutoLod}. \e{Three.js} verfügt über eine vergleichbare Möglichkeit, welche dieselben Limitationen aufweist \cite{threeSimplifyModifier}. Möchte man die Artefakte vorzeitig generieren, so ist es notwendig, diese Schritte manuell durchzuführen. Bei Modellanpassungen entsteht somit ein wiederkehrender manueller Aufwand. Ein Tool für die Konfiguration der Artefakte, wie dies bei \e{Unreal} oder \e{Unity} der Fall ist, steht nicht zur Verfügung.
 
 Des Weiteren sind die Systeme nicht untereinander kompatibel. So kann das System zur Modellgenerierung von \e{Babylon.js} nicht in \e{Three.js} verwendet werden, obwohl die Problemstellung dies erlaubt. Folglich divergieren die Systeme.
 
 \section{Zielsetzung}
-Das Ziel der Arbeit ist es, ein Tool zu entwickeln, das den Umgang mit LOD-Artefakten im Web vereinfacht. Hierfür muss ein Algorithmus entwickelt werden, der es erlaubt, Modelle drastisch zu vereinfachen, ohne die grobe geometrische Form zu verlieren. Im Anschluss muss das Tool zur Verfügung gestellt werden, sodass es in der Praxis eingesetzt werden kann. Hierbei ist es wichtig, dass die Artefakte nicht innerhalb des Browsers generiert werden. Zudem soll der Einsatz des Tools einen möglichst geringen Zusatzaufwand bedeuten und für ein breites Spektrum an Modellen angewendet werden können. Ersteres wird dadurch ermöglicht, in dem ein Konfigurationstool bereitgestellt wird, mit dem man Konfigurationseinstellungen für die generierten Modellen vornehmen kann. Des Weiteren soll das Tool soweit erweiterbar sein, dass es für verschiedene Bibliotheken eingesetzt werden kann, ohne den Kern neu entwickeln zu müssen. Am Schluss muss zudem der Beleg erbracht werden, dass das Laufzeitverhalten der Applikation mit LOD-Artfakten verbessert werden kann. Hierfür muss ein geeignetes Werkzeug zur Messung der wichtigsten Faktoren der Laufzeit definiert werden.
+Das Ziel der Arbeit ist es, ein Tool zu entwickeln, das den Umgang mit LOD-Artefakten im Web vereinfacht. Hierfür muss ein Algorithmus entwickelt werden, der es erlaubt, Modelle signifikant zu vereinfachen, ohne die grobe geometrische Form zu verlieren. Im Anschluss muss das Tool zur Verfügung gestellt werden, sodass es in der Praxis eingesetzt werden kann. Hierbei ist es wichtig, dass die Artefakte nicht innerhalb des Browsers generiert werden. Zudem soll der Einsatz des Tools einen möglichst geringen Zusatzaufwand bedeuten und für ein breites Spektrum an Modellen angewendet werden können. Ersteres wird dadurch ermöglicht, in dem ein Konfigurationstool bereitgestellt wird, mit dem man Konfigurationseinstellungen für die generierten Modellen vornehmen kann. Des Weiteren soll das Tool soweit erweiterbar sein, dass es für verschiedene Bibliotheken eingesetzt werden kann, ohne den Kern neu entwickeln zu müssen. Am Schluss muss zudem der Beleg erbracht werden, dass das Laufzeitverhalten der Applikation mit LOD-Artfakten verbessert werden kann. Hierfür muss ein geeignetes Werkzeug zur Messung der wichtigsten Faktoren der Laufzeit definiert werden.

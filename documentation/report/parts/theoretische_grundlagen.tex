@@ -8,12 +8,12 @@
 % !TEX root = ../doc.tex
 
 Im folgenden Abschnitt werden die Grundlagen für die Entwicklung eines LOD-Systems kurz erläutert.
-Es werden zuerst die Grundlagen der 3D-Modellierungen und verschiedene Dateitypen erläutert. Danach wird auf die Theorie der Transformationen und die Grafik-Pipeline eingegangen. Zum Schluss werden noch einige Optionen zur Performanzoptimierung erläutert.
+Es werden zuerst die Grundlagen der 3D-Modelle und verschiedene Dateitypen erläutert. Danach wird auf die Theorie der Transformationen und die Grafik-Pipeline eingegangen. Zum Schluss werden noch einige Optionen zur Performanzoptimierung erläutert.
 
 \section{3D-Modelle}
 Ein Modell stellt ein Objekt aus der realen Welt vereinfacht dar.
 3D-Modelle können vereinfacht als Gruppe von Punkten definiert werden.
-Um im dreidimensionalen Raum Objekte visualisieren zu können sind mindestens drei Punkte notwendig.
+Um im dreidimensionalen Raum Objekte visualisieren zu können, sind mindestens drei Punkte notwendig.
 Punkte von 3D-Modellen werden im folgenden als \e{Vertex} (Eckpunkte) bezeichnet und können als Vektor definiert werden.
 So können wir einen Vertex am Ursprung eines Koordinatensystems definieren als:
 $$ V =
@@ -86,6 +86,7 @@ So wird für jeden \e{Vertex} ein \e{Normal} definiert. Ein \e{Normal} ist ein V
 \subparagraph{Texturen}
 Um die Oberfläche von Modellen zu definieren, wird häufig ein \e{Texture Mapping}, auch \e{UV-Mapping} genannt, durchgeführt. Bei diesem Verfahren wird definiert wie eine 2D-Grafik auf ein 3D-Modell abzubilden ist. Dafür wird für jeden \e{Vertex} zwei Koordinaten, $u$ und $v$, definiert. Diese Koordinaten definieren die Position in der 2D-Grafik. In der Praxis finden weitere Methoden Anwendung, auf diese wird hier im Sinne der Übersichtlichkeit nicht weiter eingegangen.
 
+\todo[inline]{erwähnen dass erklärte modelle sind polygonale modelle}
 \paragraph{Abgrenzung}
 Für diese Arbeit sind nur polygonale Modelle relevant.
 Alternativen wie zum Beispiel \e{Point Clouds}, welche das Resultat von 3D-Scans sind, werden nicht weiter erläutert, da sie selten im Web eingesetzt werden. Auch andere Methoden wie \e{NURBS}, welche Modelle mithilfe von mathematisch definierten Flächen modelliert, werden deshalb aussen vor gelassen.
@@ -199,6 +200,8 @@ Hierbei wird ein Vertex direkt entfernt und alle \e{Edges} auf einen danebenlieg
 \paragraph{Vertex Removal}
 Hierbei wird ein Vertex entfernt und das Resultat neu trianguliert. Triangulation ist ein Verfahren, um ein Polygon in \e{Triangles} aufzuteilen.
 In Abbildung \ref{fig:transformationVertexRemovalOriginal} wird der zentrale Vertex entfernt. Anschliessend werden alle \e{Triangles} an diesem Punkt entfernt. Das dabei entstehende Loch wird neu mit \e{Triangles} gefüllt. Eine mögliche Triangulation des Polygons ist in Abbildung \ref{fig:transformationVertexRemovalFinal} ersichtlich.
+
+\todo[inline]{erwähnung weshalb nicht gleiche ausgangslage wie bei anderen}
 
 \begin{figure}[H]
   \centering
