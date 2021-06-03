@@ -167,9 +167,8 @@ Die Fehlermetrik wurde vergleichbar mit der Referenzimplementation justiert. Die
 
 \subsection{Texturen}
 
-\todo[inline]{Beispiel? Code?}
-Bei vielen Modellen sind der grösste Teil der Speichergrösse die Texturen. Das Optimieren der geometrischen Struktur reduziert die zugehörigen Texturen jedoch nicht. Um trotzdem möglichst grosse Einsparungen für die Texturen zu ermöglichen wurde eine Methode entwickelt, welche versucht die prominenteste Farbe eines Modells zu extrahieren und diese für die Vereinfachungen zu verwenden.
-In Abbildung \ref{fig:textureComparison} ist dieser Unterschied visualisiert.
+Bei vielen Modellen sind der grösste Teil der Speichergrösse die Texturen. Das Optimieren der geometrischen Struktur reduziert die zugehörigen Texturen jedoch nicht. Um trotzdem möglichst grosse Einsparungen für die Texturen zu ermöglichen wurde eine Methode entwickelt, welche die prominenteste Farbe einer Textur extrahiert und diese für die Vereinfachungen verwendet.
+In Abbildung \ref{fig:textureComparison} ist dieser Unterschied visualisiert. Für die Wahl der Farbe wird das Modul \e{fast-average-color} verwendet \cite{averageColorPackage}. Das Modul wählt den bestimmenden Farbton der Textur, welcher dann im \e{Material} des neuen Artefakts gespeichert wird.
 Diese Technik führt zu signifikanten Detailverlusten bei der Nahbetrachtung und ist somit ungeeignet für das Verwenden bei der ersten LOD-Stufe. Für alle weiteren Stufen überwiegt jedoch der Vorteil der Vereinfachung im Vergleich zum Detailverlust.
 \begin{figure}[H]
   \centering
