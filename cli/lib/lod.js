@@ -1,13 +1,13 @@
 import path from "path";
-import { ColorUtils, Document, Accessor, NodeIO } from "@gltf-transform/core";
+import { Document, Accessor, NodeIO } from "@gltf-transform/core";
 import { vec3 } from "gl-matrix";
-import { getAverageColor } from "fast-average-color-node";
 import simplify from "./simplification/index.js";
 import {
   applyScaleFactor,
   prepareData,
 } from "./simplification/prepare-data.js";
 import * as print from "./helper/print.js";
+import mapMaterial from "./simplification/material-mapper.js";
 
 const io = new NodeIO();
 
@@ -39,33 +39,9 @@ export const performLOD = async ({ originalFile, levelDefinitions }) => {
       const basePath = path.dirname(originalFile);
 
       const baseMaterial = primitive.getMaterial();
-      // obtain basic color
-      let colorTexture = baseMaterial.getBaseColorTexture();
-
-      // if no base color texture is defined, try emissive texture instead
-      if (!colorTexture) {
-        colorTexture = baseMaterial.getEmissiveTexture();
-      }
-
-      // define default color
-      let color = baseMaterial.getBaseColorFactor();
-      if (colorTexture) {
-        const textureFileName = colorTexture.getURI();
-        const texturePath = path.join(basePath, textureFileName);
-        const averageColor = await getAverageColor(texturePath);
-        // converts string to number representation
-        const colorAsNumber = parseInt("0x" + averageColor.hex.substr(1));
-        const factor = ColorUtils.hexToFactor(colorAsNumber, []);
-
-        color = [...factor, averageColor.value[3] / 255];
-      }
-
       const material = newDoc.createMaterial(`material_${primitiveIndex}`);
-      material.setBaseColorFactor(color);
 
-      material.setMetallicFactor(baseMaterial.getMetallicFactor());
-      material.setRoughnessFactor(baseMaterial.getRoughnessFactor());
-      material.setDoubleSided(baseMaterial.getDoubleSided());
+      await mapMaterial(baseMaterial, material, basePath);
 
       // obtain raw structure
       const attributes = primitive.listAttributes();
