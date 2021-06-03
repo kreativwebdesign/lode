@@ -134,9 +134,7 @@ Es ist zudem möglich, \e{Vertices}, welche nahe zusammen sind ebenfalls als Opt
 Die \e{Edge Collapses} mit dem geringsten Fehler werden iterativ durchgeführt. Die Fehlermetriken der beiden \e{Vertices} werden addiert und bilden die Fehlermetrik des neuen \e{Vertex}. Bei Garland werden die Optionen sortiert. So kann sichergestellt werden, dass immer die mathematisch korrekte Reihenfolge der Operationen durchgeführt wird. Grundsätzlich ist es jedoch auch möglich die Optimierungen ohne sortieren durchzuführen, wie die Referenzimplementation aufzeigt. Der Vorteil ohne Sortierung liegt im Geschwindigkeitsgewinn und der Nachteil der Präzision ist vernachlässigbar.
 
 \subsection{Referenzimplementation}
-Der gewählte Algorithmus wurde bereits mehrfach implementiert. Eine wiederverwendbare Implementation basierend auf einer formatunabhängigen Datenstruktur ist jedoch nicht vorhanden. Eine oft referenzierte Implementation ist diejenige von S. Forstmann, welche einige Optimierungen am ursprünglichen Algorithmus vornimmt, um optimale Performanz zu erhalten. Diese Optimierungen eignen sich hervorragend für eine webbasierte Implementation \cite{fastQuadricMeshSimplification}.
-
-\todo[inline]{erwähnung Cpp}
+Der gewählte Algorithmus wurde bereits mehrfach implementiert. Eine wiederverwendbare und aktiv weiterentwickelte Implementation basierend auf einer formatunabhängigen Datenstruktur ist jedoch nicht vorhanden. Eine oft referenzierte Implementation ist diejenige von S. Forstmann \cite{fastQuadricMeshSimplification}, welche einige Optimierungen am ursprünglichen Algorithmus vornimmt, um optimale Performanz zu erhalten. Diese Optimierungen eignen sich hervorragend für eine webbasierte Implementation. Die Implementation ist jedoch in C++ geschrieben und unterstützt nur 3D-Modelle im OBJ Format. Somit kann sie nicht wiederverwendet werden.
 
 \section{Pipeline Integration}
 Die Lösung soll in eine wiederverwendbare und konfigurierbare Pipeline integriert werden.
