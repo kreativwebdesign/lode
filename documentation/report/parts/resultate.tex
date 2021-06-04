@@ -327,7 +327,7 @@ Die getroffenen Aussagen bezüglich Laufzeitverhalten behalten ihre Gültigkeit 
 \paragraph{Automation}
 Um die Tests durchzuführen, wird ein Testautomationstool benötigt; unter anderem der Einsatz von Selenium wurde in Erwägung gezogen.
 Der Vorteil von Selenium ist insbesondere, dass der Benchmark für weitere Browser ausgeweitet werden könnte.
-Da jedoch das Analysieren der GPU Daten stark vom System abhängig ist und dafür zusätzliche Komplexität notwendig wäre, wird in diesem Benchmark die im Google Chrome integrierten \e{Chrome DevTools} eingesetzt.
+Da jedoch das Analysieren der \e{\gls{GPU}} Daten stark vom System abhängig ist und dafür zusätzliche Komplexität notwendig wäre, wird in diesem Benchmark die im Google Chrome integrierten \e{Chrome DevTools} eingesetzt.
 Selenium bietet zurzeit eine suboptimale Integration für das \e{Chrome DevTools Protocol}.
 Um mögliche Diskrepanzen zwischen Systemen möglichst gering zu halten, wurde jedoch entschieden, auf die bewährte Lösung von Google Chrome zu setzen.
 \fgls{Puppeteer}{Node.js Library, die eine API anbietet zum Steuern von \gls{Chromium} oder Chrome über das Chrome DevTools Protocol}, eine weitere Option für die Automation, ist eine Bibliothek, die eine vereinfachte Schnittstelle zu einer Chromium Instanz bietet.
@@ -335,7 +335,7 @@ Sie wird zudem direkt von Google entwickelt und bietet somit eine stabile Grundl
 
 \paragraph{Profiling}
 Die \e{Chrome DevTools} erlauben es, ein detailliertes Laufzeitprofil einer Applikation anzulegen.
-Im Profil befinden sich Informationen zu CPU- und GPU-Auslastung, aber auch generelle Informationen bzgl. der \gls{Rendering Engine} werden gesammelt.
+Im Profil befinden sich Informationen zu CPU- und \e{\gls{GPU}}-Auslastung, aber auch generelle Informationen bzgl. der \gls{Rendering Engine} werden gesammelt.
 Die Analyse dieser Daten ermöglicht es, eine Aussage zum Laufzeitverhalten einer Applikation zu tätigen.
 
 \subsection{Testaufbau}
@@ -368,9 +368,9 @@ Der Test erfasst die in Tabelle \ref{table:benchmarkFigures} aufgeführten Kennz
   \hline
   Anzahl \e{Render Loop} Iterationen & Wie oft wurde ein neues Bild gezeichnet. Umso höher die Zahl, desto mehr verschiedene Frames konnten gerendert werden. \\
   \hline
-  Totale GPU Zeit & Die totale Zeit, welche die GPU für Berechungen benötigt. \\
+  Totale \e{\gls{GPU}} Zeit & Die totale Zeit, welche die GPU für Berechungen benötigt. \\
   \hline
-  Anzahl GPU Events & Anzahl der Events an die GPU. Dieser Wert soll lediglich dazu dienen um die gemessenen \e{FPS} und die Anzahl \e{Render Loop} Iterationen besser einschätzen zu können. Eine höhere Anzahl an GPU Events steht innerhalb der Demoszenerie im Zusammenhang mit mehr \e{Render Loop} Iterationen. \\
+  Anzahl \e{\gls{GPU}} Events & Anzahl der Events an die \e{\gls{GPU}}. Dieser Wert soll lediglich dazu dienen um die gemessenen \e{FPS} und die Anzahl \e{Render Loop} Iterationen besser einschätzen zu können. Eine höhere Anzahl an \e{\gls{GPU}} Events steht innerhalb der Demoszenerie im Zusammenhang mit mehr \e{Render Loop} Iterationen. \\
   \hline
   \end{tabular}
   \caption{Kennzahlen für Benchmark}
@@ -432,7 +432,7 @@ Die detaillierten Informationen befinden sich in Anhang \ref{fig:marcbookBenchma
   \label{fig:benchmarkChartMarcbook}
 \end{figure}
 
-Auch der zweite Durchlauf auf einem Dell-Gerät mit integrierter GPU führt zu ähnlichen Daten. Auffallend in \ref{fig:benchmarkFpsChartWindows} ist der Unterschied der \e{FPS}. Die Unterschiede der Downloadzeit (siehe \ref{fig:benchmarkDownloadChartWindows}) sind vergleichbar mit denjenigen vom ersten Durchlauf.
+Auch der zweite Durchlauf auf einem Dell-Gerät mit integrierter \e{\gls{GPU}} führt zu ähnlichen Daten. Auffallend in \ref{fig:benchmarkFpsChartWindows} ist der Unterschied der \e{FPS}. Die Unterschiede der Downloadzeit (siehe \ref{fig:benchmarkDownloadChartWindows}) sind vergleichbar mit denjenigen vom ersten Durchlauf.
 
 Die detaillierten Informationen befinden sich in Anhang \ref{fig:windowsBenchmarkRun}.
 
