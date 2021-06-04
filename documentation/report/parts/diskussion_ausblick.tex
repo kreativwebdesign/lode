@@ -8,7 +8,7 @@
 % !TEX root = ../doc.tex
 Das entwickelte Tool, \e{lode}, ist ein erster Schritt in die Richtung einer \e{LOD}-Pipeline, welche für das Web optimiert wurde. Das Tool erreicht das Ziel, für eine Vielzahl von Anwendungsgebieten einsetzbar zu sein. Wichtig ist es jedoch festzuhalten, dass es nicht für alle Anwendungen angemessen ist. Zum einen soll die Pipeline weiter entwickelt und in ihren Kernkompetenzen gestärkt werden, zum anderen gibt es jedoch auch spezifische Gebiete, wie zum Beispiel \e{Terrain}, für welche \e{lode} ungeeignet ist.
 
-\section{\e{LOD} System}
+\section{LOD System}
 
 Der grösste Nutzen entsteht in Anwendungen mit komplexen Modellen – für diese Situationen bietet \e{lode} einen nachweisbaren Mehrwert. Die Zahlen aus \autoref{chap:benchmarkResults} zeigen den möglichen Nutzen in einem Anwendungsbeispiel.
 
@@ -55,7 +55,7 @@ Die Möglichkeiten für Erweiterungen zu \e{lode} sind sehr umfangreich. In dies
 \paragraph{Akurate Texturinformationen}
 Zurzeit wird die Textur komplett entfernt und durch eine einfache Farbinformation ersetzt. Dies stellt beim aktuellen Einsatz der \e{LOD}-Artefakten kein Problem dar. Eine interessante Erweiterung ist so jedoch nicht möglich: das Vereinfachen der ersten Stufe. Der Algorithmus kann so erweitert werden, dass die Texturinformationen nicht vereinfacht, sondern als Teil der \e{Vertices} verwendet werden. Dies würde es ermöglichen, ein Modell, welches über mehrere Millionen Polygone verfügt, und somit ungeeignet für das Web ist, zu vereinfachen und diese erste Vereinfachung als detailreichste Stufe zu verwenden.
 
-\paragraph{glTF \e{LOD} Format}
+\paragraph{glTF LOD Format}
 Es gibt einen Vorschlag, um die Definition von \e{LOD}-Stufen innerhalb von glTF zu definieren. Dies würde es ermöglichen, verschiedene \e{LOD}-Artefakte in einer Datei zu speichern \cite{glTFExtensionLOD}. Was wiederum erlauben würde, Texturinformationen einfacher wiederzuverwenden. Die Pipeline kann grundsätzlich für diesen Anwendungsfall erweitert werden.
 Zurzeit hat Three.js jedoch noch keinen Support für diese Erweiterung. Auch Babylon.js unterstützt lediglich das progressive Laden von Modellen \cite{babylonProgressiveLoading}.
 
