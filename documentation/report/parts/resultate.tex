@@ -294,13 +294,11 @@ for (let iteration = 0; iteration < maxIterations; iteration++) {
 
 Bei der Durchführung einer \e{Edge Collapse} Operation muss ein neuer \e{Vertex} gefunden werden. Die bevorzugte Variante ist das Finden der optimalen Position. Für mehr Informationen zu den konkreten Implementationsdetails, siehe \e{Quadric-Based Polygonal Surface Simplification} Sektion 3.5 \cite{quadridBasedSurfaceSimplification}.
 
-
-\todo[inline]{Benchmark sections prevent single child section auswertung}
 \section{Benchmark}
 
 Das Ziel des Benchmarks ist der Vergleich einer Version ohne Einsatz von \e{LOD} und einer Umgebung, welche \e{LOD}s einsetzt. Um eine möglichst praxisnahe Aussage treffen zu können, wird hierfür eine Demo-Szenerie verwendet, welche einer echten Anwendung so nah wie möglich kommt. Somit wird gewährleistet, dass es nicht nur in der Theorie einen Nutzen für \e{LOD}s gibt, sondern dieser in der Praxis vorhanden ist.
 
-\paragraph{Browser Umgebung}
+\subsection{Browser Umgebung}
 Um den Umfang des Benchmarks überschaubar zu halten, wurde ausschliesslich ein Benchmark für Google Chrome entwickelt.
 Google Chrome basiert auf \fgls{Chromium}{Open Source Browser-Projekt, welches von Google entwickelt wird. Andere Browser basieren ebenfalls auf der Code-Basis von Chromium. Namentlich Microsoft Edge und Opera, um die bekanntesten zu nennen}, dieselbe Engine, welche auch Microsoft Edge oder Opera verwenden.
 Einen Benchmark basierend auf Google Chrome liefert somit auch Indizien für diese beiden Browser, auch wenn gewisse Abweichungen möglich sind.
@@ -321,7 +319,7 @@ Die \e{Chrome DevTools} erlauben es, ein detailliertes Laufzeitprofil einer Appl
 Im Profil befinden sich Informationen zu CPU- und GPU-Auslastung, aber auch generelle Informationen bzgl. der \gls{Rendering Engine} werden gesammelt.
 Die Analyse dieser Daten ermöglicht es, eine Aussage zum Laufzeitverhalten einer Applikation zu tätigen.
 
-\paragraph{Testaufbau}
+\subsection{Testaufbau}
 Derselbe Testablauf wird sowohl für die optimierte als auch für die unoptimierte Version verwendet.
 Bei einem Testablauf werden folgende Schritte durchlaufen:
 
