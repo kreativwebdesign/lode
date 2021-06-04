@@ -16,11 +16,11 @@ Die verschiedenen LOD-Systeme, sowie ihre Vor- und Nachteile werden in \autoref{
 
 \paragraph{Unreal}
 
-\e{Unreal} verfügt sowohl über ein DLOD-System als auch über ein HLOD-System. Das HLOD-Tool zeichnet sich insbesondere dadurch aus, dass es die verschiedenen HLOD-Artefakte automatisch generieren kann. Dies ermöglicht es, komplexe Strukturen direkt innerhalb von \e{Unreal} zu kombinieren \cite{unrealProxyLod}.
-So können einige Faktoren angepasst werden, um die LOD den eigenen Wünschen entsprechend zu gestalten. Das Ergebnis davon kann jeweils direkt in einer Vorschau angesehen werden, wie in Abbildung \ref{fig:unrealLODGeneration}. So wird es leicht gemacht, feinjustierungen vorzunehmen und Anpassungsiterationen dauern nicht lange.
-Wann welches Level angezeigt wird, kann ebenfalls eingestellt werden. \e{Unreal} bietet eine automatische Option, so wie auch eine manuelle, wobei für jedes Level der Triggerpunkt gewählt werden kann.
-\e{Unreal} lässt Benutzer den Triggerpunkt über die relative Grösse eines Modells zur Fenstergrösse einstellen. Dies hat zwei wesentliche Vorteile: Einerseits können so Modelle in verschiedenen Grössen verwendet werden, welche alle individuelle Triggerzeitpunkte haben. Andererseits ist diese Grösse einfach zu testen und braucht weniger manuelles probieren.
-Der manuelle Aufwand für die Integration des Systems in eine Applikation wird so signifikant reduziert werden und macht den Einsatz eines LOD-Systems attraktiver.
+\e{Unreal} verfügt sowohl über ein DLOD-System als auch über ein HLOD-System. Das HLOD-Tool zeichnet sich insbesondere dadurch aus, dass es die verschiedenen Artefakte automatisch generieren kann. Dies ermöglicht es, komplexe Strukturen direkt innerhalb von \e{Unreal} zu kombinieren \cite{unrealProxyLod}.
+So können einige Faktoren angepasst werden, um die LOD den Anforderungen entsprechend zu gestalten. Das Ergebnis kann direkt in einer Vorschau überprüft werden, wie in Abbildung \ref{fig:unrealLODGeneration}. So wird es leicht gemacht, Feinjustierungen vorzunehmen.
+Der Moment für die Levelwahl kann eingestellt werden. \e{Unreal} bietet eine automatische Option, so wie auch eine manuelle, wobei für jedes Level der Triggerpunkt gewählt werden kann.
+\e{Unreal} lässt Benutzer den Triggerpunkt über die relative Grösse eines Modells zur Fenstergrösse einstellen. Dies hat zwei wesentliche Vorteile: Einerseits können so Modelle in verschiedenen Grössen verwendet werden, welche alle individuelle Triggerzeitpunkte haben. Andererseits ist diese Grösse einfach zu testen und benötigt somit für die Eintsellung weniger manuellen Aufwand.
+Der Zeitaufwand für die Integration des Systems in eine Applikation wird so signifikant reduziert werden und macht den Einsatz eines LOD-Systems attraktiver.
 
 \begin{figure}[H]
   \centering
@@ -35,7 +35,7 @@ Der manuelle Aufwand für die Integration des Systems in eine Applikation wird s
 Innerhalb der \e{Unity} Community gibt es eine Bibliothek für das automatische Generieren von Artefakten, welche für LOD verwendet werden können \cite{unityMeshSimplification}.
 Ansätze für ein HLOD-System sind vorhanden, wurden jedoch nicht offiziell in \e{Unity} integriert \cite{unityAutoLod}.
 
-In Abbildung \ref{fig:unityDLODGroup} ist zusehen, wie innerhalb von Unity der Übergang zwischen zwei LOD-Artefakten konfiguriert werden können. Hervorzuheben sind hier zum einen den \e{Fade Mode}, der das \fgls{Visual Popping}{Beim \e{Visual Popping} handelt sich um den Moment, in dem die Artefakte ausgetauscht wird und somit kurz aufblitzt. Je subtiler die Änderungen an den Artefakten und je grösser die Distanz von der Kamera ist, desto weniger ist das Austauschen bemerkbar} vermindert und zum anderen die Triggerpunkte, bei welchen das Level gewechselt werden soll.
+In Abbildung \ref{fig:unityDLODGroup} ist ersichtlich, wie innerhalb von Unity der Übergang zwischen zwei LOD-Artefakten konfiguriert werden kann. Hervorzuheben sind hier zum einen der \e{Fade Mode}, der das \fgls{Visual Popping}{Beim \e{Visual Popping} handelt sich um den Moment, in dem die Artefakte ausgetauscht wird und somit kurz aufblitzt. Je subtiler die Änderungen an den Artefakten und je grösser die Distanz von der Kamera ist, desto weniger ist das Austauschen bemerkbar} vermindert und zum anderen die Triggerpunkte, bei welchen das Level gewechselt werden soll.
 Dies wird in \e{Unity} identisch zu \e{Unreal} gelöst, in dem der Triggerpunkt relativ zur Fenstergrösse festgelegt wird.
 
 \begin{figure}[H]
