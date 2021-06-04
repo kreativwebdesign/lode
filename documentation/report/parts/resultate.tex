@@ -208,7 +208,7 @@ In Abbildung \ref{fig:lodComparison} ist eine solche Vereinfachung neben dem zug
   \label{fig:lodComparison}
 \end{figure}
 
-Bei einer Nahbetrachtung der Modelle sind die Unterschiede klar ersichtlich. Bei einer gewissen Distanz sind die Differenzen der beiden Modelle unauffälliger. In Abbildung \ref{fig:lodComparisonDistance} werden dieselben Modelle auf eine Distanz von 72 (m) dargestellt. Die Standardeinstellung für die maximale Distanz des Kamera Frustum liegt bei Babylon.js zum Beispiel bei 10'000 (m) \cite{babylonMaxZ}. Auf diese Distanz kann der orange Schnabel beim Originalmodell noch knapp erkannt werden - andere Details sind auf diese Distanz jedoch nicht ersichtlich.
+Bei einer Nahbetrachtung der Modelle sind die Unterschiede klar ersichtlich. Bei einer gewissen Distanz sind die Differenzen der beiden Modelle unauffälliger. In Abbildung \ref{fig:lodComparisonDistance} werden dieselben Modelle auf eine Distanz von 72 (m) dargestellt. Die Standardeinstellung für die maximale Distanz des Kamera Frustum liegt bei Babylon.js zum Beispiel bei 10'000 (m) \cite{babylonMaxZ}. Auf diese Distanz kann der orange Schnabel beim Originalmodell noch knapp erkannt werden – andere Details sind auf diese Distanz jedoch nicht ersichtlich.
 
 \begin{figure}[H]
   \centering
@@ -273,7 +273,7 @@ Wie in der Referenzimplementation wird auf einen \e{Threshold} (zu Deutsch Schwe
   \begin{lstlisting}[style=JavaScript]
 for (let iteration = 0; iteration < maxIterations; iteration++) {
   // check if targetTriangles are reached
-  if (initialTriangleCount - deletedTriangles <= targetTriangles) {
+  if (initialTriangleCount – deletedTriangles <= targetTriangles) {
     break;
   }
 
@@ -393,7 +393,7 @@ Die Signifikanz wird mithilfe eines statistischen Konfidenzintervalls nachgewies
 Der Benchmark wurde auf verschiedenen Geräten ausgeführt. Im folgenden sind zwei Durchläufe mit jeweils 10 Proben erfasst.
 
 Der erste Durchlauf wurde auf einem MacBook Pro mit einer dedizierten Grafikkarte durchgeführt. Wie in Abbildung \ref{fig:benchmarkFpsChartMarcbook} zu sehen, konnten die FPS auf 60 FPS gehoben werden im Vergleich zu den 48.2 FPS in der unoptimierten Version. Die Standardabweichung ist im Diagramm ebenfalls ersichtlich.
-Direkt damit verbunden ist die Anzahl \e{Render Loop} Iterationen, welche genauso um ca. 30\% gesteigert werden konnte. Auf der Umkehrseite wurde die Dauer für das Laden der Modelle, gemessen in Millisekunden, etwas erhöht, da mehr Modelle geladen werden müssen (siehe \ref{fig:benchmarkDownloadChartMarcbook}). Diese wuchs aber nur um rund 10\%. Zu beachten ist, dass die Modelle lediglich lokal geladen werden - über ein richtiges Netzwerk sind die Ladezeiten entsprechend länger.
+Direkt damit verbunden ist die Anzahl \e{Render Loop} Iterationen, welche genauso um ca. 30\% gesteigert werden konnte. Auf der Umkehrseite wurde die Dauer für das Laden der Modelle, gemessen in Millisekunden, etwas erhöht, da mehr Modelle geladen werden müssen (siehe \ref{fig:benchmarkDownloadChartMarcbook}). Diese wuchs aber nur um rund 10\%. Zu beachten ist, dass die Modelle lediglich lokal geladen werden – über ein richtiges Netzwerk sind die Ladezeiten entsprechend länger.
 
 Die detaillierten Informationen befinden sich in Anhang \ref{fig:marcbookBenchmarkRun}.
 

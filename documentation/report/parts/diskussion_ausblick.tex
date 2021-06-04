@@ -10,9 +10,9 @@ Das entwickelte Tool, \e{lode}, ist ein erster Schritt in die Richtung einer LOD
 
 \section{LOD System}
 
-Der grösste Nutzen entsteht in Anwendungen mit komplexen Modellen - für diese Situationen bietet \e{lode} einen nachweisbaren Mehrwert. Die Zahlen aus \autoref{chap:benchmarkResults} zeigen den möglichen Nutzen in einem Anwendungsbeispiel.
+Der grösste Nutzen entsteht in Anwendungen mit komplexen Modellen – für diese Situationen bietet \e{lode} einen nachweisbaren Mehrwert. Die Zahlen aus \autoref{chap:benchmarkResults} zeigen den möglichen Nutzen in einem Anwendungsbeispiel.
 
-Die Resultate zeigen einen klaren Unterschied zwischen der unoptimierten und optimierten Version. Die \e{FPS} geben eine klare Auskunft. Unter Berücksichtigung des berechneten Konfidenzintervalls wird das Resultat als signifikant erachtet. Diese These wird auch durch eine Kontrolle mit dem Auge belegt - die Anzahl \e{FPS} unterscheidet sich merkbar. Die Ladezeit der Applikation wurde nur marginal tangiert, die Auswirkungen auf die \e{User Experience} sind vernachlässigbar und können im optimalen Fall sogar durch progressives Laden zu einem Vorteil werden.
+Die Resultate zeigen einen klaren Unterschied zwischen der unoptimierten und optimierten Version. Die \e{FPS} geben eine klare Auskunft. Unter Berücksichtigung des berechneten Konfidenzintervalls wird das Resultat als signifikant erachtet. Diese These wird auch durch eine Kontrolle mit dem Auge belegt – die Anzahl \e{FPS} unterscheidet sich merkbar. Die Ladezeit der Applikation wurde nur marginal tangiert, die Auswirkungen auf die \e{User Experience} sind vernachlässigbar und können im optimalen Fall sogar durch progressives Laden zu einem Vorteil werden.
 
 Somit ist es möglich, einen Nutzen für bestimmte anspruchsvolle 3D-Visualisierungen zu generieren.
 
@@ -25,8 +25,6 @@ Innerhalb der Testapplikation, wie in \autoref{chap:testApplication} beschrieben
 Der in dieser Arbeit implementierte Algorithmus kann für eine Vielzahl von verschiedenen Modellen angewendet werden und liefert solide Resultate. Die geometrische Approximation ist ausreichend für ein LOD-System. Für Spezialfälle wie Randbehandlung sind entsprechende Kontrollen implementiert worden.
 
 \subsection{Abgrenzung}
-
-\todo[inline]{@marc konsistente gedankenstriche}
 
 In einigen Anwendungsgebieten bringt ein LOD-System nicht den gewünschten Nutzen. Wird ein Modell nur auf einer Detailstufe angezeigt, so ist der Einsatz von LOD abzuraten. Sind die Modelle bereits sehr simpel, wie bei \e{Low-Poly}-Modellen – in Abbildung \ref{fig:lowPolyExample} zu sehen – sind die zusätzlichen Vereinfachungen nur von geringem Nutzen. Denn die Geometrie dieser Art von Modelle ist bereits sehr simpel und eine weitere Vereinfachung nur von geringer Auswirkung. Ein Beispiel eines vereinfachten Modells ist in Abbildung \ref{fig:lodModelSimplified} veranschaulicht und ähnelt stark einem \e{Low-Poly}-Modell.
 So muss der Einsatz von LOD-Artefakten für jeden Anwendungsfall separat abgewogen werden. Ein Vorteil von \e{lode} ist die Einfachheit der Integration. So ist es möglich, mit wenig Aufwand den groben Nutzen für ein spezifisches Anwendungsbeispiel abschätzen zu können, ohne dass viel Entwicklungszeit dafür aufgewendet werden muss.
