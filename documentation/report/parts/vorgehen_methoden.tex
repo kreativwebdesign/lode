@@ -47,8 +47,8 @@ Dies wird in \e{Unity} identisch zu \e{Unreal} gelöst, in dem der Triggerpunkt 
 
 \subsection{Kriterien}
 
-Die verschiedenen Ansätze unterscheiden sich in einigen Kriterien. Für den Einsatz in einer Webanwendungen ist die Gewichtung der Kriterien anders als für Desktopanwendungen, Konsolenspiele oder dergleichen.
-So hat die Dateigrösse der Modelle bei Webanwendungen einen grösseren Einfluss auf die gefühlte Performanz beim Endanwender. Insofern ist die Auswirkung der gewählten Strategie auf die Downloadgrösse ein wichtiges Kriterium.
+Die verschiedenen Ansätze unterscheiden sich in einigen Kriterien. Für den Einsatz in einer Web-Anwendungen ist die Gewichtung der Kriterien anders als für Desktopanwendungen, Konsolenspiele oder dergleichen.
+So hat die Dateigrösse der Modelle bei Web-Anwendungen einen grösseren Einfluss auf die gefühlte Performanz beim Endanwender. Insofern ist die Auswirkung der gewählten Strategie auf die Downloadgrösse ein wichtiges Kriterium.
 
 \subsection{Vergleich Downloadgrösse}
 
@@ -57,7 +57,7 @@ Für diskrete LOD muss für jedes Level ein separates Modell geladen werden. Die
 \subsection{Auswirkung auf Laufzeitverhalten}
 
 Der Einsatz von LOD-Systemen hat Auswirkungen auf das Laufzeitverhalten, das Ausmass variiert jedoch. Das Laufzeitverhalten umschreibt hier primär die Arbeit, welche auf der \e{CPU} verrichtet werden muss, um die Szenerie adäquat vorzubereiten.
-Insbesondere unter Berücksichtigung der Tatsache, dass die Laufzeitleistung essenziell für Webanwendungen ist, wurde entschieden nicht auf kontinuierliche LOD-Systeme zu setzen.
+Insbesondere unter Berücksichtigung der Tatsache, dass die Laufzeitleistung essenziell für Web-Anwendungen ist, wurde entschieden nicht auf kontinuierliche LOD-Systeme zu setzen.
 
 \subsection{Auswirkung auf Scene Graph}
 Beim Einsatz von LOD-Systemen sind Anpassungen am \gls{Scene Graph} notwendig. Es wird grundsätzlich zwischen lokalen und globalen Anpassungen unterschieden. Bei lokalen Anpassungen wird lediglich der Graph des vereinfachten Modells angepasst. Der Rest der Szenerie bleibt unberührt. Bei globalen Anpassungen müssen weiter oben im \e{Scene Graph} Anpassungen gemacht werden.
@@ -66,7 +66,7 @@ Beim Einsatz von LOD-Systemen sind Anpassungen am \gls{Scene Graph} notwendig. E
 
 Bei diskreten und kontinuierlichen LOD-Systemen ist es möglich, marginal in die Arbeitsabläufe einzugreifen. Dies bedeutet, dass keine signifikanten Anpassungen an den Abläufen vorgenommen werden müssen, sondern dass es möglich ist, die Abläufe zu erweitern.
 Bei hierarchischen Systemen ist dies nicht gegeben, da es die Kombination mehrerer Modelle vorsieht und somit mehr Konfigurationsaufwand notwendig ist.
-Deshalb wurde entschieden kein hierarchisches LOD-System zu entwickeln, um die Integration des Tools für die Entwickler einer Webanwendung möglichst einfach zu gestalten.
+Deshalb wurde entschieden kein hierarchisches LOD-System zu entwickeln, um die Integration des Tools für die Entwickler einer -Anwendung möglichst einfach zu gestalten.
 
 \subsection{Visual Pop}
 \e{Visual Pop} bezeichnet das merkbare Austauschen zweier LOD-Artefakte. Im optimalen Fall ist der Austausch zweier Artefakte nicht bemerkbar. Bei kontinuierlichen Systemen ist es möglich, indem die unterschiedlichen Anpassungen graduell durchgeführt werden. Aufgrund der Art des Systems ist dies vergleichbar einfach möglich. Bei diskreten LOD-Systemen gestaltet sich das etwas aufwändiger. Eine Möglichkeit wird in \autoref{chap:fading} erläutert. Wenn die Auswechslung in ausreichender Entfernung vorgenommen werden kann, dann ist \e{Visual Popping} weniger spürbar. Da die Problematik des \e{Visual Pop} getarnt werden kann handelt es sich nicht um ein entscheidendes Kriterium bei der Auswahl des Systems.
@@ -136,14 +136,14 @@ Der gewählte Algorithmus wurde bereits mehrfach implementiert. Eine wiederverwe
 
 \section{Pipeline Integration}
 Die Lösung soll in eine wiederverwendbare und konfigurierbare Pipeline integriert werden.
-In der Webentwicklung ist es üblich, über \fgls{CLI}{Command Line Interface – Kommandozeile. Computer-Mensch-Schnittstelle, welche ermöglicht, durch Eingabe von Befehlswörter Anweisungen an die Maschine zu geben} Arbeitsschritte zu automatisieren. Es soll demnach ein \e{\gls{CLI}} erstellt und auf \gls{npm} öffentlich zugänglich gemacht werden, welches nahtlos in den Entwicklungsablauf integriert werden kann. Über eine Konfiguration soll angegeben werden können, wo nach den \e{.glTF} Dateien gesucht, wohin die Output-Dateien gespeichert und in welchem Modus das Tool gestartet werden soll. Ebenso werden Algorithmus-Einstellungen in dieser Konfiguration gesetzt werden können. Es soll einfach zu bedienen, gut dokumentiert und gut gewählte Standardeinstellungen haben. Zudem soll das Tool im einmal Modus laufen können oder kontinuierlich sich ändernde Dateien neu optimieren.
+In der Web-Entwicklung ist es üblich, über \fgls{CLI}{Command Line Interface – Kommandozeile. Computer-Mensch-Schnittstelle, welche ermöglicht, durch Eingabe von Befehlswörter Anweisungen an die Maschine zu geben} Arbeitsschritte zu automatisieren. Es soll demnach ein \e{\gls{CLI}} erstellt und auf \gls{npm} öffentlich zugänglich gemacht werden, welches nahtlos in den Entwicklungsablauf integriert werden kann. Über eine Konfiguration soll angegeben werden können, wo nach den \e{.glTF} Dateien gesucht, wohin die Output-Dateien gespeichert und in welchem Modus das Tool gestartet werden soll. Ebenso werden Algorithmus-Einstellungen in dieser Konfiguration gesetzt werden können. Es soll einfach zu bedienen, gut dokumentiert und gut gewählte Standardeinstellungen haben. Zudem soll das Tool im einmal Modus laufen können oder kontinuierlich sich ändernde Dateien neu optimieren.
 
 \section{Nutzen LOD}
 Um den Nutzen von LOD quantifizieren zu können, müssen verschiedene Aspekte berücksichtigt werden. Auf der einen Seite ist die Entwicklungszeit zu berücksichtigen, welche sich auf die Kosten der Applikation auswirkt. Auf der anderen Seite sind Aspekte wie die Downloadzeit, die visuellen Unterschiede und die Laufzeit-Performanz der Applikation wichtig, da sie die Qualität der Software beeinflussen.
 
 \subsection{Aspekte für Nutzen}
 
-Der Nutzen eines Systems definiert sich durch eine Vielzahl von Aspekte, welche in verschiedene Phasen aufgeteilt werden können. Die verschiedenen für die Entwicklung von 3D-Webanwendungen relevanten Aspekte werden im folgenden Abschnitt erläutert. Es werden hierbei lediglich die Relevantesten berücksichtigt.
+Der Nutzen eines Systems definiert sich durch eine Vielzahl von Aspekte, welche in verschiedene Phasen aufgeteilt werden können. Die verschiedenen für die Entwicklung von 3D-Web-Anwendungen relevanten Aspekte werden im folgenden Abschnitt erläutert. Es werden hierbei lediglich die Relevantesten berücksichtigt.
 
 \paragraph{Entwicklungszeit}
 
