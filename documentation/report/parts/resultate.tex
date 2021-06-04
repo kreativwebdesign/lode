@@ -8,14 +8,14 @@
 % !TEX root = ../doc.tex
 Das Resultat besteht wie beschrieben aus verschiedenen Artefakten. In diesem Abschnitt wird konkret auf die Resultate der verschiedenen Schritte eingegangen und der Zusammenhang hergestellt.
 
-\section{LOD Pipeline}
+\section{\e{LOD}-Pipeline}
 
-Der Kern der Arbeit stellt die LOD-Pipeline, \e{lode} genannt, dar. Dieses Tool liefert eine für das Web optimierte Möglichkeit, LOD-Artefakte für eine Vielzahl von Anwendungsgebieten zu generieren. Sämtliche Teile der Arbeit, insbesondere der Quellcode, stehen offen zur Verfügung und können online eingesehen werden \cite{lode}.
+Der Kern der Arbeit stellt die \e{LOD}-Pipeline, \e{lode} genannt, dar. Dieses Tool liefert eine für das Web optimierte Möglichkeit, \e{LOD}-Artefakte für eine Vielzahl von Anwendungsgebieten zu generieren. Sämtliche Teile der Arbeit, insbesondere der Quellcode, stehen offen zur Verfügung und können online eingesehen werden \cite{lode}.
 
 \subsection{Aktueller Workflow}
 
-Es gibt verschiedene, manuelle Möglichkeiten, LOD Artefakte in Web-Applikationen einzugliedern. Ein möglicher Ablauf für das Generieren von LOD-Artefakten ist wie folgt:
-Für ein gegebenes Modell werden innerhalb vom Modellierungstool wie zum Beispiel Blender bestimmte LOD-Stufen manuell generiert. Dies kann von Hand selber gemacht werden oder mit vom Modellierungstool zur Verfügung gestellten Funktionen. In Abbildung \ref{fig:manualLodGenerationInBlender} wurden basierend auf dem Original \ref{fig:manualLodGenerationInBlenderOriginal} zwei weiter LOD-Artefakte mittels dem \e{Decimate Modifier} erstellt. Wie in der Abbildung \ref{fig:manualLodGenerationInBlenderSimplified} zu erkennen ist, bleibt hier die Texturinformation beibehalten. Dies kann gewünscht sein, führt aber auch zu grösseren Dateigrössen, was im Web möglichst vermieden werden sollte.
+Es gibt verschiedene, manuelle Möglichkeiten, \e{LOD}-Artefakte in Web-Applikationen einzugliedern. Ein möglicher Ablauf für das Generieren von \e{LOD}-Artefakten ist wie folgt:
+Für ein gegebenes Modell werden innerhalb vom Modellierungstool wie zum Beispiel Blender bestimmte \e{LOD}-Stufen manuell generiert. Dies kann von Hand selber gemacht werden oder mit vom Modellierungstool zur Verfügung gestellten Funktionen. In Abbildung \ref{fig:manualLodGenerationInBlender} wurden basierend auf dem Original \ref{fig:manualLodGenerationInBlenderOriginal} zwei weiter \e{LOD}-Artefakte mittels dem \e{Decimate Modifier} erstellt. Wie in der Abbildung \ref{fig:manualLodGenerationInBlenderSimplified} zu erkennen ist, bleibt hier die Texturinformation beibehalten. Dies kann gewünscht sein, führt aber auch zu grösseren Dateigrössen, was im Web möglichst vermieden werden sollte.
 
 \begin{figure}[H]
   \centering
@@ -28,10 +28,10 @@ Für ein gegebenes Modell werden innerhalb vom Modellierungstool wie zum Beispie
   \begin{subfigure}{.45\textwidth}
     \centering
     \includegraphics[width=1\linewidth]{resultate/aktueller-workflow/lod-1.png}
-    \caption{LOD-Stufe 1 (0.1\% Polys)}
+    \caption{\e{LOD}-Stufe 1 (0.1\% Polys)}
     \label{fig:manualLodGenerationInBlenderSimplified}
   \end{subfigure}
-  \caption{Manuelles erstellen von LOD-Artefakten in Blender}
+  \caption{Manuelles erstellen von \e{LOD}-Artefakten in Blender}
   \label{fig:manualLodGenerationInBlender}
 \end{figure}
 
@@ -58,7 +58,7 @@ Diese Artefakte müssen nun im Code einzeln geladen und in die Szenerie hinzugef
 
   scene.add(lod)
   \end{lstlisting}
-  \caption{Beispielcode zur manuellen Integration der LOD-Artefakte in \e{Three.js}}
+  \caption{Beispielcode zur manuellen Integration der \e{LOD}-Artefakte in \e{Three.js}}
   \label{code:threejsManualLodUsage}
 \end{figure}
 
@@ -66,7 +66,7 @@ Diese Artefakte müssen nun im Code einzeln geladen und in die Szenerie hinzugef
 
 \subsection{lode Pipeline}
 
-Das Ziel von \e{lode} ist es, für ein möglichst breites Spektrum von Anwendungsfällen eine einfache Lösung anzubieten und somit die Hemmschwelle für den Einsatz von LOD-Artefakten zu reduzieren.
+Das Ziel von \e{lode} ist es, für ein möglichst breites Spektrum von Anwendungsfällen eine einfache Lösung anzubieten und somit die Hemmschwelle für den Einsatz von \e{LOD}-Artefakten zu reduzieren.
 
 Deshalb setzt \e{lode} konsequent auf moderne Entwicklungsprozesse, die nahtlos in die bestehenden Prozesse integriert werden können. Manuelle Schritte sollen auf ein Minimum reduziert und Finetuning so einfach wie möglich werden.
 
@@ -100,17 +100,17 @@ Der Ablauf der \e{lode}-Pipeline kann in drei Schritte unterteilt werden.
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\columnwidth]{resultate/screenshotlodecliconfig.png}
-  \caption{lode \e{CLI} config – Konfiguriert die gewünschten LOD-Artefakten}
+  \caption{lode \e{CLI} config – Konfiguriert die gewünschten \e{LOD}-Artefakten}
   \label{fig:lodecliconfig}
 \end{figure}
 
 \paragraph{Erstellen der Artefakte}
-Danach generiert \e{lode} die in der Konfigurationsdatei beschriebenen LOD-Artefakte (in Abbildung \ref{fig:lodeclirun} ersichtlich). Wenn sich ein Modell oder eine Konfiguration ändert, werden die notwendigen Schritte automatisch erneut durchgeführt. So ist es möglich, schnell Anpassungen vorzunehmen und die Änderungen im Projekt ohne manuelle Arbeit zu sehen.
+Danach generiert \e{lode} die in der Konfigurationsdatei beschriebenen \e{LOD}-Artefakte (in Abbildung \ref{fig:lodeclirun} ersichtlich). Wenn sich ein Modell oder eine Konfiguration ändert, werden die notwendigen Schritte automatisch erneut durchgeführt. So ist es möglich, schnell Anpassungen vorzunehmen und die Änderungen im Projekt ohne manuelle Arbeit zu sehen.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\columnwidth]{resultate/screenshotlodeclirun.png}
-  \caption{lode \e{CLI} run – Generiert die gewünschten LOD-Artefakte}
+  \caption{lode \e{CLI} run – Generiert die gewünschten \e{LOD}-Artefakte}
   \label{fig:lodeclirun}
 \end{figure}
 
@@ -144,13 +144,13 @@ Die Artefakte können innerhalb der Applikation mithilfe einer Bibliothek gelade
   scene.add(airplaneModel)
   clone.position.set(0, 0, 0);
   \end{lstlisting}
-  \caption{Beispielcode zur Benutzung der LOD-Artefakte mittels \e{lode-three} in \e{Three.js}}
+  \caption{Beispielcode zur Benutzung der \e{LOD}-Artefakte mittels \e{lode-three} in \e{Three.js}}
   \label{code:lodeThreeUsage}
 \end{figure}
 
-\section{LOD Generierung}
+\section{\e{LOD}-Generierung}
 
-Für das Erstellen von LOD-Artefakten wurde ein für LOD-Artefakte optimierte Version des in \autoref{chap:surfaceSimplificationAlgorithm} erklärten \e{Surface Simplification Algorithmus} entwickelt.
+Für das Erstellen von \e{LOD}-Artefakten wurde ein für \e{LOD}-Artefakte optimierte Version des in \autoref{chap:surfaceSimplificationAlgorithm} erklärten \e{Surface Simplification Algorithmus} entwickelt.
 
 \subsection{Implementation}
 
@@ -158,7 +158,7 @@ Die Implementation des Algorithmus wurde in JavaScript, basierend auf \fGls{Node
 
 \subsection{Artefakte}
 
-Die generierten Artefakte sind unabhängig voneinander. So ist es nicht notwendig alle Artefakte zu jeder Zeit zu laden. Dies hat den primären Vorteil, dass es möglich ist, progressives Laden als Erweiterung zuzulassen. Progressives laden bedeutet, dass zuerst die LOD-Artefakte mit den wenigsten Details geladen werden und angezeigt werden bis die detaillierteren Level visualisiert werden.
+Die generierten Artefakte sind unabhängig voneinander. So ist es nicht notwendig alle Artefakte zu jeder Zeit zu laden. Dies hat den primären Vorteil, dass es möglich ist, progressives Laden als Erweiterung zuzulassen. Progressives laden bedeutet, dass zuerst die \e{LOD}-Artefakte mit den wenigsten Details geladen werden und angezeigt werden bis die detaillierteren Level visualisiert werden.
 Es ist sogar möglich, auf gewissen Geräten die detaillierten Level überhaupt nicht zu laden und so zum Beispiel Bandbreite zu sparen.
 
 \subsection{Fehlermetrik}
@@ -169,7 +169,7 @@ Die Fehlermetrik wurde vergleichbar mit der Referenzimplementation justiert. Die
 
 Bei vielen Modellen sind der grösste Teil der Speichergrösse die Texturen. Das Optimieren der geometrischen Struktur reduziert die zugehörigen Texturen jedoch nicht. Um trotzdem möglichst grosse Einsparungen für die Texturen zu ermöglichen wurde eine Methode entwickelt, welche die prominenteste Farbe einer Textur extrahiert und diese für die Vereinfachungen verwendet.
 In Abbildung \ref{fig:textureComparison} ist dieser Unterschied visualisiert. Für die Wahl der Farbe wird das Modul \e{fast-average-color} verwendet \cite{averageColorPackage}. Das Modul wählt den bestimmenden Farbton der Textur, welcher dann im \e{Material} des neuen Artefakts gespeichert wird.
-Diese Technik führt zu signifikanten Detailverlusten bei der Nahbetrachtung und ist somit ungeeignet für das Verwenden bei der ersten LOD-Stufe. Für alle weiteren Stufen überwiegt jedoch der Vorteil der Vereinfachung im Vergleich zum Detailverlust.
+Diese Technik führt zu signifikanten Detailverlusten bei der Nahbetrachtung und ist somit ungeeignet für das Verwenden bei der ersten \e{LOD}-Stufe. Für alle weiteren Stufen überwiegt jedoch der Vorteil der Vereinfachung im Vergleich zum Detailverlust.
 \begin{figure}[H]
   \centering
   \begin{subfigure}{.4\textwidth}
@@ -228,7 +228,7 @@ Bei einer Nahbetrachtung der Modelle sind die Unterschiede klar ersichtlich. Bei
 
 \subsection{Generierung von glTF}
 
-Für die LOD-Artefakte werden vom Originalmodell unabhängige glTF Dateien erstellt. Dafür wird das Tool \e{glTF-Transform} eingesetzt \cite{gltfTransform}.
+Für die \e{LOD}-Artefakte werden vom Originalmodell unabhängige glTF Dateien erstellt. Dafür wird das Tool \e{glTF-Transform} eingesetzt \cite{gltfTransform}.
 Das Erstellen eines solchen Basismodells ist in \ref{code:gltfTransform} ersichtlich. Hierbei wird die Skalierung und rotation des Originalmodells verwendet (gespeichert in Variable \e{originalNode}).
 
 \begin{figure}[H]
@@ -298,7 +298,7 @@ Bei der Durchführung einer \e{Edge Collapse} Operation muss ein neuer \e{Vertex
 \todo[inline]{Benchmark sections prevent single child section auswertung}
 \section{Benchmark}
 
-Das Ziel des Benchmarks ist der Vergleich einer Version ohne Einsatz von LOD und einer Umgebung, welche LODs einsetzt. Um eine möglichst praxisnahe Aussage treffen zu können, wird hierfür eine Demo-Szenerie verwendet, welche einer echten Anwendung so nah wie möglich kommt. Somit wird gewährleistet, dass es nicht nur in der Theorie einen Nutzen für LODs gibt, sondern dieser in der Praxis vorhanden ist.
+Das Ziel des Benchmarks ist der Vergleich einer Version ohne Einsatz von \e{LOD} und einer Umgebung, welche \e{LOD}s einsetzt. Um eine möglichst praxisnahe Aussage treffen zu können, wird hierfür eine Demo-Szenerie verwendet, welche einer echten Anwendung so nah wie möglich kommt. Somit wird gewährleistet, dass es nicht nur in der Theorie einen Nutzen für \e{LOD}s gibt, sondern dieser in der Praxis vorhanden ist.
 
 \paragraph{Browser Umgebung}
 Um den Umfang des Benchmarks überschaubar zu halten, wurde ausschliesslich ein Benchmark für Google Chrome entwickelt.
@@ -362,7 +362,7 @@ Der Test erfasst die in Tabelle \ref{table:benchmarkFigures} aufgeführten Kennz
 
 \paragraph{Aufbau Testapplikation}
 \label{chap:testApplication}
-Die Testapplikation stellt eine komplexe Szenerie dar. Der Betrachter fliegt während dem Ablauf kontinuierlich über die Szenerie. Dies stellt die optimalen Bedingungen für den Einsatz von LOD-Artefakten dar. Abhängig von einem URL-Parameter wird entschieden ob LOD-Artefakte verwendet werden sollen oder nicht. Die Anwendung wurde mit Three.js implementiert. Bei der unoptimierten Version wird direkt das Originalmodell verwendet. Bei der optimierten Version werden mithilfe der LOD-Hilfsklasse die verschiedenen Artefakte geladen \cite{threeLODClass}.
+Die Testapplikation stellt eine komplexe Szenerie dar. Der Betrachter fliegt während dem Ablauf kontinuierlich über die Szenerie. Dies stellt die optimalen Bedingungen für den Einsatz von \e{LOD}-Artefakten dar. Abhängig von einem URL-Parameter wird entschieden ob \e{LOD}-Artefakte verwendet werden sollen oder nicht. Die Anwendung wurde mit Three.js implementiert. Bei der unoptimierten Version wird direkt das Originalmodell verwendet. Bei der optimierten Version werden mithilfe der \e{LOD}-Hilfsklasse die verschiedenen Artefakte geladen \cite{threeLODClass}.
 
 In Abbildung \ref{fig:demoApplication} ist ein Screenshot der Testapplikation ersichtlich. Als Basis für die Applikation wurde Three.js eingesetzt. Die Kamera wird kontinuierlich innerhalb der Szene bewegt, die Position wird abhängig von der Systemzeit definiert. So ist es möglich, dass beide Applikationen – unabhängig von den \e{FPS} – jeweils die gleichen Aspekte innerhalb der Applikation visualisieren. Die Modelle werden zudem bei jedem Durchlauf identisch positioniert. Dies gewährleistet, dass das Laufzeitverhalten verlässlich ist.
 

@@ -7,7 +7,7 @@
 % !TEX encoding = UTF-8 Unicode
 % !TEX root = ../doc.tex
 
-Im folgenden Abschnitt werden die Grundlagen für die Entwicklung eines LOD-Systems kurz erläutert.
+Im folgenden Abschnitt werden die Grundlagen für die Entwicklung eines \e{LOD}-Systems kurz erläutert.
 Es werden zuerst die Grundlagen der polygonalen 3D-Modelle und verschiedene Dateitypen erläutert. Danach wird auf die Theorie der Transformationen und die Grafik-Pipeline eingegangen. Zum Schluss werden noch einige Optionen zur Performanzoptimierung erläutert.
 
 \section{3D-Modelle}
@@ -337,7 +337,7 @@ Dies ist nicht immer gewünscht, für die meisten Anwendungen ist diese Optimier
 Als Grundlage für die Berechnung werden die \e{Normals} der \e{Vertices} verwendet.
 
 \paragraph{Impostors}
-Vergleichbar zu LOD-Artefakten sind sogenannte \e{Impostors}. Dabei wird ein \e{Quad} mit verschiedenen Texturen verwendet. Für jede mögliche Position des Modells wird eine Textur generiert. Das \e{Quad} wird in Richtung Kamera ausgerichtet und abhängig von der Rotation des Modells die geeignete Textur verwendet. Geometrisch kann ein Modell so auf ein absolutes Minimum reduziert werden. Schwierigkeiten dieser Methode sind Modelle, welche spezielle Materialien aufweisen. So ist zum Beispiel das Abbilden von Reflexionen, wie dies bei metallischen Oberflächen der Fall ist, eine Herausforderung \cite{usingImpostors}.
+Vergleichbar zu \e{LOD}-Artefakten sind sogenannte \e{Impostors}. Dabei wird ein \e{Quad} mit verschiedenen Texturen verwendet. Für jede mögliche Position des Modells wird eine Textur generiert. Das \e{Quad} wird in Richtung Kamera ausgerichtet und abhängig von der Rotation des Modells die geeignete Textur verwendet. Geometrisch kann ein Modell so auf ein absolutes Minimum reduziert werden. Schwierigkeiten dieser Methode sind Modelle, welche spezielle Materialien aufweisen. So ist zum Beispiel das Abbilden von Reflexionen, wie dies bei metallischen Oberflächen der Fall ist, eine Herausforderung \cite{usingImpostors}.
 
 \paragraph{Weitere Ansätze}
 Weitere Ansätze zur Optimierung der Performanz für sehr spezifische Anwendungsfälle werden kurz erwähnt, jedoch nicht weiter erörtert da sie für viele Anwendungen nicht praktikabel sind.
@@ -354,7 +354,7 @@ Beim Bewegen durch die virtuelle Welt in \e{Street View}, ist auffällig zu sehe
 Als Level Of Detail werden die verschiedenen Detailstufen bei der virtuellen Darstellung bezeichnet.
 Dies wird verwendet, um die Laufzeitleistung von Anwendungen zu steigern, indem Objekte im Nahbereich detailliert angezeigt werden; wohingegen Elemente im Fernbereich deutlich vereinfacht dargestellt werden.
 
-Ein LOD-Algorithmus hat das Ziel für ein gegebenes Modell eine vereinfachte Darstellung zu finden, welche das Original ausreichend annähert. Um diese Approximationen zu generieren, kann eine Vielzahl von Algorithmen verwendet werden. Es gibt verschiedene Ansätze zur Generierung von LODs, welche in \autoref{chap:lodAlgorithmComparison} im Detail erläutert werden.
+Ein \e{LOD}-Algorithmus hat das Ziel für ein gegebenes Modell eine vereinfachte Darstellung zu finden, welche das Original ausreichend annähert. Um diese Approximationen zu generieren, kann eine Vielzahl von Algorithmen verwendet werden. Es gibt verschiedene Ansätze zur Generierung von \e{LOD}s, welche in \autoref{chap:lodAlgorithmComparison} im Detail erläutert werden.
 
 \begin{figure}[H]
 \centering
@@ -365,25 +365,25 @@ Ein LOD-Algorithmus hat das Ziel für ein gegebenes Modell eine vereinfachte Dar
 
 Wie in der Abbildung \ref{fig:LevelOfDetailVisualisierungvierHasen} zu erkennen ist, wird von links nach rechts der Detailgrad und somit die Komplexität des Objektes reduziert. Sind es im Bild ganz links noch 69'451 Polygone, wird es bereits im ersten Schritt auf 2'502 Polygone reduziert. Dies ist eine enorme Reduktion von ca. 96.5\%. Im dritten Schritt wird die Anzahl Polygone wiederum um ca. 90\% auf 251 reduziert. Schlussendlich hat das letzte Objekt noch 76 Polygone was knapp 0.1\% der ursprünglichen Anzahl entspricht.
 
-\subsection{Ansätze für LOD Artefakte}
+\subsection{Ansätze für \e{LOD} Artefakte}
 \label{chap:differentLodApproaches}
-Es gibt verschiedene Ansätze, 3D-Modelle mittels LOD zu vereinfachen. In diesem Abschnitt werden einige davon detaillierter erläutert so wie ihre Vor- und Nachteile aufgezeigt.
+Es gibt verschiedene Ansätze, 3D-Modelle mittels \e{LOD} zu vereinfachen. In diesem Abschnitt werden einige davon detaillierter erläutert so wie ihre Vor- und Nachteile aufgezeigt.
 
-\paragraph{Diskrete LOD (DLOD)}
-Bei diskreten LOD werden für ein detailliertes Modell mehrere weniger detaillierte Modelle erstellt.
+\paragraph{Diskrete \e{LOD} (\e{LDOD})}
+Bei diskreten \e{LOD} werden für ein detailliertes Modell mehrere weniger detaillierte Modelle erstellt.
 Abhängig von der Distanz zum Betrachter wird das optimale Modell gewählt. Es sind hierfür nur minimale Anpassungen am \fgls{Scene Graph}{Datenstruktur, welche die räumliche Anordnung der Modelle einer 3D-Szenerie beschreibt} notwendig da ausschliesslich ganze Modelle ausgetauscht werden.
 Ein Nachteil sind jedoch merkbare harte Grenzen. Der Benutzer stellt beim umhergehen in der Szene fest, wenn das Modell mit einer einfacheren Version ausgetauscht wird.
 Es ist zudem häufig nicht möglich grössere Modelle sinnvoll zu vereinfachen. Grosse Modelle zeichnen sich dadurch aus, dass Teile davon nah sind, während andere Teile fern sind. Die nahen Teile des Modells sollten detailliert angezeigt werden, wohingegen die entfernten Elemente vereinfacht dargestellt werden sollen. So ist der Ansatz zum Beispiel für Terrain ungeeignet. Ähnlicher Weise ist es auch nicht möglich, viele sehr kleine Modelle zu kombinieren, da jedes Modell unabhängig ist. Das Kombinieren von mehreren Modellen wird \e{Clustering} genannt.
 
-\paragraph{Kontinuierliche LOD (CLOD)}
-Im Gegensatz zu DLOD wird bei CLOD vereinfachende Veränderungen an einem Modell gespeichert.
+\paragraph{Kontinuierliche \e{LOD} (\e{CLOD})}
+Im Gegensatz zu \e{DLOD} wird bei \e{CLOD} vereinfachende Veränderungen an einem Modell gespeichert.
 
-Der Hauptunterschied zu DLOD besteht in den weichen Grenzen, so ist es signifikant weniger auffällig da zwischen den verschiedenen Auflösungen interpoliert werden kann.
+Der Hauptunterschied zu \e{DLOD} besteht in den weichen Grenzen, so ist es signifikant weniger auffällig da zwischen den verschiedenen Auflösungen interpoliert werden kann.
 Der Hauptnachteil ist jedoch, dass diese Interpolation insbesondere Auswirkungen auf die Laufzeit Performanz der Applikation hat.
 Das Problem des \e{Clusterings} ist auch für diese Variante nicht gelöst.
 
-\paragraph{Hierarchische LOD (HLOD)}
-Bei HLOD werden mehrere Objekte in einen \e{Cluster} gruppiert. Diese \e{Cluster} können mithilfe des \e{\gls{Scene Graph}s} definiert werden.
+\paragraph{Hierarchische \e{LOD} (\e{HLOD})}
+Bei \e{HLOD} werden mehrere Objekte in einen \e{Cluster} gruppiert. Diese \e{Cluster} können mithilfe des \e{\gls{Scene Graph}s} definiert werden.
 Hierarchische Systeme erlauben es somit, zum Beispiel Terrains optimal abzubilden. So werden Ausschnitte, welche nahe beim Benutzer sind mit hoher Auflösung dargestellt während weiter entferntere Teile der Umgebung mit weniger Details ausgestattet sind.
 Zudem ist es möglich viele kleinere Objekte bei entsprechenden Distanzen zu kombinieren.
 Der Hauptnachteil liegt darin, dass hierfür signifikante Anpassungen am \e{\gls{Scene Graph}} notwendig sind und für den Entwickler ein spürbarer Unterschied entstehen kann.
@@ -410,7 +410,7 @@ Eine weitere Möglichkeit ist das \e{Vertex Clustering}, hierbei wird ein Modell
 
 \paragraph{Edge Collapse}
 Hierbei werden iterativ \e{Edges} entfernt und die beiden \e{Vertices} zu einem Punkt zusammengelegt.
-Die verschiedenen Algorithmen unterscheiden sich primär in der Selektion der \e{Edges}. Grundsätzlich wird hierfür eine Heuristik verwendet um den Fehler quantifizieren zu können. Anschliessend werden iterativ die \e{Edges} entfernt, welche zu einem minimalen Fehler führen. Beim Zusammenführen von \e{Edges} sind abhängig vom gewählten LOD-System unterschiedliche Strategien gefordert. Bei diskreten LOD-Systemen soll nach dem Zusammenführen ein optimaler neuer Punkt gefunden werden, bei kontinuierlichen LOD-Systemen wird häufig einer der beiden Punkte gewählt um Speicherplatz einsparen zu können.
+Die verschiedenen Algorithmen unterscheiden sich primär in der Selektion der \e{Edges}. Grundsätzlich wird hierfür eine Heuristik verwendet um den Fehler quantifizieren zu können. Anschliessend werden iterativ die \e{Edges} entfernt, welche zu einem minimalen Fehler führen. Beim Zusammenführen von \e{Edges} sind abhängig vom gewählten \e{LOD}-System unterschiedliche Strategien gefordert. Bei diskreten \e{LOD}-Systemen soll nach dem Zusammenführen ein optimaler neuer Punkt gefunden werden, bei kontinuierlichen \e{LOD}-Systemen wird häufig einer der beiden Punkte gewählt um Speicherplatz einsparen zu können.
 
 \paragraph{Triangle Collapse}
 Bei dieser Variante werden jeweils ganze Flächen entfernt und die umliegenden \e{Triangles} zusammengelegt. Eine Möglichkeit ist der von Hamann definierte Algorithmus zur Vereinfachung von triangulierten Flächen \cite{triangleCollapseAlgorithm}. Dabei wird die Krümmung eines \e{Triangles} definiert und iterativ derjenige \e{Triangle} mit der geringsten Krümmung entfernt. An die Stelle der drei \e{Vertices} tritt ein neuer \e{Vertex} und die umliegenden Flächen werden neu trianguliert.
