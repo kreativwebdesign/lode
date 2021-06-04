@@ -8,9 +8,9 @@
 % !TEX root = ../doc.tex
 Das Resultat besteht wie beschrieben aus verschiedenen Artefakten. In diesem Abschnitt wird konkret auf die Resultate der verschiedenen Schritte eingegangen und der Zusammenhang hergestellt.
 
-\section{LOD-Pipeline}
+\section{LOD-Toolset}
 
-Der Kern der Arbeit stellt die \e{LOD}-Pipeline, \e{lode} genannt, dar. Dieses Tool liefert eine für das Web optimierte Möglichkeit, \e{LOD}-Artefakte für eine Vielzahl von Anwendungsgebieten zu generieren. Sämtliche Teile der Arbeit, insbesondere der Quellcode, stehen offen zur Verfügung und können online eingesehen werden \cite{lode}.
+Der Kern der Arbeit stellt das \e{LOD}-Toolset, \e{lode} genannt, dar. Dieses Tool liefert eine für das Web optimierte Möglichkeit, \e{LOD}-Artefakte für eine Vielzahl von Anwendungsgebieten zu generieren. Sämtliche Teile der Arbeit, insbesondere der Quellcode, stehen offen zur Verfügung und können online eingesehen werden \cite{lode}.
 
 \subsection{Aktueller Workflow}
 
@@ -64,11 +64,30 @@ Diese Artefakte müssen nun im Code einzeln geladen und in die Szenerie hinzugef
 
 \e{Fine Tuning} erfordert sowohl Anpassungen an den Modellen als auch im Code. Erst muss im Modellierungstool die Anpassung manuell vorgenommen, dann neu in die Applikation geladen und dort neu geprüft werden. Diese Schritte können sich mehrfach wiederholen, was mühselig und zeitintensiv ist.
 
-\subsection{lode Pipeline}
+\subsection{lode-Toolset}
 
 Das Ziel von \e{lode} ist es, für ein möglichst breites Spektrum von Anwendungsfällen eine einfache Lösung anzubieten und somit die Hemmschwelle für den Einsatz von \e{LOD}-Artefakten zu reduzieren.
 
 Deshalb setzt \e{lode} konsequent auf moderne Entwicklungsprozesse, die nahtlos in die bestehenden Prozesse integriert werden können. Manuelle Schritte sollen auf ein Minimum reduziert und Finetuning so einfach wie möglich werden.
+
+Die verschiedenen Teile sind in Abbildung \ref{fig:lodePackages} ersichtlich. Das Toolset (siehe Abbildung \ref{fig:lodeToolset}) besteht aus wiederverwendbaren Paketen, welche dem Anwender zur Verfügung gestellt werden. Die Pakete werden in zwei Kategorien unterteilt: \e{Build}- und Laufzeitpakete. Um den Nutzen belegen zu können wurde weitere Pakete entwickelt, diese sind in Abbildung \ref{fig:lodeHelper} ersichtlich.
+
+\begin{figure}[H]
+  \begin{subfigure}{.5\textwidth}
+    \centering
+    \includegraphics[width=0.8\columnwidth]{resultate/lode-architecture/lode-toolset.png}
+    \caption{\e{lode}-Toolset, wiederverwendbare Pakete}
+    \label{fig:lodeToolset}
+  \end{subfigure}%
+  \begin{subfigure}{.5\textwidth}
+    \centering
+    \includegraphics[width=0.8\columnwidth]{resultate/lode-architecture/lode-helper.png}
+    \caption{\e{lode}-Pakete, welche für den \e{Benchmark} entwickelt wurden}
+    \label{fig:lodeHelper}
+  \end{subfigure}
+  \caption{Kategorisierung der verschiedenen \e{lode}-Pakete - Pfeile zeigen direkte Abhängigkeiten auf}
+  \label{fig:lodePackages}
+\end{figure}
 
 \subsection{lode Ablauf}
 
