@@ -222,7 +222,7 @@ In Abbildung \ref{fig:transformationVertexRemovalOriginal} wird der zentrale Ver
 
 \section{Grafikpipeline}
 
-Die Grafikpipeline ist zuständig um eine definierte Szene auf einem Ausgabegerät zu visualisieren. Die Schritte werden im folgenden Abschnitt nur oberflächlich erläutert, um ein grobes Verständnis zu vermitteln. Es wird dabei ein simples 3D-Modell auf einem 2D-Display, wie zum Beispiel einem Monitor, visualisiert. Die Schritte sind in Abbildung \ref{fig:renderingPipelineOverview} aufgezeigt. Der Prozess wird idealerweise 60 Mal pro Sekunde wiederholt. Dies findet in der sogenannten \e{Render Loop} statt.
+Die Grafikpipeline ist zuständig um eine definierte Szene auf einem Ausgabegerät zu visualisieren. Die Schritte werden im folgenden Abschnitt nur oberflächlich erläutert, um ein grobes Verständnis zu vermitteln. Es wird dabei ein simples 3D-Modell auf einem 2D-Display, wie zum Beispiel einem Monitor, visualisiert. Die Schritte sind in Abbildung \ref{fig:renderingPipelineOverview} aufgezeigt. Der Prozess wird idealerweise 60 Mal pro Sekunde wiederholt. Dies findet in der sogenannten \e{Render Loop} statt.
 
 \begin{figure}[H]
   \centering
@@ -363,7 +363,7 @@ Ein \e{LOD}-Algorithmus hat das Ziel für ein gegebenes Modell eine vereinfachte
 \label{fig:LevelOfDetailVisualisierungvierHasen}
 \end{figure}
 
-Wie in der Abbildung \ref{fig:LevelOfDetailVisualisierungvierHasen} zu erkennen ist, wird von links nach rechts der Detailgrad und somit die Komplexität des Objektes reduziert. Sind es im Bild ganz links noch 69'451 Polygone, wird es bereits im ersten Schritt auf 2'502 Polygone reduziert. Dies ist eine enorme Reduktion von ca. 96.5\%. Im dritten Schritt wird die Anzahl Polygone wiederum um ca. 90\% auf 251 reduziert. Schlussendlich hat das letzte Objekt noch 76 Polygone was knapp 0.1\% der ursprünglichen Anzahl entspricht.
+Wie in der Abbildung \ref{fig:LevelOfDetailVisualisierungvierHasen} zu erkennen ist, wird von links nach rechts der Detailgrad und somit die Komplexität des Objektes reduziert. Sind es im Bild ganz links noch 69'451 Polygone, wird es bereits im ersten Schritt auf 2'502 Polygone reduziert. Dies ist eine enorme Reduktion von ca. 96.5\%. Im dritten Schritt wird die Anzahl Polygone wiederum um ca. 90\% auf 251 reduziert. Schlussendlich hat das letzte Objekt noch 76 Polygone was knapp 0.1\% der ursprünglichen Anzahl entspricht.
 
 \subsection{Ansätze für \e{LOD} Artefakte}
 \label{chap:differentLodApproaches}
