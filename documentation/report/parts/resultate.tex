@@ -251,7 +251,7 @@ Bei einer Nahbetrachtung der Modelle sind die Unterschiede klar ersichtlich. Bei
 
 \subsection{Generierung von glTF}
 
-Für die \e{LOD}-Artefakte werden vom Originalmodell unabhängige glTF Dateien erstellt. Dafür wird das Tool \e{glTF-Transform} eingesetzt \cite{gltfTransform}.
+Für die \e{LOD}-Artefakte werden vom Originalmodell unabhängige \e{glTF} Dateien erstellt. Dafür wird das Tool \e{glTF-Transform} eingesetzt \cite{gltfTransform}.
 Das Erstellen eines solchen Basismodells ist in \ref{code:gltfTransform} ersichtlich. Hierbei wird die Skalierung und rotation des Originalmodells verwendet (gespeichert in Variable \e{originalNode}).
 
 \begin{figure}[H]
@@ -264,7 +264,7 @@ node.setScale(originalNode.getScale());
 
 const mesh = newDoc.createMesh("mesh");
   \end{lstlisting}
-  \caption{Basis glTF Generierung}
+  \caption{Basis \e{glTF} Generierung}
   \label{code:gltfTransform}
 \end{figure}
 

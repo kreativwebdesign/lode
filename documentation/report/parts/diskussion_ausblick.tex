@@ -53,7 +53,7 @@ Die Möglichkeiten für Erweiterungen zu \e{lode} sind sehr umfangreich. In dies
 Zurzeit wird die Textur komplett entfernt und durch eine einfache Farbinformation ersetzt. Dies stellt beim aktuellen Einsatz der \e{LOD}-Artefakten kein Problem dar. Eine interessante Erweiterung ist so jedoch nicht möglich: das Vereinfachen der ersten Stufe. Der Algorithmus kann so erweitert werden, dass die Texturinformationen nicht vereinfacht, sondern als Teil der \e{Vertices} verwendet werden. Dies würde es ermöglichen, ein Modell, welches über mehrere Millionen Polygone verfügt, und somit ungeeignet für das Web ist, zu vereinfachen und diese erste Vereinfachung als detailreichste Stufe zu verwenden.
 
 \paragraph{glTF LOD Format}
-Es gibt einen Vorschlag, um die Definition von \e{LOD}-Stufen innerhalb von glTF zu definieren. Dies würde es ermöglichen, verschiedene \e{LOD}-Artefakte in einer Datei zu speichern \cite{glTFExtensionLOD}. Was wiederum erlauben würde, Texturinformationen einfacher wiederzuverwenden. Die Pipeline kann grundsätzlich für diesen Anwendungsfall erweitert werden.
+Es gibt einen Vorschlag, um die Definition von \e{LOD}-Stufen innerhalb von \e{glTF} zu definieren. Dies würde es ermöglichen, verschiedene \e{LOD}-Artefakte in einer Datei zu speichern \cite{glTFExtensionLOD}. Was wiederum erlauben würde, Texturinformationen einfacher wiederzuverwenden. Die Pipeline kann grundsätzlich für diesen Anwendungsfall erweitert werden.
 Zurzeit hat Three.js jedoch noch keinen Support für diese Erweiterung. Auch Babylon.js unterstützt lediglich das progressive Laden von Modellen \cite{babylonProgressiveLoading}.
 
 \paragraph{Progressives Laden}
@@ -62,14 +62,14 @@ Aktuell werden initial alle \e{LOD}-Artefakte geladen. Dies hat zur Konsequenz, 
 \paragraph{Levelwahl während Laufzeit}
 Die optimale Wahl des Levels kann stark von der Laufzeitumgebung abhängig sein. So sollte zum Beispiel auf mobilen Geräten früher ein einfacheres Modell angezeigt werden als auf leistungsstarken Geräten. Ein weiterer Faktor ist die Auflösung. Bei Geräten mit niedriger Auflösung kann früher gewechselt werden, da die visuellen Unterschiede zum Original weniger auffällig sind.
 Deshalb eignet sich eine Wahl der Levels zur Laufzeit, um ein optimales Erlebnis auf allen Geräten zu ermöglichen.
-Nebst dem \e{\gls{CLI}} soll folglich auch ein Javascript-Modul bereitgestellt werden, welches das Laden von glTF Dateien übernimmt und basierend auf der erkannten Performanz das beste Level of Detail einspielt.
+Nebst dem \e{\gls{CLI}} soll folglich auch ein Javascript-Modul bereitgestellt werden, welches das Laden von \e{glTF} Dateien übernimmt und basierend auf der erkannten Performanz das beste Level of Detail einspielt.
 
 \paragraph{Kombination mehrerer Meshes}
-Als Erweiterung ist es möglich, verschiedene \e{Meshes} eines glTF zu kombinieren und als ein einziges \e{Mesh} zu behandeln. Dies erlaubt es noch mehr Vereinfachungen vornehmen zu können. Diese Anpassung kann man als simples \e{HLOD}-System bezeichnen. Eine Schwierigkeit ist hier jedoch die sinnvolle Wahl der Textur, da vereschiedene \e{Meshes} häufig über verschiedene Texturen verfügen und diese ebenfalls kombiniert werden müssten.
+Als Erweiterung ist es möglich, verschiedene \e{Meshes} eines \e{glTF} zu kombinieren und als ein einziges \e{Mesh} zu behandeln. Dies erlaubt es noch mehr Vereinfachungen vornehmen zu können. Diese Anpassung kann man als simples \e{HLOD}-System bezeichnen. Eine Schwierigkeit ist hier jedoch die sinnvolle Wahl der Textur, da vereschiedene \e{Meshes} häufig über verschiedene Texturen verfügen und diese ebenfalls kombiniert werden müssten.
 
 \paragraph{Fading}
 \label{chap:fading}
 Aktuell finden die Modellwechsel an harten Grenzen statt. Dies hat zur Konsequenz, dass \e{Visual Popping} auftauchen kann. Eine Möglichkeit zur Linderung dieses Problems ist der Einsatz von \e{Fading}. Hierbei werden die Übergänge über grössere Intervalle durchgeführt und Teile der verschiedenen Artefakte dargestellt. Diese Methode wird zum Beispiel bei \e{Unity} angeboten.
 
 \paragraph{Konsequenter Einsatz von glb Dateien}
-Aktuell werden in der Demoszenerie glTF Dateien eingesetzt. Dies kommt daher, dass die Basisinformationen menschenlesbar abgespeichert werden. Das binäre Format glb ist jedoch grundsätzlich glTF vorzuziehen und sollte als primäres Austauschformat verwendet werden. Für das Laufzeitverhalten entsteht kein signifikanter Unterschied durch den Einsatz von glb. Der primäre Vorteil vom glb Format ist, dass alles in einer Datei gespeichert ist und somit nicht zwei Netzwerkabfragen stattfinden müssen – die Download\-zeit wird somit reduziert. Das CLI könnte erweitert werden, auch glb Dateien zu unterstützen.
+Aktuell werden in der Demoszenerie \e{glTF} Dateien eingesetzt. Dies kommt daher, dass die Basisinformationen menschenlesbar abgespeichert werden. Das binäre Format glb ist jedoch grundsätzlich \e{glTF} vorzuziehen und sollte als primäres Austauschformat verwendet werden. Für das Laufzeitverhalten entsteht kein signifikanter Unterschied durch den Einsatz von glb. Der primäre Vorteil vom glb Format ist, dass alles in einer Datei gespeichert ist und somit nicht zwei Netzwerkabfragen stattfinden müssen – die Download\-zeit wird somit reduziert. Das CLI könnte erweitert werden, auch glb Dateien zu unterstützen.

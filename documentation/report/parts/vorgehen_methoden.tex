@@ -114,7 +114,7 @@ Der Algorithmus kann wie folgt zusammengefasst werden:
 Die verschiedenen Schritte werden im folgenden ausführlicher beschrieben.
 
 \subsection{Fehlermetrik}
-Die Fehlermetrik dient dazu, eine Heuristik zu definieren, welche den geometrischen Unterschied zwischen dem vereinfachten und dem originalen Modell beschreibt. Mithilfe der Fehlermetrik können anschliessend, die Transformationen mit dem geringsten Fehler iterativ durchgeführt werden. Ziel ist es, zuerst Transformationen durchzuführen, welche keine grossen Anpassungen an der Geometrie vornehmen. 
+Die Fehlermetrik dient dazu, eine Heuristik zu definieren, welche den geometrischen Unterschied zwischen dem vereinfachten und dem originalen Modell beschreibt. Mithilfe der Fehlermetrik können anschliessend, die Transformationen mit dem geringsten Fehler iterativ durchgeführt werden. Ziel ist es, zuerst Transformationen durchzuführen, welche keine grossen Anpassungen an der Geometrie vornehmen.
 
 Der Algorithmus funktioniert grundsätzlich unabhängig von der gewählten Fehlermetrik. So könnten verschiedene Metriken eingesetzt werden.
 Die hier gewählte Metrik definiert den Fehler mithilfe einer symmetrischen $4\times 4$ Matrix. Die Matrix repräsentiert die Distanz eines \e{Vertices} zu einer zugehörigen \e{Face}. Für die Kombination mehrerer \e{Faces} können die Matrizen addiert werden. Beim Entfernen einer \e{Edge} werden die Fehlermetriken der zugehörigen \e{Vertices} addiert.
@@ -133,7 +133,7 @@ Es ist zudem möglich, \e{Vertices}, welche nahe zusammen sind ebenfalls als Opt
 Die \e{Edge Collapses} mit dem geringsten Fehler werden iterativ durchgeführt. Die Fehlermetriken der beiden \e{Vertices} werden addiert und bilden die Fehlermetrik des neuen \e{Vertex}. Bei Garland werden die Optionen sortiert. So kann sichergestellt werden, dass immer die mathematisch korrekte Reihenfolge der Operationen durchgeführt wird. Grundsätzlich ist es jedoch auch möglich die Optimierungen ohne sortieren durchzuführen, wie die Referenzimplementation aufzeigt. Der Vorteil ohne Sortierung liegt im Geschwindigkeitsgewinn und der Nachteil der Präzision ist vernachlässigbar.
 
 \subsection{Referenzimplementation}
-Der gewählte Algorithmus wurde bereits mehrfach implementiert. Eine wiederverwendbare und aktiv weiterentwickelte Implementation basierend auf einer formatunabhängigen Datenstruktur ist jedoch nicht vorhanden. Eine oft referenzierte Implementation ist diejenige von S. Forstmann \cite{fastQuadricMeshSimplification}, welche einige Optimierungen am ursprünglichen Algorithmus vornimmt, um optimale Performanz zu erhalten. Diese Optimierungen eignen sich hervorragend für eine webbasierte Implementation. Die Implementation ist jedoch in C++ geschrieben und unterstützt nur 3D-Modelle im OBJ Format. Somit kann sie nicht wiederverwendet werden.
+Der gewählte Algorithmus wurde bereits mehrfach implementiert. Eine wiederverwendbare und aktiv weiterentwickelte Implementation basierend auf einer formatunabhängigen Datenstruktur ist jedoch nicht vorhanden. Eine oft referenzierte Implementation ist diejenige von S. Forstmann \cite{fastQuadricMeshSimplification}, welche einige Optimierungen am ursprünglichen Algorithmus vornimmt, um optimale Performanz zu erhalten. Diese Optimierungen eignen sich hervorragend für eine webbasierte Implementation. Die Implementation ist jedoch in C++ geschrieben und unterstützt nur 3D-Modelle im \e{OBJ} Format. Somit kann sie nicht wiederverwendet werden.
 
 \section{Toolset}
 Das Toolset soll in wiederverwendbare Pakete aufgeteilt werden.
