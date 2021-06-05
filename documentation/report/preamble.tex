@@ -99,6 +99,14 @@
 
 % shortcut for emphasize
 \newcommand{\e}{\emph}
+\let\oldgls\gls
+\let\oldGls\Gls
+\let\oldglspl\glspl
+\let\oldGlspl\Glspl
+\renewcommand{\gls}[1]{{\e{\oldgls{#1}}}}
+\renewcommand{\Gls}[1]{{\e{\oldGls{#1}}}}
+\renewcommand{\glspl}[1]{{\e{\oldglspl{#1}}}}
+\renewcommand{\Glspl}[1]{{\e{\oldGlspl{#1}}}}
 
 % Shortcut for first glossary reference: lower-case & singular
 \newcommand{\fgls}[2]{{
