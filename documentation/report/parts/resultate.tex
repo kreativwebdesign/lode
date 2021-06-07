@@ -191,7 +191,7 @@ Die Fehlermetrik wurde vergleichbar mit der Referenzimplementation justiert. Die
 Bei vielen Modellen sind die Texturen für einen grossen Teil der Speichergrösse verantwortlich. Das Optimieren der geometrischen Struktur reduziert die zugehörigen Texturen jedoch nicht. Um trotzdem möglichst grosse Einsparungen für die Texturen zu ermöglichen wurde eine Methode entwickelt, welche die prominenteste Farbe einer Textur extrahiert und diese für die Vereinfachungen verwendet.
 In Abbildung \ref{fig:textureComparison} ist dieser Unterschied visualisiert. Für die Wahl der Farbe wird das Modul \e{fast-average-color} verwendet \cite{averageColorPackage}. Das Modul wählt den bestimmenden Farbton der Textur, welcher dann im \e{Material} des neuen Artefakts gespeichert wird.
 Diese Technik führt zu signifikanten Detailverlusten bei der Nahbetrachtung und ist somit ungeeignet für das Verwenden bei der ersten \e{LOD}-Stufe. Für alle weiteren Stufen überwiegt jedoch der Vorteil der Vereinfachung im Vergleich zum Detailverlust.
-Speichertechnisch ist es so nicht notwendig eine Textur zu verwenden, die Information kann auf einen einzigen Farbwert reduziert werden. Dies hat zudem mden Vorteil, dass es nicht notwendig ist Informationen für das \e{Texture Mapping} abspeichern zu müssen.
+Speichertechnisch ist es so nicht notwendig eine Textur zu verwenden, die Information kann auf einen einzigen Farbwert reduziert werden. Dies hat zudem den Vorteil, dass es nicht notwendig ist Informationen für das \e{Texture Mapping} abspeichern zu müssen.
 
 \begin{figure}[H]
   \centering
