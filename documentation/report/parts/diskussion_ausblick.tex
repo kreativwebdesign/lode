@@ -62,7 +62,7 @@ Aktuell werden initial alle \e{LOD}-Artefakte geladen. Dies hat zur Konsequenz, 
 \paragraph{Levelwahl während Laufzeit}
 Die optimale Wahl des Levels kann stark von der Laufzeitumgebung abhängig sein. So sollte zum Beispiel auf mobilen Geräten früher ein einfacheres Modell angezeigt werden als auf leistungsstarken Geräten. Ein weiterer Faktor ist die Auflösung. Bei Geräten mit niedriger Auflösung kann früher gewechselt werden, da die visuellen Unterschiede zum Original weniger auffällig sind.
 Deshalb eignet sich eine Wahl der Levels zur Laufzeit, um ein optimales Erlebnis auf allen Geräten zu ermöglichen.
-Nebst dem \e{\gls{CLI}} soll folglich auch ein Javascript-Modul bereitgestellt werden, welches das Laden von \e{glTF} Dateien übernimmt und basierend auf der erkannten Performanz das beste Level of Detail einspielt.
+Nebst dem \e{\gls{CLI}} soll folglich auch ein JavaScript-Paket bereitgestellt werden, welches das Laden von \e{glTF} Dateien übernimmt und basierend auf der erkannten Performanz das beste Level of Detail einspielt.
 
 \paragraph{Kombination mehrerer Meshes}
 Als Erweiterung ist es möglich, verschiedene \e{Meshes} eines \e{glTF} zu kombinieren und als ein einziges \e{Mesh} zu behandeln. Dies erlaubt es noch mehr Vereinfachungen vornehmen zu können. Diese Anpassung kann man als simples \e{HLOD}-System bezeichnen. Eine Schwierigkeit ist hier jedoch die sinnvolle Wahl der Textur, da vereschiedene \e{Meshes} häufig über verschiedene Texturen verfügen und diese ebenfalls kombiniert werden müssten.
