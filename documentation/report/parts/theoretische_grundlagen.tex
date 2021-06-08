@@ -275,7 +275,7 @@ void main(void) {
 \end{figure}
 
 \paragraph{Fragmentshader}
-Durch die Rasterisierung werden kontinuierliche Objekte zu diskreten Fragmenten verarbeitet. Ein Fragment entspricht grundsätzlich einem Pixel. Der Fragmentshader generiert die Farbdefinitionen für die einzelnen diskreten Fragmente. Dies können einfache Farbwerte sein, es ist jedoch auch möglich Texturen und dergleichen auf Fragmente abzubilden. Ein einfaches Beispiel für einen Fragmentshader ist in Abbildung \ref{fig:fragmentShader} ersichtlich. Bei \e{gl\_FragColor} handelt es sich wiederum um eine Variable von \e{GLSL}. Der zugewiesene Wert entspricht der Farbe des Pixels. In diesem Fall ist die Farbe Schwarz. Das Format entspricht rgba: rot, grün, blau, alpha (Transparenz).
+Durch die Rasterisierung werden kontinuierliche Objekte zu diskreten Fragmenten verarbeitet. Ein Fragment entspricht grundsätzlich einem Pixel. Der Fragmentshader generiert die Farbdefinitionen für die einzelnen diskreten Fragmente. Dies können einfache Farbwerte sein, es ist jedoch auch möglich Texturen und dergleichen auf Fragmente abzubilden. Ein einfaches Beispiel für einen Fragmentshader ist in Abbildung \ref{fig:fragmentShader} ersichtlich. Bei \e{gl\_FragColor} handelt es sich wiederum um eine Variable von \e{GLSL}. Der zugewiesene Wert entspricht der Farbe des Pixels. In diesem Fall ist die Farbe Schwarz. Das Format entspricht \e{rgba}: rot, grün, blau, alpha (Transparenz).
 
 \begin{figure}[H]
 \begin{lstlisting}[style=glsl]
