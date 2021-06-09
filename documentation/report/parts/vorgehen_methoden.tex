@@ -19,7 +19,7 @@ Die verschiedenen \e{LOD}-Systeme, sowie ihre Vor- und Nachteile werden in \auto
 \e{Unreal} verfügt sowohl über ein \e{DLOD}-System als auch über ein \e{HLOD}-System. Das \e{HLOD}-Tool zeichnet sich insbesondere dadurch aus, dass es die verschiedenen Artefakte automatisch generieren kann. Dies ermöglicht es, komplexe Strukturen direkt innerhalb von \e{Unreal} zu kombinieren \cite{unrealProxyLod}.
 So können einige Faktoren angepasst werden, um die \e{LOD} den Anforderungen entsprechend zu gestalten. Das Ergebnis kann direkt in einer Vorschau überprüft werden, wie in Abbildung \ref{fig:unrealLODGeneration}. So wird es leicht gemacht, Feinjustierungen vorzunehmen.
 Der Moment für die Levelwahl kann eingestellt werden. \e{Unreal} bietet eine automatische Option, so wie auch eine manuelle, wobei für jedes Level der Triggerpunkt gewählt werden kann.
-\e{Unreal} lässt Benutzer den Triggerpunkt über die relative Grösse eines Modells zur Fenstergrösse einstellen. Dies hat zwei wesentliche Vorteile: Einerseits können so Modelle in verschiedenen Grössen verwendet werden, welche alle individuelle Triggerzeitpunkte haben. Andererseits ist diese Grösse einfach zu testen und benötigt somit für die Eintsellung weniger manuellen Aufwand.
+\e{Unreal} lässt Benutzer den Triggerpunkt über die relative Grösse eines Modells zur Fenstergrösse einstellen. Dies hat zwei wesentliche Vorteile: Einerseits können so Modelle in verschiedenen Grössen verwendet werden, welche alle individuelle Triggerzeitpunkte haben. Andererseits ist diese Grösse einfach zu testen und benötigt somit für die Einstellung weniger manuellen Aufwand.
 Der Zeitaufwand für die Integration des Systems in eine Applikation wird so signifikant reduziert werden und macht den Einsatz eines \e{LOD}-Systems attraktiver.
 
 \begin{figure}[H]
@@ -66,10 +66,10 @@ Beim Einsatz von \e{LOD}-Systemen sind Anpassungen am \gls{Scene Graph} notwendi
 
 Bei diskreten und kontinuierlichen \e{LOD}-Systemen ist es möglich, marginal in die Arbeitsabläufe einzugreifen. Dies bedeutet, dass keine signifikanten Anpassungen an den Abläufen vorgenommen werden müssen, sondern dass es möglich ist, die Abläufe zu erweitern.
 Bei hierarchischen Systemen ist dies nicht gegeben, da es die Kombination mehrerer Modelle vorsieht und somit mehr Konfigurationsaufwand notwendig ist.
-Deshalb wurde entschieden kein hierarchisches \e{LOD}-System zu entwickeln, um die Integration des Tools für die Entwickler einer -Anwendung möglichst einfach zu gestalten.
+Deshalb wurde entschieden kein hierarchisches \e{LOD}-System zu entwickeln, um die Integration des Tools für die Entwickler einer Web-Anwendung möglichst einfach zu gestalten.
 
 \subsection{Visual Pop}
-\e{Visual Pop} bezeichnet das merkbare Austauschen zweier \e{LOD}-Artefakte. Im optimalen Fall ist der Austausch zweier Artefakte nicht bemerkbar. Bei kontinuierlichen Systemen ist es möglich, indem die unterschiedlichen Anpassungen graduell durchgeführt werden. Aufgrund der Art des Systems ist dies vergleichbar einfach möglich. Bei diskreten \e{LOD}-Systemen gestaltet sich das etwas aufwändiger. Eine Möglichkeit wird in \autoref{chap:fading} erläutert. Wenn die Auswechslung in ausreichender Entfernung vorgenommen werden kann, dann ist \e{Visual Popping} weniger spürbar. Da die Problematik des \e{Visual Pop} getarnt werden kann handelt es sich nicht um ein entscheidendes Kriterium bei der Auswahl des Systems.
+\e{Visual Pop} bezeichnet das merkbare Austauschen zweier \e{LOD}-Artefakte. Im optimalen Fall ist der Austausch zweier Artefakte nicht bemerkbar. Bei kontinuierlichen Systemen ist es möglich, indem die unterschiedlichen Anpassungen graduell durchgeführt werden. Aufgrund der Art des Systems ist dies vergleichbar einfach möglich. Bei diskreten \e{LOD}-Systemen gestaltet sich das etwas aufwändiger. Eine Möglichkeit wird in \autoref{chap:fading} erläutert. Wenn die Auswechslung in ausreichender Entfernung vorgenommen werden kann, dann ist \e{Visual Popping} weniger spürbar. Da die Problematik des \e{Visual Pop} getarnt werden kann, handelt es sich nicht um ein entscheidendes Kriterium bei der Auswahl des Systems.
 
 \subsection{Entscheidung}
 Eine Übersicht über die verschiedenen Kriterien kann in der Tabelle \ref{table:lodSystemComparison} gefunden werden.
@@ -108,7 +108,7 @@ Der Algorithmus kann wie folgt zusammengefasst werden:
 \begin{enumerate}
   \item Initiale Fehlermetrik für alle \e{Vertices} berechnen.
   \item Optionen für \e{Edge Collapse} markieren.
-  \item \e{Edge Collapses} mit geringstem Fehler, solange durchführen bis gewünschte Anzahl \e{Vertices} erreicht ist.
+  \item \e{Edge Collapses} mit geringstem Fehler solange durchführen, bis gewünschte Anzahl \e{Vertices} erreicht ist.
 \end{enumerate}
 
 Die verschiedenen Schritte werden im folgenden ausführlicher beschrieben.
@@ -149,7 +149,7 @@ Der Nutzen eines Systems definiert sich durch eine Vielzahl von Aspekte, welche 
 \paragraph{Entwicklungszeit}
 
 Die Entwicklungszeit beziffert den Aufwand für die Entwicklung einer Anwendung und kann in Arbeitsstunden beziffert werden.
-Die Auswirkungen eines Systems auf die Entwicklungszeit ist entscheidend dafür, ob etwas eingesetzt werden kann. Umso grösser der Nutzen eines Systems, desto grösser kann der Einfluss auf die Entwicklungszeit sein. Manuelle Prozesse sind wo möglich zu vermeiden. Ein System kann insofern in der Praxis nur relevant sein, wenn die Entwicklungszeit im Verhältnis zum Nutzen steht. Das Ziel muss also sein, den Aufwand und somit die Entwicklungszeit für die Nutzung von \e{LOD} möglichst gering zu halten, um die Hürde der Benutzung zu minimieren.
+Die Auswirkungen eines Systems auf die Entwicklungszeit ist entscheidend dafür, ob etwas eingesetzt werden kann. Umso grösser der Nutzen eines Systems, desto grösser kann der Einfluss auf die Entwicklungszeit sein. Manuelle Prozesse sind – wo möglich – zu vermeiden. Ein System kann insofern in der Praxis nur relevant sein, wenn die Entwicklungszeit im Verhältnis zum Nutzen steht. Das Ziel muss also sein, den Aufwand und somit die Entwicklungszeit für die Nutzung von \e{LOD} möglichst gering zu halten, um die Hürde der Benutzung zu minimieren.
 
 \paragraph{Downloadzeit}
 

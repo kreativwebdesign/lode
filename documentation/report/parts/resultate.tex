@@ -28,7 +28,7 @@ Für ein gegebenes Modell werden innerhalb vom Modellierungstool, wie zum Beispi
   \begin{subfigure}{.45\textwidth}
     \centering
     \includegraphics[width=1\linewidth]{resultate/aktueller-workflow/lod-1.png}
-    \caption{\e{LOD}-Stufe 1 (0.1\% Polys)}
+    \caption{\e{LOD}-Stufe 1 (0.1 \% Polys)}
     \label{fig:manualLodGenerationInBlenderSimplified}
   \end{subfigure}
   \caption{Manuelles erstellen von \e{LOD}-Artefakten in Blender}
@@ -37,7 +37,7 @@ Für ein gegebenes Modell werden innerhalb vom Modellierungstool, wie zum Beispi
 
 Anschliessend werden die verschiedenen Stufen exportiert und manuell in die Applikation integriert. Dafür werden diese direkt im Projekt gespeichert und ins Versionskontrollsystem (zum Beispiel \e{Git}) hinzugefügt.
 
-Diese Artefakte müssen nun im Code einzeln geladen und in die Szenerie integriert werden. Wie in Codeausschnitt \ref{code:threejsManualLodUsage} im Beispiel von \e{Three.js} zu sehen ist, muss jedes Level manuel geladen und konfiguriert werden.
+Diese Artefakte müssen nun im Code einzeln geladen und in die Szenerie integriert werden. Wie in Codeausschnitt \ref{code:threejsManualLodUsage} im Beispiel von \e{Three.js} zu sehen ist, muss jedes Level manuell geladen und konfiguriert werden.
 \begin{figure}[H]
   \begin{lstlisting}[style=JavaScript]
   import * as Three from "three";
@@ -231,7 +231,7 @@ In Abbildung \ref{fig:lodComparison} ist eine solche Vereinfachung neben dem zug
   \label{fig:lodComparison}
 \end{figure}
 
-Bei einer Nahbetrachtung der Modelle sind die Unterschiede klar ersichtlich. Bei einer gewissen Distanz sind die Differenzen der beiden Modelle unauffälliger. In Abbildung \ref{fig:lodComparisonDistance} werden dieselben Modelle auf eine Distanz von 72 (m) dargestellt. Das \e{m} ist dabei in Klammern gesetzt, da es sich um keine reale Einheit sondern um eine künstliche Einheit handelt. Die Standardeinstellung für die maximale Distanz des Kamera Frustum liegt bei Babylon.js zum Beispiel bei 10'000 (m) \cite{babylonMaxZ}. Auf diese Distanz kann der orange Schnabel beim Originalmodell noch knapp erkannt werden – andere Details sind auf diese Distanz jedoch nicht ersichtlich.
+Bei einer Nahbetrachtung der Modelle sind die Unterschiede klar ersichtlich. Bei einer gewissen Distanz sind die Differenzen der beiden Modelle unauffälliger. In Abbildung \ref{fig:lodComparisonDistance} werden dieselben Modelle auf eine Distanz von 72 (m) dargestellt. Das \e{m} ist dabei in Klammern gesetzt, da es sich um keine reale Einheit, sondern um eine künstliche Einheit handelt. Die Standardeinstellung für die maximale Distanz des Kamera Frustum liegt bei Babylon.js zum Beispiel bei 10'000 (m) \cite{babylonMaxZ}. Auf diese Distanz kann der orange Schnabel beim Originalmodell noch knapp erkannt werden – andere Details sind auf diese Distanz jedoch nicht ersichtlich.
 
 \begin{figure}[H]
   \centering
@@ -252,7 +252,7 @@ Bei einer Nahbetrachtung der Modelle sind die Unterschiede klar ersichtlich. Bei
 \subsection{Generierung von glTF}
 
 Für die \e{LOD}-Artefakte werden vom Originalmodell unabhängige \e{glTF} Dateien erstellt. Dafür wird das Tool \e{glTF-Transform} eingesetzt \cite{gltfTransform}.
-Das Erstellen eines solchen Basismodells ist in \ref{code:gltfTransform} ersichtlich. Hierbei wird die Skalierung und rotation des Originalmodells verwendet (gespeichert in Variable \e{originalNode}).
+Das Erstellen eines solchen Basismodells ist in \ref{code:gltfTransform} ersichtlich. Hierbei wird die Skalierung und Rotation des Originalmodells verwendet (gespeichert in Variable \e{originalNode}).
 
 \begin{figure}[H]
   \begin{lstlisting}[style=JavaScript]
@@ -325,7 +325,7 @@ Das Ziel des Benchmarks ist der Vergleich einer Version ohne Einsatz von \e{LOD}
 Um den Umfang des Benchmarks überschaubar zu halten, wurde ausschliesslich ein Benchmark für Google Chrome entwickelt.
 Google Chrome basiert auf \fgls{Chromium}{\e{Open Source} Browser-Projekt, welches von Google entwickelt wird. Andere Browser basieren ebenfalls auf der Code-Basis von Chromium}, dieselbe Engine, welche auch Microsoft Edge oder Opera verwenden.
 Einen Benchmark basierend auf Google Chrome liefert somit auch Indizien für diese beiden Browser, auch wenn gewisse Abweichungen möglich sind.
-Neben dem Marktführer Chrome sind Mozilla Firefox oder Safari von Apple ebenfalls Optionen. Jedoch wurde primär aufgrund des Marktanteils von total rund 70\% \cite{browserUsage} zugunsten von Google Chrome entschieden.
+Neben dem Marktführer Chrome sind Mozilla Firefox oder Safari von Apple ebenfalls Optionen. Jedoch wurde primär aufgrund des Marktanteils von total rund 70 \% \cite{browserUsage} zugunsten von Google Chrome entschieden.
 Die getroffenen Aussagen bezüglich Laufzeitverhalten behalten ihre Gültigkeit auch für andere Browser.
 
 \paragraph{Automation}
@@ -334,7 +334,7 @@ Der Vorteil von Selenium ist insbesondere, dass der Benchmark für weitere Brows
 Da jedoch das Analysieren der \gls{GPU} Daten stark vom System abhängig ist und dafür zusätzliche Komplexität notwendig wäre, wird in diesem Benchmark die im Google Chrome integrierten \e{Chrome DevTools} eingesetzt.
 Selenium bietet zurzeit eine suboptimale Integration für das \e{Chrome DevTools Protocol}.
 Um mögliche Diskrepanzen zwischen Systemen möglichst gering zu halten, wurde jedoch entschieden, auf die bewährte Lösung von Google Chrome zu setzen.
-\fgls{Puppeteer}{Node.js Library, die eine API anbietet zum Steuern von \gls{Chromium} oder Chrome über das Chrome DevTools Protocol}, eine weitere Option für die Automation, ist eine Bibliothek, die eine vereinfachte Schnittstelle zu einer Chromium Instanz bietet.
+\fgls{Puppeteer}{Node.js Library, die eine API anbietet zum Steuern von \gls{Chromium} oder Chrome über das \e{Chrome DevTools Protocol}}, eine weitere Option für die Automation, ist eine Bibliothek, die eine vereinfachte Schnittstelle zu einer Chromium Instanz bietet.
 Sie wird zudem direkt von Google entwickelt und bietet somit eine stabile Grundlage zur Kommunikation mit den \e{Chrome DevTools}.
 
 \paragraph{Profiling}
@@ -406,15 +406,15 @@ Anschliessend wird die Standardabweichung der \gls{FPS} für die unoptimierten r
 Zudem werden die weiteren erfassten Kennzahlen ausgewertet, um das Resultat der \gls{FPS} verifizieren zu können.
 
 \subparagraph{Konfidenzintervall}
-Die Signifikanz wird mithilfe eines statistischen Konfidenzintervalls nachgewiesen. Hierfür wird der Durchschnitt aller Mediane verwendet, zusätzlich wird ein Konfidenzintervall von 95\% gewählt. Es wird gewährleistet, dass das Resultat des Benchmarks verlässlich ist und für einen Vergleich verwendet werden kann. Überschneiden sich die Intervalle für die optimierte und unoptimierte Version kann keine statistische Signifikanz nachgewiesen werden. Grundsätzlich gilt: umso kleiner die Intervalle desto besser. Zudem sollten die beiden Intervalle möglichst weit entfernt voneinander liegen.
+Die Signifikanz wird mithilfe eines statistischen Konfidenzintervalls nachgewiesen. Hierfür wird der Durchschnitt aller Mediane verwendet, zusätzlich wird ein Konfidenzintervall von 95 \% gewählt. Es wird gewährleistet, dass das Resultat des Benchmarks verlässlich ist und für einen Vergleich verwendet werden kann. Überschneiden sich die Intervalle für die optimierte und unoptimierte Version kann keine statistische Signifikanz nachgewiesen werden. Grundsätzlich gilt: umso kleiner die Intervalle desto besser. Zudem sollten die beiden Intervalle möglichst weit entfernt voneinander liegen.
 
 \subsection{Auswertung}
 \label{chap:benchmarkResults}
 
-Der Benchmark wurde auf verschiedenen Geräten ausgeführt. Im folgenden sind zwei Durchläufe mit jeweils 10 Proben erfasst.
+Der Benchmark wurde auf verschiedenen Geräten ausgeführt. Im Folgenden sind zwei Durchläufe mit jeweils 10 Proben erfasst.
 
 Der erste Durchlauf wurde auf einem MacBook Pro mit einer dedizierten Grafikkarte durchgeführt. Wie in Abbildung \ref{fig:benchmarkFpsChartMarcbook} zu sehen, konnten die FPS auf 60 FPS gehoben werden im Vergleich zu den 48.2 FPS in der unoptimierten Version. Die Standardabweichung ist im Diagramm ebenfalls ersichtlich.
-Direkt damit verbunden ist die Anzahl \e{Render Loop} Iterationen, welche genauso um ca. 30\% gesteigert werden konnte. Auf der Umkehrseite wurde die Dauer für das Laden der Modelle, gemessen in Millisekunden, etwas erhöht, da mehr Modelle geladen werden müssen (siehe \ref{fig:benchmarkDownloadChartMarcbook}). Diese wuchs aber nur um rund 10\%. Zu beachten ist, dass die Modelle lediglich lokal geladen werden – über ein richtiges Netzwerk sind die Ladezeiten entsprechend länger.
+Direkt damit verbunden ist die Anzahl \e{Render Loop} Iterationen, welche genauso um ca. 30 \% gesteigert werden konnte. Auf der Umkehrseite wurde die Dauer für das Laden der Modelle, gemessen in Millisekunden, etwas erhöht, da mehr Modelle geladen werden müssen (siehe \ref{fig:benchmarkDownloadChartMarcbook}). Diese wuchs aber nur um rund 10 \%. Zu beachten ist, dass die Modelle lediglich lokal geladen werden – über ein richtiges Netzwerk sind die Ladezeiten entsprechend länger.
 
 Die detaillierten Informationen befinden sich in Anhang \ref{fig:marcbookBenchmarkRun}.
 
