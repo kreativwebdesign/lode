@@ -174,7 +174,7 @@ Für das Erstellen von \e{LOD}-Artefakten wurde eine für \e{LOD}-Artefakte opti
 
 \subsection{Implementation}
 
-Die Implementation des Algorithmus wurde in \e{JavaScript}, basierend auf \e{\gls{Node.js}}, umgesetzt. Grund dafür ist das Einbinden von \e{lode} in bestehende Entwicklungsabläufe in der Web-Entwicklung. So ist es einfach möglich, das Paket mithilfe von \gls{npm} für viele Plattformen zur Verfügung zu stellen.
+Die Implementation des Algorithmus wurde in \e{JavaScript}, basierend auf \gls{Node.js}, umgesetzt. Grund dafür ist das Einbinden von \e{lode} in bestehende Entwicklungsabläufe in der Web-Entwicklung. So ist es einfach möglich, das Paket mithilfe von \gls{npm} für viele Plattformen zur Verfügung zu stellen.
 Die mathematischen Grundlagen konnten dabei teilweise basierend auf der Referenzimplementation umgesetzt werden. Zudem wurde \e{gl-matrix} für das effiziente Arbeiten mit Vektoren eingesetzt \cite{glMatrix}.
 
 \subsection{Artefakte}
@@ -331,7 +331,7 @@ Die getroffenen Aussagen bezüglich Laufzeitverhalten behalten ihre Gültigkeit 
 \paragraph{Automation}
 Um die Tests durchzuführen, wird ein Testautomationstool benötigt; unter anderem der Einsatz von Selenium wurde in Erwägung gezogen.
 Der Vorteil von Selenium ist insbesondere, dass der Benchmark für weitere Browser ausgeweitet werden könnte.
-Da jedoch das Analysieren der \e{\gls{GPU}} Daten stark vom System abhängig ist und dafür zusätzliche Komplexität notwendig wäre, wird in diesem Benchmark die im Google Chrome integrierten \e{Chrome DevTools} eingesetzt.
+Da jedoch das Analysieren der \gls{GPU} Daten stark vom System abhängig ist und dafür zusätzliche Komplexität notwendig wäre, wird in diesem Benchmark die im Google Chrome integrierten \e{Chrome DevTools} eingesetzt.
 Selenium bietet zurzeit eine suboptimale Integration für das \e{Chrome DevTools Protocol}.
 Um mögliche Diskrepanzen zwischen Systemen möglichst gering zu halten, wurde jedoch entschieden, auf die bewährte Lösung von Google Chrome zu setzen.
 \fgls{Puppeteer}{Node.js Library, die eine API anbietet zum Steuern von \gls{Chromium} oder Chrome über das Chrome DevTools Protocol}, eine weitere Option für die Automation, ist eine Bibliothek, die eine vereinfachte Schnittstelle zu einer Chromium Instanz bietet.
@@ -339,7 +339,7 @@ Sie wird zudem direkt von Google entwickelt und bietet somit eine stabile Grundl
 
 \paragraph{Profiling}
 Die \e{Chrome DevTools} erlauben es, ein detailliertes Laufzeitprofil einer Applikation anzulegen.
-Im Profil befinden sich Informationen zu \e{\gls{CPU}}- und \e{\gls{GPU}}-Auslastung, aber auch generelle Informationen bzgl. der \gls{Rendering Engine} werden gesammelt.
+Im Profil befinden sich Informationen zu \gls{CPU}- und \gls{GPU}-Auslastung, aber auch generelle Informationen bzgl. der \gls{Rendering Engine} werden gesammelt.
 Die Analyse dieser Daten ermöglicht es, eine Aussage zum Laufzeitverhalten einer Applikation zu tätigen.
 
 \subsection{Testaufbau}
@@ -364,7 +364,7 @@ Der Test erfasst die in Tabelle \ref{table:benchmarkFigures} aufgeführten Kennz
   Kennzahl & Beschreibung \\
   \hline
   \hline
-  Median \e{\gls{FPS}} & Die \e{\gls{FPS}} werden kontinuierlich berechnet. Um starke Abweichungen zu verwerfen wird der Median verwendet. \\
+  Median \gls{FPS} & Die \gls{FPS} werden kontinuierlich berechnet. Um starke Abweichungen zu verwerfen wird der Median verwendet. \\
   \hline
   Dauer für das Laden der Modelle & Totale Zeit für das Laden aller Modelle der Szenerie. Dieser Wert ist relativ zu betrachten, da die Modelle lokal geladen werden und die Zeit für das Laden von einem Server signifikant höher sein kann. Grundsätzlich besteht eine ausreichende Korrelation zwischen Dateigrösse und Zeit für das Laden der Modelle. Ein zusätzlicher Faktor ist jedoch die Anzahl an Dateien, welche geladen werden müssen. \\
   \hline
@@ -372,9 +372,9 @@ Der Test erfasst die in Tabelle \ref{table:benchmarkFigures} aufgeführten Kennz
   \hline
   Anzahl \e{Render Loop} Iterationen & Wie oft wurde ein neues Bild gezeichnet. Umso höher die Zahl, desto mehr verschiedene Frames konnten gerendert werden. \\
   \hline
-  Totale \e{\gls{GPU}} Zeit & Die totale Zeit, welche die GPU für Berechungen benötigt. \\
+  Totale \gls{GPU} Zeit & Die totale Zeit, welche die GPU für Berechungen benötigt. \\
   \hline
-  Anzahl \e{\gls{GPU}} Events & Anzahl der Events an die \e{\gls{GPU}}. Dieser Wert soll lediglich dazu dienen um die gemessenen \e{FPS} und die Anzahl \e{Render Loop} Iterationen besser einschätzen zu können. Eine höhere Anzahl an \e{\gls{GPU}} Events steht innerhalb der Demoszenerie im Zusammenhang mit mehr \e{Render Loop} Iterationen. \\
+  Anzahl \gls{GPU} Events & Anzahl der Events an die \gls{GPU}. Dieser Wert soll lediglich dazu dienen um die gemessenen \gls{FPS} und die Anzahl \e{Render Loop} Iterationen besser einschätzen zu können. Eine höhere Anzahl an \gls{GPU} Events steht innerhalb der Demoszenerie im Zusammenhang mit mehr \e{Render Loop} Iterationen. \\
   \hline
   \end{tabular}
   \caption{Kennzahlen für Benchmark}
@@ -385,7 +385,7 @@ Der Test erfasst die in Tabelle \ref{table:benchmarkFigures} aufgeführten Kennz
 \label{chap:testApplication}
 Die Testapplikation stellt eine komplexe Szenerie dar. Der Betrachter fliegt während dem Ablauf kontinuierlich über die Szenerie. Dies stellt die optimalen Bedingungen für den Einsatz von \e{LOD}-Artefakten dar. Abhängig von einem URL-Parameter wird entschieden ob \e{LOD}-Artefakte verwendet werden sollen oder nicht. Die Anwendung wurde mit Three.js implementiert. Bei der unoptimierten Version wird direkt das Originalmodell verwendet. Bei der optimierten Version werden mithilfe der \e{LOD}-Hilfsklasse die verschiedenen Artefakte geladen \cite{threeLODClass}.
 
-In Abbildung \ref{fig:demoApplication} ist ein Screenshot der Testapplikation ersichtlich. Als Basis für die Applikation wurde Three.js eingesetzt. Die Kamera wird kontinuierlich innerhalb der Szene bewegt, die Position wird abhängig von der Systemzeit definiert. So ist es möglich, dass beide Applikationen – unabhängig von den \e{FPS} – jeweils die gleichen Aspekte innerhalb der Applikation visualisieren. Die Modelle werden zudem bei jedem Durchlauf identisch positioniert. Dies gewährleistet, dass das Laufzeitverhalten verlässlich ist.
+In Abbildung \ref{fig:demoApplication} ist ein Screenshot der Testapplikation ersichtlich. Als Basis für die Applikation wurde Three.js eingesetzt. Die Kamera wird kontinuierlich innerhalb der Szene bewegt, die Position wird abhängig von der Systemzeit definiert. So ist es möglich, dass beide Applikationen – unabhängig von den \gls{FPS} – jeweils die gleichen Aspekte innerhalb der Applikation visualisieren. Die Modelle werden zudem bei jedem Durchlauf identisch positioniert. Dies gewährleistet, dass das Laufzeitverhalten verlässlich ist.
 
 Jedes Modell wird dabei mehrfach angezeigt, die Modelle werden einmal geladen und anschliessend mittels der \e{clone} Methode von Three.js geklont \cite{threeObject3DClone}. Dies stellt sicher, dass die Datenstruktur der Modelle nicht mehrfach in den Arbeitsspeicher geladen werden muss. Wichtig ist zu erwähnen, dass die Modelle bei dieser Methode mit mehreren \e{Draw Calls} gerendert werden. Der Einsatz von \e{InstancedMesh} wurde in Erwägung gezogen. Es zeigte jedoch keinen nennenswerte Vorteil, weder für die optimierte, noch für die unoptimierten Version \cite{threeInstancedMesh}.
 
@@ -400,10 +400,10 @@ Jedes Modell wird dabei mehrfach angezeigt, die Modelle werden einmal geladen un
 Um während den Tests möglichst faire Bedingungen zu gewährleisten, wird die Maschine zuvor wie bei anderen Benchmarks vorbereitet. Ziel ist es, Seiteneffekte zu minimieren. Für diesen Benchmark wurden deshalb die Instruktionen von \e{Tracer Bench} zur Behebung von Rauschen befolgt \cite{tracerBenchNoiseMitigation}. Die beiden Versionen werden jeweils abwechslungsweise ausgeführt, so wird sichergestellt, dass keine der beiden Varianten einen starken Nachteil durch Nebeneffekte erleidet. Ausserdem werden mehrere Durchläufe direkt nacheinander ausgeführt. Starke Abweichungen zwischen den Durchläufen würden bei der Analyse der Daten auffallen.
 
 \paragraph{Analyse der Daten}
-Für jeden Durchlauf wird der Median der \e{\gls{FPS}} Daten berechnet.
-Anschliessend wird die Standardabweichung der \e{\gls{FPS}} für die unoptimierten respektive optimierten Werte berechnet. Die Standardabweichung dient als Kennzahl, um eine Signifikanz der Daten nachweisen zu können.
+Für jeden Durchlauf wird der Median der \gls{FPS} Daten berechnet.
+Anschliessend wird die Standardabweichung der \gls{FPS} für die unoptimierten respektive optimierten Werte berechnet. Die Standardabweichung dient als Kennzahl, um eine Signifikanz der Daten nachweisen zu können.
 
-Zudem werden die weiteren erfassten Kennzahlen ausgewertet, um das Resultat der \e{\gls{FPS}} verifizieren zu können.
+Zudem werden die weiteren erfassten Kennzahlen ausgewertet, um das Resultat der \gls{FPS} verifizieren zu können.
 
 \subparagraph{Konfidenzintervall}
 Die Signifikanz wird mithilfe eines statistischen Konfidenzintervalls nachgewiesen. Hierfür wird der Durchschnitt aller Mediane verwendet, zusätzlich wird ein Konfidenzintervall von 95\% gewählt. Es wird gewährleistet, dass das Resultat des Benchmarks verlässlich ist und für einen Vergleich verwendet werden kann. Überschneiden sich die Intervalle für die optimierte und unoptimierte Version kann keine statistische Signifikanz nachgewiesen werden. Grundsätzlich gilt: umso kleiner die Intervalle desto besser. Zudem sollten die beiden Intervalle möglichst weit entfernt voneinander liegen.
@@ -436,7 +436,7 @@ Die detaillierten Informationen befinden sich in Anhang \ref{fig:marcbookBenchma
   \label{fig:benchmarkChartMarcbook}
 \end{figure}
 
-Auch der zweite Durchlauf auf einem Dell-Gerät mit integrierter \e{\gls{GPU}} führt zu ähnlichen Daten. Auffallend in \ref{fig:benchmarkFpsChartWindows} ist der Unterschied der \e{FPS}. Die Unterschiede der Downloadzeit (siehe \ref{fig:benchmarkDownloadChartWindows}) sind vergleichbar mit denjenigen vom ersten Durchlauf.
+Auch der zweite Durchlauf auf einem Dell-Gerät mit integrierter \gls{GPU} führt zu ähnlichen Daten. Auffallend in \ref{fig:benchmarkFpsChartWindows} ist der Unterschied der \gls{FPS}. Die Unterschiede der Downloadzeit (siehe \ref{fig:benchmarkDownloadChartWindows}) sind vergleichbar mit denjenigen vom ersten Durchlauf.
 
 Die detaillierten Informationen befinden sich in Anhang \ref{fig:windowsBenchmarkRun}.
 

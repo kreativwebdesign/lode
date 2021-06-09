@@ -56,7 +56,7 @@ Für diskrete \e{LOD} muss für jedes Level ein separates Modell geladen werden.
 
 \subsection{Auswirkung auf Laufzeitverhalten}
 
-Der Einsatz von \e{LOD}-Systemen hat Auswirkungen auf das Laufzeitverhalten, das Ausmass variiert jedoch. Das Laufzeitverhalten umschreibt hier primär die Arbeit, welche auf der \e{\gls{CPU}} verrichtet werden muss, um die Szenerie adäquat vorzubereiten.
+Der Einsatz von \e{LOD}-Systemen hat Auswirkungen auf das Laufzeitverhalten, das Ausmass variiert jedoch. Das Laufzeitverhalten umschreibt hier primär die Arbeit, welche auf der \gls{CPU} verrichtet werden muss, um die Szenerie adäquat vorzubereiten.
 Insbesondere unter Berücksichtigung der Tatsache, dass die Laufzeitleistung essenziell für Web-Anwendungen ist, wurde entschieden nicht auf kontinuierliche \e{LOD}-Systeme zu setzen.
 
 \subsection{Auswirkung auf Scene Graph}
@@ -82,7 +82,7 @@ Eine Übersicht über die verschiedenen Kriterien kann in der Tabelle \ref{table
   \hline
   Auswirkung auf Downloadgrösse & mittel & mittel & mittel \\
   Auswirkung auf Laufzeitverhalten & klein & mittel & mittel \\
-  Auswirkung auf \e{\gls{Scene Graph}} & lokal & lokal & global \\
+  Auswirkung auf \gls{Scene Graph} & lokal & lokal & global \\
   Integration in bestehende Arbeitsabläufe & einfach & einfach & umständlich \\
   \e{Visual Pop} vermeidbar & umständlich & ja & ja \\
   \hline
@@ -137,7 +137,7 @@ Der gewählte Algorithmus wurde bereits mehrfach implementiert. Eine wiederverwe
 
 \section{Toolset}
 Das Toolset soll in wiederverwendbare Pakete aufgeteilt werden.
-Da es in der Web-Entwicklung üblich ist, über ein \fgls{CLI}{Command Line Interface – Kommandozeile. Computer-Mensch-Schnittstelle, welche ermöglicht, durch Eingabe von Befehlswörter Anweisungen an die Maschine zu geben} Arbeitsschritte zu automatisieren, soll ein \e{\gls{CLI}} erstellt und auf \gls{npm} öffentlich zugänglich gemacht werden. Dieses \e{CLI} soll nahtlos in den Entwicklungsablauf integriert werden können. Über eine Konfiguration soll angegeben werden können, wo nach den \e{.glTF} Dateien gesucht, wohin die Output-Dateien gespeichert und in welchem Modus das Tool gestartet werden soll. Ebenso werden Algorithmus-Einstellungen in dieser Konfiguration definiert. Wichtig ist der Fokus auf die Bedienbarkeit des Toolsets, hierfür ist eine ausreichende Dokumentation, sowie gut gewählte Standardeinstellungen entscheidend. Zudem soll das Tool im einmal Modus laufen können oder kontinuierlich sich ändernde Dateien neu optimieren.
+Da es in der Web-Entwicklung üblich ist, über ein \fgls{CLI}{Command Line Interface – Kommandozeile. Computer-Mensch-Schnittstelle, welche ermöglicht, durch Eingabe von Befehlswörter Anweisungen an die Maschine zu geben} Arbeitsschritte zu automatisieren, soll ein \gls{CLI} erstellt und auf \gls{npm} öffentlich zugänglich gemacht werden. Dieses \gls{CLI} soll nahtlos in den Entwicklungsablauf integriert werden können. Über eine Konfiguration soll angegeben werden können, wo nach den \e{.glTF} Dateien gesucht, wohin die Output-Dateien gespeichert und in welchem Modus das Tool gestartet werden soll. Ebenso werden Algorithmus-Einstellungen in dieser Konfiguration definiert. Wichtig ist der Fokus auf die Bedienbarkeit des Toolsets, hierfür ist eine ausreichende Dokumentation, sowie gut gewählte Standardeinstellungen entscheidend. Zudem soll das Tool im einmal Modus laufen können oder kontinuierlich sich ändernde Dateien neu optimieren.
 
 \section{Nutzen LOD}
 Um den Nutzen von \e{LOD} quantifizieren zu können, müssen verschiedene Aspekte berücksichtigt werden. Auf der einen Seite ist die Entwicklungszeit zu berücksichtigen, welche sich auf die Kosten der Applikation auswirkt. Auf der anderen Seite sind Aspekte wie die Downloadzeit, die visuellen Unterschiede und die Laufzeit-Performanz der Applikation wichtig, da sie die Qualität der Software beeinflussen.
@@ -167,7 +167,7 @@ Die negativen visuellen Auswirkungen auf eine Anwendung sollen so gering wie mö
 
 Für jede Applikation ist das Laufzeitverhalten entscheidend. So ist eine schlechte \e{User Experience} inakzeptabel. \e{User Experience} ist häufig Teil der nicht funktionalen Anforderungen und besteht aus mehr als nur dem Laufzeitverhalten.
 Das Laufzeitverhalten wird durch eine Vielzahl von Aspekten beeinflusst.
-Für flüssige Animationen sind die \e{Frames per Second} (FPS) entscheidend. Bei 10 \fgls{FPS}{Bilder pro Sekunde. Die Anzahl der Render-Durchläufe der \gls{Rendering Engine}, die sich darauf auswirkt, wie flüssig eine Applikation läuft. Angestrebt werden in der Regel 60 FPS, was eine sehr flüssige Bewegung garantiert} oder weniger, sind flüssige Bewegungen nicht mehr möglich und das menschliche Auge kann ein Ruckeln wahrnehmen. Diese Zahl ist abhängig vom Individuum, als Faustregel gilt das Ziel von 60 \e{\gls{FPS}} \cite{limitsOfHumanVision}.
+Für flüssige Animationen sind die \e{Frames per Second} (FPS) entscheidend. Bei 10 \fgls{FPS}{Bilder pro Sekunde. Die Anzahl der Render-Durchläufe der \gls{Rendering Engine}, die sich darauf auswirkt, wie flüssig eine Applikation läuft. Angestrebt werden in der Regel 60 FPS, was eine sehr flüssige Bewegung garantiert} oder weniger, sind flüssige Bewegungen nicht mehr möglich und das menschliche Auge kann ein Ruckeln wahrnehmen. Diese Zahl ist abhängig vom Individuum, als Faustregel gilt das Ziel von 60 \gls{FPS} \cite{limitsOfHumanVision}.
 
 \paragraph{Berücksichtigung der Aspekte}
 In dieser Arbeit wird ein hoher Wert darauf gelegt, dass die Entwicklungszeit möglichst geringfügig erhöht wird. Zudem werden, wo möglich, Empfehlungen getätigt, um die Downloadgrösse nur marginal zu verändern. Das Minimieren der visuellen Auswirkungen kann durch visuelle Vergleiche sichergestellt werden.
@@ -191,9 +191,9 @@ Der primäre Nachteil bei dieser Variante liegt an der Aussagekraft. Die einzige
 
 \paragraph{Szeneriebetrachtung}
 Bei diesem Ansatz wird eine gegebene Szenerie möglichst geringfügig angepasst und die Auswirkungen auf die Performanz verglichen.
-Wenn die unoptimierte Variante 60 \e{\gls{FPS}} erreicht oder gar übersteigt, ist eine Optimierung nicht notwendig. Somit muss eine Szenerie gewählt werden, welche diesen Wert unterschreitet.
-Das Ziel ist es dann, die \e{LOD}-Artefakte in dieselbe Szenerie zu integrieren und die \e{FPS} zu steigern. Ziel der Arbeit ist es, ein System zu entwickeln, das für Szenarien unter 60 \e{\gls{FPS}} diese erhöht und im Idealfall auf ebendiesen Wert hebt.
+Wenn die unoptimierte Variante 60 \gls{FPS} erreicht oder gar übersteigt, ist eine Optimierung nicht notwendig. Somit muss eine Szenerie gewählt werden, welche diesen Wert unterschreitet.
+Das Ziel ist es dann, die \e{LOD}-Artefakte in dieselbe Szenerie zu integrieren und die \gls{FPS} zu steigern. Ziel der Arbeit ist es, ein System zu entwickeln, das für Szenarien unter 60 \gls{FPS} diese erhöht und im Idealfall auf ebendiesen Wert hebt.
 Eine solche Szenerie soll grundsätzlich Modelle sowohl nah als auch in grosser Distanz zeigen. Ein Beispiel für eine solche Szenerie ist eine 3D-Welt, in der man sich durch offene Gelände bewegt.
 
 \paragraph{Auswahl}
-Im Vergleich zur Modellbetrachtung ist die Aussagekraft einer Szeneriebetrachtung ausreichend, um einen Beleg für den positiven Nutzen des Systems zu haben. Bei der Modellbetrachtung ist es nicht möglich den praktischen Nutzen unter Berücksichtigung verschiedenere Aspekte zu beurteilen, sie dient ausschliesslich zum theoretischen Vergleich. Deshalb werden die Auswirkungen auf das Laufzeitverhalten mithilfe einer Szeneriebetrachtung gemessen. Sollte es nicht möglich sein, die \e{FPS} zu steigern, so liefert der Einsatz von \e{LOD}-Artefakten keinen nachweisbaren Nutzen.
+Im Vergleich zur Modellbetrachtung ist die Aussagekraft einer Szeneriebetrachtung ausreichend, um einen Beleg für den positiven Nutzen des Systems zu haben. Bei der Modellbetrachtung ist es nicht möglich den praktischen Nutzen unter Berücksichtigung verschiedenere Aspekte zu beurteilen, sie dient ausschliesslich zum theoretischen Vergleich. Deshalb werden die Auswirkungen auf das Laufzeitverhalten mithilfe einer Szeneriebetrachtung gemessen. Sollte es nicht möglich sein, die \gls{FPS} zu steigern, so liefert der Einsatz von \e{LOD}-Artefakten keinen nachweisbaren Nutzen.
