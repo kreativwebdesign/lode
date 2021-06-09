@@ -7,8 +7,8 @@
 % !TEX encoding = UTF-8 Unicode
 % !TEX root = ../doc.tex
 
-Im folgenden Abschnitt werden die Grundlagen für die Entwicklung eines \e{LOD}-Systems kurz erläutert.
-Es werden zuerst die Grundlagen der polygonalen 3D-Modelle und verschiedene Dateiformate erläutert. Danach wird auf die Theorie der Transformationen und die Grafik-Pipeline eingegangen. Zum Schluss werden noch einige Optionen zur Performanzoptimierung erläutert.
+Im folgenden Abschnitt werden die Grundlagen für die Entwicklung eines \e{LOD}-Systems aufgezeigt.
+Zuerst werden die Grundlagen der polygonalen 3D-Modelle und verschiedene Dateiformate erläutert. Danach wird auf die Theorie der Transformationen und die Grafik-Pipeline eingegangen. Zum Schluss werden noch alternative, beziehungsweise ergänzende, Optionen zur Performanzoptimierung beschrieben.
 
 \section{3D-Modelle}
 Ein Modell stellt ein physisches Objekt, häufig aus der realen Welt, vereinfacht dar.
@@ -219,9 +219,9 @@ In Abbildung \ref{fig:transformationVertexRemovalOriginal} wird der zentrale Ver
 \end{figure}
 \todo[inline]{rote Farbwahl überdenken}
 
-\section{Grafikpipeline}
+\section{Grafik-Pipeline}
 
-Die Grafikpipeline ist zuständig um eine definierte Szene auf einem Ausgabegerät zu visualisieren. Die Schritte werden im folgenden Abschnitt nur oberflächlich erläutert, um ein grobes Verständnis zu vermitteln. Es wird dabei ein simples 3D-Modell auf einem 2D-Display, wie zum Beispiel einem Monitor, visualisiert. Die Schritte sind in Abbildung \ref{fig:renderingPipelineOverview} aufgezeigt. Der Prozess wird idealerweise 60 Mal pro Sekunde wiederholt. Dies findet in der sogenannten \e{Render Loop} statt.
+Die Grafik-Pipeline ist zuständig um eine definierte Szene auf einem Ausgabegerät zu visualisieren. Die Schritte werden im folgenden Abschnitt nur oberflächlich erläutert, um ein grobes Verständnis zu vermitteln. Es wird dabei ein simples 3D-Modell auf einem 2D-Display, wie zum Beispiel einem Monitor, visualisiert. Die Schritte sind in Abbildung \ref{fig:renderingPipelineOverview} aufgezeigt. Der Prozess wird idealerweise 60 Mal pro Sekunde wiederholt. Dies findet in der sogenannten \e{Render Loop} statt.
 
 \begin{figure}[H]
   \centering
