@@ -6,7 +6,6 @@
 % !TEX TS-program = pdflatexmk
 % !TEX encoding = UTF-8 Unicode
 % !TEX root = doc.tex
-
 % Lorem Ipsum
 \usepackage{lipsum}
 
@@ -74,7 +73,7 @@
 % Hyperlinks
 \usepackage[hidelinks]{hyperref}
 \hypersetup{%
-  pdftitle={Level Of Detail Pipeline für 3D Webapplikationen},
+  pdftitle={Level Of Detail Toolset für 3D-Web-Applikationen},
 % Use \plainauthor for final version.
   pdfauthor={Marc Berli und Simon Stucki},
 %  pdfauthor={\emptyauthor},
@@ -100,6 +99,14 @@
 
 % shortcut for emphasize
 \newcommand{\e}{\emph}
+\let\oldgls\gls
+\let\oldGls\Gls
+\let\oldglspl\glspl
+\let\oldGlspl\Glspl
+\renewcommand{\gls}[1]{{\e{\oldgls{#1}}}}
+\renewcommand{\Gls}[1]{{\e{\oldGls{#1}}}}
+\renewcommand{\glspl}[1]{{\e{\oldglspl{#1}}}}
+\renewcommand{\Glspl}[1]{{\e{\oldGlspl{#1}}}}
 
 % Shortcut for first glossary reference: lower-case & singular
 \newcommand{\fgls}[2]{{
@@ -107,10 +114,7 @@
   {
     name={#1},
     description={{#2}}
-  }
-  \gls{#1}
-  \footnote{#2}
-}}
+  }\gls{#1}\footnote{#2}}}
 
 % Shortcut for first glossary reference: lower-case & plural
 \newcommand{\fglspl}[2]{{
@@ -118,10 +122,7 @@
   {
     name={#1},
     description={{#2}}
-  }
-  \glspl{#1}
-  \footnote{#2}
-}}
+  }\glspl{#1}\footnote{#2}}}
 
 % Shortcut for first glossary reference: Upper-case & singular
 \newcommand{\fGls}[2]{{
@@ -129,10 +130,7 @@
   {
     name={#1},
     description={{#2}}
-  }
-  \Gls{#1}
-  \footnote{#2}
-}}
+  }\Gls{#1}\footnote{#2}}}
 
 % Shortcut for first glossary reference: Upper-case & plural
 \newcommand{\fGlspl}[2]{{
@@ -140,10 +138,7 @@
   {
     name={#1},
     description={{#2}}
-  }
-  \Glspl{#1}
-  \footnote{#2}
-}}
+  }\Glspl{#1}\footnote{#2}}}
 
 \pgfplotsset{compat=1.16}
 
@@ -222,3 +217,44 @@
   extendedchars=true,
   breaklines=true,
 }
+
+
+\makeatletter
+\renewcommand\listoffigures{%
+    \section{\listfigurename}% Used to be \section*{\listfigurename}
+      \@mkboth{\MakeUppercase\listfigurename}%
+              {\MakeUppercase\listfigurename}%
+    \@starttoc{lof}%
+    }
+\makeatother
+
+\makeatletter
+\renewcommand\listoftables{%
+    \section{\listtablename}% Used to be \section*{\listtablename}
+      \@mkboth{\MakeUppercase\listtablename}%
+              {\MakeUppercase\listtablename}%
+    \@starttoc{lot}%
+    }
+\makeatother
+
+\makeatletter
+\renewenvironment{thebibliography}[1]
+     {\section{\bibname}% <-- this line was changed from \chapter* to \section
+      \@mkboth{\MakeUppercase\bibname}{\MakeUppercase\bibname}%
+      \list{\@biblabel{\@arabic\c@enumiv}}%
+           {\settowidth\labelwidth{\@biblabel{#1}}%
+            \leftmargin\labelwidth
+            \advance\leftmargin\labelsep
+            \@openbib@code
+            \usecounter{enumiv}%
+            \let\p@enumiv\@empty
+            \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+      \sloppy
+      \clubpenalty4000
+      \@clubpenalty \clubpenalty
+      \widowpenalty4000%
+      \sfcode`\.\@m}
+     {\def\@noitemerr
+       {\@latex@warning{Empty `thebibliography' environment}}%
+      \endlist}
+\makeatother

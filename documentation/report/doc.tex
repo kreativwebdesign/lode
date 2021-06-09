@@ -1,7 +1,8 @@
-\documentclass[a4paper, 11pt,abstract=on]{scrreprt}
+\documentclass[a4paper, 11pt,abstract=on, listof=totocnumbered]{scrreprt}
 
-\usepackage{glossaries}
+\usepackage[toc,section=section]{glossaries}
 \usepackage{scrhack}
+\usepackage{url}
 
 \makeglossaries
 
@@ -10,7 +11,7 @@
 \title{Title}
 \author{Vorname Nachname}
 \date{\today}
-
+\tolerance=10000
 
 \begin{document}
 
@@ -20,10 +21,14 @@
 \clearpage
 \setcounter{page}{1}
 
+\todo[inline]{@Marc Wort-Kompositionen einheitlich}
+\todo[inline]{@Marc Umgang mit kursiver Schreibweise \& Glossar}
+
 \includepdf{ressources/Erklaerung_BA}
 
 
 \selectlanguage{ngerman}
+\input{parts/glossary}
 \begin{abstract}
 \input{parts/zusammenfassung}
 \end{abstract}
@@ -36,6 +41,7 @@
 \chapter*{Vorwort}
 \input{parts/vorwort}
 
+\renewcommand{\contentsname}{Inhalt}
 \tableofcontents
 
 \chapter{Einleitung}
