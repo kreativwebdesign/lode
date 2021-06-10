@@ -15,6 +15,23 @@ lode has a CLI to generate these artifacts. This is the starting point, see [cli
 
 In order to tune the levels, lode provides a UI to see the different artifacts in detail. See [lode-ui](./lode-ui/README.md) for more information.
 
+### Three Helper
+
+To use the generated artifacts in a [Three.js](https://threejs.org/) application `lode-three` can be used. [lode-three](./lode-three/README.md) for more information.
+
+### Demo Application
+
+To see different artifacts in use - especially more complex ones which are used to improve the features of the algorithm - a demo application has been implemented. See [demo](./demo/README.md) for more information.
+
+### Benchmark
+
+The benchmark project assesses the benefit of using LOD artifacts. See [benchmark](./benchmark/README.md) for more information.
+
+### Plotter
+
+To visualize the main findings of the benchmark, see [plotter](./plotter/README.md) for more information.
+
+
 ## Dev
 
 This repo contains different sub projects which have a uniform way of using them.
@@ -33,6 +50,8 @@ Run `yarn setup` in the root project (this folder) to setup all projects at once
 Set them all up locally with `yarn setup` inside the root project or individually by running that same command inside the project you want to setup.
 
 The default script to start a project is `yarn start`, if something other applies it's written in the specific project.
+
+Use `yarn test` to run the [Jest](https://jestjs.io/) unit / integration tests.
 
 #### Code Style
 
