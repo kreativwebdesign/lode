@@ -298,7 +298,7 @@ Im Idealfall geschieht dies jedoch, ohne dass der Anwender dies bemerkt.
 
 In diesem Abschnitt werden mögliche Ansätze erklärt, welche helfen sollen, die Render-Performanz zu erhöhen. Diese Arbeit konzentriert sich jedoch auf den Ansatz von Level of Detail; die anderen Ansätze werden nur kurz erläutert. Auf Level of Detail wird in \autoref{chap:lodIntroduction} detailliert eingegangen.
 
-\paragraph{Frustum culling}
+\paragraph{Frustum Culling}
 Ein Frustum ist eine geometrische Form, die einer Pyramide ähnelt, welcher die Spitze abgeschnitten wurde.
 Das Kamera-Frustum bezeichnet den Raum, welcher von der Kamera aufgezeichnet wird. Dieser Bereich startet eine gewisse Distanz von der Kamera entfernt und endet weit hinten wieder, da nicht bis in die Unendlichkeit Objekte sichtbar sind.
 Wie in Abbildung \ref{fig:CameraFrustum} zusehen ist, beginnt das Kamera-Frustum in der Nähe der Kamera und dehnt sich ein wenig aus bis es gegen Ende des Spektrums beschränkt wird.
@@ -316,18 +316,18 @@ Dies reduziert die Anzahl Polygone drastisch.
   \begin{subfigure}{.5\textwidth}
     \centering
     \includegraphics[width=0.5\columnwidth]{grundlagen/Frustum-Culling.png}
-    \caption{Frustum culling visualisiert. Rote Elemente werden nicht prozessiert.}
+    \caption{\e{Frustum Culling} visualisiert. Rote Elemente werden nicht prozessiert.}
     \label{fig:FrustumCulling}
   \end{subfigure}
-  \caption{Frustum Culling}
+  \caption{\e{Frustum Culling}}
 \end{figure}
 
-\paragraph{Occlusion culling}
+\paragraph{Occlusion Culling}
 Polygone bzw. Objekte, welche komplett von anderen Objekten überdeckt werden, werden bei dieser Variante nicht prozessiert.
 Dieser Prozess analysiert die Szene mittels einer virtuellen Kamera und merkt sich potenziell nicht sichtbare Objekte. Diese Daten werden dann zur Laufzeit von der Kamera verwendet, um zu bestimmen, ob ein Objekt prozessiert werden soll, oder nicht.
 Damit wird die Anzahl \e{Polygone}, welche gerendert werden müssen, reduziert.
 
-\paragraph{Backface culling}
+\paragraph{Backface Culling}
 \label{chap:backfaceCulling}
 Bei dieser Methode wird berechnet welche Polygone zur Kamera orientiert sind.
 Alle Polygone, welche in die andere Richtung zeigen werden nicht gezeichnet.
@@ -337,11 +337,11 @@ Als Grundlage für die Berechnung werden die \e{Normals} der \e{Vertices} verwen
 \paragraph{Impostors}
 Vergleichbar zu \e{LOD}-Artefakten sind sogenannte \e{Impostors}. Dabei wird ein \e{Quad} mit verschiedenen Texturen verwendet. Für jede mögliche Position des Modells wird eine Textur generiert. Das \e{Quad} wird in Richtung Kamera ausgerichtet und abhängig von der Rotation des Modells die geeignete Textur verwendet. Geometrisch kann ein Modell so auf ein absolutes Minimum reduziert werden. Schwierigkeiten dieser Methode sind Modelle, welche spezielle Materialien aufweisen. So ist zum Beispiel das Abbilden von Reflexionen, wie dies bei metallischen Oberflächen der Fall ist, eine Herausforderung \cite{usingImpostors}.
 
-\paragraph{Parallel rendering}
+\paragraph{Parallel Rendering}
 Auch bekannt unter \e{Distributed Rendering} ist der Einsatz von Techniken aus dem \e{Parallel Programming} in Visualisierungsanwendungen. So kann die Aufgabe auf verschiedene \glspl{GPU} verteilt parallel verarbeitet werden. Eine Problemstellung hierbei ist jedoch, dass das sinnvolle Aufteilen der Arbeit nicht trivial ist. So eignet sich dieser Ansatz jedoch gut für Anwendungen im Bereich von \e{Virtual Reality}, da dort zwei separate Bilder generiert werden müssen und somit leicht zu separieren sind \cite{parallelRenderingPhd}.
 
-\paragraph{Image-based rendering}
-In gewissen Fällen kann das Modellieren übersprungen werden. So kann anhand von Bildmaterial eine 3D-Illusion erzeugt werden. Da 2D-Bilder aber keine Tiefeninformationen darstellen können im dreidimensionalen Raum, kann dies zu seltsamen Effekten führen, wenn sich die Kamera bewegt und kann deshalb nur in sehr spezifischen Anwendungsfällen eingesetzt werden. Die \e{Street View} Funktion von Google Maps ist ein bekanntes Tool, welches auf \e{Image-based rendering} setzt.
+\paragraph{Image-based Rendering}
+In gewissen Fällen kann das Modellieren übersprungen werden. So kann anhand von Bildmaterial eine 3D-Illusion erzeugt werden. Da 2D-Bilder aber keine Tiefeninformationen darstellen können im dreidimensionalen Raum, kann dies zu seltsamen Effekten führen, wenn sich die Kamera bewegt und kann deshalb nur in sehr spezifischen Anwendungsfällen eingesetzt werden. Die \e{Street View} Funktion von Google Maps ist ein bekanntes Tool, welches auf \e{Image-based Rendering} setzt.
 Beim Bewegen durch die virtuelle Welt in \e{Street View}, ist auffällig zu sehen, wie sich die Bilder austauschen \cite{imageBasedRendering}.
 
 \section{Einführung Level of Detail}
