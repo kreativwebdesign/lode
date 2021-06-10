@@ -98,19 +98,19 @@ Der Ablauf der \e{lode}-Pipeline kann in drei Schritte unterteilt werden.
 
 \begin{figure}[H]
   \begin{lstlisting}
+{
+  "levels": [
     {
-      "levels": [
-        {
-          "threshold": 300
-        },
-        {
-          "threshold": -1,
-          "configuration": {
-            "targetScale": 0.0625
-          }
-        }
-      ]
+      "threshold": 300
+    },
+    {
+      "threshold": -1,
+      "configuration": {
+        "targetScale": 0.0625
+      }
     }
+  ]
+}
   \end{lstlisting}
 \caption{Durch das CLI generierte Konfigurationsdatei}
 \label{fig:lodeConfigFile}
@@ -118,7 +118,7 @@ Der Ablauf der \e{lode}-Pipeline kann in drei Schritte unterteilt werden.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\columnwidth]{resultate/screenshotlodecliconfig.png}
+  \includegraphics[width=0.9\columnwidth]{resultate/screenshotlodecliconfig.png}
   \caption{\e{lode CLI} config – Konfiguriert die gewünschten \e{LOD}-Artefakten}
   \label{fig:lodecliconfig}
 \end{figure}
@@ -128,7 +128,7 @@ Danach generiert \e{lode} die in der Konfigurationsdatei beschriebenen \e{LOD}-A
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\columnwidth]{resultate/screenshotlodeclirun.png}
+  \includegraphics[width=0.9\columnwidth]{resultate/screenshotlodeclirun.png}
   \caption{\e{lode CLI} run – Generiert die gewünschten \e{LOD}-Artefakte}
   \label{fig:lodeclirun}
 \end{figure}
@@ -197,12 +197,12 @@ Speichertechnisch ist es so nicht notwendig eine Textur zu verwenden, die Inform
   \centering
   \begin{subfigure}{.4\textwidth}
     \centering
-    \includegraphics[width=.8\linewidth]{resultate/lod-original-texture.png}
+    \includegraphics[width=.6\linewidth]{resultate/lod-original-texture.png}
     \caption{Original Textur}
   \end{subfigure}
   \begin{subfigure}{.4\textwidth}
     \centering
-    \includegraphics[width=.8\linewidth]{resultate/lod-simplified-texture.png}
+    \includegraphics[width=.6\linewidth]{resultate/lod-simplified-texture.png}
     \caption{Vereinfachte Textur}
   \end{subfigure}
   \caption{Vergleich der Texturen}
@@ -219,12 +219,12 @@ In Abbildung \ref{fig:lodComparison} ist eine solche Vereinfachung neben dem zug
   \centering
   \begin{subfigure}{.4\textwidth}
     \centering
-    \includegraphics[width=.8\linewidth]{resultate/lod-original.png}
+    \includegraphics[width=.6\linewidth]{resultate/lod-original.png}
     \caption{Originalmodell}
   \end{subfigure}
   \begin{subfigure}{.4\textwidth}
     \centering
-    \includegraphics[width=.8\linewidth]{resultate/lod-simplified.png}
+    \includegraphics[width=.6\linewidth]{resultate/lod-simplified.png}
     \caption{vereinfachtes Modell}
   \end{subfigure}
   \caption{Vergleich von Originalmodell mit vereinfachtem Modell}
@@ -268,6 +268,8 @@ const mesh = newDoc.createMesh("mesh");
   \label{code:gltfTransform}
 \end{figure}
 
+\pagebreak
+
 Anschliessend werden die neuen Informationen in \e{Buffer} gespeichert. Als Beispiel hierzu die Generierung des \e{Vertexbuffers} in \ref{code:bufferCreation}. Ein \e{Mesh} kann mehrere \e{Primitives} beinhalten. Ein \e{Primitive} definiert einen Teil des Modells, dies beinhaltet unter anderem \e{Vertices} und \e{Materialinformationen}. Die Variable \e{primitiveIndex} speichert den Index des aktuellen \e{Primitives}. In der Variable \e{verticesAsFloat} werden die neuen \e{Vertices} als \e{Float32Array} abgespeichert.
 
 \begin{figure}[H]
@@ -295,16 +297,14 @@ Wie in der Referenzimplementation wird auf einen \e{Threshold} (zu Deutsch Schwe
 \begin{figure}[H]
   \begin{lstlisting}[style=JavaScript]
 for (let iteration = 0; iteration < maxIterations; iteration++) {
-  // check if targetTriangles are reached
   if (initialTriangleCount - deletedTriangles <= targetTriangles) {
-    break;
+    break; // check if targetTriangles are reached
   }
 
   const threshold = 0.000000001 * Math.pow(iteration + 3, aggressiveness);
   triangles.forEach((triangle) => {
     if (triangle.error[3] > threshold) return;
     // proceed with edge collapse operation
-    // ...
   });
 }
   \end{lstlisting}
