@@ -138,7 +138,7 @@ Die folgende Auflistung erläutert die Elemente dieser Struktur:
 \begin{itemize}
   \item \textbf{Scene}: Einstiegspunkt der Szenerie und verweist auf alle Top-Level \e{nodes}.
   \item \textbf{Node}: Kann eine Transformation (Rotation, Translation oder Skalierung) beinhalten oder eine Kamera, \e{Skin}, Animation, ein \e{Mesh} oder \e{Childnodes} referenzieren.
-  \item  \textbf{Mesh}: Beschreibt ein geometrisches Objekt und verweist auf \e{accessor}, welcher die effektiven geometrischen Daten beinhaltet und auf \e{material}, das beschreibt, wie das Objekt beim Rendern aussehen soll.
+  \item  \textbf{Mesh}: Beschreibt ein geometrisches Objekt, bestehend aus mehreren \e{Primitives}. Ein \e{Primitive} verweist auf \e{accessor}, welcher die effektiven geometrischen Daten beinhaltet und auf \e{material}, das beschreibt, wie das Objekt beim Rendern aussehen soll.
   \item \textbf{Accessor}: Verweis auf die \e{BufferView}, welche die effektiven Eigenschaften für \e{meshes}, \e{skins} und \e{animations} kompakt beinhaltet.
   \item \textbf{BufferView}: Definiert eine Ansicht (Länge, Ort, Typ) auf einen \e{Buffer}.
   \item \textbf{Buffer}: Verweist auf einen Block von Binärdaten, welchen die effektiven Daten des 3D-Modells beinhaltet.
