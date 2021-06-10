@@ -399,6 +399,8 @@ Jedes Modell wird dabei mehrfach angezeigt, die Modelle werden einmal geladen un
 \paragraph{Testumgebung}
 Um während den Tests möglichst faire Bedingungen zu gewährleisten, wird die Maschine zuvor wie bei anderen Benchmarks vorbereitet. Ziel ist es, Seiteneffekte zu minimieren. Für diesen Benchmark wurden deshalb die Instruktionen von \e{Tracer Bench} zur Behebung von Rauschen befolgt \cite{tracerBenchNoiseMitigation}. Die beiden Versionen werden jeweils abwechslungsweise ausgeführt, so wird sichergestellt, dass keine der beiden Varianten einen starken Nachteil durch Nebeneffekte erleidet. Ausserdem werden mehrere Durchläufe direkt nacheinander ausgeführt. Starke Abweichungen zwischen den Durchläufen würden bei der Analyse der Daten auffallen.
 
+\pagebreak
+
 \paragraph{Analyse der Daten}
 Für jeden Durchlauf wird der Median der \gls{FPS} Daten berechnet.
 Anschliessend wird die Standardabweichung der \gls{FPS} für die unoptimierten respektive optimierten Werte berechnet. Die Standardabweichung dient als Kennzahl, um eine Signifikanz der Daten nachweisen zu können.
@@ -432,7 +434,7 @@ Die detaillierten Informationen befinden sich in Anhang \ref{fig:marcbookBenchma
     \caption{Download Vergleich}
     \label{fig:benchmarkDownloadChartMarcbook}
   \end{subfigure}
-  \caption{Vergleich Kennzahlen}
+  \caption{Vergleich Kennzahlen auf Gerät mit dedizierter Grafikkarte}
   \label{fig:benchmarkChartMarcbook}
 \end{figure}
 
@@ -454,6 +456,6 @@ Die detaillierten Informationen befinden sich in Anhang \ref{fig:windowsBenchmar
     \caption{Download Vergleich}
     \label{fig:benchmarkDownloadChartWindows}
   \end{subfigure}
-  \caption{Vergleich Kennzahlen}
+  \caption{Vergleich Kennzahlen auf Gerät mit integrierter Grafikkarte}
   \label{fig:benchmarkChartWindows}
 \end{figure}
