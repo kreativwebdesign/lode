@@ -84,23 +84,23 @@ So wird für jeden \e{Vertex} ein \e{Normal} definiert. Ein \e{Normal} ist ein V
 \e{Normals} werden auch für gewisse Performanzoptimierungen eingesetzt, dazu mehr in \autoref{chap:backfaceCulling}.
 
 \subparagraph{Texturen}
-Um die Oberfläche von Modellen zu definieren, wird häufig ein \e{Texture Mapping}, auch \e{UV-Mapping} genannt, durchgeführt. Bei diesem Verfahren wird definiert, wie eine 2D-Grafik auf ein 3D-Modell abzubilden ist. Dafür wird für jeden \e{Vertex} zwei Koordinaten, $u$ und $v$, definiert. Diese Koordinaten definieren die Position in der 2D-Grafik. In der Praxis finden weitere Methoden Anwendung, auf diese wird hier im Sinne der Übersichtlichkeit nicht weiter eingegangen.
+Um die Oberfläche von Modellen zu definieren, wird häufig ein \e{Texture Mapping}, auch \e{UV-Mapping} genannt, durchgeführt. Bei diesem Verfahren wird definiert, wie eine 2D-Grafik auf ein 3D-Modell abzubilden ist. Dafür wird für jeden \e{Vertex} zwei Koordinaten, $u$ und $v$, definiert. Diese Koordinaten bestimmen die Position in der 2D-Grafik. In der Praxis finden weitere Methoden Anwendung, auf diese wird hier im Sinne der Übersichtlichkeit nicht weiter eingegangen.
 
 \paragraph{Abgrenzung}
 Für diese Arbeit sind nur polygonale Modelle relevant.
 Alternativen wie zum Beispiel \e{Point Clouds}, welche das Resultat von 3D-Scans sind, werden nicht weiter erläutert, da sie selten im Web eingesetzt werden. Auch andere Methoden wie \e{NURBS}, welche Modelle mithilfe von mathematisch definierten Flächen modelliert, werden deshalb aussen vor gelassen.
 
 \paragraph{Formate}
-Um ein 3D-Modell in einer Anwendung zu verwenden, muss ein entsprechendes Format verwendet werden. Hierfür steht eine Vielzahl von Optionen zur Auswahl. Aufgrund der Menge wird hier jedoch nur oberflächlich auf die bekanntesten Formate eingegangen.
+Um ein 3D-Modell in einer Anwendung einzusetzen, muss ein entsprechendes Format verwendet werden. Hierfür steht eine Vielzahl von Optionen zur Auswahl. Aufgrund der Menge wird hier jedoch nur oberflächlich auf die bekanntesten Formate eingegangen.
 
 \subparagraph{OBJ}
-\e{Wavefront OBJ} ist ein offenes Dateiformat das von \e{Wavefront Technologies} 1989 entwickelt wurde. Das Format ist jedoch speichertechnisch ineffizient und verfügt zudem nur über einen limitierten Funktionsumfang. Des Weiteren gibt es keine zentrale Instanz, welche eine Spezifikation liefert und Informationen sind deshalb schwerer zu finden. \cite{objSpec}
+\e{Wavefront OBJ} ist ein offenes Dateiformat das von \e{Wavefront Technologies} 1989 entwickelt wurde. Das Format ist jedoch speichertechnisch ineffizient und verfügt zudem nur über einen limitierten Funktionsumfang. Des Weiteren gibt es keine zentrale Instanz, welche eine Spezifikation liefert. Deshalb sind Informationen schwerer zu finden. \cite{objSpec}
 
 \subparagraph{FBX}
 \e{FBX} ist ein proprietäres Format, welches von Autodesk verwaltet wird. Das Verwenden von \e{FBX} Daten ist jedoch offiziell nur mit einer \e{C++ FBX \gls{SDK}} möglich, welche für das Web nicht geeignet ist. Aufgrund der proprietären Natur gibt es keine Bestrebungen das Format offener zu gestalten.
 
 \subparagraph{glTF}
-Seit 2015 gibt es ein offenes, modernes sowie auf optimale Speichernutzung fokussiertes Format: \e{glTF}. Dieses Format wird von der \e{Khronos Group} entwickelt \cite{gltf1Spec}. In dieser Arbeit wird es als Austauschformat verwendet, deshalb wird im folgenden genauer auf das Format eingegangen.
+Seit 2015 gibt es ein offenes, modernes sowie auf optimale Speichernutzung fokussiertes Format: \e{glTF}. Dieses wird von der \e{Khronos Group} entwickelt \cite{gltf1Spec}. In dieser Arbeit wird es als Austauschformat verwendet, deshalb wird im Folgenden genauer auf \e{glTF} eingegangen.
 
 Die meisten 3D-Grafikprogramme wie Blender (.blend) verwenden ihre eigenen Dateiformate. Diese Dateiformate sind jedoch für den Einsatz in einer Applikation ungeeignet, da sie insbesondere nicht für die Laufzeitumgebung optimiert sind. Deswegen brauchte es für jedes Eingangsformat für jedes Ausgangsformat einen Konverter, wie in Abbildung \ref{fig:contentPipelineWithoutGltf} ersichtlich.
 
@@ -128,7 +128,7 @@ Die Basisstruktur von \e{glTF} basiert auf \fgls{JSON}{JavaScript Object Notatio
   \label{fig:gltfDatastructure}
 \end{figure}
 
-Die wichtigsten Elemente dieser Struktur kurz erläutert:
+Die folgende Auflistung erläutert die Elemente dieser Struktur:
 \begin{itemize}
   \item \textbf{Scene}: Einstiegspunkt der Szenerie und verweist auf alle Top-Level \e{nodes}.
   \item \textbf{Node}: Kann eine Transformation (Rotation, Translation oder Skalierung) beinhalten oder eine Kamera, \e{Skin}, Animation, ein \e{Mesh} oder \e{Childnodes} referenzieren.
@@ -138,8 +138,9 @@ Die wichtigsten Elemente dieser Struktur kurz erläutert:
   \item \textbf{Buffer}: Verweist auf einen Block von Binärdaten, welchen die effektiven Daten des 3D-Modells beinhaltet.
   \item \textbf{Material}: Definiert die visuellen Attribute eines \e{Mesh}.
   \item \textbf{Texture}: Definiert wie ein \e{Image} auf ein \e{Material} projiziert wird. Ein \e{Sampler} definiert wie das Bild platziert werden soll.
-  \item Weitere Elemente, welche im Rahmen dieser Arbeit nicht relevant sind und nicht im Detail betrachtet werden, sind: \e{camera}, \e{skin} und \e{animation}.
 \end{itemize}
+
+Weitere Elemente, welche im Rahmen dieser Arbeit nicht relevant sind und nicht im Detail betrachtet werden, sind: \e{camera}, \e{skin} und \e{animation}.
 
 \section{Transformation von Modellen}
 
@@ -211,13 +212,12 @@ In Abbildung \ref{fig:transformationVertexRemovalOriginal} wird der zentrale Ver
   \begin{subfigure}{.5\textwidth}
     \centering
     \includegraphics[width=.7\linewidth]{grundlagen/transformationen/vertex-removal-final.png}
-    \caption{Vertex Removal}
+    \caption{\e{Vertex Removal}}
     \label{fig:transformationVertexRemovalFinal}
   \end{subfigure}
   \caption{Transformation mittels \e{Vertex Removal}}
   \label{fig:transformationVertexRemoval}
 \end{figure}
-\todo[inline]{rote Farbwahl überdenken}
 
 \section{Grafik-Pipeline}
 
@@ -289,7 +289,7 @@ void main(void) {
 
 
 \paragraph{Bildschirm}
-Am Schluss wird für jedes vom \e{Fragmentshader} generierte Fragment ein Sichtbarkeitstest durchgeführt. So werden nur die Fragmente, welche von keinem anderen Fragment überdeckt werden, angezeigt. Das generierte Bild wird im Anschluss skaliert und auf dem Bildschirm dargestellt.
+Zum Schluss wird für jedes vom \e{Fragmentshader} generierte Fragment ein Sichtbarkeitstest durchgeführt. So werden nur die Fragmente, welche von keinem anderen Fragment überdeckt werden, angezeigt. Das generierte Bild wird im Anschluss skaliert und auf dem Bildschirm dargestellt.
 
 
 \section{Performanzoptimierung}
@@ -299,7 +299,7 @@ Im Idealfall geschieht dies jedoch, ohne dass der Anwender dies bemerkt.
 
 In diesem Abschnitt werden mögliche Ansätze erklärt, welche helfen sollen, die Render-Performanz zu erhöhen. Diese Arbeit konzentriert sich jedoch auf den Ansatz von Level of Detail; die anderen Ansätze werden nur kurz erläutert. Auf Level of Detail wird in \autoref{chap:lodIntroduction} detailliert eingegangen.
 
-\paragraph{Frustum culling}
+\paragraph{Frustum Culling}
 Ein Frustum ist eine geometrische Form, die einer Pyramide ähnelt, welcher die Spitze abgeschnitten wurde.
 Das Kamera-Frustum bezeichnet den Raum, welcher von der Kamera aufgezeichnet wird. Dieser Bereich startet eine gewisse Distanz von der Kamera entfernt und endet weit hinten wieder, da nicht bis in die Unendlichkeit Objekte sichtbar sind.
 Wie in Abbildung \ref{fig:CameraFrustum} zusehen ist, beginnt das Kamera-Frustum in der Nähe der Kamera und dehnt sich ein wenig aus bis es gegen Ende des Spektrums beschränkt wird.
@@ -317,18 +317,18 @@ Dies reduziert die Anzahl Polygone drastisch.
   \begin{subfigure}{.5\textwidth}
     \centering
     \includegraphics[width=0.5\columnwidth]{grundlagen/Frustum-Culling.png}
-    \caption{Frustum culling visualisiert. Rote Elemente werden nicht prozessiert.}
+    \caption{\e{Frustum Culling} visualisiert. Rote Elemente werden nicht prozessiert.}
     \label{fig:FrustumCulling}
   \end{subfigure}
-  \caption{Frustum Culling}
+  \caption{\e{Frustum Culling}}
 \end{figure}
 
-\paragraph{Occlusion culling}
+\paragraph{Occlusion Culling}
 Polygone bzw. Objekte, welche komplett von anderen Objekten überdeckt werden, werden bei dieser Variante nicht prozessiert.
 Dieser Prozess analysiert die Szene mittels einer virtuellen Kamera und merkt sich potenziell nicht sichtbare Objekte. Diese Daten werden dann zur Laufzeit von der Kamera verwendet, um zu bestimmen, ob ein Objekt prozessiert werden soll, oder nicht.
 Damit wird die Anzahl \e{Polygone}, welche gerendert werden müssen, reduziert.
 
-\paragraph{Backface culling}
+\paragraph{Backface Culling}
 \label{chap:backfaceCulling}
 Bei dieser Methode wird berechnet welche Polygone zur Kamera orientiert sind.
 Alle Polygone, welche in die andere Richtung zeigen werden nicht gezeichnet.
@@ -338,11 +338,11 @@ Als Grundlage für die Berechnung werden die \e{Normals} der \e{Vertices} verwen
 \paragraph{Impostors}
 Vergleichbar zu \e{LOD}-Artefakten sind sogenannte \e{Impostors}. Dabei wird ein \e{Quad} mit verschiedenen Texturen verwendet. Für jede mögliche Position des Modells wird eine Textur generiert. Das \e{Quad} wird in Richtung Kamera ausgerichtet und abhängig von der Rotation des Modells die geeignete Textur verwendet. Geometrisch kann ein Modell so auf ein absolutes Minimum reduziert werden. Schwierigkeiten dieser Methode sind Modelle, welche spezielle Materialien aufweisen. So ist zum Beispiel das Abbilden von Reflexionen, wie dies bei metallischen Oberflächen der Fall ist, eine Herausforderung \cite{usingImpostors}.
 
-\paragraph{Parallel rendering}
+\paragraph{Parallel Rendering}
 Auch bekannt unter \e{Distributed Rendering} ist der Einsatz von Techniken aus dem \e{Parallel Programming} in Visualisierungsanwendungen. So kann die Aufgabe auf verschiedene \glspl{GPU} verteilt parallel verarbeitet werden. Eine Problemstellung hierbei ist jedoch, dass das sinnvolle Aufteilen der Arbeit nicht trivial ist. So eignet sich dieser Ansatz jedoch gut für Anwendungen im Bereich von \e{Virtual Reality}, da dort zwei separate Bilder generiert werden müssen und somit leicht zu separieren sind \cite{parallelRenderingPhd}.
 
-\paragraph{Image-based rendering}
-In gewissen Fällen kann das Modellieren übersprungen werden. So kann anhand von Bildmaterial eine 3D-Illusion erzeugt werden. Da 2D-Bilder aber keine Tiefeninformationen darstellen können im dreidimensionalen Raum, kann dies zu seltsamen Effekten führen, wenn sich die Kamera bewegt und kann deshalb nur in sehr spezifischen Anwendungsfällen eingesetzt werden. Die \e{Street View} Funktion von Google Maps ist ein bekanntes Tool, welches auf \e{Image-based rendering} setzt.
+\paragraph{Image-based Rendering}
+In gewissen Fällen kann das Modellieren übersprungen werden. So kann anhand von Bildmaterial eine 3D-Illusion erzeugt werden. Da 2D-Bilder aber keine Tiefeninformationen darstellen können im dreidimensionalen Raum, kann dies zu seltsamen Effekten führen, wenn sich die Kamera bewegt und kann deshalb nur in sehr spezifischen Anwendungsfällen eingesetzt werden. Die \e{Street View} Funktion von Google Maps ist ein bekanntes Tool, welches auf \e{Image-based Rendering} setzt.
 Beim Bewegen durch die virtuelle Welt in \e{Street View}, ist auffällig zu sehen, wie sich die Bilder austauschen \cite{imageBasedRendering}.
 
 \section{Einführung Level of Detail}
@@ -359,15 +359,13 @@ Ein \e{LOD}-Algorithmus hat das Ziel, für ein gegebenes Modell eine vereinfacht
 \label{fig:LevelOfDetailVisualisierungvierHasen}
 \end{figure}
 
-Wie in der Abbildung \ref{fig:LevelOfDetailVisualisierungvierHasen} zu erkennen ist, wird von links nach rechts der Detailgrad und somit die Komplexität des Objektes reduziert. Sind es im Bild ganz links noch 69'451 Polygone, wird es bereits im ersten Schritt auf 2'502 Polygone reduziert. Dies ist eine enorme Reduktion von ca. 96.5 \%. Im dritten Schritt wird die Anzahl Polygone wiederum um ca. 90 \% auf 251 reduziert. Schlussendlich hat das letzte Objekt noch 76 Polygone was knapp 0.1 \% der ursprünglichen Anzahl entspricht.
-
-\todo[inline]{polygone oder triangles?}
+Wie in der Abbildung \ref{fig:LevelOfDetailVisualisierungvierHasen} zu erkennen ist, wird von links nach rechts der Detailgrad und somit die Komplexität des Objektes reduziert. Sind es im Bild ganz links noch 69'451 \e{Triangles}, wird es bereits im ersten Schritt auf 2'502 \e{Triangles} reduziert. Dies ist eine enorme Reduktion von ca. 96.5 \%. Im dritten Schritt wird die Anzahl \e{Triangles} wiederum um ca. 90 \% auf 251 reduziert. Schlussendlich hat das letzte Objekt noch 76 \e{Triangles} was knapp 0.1 \% der ursprünglichen Anzahl entspricht.
 
 \subsection{Ansätze für \e{LOD} Artefakte}
 \label{chap:differentLodApproaches}
 Es gibt verschiedene Ansätze, 3D-Modelle mittels \e{LOD} zu vereinfachen. In diesem Abschnitt werden einige davon detaillierter erläutert so wie ihre Vor- und Nachteile aufgezeigt.
 
-\paragraph{Diskrete LOD (LDOD)}
+\paragraph{Diskrete LOD (DLOD)}
 Bei diskreten \e{LOD} werden für ein detailliertes Modell mehrere weniger detaillierte Modelle erstellt.
 Abhängig von der Distanz zum Betrachter wird das optimale Modell gewählt. Es sind hierfür nur minimale Anpassungen am \fgls{Scene Graph}{Datenstruktur, welche die räumliche Anordnung der Modelle einer 3D-Szenerie beschreibt} notwendig da ausschliesslich ganze Modelle ausgetauscht werden.
 Ein Nachteil sind jedoch merkbare harte Grenzen. Der Benutzer stellt beim umhergehen in der Szene fest, wenn das Modell mit einer einfacheren Version ausgetauscht wird.
@@ -375,10 +373,10 @@ Dieses Verhalten wird als \e{Visual Popping} bezeichnet. Beim \e{Visual Popping}
 Es ist zudem häufig nicht möglich grössere Modelle sinnvoll zu vereinfachen. Grosse Modelle zeichnen sich dadurch aus, dass Teile davon nah sind, während andere Teile fern sind. Die nahen Teile des Modells sollten detailliert angezeigt werden, wohingegen die entfernten Elemente vereinfacht dargestellt werden sollen. So ist der Ansatz zum Beispiel für Terrain ungeeignet. Ähnlicher Weise ist es auch nicht möglich, viele sehr kleine Modelle zu kombinieren, da jedes Modell unabhängig ist. Das Kombinieren von mehreren Modellen wird \e{Clustering} genannt.
 
 \paragraph{Kontinuierliche LOD (CLOD)}
-Im Gegensatz zu \e{DLOD} wird bei \e{CLOD} vereinfachende Veränderungen an einem Modell gespeichert.
+Bei kontinuierlichen \e{LOD}-Systemen, in Englisch \e{continuous}, werden Transformationen an einem Modell gespeichert.
 
 Der Hauptunterschied zu \e{DLOD} besteht in den weichen Grenzen, so ist es signifikant weniger auffällig da zwischen den verschiedenen Auflösungen interpoliert werden kann.
-Der Hauptnachteil ist jedoch, dass diese Interpolation insbesondere Auswirkungen auf die Laufzeit Performanz der Applikation hat.
+Der Hauptnachteil ist jedoch, dass diese Interpolation insbesondere Auswirkungen auf die Laufzeitleistung der Applikation hat. Die verschiedenen Vereinfachungen können zwar vorgängig berechnet werden, das applizieren der Vereinfachungen und die damit verbundene Interpolation muss jedoch zur Laufzeit durchgeführt werden.
 Das Problem des \e{Clusterings} ist auch für diese Variante nicht gelöst.
 
 \paragraph{Hierarchische LOD (HLOD)}
