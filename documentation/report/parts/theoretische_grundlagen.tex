@@ -128,7 +128,7 @@ Die Basisstruktur von \e{glTF} basiert auf \fgls{JSON}{JavaScript Object Notatio
   \label{fig:gltfDatastructure}
 \end{figure}
 
-Die wichtigsten Elemente dieser Struktur kurz erläutert:
+Die folgende Auflistung erläutert die Elemente dieser Struktur:
 \begin{itemize}
   \item \textbf{Scene}: Einstiegspunkt der Szenerie und verweist auf alle Top-Level \e{nodes}.
   \item \textbf{Node}: Kann eine Transformation (Rotation, Translation oder Skalierung) beinhalten oder eine Kamera, \e{Skin}, Animation, ein \e{Mesh} oder \e{Childnodes} referenzieren.
@@ -138,8 +138,9 @@ Die wichtigsten Elemente dieser Struktur kurz erläutert:
   \item \textbf{Buffer}: Verweist auf einen Block von Binärdaten, welchen die effektiven Daten des 3D-Modells beinhaltet.
   \item \textbf{Material}: Definiert die visuellen Attribute eines \e{Mesh}.
   \item \textbf{Texture}: Definiert wie ein \e{Image} auf ein \e{Material} projiziert wird. Ein \e{Sampler} definiert wie das Bild platziert werden soll.
-  \item Weitere Elemente, welche im Rahmen dieser Arbeit nicht relevant sind und nicht im Detail betrachtet werden, sind: \e{camera}, \e{skin} und \e{animation}.
 \end{itemize}
+
+Weitere Elemente, welche im Rahmen dieser Arbeit nicht relevant sind und nicht im Detail betrachtet werden, sind: \e{camera}, \e{skin} und \e{animation}.
 
 \section{Transformation von Modellen}
 
