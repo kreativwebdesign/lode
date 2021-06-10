@@ -35,7 +35,8 @@ const mapMaterial = async (baseMaterial, material, basePath) => {
   }
 
   if (textureType === "emissive") {
-    material.setEmissiveFactor(color);
+    const [r, g, b] = color;
+    material.setEmissiveFactor([r, g, b]);
     material.setBaseColorFactor(baseMaterial.getBaseColorFactor());
   } else {
     material.setBaseColorFactor(color);
