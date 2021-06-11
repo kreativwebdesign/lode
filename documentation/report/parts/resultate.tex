@@ -94,7 +94,7 @@ Die verschiedenen Teile sind in Abbildung \ref{fig:lodePackages} ersichtlich. Da
 Der Ablauf der \e{lode}-Pipeline kann in drei Schritte unterteilt werden.
 
 \paragraph{Setup und Konfiguration}
-3D-Modelle werden erstellt und als \e{glTF}-Dateien innerhalb des Projekts gespeichert. Eine zu den Modellen gehörige Konfigurationsdatei (Abbildung \ref{fig:lodeConfigFile}) kann mittels \gls{CLI}, welches auf \e{NPM} verfügbar ist, angelegt werden (Abbildung \ref{fig:lodecliconfig}).
+3D-Modelle werden erstellt und als \e{glTF}-Dateien innerhalb des Projekts gespeichert. Eine zu den Modellen gehörige Konfigurationsdatei (siehe Abbildung \ref{fig:lodeConfigFile}) kann mittels \gls{CLI}, welches auf \e{NPM} verfügbar ist, angelegt werden (siehe Abbildung \ref{fig:lodecliconfig}).
 
 \begin{figure}[H]
   \begin{lstlisting}[style=json]
@@ -119,12 +119,12 @@ Der Ablauf der \e{lode}-Pipeline kann in drei Schritte unterteilt werden.
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.9\columnwidth]{resultate/screenshotlodecliconfig.png}
-  \caption{\e{lode CLI} config – Konfiguriert die gewünschten \e{LOD}-Artefakten}
+  \caption{\e{lode CLI} config – Konfiguriert die gewünschten \e{LOD}-Artefakte}
   \label{fig:lodecliconfig}
 \end{figure}
 
 \paragraph{Erstellen der Artefakte}
-Danach generiert \e{lode} die in der Konfigurationsdatei beschriebenen \e{LOD}-Artefakte (in Abbildung \ref{fig:lodeclirun} ersichtlich). Wenn sich ein Modell oder eine Konfiguration ändert, werden die notwendigen Schritte automatisch erneut durchgeführt. So ist es möglich, schnell Anpassungen vorzunehmen und die Änderungen im Projekt ohne zusätzliche manuelle Arbeit zu sehen.
+Danach generiert \e{lode} die in der Konfigurationsdatei beschriebenen \e{LOD}-Artefakte (siehe Abbildung \ref{fig:lodeclirun}). Wenn sich ein Modell oder eine Konfiguration ändert, werden die notwendigen Schritte automatisch erneut durchgeführt. So ist es möglich, schnell Anpassungen vorzunehmen und die Änderungen im Projekt ohne zusätzliche manuelle Arbeit zu sehen.
 
 \begin{figure}[H]
   \centering
@@ -133,7 +133,7 @@ Danach generiert \e{lode} die in der Konfigurationsdatei beschriebenen \e{LOD}-A
   \label{fig:lodeclirun}
 \end{figure}
 
-Das zugehörige \e{lode-ui} (in Abbildung \ref{fig:lodeui} gezeigt) bietet zudem die Möglichkeit, die verschiedenen Detailstufen miteinander zu vergleichen und die Konfiguration möglichst einfach zu justieren. Dies ermöglicht es, die Änderungen in Echtzeit zu sehen und die Distanzen, bei welchen Level aktiviert werden, einzustellen. Das manuelle Wechseln zwischen Applikationen ist somit nicht notwendig.
+Das zugehörige \e{lode-ui} (siehe Abbildung \ref{fig:lodeui}) bietet zudem die Möglichkeit, die verschiedenen Detailstufen miteinander zu vergleichen und die Konfiguration möglichst einfach zu justieren. Dies ermöglicht es, die Änderungen in Echtzeit zu sehen und die Distanzen, bei welchen Level aktiviert werden, einzustellen. Das manuelle Wechseln zwischen Applikationen ist somit nicht notwendig.
 Um den Einsatz von \e{lode-ui} zu vereinfachen, wird das Paket direkt mit \e{lode-cli} zur Verfügung gestellt, es ist keine manuelle Installation des Pakets notwendig.
 
 \begin{figure}[H]
