@@ -323,19 +323,19 @@ Bei der Durchführung einer \e{Edge Collapse} Operation muss ein neuer \e{Vertex
 Das Ziel des Benchmarks ist der Vergleich einer Version ohne Einsatz von \e{LOD} und einer Umgebung, welche \e{LOD}s einsetzt. Um eine möglichst praxisnahe Aussage treffen zu können, wird hierfür eine Demo-Szenerie verwendet, welche einer echten Anwendung so nah wie möglich kommt. Somit wird gewährleistet, dass es nicht nur in der Theorie einen Nutzen für \e{LOD}s gibt, sondern dieser in der Praxis vorhanden ist.
 
 \subsection{Browser-Umgebung}
-Um den Umfang des Benchmarks überschaubar zu halten, wurde ausschliesslich ein Benchmark für Google Chrome entwickelt.
-Google Chrome basiert auf \fgls{Chromium}{\e{Open Source} Browser-Projekt, welches von Google entwickelt wird. Andere Browser basieren ebenfalls auf der Code-Basis von Chromium}, dieselbe Engine, welche auch Microsoft Edge oder Opera verwenden.
-Einen Benchmark basierend auf Google Chrome liefert somit auch Indizien für diese beiden Browser, auch wenn gewisse Abweichungen möglich sind.
-Neben dem Marktführer Chrome sind Mozilla Firefox oder Safari von Apple ebenfalls Optionen. Jedoch wurde primär aufgrund des Marktanteils von total rund 70 \% \cite{browserUsage} zugunsten von Google Chrome entschieden.
+Um den Umfang des Benchmarks überschaubar zu halten, wurde ausschliesslich ein Benchmark für \e{Google Chrome} entwickelt.
+\e{Google Chrome} basiert auf \fgls{Chromium}{\e{Open Source} Browser-Projekt, welches von Google entwickelt wird. Andere Browser basieren ebenfalls auf der Code-Basis von Chromium}, dieselbe Engine, welche auch Microsoft Edge oder Opera verwenden.
+Einen Benchmark basierend auf \e{Google Chrome} liefert somit auch Indizien für diese beiden Browser, auch wenn gewisse Abweichungen möglich sind.
+Neben dem Marktführer \e{Google Chrome} sind \e{Mozilla Firefox} oder \e{Safari} von \e{Apple} ebenfalls Optionen. Jedoch wurde primär aufgrund des Marktanteils von total rund 70 \% \cite{browserUsage} zugunsten von \e{Google Chrome} entschieden.
 Die getroffenen Aussagen bezüglich Laufzeitverhalten behalten ihre Gültigkeit auch für andere Browser.
 
 \paragraph{Automation}
 Um die Tests durchzuführen, wird ein Testautomationstool benötigt; unter anderem der Einsatz von Selenium wurde in Erwägung gezogen.
 Der Vorteil von Selenium ist insbesondere, dass der Benchmark für weitere Browser ausgeweitet werden könnte.
-Da jedoch das Analysieren der \gls{GPU} Daten stark vom System abhängig ist und dafür zusätzliche Komplexität notwendig wäre, wird in diesem Benchmark die im Google Chrome integrierten \e{Chrome DevTools} eingesetzt.
+Da jedoch das Analysieren der \gls{GPU} Daten stark vom System abhängig ist und dafür zusätzliche Komplexität notwendig wäre, wird in diesem Benchmark die im \e{Google Chrome} integrierten \e{Chrome DevTools} eingesetzt.
 Selenium bietet zurzeit eine suboptimale Integration für das \e{Chrome DevTools Protocol}.
-Um allfällige Diskrepanzen zwischen Systemen möglichst gering zu halten, wurde jedoch entschieden, auf die bewährte Lösung von Google Chrome zu setzen.
-\fgls{Puppeteer}{Node.js Library, die eine API anbietet zum Steuern von \gls{Chromium} oder Chrome über das \e{Chrome DevTools Protocol}}, eine weitere Option für die Automation, ist eine Bibliothek, die eine vereinfachte Schnittstelle zu einer Chromium Instanz bietet.
+Um allfällige Diskrepanzen zwischen Systemen möglichst gering zu halten, wurde jedoch entschieden, auf die bewährte Lösung von \e{Google Chrome} zu setzen.
+\fgls{Puppeteer}{Node.js Library, die eine API anbietet zum Steuern von \gls{Chromium} oder \e{Google Chrome} über das \e{Chrome DevTools Protocol}}, eine weitere Option für die Automation, ist eine Bibliothek, die eine vereinfachte Schnittstelle zu einer Chromium Instanz bietet.
 Sie wird zudem direkt von Google entwickelt und bietet somit eine stabile Grundlage zur Kommunikation mit den \e{Chrome DevTools}.
 
 \paragraph{Profiling}
