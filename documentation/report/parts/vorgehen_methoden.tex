@@ -6,7 +6,7 @@
 % !TEX TS-program = pdflatexmk
 % !TEX encoding = UTF-8 Unicode
 % !TEX root = ../doc.tex
-\section{Vergleich LOD-Systeme}
+\section{Vergleich von LOD-Systemen}
 Die verschiedenen \e{LOD}-Systeme, sowie ihre Vor- und Nachteile werden in \autoref{chap:differentLodApproaches} definiert. In diesem Schritt wird erläutert, welche Art \e{LOD}-System es bereits gibt und welches in dieser Arbeit entwickelt werden soll.
 
 \subsection{Bestehende Systeme}
@@ -41,7 +41,7 @@ Dies wird in \e{Unity} identisch zu \e{Unreal} gelöst, in dem der Triggerpunkt 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\columnwidth]{vorgehen/Unity-DLOD.png}
-  \caption{'\e{LOD Group}'-Komponente in Unity für die Konfiguration der Übergänge zwischen \e{LOD}-Artefakten}
+  \caption{\e{LOD Group} Komponente in \e{Unity} für die Konfiguration der Übergänge zwischen \e{LOD}-Artefakten}
   \label{fig:unityDLODGroup}
 \end{figure}
 
@@ -50,16 +50,16 @@ Dies wird in \e{Unity} identisch zu \e{Unreal} gelöst, in dem der Triggerpunkt 
 Die verschiedenen Ansätze unterscheiden sich in einigen Kriterien. Für den Einsatz in einer Web-Anwendung ist die Gewichtung der Kriterien anders als für Desktop-Anwendungen, Konsolenspiele oder dergleichen.
 So hat die Dateigrösse der Modelle bei Web-Anwendungen einen grösseren Einfluss auf die gefühlte Performanz beim Endanwender. Insofern ist die Auswirkung der gewählten Strategie auf die Downloadgrösse ein wichtiges Kriterium.
 
-\subsection{Vergleich Downloadgrösse}
+\subsection{Vergleich der Downloadgrössen}
 
 Für diskrete \e{LOD} muss für jedes Level ein separates Modell geladen werden. Dies kann die Downloadgrösse gegebenenfalls merkbar erhöhen. Bei kontinuierlichen \e{LOD}-Systemen muss das Modell die Unterschiede zwischen verschiedenen Levels persistieren. Mit einem für kontinuierliche \e{LOD} ausgelegten Algorithmus kann der benötigte Speicher reduziert werden, indem beim \e{Edge Collapse} nicht auf einen neuen optimalen \e{Vertex} reduziert wird, sondern von den beiden bestehenden \e{Vertices} der passendere gewählt wird, also ein \e{Halfedge Collapse} durchgeführt wird. Trotzdem entsteht für jeden \e{Edge Collapse} ein zusätzlicher Speicheraufwand.
 
-\subsection{Auswirkung auf Laufzeitverhalten}
+\subsection{Auswirkung auf das Laufzeitverhalten}
 
 Der Einsatz von \e{LOD}-Systemen hat Auswirkungen auf das Laufzeitverhalten, das Ausmass variiert jedoch. Das Laufzeitverhalten umschreibt hier primär die Arbeit, welche auf der \gls{CPU} verrichtet werden muss, um die Szenerie adäquat vorzubereiten.
 Insbesondere unter Berücksichtigung der Tatsache, dass die Laufzeitleistung essenziell für Web-Anwendungen ist, wurde entschieden nicht auf kontinuierliche \e{LOD}-Systeme zu setzen.
 
-\subsection{Auswirkung auf Scene Graph}
+\subsection{Auswirkung auf den Scene Graph}
 Beim Einsatz von \e{LOD}-Systemen sind Anpassungen am \gls{Scene Graph} notwendig. Es wird grundsätzlich zwischen lokalen und globalen Anpassungen unterschieden. Bei lokalen Anpassungen wird lediglich der Graph des vereinfachten Modells angepasst. Der Rest der Szenerie bleibt unberührt. Bei globalen Anpassungen müssen weiter oben im \e{Scene Graph} Anpassungen vorgenommen werden.
 
 \subsection{Integration in bestehende Arbeitsabläufe}
@@ -141,7 +141,7 @@ Der gewählte Algorithmus wurde bereits mehrfach implementiert. Eine wiederverwe
 Das Toolset soll in wiederverwendbare Pakete aufgeteilt werden.
 Da es in der Web-Entwicklung üblich ist, über ein \fgls{CLI}{\e{Command Line Interface} – Kommandozeile. Computer-Mensch-Schnittstelle, welche ermöglicht, durch Eingabe von Befehlswörter Anweisungen an die Maschine zu geben} Arbeitsschritte zu automatisieren, soll ein \gls{CLI} erstellt und auf \gls{npm} öffentlich zugänglich gemacht werden. Dieses \gls{CLI} soll nahtlos in den Entwicklungsablauf integriert werden können. Über eine Konfiguration soll angegeben werden können, wo nach den \e{glTF} Dateien gesucht, wohin die Output-Dateien gespeichert und in welchem Modus das Tool gestartet werden soll. Ebenso werden Einstellungen für den Algorithmus in dieser Konfiguration definiert. Wichtig ist der Fokus auf die Bedienbarkeit des Toolsets, hierfür ist eine ausreichende Dokumentation, sowie gut gewählte Standardeinstellungen entscheidend. Zudem soll das Tool im einmal Modus laufen können oder kontinuierlich sich ändernde Dateien neu optimieren.
 
-\section{Nutzen LOD}
+\section{Nutzen von LOD}
 Um den Nutzen von \e{LOD} quantifizieren zu können, müssen verschiedene Aspekte berücksichtigt werden. Auf der einen Seite ist die Entwicklungszeit zu berücksichtigen, welche sich auf die Kosten der Applikation auswirkt. Auf der anderen Seite sind Aspekte wie die Downloadzeit, die visuellen Unterschiede und die Laufzeitleistung der Applikation wichtig, da sie die Qualität der Software beeinflussen.
 
 \subsection{Aspekte für Nutzen}
