@@ -306,10 +306,10 @@ Im Idealfall geschieht dies jedoch, ohne dass der Anwender dies bemerkt.
 In diesem Abschnitt werden mögliche Ansätze erklärt, welche helfen sollen, die Laufzeitleistung zu erhöhen. Diese Arbeit konzentriert sich jedoch auf den Ansatz von \e{Level of Detail}; die anderen Ansätze werden nur kurz erläutert. Auf \e{Level of Detail} wird in \autoref{chap:lodIntroduction} detailliert eingegangen.
 
 \paragraph{Frustum Culling}
-Ein Frustum ist eine geometrische Form, die einer Pyramide ähnelt, welcher die Spitze abgeschnitten wurde.
-Das Kamera-Frustum bezeichnet den Raum, welcher von der Kamera aufgezeichnet wird. Dieser Bereich startet eine gewisse Distanz von der Kamera entfernt und endet weit hinten wieder, da nicht bis in die Unendlichkeit Objekte sichtbar sind.
-Wie in Abbildung \ref{fig:CameraFrustum} zu sehen ist, beginnt das Kamera-Frustum in der Nähe der Kamera und dehnt sich ein wenig aus bis es gegen Ende des Spektrums beschränkt wird.
-Polygone, welche nicht im Kamera-Frustum enthalten sind, werden bei dieser Methode, wie in Abbildung \ref{fig:FrustumCulling} gezeigt, nicht weiter prozessiert.
+Ein \e{Frustum} ist eine geometrische Form, die einer Pyramide ähnelt, welcher die Spitze abgeschnitten wurde.
+Das Kamera \e{Frustum} bezeichnet den Raum, welcher von der Kamera aufgezeichnet wird. Dieser Bereich startet eine gewisse Distanz von der Kamera entfernt und endet weit hinten wieder, da nicht bis in die Unendlichkeit Objekte sichtbar sind.
+Wie in Abbildung \ref{fig:CameraFrustum} zu sehen ist, beginnt das Kamera \e{Frustum} in der Nähe der Kamera und dehnt sich ein wenig aus bis es gegen Ende des Spektrums beschränkt wird.
+Polygone, welche nicht im Kamera \e{Frustum} enthalten sind, werden bei dieser Methode, wie in Abbildung \ref{fig:FrustumCulling} gezeigt, nicht weiter prozessiert.
 Dies reduziert die Anzahl Polygone drastisch.
 
 \begin{figure}[H]
@@ -317,7 +317,7 @@ Dies reduziert die Anzahl Polygone drastisch.
   \begin{subfigure}{.5\textwidth}
     \centering
     \includegraphics[width=0.5\columnwidth]{grundlagen/Camera-Frustum.png}
-    \caption{Kamera-Frustum}
+    \caption{Kamera \e{Frustum}}
     \label{fig:CameraFrustum}
   \end{subfigure}%
   \begin{subfigure}{.5\textwidth}
