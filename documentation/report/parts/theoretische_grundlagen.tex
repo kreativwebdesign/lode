@@ -155,12 +155,12 @@ Diese Veränderungen können in Operationen vereinfacht erläutert werden.
 
 Im Folgenden werden Transformationen mithilfe einer 2D-Visualisierung erläutert. Das Modell kann jedoch ebenfalls im dreidimensionalen Raum sein – die Funktionsweise bleibt identisch.
 
-Für die folgenden Beispiele wird jeweils das Modell aus Abbildung \ref{fig:transformationOriginal} verwendet.
+Für die folgenden Beispiele wird jeweils das Modell aus Abbildung \ref{fig:transformationOriginal} als Ausgangslage verwendet.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.3\columnwidth]{grundlagen/transformationen/original.png}
-  \caption{Modell Basis}
+  \caption{Originalmodell}
   \label{fig:transformationOriginal}
 \end{figure}
 
@@ -170,15 +170,15 @@ Die Umkehrfunktion nennt man \e{Vertex Split}.
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}{.5\textwidth}
+  \begin{subfigure}{.45\textwidth}
     \centering
-    \includegraphics[width=.7\linewidth]{grundlagen/transformationen/original.png}
-    \caption{Modell Ausgangslage}
-  \end{subfigure}%
-  \begin{subfigure}{.5\textwidth}
+    \includegraphics[width=.7\linewidth]{grundlagen/transformationen/edge-collapse-original.png}
+    \caption{Originalmodell mit für \e{Edge Collapse} gewählten \e{Edge} in Rot}
+  \end{subfigure}\hfill%
+  \begin{subfigure}{.45\textwidth}
     \centering
     \includegraphics[width=.7\linewidth]{grundlagen/transformationen/edge-collapse.png}
-    \caption{\e{Edge Collapse}}
+    \caption{Modell nach \e{Edge Collapse} mit veränderten \e{Edges} in Rot}
   \end{subfigure}
   \caption{Transformation mittels \e{Edge Collapse}}
   \label{fig:transformationEdgeCollapse}
@@ -189,15 +189,15 @@ Hierbei wird ein \e{Vertex} direkt entfernt und alle \e{Edges} auf einen daneben
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}{.5\textwidth}
+  \begin{subfigure}{.45\textwidth}
     \centering
-    \includegraphics[width=.7\linewidth]{grundlagen/transformationen/original.png}
-    \caption{Modell Ausgangslage}
-  \end{subfigure}%
-  \begin{subfigure}{.5\textwidth}
+    \includegraphics[width=.7\linewidth]{grundlagen/transformationen/edge-collapse-original.png}
+    \caption{Originalmodell mit für \e{Halfedge Collapse} gewählten \e{Edge} in Rot}
+  \end{subfigure}\hfill%
+  \begin{subfigure}{.45\textwidth}
     \centering
     \includegraphics[width=.7\linewidth]{grundlagen/transformationen/half-edge-collapse.png}
-    \caption{\e{Halfedge Collapse}}
+    \caption{Modell nach \e{Halfedge Collapse} mit veränderten \e{Edges} in Rot}
   \end{subfigure}
   \caption{Transformation mittels \e{Halfedge Collapse}}
   \label{fig:transformationHalfedgeCollapse}
@@ -209,16 +209,16 @@ In Abbildung \ref{fig:transformationVertexRemovalOriginal} wird der zentrale \e{
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}{.5\textwidth}
+  \begin{subfigure}{.45\textwidth}
     \centering
     \includegraphics[width=.7\linewidth]{grundlagen/transformationen/vertex-removal-original.png}
-    \caption{Modell Ausgangslage}
+    \caption{Originalmodell mit für \e{Vertex Removal} gewähltem \e{Vertex} in Rot}
     \label{fig:transformationVertexRemovalOriginal}
-  \end{subfigure}%
-  \begin{subfigure}{.5\textwidth}
+  \end{subfigure}\hfill%
+  \begin{subfigure}{.45\textwidth}
     \centering
     \includegraphics[width=.7\linewidth]{grundlagen/transformationen/vertex-removal-final.png}
-    \caption{\e{Vertex Removal}}
+    \caption{Modell nach \e{Vertex Removal} mit veränderten \e{Vertices} in Rot}
     \label{fig:transformationVertexRemovalFinal}
   \end{subfigure}
   \caption{Transformation mittels \e{Vertex Removal}}
