@@ -41,8 +41,9 @@ Diese Artefakte müssen nun im Code einzeln geladen und in die Szenerie integrie
 \begin{figure}[H]
   \begin{lstlisting}[style=JavaScript]
 import * as THREE from "three";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
-const loader = new THREE.GLTFLoader();
+const loader = new GLTFLoader();
 const lod = new THREE.LOD();
 const scene = new THREE.Scene();
 
@@ -52,7 +53,7 @@ loader.load('path/to/duck-original.gltf', (artifact) => {
 loader.load('path/to/duck-lod1.gltf', (artifact) => {
   lod.addLevel(artifact.scene, 150);
 });
-loader.load('path/to/duck-lod1.gltf', (artifact) => {
+loader.load('path/to/duck-lod2.gltf', (artifact) => {
   lod.addLevel(artifact.scene, 300);
 });
 
