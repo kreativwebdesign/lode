@@ -52,8 +52,10 @@ Run `npx @kreativwebdesign/lode-cli` or `npx @kreativwebdesign/lode-cli run` to 
 | `-c`, `--config` | Path to config file      | `./lode-cli.config.json` |
 | `-s`, `--source` | Source glob pattern      | `**/*.gltf`              |
 | `-o`, `--outputFoldername` | Outputfoldername | `lode-build`           |
-| `-w`, `--watch`  | Watch source files and start lode server on port 3001       | `false`                  |
+| `-w`, `--watch`  | Watch source files       | `false`                  |
 | `-h`, `--help`   | Display help for command |                          |
+
+Watch mode (`-w`) will also automatically start lode server on port 3001.
 
 ### help
 
