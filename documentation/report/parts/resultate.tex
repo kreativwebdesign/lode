@@ -40,23 +40,23 @@ Anschliessend werden die verschiedenen Stufen exportiert und manuell in die Appl
 Diese Artefakte müssen nun im Code einzeln geladen und in die Szenerie integriert werden. Wie in Codeausschnitt \ref{code:threejsManualLodUsage} im Beispiel von \e{Three.js} zu sehen ist, muss jedes Level manuell geladen und konfiguriert werden.
 \begin{figure}[H]
   \begin{lstlisting}[style=JavaScript]
-  import * as THREE from "three";
+import * as THREE from "three";
 
-  const loader = new THREE.GLTFLoader();
-  const lod = new THREE.LOD();
-  const scene = new THREE.Scene();
+const loader = new THREE.GLTFLoader();
+const lod = new THREE.LOD();
+const scene = new THREE.Scene();
 
-  loader.load('path/to/duck-original.gltf', (artifact) => {
-    lod.addLevel(artifact.scene, 0);
-  });
-  loader.load('path/to/duck-lod1.gltf', (artifact) => {
-    lod.addLevel(artifact.scene, 150);
-  });
-  loader.load('path/to/duck-lod1.gltf', (artifact) => {
-    lod.addLevel(artifact.scene, 300);
-  });
+loader.load('path/to/duck-original.gltf', (artifact) => {
+  lod.addLevel(artifact.scene, 0);
+});
+loader.load('path/to/duck-lod1.gltf', (artifact) => {
+  lod.addLevel(artifact.scene, 150);
+});
+loader.load('path/to/duck-lod1.gltf', (artifact) => {
+  lod.addLevel(artifact.scene, 300);
+});
 
-  scene.add(lod)
+scene.add(lod)
   \end{lstlisting}
   \caption{Beispielcode zur manuellen Integration der \e{LOD}-Artefakte in \e{Three.js}}
   \label{code:threejsManualLodUsage}
