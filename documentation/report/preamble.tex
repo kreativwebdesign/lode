@@ -219,49 +219,27 @@
 }
 
 % json
-\newcommand\jsonkey{\color{purple}}
-\newcommand\jsonvalue{\color{cyan}}
-\newcommand\jsonnumber{\color{orange}}
-
-% switch used as state variable
-\makeatletter
-\newif\ifisvalue@json
 
 \lstdefinelanguage{json}{
-    tabsize             = 4,
-    showstringspaces    = false,
-    keywords            = {false,true},
-    alsoletter          = 0123456789.,
-    morestring          = [s]{"}{"},
-    stringstyle         = \jsonkey\ifisvalue@json\jsonvalue\fi,
-    MoreSelectCharTable = \lst@DefSaveDef{`:}\colon@json{\enterMode@json},
-    MoreSelectCharTable = \lst@DefSaveDef{`,}\comma@json{\exitMode@json{\comma@json}},
-    MoreSelectCharTable = \lst@DefSaveDef{`\{}\bracket@json{\exitMode@json{\bracket@json}},
-    basicstyle          = \ttfamily
+  basicstyle={\footnotesize\ttfamily},
+  frame=b,
+  % line-numbers
+  xleftmargin={0.75cm},
+  numbers=left,
+  stepnumber=1,
+  firstnumber=1,
+  numberfirstline=true,
+  tabsize=4,
+  string=[s]{"}{"},
+  stringstyle=\color{blue},
+  comment=[l]{:},
+  commentstyle=\color{black},
 }
 
-% enter "value" mode after encountering a colon
-\newcommand\enterMode@json{%
-    \colon@json%
-    \ifnum\lst@mode=\lst@Pmode%
-        \global\isvalue@jsontrue%
-    \fi
+\lstdefinestyle{json} {%
+  % Code
+  language=json,
 }
-
-% leave "value" mode: either we hit a comma, or the value is a nested object
-\newcommand\exitMode@json[1]{#1\global\isvalue@jsonfalse}
-
-\lst@AddToHook{Output}{%
-    \ifisvalue@json%
-        \ifnum\lst@mode=\lst@Pmode%
-            \def\lst@thestyle{\jsonnumber}%
-        \fi
-    \fi
-    %override by keyword style if a keyword is detected!
-    \lsthk@DetectKeywords% 
-}
-
-\makeatother
 
 \makeatletter
 \renewcommand\listoffigures{%
