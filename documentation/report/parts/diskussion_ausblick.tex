@@ -12,7 +12,7 @@ Das entwickelte Tool, \e{lode}, ist ein erster Schritt in die Richtung einer \e{
 
 Der grösste Nutzen entsteht in Anwendungen mit komplexen Modellen – für diese Situationen bietet \e{lode} einen nachweisbaren Mehrwert. Die Zahlen aus \autoref{chap:benchmarkResults} zeigen den möglichen Nutzen in einem Anwendungsbeispiel.
 
-Die Resultate des \e{Benchmmarks} weisen einen klaren Unterschied zwischen der unoptimierten und optimierten Version auf. Speziell die \gls{FPS} geben eine klare Auskunft. Unter Berücksichtigung des berechneten Konfidenzintervalls wird das Resultat als signifikant erachtet. Diese These wird auch durch eine Kontrolle mit dem Auge belegt – die Anzahl \gls{FPS} unterscheidet sich merkbar. Die Ladezeit der Applikation wurde nur marginal tangiert, die Auswirkungen auf die \e{User Experience} sind vernachlässigbar und können im optimalen Fall sogar durch progressives Laden zu einem Vorteil werden.
+Die Resultate des Benchmarks weisen einen klaren Unterschied zwischen der unoptimierten und optimierten Version auf. Speziell die \gls{FPS} geben eine klare Auskunft. Unter Berücksichtigung des berechneten Konfidenzintervalls wird das Resultat als signifikant erachtet. Diese These wird auch durch eine Kontrolle mit dem Auge belegt – die Anzahl \gls{FPS} unterscheidet sich merkbar. Die Ladezeit der Applikation wurde nur marginal tangiert, die Auswirkungen auf die \e{User Experience} sind vernachlässigbar und können im optimalen Fall sogar durch progressives Laden zu einem Vorteil werden.
 
 Somit ist es möglich, einen Nutzen für bestimmte anspruchsvolle 3D-Visualisierungen zu generieren.
 
@@ -26,14 +26,14 @@ Der in dieser Arbeit implementierte Algorithmus kann für eine Vielzahl von vers
 
 \subsection{Abgrenzung}
 
-In einigen Anwendungsgebieten bringt ein \e{LOD}-System nicht den gewünschten Nutzen. Wird ein Modell nur auf einer Detailstufe angezeigt, so ist der Einsatz von \e{LOD} abzuraten. Sind die Modelle bereits sehr simpel, wie bei \e{Low-Poly}-Modellen – in Abbildung \ref{fig:lowPolyExample} zu sehen – sind die zusätzlichen Vereinfachungen nur von geringem Nutzen. Denn die Geometrie dieser Art von Modelle ist bereits sehr simpel und eine weitere Vereinfachung nur von geringer Auswirkung. Ein Beispiel eines vereinfachten Modells ist in Abbildung \ref{fig:lodModelSimplified} veranschaulicht und ähnelt stark einem \e{Low-Poly}-Modell.
+In einigen Anwendungsgebieten bringt ein \e{LOD}-System nicht den gewünschten Nutzen. Wird ein Modell nur auf einer Detailstufe angezeigt, so ist der Einsatz von \e{LOD} abzuraten. Sind die Modelle bereits sehr simpel, wie bei \e{Low Poly}-Modellen – in Abbildung \ref{fig:lowPolyExample} zu sehen – sind die zusätzlichen Vereinfachungen nur von geringem Nutzen. Grund ist, dass die Geometrie dieser Art Modelle bereits sehr simpel und eine weitere Vereinfachung nur von geringer Auswirkung ist. Ein Beispiel eines vereinfachten Modells ist in Abbildung \ref{fig:lodModelSimplified} veranschaulicht und ähnelt stark einem \e{Low Poly}-Modell.
 So muss der Einsatz von \e{LOD}-Artefakten für jeden Anwendungsfall separat abgewogen werden. Ein Vorteil von \e{lode} ist die Einfachheit der Integration. So ist es möglich, mit wenig Aufwand den groben Nutzen für ein spezifisches Anwendungsbeispiel abschätzen zu können, ohne dass viel Entwicklungszeit dafür aufgewendet werden muss.
 
 \begin{figure}[H]
   \begin{subfigure}{.5\textwidth}
     \centering
     \includegraphics[width=0.4\columnwidth]{diskussion/low-poly-example.png}
-    \caption{Beispiel \e{Low-Poly}-Modell}
+    \caption{Beispiel \e{Low Poly}-Modell}
     \label{fig:lowPolyExample}
   \end{subfigure}%
   \begin{subfigure}{.5\textwidth}
@@ -42,7 +42,7 @@ So muss der Einsatz von \e{LOD}-Artefakten für jeden Anwendungsfall separat abg
     \caption{Beispiel Resultat nach \e{LOD}-Simplifizierung}
     \label{fig:lodModelSimplified}
   \end{subfigure}
-  \caption{Vergleich zwischen Low-Poly und \e{LOD}-simplifiziertem Model}
+  \caption{Vergleich zwischen \e{Low-Poly} und \e{LOD}-simplifiziertem Model}
   \label{fig:comparisonLowPolyAndLOD}
 \end{figure}
 
@@ -50,7 +50,7 @@ So muss der Einsatz von \e{LOD}-Artefakten für jeden Anwendungsfall separat abg
 Die Möglichkeiten für Erweiterungen zu \e{lode} sind sehr umfangreich. In diesem Abschnitt wird auf einige Möglichkeiten eingegangen.
 
 \paragraph{Akurate Texturinformationen}
-Zurzeit wird die Textur komplett entfernt und durch eine einfache Farbinformation ersetzt. Dies stellt beim aktuellen Einsatz der \e{LOD}-Artefakten kein Problem dar. Eine interessante Erweiterung ist so jedoch nicht möglich: das Vereinfachen der ersten Stufe. Der Algorithmus kann so erweitert werden, dass die Texturinformationen nicht vereinfacht, sondern als Teil der \e{Vertices} verwendet werden. Dies würde es ermöglichen, ein Modell, welches über mehrere Millionen Polygone verfügt, und somit ungeeignet für das Web ist, zu vereinfachen und diese erste Vereinfachung als detailreichste Stufe zu verwenden.
+Zurzeit wird die Textur komplett entfernt und durch eine einfache Farbinformation ersetzt. Dies stellt beim aktuellen Einsatz der \e{LOD}-Artefakte kein Problem dar. Eine interessante Erweiterung ist so jedoch nicht möglich: das Vereinfachen der ersten Stufe. Der Algorithmus kann so erweitert werden, dass die Texturinformationen nicht vereinfacht, sondern als Teil der \e{Vertices} verwendet werden. Dies würde es ermöglichen, ein Modell, welches über mehrere Millionen Polygone verfügt, und somit ungeeignet für das Web ist, zu vereinfachen und diese erste Vereinfachung als detailreichste Stufe zu verwenden.
 
 \paragraph{glTF LOD Format}
 Es gibt einen Vorschlag, um die Definition von \e{LOD}-Stufen innerhalb von \e{glTF} zu definieren. Dies würde es ermöglichen, verschiedene \e{LOD}-Artefakte in einer Datei zu speichern \cite{glTFExtensionLOD}. Was wiederum erlauben würde, Texturinformationen einfacher wiederzuverwenden. Das Toolset kann grundsätzlich für diesen Anwendungsfall erweitert werden.
@@ -62,14 +62,16 @@ Aktuell werden initial alle \e{LOD}-Artefakte geladen. Dies hat zur Konsequenz, 
 \paragraph{Levelwahl während Laufzeit}
 Die optimale Wahl des Levels kann stark von der Laufzeitumgebung abhängig sein. So sollte zum Beispiel auf mobilen Geräten früher ein einfacheres Modell angezeigt werden als auf leistungsstarken Geräten. Ein weiterer Faktor ist die Auflösung. Bei Geräten mit niedriger Auflösung kann früher gewechselt werden, da die visuellen Unterschiede zum Original weniger auffällig sind.
 Deshalb eignet sich eine Wahl der Levels zur Laufzeit, um ein optimales Erlebnis auf allen Geräten zu ermöglichen.
-Nebst dem \gls{CLI} soll folglich auch ein JavaScript-Paket bereitgestellt werden, welches das Laden von \e{glTF} Dateien übernimmt und basierend auf der erkannten Performanz das beste Level of Detail einspielt.
+Nebst dem \gls{CLI} soll folglich auch ein \e{JavaScript}-Paket bereitgestellt werden, welches das Laden von \e{glTF} Dateien übernimmt und basierend auf der erkannten Performanz das beste \e{Level of Detail} einspielt.
 
 \paragraph{Kombination mehrerer Meshes}
 Als Erweiterung ist es möglich, verschiedene \e{Meshes} eines \e{glTF} zu kombinieren und als ein einziges \e{Mesh} zu behandeln. Dies erlaubt es noch mehr Vereinfachungen vornehmen zu können. Diese Anpassung kann man als simples \e{HLOD}-System bezeichnen. Eine Schwierigkeit ist hier jedoch die sinnvolle Wahl der Textur, da vereschiedene \e{Meshes} häufig über verschiedene Texturen verfügen und diese ebenfalls kombiniert werden müssten.
+
+\pagebreak
 
 \paragraph{Fading}
 \label{chap:fading}
 Aktuell finden die Modellwechsel an harten Grenzen statt. Dies hat zur Konsequenz, dass \e{Visual Popping} auftauchen kann. Eine Möglichkeit zur Linderung dieses Problems ist der Einsatz von \e{Fading}. Hierbei werden die Übergänge über grössere Intervalle durchgeführt und Teile der verschiedenen Artefakte dargestellt. Diese Methode wird zum Beispiel bei \e{Unity} angeboten.
 
 \paragraph{Konsequenter Einsatz von glb Dateien}
-Aktuell werden in der Demoszenerie \e{glTF} Dateien eingesetzt. Dies kommt daher, dass die Basisinformationen menschenlesbar abgespeichert werden. Das binäre Format glb ist jedoch grundsätzlich \e{glTF} vorzuziehen und sollte als primäres Austauschformat verwendet werden. Für das Laufzeitverhalten entsteht kein signifikanter Unterschied durch den Einsatz von glb. Der primäre Vorteil vom glb Format ist, dass alles in einer Datei gespeichert ist und somit nicht zwei Netzwerkabfragen stattfinden müssen – die Download\-zeit wird somit reduziert. Das \gls{CLI} könnte erweitert werden, auch glb Dateien zu unterstützen.
+Aktuell werden in der Demoszenerie \e{glTF} Dateien eingesetzt. Dies kommt daher, dass die Basisinformationen menschenlesbar abgespeichert werden. Das binäre Format \e{glb} ist jedoch grundsätzlich \e{glTF} vorzuziehen und sollte als primäres Austauschformat verwendet werden. Für das Laufzeitverhalten entsteht kein signifikanter Unterschied durch den Einsatz von \e{glb}. Der primäre Vorteil des \e{glb} Formats ist, dass alles in einer Datei gespeichert ist und somit nicht zwei Netzwerkabfragen stattfinden müssen – die Download\-zeit wird somit reduziert. Das \gls{CLI} könnte erweitert werden, auch \e{glb} Dateien zu unterstützen.

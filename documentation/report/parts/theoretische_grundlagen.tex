@@ -14,8 +14,8 @@ Zuerst werden die Grundlagen der polygonalen 3D-Modelle und verschiedene Dateifo
 Ein Modell stellt ein physisches Objekt, häufig aus der realen Welt, vereinfacht dar.
 3D-Modelle können als Gruppe von Punkten definiert werden.
 Um im dreidimensionalen Raum Objekte visualisieren zu können, sind mindestens drei Punkte notwendig.
-Punkte von 3D-Modellen werden im folgenden als \e{Vertex} (Eckpunkte) bezeichnet und können als Vektor definiert werden.
-So kann man einen Vertex am Ursprung eines Koordinatensystems definieren als:
+Punkte von 3D-Modellen werden im Folgenden als \e{Vertex} (Eckpunkte) bezeichnet und können als Vektor definiert werden.
+So kann man einen \e{Vertex} am Ursprung eines Koordinatensystems definieren als:
 $$ V =
 \begin{bmatrix}
   0 \\
@@ -23,6 +23,7 @@ $$ V =
   0
 \end{bmatrix}
 $$
+\bigbreak
 Eine Sammlung von drei \e{Vertices} bildet ein \e{Triangle}\footnote{Wir verwenden die in englischer Sprache verfassten Fachliteratur zu 3D-Anwendungen gebräuchlichen Ausdrücke.} (Dreieck). Ein \e{Triangle} wird somit wie folgt definiert:
 $$ T =
 \begin{bmatrix}
@@ -31,10 +32,11 @@ $$ T =
   V_3
 \end{bmatrix}
 $$
-
+\bigbreak
 Um komplexere Formen wie \e{Quads} (Vierecke) zu bilden, werden jeweils mehrere \e{Triangle} kombiniert. Für eine Sammlung von Punkten wird generell der Term Polygon verwendet.
 Ein Modell besteht aus einer beliebigen Anzahl Polygone.
 Grundsätzlich gilt somit, dass ein beliebiger Polygon durch mehrere \e{Triangles} repräsentiert werden kann:
+\bigbreak
 $$ P =
 \begin{bmatrix}
   V_1 \\
@@ -56,7 +58,9 @@ $$ P =
 \end{bmatrix}
 $$
 
-Abbildung \ref{fig:modelSimpleTriangulation} zeigt die Vereinfachung eines \e{Quads} in zwei \e{Triangle}. Die Verbindung zwischen zwei \e{Vertices} ist eine sogenannte \e{Edge} (Kante).
+\pagebreak
+
+Abbildung \ref{fig:modelSimpleTriangulation} zeigt die Vereinfachung eines \e{Quads} in zwei \e{Triangles}. Die Verbindung zwischen zwei \e{Vertices} ist eine sogenannte \e{Edge} (Kante).
 Verbindet man die Punkte eines Polygons und füllt die Fläche, ergibt sich schlussendlich ein \e{Face} (Fläche).
 
 \begin{figure}[H]
@@ -80,11 +84,11 @@ Neben den geometrischen Attributen verfügt ein Modell über weitere Attribute, 
 
 \subparagraph{Normals}
 
-So wird für jeden \e{Vertex} ein \e{Normal} definiert. Ein \e{Normal} ist ein Vektor der im einfachsten Fall senkrecht zu den zwei an diesem \e{Vertex} verbundenen \e{Edges} verläuft. In diesem Fall ist sie identisch zur aus der Geometrie bekannten Normale. \e{Normals} werden häufig für das Berechnen von Reflexionen verwendet.
+So wird für jeden \e{Vertex} ein \e{Normal} definiert. Ein \e{Normal} ist ein Vektor der im einfachsten Fall senkrecht zu den zwei an diesem \e{Vertex} verbundenen \e{Edges} verläuft. In diesem Fall ist er identisch zur aus der Geometrie bekannten Normale. \e{Normals} werden häufig für das Berechnen von Reflexionen verwendet.
 \e{Normals} werden auch für gewisse Performanzoptimierungen eingesetzt, dazu mehr in \autoref{chap:backfaceCulling}.
 
 \subparagraph{Texturen}
-Um die Oberfläche von Modellen zu definieren, wird häufig ein \e{Texture Mapping}, auch \e{UV-Mapping} genannt, durchgeführt. Bei diesem Verfahren wird definiert, wie eine 2D-Grafik auf ein 3D-Modell abzubilden ist. Dafür wird für jeden \e{Vertex} zwei Koordinaten, $u$ und $v$, definiert. Diese Koordinaten bestimmen die Position in der 2D-Grafik. In der Praxis finden weitere Methoden Anwendung, auf diese wird hier im Sinne der Übersichtlichkeit nicht weiter eingegangen.
+Um die Oberfläche von Modellen zu definieren, wird häufig ein \e{Texture Mapping}, auch \e{UV-Mapping} genannt, durchgeführt. Bei diesem Verfahren wird definiert, wie eine 2D-Grafik auf ein 3D-Modell abzubilden ist. Dafür werden für jeden \e{Vertex} zwei Koordinaten, $u$ und $v$, definiert. Diese Koordinaten bestimmen die Position in der 2D-Grafik. In der Praxis finden weitere Methoden Anwendung, auf diese wird hier im Sinne der Übersichtlichkeit nicht weiter eingegangen.
 
 \paragraph{Abgrenzung}
 Für diese Arbeit sind nur polygonale Modelle relevant.
@@ -102,7 +106,7 @@ Um ein 3D-Modell in einer Anwendung einzusetzen, muss ein entsprechendes Format 
 \subparagraph{glTF}
 Seit 2015 gibt es ein offenes, modernes sowie auf optimale Speichernutzung fokussiertes Format: \e{glTF}. Dieses wird von der \e{Khronos Group} entwickelt \cite{gltf1Spec}. In dieser Arbeit wird es als Austauschformat verwendet, deshalb wird im Folgenden genauer auf \e{glTF} eingegangen.
 
-Die meisten 3D-Grafikprogramme wie Blender (.blend) verwenden ihre eigenen Dateiformate. Diese Dateiformate sind jedoch für den Einsatz in einer Applikation ungeeignet, da sie insbesondere nicht für die Laufzeitumgebung optimiert sind. Deswegen brauchte es für jedes Eingangsformat für jedes Ausgangsformat einen Konverter, wie in Abbildung \ref{fig:contentPipelineWithoutGltf} ersichtlich.
+Die meisten 3D-Grafikprogramme wie Blender (.blend) verwenden ihre eigenen Dateiformate. Diese Dateiformate sind jedoch für den Einsatz in einer Applikation ungeeignet, da sie insbesondere nicht für die Laufzeitumgebung optimiert sind. Deswegen braucht jedes Ausgangsformat jeweils einen Konverter pro Eingangsformat, wie in Abbildung \ref{fig:contentPipelineWithoutGltf} ersichtlich.
 
 \begin{figure}[H]
   \centering
@@ -120,7 +124,9 @@ Durch diese Abstraktion kann eine Vielzahl Konverter vermieden werden und nur we
   \label{fig:contentPipelineWithGltf}
 \end{figure}
 
-Die Basisstruktur von \e{glTF} basiert auf \fgls{JSON}{JavaScript Object Notation, Austauschformat, welches häufig in der Web-Entwicklung eingesetzt wird}. Darin ist die komplette Szenerie des Modells beschrieben und in Abbildung \ref{fig:gltfDatastructure} aufgezeigt \cite{gltfTutorialStructure}.
+\pagebreak
+
+Die Basisstruktur von \e{glTF} basiert auf \fgls{JSON}{\e{JavaScript Object Notation}, Austauschformat, welches häufig in der Web-Entwicklung eingesetzt wird}. Darin ist die komplette Szenerie des Modells beschrieben. Der Aufbau dieser Struktur ist in Abbildung \ref{fig:gltfDatastructure} aufgezeigt \cite{gltfTutorialStructure}.
 \begin{figure}[H]
   \centering
   \includegraphics[width=1\columnwidth]{grundlagen/gltf/gltfJsonStructure.png}
@@ -131,16 +137,16 @@ Die Basisstruktur von \e{glTF} basiert auf \fgls{JSON}{JavaScript Object Notatio
 Die folgende Auflistung erläutert die Elemente dieser Struktur:
 \begin{itemize}
   \item \textbf{Scene}: Einstiegspunkt der Szenerie und verweist auf alle Top-Level \e{nodes}.
-  \item \textbf{Node}: Kann eine Transformation (Rotation, Translation oder Skalierung) beinhalten oder eine Kamera, \e{Skin}, Animation, ein \e{Mesh} oder \e{Childnodes} referenzieren.
-  \item  \textbf{Mesh}: Beschreibt ein geometrisches Objekt und verweist auf \e{accessor}, welcher die effektiven geometrischen Daten beinhaltet und auf \e{material}, das beschreibt, wie das Objekt beim Rendern aussehen soll.
-  \item \textbf{Accessor}: Verweis auf die \e{BufferView}, welche die effektiven Eigenschaften für \e{meshes}, \e{skins} und \e{animations} kompakt beinhaltet.
+  \item \textbf{Node}: Kann eine Transformation (Rotation, Translation oder Skalierung) beinhalten oder eine Kamera, \e{Skin}, Animation, ein \e{Mesh} oder weitere \e{Child Nodes} referenzieren.
+  \item  \textbf{Mesh}: Beschreibt ein geometrisches Objekt, bestehend aus mehreren \e{Primitives}. Ein \e{Primitive} verweist auf \e{Accessor}, welcher die effektiven geometrischen Daten beinhaltet und auf \e{Material}, das beschreibt, wie das Objekt beim Rendern aussehen soll.
+  \item \textbf{Accessor}: Verweis auf die \e{BufferView}, welche die effektiven Eigenschaften für \e{Meshes}, \e{Skins} und \e{Animations} kompakt beinhaltet.
   \item \textbf{BufferView}: Definiert eine Ansicht (Länge, Ort, Typ) auf einen \e{Buffer}.
   \item \textbf{Buffer}: Verweist auf einen Block von Binärdaten, welchen die effektiven Daten des 3D-Modells beinhaltet.
   \item \textbf{Material}: Definiert die visuellen Attribute eines \e{Mesh}.
   \item \textbf{Texture}: Definiert wie ein \e{Image} auf ein \e{Material} projiziert wird. Ein \e{Sampler} definiert wie das Bild platziert werden soll.
 \end{itemize}
 
-Weitere Elemente, welche im Rahmen dieser Arbeit nicht relevant sind und nicht im Detail betrachtet werden, sind: \e{camera}, \e{skin} und \e{animation}.
+Weitere Elemente, welche im Rahmen dieser Arbeit nicht relevant sind und nicht im Detail betrachtet werden, sind: \e{Camera}, \e{Skin} und \e{Animation}.
 
 \section{Transformation von Modellen}
 
@@ -149,70 +155,70 @@ Diese Veränderungen können in Operationen vereinfacht erläutert werden.
 
 Im Folgenden werden Transformationen mithilfe einer 2D-Visualisierung erläutert. Das Modell kann jedoch ebenfalls im dreidimensionalen Raum sein – die Funktionsweise bleibt identisch.
 
-Für die folgenden Beispiele wird jeweils das Modell aus Abbildung \ref{fig:transformationOriginal} verwendet.
+Für die folgenden Beispiele wird jeweils das Modell aus Abbildung \ref{fig:transformationOriginal} als Ausgangslage verwendet.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.3\columnwidth]{grundlagen/transformationen/original.png}
-  \caption{Modell Basis}
+  \caption{Originalmodell}
   \label{fig:transformationOriginal}
 \end{figure}
 
 \paragraph{Edge Collapse}
-Hierbei werden zwei nebeneinanderliegende \e{Vertices} kombiniert. Durch diese Operation kann ein \e{Vertex} entfernt werden. In Abbildung \ref{fig:transformationEdgeCollapse} kann die Anzahl \e{Triangles} um zwei verringert werden. Beim \e{Edge Collapse} wird ein neuer \e{Vertex} definiert und zwei bestehende entfernt. Die Anzahl entfernter \e{Triangles} ist abhängig von der Situation. Unter Umständen kann so auch nur ein einzelner \e{Triangle} entfernt werden.
+Hierbei werden zwei nebeneinanderliegende \e{Vertices} kombiniert. Durch diese Operation kann ein \e{Vertex} entfernt werden. In Abbildung \ref{fig:transformationEdgeCollapse} kann die Anzahl \e{Triangles} um zwei verringert werden. Beim \e{Edge Collapse} wird ein neuer \e{Vertex} definiert und zwei Bestehende entfernt. Die Anzahl entfernter \e{Triangles} ist abhängig von der Situation. Unter Umständen kann so auch nur ein einzelner \e{Triangle} entfernt werden.
 Die Umkehrfunktion nennt man \e{Vertex Split}.
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}{.5\textwidth}
+  \begin{subfigure}{.45\textwidth}
     \centering
-    \includegraphics[width=.7\linewidth]{grundlagen/transformationen/original.png}
-    \caption{Modell Ausgangslage}
-  \end{subfigure}%
-  \begin{subfigure}{.5\textwidth}
+    \includegraphics[width=.7\linewidth]{grundlagen/transformationen/edge-collapse-original.png}
+    \caption{Originalmodell mit für \e{Edge Collapse} gewählter \e{Edge} in Rot}
+  \end{subfigure}\hfill%
+  \begin{subfigure}{.45\textwidth}
     \centering
     \includegraphics[width=.7\linewidth]{grundlagen/transformationen/edge-collapse.png}
-    \caption{\e{Edge Collapse}}
+    \caption{Modell nach \e{Edge Collapse} mit veränderten \e{Edges} in Rot}
   \end{subfigure}
   \caption{Transformation mittels \e{Edge Collapse}}
   \label{fig:transformationEdgeCollapse}
 \end{figure}
 
 \paragraph{Halfedge Collapse}
-Hierbei wird ein Vertex direkt entfernt und alle \e{Edges} auf einen danebenliegenden Vertex zusammengelegt. Bei dieser Operation muss kein neuer Vertex definiert werden, sondern ein bereits bestehender Vertex kann wiederverwendet werden. Wie in Abbildung \ref{fig:transformationHalfedgeCollapse} ersichtlich, können auch in diesem Fall zwei \e{Triangles} entfernt werden.
+Hierbei wird ein \e{Vertex} direkt entfernt und alle \e{Edges} auf einen danebenliegenden \e{Vertex} zusammengelegt. Bei dieser Operation muss kein neuer \e{Vertex} definiert werden, sondern ein bereits bestehender \e{Vertex} kann wiederverwendet werden. Wie in Abbildung \ref{fig:transformationHalfedgeCollapse} ersichtlich, können auch in diesem Fall zwei \e{Triangles} entfernt werden.
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}{.5\textwidth}
+  \begin{subfigure}{.45\textwidth}
     \centering
-    \includegraphics[width=.7\linewidth]{grundlagen/transformationen/original.png}
-    \caption{Modell Ausgangslage}
-  \end{subfigure}%
-  \begin{subfigure}{.5\textwidth}
+    \includegraphics[width=.7\linewidth]{grundlagen/transformationen/edge-collapse-original.png}
+    \caption{Originalmodell mit für \e{Halfedge Collapse} gewählter \e{Edge} in Rot}
+  \end{subfigure}\hfill%
+  \begin{subfigure}{.45\textwidth}
     \centering
     \includegraphics[width=.7\linewidth]{grundlagen/transformationen/half-edge-collapse.png}
-    \caption{\e{Halfedge Collapse}}
+    \caption{Modell nach \e{Halfedge Collapse} mit veränderten \e{Edges} in Rot}
   \end{subfigure}
   \caption{Transformation mittels \e{Halfedge Collapse}}
   \label{fig:transformationHalfedgeCollapse}
 \end{figure}
 
 \paragraph{Vertex Removal}
-Hierbei wird ein Vertex entfernt und das Resultat neu trianguliert. Triangulation ist ein Verfahren, um ein Polygon in \e{Triangles} aufzuteilen.
-In Abbildung \ref{fig:transformationVertexRemovalOriginal} wird der zentrale Vertex entfernt. Anschliessend werden alle \e{Triangles} an diesem Punkt entfernt. Das dabei entstehende Loch wird neu mit \e{Triangles} gefüllt. Eine mögliche Triangulation des Polygons ist in Abbildung \ref{fig:transformationVertexRemovalFinal} ersichtlich.
+Hierbei wird ein \e{Vertex} entfernt und das Resultat neu trianguliert. Triangulation ist ein Verfahren, um ein Polygon in \e{Triangles} aufzuteilen.
+In Abbildung \ref{fig:transformationVertexRemovalOriginal} wird der zentrale \e{Vertex} entfernt. Anschliessend werden alle \e{Triangles} an diesem Punkt entfernt. Das dabei entstehende Loch wird neu mit \e{Triangles} gefüllt. Eine mögliche Triangulation des Polygons ist in Abbildung \ref{fig:transformationVertexRemovalFinal} ersichtlich.
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}{.5\textwidth}
+  \begin{subfigure}{.45\textwidth}
     \centering
     \includegraphics[width=.7\linewidth]{grundlagen/transformationen/vertex-removal-original.png}
-    \caption{Modell Ausgangslage}
+    \caption{Originalmodell mit für \e{Vertex Removal} gewähltem \e{Vertex} in Rot}
     \label{fig:transformationVertexRemovalOriginal}
-  \end{subfigure}%
-  \begin{subfigure}{.5\textwidth}
+  \end{subfigure}\hfill%
+  \begin{subfigure}{.45\textwidth}
     \centering
     \includegraphics[width=.7\linewidth]{grundlagen/transformationen/vertex-removal-final.png}
-    \caption{\e{Vertex Removal}}
+    \caption{Modell nach \e{Vertex Removal} mit veränderten \e{Vertices} in Rot}
     \label{fig:transformationVertexRemovalFinal}
   \end{subfigure}
   \caption{Transformation mittels \e{Vertex Removal}}
@@ -260,7 +266,7 @@ const indices = new Uint16Array(
 Anschliessend werden die Daten in einem \e{Draw Call} an die \gls{GPU} gesendet. Ein \e{Draw Call} wird pro Material pro \e{Mesh} benötigt. Es ist besser, weniger, dafür umfangreiche \e{Draw Calls} abzusetzen, als viele Kleinere. Dies kommt daher, dass die \gls{GPU} grosse Datenmengen parallel prozessieren kann und sich die Unterbrechung durch einzelne Aufrufe negativer auswirkt.
 
 \paragraph{Vertexshader}
-Der erste Schritt ist der sogenannte \e{Vertexshader}. Auftrag des \e{Vertexshaders} ist es, die \e{Vertices} zu transformieren. Die Modelle werden ausgerichtet, die Beleuchtung bestimmt und die 2D-Projektion vorgenommen. Ein Beispiel für einen simplen Vertexhsader ist in Abbildung \ref{fig:vertexShader} ersichtlich. Der Code, welcher in \fgls{GLSL}{OpenGL Shading Language, C-basierte Programmiersprache für das Programmieren von \gls{GPU}-Prozessen} geschrieben ist, wird für jeden \e{Vertex} ausgeführt. Der aktuelle \e{Vertex} ist dabei in der Variable \e{coordinates} abgespeichert. \e{gl\_Position} ist eine spezielle Variable, welche von \e{GLSL} zur Verfügung gestellt wird und den Endpunkt beinhalten soll. Das gegebene Beispiel ist trivial, in der Praxis werden hier häufig die Matrixtransformationen unter anderem für die Kameraperspektive durchgeführt.
+Der erste Schritt ist der sogenannte \e{Vertexshader}. Auftrag des \e{Vertexshaders} ist es, die \e{Vertices} zu transformieren. Die Modelle werden ausgerichtet, die Beleuchtung bestimmt und die 2D-Projektion vorgenommen. Ein Beispiel für einen simplen \e{Vertexshader} ist in Abbildung \ref{fig:vertexShader} ersichtlich. Der Code, welcher in \fgls{GLSL}{\e{OpenGL Shading Language}, C-basierte Programmiersprache für das Programmieren von \gls{GPU}-Prozessen} geschrieben ist, wird für jeden \e{Vertex} ausgeführt. Der aktuelle \e{Vertex} ist dabei in der Variable \e{coordinates} abgespeichert. \e{gl\_Position} ist eine spezielle Variable, welche von \e{GLSL} zur Verfügung gestellt wird und den Endpunkt beinhalten soll. Das gegebene Beispiel ist trivial, in der Praxis werden hier häufig die Matrixtransformationen unter anderem für die Kameraperspektive durchgeführt.
 
 \begin{figure}[H]
 \begin{lstlisting}[style=glsl]
@@ -275,7 +281,7 @@ void main(void) {
 \end{figure}
 
 \paragraph{Fragmentshader}
-Durch die Rasterisierung werden kontinuierliche Objekte zu diskreten Fragmenten verarbeitet. Ein Fragment entspricht grundsätzlich einem Pixel. Der \e{Fragmentshader} generiert die Farbdefinitionen für die einzelnen diskreten Fragmente. Dies können einfache Farbwerte sein, es ist jedoch auch möglich Texturen und dergleichen auf Fragmente abzubilden. Ein einfaches Beispiel für einen \e{Fragmentshader} ist in Abbildung \ref{fig:fragmentShader} ersichtlich. Bei \e{gl\_FragColor} handelt es sich wiederum um eine Variable von \e{GLSL}. Der zugewiesene Wert entspricht der Farbe des Pixels. In diesem Fall ist die Farbe Schwarz. Das Format entspricht \e{rgba}: rot, grün, blau, alpha (Transparenz).
+Durch die Rasterisierung werden kontinuierliche Objekte zu diskreten Fragmenten verarbeitet. Ein Fragment entspricht grundsätzlich einem Pixel. Der \e{Fragmentshader} generiert die Farbdefinitionen für die einzelnen diskreten Fragmente. Dies können einfache Farbwerte sein, es ist jedoch auch möglich Texturen und dergleichen auf Fragmente abzubilden. Ein einfaches Beispiel für einen \e{Fragmentshader} ist in Abbildung \ref{fig:fragmentShader} ersichtlich. Bei \e{gl\_FragColor} handelt es sich wiederum um eine Variable von \e{GLSL}. Der zugewiesene Wert entspricht der Farbe des Pixels. In diesem Fall ist die Farbe Schwarz. Die Reihenfolge ist \e{rgba}: rot, grün, blau, alpha (Transparenz).
 
 \begin{figure}[H]
 \begin{lstlisting}[style=glsl]
@@ -297,13 +303,13 @@ Visualisierungen können zu komplex werden, um jederzeit performant und interakt
 Insbesondere wenn viele Objekte gleichzeitig sichtbar sind, lohnt es sich Performanzoptimierungen durchzuführen.
 Im Idealfall geschieht dies jedoch, ohne dass der Anwender dies bemerkt.
 
-In diesem Abschnitt werden mögliche Ansätze erklärt, welche helfen sollen, die Render-Performanz zu erhöhen. Diese Arbeit konzentriert sich jedoch auf den Ansatz von Level of Detail; die anderen Ansätze werden nur kurz erläutert. Auf Level of Detail wird in \autoref{chap:lodIntroduction} detailliert eingegangen.
+In diesem Abschnitt werden mögliche Ansätze erklärt, welche helfen sollen, die Laufzeitleistung zu erhöhen. Diese Arbeit konzentriert sich jedoch auf den Ansatz von \e{Level of Detail}; die anderen Ansätze werden nur kurz erläutert. Auf \e{Level of Detail} wird in \autoref{chap:lodIntroduction} detailliert eingegangen.
 
 \paragraph{Frustum Culling}
-Ein Frustum ist eine geometrische Form, die einer Pyramide ähnelt, welcher die Spitze abgeschnitten wurde.
-Das Kamera-Frustum bezeichnet den Raum, welcher von der Kamera aufgezeichnet wird. Dieser Bereich startet eine gewisse Distanz von der Kamera entfernt und endet weit hinten wieder, da nicht bis in die Unendlichkeit Objekte sichtbar sind.
-Wie in Abbildung \ref{fig:CameraFrustum} zusehen ist, beginnt das Kamera-Frustum in der Nähe der Kamera und dehnt sich ein wenig aus bis es gegen Ende des Spektrums beschränkt wird.
-Polygone, welche nicht im Kamera Frustum enthalten sind, werden bei dieser Methode, wie in Abbildung \ref{fig:FrustumCulling} gezeigt, nicht weiter prozessiert.
+Ein \e{Frustum} ist eine geometrische Form, die einer Pyramide ähnelt, welcher die Spitze abgeschnitten wurde.
+Das Kamera \e{Frustum} bezeichnet den Raum, welcher von der Kamera aufgezeichnet wird. Dieser Bereich startet eine gewisse Distanz von der Kamera entfernt und endet weit hinten wieder, da nicht bis in die Unendlichkeit Objekte sichtbar sind.
+Wie in Abbildung \ref{fig:CameraFrustum} zu sehen ist, beginnt das Kamera \e{Frustum} in der Nähe der Kamera und dehnt sich ein wenig aus bis es gegen Ende des Spektrums beschränkt wird.
+Polygone, welche nicht im Kamera \e{Frustum} enthalten sind, werden bei dieser Methode, wie in Abbildung \ref{fig:FrustumCulling} gezeigt, nicht weiter prozessiert.
 Dies reduziert die Anzahl Polygone drastisch.
 
 \begin{figure}[H]
@@ -311,7 +317,7 @@ Dies reduziert die Anzahl Polygone drastisch.
   \begin{subfigure}{.5\textwidth}
     \centering
     \includegraphics[width=0.5\columnwidth]{grundlagen/Camera-Frustum.png}
-    \caption{Kamera Frustum}
+    \caption{Kamera \e{Frustum}}
     \label{fig:CameraFrustum}
   \end{subfigure}%
   \begin{subfigure}{.5\textwidth}
@@ -323,15 +329,17 @@ Dies reduziert die Anzahl Polygone drastisch.
   \caption{\e{Frustum Culling}}
 \end{figure}
 
+\pagebreak
+
 \paragraph{Occlusion Culling}
 Polygone bzw. Objekte, welche komplett von anderen Objekten überdeckt werden, werden bei dieser Variante nicht prozessiert.
 Dieser Prozess analysiert die Szene mittels einer virtuellen Kamera und merkt sich potenziell nicht sichtbare Objekte. Diese Daten werden dann zur Laufzeit von der Kamera verwendet, um zu bestimmen, ob ein Objekt prozessiert werden soll, oder nicht.
-Damit wird die Anzahl \e{Polygone}, welche gerendert werden müssen, reduziert.
+Damit wird die Anzahl Polygone, welche gerendert werden müssen, reduziert.
 
 \paragraph{Backface Culling}
 \label{chap:backfaceCulling}
 Bei dieser Methode wird berechnet welche Polygone zur Kamera orientiert sind.
-Alle Polygone, welche in die andere Richtung zeigen werden nicht gezeichnet.
+Alle Polygone, welche in die entgegengesetzte Richtung zeigen, werden nicht prozessiert.
 Dies ist nicht immer gewünscht, für die meisten Anwendungen ist diese Optimierung jedoch aktiviert.
 Als Grundlage für die Berechnung werden die \e{Normals} der \e{Vertices} verwendet.
 
@@ -342,12 +350,12 @@ Vergleichbar zu \e{LOD}-Artefakten sind sogenannte \e{Impostors}. Dabei wird ein
 Auch bekannt unter \e{Distributed Rendering} ist der Einsatz von Techniken aus dem \e{Parallel Programming} in Visualisierungsanwendungen. So kann die Aufgabe auf verschiedene \glspl{GPU} verteilt parallel verarbeitet werden. Eine Problemstellung hierbei ist jedoch, dass das sinnvolle Aufteilen der Arbeit nicht trivial ist. So eignet sich dieser Ansatz jedoch gut für Anwendungen im Bereich von \e{Virtual Reality}, da dort zwei separate Bilder generiert werden müssen und somit leicht zu separieren sind \cite{parallelRenderingPhd}.
 
 \paragraph{Image-based Rendering}
-In gewissen Fällen kann das Modellieren übersprungen werden. So kann anhand von Bildmaterial eine 3D-Illusion erzeugt werden. Da 2D-Bilder aber keine Tiefeninformationen darstellen können im dreidimensionalen Raum, kann dies zu seltsamen Effekten führen, wenn sich die Kamera bewegt und kann deshalb nur in sehr spezifischen Anwendungsfällen eingesetzt werden. Die \e{Street View} Funktion von Google Maps ist ein bekanntes Tool, welches auf \e{Image-based Rendering} setzt.
-Beim Bewegen durch die virtuelle Welt in \e{Street View}, ist auffällig zu sehen, wie sich die Bilder austauschen \cite{imageBasedRendering}.
+In gewissen Fällen kann das Modellieren übersprungen werden. So kann anhand von Bildmaterial eine 3D-Illusion erzeugt werden. Da 2D-Bilder aber keine Tiefeninformationen darstellen können im dreidimensionalen Raum, kann dies zu seltsamen Effekten führen, wenn sich die Kamera bewegt. Diese Technik kann deshalb nur in sehr spezifischen Anwendungsfällen eingesetzt werden. Die \e{Street View} Funktion von \e{Google Maps} ist ein bekanntes Tool, welches auf \e{Image-based Rendering} setzt.
+Beim Bewegen durch die virtuelle Welt in \e{Street View}, ist zu sehen, wie sich die Bilder austauschen \cite{imageBasedRendering}.
 
 \section{Einführung Level of Detail}
 \label{chap:lodIntroduction}
-Als Level Of Detail werden die verschiedenen Detailstufen bei der virtuellen Darstellung bezeichnet.
+Als \e{Level of Detail} werden die verschiedenen Detailstufen bei der virtuellen Darstellung bezeichnet.
 Dies wird verwendet, um die Laufzeitleistung von Anwendungen zu steigern, indem Objekte im Nahbereich detailliert angezeigt werden; wohingegen Elemente im Fernbereich deutlich vereinfacht dargestellt werden. So muss der \e{Vertexshader} weniger \e{Vertices} prozessieren.
 
 Ein \e{LOD}-Algorithmus hat das Ziel, für ein gegebenes Modell eine vereinfachte Darstellung zu finden, welche das Original ausreichend annähert. Um diese Approximationen zu generieren, kann eine Vielzahl von Algorithmen verwendet werden. Es gibt verschiedene Ansätze zur Generierung von \e{LOD}s, welche in \autoref{chap:lodAlgorithmComparison} im Detail erläutert werden.
@@ -355,35 +363,37 @@ Ein \e{LOD}-Algorithmus hat das Ziel, für ein gegebenes Modell eine vereinfacht
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.8\columnwidth]{LODs-of-a-bunny-model-Courtesy-Stanford-3D-Scanning-Repository-From-left-to-right}
-\caption{Level Of Detail Visualisierung vier Hasen \cite{stanfordBunnyModel}}
+\caption{\e{Level of Detail} Visualisierung vier Hasen \cite{stanfordBunnyModel}}
 \label{fig:LevelOfDetailVisualisierungvierHasen}
 \end{figure}
 
-Wie in der Abbildung \ref{fig:LevelOfDetailVisualisierungvierHasen} zu erkennen ist, wird von links nach rechts der Detailgrad und somit die Komplexität des Objektes reduziert. Sind es im Bild ganz links noch 69'451 \e{Triangles}, wird es bereits im ersten Schritt auf 2'502 \e{Triangles} reduziert. Dies ist eine enorme Reduktion von ca. 96.5 \%. Im dritten Schritt wird die Anzahl \e{Triangles} wiederum um ca. 90 \% auf 251 reduziert. Schlussendlich hat das letzte Objekt noch 76 \e{Triangles} was knapp 0.1 \% der ursprünglichen Anzahl entspricht.
+Wie in der Abbildung \ref{fig:LevelOfDetailVisualisierungvierHasen} zu erkennen ist, wird von links nach rechts der Detailgrad und somit die Komplexität des Objektes reduziert. Sind es im Bild ganz links noch 69'451 \e{Triangles}, wird es bereits im ersten Schritt auf 2'502 \e{Triangles} reduziert. Dies ist eine enorme Reduktion von ca. 96.5 \%. Im dritten Schritt wird die Anzahl \e{Triangles} wiederum um ca. 90 \% auf 251 reduziert. Schlussendlich hat das letzte Objekt noch 76 \e{Triangles}, was knapp 0.1 \% der ursprünglichen Anzahl entspricht.
 
 \subsection{Ansätze für \e{LOD} Artefakte}
 \label{chap:differentLodApproaches}
-Es gibt verschiedene Ansätze, 3D-Modelle mittels \e{LOD} zu vereinfachen. In diesem Abschnitt werden einige davon detaillierter erläutert so wie ihre Vor- und Nachteile aufgezeigt.
+Es gibt verschiedene Ansätze, 3D-Modelle mittels \e{LOD} zu vereinfachen. In diesem Abschnitt werden die verschiedenen Systeme detailliert erläutert, so wie ihre Vor- und Nachteile aufgezeigt.
 
 \paragraph{Diskrete LOD (DLOD)}
 Bei diskreten \e{LOD} werden für ein detailliertes Modell mehrere weniger detaillierte Modelle erstellt.
-Abhängig von der Distanz zum Betrachter wird das optimale Modell gewählt. Es sind hierfür nur minimale Anpassungen am \fgls{Scene Graph}{Datenstruktur, welche die räumliche Anordnung der Modelle einer 3D-Szenerie beschreibt} notwendig da ausschliesslich ganze Modelle ausgetauscht werden.
-Ein Nachteil sind jedoch merkbare harte Grenzen. Der Benutzer stellt beim umhergehen in der Szene fest, wenn das Modell mit einer einfacheren Version ausgetauscht wird.
-Dieses Verhalten wird als \e{Visual Popping} bezeichnet. Beim \e{Visual Popping} handelt sich um den Moment, in dem die Artefakte ausgetauscht wird und somit kurz aufblitzt. Je subtiler die Änderungen an den Artefakten und je grösser die Distanz zur Kamera ist, desto weniger ist das Austauschen bemerkbar.
-Es ist zudem häufig nicht möglich grössere Modelle sinnvoll zu vereinfachen. Grosse Modelle zeichnen sich dadurch aus, dass Teile davon nah sind, während andere Teile fern sind. Die nahen Teile des Modells sollten detailliert angezeigt werden, wohingegen die entfernten Elemente vereinfacht dargestellt werden sollen. So ist der Ansatz zum Beispiel für Terrain ungeeignet. Ähnlicher Weise ist es auch nicht möglich, viele sehr kleine Modelle zu kombinieren, da jedes Modell unabhängig ist. Das Kombinieren von mehreren Modellen wird \e{Clustering} genannt.
+Abhängig von der Distanz zum Betrachter wird das optimale Modell gewählt. Es sind hierfür nur minimale Anpassungen am \fgls{Scene Graph}{Datenstruktur, welche die räumliche Anordnung der Modelle einer 3D-Szenerie beschreibt} notwendig, da ausschliesslich ganze Modelle ausgetauscht werden.
+Ein Nachteil sind jedoch merkbare harte Grenzen. Der Benutzer stellt beim Umhergehen in der Szene fest, wenn das Modell mit einer einfacheren Version ausgetauscht wird.
+Dieses Verhalten wird \e{Visual Popping} genannt. \e{Visual Pop} bezeichnet das merkbare Austauschen zweier \e{LOD}-Artefakte. Je subtiler die Änderungen an den Artefakten und je grösser die Distanz zur Kamera ist, desto weniger ist das Austauschen bemerkbar.
+Es ist zudem häufig nicht möglich grössere Modelle sinnvoll zu vereinfachen. Grosse Modelle zeichnen sich dadurch aus, dass Teile davon nah sind, während andere Teile fern sind. Die nahen Teile des Modells sollten detailliert angezeigt werden, wohingegen die entfernten Elemente vereinfacht dargestellt werden sollen. So ist der Ansatz zum Beispiel für Terrain ungeeignet. Gleichermassen ist es auch nicht möglich, viele sehr kleine Modelle zu kombinieren, da jedes Modell unabhängig ist. Das Kombinieren von mehreren Modellen wird \e{Clustering} genannt.
 
 \paragraph{Kontinuierliche LOD (CLOD)}
-Bei kontinuierlichen \e{LOD}-Systemen, in Englisch \e{continuous}, werden Transformationen an einem Modell gespeichert.
+Bei kontinuierlichen \e{LOD}-Systemen werden Transformationen an einem Modell gespeichert.
 
 Der Hauptunterschied zu \e{DLOD} besteht in den weichen Grenzen, so ist es signifikant weniger auffällig da zwischen den verschiedenen Auflösungen interpoliert werden kann.
-Der Hauptnachteil ist jedoch, dass diese Interpolation insbesondere Auswirkungen auf die Laufzeitleistung der Applikation hat. Die verschiedenen Vereinfachungen können zwar vorgängig berechnet werden, das applizieren der Vereinfachungen und die damit verbundene Interpolation muss jedoch zur Laufzeit durchgeführt werden.
+Der Hauptnachteil ist jedoch, dass diese Interpolation insbesondere Auswirkungen auf die Laufzeitleistung der Applikation hat. Die verschiedenen Vereinfachungen können zwar vorgängig berechnet werden, das Applizieren der Vereinfachungen und die damit verbundene Interpolation muss jedoch zur Laufzeit durchgeführt werden.
 Das Problem des \e{Clusterings} ist auch für diese Variante nicht gelöst.
 
 \paragraph{Hierarchische LOD (HLOD)}
 Bei \e{HLOD} werden mehrere Objekte in einen \e{Cluster} gruppiert. Diese \e{Cluster} können mithilfe des \glspl{Scene Graph} definiert werden.
-Hierarchische Systeme erlauben es somit, zum Beispiel Terrains optimal abzubilden. So werden Ausschnitte, welche nahe beim Benutzer sind mit hoher Auflösung dargestellt während weiter entferntere Teile der Umgebung mit weniger Details ausgestattet sind.
+Hierarchische Systeme erlauben es somit, zum Beispiel Terrains optimal abzubilden. So werden Ausschnitte, welche nahe beim Benutzer sind mit hoher Auflösung dargestellt, während weiter entfernte Teile der Umgebung mit weniger Details ausgestattet sind.
 Zudem ist es möglich viele kleinere Objekte bei entsprechenden Distanzen zu kombinieren.
 Der Hauptnachteil liegt darin, dass hierfür signifikante Anpassungen am \gls{Scene Graph} notwendig sind und für den Entwickler ein spürbarer Unterschied entstehen kann.
+
+\pagebreak
 
 \subsection{Vergleich Algorithmen}
 \label{chap:lodAlgorithmComparison}
@@ -395,19 +405,21 @@ Für mehr Informationen zu weiteren Ansätzen, siehe \e{Quadric-Based Polygonal 
 
 \paragraph{Vertex Dezimierung}
 Algorithmen dieser Kategorie entfernen jeweils einen Vertex und triangulieren das entstehende Loch neu.
-Eine weitere Möglichkeit ist das \e{Vertex Clustering}, hierbei wird ein Modell in verschiedene Gitterzellen aufgeteilt. Die Punkte innerhalb einer Gitterzelle werden dann in einen einzigen Punkt zusammengelegt. Die visuelle Annäherung dieser Algorithmen bei drastischen Vereinfachungen stellt jedoch häufig ein Problem dar für polygonale Modelle. Sogenannte \e{Point Cloud} können mit solchen Algorithmen schnell vereinfacht werden.
+Eine weitere Möglichkeit ist das \e{Vertex Clustering}, hierbei wird ein Modell in verschiedene Gitterzellen aufgeteilt. Die \e{Vertices} innerhalb einer Gitterzelle werden dann in einen einzigen \e{Vertex} zusammengelegt. Die Qualität der visuellen Annäherung dieser Algorithmen stellt bei drastischen Vereinfachungen von polygonalen Modellen jedoch häufig ein Problem dar. Sogenannte \e{Point Clouds} können mit solchen Algorithmen schnell vereinfacht werden.
 \e{Point Clouds} sind \e{Vertices} im dreidimensionalen Raum ohne zugehörige \e{Triangle}, also ohne Fläche (in Abbildung \ref{fig:pointCloudTorus} exemplarisch zu sehen). Diese Daten können das Resultat eines 3D-Scanners sein.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\columnwidth]{grundlagen/point-cloud-torus.png}
-  \caption{Beispiel eines Torus visualisiert als \e{Point-Cloud} \cite{pointCloudTorus}}
+  \includegraphics[width=0.5\columnwidth]{grundlagen/point-cloud-torus.png}
+  \caption{Beispiel eines Torus visualisiert als \e{Point Cloud} \cite{pointCloudTorus}}
   \label{fig:pointCloudTorus}
 \end{figure}
 
+\pagebreak
+
 \paragraph{Edge Collapse}
 Hierbei werden iterativ \e{Edges} entfernt und die beiden \e{Vertices} zu einem Punkt zusammengelegt.
-Die verschiedenen Algorithmen unterscheiden sich primär in der Selektion der \e{Edges}. Grundsätzlich wird hierfür eine Heuristik verwendet um den Fehler quantifizieren zu können. Anschliessend werden iterativ die \e{Edges} entfernt, welche zu einem minimalen Fehler führen. Beim Zusammenführen von \e{Edges} sind abhängig vom gewählten \e{LOD}-System unterschiedliche Strategien gefordert. Bei diskreten \e{LOD}-Systemen soll nach dem Zusammenführen ein optimaler neuer Punkt gefunden werden, bei kontinuierlichen \e{LOD}-Systemen wird häufig einer der beiden Punkte gewählt um Speicherplatz einsparen zu können.
+Die verschiedenen Algorithmen unterscheiden sich primär in der Selektion der \e{Edges}. Grundsätzlich wird hierfür eine Heuristik verwendet um den Fehler quantifizieren zu können. Anschliessend werden iterativ die \e{Edges} entfernt, welche zu einem minimalen Fehler führen. Beim Zusammenführen von \e{Edges} sind abhängig vom gewählten \e{LOD}-System unterschiedliche Strategien gefordert. Bei diskreten \e{LOD}-Systemen soll nach dem Zusammenführen ein optimaler neuer Punkt gefunden werden, bei kontinuierlichen \e{LOD}-Systemen wird häufig ein \e{Halfedge Collapse} durchgeführt um Speicherplatz einsparen zu können.
 
 \paragraph{Triangle Collapse}
 Bei dieser Variante werden jeweils ganze Flächen entfernt und die umliegenden \e{Triangles} zusammengelegt. Eine Möglichkeit ist der von Hamann definierte Algorithmus zur Vereinfachung von triangulierten Flächen \cite{triangleCollapseAlgorithm}. Dabei wird die Krümmung eines \e{Triangles} definiert und iterativ derjenige \e{Triangle} mit der geringsten Krümmung entfernt. An die Stelle der drei \e{Vertices} tritt ein neuer \e{Vertex} und die umliegenden Flächen werden neu trianguliert.

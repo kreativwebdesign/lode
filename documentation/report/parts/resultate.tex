@@ -6,7 +6,7 @@
 % !TEX TS-program = pdflatexmk
 % !TEX encoding = UTF-8 Unicode
 % !TEX root = ../doc.tex
-Das Resultat besteht wie beschrieben aus verschiedenen Artefakten. In diesem Abschnitt wird konkret auf die Resultate der verschiedenen Schritte eingegangen und der Zusammenhang hergestellt.
+Das Resultat besteht aus unterschiedlichen, jedoch zusammenhängenden Artefakten. In diesem Abschnitt wird konkret auf die Resultate der verschiedenen Schritte eingegangen und der Zusammenhang hergestellt.
 
 \section{LOD-Toolset}
 
@@ -15,7 +15,7 @@ Der Kern der Arbeit stellt das \e{LOD}-Toolset, \e{lode} genannt, dar. Dieses To
 \subsection{Aktueller Workflow}
 
 Es gibt verschiedene, manuelle Möglichkeiten, \e{LOD}-Artefakte in Web-Applikationen zu integrieren. Ein möglicher Ablauf für das Generieren von \e{LOD}-Artefakten ist wie folgt:
-Für ein gegebenes Modell werden innerhalb vom Modellierungstool, wie zum Beispiel Blender, bestimmte \e{LOD}-Stufen manuell generiert. Dies kann von Hand selber gemacht werden oder mit vom Modellierungstool zur Verfügung gestellten Funktionen. In Abbildung \ref{fig:manualLodGenerationInBlender} wurden basierend auf dem Original \ref{fig:manualLodGenerationInBlenderOriginal} zwei weitere \e{LOD}-Artefakte mittels dem \e{Decimate Modifier} erstellt. Wie in Abbildung \ref{fig:manualLodGenerationInBlenderSimplified} zu erkennen ist, bleibt hier die Texturinformation beibehalten. Dies kann gewünscht sein, führt aber auch zu grösseren Dateigrössen, was im Web möglichst vermieden werden sollte.
+Für ein gegebenes Modell werden innerhalb vom Modellierungstool, wie zum Beispiel Blender, bestimmte \e{LOD}-Stufen manuell generiert. Dies kann von Hand selber gemacht werden oder mit vom Modellierungstool zur Verfügung gestellten Funktionen. In Abbildung \ref{fig:manualLodGenerationInBlender} wurde basierend auf dem Original \ref{fig:manualLodGenerationInBlenderOriginal} ein weiteres \e{LOD}-Artefakt mittels dem \e{Decimate Modifier} erstellt. Wie in Abbildung \ref{fig:manualLodGenerationInBlenderSimplified} zu erkennen ist, bleibt hier die Texturinformation beibehalten. Dies kann gewünscht sein, führt aber auch zu grösseren Dateigrössen, was im Web möglichst vermieden werden sollte.
 
 \begin{figure}[H]
   \centering
@@ -40,23 +40,24 @@ Anschliessend werden die verschiedenen Stufen exportiert und manuell in die Appl
 Diese Artefakte müssen nun im Code einzeln geladen und in die Szenerie integriert werden. Wie in Codeausschnitt \ref{code:threejsManualLodUsage} im Beispiel von \e{Three.js} zu sehen ist, muss jedes Level manuell geladen und konfiguriert werden.
 \begin{figure}[H]
   \begin{lstlisting}[style=JavaScript]
-  import * as Three from "three";
+import * as THREE from "three";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
-  const loader = new Three.GLTFLoader();
-  const lod = new THREE.LOD();
-  const scene = new THREE.Scene();
+const loader = new GLTFLoader();
+const lod = new THREE.LOD();
+const scene = new THREE.Scene();
 
-  loader.load('path/to/duck-original.gltf', (artifact) => {
-    lod.addLevel(artifact.scene, 0);
-  });
-  loader.load('path/to/duck-lod1.gltf', (artifact) => {
-    lod.addLevel(artifact.scene, 150);
-  });
-  loader.load('path/to/duck-lod1.gltf', (artifact) => {
-    lod.addLevel(artifact.scene, 300);
-  });
+loader.load('path/to/duck-original.gltf', (artifact) => {
+  lod.addLevel(artifact.scene, 0);
+});
+loader.load('path/to/duck-lod1.gltf', (artifact) => {
+  lod.addLevel(artifact.scene, 150);
+});
+loader.load('path/to/duck-lod2.gltf', (artifact) => {
+  lod.addLevel(artifact.scene, 300);
+});
 
-  scene.add(lod)
+scene.add(lod)
   \end{lstlisting}
   \caption{Beispielcode zur manuellen Integration der \e{LOD}-Artefakte in \e{Three.js}}
   \label{code:threejsManualLodUsage}
@@ -89,28 +90,28 @@ Die verschiedenen Teile sind in Abbildung \ref{fig:lodePackages} ersichtlich. Da
   \label{fig:lodePackages}
 \end{figure}
 
-\subsection{lode Ablauf}
+\subsection{Ablauf von lode}
 
 Der Ablauf der \e{lode}-Pipeline kann in drei Schritte unterteilt werden.
 
 \paragraph{Setup und Konfiguration}
-3D-Modelle werden erstellt und als glTF-Dateien innerhalb des Projekts gespeichert. Eine zu den Modellen gehörige Konfigurationsdatei (Abbildung \ref{fig:lodeConfigFile}) kann mittels \gls{CLI}, welches auf \e{NPM} verfügbar ist, angelegt werden (wie in Abbildung \ref{fig:lodecliconfig} dargestellt).
+3D-Modelle werden erstellt und als \e{glTF} Dateien innerhalb des Projekts gespeichert. Eine zu den Modellen gehörige Konfigurationsdatei (siehe Abbildung \ref{fig:lodeConfigFile}) kann mittels \gls{CLI}, welches auf \e{NPM} verfügbar ist, angelegt werden (siehe Abbildung \ref{fig:lodecliconfig}).
 
 \begin{figure}[H]
-  \begin{lstlisting}
+  \begin{lstlisting}[style=json]
+{
+  "levels": [
     {
-      "levels": [
-        {
-          "threshold": 300
-        },
-        {
-          "threshold": -1,
-          "configuration": {
-            "targetScale": 0.0625
-          }
-        }
-      ]
+      "threshold": 300
+    },
+    {
+      "threshold": -1,
+      "configuration": {
+        "targetScale": 0.0625
+      }
     }
+  ]
+}
   \end{lstlisting}
 \caption{Durch das CLI generierte Konfigurationsdatei}
 \label{fig:lodeConfigFile}
@@ -118,22 +119,22 @@ Der Ablauf der \e{lode}-Pipeline kann in drei Schritte unterteilt werden.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\columnwidth]{resultate/screenshotlodecliconfig.png}
-  \caption{\e{lode CLI} config – Konfiguriert die gewünschten \e{LOD}-Artefakten}
+  \includegraphics[width=0.9\columnwidth]{resultate/screenshotlodecliconfig.png}
+  \caption{\e{lode CLI} config – Konfiguriert die gewünschten \e{LOD}-Artefakte}
   \label{fig:lodecliconfig}
 \end{figure}
 
 \paragraph{Erstellen der Artefakte}
-Danach generiert \e{lode} die in der Konfigurationsdatei beschriebenen \e{LOD}-Artefakte (in Abbildung \ref{fig:lodeclirun} ersichtlich). Wenn sich ein Modell oder eine Konfiguration ändert, werden die notwendigen Schritte automatisch erneut durchgeführt. So ist es möglich, schnell Anpassungen vorzunehmen und die Änderungen im Projekt ohne zusätzliche manuelle Arbeit zu sehen.
+Danach generiert \e{lode} die in der Konfigurationsdatei beschriebenen \e{LOD}-Artefakte (siehe Abbildung \ref{fig:lodeclirun}). Wenn sich ein Modell oder eine Konfiguration ändert, werden die notwendigen Schritte automatisch erneut durchgeführt. So ist es möglich, schnell Anpassungen vorzunehmen und die Änderungen im Projekt ohne zusätzliche manuelle Arbeit zu sehen.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\columnwidth]{resultate/screenshotlodeclirun.png}
+  \includegraphics[width=0.9\columnwidth]{resultate/screenshotlodeclirun.png}
   \caption{\e{lode CLI} run – Generiert die gewünschten \e{LOD}-Artefakte}
   \label{fig:lodeclirun}
 \end{figure}
 
-Das zugehörige \e{lode-ui} (in Abbildung \ref{fig:lodeui} gezeigt) bietet zudem die Möglichkeit, die verschiedenen Detailstufen miteinander zu vergleichen und die Konfiguration möglichst einfach zu justieren. Dies ermöglicht es, die Änderungen in Echtzeit zu sehen und die Distanzen, bei welchen Level aktiviert werden, einzustellen. Das manuelle wechseln zwischen Applikationen ist somit nicht notwendig.
+Das zugehörige \e{lode-ui} (siehe Abbildung \ref{fig:lodeui}) bietet zudem die Möglichkeit, die verschiedenen Detailstufen miteinander zu vergleichen und die Konfiguration möglichst einfach zu justieren. Dies ermöglicht es, die Änderungen in Echtzeit zu sehen und die Distanzen, bei welchen Level aktiviert werden, einzustellen. Das manuelle Wechseln zwischen Applikationen ist somit nicht notwendig.
 Um den Einsatz von \e{lode-ui} zu vereinfachen, wird das Paket direkt mit \e{lode-cli} zur Verfügung gestellt, es ist keine manuelle Installation des Pakets notwendig.
 
 \begin{figure}[H]
@@ -179,7 +180,7 @@ Die mathematischen Grundlagen konnten dabei teilweise basierend auf der Referenz
 
 \subsection{Artefakte}
 
-Die generierten Artefakte sind unabhängig voneinander. So ist es nicht notwendig alle Artefakte zu jeder Zeit zu laden. Dies hat den primären Vorteil, dass es möglich ist, progressives Laden als Erweiterung zuzulassen. Progressives laden bedeutet, dass zuerst die \e{LOD}-Artefakte mit den wenigsten Details geladen werden und angezeigt werden bis die detaillierteren Level visualisiert werden.
+Die generierten Artefakte sind unabhängig voneinander. So ist es nicht notwendig alle Artefakte zu jeder Zeit zu laden. Dies hat den primären Vorteil, dass es möglich ist, progressives Laden als Erweiterung zuzulassen. Progressives Laden bedeutet, dass zuerst die \e{LOD}-Artefakte mit den wenigsten Details geladen werden und angezeigt werden bis die detaillierteren Level visualisiert werden.
 Es ist sogar möglich, auf gewissen Geräten die detaillierten Level überhaupt nicht zu laden und so zum Beispiel Bandbreite zu sparen.
 
 \subsection{Fehlermetrik}
@@ -197,12 +198,12 @@ Speichertechnisch ist es so nicht notwendig eine Textur zu verwenden, die Inform
   \centering
   \begin{subfigure}{.4\textwidth}
     \centering
-    \includegraphics[width=.8\linewidth]{resultate/lod-original-texture.png}
+    \includegraphics[width=.6\linewidth]{resultate/lod-original-texture.png}
     \caption{Original Textur}
   \end{subfigure}
   \begin{subfigure}{.4\textwidth}
     \centering
-    \includegraphics[width=.8\linewidth]{resultate/lod-simplified-texture.png}
+    \includegraphics[width=.6\linewidth]{resultate/lod-simplified-texture.png}
     \caption{Vereinfachte Textur}
   \end{subfigure}
   \caption{Vergleich der Texturen}
@@ -219,19 +220,19 @@ In Abbildung \ref{fig:lodComparison} ist eine solche Vereinfachung neben dem zug
   \centering
   \begin{subfigure}{.4\textwidth}
     \centering
-    \includegraphics[width=.8\linewidth]{resultate/lod-original.png}
+    \includegraphics[width=.6\linewidth]{resultate/lod-original.png}
     \caption{Originalmodell}
   \end{subfigure}
   \begin{subfigure}{.4\textwidth}
     \centering
-    \includegraphics[width=.8\linewidth]{resultate/lod-simplified.png}
+    \includegraphics[width=.6\linewidth]{resultate/lod-simplified.png}
     \caption{vereinfachtes Modell}
   \end{subfigure}
   \caption{Vergleich von Originalmodell mit vereinfachtem Modell}
   \label{fig:lodComparison}
 \end{figure}
 
-Bei einer Nahbetrachtung der Modelle sind die Unterschiede klar ersichtlich. Bei einer gewissen Distanz sind die Differenzen der beiden Modelle unauffälliger. In Abbildung \ref{fig:lodComparisonDistance} werden dieselben Modelle auf eine Distanz von 72 (m) dargestellt. Das \e{m} ist dabei in Klammern gesetzt, da es sich um keine reale Einheit, sondern um eine künstliche Einheit handelt. Die Standardeinstellung für die maximale Distanz des Kamera Frustum liegt bei Babylon.js zum Beispiel bei 10'000 (m) \cite{babylonMaxZ}. Auf diese Distanz kann der orange Schnabel beim Originalmodell noch knapp erkannt werden – andere Details sind auf diese Distanz jedoch nicht ersichtlich.
+Bei einer Nahbetrachtung der Modelle sind die Unterschiede klar ersichtlich. Bei einer gewissen Distanz sind die Differenzen der beiden Modelle unauffälliger. In Abbildung \ref{fig:lodComparisonDistance} werden dieselben Modelle auf eine Distanz von 72 (m) dargestellt. Das \e{m} ist dabei in Klammern gesetzt, da es sich um keine reale Einheit, sondern um eine künstliche Einheit handelt. Die Standardeinstellung für die maximale Distanz des Kamera \e{Frustum} liegt bei Babylon.js zum Beispiel bei 10'000 (m) \cite{babylonMaxZ}. Auf diese Distanz kann der orange Schnabel beim Originalmodell noch knapp erkannt werden – andere Details sind auf diese Distanz jedoch nicht ersichtlich.
 
 \begin{figure}[H]
   \centering
@@ -268,7 +269,9 @@ const mesh = newDoc.createMesh("mesh");
   \label{code:gltfTransform}
 \end{figure}
 
-Anschliessend werden die neuen Informationen in \e{Buffer} gespeichert. Als Beispiel hierzu die Generierung des \e{Vertexbuffers} in \ref{code:bufferCreation}. Ein \e{Mesh} kann mehrere \e{Primitives} beinhalten. Ein \e{Primitive} definiert einen Teil des Modells, dies beinhaltet unter anderem \e{Vertices} und \e{Materialinformationen}. Die Variable \e{primitiveIndex} speichert den Index des aktuellen \e{Primitives}. In der Variable \e{verticesAsFloat} werden die neuen \e{Vertices} als \e{Float32Array} abgespeichert.
+\pagebreak
+
+Anschliessend werden die neuen Informationen in \e{Buffer} gespeichert. Als Beispiel hierzu ist die Generierung des \e{Vertexbuffers} in Abbildung \ref{code:bufferCreation} ersichtlich. Ein \e{Mesh} kann mehrere \e{Primitives} beinhalten. Ein \e{Primitive} definiert einen Teil des Modells, dies beinhaltet unter anderem \e{Vertices} und \e{Material}-Informationen. Die Variable \e{primitiveIndex} speichert den Index des aktuellen \e{Primitives}. In der Variable \e{verticesAsFloat} werden die neuen \e{Vertices} als \e{Float32Array} gespeichert.
 
 \begin{figure}[H]
   \begin{lstlisting}[style=JavaScript]
@@ -290,21 +293,19 @@ newPrimitive.setAttribute("POSITION", positionAccessor);
 
 \subsection{Iterativer Ansatz}
 
-Wie in der Referenzimplementation wird auf einen \e{Threshold} (zu Deutsch Schwelle) gesetzt. Der \e{Threshold} ist ein Wert, welcher bestimmt, welche Fehlertoleranz gelten soll. Umso tiefer der \e{Threshold}, desto mehr \e{Edge Collapses} werden durchgeführt. Der \e{Threshold} wird kontinuierlich erhöht, so werden immer weitere \e{Triangles} entfernt. Der gewählte \e{Threshold} basiert direkt auf der Referenzimplementation \cite{fastQuadricMeshSimplification}. Ein Ausschnitt aus dem Quellcode ist in \ref{code:thresholdIteration} ersichtlich. Gewisse Teile wurden für die Übersicht entfernt. Die Variable \e{Triangles} beinhaltet alle \e{Triangles} eines \e{Primtives}. In gewissen Fällen ist es möglich, dass eine ausreichende Vereinfachung nicht in absehbarer Zeit generiert werden kann. Dies ist abhängig von den \e{maxIterations}.
+Wie in der Referenzimplementation wird auf einen \e{Threshold} (Schwelle) gesetzt. Der \e{Threshold} ist ein Wert, welcher bestimmt, welche Fehlertoleranz gelten soll. Umso tiefer der \e{Threshold}, desto mehr \e{Edge Collapses} werden durchgeführt. Der \e{Threshold} wird kontinuierlich erhöht, so werden immer weitere \e{Triangles} entfernt. Der gewählte \e{Threshold} basiert direkt auf der Referenzimplementation \cite{fastQuadricMeshSimplification}. Ein Ausschnitt aus dem Quellcode ist in Abbildung \ref{code:thresholdIteration} ersichtlich. Gewisse Teile wurden für die Übersicht entfernt. Die Variable \e{triangles} beinhaltet alle \e{Triangles} eines \e{Primitives}. Jeder \e{Triangle} speichert die tiefste Fehlermetrik der drei zugehörigen \e{Vertices} in \e{error[3]}. Die Positionen $0$, $1$ und $2$ entsprechen dabei den drei \e{Vertices}. Weist ein \e{Triangle} einen Fehlerwert, welcher tiefer ist als der \e{Threshold}, so wird ein \e{Edge Collapse} oder \e{Halfedge Collapse} in Betracht gezogen. In gewissen Fällen ist es möglich, dass eine ausreichende Vereinfachung nicht in absehbarer Zeit generiert werden kann. Dies ist abhängig von den \e{maxIterations}. Ein weiterer Faktor ist die Aggressivität, welche auf einen passenden Wert eingestellt wurde. Eine geeignete Berechnung des \e{Thresholds} hängt direkt mit der Normalisierung der Modellskalierung zusammen.
 
 \begin{figure}[H]
   \begin{lstlisting}[style=JavaScript]
 for (let iteration = 0; iteration < maxIterations; iteration++) {
-  // check if targetTriangles are reached
   if (initialTriangleCount - deletedTriangles <= targetTriangles) {
-    break;
+    break; // check if targetTriangles are reached
   }
 
   const threshold = 0.000000001 * Math.pow(iteration + 3, aggressiveness);
   triangles.forEach((triangle) => {
     if (triangle.error[3] > threshold) return;
     // proceed with edge collapse operation
-    // ...
   });
 }
   \end{lstlisting}
@@ -321,20 +322,18 @@ Bei der Durchführung einer \e{Edge Collapse} Operation muss ein neuer \e{Vertex
 
 Das Ziel des Benchmarks ist der Vergleich einer Version ohne Einsatz von \e{LOD} und einer Umgebung, welche \e{LOD}s einsetzt. Um eine möglichst praxisnahe Aussage treffen zu können, wird hierfür eine Demo-Szenerie verwendet, welche einer echten Anwendung so nah wie möglich kommt. Somit wird gewährleistet, dass es nicht nur in der Theorie einen Nutzen für \e{LOD}s gibt, sondern dieser in der Praxis vorhanden ist.
 
-\subsection{Browser Umgebung}
-Um den Umfang des Benchmarks überschaubar zu halten, wurde ausschliesslich ein Benchmark für Google Chrome entwickelt.
-Google Chrome basiert auf \fgls{Chromium}{\e{Open Source} Browser-Projekt, welches von Google entwickelt wird. Andere Browser basieren ebenfalls auf der Code-Basis von Chromium}, dieselbe Engine, welche auch Microsoft Edge oder Opera verwenden.
-Einen Benchmark basierend auf Google Chrome liefert somit auch Indizien für diese beiden Browser, auch wenn gewisse Abweichungen möglich sind.
-Neben dem Marktführer Chrome sind Mozilla Firefox oder Safari von Apple ebenfalls Optionen. Jedoch wurde primär aufgrund des Marktanteils von total rund 70 \% \cite{browserUsage} zugunsten von Google Chrome entschieden.
+\subsection{Browser-Umgebung}
+Um den Umfang des Benchmarks überschaubar zu halten, wurde ausschliesslich ein Benchmark für \e{Google Chrome} entwickelt.
+\e{Google Chrome} basiert auf \fgls{Chromium}{\e{Open Source} Browser-Projekt, welches von \e{Google} entwickelt wird. Andere Browser basieren ebenfalls auf der Code-Basis von \e{Chromium}}, dieselbe Engine, welche auch \e{Microsoft Edge} oder \e{Opera} verwenden.
+Einen Benchmark basierend auf \e{Google Chrome} liefert somit auch Indizien für diese beiden Browser, auch wenn gewisse Abweichungen möglich sind.
+Neben dem Marktführer \e{Google Chrome} sind \e{Mozilla Firefox} oder \e{Safari} von \e{Apple} ebenfalls Optionen. Jedoch wurde primär aufgrund des Marktanteils von total rund 70 \% \cite{browserUsage} zugunsten von \e{Google Chrome} entschieden.
 Die getroffenen Aussagen bezüglich Laufzeitverhalten behalten ihre Gültigkeit auch für andere Browser.
 
 \paragraph{Automation}
-Um die Tests durchzuführen, wird ein Testautomationstool benötigt; unter anderem der Einsatz von Selenium wurde in Erwägung gezogen.
-Der Vorteil von Selenium ist insbesondere, dass der Benchmark für weitere Browser ausgeweitet werden könnte.
-Da jedoch das Analysieren der \gls{GPU} Daten stark vom System abhängig ist und dafür zusätzliche Komplexität notwendig wäre, wird in diesem Benchmark die im Google Chrome integrierten \e{Chrome DevTools} eingesetzt.
-Selenium bietet zurzeit eine suboptimale Integration für das \e{Chrome DevTools Protocol}.
-Um mögliche Diskrepanzen zwischen Systemen möglichst gering zu halten, wurde jedoch entschieden, auf die bewährte Lösung von Google Chrome zu setzen.
-\fgls{Puppeteer}{Node.js Library, die eine API anbietet zum Steuern von \gls{Chromium} oder Chrome über das \e{Chrome DevTools Protocol}}, eine weitere Option für die Automation, ist eine Bibliothek, die eine vereinfachte Schnittstelle zu einer Chromium Instanz bietet.
+Um die Tests durchzuführen, wird ein Testautomationstool benötigt; unter anderem wurde der Einsatz von \e{Selenium} in Erwägung gezogen.
+Der Vorteil von \e{Selenium} ist insbesondere, dass der Benchmark für weitere Browser ausgeweitet werden könnte.
+Da jedoch das Analysieren der \gls{GPU} Daten stark vom System abhängig ist und dafür zusätzliche Komplexität notwendig wäre, wird in diesem Benchmark die im \e{Google Chrome} integrierten \e{Chrome DevTools} eingesetzt. Um allfällige Diskrepanzen zwischen Systemen möglichst gering zu halten, wurde entschieden, auf die bewährte Lösung von \e{Google Chrome} zu setzen.
+\e{Selenium} bietet zurzeit eine suboptimale Integration für das \e{Chrome DevTools Protocol}. \fgls{Puppeteer}{\e{Node.js} Bibliothek, die eine API anbietet zum Steuern von \gls{Chromium} oder \e{Google Chrome} über das \e{Chrome DevTools Protocol}}, eine weitere Option für die Automation, ist eine Bibliothek, die eine vereinfachte Schnittstelle zu einer \gls{Chromium} Instanz bietet.
 Sie wird zudem direkt von Google entwickelt und bietet somit eine stabile Grundlage zur Kommunikation mit den \e{Chrome DevTools}.
 
 \paragraph{Profiling}
@@ -372,9 +371,9 @@ Der Test erfasst die in Tabelle \ref{table:benchmarkFigures} aufgeführten Kennz
   \hline
   Anzahl \e{Render Loop} Iterationen & Wie oft wurde ein neues Bild gezeichnet. Umso höher die Zahl, desto mehr verschiedene Frames konnten gerendert werden. \\
   \hline
-  Totale \gls{GPU} Zeit & Die totale Zeit, welche die GPU für Berechungen benötigt. \\
+  Totale \gls{GPU}-Zeit & Die totale Zeit, welche die GPU für Berechnungen benötigt. \\
   \hline
-  Anzahl \gls{GPU} Events & Anzahl der Events an die \gls{GPU}. Dieser Wert soll lediglich dazu dienen um die gemessenen \gls{FPS} und die Anzahl \e{Render Loop} Iterationen besser einschätzen zu können. Eine höhere Anzahl an \gls{GPU} Events steht innerhalb der Demoszenerie im Zusammenhang mit mehr \e{Render Loop} Iterationen. \\
+  Anzahl \gls{GPU}-Events & Anzahl der Events an die \gls{GPU}. Dieser Wert soll lediglich dazu dienen um die gemessenen \gls{FPS} und die Anzahl \e{Render Loop} Iterationen besser einschätzen zu können. Eine höhere Anzahl an \gls{GPU}-Events steht innerhalb der Demoszenerie im Zusammenhang mit mehr \e{Render Loop} Iterationen. \\
   \hline
   \end{tabular}
   \caption{Kennzahlen für Benchmark}
@@ -383,21 +382,23 @@ Der Test erfasst die in Tabelle \ref{table:benchmarkFigures} aufgeführten Kennz
 
 \paragraph{Aufbau Testapplikation}
 \label{chap:testApplication}
-Die Testapplikation stellt eine komplexe Szenerie dar. Der Betrachter fliegt während dem Ablauf kontinuierlich über die Szenerie. Dies stellt die optimalen Bedingungen für den Einsatz von \e{LOD}-Artefakten dar. Abhängig von einem URL-Parameter wird entschieden ob \e{LOD}-Artefakte verwendet werden sollen oder nicht. Die Anwendung wurde mit Three.js implementiert. Bei der unoptimierten Version wird direkt das Originalmodell verwendet. Bei der optimierten Version werden mithilfe der \e{LOD}-Hilfsklasse die verschiedenen Artefakte geladen \cite{threeLODClass}.
+Die Testapplikation stellt eine komplexe Szenerie dar. Der Betrachter fliegt während dem Ablauf kontinuierlich über die Szenerie. Dies stellt die optimalen Bedingungen für den Einsatz von \e{LOD}-Artefakten dar. Abhängig von einem \e{URL}-Parameter wird entschieden ob \e{LOD}-Artefakte verwendet werden sollen oder nicht. Die Anwendung wurde mit \e{Three.js} implementiert. Bei der unoptimierten Version wird direkt das Originalmodell verwendet. Bei der optimierten Version werden mithilfe der \e{LOD}-Hilfsklasse die verschiedenen Artefakte geladen \cite{threeLODClass}.
 
-In Abbildung \ref{fig:demoApplication} ist ein Screenshot der Testapplikation ersichtlich. Als Basis für die Applikation wurde Three.js eingesetzt. Die Kamera wird kontinuierlich innerhalb der Szene bewegt, die Position wird abhängig von der Systemzeit definiert. So ist es möglich, dass beide Applikationen – unabhängig von den \gls{FPS} – jeweils die gleichen Aspekte innerhalb der Applikation visualisieren. Die Modelle werden zudem bei jedem Durchlauf identisch positioniert. Dies gewährleistet, dass das Laufzeitverhalten verlässlich ist.
+In Abbildung \ref{fig:demoApplication} ist ein Screenshot der Testapplikation ersichtlich. Die Kamera wird kontinuierlich innerhalb der Szene bewegt, die Position wird abhängig von der Systemzeit definiert. So ist es möglich, dass beide Applikationen – unabhängig von den \gls{FPS} – jeweils die gleichen Aspekte innerhalb der Applikation visualisieren. Die Modelle werden zudem bei jedem Durchlauf identisch positioniert. Dies gewährleistet, dass das Laufzeitverhalten verlässlich ist.
 
-Jedes Modell wird dabei mehrfach angezeigt, die Modelle werden einmal geladen und anschliessend mittels der \e{clone} Methode von Three.js geklont \cite{threeObject3DClone}. Dies stellt sicher, dass die Datenstruktur der Modelle nicht mehrfach in den Arbeitsspeicher geladen werden muss. Wichtig ist zu erwähnen, dass die Modelle bei dieser Methode mit mehreren \e{Draw Calls} gerendert werden. Der Einsatz von \e{InstancedMesh} wurde in Erwägung gezogen. Es zeigte jedoch keinen nennenswerte Vorteil, weder für die optimierte, noch für die unoptimierten Version \cite{threeInstancedMesh}.
+Jedes Modell wird dabei mehrfach angezeigt, die Modelle werden einmal geladen und anschliessend mittels der \e{clone} Methode von \e{Three.js} geklont \cite{threeObject3DClone}. Dies stellt sicher, dass die Datenstruktur der Modelle nicht mehrfach in den Arbeitsspeicher geladen werden muss. Wichtig ist zu erwähnen, dass die Modelle bei dieser Methode mit mehreren \e{Draw Calls} gerendert werden. Der Einsatz von \e{InstancedMesh} wurde in Erwägung gezogen. Es zeigte jedoch keinen nennenswerten Vorteil, weder für die optimierte, noch für die unoptimierte Version \cite{threeInstancedMesh}.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\columnwidth]{resultate/screenshotdemoapplication.jpg}
-  \caption{Testapplikation}
+  \caption{Testapplikation mit einer Vielzahl an Modellen, welche von verschiedenen Quellen frei zur Verfügung gestellt wurden.}
   \label{fig:demoApplication}
 \end{figure}
 
 \paragraph{Testumgebung}
 Um während den Tests möglichst faire Bedingungen zu gewährleisten, wird die Maschine zuvor wie bei anderen Benchmarks vorbereitet. Ziel ist es, Seiteneffekte zu minimieren. Für diesen Benchmark wurden deshalb die Instruktionen von \e{Tracer Bench} zur Behebung von Rauschen befolgt \cite{tracerBenchNoiseMitigation}. Die beiden Versionen werden jeweils abwechslungsweise ausgeführt, so wird sichergestellt, dass keine der beiden Varianten einen starken Nachteil durch Nebeneffekte erleidet. Ausserdem werden mehrere Durchläufe direkt nacheinander ausgeführt. Starke Abweichungen zwischen den Durchläufen würden bei der Analyse der Daten auffallen.
+
+\pagebreak
 
 \paragraph{Analyse der Daten}
 Für jeden Durchlauf wird der Median der \gls{FPS} Daten berechnet.
@@ -413,8 +414,8 @@ Die Signifikanz wird mithilfe eines statistischen Konfidenzintervalls nachgewies
 
 Der Benchmark wurde auf verschiedenen Geräten ausgeführt. Im Folgenden sind zwei Durchläufe mit jeweils 10 Proben erfasst.
 
-Der erste Durchlauf wurde auf einem MacBook Pro mit einer dedizierten Grafikkarte durchgeführt. Wie in Abbildung \ref{fig:benchmarkFpsChartMarcbook} zu sehen, konnten die FPS auf 60 FPS gehoben werden im Vergleich zu den 48.2 FPS in der unoptimierten Version. Die Standardabweichung ist im Diagramm ebenfalls ersichtlich.
-Direkt damit verbunden ist die Anzahl \e{Render Loop} Iterationen, welche genauso um ca. 30 \% gesteigert werden konnte. Auf der Umkehrseite wurde die Dauer für das Laden der Modelle, gemessen in Millisekunden, etwas erhöht, da mehr Modelle geladen werden müssen (siehe \ref{fig:benchmarkDownloadChartMarcbook}). Diese wuchs aber nur um rund 10 \%. Zu beachten ist, dass die Modelle lediglich lokal geladen werden – über ein richtiges Netzwerk sind die Ladezeiten entsprechend länger.
+Der erste Durchlauf wurde auf einem \e{MacBook Pro} mit einer dedizierten Grafikkarte durchgeführt. Wie in Abbildung \ref{fig:benchmarkFpsChartMarcbook} zu sehen, konnten die \gls{FPS} auf 60 \gls{FPS} gehoben werden im Vergleich zu den 48.2 \gls{FPS} in der unoptimierten Version. Die Standardabweichung ist im Diagramm ebenfalls ersichtlich.
+Direkt damit verbunden ist die Anzahl \e{Render Loop} Iterationen, welche genauso um ca. 30 \% gesteigert werden konnte. Auf der Umkehrseite wurde die Dauer für das Laden der Modelle, gemessen in Millisekunden, etwas erhöht, da mehr Modelle geladen werden müssen (siehe Abbildung \ref{fig:benchmarkDownloadChartMarcbook}). Diese wuchs aber nur um rund 10 \%. Zu beachten ist, dass die Modelle lediglich lokal geladen werden – über ein richtiges Netzwerk sind die Ladezeiten entsprechend länger.
 
 Die detaillierten Informationen befinden sich in Anhang \ref{fig:marcbookBenchmarkRun}.
 
@@ -423,7 +424,7 @@ Die detaillierten Informationen befinden sich in Anhang \ref{fig:marcbookBenchma
   \begin{subfigure}{.49\textwidth}
     \centering
     \includegraphics[width=0.9\linewidth]{resultate/marcbook/fpsChart.jpg}
-    \caption{FPS Vergleich}
+    \caption{\gls{FPS} Vergleich}
     \label{fig:benchmarkFpsChartMarcbook}
   \end{subfigure}
   \begin{subfigure}{.49\textwidth}
@@ -432,11 +433,11 @@ Die detaillierten Informationen befinden sich in Anhang \ref{fig:marcbookBenchma
     \caption{Download Vergleich}
     \label{fig:benchmarkDownloadChartMarcbook}
   \end{subfigure}
-  \caption{Vergleich Kennzahlen}
+  \caption{Vergleich Kennzahlen auf Gerät mit dedizierter Grafikkarte}
   \label{fig:benchmarkChartMarcbook}
 \end{figure}
 
-Auch der zweite Durchlauf auf einem Dell-Gerät mit integrierter \gls{GPU} führt zu ähnlichen Daten. Auffallend in \ref{fig:benchmarkFpsChartWindows} ist der Unterschied der \gls{FPS}. Die Unterschiede der Downloadzeit (siehe \ref{fig:benchmarkDownloadChartWindows}) sind vergleichbar mit denjenigen vom ersten Durchlauf.
+Auch der zweite Durchlauf auf einem \e{Dell}-Gerät mit integrierter \gls{GPU} führt zu ähnlichen Daten. Auffallend in Abbildung \ref{fig:benchmarkFpsChartWindows} ist der Unterschied der \gls{FPS}. Die Unterschiede der Downloadzeit (siehe Abbildung \ref{fig:benchmarkDownloadChartWindows}) sind vergleichbar mit denjenigen vom ersten Durchlauf.
 
 Die detaillierten Informationen befinden sich in Anhang \ref{fig:windowsBenchmarkRun}.
 
@@ -445,7 +446,7 @@ Die detaillierten Informationen befinden sich in Anhang \ref{fig:windowsBenchmar
   \begin{subfigure}{.49\textwidth}
     \centering
     \includegraphics[width=0.9\linewidth]{resultate/windows/fpsChart.jpg}
-    \caption{FPS Vergleich}
+    \caption{\gls{FPS} Vergleich}
     \label{fig:benchmarkFpsChartWindows}
   \end{subfigure}
   \begin{subfigure}{.49\textwidth}
@@ -454,6 +455,6 @@ Die detaillierten Informationen befinden sich in Anhang \ref{fig:windowsBenchmar
     \caption{Download Vergleich}
     \label{fig:benchmarkDownloadChartWindows}
   \end{subfigure}
-  \caption{Vergleich Kennzahlen}
+  \caption{Vergleich Kennzahlen auf Gerät mit integrierter Grafikkarte}
   \label{fig:benchmarkChartWindows}
 \end{figure}

@@ -73,7 +73,7 @@
 % Hyperlinks
 \usepackage[hidelinks]{hyperref}
 \hypersetup{%
-  pdftitle={Level Of Detail Toolset für 3D-Web-Applikationen},
+  pdftitle={Level of Detail Toolset für 3D-Web-Applikationen},
 % Use \plainauthor for final version.
   pdfauthor={Marc Berli und Simon Stucki},
 %  pdfauthor={\emptyauthor},
@@ -218,6 +218,28 @@
   breaklines=true,
 }
 
+% json
+
+\lstdefinelanguage{json}{
+  basicstyle={\footnotesize\ttfamily},
+  frame=b,
+  % line-numbers
+  xleftmargin={0.75cm},
+  numbers=left,
+  stepnumber=1,
+  firstnumber=1,
+  numberfirstline=true,
+  tabsize=4,
+  string=[s]{"}{"},
+  stringstyle=\color{blue},
+  comment=[l]{:},
+  commentstyle=\color{black},
+}
+
+\lstdefinestyle{json} {%
+  % Code
+  language=json,
+}
 
 \makeatletter
 \renewcommand\listoffigures{%
