@@ -51,10 +51,6 @@ const main = async () => {
   const scene = await createScene();
   renderer.setAnimationLoop(() => render(scene));
 
-  // for inspector: https://chrome.google.com/webstore/detail/threejs-inspector/dnhjfclbfhcbcdfpjaeacomhbdfjbebi
-  window.scene = scene;
-  window.THREE = THREE;
-
   // the canvas/window resize event handler
   window.addEventListener("resize", function () {
     camera.aspect = window.innerWidth / window.innerHeight;
