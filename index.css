@@ -4,12 +4,3 @@ body {
   margin: 0;
   font-family: sans-serif;
 }
-.form {
-  background-color: #ffffff;
-  padding: 20px;
-  margin: 10px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  border-radius: 5px;
-}
