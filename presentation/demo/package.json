@@ -1,0 +1,18 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "snowpack dev"
+  },
+  "dependencies": {
+    "@kreativwebdesign/lode-three": "^1.0.0",
+    "three": "^0.129.0"
+  },
+  "devDependencies": {
+    "@kreativwebdesign/lode-cli": "^1.0.0",
+    "prettier": "2.2.1",
+    "snowpack": "^3.6.2"
+  }
+}
