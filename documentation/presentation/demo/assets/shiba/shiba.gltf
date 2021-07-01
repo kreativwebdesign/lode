@@ -1,0 +1,115 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v1.2.75",
+    "version": "2.0"
+  },
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [0]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "Box002_default_0"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "emissiveFactor": [1, 1, 1],
+      "emissiveTexture": {
+        "index": 0,
+        "texCoord": 0
+      },
+      "name": "default",
+      "pbrMetallicRoughness": {}
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Box002_default_0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "source": 0
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/png",
+      "name": "default_baseColor",
+      "uri": "default_baseColor.png"
+    }
+  ],
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 2417,
+      "max": [0.4604490101337433, 0.3757418990135193, 0.3642579913139343],
+      "min": [-0.4604490101337433, -1.0053011178970337, -1.4105159044265747],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 2417,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 2417,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5123,
+      "count": 12276,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 29004,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 29004,
+      "byteOffset": 29004
+    },
+    {
+      "buffer": 0,
+      "byteLength": 19336,
+      "byteOffset": 58008
+    },
+    {
+      "buffer": 0,
+      "byteLength": 24552,
+      "byteOffset": 77344
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 101896,
+      "uri": "shiba.bin"
+    }
+  ]
+}
