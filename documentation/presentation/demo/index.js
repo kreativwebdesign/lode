@@ -31,8 +31,7 @@ const createScene = async function () {
   const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
   scene.add(directionalLight);
 
-  const gltf = await loadGltfAsync("assets/duck/duck.gltf");
-  gltf.scene.position.y = -1;
+  const gltf = await loadGltfAsync("assets/shiba/shiba.gltf");
   scene.add(gltf.scene);
 
   return scene;
