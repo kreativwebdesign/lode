@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "snowpack dev"
+    "start": "snowpack dev",
+    "lode-cli": "lode-cli"
   },
   "dependencies": {
     "@kreativwebdesign/lode-three": "^1.0.0",
